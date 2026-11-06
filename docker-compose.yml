@@ -1,0 +1,15 @@
+# Local run of the whole prototype:  docker compose up --build
+# Demo passwords come from backend/.env (copy backend/.env.example).
+services:
+  api:
+    build: {context: ., dockerfile: backend/Dockerfile}
+    env_file: backend/.env
+    environment:
+      SILSILA_CORS: http://localhost:3100
+    ports: ["8100:8000"]
+  web:
+    build:
+      context: web
+      args: {NEXT_PUBLIC_API_URL: "http://localhost:8100"}
+    ports: ["3100:3000"]
+    depends_on: [api]
