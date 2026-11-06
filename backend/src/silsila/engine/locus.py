@@ -56,6 +56,16 @@ class Locus:
     affected_phenotypes: frozenset[str] = frozenset()
 
     def __post_init__(self) -> None:
+        import math
+
+        if len(self.alleles) < 2 or sum(not a.pathogenic for a in self.alleles) != 1:
+            raise ValueError(f"{self.id}: give exactly one reference allele and at least one pathogenic allele")
+        for a in self.alleles:
+            if not (isinstance(a.frequency, (int, float)) and math.isfinite(a.frequency) and 0 <= a.frequency <= 1):
+                raise ValueError(f"{self.id}: frequency of allele {a.id} must be between 0 and 1")
+            if not (isinstance(a.detection_rate, (int, float)) and math.isfinite(a.detection_rate)
+                    and 0 <= a.detection_rate <= 1):
+                raise ValueError(f"{self.id}: detection rate of allele {a.id} must be between 0 and 1")
         total = sum(a.frequency for a in self.alleles)
         if not np.isclose(total, 1.0, atol=1e-9):
             raise ValueError(f"Allele frequencies at {self.id} sum to {total}, expected 1")
@@ -65,6 +75,9 @@ class Locus:
         for g in self.genotypes:
             if self.phenotype_of(g) is None:
                 raise ValueError(f"No phenotype defined for genotype {g} at {self.id}")
+        unused = set(self.affected_phenotypes) - set(self.phenotype_of(g) for g in self.genotypes)
+        if unused:
+            raise ValueError(f"{self.id}: affected label(s) {sorted(unused)} are not produced by any genotype")
 
     # ---- genotype space -------------------------------------------------
     @cached_property

@@ -114,6 +114,13 @@ def person_risks(ped: Pedigree, locus: Locus, background_f: float = 0.0) -> dict
 
 
 def couple_risk(ped: Pedigree, locus: Locus, female: str, male: str, background_f: float = 0.0) -> CoupleRisk:
+    from .pedigree import PedigreeError, Sex
+
+    for pid, sex in ((female, Sex.FEMALE), (male, Sex.MALE)):
+        if pid not in ped.people:
+            raise PedigreeError(f"'{pid}' is not in the family tree")
+        if ped.people[pid].sex != sex:
+            raise PedigreeError(f"A couple is calculated as one woman ({female}) and one man ({male})")
     joint, child = inference.couple_joint(ped, locus, female, male, background_f)
     path = np.array([locus.pathogenic_copies(g) > 0 for g in locus.genotypes], dtype=float)
     p_both = float(path @ joint @ path)

@@ -1,0 +1,274 @@
+# Silsila simulator: every LABELLED ASSUMPTION in one place.
+#
+# Rule: numbers that come from a publication live in data/params/loci.yaml or
+# data/calibration/12_sim_calibration.yaml (verbatim copy of the research
+# calibration file) and are cited there. Everything the simulator needs that
+# is NOT published is listed here with:
+#   kind:        assumption  - a structural guess, no published value found
+#                calibrated  - fitted to a published number (the fit is
+#                              re-checked and reported by the benchmarks)
+#                proxy       - a published number borrowed from a different
+#                              population or purpose
+#                generator   - a setting of the generator with no population
+#                              meaning
+#                display     - affects labels only, never results
+#   range / alternatives: what B5 (bench/b5_sensitivity.py) varies, one at a
+#                time, so no conclusion rests on a single guess.
+#
+# Nothing here was tuned to make Silsila look better. The calibrated values
+# are fitted to published population or family numbers, never to a Silsila
+# result.
+
+assumptions:
+  # ------------------------------------------------------------ structure
+  n_generations:
+    value: 5
+    alternatives: [5, 6]
+    kind: assumption
+    used_in: [nejm, uae]
+    reason: >-
+      Family depth: generations 0..4 from one founding couple. The two oldest
+      generations are deceased ancestors (needed so that the living
+      generations can be first and second cousins); generation 2 are
+      grandparents (some living), generation 3 adults of reproductive age,
+      generation 4 children. Ahmed 2002 drew 3-generation pedigrees of living
+      members, which matches generations 2-4. No source gives kindred depth.
+
+  sibship_mean_uae:
+    value: 4.0
+    range: [3.0, 5.5]
+    kind: assumption
+    used_in: [uae]
+    reason: >-
+      Mean children per couple (Poisson). Mean Emirati sibship size was NOT
+      FOUND. Emirati total fertility rate was 3.1-3.7 in 2016-2022 (FCSC via
+      GLMM, calibration file), which bounds the current generation from
+      below; Emirati-specific fertility for older cohorts was NOT FOUND, so
+      the default sits above the recent TFR and the range spans 3.0-5.5.
+
+  sibship_mean_nejm:
+    value: 3.25
+    range: [2.9, 3.6]
+    kind: calibrated
+    used_in: [nejm]
+    reason: >-
+      Mean children per couple for the Pakistani kindreds. Not published.
+      Calibrated so that ascertained simulated index families have about the
+      published mean of 84.6 living members (Ahmed 2002: 846 living members
+      in 10 index families). bench/b3_nejm.py reports the achieved fit every
+      run.
+
+  marriage_prob:
+    value: 0.85
+    range: [0.70, 0.95]
+    kind: assumption
+    used_in: [nejm, uae]
+    reason: >-
+      Probability that an adult kindred member marries. Percent married by
+      age for Emiratis was NOT FOUND. Ahmed 2002 reports 54% of all living
+      members (including children) unmarried; B3 reports the simulated value
+      next to it as a check, it is not fitted.
+
+  p_living_grandparent_gen:
+    value: 0.7
+    range: [0.4, 0.9]
+    kind: assumption
+    used_in: [nejm, uae]
+    reason: >-
+      Probability that a member of the grandparent generation is alive. Not
+      published for these families. Older generations are all deceased and
+      the two youngest all alive.
+
+  exchange_prob:
+    value: 1.0
+    kind: generator
+    used_in: [nejm, uae]
+    reason: >-
+      When two same-sex siblings both marry outside the kindred into the same
+      clan group, the probability that their spouses are siblings from one
+      outside family. It only creates the opportunity for double-first-cousin
+      marriages in the next generation; the number that happen is set by the
+      target mix. No population meaning.
+
+  generation_interval_years:
+    value: 28
+    kind: display
+    used_in: [nejm, uae]
+    reason: >-
+      Used only to print plausible ages. Mean age at first marriage of
+      Abu Dhabi Emiratis 24-27 (SCAD via press, calibration file) plus an
+      unpublished gap to first birth. No result depends on it.
+
+  # ------------------------------------------------- relationship mixes
+  nejm_consanguineous_split:
+    value: {first_cousin: 0.519, double_first_cousin: 0.069, second_cousin: 0.412}
+    alternatives:
+      - {first_cousin: 0.80, double_first_cousin: 0.05, second_cousin: 0.15}
+      - {first_cousin: 0.30, double_first_cousin: 0.05, second_cousin: 0.65}
+    kind: proxy
+    used_in: [nejm]
+    reason: >-
+      Ahmed 2002 gives 44% of couples 'consanguineous (second cousins or
+      closer)' without a split. The default borrows the UAE proportions of
+      al-Gazali 1997 (26.2% first cousin and 3.5% double first cousin out of
+      50.5%; the remainder assigned to second cousins). Alternatives are
+      first-cousin-heavy and second-cousin-heavy.
+
+  uae_other_relatives_second_cousin_share:
+    value: 0.26
+    range: [0.0, 1.0]
+    kind: assumption
+    used_in: [uae]
+    reason: >-
+      al-Gazali 1997: 50.5% consanguineous, 26.2% first cousin, 3.5% double
+      first cousin; the remaining 20.8% ('other relatives') was NOT FOUND
+      split by type. The default share of second cousins (kinship 1/64) is
+      the value that makes the mix consistent with the same study's
+      F = 0.0222 if the rest are third cousins (1/256):
+      s = (0.0222 - 0.262/16 - 0.035/8 - 0.208/256) / (0.208 (1/64 - 1/256))
+      = 0.26. The rest are modelled as 'distant relatives': same-clan spouses
+      not connected in the drawn tree.
+
+  uae_same_tribe_share:
+    value: 0.5
+    range: [0.0, 1.0]
+    kind: assumption
+    used_in: [uae]
+    reason: >-
+      Share of non-consanguineous Emirati marriages that are within the same
+      tribe. NOT FOUND. Denic 2013 shows tribe-level allele-frequency
+      differences matter (carrier rate 0-13.6% across 14 tribes) but gives no
+      within-tribe marriage rate.
+
+  # ---------------------------------------------------- clan structure
+  theta_uae:
+    value: 0.093
+    range: [0.017, 0.223]
+    kind: calibrated
+    used_in: [uae]
+    reason: >-
+      Kinship of two founders of the same tribe (Balding-Nichols F_ST). No
+      published UAE F_ST was found. Calibrated so that random couples under
+      the UAE mix reproduce Denic 2013's observed 10 beta-thalassaemia at-risk
+      couples among 2,262 Abu Dhabi premarital couples (carrier rate 2.3%):
+      fitted 0.093; the exact 95% interval of 10/2,262 maps to 0.017-0.223,
+      which is the range B5 uses. At theta = 0 the same model gives 1 in 644
+      couples, matching Denic's own expectation of 1 in 646 at F = 0.022.
+      B4 re-runs this calibration every time and reports the fit; B4 also
+      reports theta = 0 (the engine's own assumption: no tribe structure).
+      Applied to all loci, which assumes CYP21A2 and SMN1 vary between tribes
+      like HBB does (not verified).
+
+  theta_nejm:
+    value: 0.0
+    range: [0.0, 0.2]
+    kind: assumption
+    used_in: [nejm]
+    reason: >-
+      Biradri (clan) F_ST for Ahmed 2002's Pakistani families. No published
+      value. B3 reports results across a grid of values, the value of theta
+      at which the model reproduces the published 31% carrier rate (a
+      calibration, reported as such) and whether the other three published
+      numbers are then reproduced. The default 0 is 'no biradri effect'.
+
+  founder_f_nejm:
+    value: 0.0
+    range: [0.0, 0.03]
+    kind: assumption
+    used_in: [nejm]
+    reason: >-
+      Inbreeding of founders of the Pakistani kindreds (within their clan).
+      Not reported by Ahmed 2002. Upper end near the UAE and Qatar values in
+      the calibration file.
+
+  # ----------------------------------------------------- NEJM study design
+  nejm_test_sensitivity:
+    value: 1.0
+    range: [0.95, 1.0]
+    kind: assumption
+    used_in: [nejm]
+    reason: Analytical sensitivity of carrier testing in Ahmed 2002 is not reported.
+
+  nejm_tested_selection:
+    value: random
+    alternatives: [random, kin_first]
+    kind: assumption
+    used_in: [nejm]
+    reason: >-
+      Who among living members was tested (70% of them) is not reported.
+      'random' tests a random subset; 'kin_first' tests in order of kinship to
+      the index child. Per-family tested fractions are resampled from the
+      published per-family table.
+
+  ascertainment:
+    value: complete
+    alternatives: [complete, single]
+    kind: assumption
+    used_in: [nejm, uae]
+    reason: >-
+      Families are found through an affected child. 'complete': a family with
+      at least one affected child is found with the same probability however
+      many it has; 'single': probability proportional to the number of
+      affected children. Ahmed 2002 does not say which applies.
+
+  # -------------------------------------------------- UAE cascade setting
+  uae_uptake:
+    value: 0.70
+    range: [0.4, 1.0]
+    kind: proxy
+    used_in: [uae]
+    reason: >-
+      Probability that an invited relative (or partner) accepts testing.
+      Borrowed from Ahmed 2002 (591 of 846 living index-family members
+      tested, 70%). No UAE cascade uptake was found. The same random draws are
+      used for every strategy.
+
+  uae_drawn_tree_scope:
+    value: grandparents
+    alternatives: [grandparents, great_grandparents]
+    kind: assumption
+    used_in: [uae]
+    reason: >-
+      Which relatives a family enters into Silsila: descendants of the index
+      child's grandparents (parents, aunts, uncles, first cousins) with their
+      spouses and all connecting ancestors, versus descendants of the
+      great-grandparents (adds the parents' first cousins). Only people in the
+      drawn tree can be invited, by any strategy.
+
+  uae_living_phenotypes_known:
+    value: true
+    alternatives: [true, false]
+    kind: assumption
+    used_in: [uae]
+    reason: >-
+      Whether the family records which living members are affected or
+      unaffected. Deceased members' status is never recorded.
+
+  uae_detection_cyp21a2:
+    value: 1.0
+    kind: assumption
+    used_in: [uae]
+    reason: >-
+      loci.yaml has no published CYP21A2 detection rate (null), so the engine
+      and the simulation both use 1.0. Results for CYP21A2 therefore ignore
+      false-negative carrier tests.
+
+  reproductive_generation:
+    value: index_parents
+    kind: assumption
+    used_in: [uae]
+    reason: >-
+      An at-risk couple is counted as 'of reproductive age' when the wife is
+      in the index child's parents' generation. Ages are not modelled
+      further. Couples of the grandparent generation are reported separately.
+
+  # ----------------------------------------------------------- model form
+  clan_model:
+    value: balding_nichols
+    kind: assumption
+    used_in: [nejm, uae]
+    reason: >-
+      Clan allele frequencies follow a Dirichlet distribution around the
+      population frequencies (Balding and Nichols 1995). Outside spouses of
+      another clan come from their own random clan. Founders of a
+      consanguineous kindred and same-clan spouses share the kindred's clan.

@@ -1,0 +1,78 @@
+# Silsila simulator calibration. Verified = read in fetched source this session. null = NOT FOUND.
+consanguinity:
+  uae:
+    - {id: alg1997, pmid: 9881148, doi: 10.1017/S0021932097004914, url: "https://www.cambridge.org/core/journals/journal-of-biosocial-science/article/consanguineous-marriages-in-the-united-arab-emirates/B009C15A823DF370BADA7D69D88E4871", n: 2033, year: 1994-1995, place: "Al Ain + Dubai", overall: 0.505, first_cousin: 0.262, double_first_cousin: 0.035, F: 0.0222, parental_generation_overall: 0.39, al_ain: 0.542, dubai: 0.40, second_cousin: null, other_relatives: null, same_tribe: null}
+    - {id: bener1996, pmid: 8854141, url: "https://pubmed.ncbi.nlm.nih.gov/8854141/", overall: 0.505, ci95: [0.492, 0.518], parents_wives: 0.53, parents_husbands: 0.62, parents_overall: 0.57}
+    - {id: denic2013, pmid: 23600619, url: "https://pubmed.ncbi.nlm.nih.gov/23600619/", n_F_estimate: 383, F: 0.022, screened: 5672, couples: 2262, bthal_carrier_freq: 0.023, bthal_allele_freq: 0.0116, tribe_carrier_range: [0, 0.136], expected_couples_per_atrisk_F0: 1858, expected_couples_per_atrisk_F0022: 646, observed_atrisk_couples: 10, observed_one_in: 226}
+    - {id: bakoush2016, pmid: 26790338, url: "https://pubmed.ncbi.nlm.nih.gov/26790338/", n: 217, parental_consanguinity_any_cousin: 0.36, note: "medical students, not probability sample"}
+    - {id: khan2023, doi: 10.3329/jom.v24i2.67269, url: "https://banglajol.info/index.php/JOM/article/view/67269", overall: 0.65, year: 2018, quality: low}
+    - {id: tadmouri2009_table, pmid: 19811666, url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC2765422", first_cousin_range: [0.207, 0.282], overall_range: [0.40, 0.542]}
+  trend: "39% (parents) -> 50.5% (1994-95); no national survey 2000s-2020s found"
+  comparators:
+    saudi: {pmid: 18060221, url: "https://pubmed.ncbi.nlm.nih.gov/18060221/", overall: 0.56, first_cousin: 0.336, other_relatives: 0.224, rural: 0.595, urban: 0.547, year: 2004-2005}
+    qatar: {pmid: 16490156, url: "https://pubmed.ncbi.nlm.nih.gov/16490156/", overall: 0.54, first_cousin: 0.348, double_first_cousin: 0.031, F: 0.02706, prior_generation: 0.418, n: 1515, year: 2004}
+    oman: {overall: 0.563, first_cousin: 0.241, source: "Tadmouri 2009 table PMC2765422; primary not opened", verified_primary: false}
+fertility_family:
+  emirati_tfr_fcsc: {2016: 3.7, 2017: 3.7, 2018: 3.6, 2019: 3.3, 2020: 3.23, 2021: 3.2, 2022: 3.1, url: "https://gulfmigration.grc.net/uae-crude-birth-rates-and-emirati-womens-total-fertility-rates-2016-2022/"}
+  emirati_tfr_1970s_2000s: null
+  all_resident_tfr_worldbank: {url: "https://api.worldbank.org/v2/country/ARE/indicator/SP.DYN.TFRT.IN?format=json", note: "includes expatriates; NOT Emirati", uae: {1970: 6.519, 1980: 5.953, 1990: 4.506, 2000: 2.733, 2010: 1.565, 2020: 1.289}}
+  births_to_emirati_mothers: {1977: 10727, 1980: 14162, 1990: 18760, 2000: 22451, 2010: 32303, 2020: 31604, 2022: 30889, url: "https://gulfmigration.grc.net/?p=10866"}
+  mean_sibship_size_emirati: null
+  age_at_first_birth: null
+  pct_married_by_age: null
+  mean_age_first_marriage_abu_dhabi_emiratis: {women_1995: 23.7, women_2012: 25.9, men_2012: 26.8, men_2017: 27.4, women_2017: 24.2, urls: ["https://www.thenationalnews.com/uae/women-in-abu-dhabi-are-marrying-later-government-figures-show-1.478098", "https://gulfnews.com/news/uae/society/revealed-28-of-uae-marriages-dissolved-in-less-than-1-year-1.2292493"], source_type: press_citing_SCAD}
+ahmed_nejm2002:
+  pmid: 12374877
+  doi: 10.1056/NEJMsa013234
+  url: "https://discovery.ucl.ac.uk/id/eprint/7166/1/7166.pdf"
+  families_approached: {index: 16, control: 8}
+  families_tested: {index: 10, control: 5}
+  living_members: {all: 1455, index: 846, control: 609}
+  couples: {all: 338, index: 214, control: 124}
+  couple_types_all: {consanguineous_2nd_cousin_or_closer: 0.44, same_biradri: 0.50, unrelated: 0.06}
+  tested: {index: 591, control: 397}
+  carriers_index: 183
+  carriers_unmarried: 97
+  carriers_married: 86
+  carriers_married_to_carrier: 34
+  atrisk_couples: 17   # 11 closely consanguineous, 6 biradri-only; 9 index-case parents, 6 by history, 2 by testing
+  couples_tested_index: 126
+  antenatal: {n: 350, carriers: 17, atrisk_couples: 0}
+  population_bthal_carrier_freq: 0.05
+  affected_children: {alive: 15, dead: 13}
+  followup: {families: 8, years_abstract: 2, years_results_text: 4, new_marriages_engagements: 8_or_7, not_at_risk: 7}
+  per_family:   # id: [members, married, couples, consang_couples, tested, carriers, carrier_couples]
+    1: [199, 104, 52, 20, 138, 36, 4]
+    2: [85, 42, 21, 15, 85, 26, 2]
+    3: [55, 28, 14, 8, 51, 14, 1]
+    4: [48, 24, 12, 6, 41, 17, 1]
+    5: [69, 38, 19, 8, 45, 17, 2]
+    6: [60, 28, 14, 5, 42, 19, 1]
+    7: [80, 38, 19, 14, 20, 14, 3]
+    8: [98, 56, 28, 8, 58, 12, 0]
+    9: [79, 40, 20, 6, 48, 11, 1]
+    10: [73, 30, 15, 3, 63, 17, 2]
+    control_11: [120, 44, 22, 13, 48, 0, 0]
+    control_12: [72, 22, 11, 0, 57, 0, 0]
+    control_13: [117, 46, 23, 6, 111, 0, 0]
+    control_14: [148, 64, 32, 19, 131, 0, 0]
+    control_15: [152, 72, 36, 18, 50, 0, 0]
+  inconsistencies: "Methods say 15+1 families/8 controls; abstract says 15; follow-up 2 vs 4 yrs"
+other_cascade:
+  ismail2022_india: {doi: 10.18203/2394-6040.ijcmph20220713, url: "https://www.ijcmph.com/index.php/ijcmph/article/view/9459", families: 90, index_cases: 130, living_relatives: 3466, tested: 1702, carriers: 629, married_carriers: 310, unmarried_carriers: 319, atrisk_couples: 116, followup_years: 3}
+  gorakshakar_colah_2009: {pmid: 20165634, url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2822201/", tested: 691, carriers: 151, note: "from search summary"}
+  susanah2022_indonesia: {pmid: 34783993, url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8799803/", index: [64, 150], control: [16, 151]}
+  saudi_iran_gulf_followups: null
+theory_validation:
+  bennett2002: {pmid: 26141656, doi: 10.1023/a:1014593404915, excess_risk_first_cousin_pct: [1.7, 2.8], verified_via: "https://www.washington.edu/news/2002/04/03/first-cousins-face-lower-risk-of-having-children-with-genetic-conditions-than-is-widely-perceived", original_fulltext_read: false}
+  bittles_black_2010: {pmid: 19805052, first_cousin_progeny_mortality_excess_pct: 3.5, global_pop_F_ge_00156_pct: 10.4}
+  modell_darr_2002: {pmid: 11972160, quantitative_formula: null}
+  kinship: {first_cousin_offspring_F: 0.0625, double_first_cousin_F: 0.125, second_cousin_F: 0.015625, status: "math identity, not literature"}
+  p_first_cousin_of_carrier_is_carrier: {formula: "1/8 + (7/8)*q  [derivation, unverified, test by Monte Carlo]", empirical_anchor: "Ahmed 2002: 31% of relatives vs 5% population"}
+programme_volumes:
+  abu_dhabi_premarital: {tested_couples: 11748, incompatible: 565, period: "2022 - Jul 2026", url: "https://gulfnews.com/uae/health/abu-dhabi-genetic-screening-flags-565-incompatible-cases-among-couples-1.500697261"}
+  federal_ehs_premarital: [{couples: 5506, incompatible: 212, related_among_incompatible: 95, to: "2026-05", proceed_pct: 75, url: "https://gulfnews.com/uae/health/96-of-uae-couples-pass-premarital-genetic-screening-5500-undergo-testing-1.500591031"}, {couples: 6990, incompatible: 282, to: "2026-09", proceed_pct: 71, url: "https://gulfnews.com/uae/health/uae-premarital-genetic-screening-71-per-cent-of-incompatible-couples-choose-marriage-1.500731467"}]
+  emirati_marriages_2013: {total: 16441, emirati_emirati: 7411, abu_dhabi_emirati_emirati: 2981, emirati_m_nonemirati_f: 2109, emirati_f_nonemirati_m: 898, url: "https://www.thenationalnews.com/uae/more-than-7000-emirati-marriages-in-the-uae-last-year-1.234628"}
+  dubai_emirati_emirati_marriages: {2022: 983, 2023: 1104, 2024: 1244, 2025: 1450, url: "https://gulfnews.com/uae/marriages-between-emirati-couples-in-dubai-rise-475-per-cent-in-four-years-1.500722950"}
+  abu_dhabi_births_2024: {total: 39333, emirati: 15628, non_emirati: 23492, url: "https://www.gulftoday.ae/lifestyle/2025/08/03/abu-dhabi-recorded-15628-emirati-births-in-2024"}
+  newborn_genome_screening_volume: null

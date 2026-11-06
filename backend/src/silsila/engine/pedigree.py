@@ -95,6 +95,10 @@ class Pedigree:
     # ---- validation -------------------------------------------------------
     def validate(self) -> None:
         for p in self.people.values():
+            if not isinstance(p.sex, Sex):
+                raise PedigreeError(f"{p.id}: sex must be female or male")
+            if p.pregnant and (p.sex != Sex.FEMALE or p.deceased):
+                raise PedigreeError(f"{p.id}: only a living woman can be marked as pregnant")
             if (p.mother is None) != (p.father is None):
                 raise PedigreeError(
                     f"{p.id}: give both parents or neither. Add the missing parent as a person "

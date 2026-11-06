@@ -1,0 +1,266 @@
+{
+  "benchmark": "B2 input robustness",
+  "provenance": {
+    "generated_utc": "2026-11-06T11:45:59Z",
+    "git_commit": "f829430",
+    "working_tree_dirty": true,
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "workers": 8,
+    "quick": false,
+    "seed": 0,
+    "data_note": "SYNTHETIC: all families are simulated; no real person's data is used."
+  },
+  "n_cases": 291,
+  "n_malformed_or_impossible": 237,
+  "n_valid_edge_cases": 54,
+  "n_pass": 291,
+  "silent_failures": 0,
+  "silent_failure_rate_ci95": [
+    0.0,
+    0.015444385312427042
+  ],
+  "false_alarms": 0,
+  "unclear_crashes": 0,
+  "wrong_error_type": 0,
+  "by_category": {
+    "missing_parent": {
+      "n": 22,
+      "pass": 22,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "parent_not_in_tree": {
+      "n": 6,
+      "pass": 6,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "wrong_sex_parent": {
+      "n": 12,
+      "pass": 12,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "cycle": {
+      "n": 6,
+      "pass": 6,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "duplicate_id": {
+      "n": 3,
+      "pass": 3,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "union_unknown": {
+      "n": 3,
+      "pass": 3,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "union_same_sex": {
+      "n": 3,
+      "pass": 3,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "union_self": {
+      "n": 3,
+      "pass": 3,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "invalid_sex": {
+      "n": 6,
+      "pass": 6,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "unknown_allele": {
+      "n": 24,
+      "pass": 24,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "reference_as_variant": {
+      "n": 12,
+      "pass": 12,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "three_alleles": {
+      "n": 12,
+      "pass": 12,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "unknown_condition": {
+      "n": 36,
+      "pass": 36,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "valid_unlikely_evidence": {
+      "n": 14,
+      "pass": 14,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "impossible_evidence": {
+      "n": 20,
+      "pass": 20,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "frequencies_sum": {
+      "n": 6,
+      "pass": 6,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "negative_frequency": {
+      "n": 6,
+      "pass": 6,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "nan_frequency": {
+      "n": 3,
+      "pass": 3,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "detection_rate": {
+      "n": 9,
+      "pass": 9,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "duplicate_allele": {
+      "n": 3,
+      "pass": 3,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "missing_phenotype": {
+      "n": 3,
+      "pass": 3,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "affected_label_unused": {
+      "n": 3,
+      "pass": 3,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "background_f": {
+      "n": 12,
+      "pass": 12,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "unknown_query": {
+      "n": 8,
+      "pass": 8,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "couple_same_sex": {
+      "n": 4,
+      "pass": 4,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "couple_self": {
+      "n": 4,
+      "pass": 4,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "couple_parent_child": {
+      "n": 4,
+      "pass": 4,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "contradictory_flags": {
+      "n": 8,
+      "pass": 8,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    },
+    "valid_edge": {
+      "n": 36,
+      "pass": 36,
+      "silent_failure": 0,
+      "false_alarm": 0,
+      "unclear_crash": 0,
+      "wrong_error_type": 0
+    }
+  },
+  "silent_failure_cases": [],
+  "non_pass_cases": [],
+  "log": "docs/evidence/logs/b2_robustness_cases.csv",
+  "runtime_seconds": 0.95
+}
