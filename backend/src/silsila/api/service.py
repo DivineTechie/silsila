@@ -12,6 +12,7 @@ from ..content import Message, registry
 from ..engine import (
     InconsistentEvidence,
     Pedigree,
+    PedigreeTooComplex,
     PedigreeError,
     Person,
     Phenotype,
@@ -111,6 +112,10 @@ def compute_report(case: dict[str, Any], lang: str = "en") -> dict[str, Any]:
     except InconsistentEvidence:
         msg = reg.template(Message(lang), "result.inconsistent")
         out.update(status="inconsistent", message=reg.gate(msg).parts)
+        return out
+    except PedigreeTooComplex:
+        msg = reg.template(Message(lang), "result.too_complex")
+        out.update(status="too_complex", message=reg.gate(msg).parts)
         return out
 
     gene = rec.locus.gene
@@ -327,8 +332,9 @@ def queue(store: Store) -> list[dict[str, Any]]:
                           "reasons": sorted(m["labels"]) or ["unclassified"], "since": m["created"]})
     for cid, c in cases.items():
         rep = compute_report(c)
-        if rep["status"] == "inconsistent":
-            items.append({"type": "case", "id": cid, "case_id": cid, "priority": 2, "reasons": ["results_do_not_fit"],
+        if rep["status"] in ("inconsistent", "too_complex"):
+            reason = "results_do_not_fit" if rep["status"] == "inconsistent" else "family_tree_too_complex"
+            items.append({"type": "case", "id": cid, "case_id": cid, "priority": 2, "reasons": [reason],
                           "since": c["updated"]})
     for inv in store.list("invitation"):
         if inv["status"] in TERMINAL:

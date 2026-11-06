@@ -105,6 +105,15 @@ templates:
       بعض النتائج المسجلة في شجرة العائلة هذه لا تتوافق مع بعضها. قد يحدث هذا
       لأسباب عدة، منها خطأ في التسجيل. لن يُعرض أي حساب حتى يراجع مستشار وراثي شجرة
       العائلة.
+  result.too_complex:
+    kind: safety
+    en: >-
+      This family tree is too large or interlinked for an exact calculation in
+      this version. No chance is shown. A genetic counsellor will review the
+      family tree.
+    ar: >-
+      شجرة العائلة هذه كبيرة أو متشابكة بدرجة لا تسمح بحساب دقيق في هذا الإصدار.
+      لن يُعرض أي احتمال. سيراجع مستشار وراثي شجرة العائلة.
   result.excluded_locus:
     kind: safety
     en: >-

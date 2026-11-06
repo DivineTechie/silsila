@@ -142,3 +142,12 @@ def test_bad_family_tree_gets_a_clear_message(client):
     ped = {"people": [{"id": "a", "sex": "female", "mother": "x", "father": None}], "unions": []}
     r = client.put("/api/cases/case_cah_demo/pedigree", json=ped, headers=cou)
     assert r.status_code == 422 and "both parents" in r.json()["detail"]
+
+
+def test_oversized_family_gets_a_message_not_a_crash(client, monkeypatch):
+    from silsila.engine import inference
+    monkeypatch.setattr(inference, "MAX_FACTOR_ENTRIES", 10)
+    cou = login(client, "counsellor", COUNSELLOR_PW)
+    rep = client.get("/api/cases/case_cah_demo", headers=cou).json()["report"]
+    assert rep["status"] == "too_complex" and rep["message"][0]["id"] == "result.too_complex"
+    assert any("family_tree_too_complex" in i["reasons"] for i in client.get("/api/queue", headers=cou).json())
