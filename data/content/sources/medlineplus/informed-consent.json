@@ -3,7 +3,7 @@
   "kind": "handbook",
   "title": "What is informed consent?",
   "url": "https://medlineplus.gov/genetics/understanding/testing/informedconsent/",
-  "retrieved_at": "2026-11-06T06:54:56+00:00",
+  "retrieved_at": "2026-11-06T07:02:11+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -16,132 +16,98 @@
         {
           "id": "mp:informed-consent:0:0",
           "text": "Before a person has a genetic test, it is important to fully understand the testing procedure, the benefits and limitations of the test, and the possible consequences of the test results. The process of educating a person about the test and obtaining permission to carry out testing is called informed consent. \"Informed\" means that the person has enough information to make an educated decision about testing; \"consent\" refers to a person's voluntary agreement to have the test done.",
-          "sha256": "a03083c28c4ff8bd6f84b2acd0efd19f0fd5a49c7ea8e25a7444872b3547d9d3"
+          "sha256": "a03083c28c4ff8bd6f84b2acd0efd19f0fd5a49c7ea8e25a7444872b3547d9d3",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:1",
           "text": "In general, informed consent can only be given by adults who are competent to make medical decisions for themselves. For children and others who are unable to make their own medical decisions (such as people with impaired mental status), informed consent can be given by a parent, guardian, or other person legally responsible for making decisions on that person's behalf.",
-          "sha256": "f7731fb6d7d6b27a9df5df45c84cd189d632a3679c0abc7f785219074cc976f6"
+          "sha256": "f7731fb6d7d6b27a9df5df45c84cd189d632a3679c0abc7f785219074cc976f6",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:2",
           "text": "Informed consent for genetic testing is generally obtained by a doctor or genetic counselor during an office visit. The health care provider will discuss the test and answer any questions. If the person wishes to have the test, he or she will then usually read and sign a consent form.",
-          "sha256": "b64c81f4086bc578381b9dbd20240f7c800510441cd017f6bffaf5efefb48a28"
+          "sha256": "b64c81f4086bc578381b9dbd20240f7c800510441cd017f6bffaf5efefb48a28",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:3",
           "text": "Several factors are commonly included on an informed consent form:",
-          "sha256": "16cd789771bc7e307ad318220f3d025ff23f0c495975c21250ca365e9ce897ce"
+          "sha256": "16cd789771bc7e307ad318220f3d025ff23f0c495975c21250ca365e9ce897ce",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:4",
           "text": "A general description of the test, including the purpose of the test and the condition for which the testing is being performed.",
-          "sha256": "6a79d6411928961e0a2912eff41f146e9f0e5e5ec20068afe830f88b4797f51b"
+          "sha256": "6a79d6411928961e0a2912eff41f146e9f0e5e5ec20068afe830f88b4797f51b",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:5",
-          "text": "A general description of the test, including the purpose of the test and the condition for which the testing is being performed.",
-          "sha256": "6a79d6411928961e0a2912eff41f146e9f0e5e5ec20068afe830f88b4797f51b"
+          "text": "How the test will be carried out (for example, a blood sample).",
+          "sha256": "d2a6319fae873464b17718228cdadb8034fa97c27b23162844588d002b4a0a2f",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:6",
-          "text": "How the test will be carried out (for example, a blood sample).",
-          "sha256": "d2a6319fae873464b17718228cdadb8034fa97c27b23162844588d002b4a0a2f"
+          "text": "What the test results mean , including positive and negative results, and the potential for uninformative results or incorrect results such as false positives or false negatives.",
+          "sha256": "15148f484bd5509b8810efe3fc7d5f93350a2e8a4ecc7e3c137cf76791defbb6",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:7",
-          "text": "How the test will be carried out (for example, a blood sample).",
-          "sha256": "d2a6319fae873464b17718228cdadb8034fa97c27b23162844588d002b4a0a2f"
+          "text": "Any physical or emotional risks associated with the test .",
+          "sha256": "36e24aa3f7636b3058b15c505516a33a1dc73c3a41fefb0fc1a2697e35d8c12d",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:8",
-          "text": "What the test results mean , including positive and negative results, and the potential for uninformative results or incorrect results such as false positives or false negatives.",
-          "sha256": "15148f484bd5509b8810efe3fc7d5f93350a2e8a4ecc7e3c137cf76791defbb6"
+          "text": "Whether the results can be used for research purposes .",
+          "sha256": "52e399e80fc26fe24b344903ce354a105fc3c64da26e0b08b9c2f65998bf5dd0",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:9",
-          "text": "What the test results mean , including positive and negative results, and the potential for uninformative results or incorrect results such as false positives or false negatives.",
-          "sha256": "15148f484bd5509b8810efe3fc7d5f93350a2e8a4ecc7e3c137cf76791defbb6"
+          "text": "Whether the results might provide information about other family members' health, including the risk of developing a particular condition or the possibility of having affected children.",
+          "sha256": "978ac2e7fcb160662c4b5b8a7dfe043489f008ebfab1edbeafd688ca88db56f7",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:10",
-          "text": "Any physical or emotional risks associated with the test .",
-          "sha256": "36e24aa3f7636b3058b15c505516a33a1dc73c3a41fefb0fc1a2697e35d8c12d"
+          "text": "How and to whom test results will be reported and under what circumstances results can be disclosed (for example, to health insurance providers).",
+          "sha256": "c9a10e3b0527c18083f3d08cc592681d8cfd711052f76379387d75c5cdd28825",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:11",
-          "text": "Any physical or emotional risks associated with the test .",
-          "sha256": "36e24aa3f7636b3058b15c505516a33a1dc73c3a41fefb0fc1a2697e35d8c12d"
+          "text": "What will happen to the test specimen after the test is complete.",
+          "sha256": "3f3ec2431a2197c0e75ee20adf498285ca47b699ca43329cc03a1c38530ac021",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:12",
-          "text": "Whether the results can be used for research purposes .",
-          "sha256": "52e399e80fc26fe24b344903ce354a105fc3c64da26e0b08b9c2f65998bf5dd0"
+          "text": "Acknowledgement that the person undergoing testing has had the opportunity to discuss the test with a health care provider.",
+          "sha256": "d48db9300d18df06023495ff64be6abbdc69a1dba20608d191465ea2e248c7c7",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:13",
-          "text": "Whether the results can be used for research purposes .",
-          "sha256": "52e399e80fc26fe24b344903ce354a105fc3c64da26e0b08b9c2f65998bf5dd0"
+          "text": "The individual's signature, and possibly that of a witness.",
+          "sha256": "3f95b0fc70f0d2e38cdfe6442fdb9ba3b7e203caf281067e861697f11be34c27",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:14",
-          "text": "Whether the results might provide information about other family members' health, including the risk of developing a particular condition or the possibility of having affected children.",
-          "sha256": "978ac2e7fcb160662c4b5b8a7dfe043489f008ebfab1edbeafd688ca88db56f7"
+          "text": "The elements of informed consent may vary, because some states have laws that specify factors that must be included. (For example, some states require disclosure that the test specimen will be destroyed within a certain period of time after the test is complete.)",
+          "sha256": "209272a0087c173129f36f3f110af6e025574af7fc07d5194e6958f0531a416f",
+          "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:15",
-          "text": "Whether the results might provide information about other family members' health, including the risk of developing a particular condition or the possibility of having affected children.",
-          "sha256": "978ac2e7fcb160662c4b5b8a7dfe043489f008ebfab1edbeafd688ca88db56f7"
-        },
-        {
-          "id": "mp:informed-consent:0:16",
-          "text": "How and to whom test results will be reported and under what circumstances results can be disclosed (for example, to health insurance providers).",
-          "sha256": "c9a10e3b0527c18083f3d08cc592681d8cfd711052f76379387d75c5cdd28825"
-        },
-        {
-          "id": "mp:informed-consent:0:17",
-          "text": "How and to whom test results will be reported and under what circumstances results can be disclosed (for example, to health insurance providers).",
-          "sha256": "c9a10e3b0527c18083f3d08cc592681d8cfd711052f76379387d75c5cdd28825"
-        },
-        {
-          "id": "mp:informed-consent:0:18",
-          "text": "What will happen to the test specimen after the test is complete.",
-          "sha256": "3f3ec2431a2197c0e75ee20adf498285ca47b699ca43329cc03a1c38530ac021"
-        },
-        {
-          "id": "mp:informed-consent:0:19",
-          "text": "What will happen to the test specimen after the test is complete.",
-          "sha256": "3f3ec2431a2197c0e75ee20adf498285ca47b699ca43329cc03a1c38530ac021"
-        },
-        {
-          "id": "mp:informed-consent:0:20",
-          "text": "Acknowledgement that the person undergoing testing has had the opportunity to discuss the test with a health care provider.",
-          "sha256": "d48db9300d18df06023495ff64be6abbdc69a1dba20608d191465ea2e248c7c7"
-        },
-        {
-          "id": "mp:informed-consent:0:21",
-          "text": "Acknowledgement that the person undergoing testing has had the opportunity to discuss the test with a health care provider.",
-          "sha256": "d48db9300d18df06023495ff64be6abbdc69a1dba20608d191465ea2e248c7c7"
-        },
-        {
-          "id": "mp:informed-consent:0:22",
-          "text": "The individual's signature, and possibly that of a witness.",
-          "sha256": "3f95b0fc70f0d2e38cdfe6442fdb9ba3b7e203caf281067e861697f11be34c27"
-        },
-        {
-          "id": "mp:informed-consent:0:23",
-          "text": "The individual's signature, and possibly that of a witness.",
-          "sha256": "3f95b0fc70f0d2e38cdfe6442fdb9ba3b7e203caf281067e861697f11be34c27"
-        },
-        {
-          "id": "mp:informed-consent:0:24",
-          "text": "The elements of informed consent may vary, because some states have laws that specify factors that must be included. (For example, some states require disclosure that the test specimen will be destroyed within a certain period of time after the test is complete.)",
-          "sha256": "209272a0087c173129f36f3f110af6e025574af7fc07d5194e6958f0531a416f"
-        },
-        {
-          "id": "mp:informed-consent:0:25",
           "text": "Informed consent is not a contract, so a person can change their mind at any time after giving initial consent. A person may choose not to go through with genetic testing even after the test sample has been collected. A person simply needs to notify the health care provider if the decision has been made to not continue with the testing process.",
-          "sha256": "8ca4b4112b34ac6aed69689e27c4d6780cf11037d26496dc6d04fc0f77df045b"
+          "sha256": "8ca4b4112b34ac6aed69689e27c4d6780cf11037d26496dc6d04fc0f77df045b",
+          "us_specific": false
         }
       ]
     }

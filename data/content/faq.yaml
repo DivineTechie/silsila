@@ -1,0 +1,35 @@
+# Information topics a person can ask about. Each answer is a list of
+# verbatim MedlinePlus paragraphs (public domain). The matcher in
+# silsila.triage only chooses which topic to show; it never writes an answer.
+
+topics:
+  - id: faq.what_is_carrier
+    title_en: What does it mean to be a carrier?
+    title_ar: ماذا يعني أن تكون حاملاً؟
+    keywords_en: [carrier, "carry", "what does it mean", recessive]
+    keywords_ar: [حامل, حاملة, حاملين, متنحي, "ماذا يعني"]
+    paragraphs: [mp:inheritance-patterns:0:3, mp:risk-assessment:0:2]
+  - id: faq.chance_each_pregnancy
+    title_en: What is the chance for each pregnancy?
+    title_ar: ما هو الاحتمال في كل حمل؟
+    keywords_en: [chance, pregnancy, "each child", percent, risk, baby, children]
+    keywords_ar: [احتمال, حمل, طفل, أطفال, نسبة, خطر, مولود]
+    paragraphs: [mp:risk-assessment:0:2, mp:risk-assessment:0:9, mp:risk-assessment:0:11]
+  - id: faq.screening_vs_diagnosis
+    title_en: Is this a diagnosis?
+    title_ar: هل هذا تشخيص؟
+    keywords_en: [diagnosis, diagnose, screening, "do i have", sick, ill]
+    keywords_ar: [تشخيص, فحص, مريض, مرض]
+    paragraphs: [mp:screening-vs-diagnostic:0:0, mp:screening-vs-diagnostic:0:1, mp:screening-vs-diagnostic:0:2]
+  - id: faq.result_meaning
+    title_en: What does a test result mean?
+    title_ar: ماذا تعني نتيجة الفحص؟
+    keywords_en: [result, positive, negative, inconclusive, "test mean"]
+    keywords_ar: [نتيجة, إيجابية, سلبية, "غير حاسمة"]
+    paragraphs: [mp:interpreting-results:0:1, mp:interpreting-results:0:2, mp:interpreting-results:0:3]
+  - id: faq.family_history
+    title_en: Why does family history matter?
+    title_ar: لماذا يهم التاريخ العائلي؟
+    keywords_en: [family history, relatives, cousin, related, family]
+    keywords_ar: [تاريخ عائلي, أقارب, ابن عم, ابنة عم, قرابة, عائلة]
+    paragraphs: [mp:family-history:0:0, mp:family-history:0:1]

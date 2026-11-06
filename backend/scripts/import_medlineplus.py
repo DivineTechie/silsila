@@ -34,6 +34,11 @@ SKIP_HEADINGS = {"other names for this condition", "additional information & res
                  "additional information from ncbi gene:", "related condition(s)"}
 
 
+# Paragraphs about United States law or programmes are kept for completeness
+# but flagged, and the app never shows them to UAE users.
+US_SPECIFIC = re.compile(r"United States|\bGINA\b|federal law|state laws?|Genetic Information Nondiscrimination", re.I)
+
+
 def fetch(url: str) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=30) as r:
@@ -55,6 +60,7 @@ def extract(html: str) -> tuple[str, list[dict], dict]:
     main = soup.select_one("div.main") or soup
     sections: list[dict] = []
     current = {"heading": "", "paragraphs": []}
+    seen: set[str] = set()
     for el in main.find_all(["h2", "h3", "p", "li"]):
         if el.name in ("h2", "h3"):
             if current["paragraphs"]:
@@ -70,6 +76,9 @@ def extract(html: str) -> tuple[str, list[dict], dict]:
         txt = clean(el.get_text(" "))
         if len(txt) < 25 or txt.lower().startswith(("from genetics home reference", "the information on this site")):
             continue
+        if txt in seen:  # the same text can appear as both <p> and <li>
+            continue
+        seen.add(txt)
         current["paragraphs"].append(txt)
     if current["paragraphs"]:
         sections.append(current)
@@ -110,7 +119,8 @@ def main() -> int:
                     {
                         "heading": s["heading"],
                         "paragraphs": [
-                            {"id": f"mp:{item['id']}:{k}:{j}", "text": t, "sha256": sha(t)}
+                            {"id": f"mp:{item['id']}:{k}:{j}", "text": t, "sha256": sha(t),
+                             "us_specific": bool(US_SPECIFIC.search(t))}
                             for j, t in enumerate(s["paragraphs"])
                         ],
                     }

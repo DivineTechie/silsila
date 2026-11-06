@@ -3,7 +3,7 @@
   "kind": "condition",
   "title": "Alpha thalassemia",
   "url": "https://medlineplus.gov/genetics/condition/alpha-thalassemia/",
-  "retrieved_at": "2026-11-06T06:54:56+00:00",
+  "retrieved_at": "2026-11-06T07:02:11+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -25,27 +25,32 @@
         {
           "id": "mp:alpha-thalassemia:0:0",
           "text": "Alpha thalassemia is a blood disorder that reduces the production of hemoglobin . Hemoglobin is the protein in red blood cells that carries oxygen to cells throughout the body.",
-          "sha256": "c3d8fddde4df9572d4e934956c7507e6704d59da95d1f6c4b5e04ee79429882c"
+          "sha256": "c3d8fddde4df9572d4e934956c7507e6704d59da95d1f6c4b5e04ee79429882c",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:0:1",
           "text": "In people with the characteristic features of alpha thalassemia, a reduction in the amount of hemoglobin prevents enough oxygen from reaching the body's tissues. Affected individuals also have a shortage of red blood cells ( anemia ), which can cause pale skin, weakness, fatigue, and more serious complications.",
-          "sha256": "2adb78f6b1538bd81942a6cf8e6b27153a6071c7032aa918713957239573ea2d"
+          "sha256": "2adb78f6b1538bd81942a6cf8e6b27153a6071c7032aa918713957239573ea2d",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:0:2",
           "text": "Two types of alpha thalassemia can cause health problems. The more severe type is known as hemoglobin Bart hydrops fetalis syndrome, which is also called Hb Bart syndrome or alpha thalassemia major. The milder form is called HbH disease.",
-          "sha256": "ca2dff8bf4618e107c2bc96b80e9b384831e99cc194f3a2379e54f84502dcb4a"
+          "sha256": "ca2dff8bf4618e107c2bc96b80e9b384831e99cc194f3a2379e54f84502dcb4a",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:0:3",
           "text": "Hb Bart syndrome is characterized by hydrops fetalis, a condition in which excess fluid builds up in the body before birth. Additional signs and symptoms can include severe anemia, an enlarged liver and spleen (hepatosplenomegaly), heart defects, and abnormalities of the urinary system or genitalia. Without treatment, most babies with this condition are stillborn or die soon after birth because of these serious health problems. Hb Bart syndrome can also cause serious complications for women during pregnancy, including dangerously high blood pressure with swelling ( preeclampsia ), premature delivery, and abnormal bleeding.",
-          "sha256": "d8a8809d8f31ea0eee5b9d5afdc7540e6282c92b8fd76f7c2fbb5ec8fde33b22"
+          "sha256": "d8a8809d8f31ea0eee5b9d5afdc7540e6282c92b8fd76f7c2fbb5ec8fde33b22",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:0:4",
           "text": "HbH disease causes mild to moderate anemia, hepatosplenomegaly, and yellowing of the eyes and skin (jaundice). The features of HbH disease usually appear in early childhood, and affected individuals typically live into adulthood.",
-          "sha256": "edfda411273646d21503447b96f0e875d6e0ef7b3ea49a3192da698a2b566fe2"
+          "sha256": "edfda411273646d21503447b96f0e875d6e0ef7b3ea49a3192da698a2b566fe2",
+          "us_specific": false
         }
       ]
     },
@@ -55,7 +60,8 @@
         {
           "id": "mp:alpha-thalassemia:1:0",
           "text": "Alpha thalassemia is a fairly common blood disorder worldwide. Thousands of infants with Hb Bart syndrome and HbH disease are born each year, particularly in Southeast Asia. Alpha thalassemia also occurs frequently in people from Mediterranean countries, Africa, the Middle East, India, and Central Asia.",
-          "sha256": "cf14ae3bc1a1161465903503cb519067578f92ccda34a6adc5fc0d5a873e1acb"
+          "sha256": "cf14ae3bc1a1161465903503cb519067578f92ccda34a6adc5fc0d5a873e1acb",
+          "us_specific": false
         }
       ]
     },
@@ -65,42 +71,50 @@
         {
           "id": "mp:alpha-thalassemia:2:0",
           "text": "Alpha thalassemia typically results from deletions involving the HBA1 and HBA2 genes. Less commonly, changes to the DNA sequence in or near these genes cause alpha thalassemia. Such changes are often referred to as nondeletion variants. Both the HBA1 and HBA2 genes provide instructions for making a protein called alpha-globin, which is a component (subunit) of hemoglobin .",
-          "sha256": "0f965b0a9f3d1b7c455699f9b58e8a4441b1a513980d8420a8b5b355da7b10ad"
+          "sha256": "0f965b0a9f3d1b7c455699f9b58e8a4441b1a513980d8420a8b5b355da7b10ad",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:2:1",
           "text": "People have two copies of the HBA1 gene and two copies of the HBA2 gene in each cell. Each copy is called an allele. For each gene, one allele is inherited from a person's father, and the other is inherited from a person's mother. As a result, there are four alleles that produce alpha-globin. The different types of alpha thalassemia result from the loss or alteration of some or all of these alleles.",
-          "sha256": "ed703ed7f33ec29707583923eb8759c74beea77467ca9db172c73cbe038e0efa"
+          "sha256": "ed703ed7f33ec29707583923eb8759c74beea77467ca9db172c73cbe038e0efa",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:2:2",
           "text": "Deletions and nondeletion variants in one or more alleles reduce the amount of alpha-globin cells produce. Nondeletion variants tend to reduce alpha-globin more than deletions.",
-          "sha256": "46082f5c5f5f7e1261e9519a49d9e47d76d18647e4a320cf5ef789b1d62d79d1"
+          "sha256": "46082f5c5f5f7e1261e9519a49d9e47d76d18647e4a320cf5ef789b1d62d79d1",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:2:3",
           "text": "Hb Bart syndrome, the most severe form of alpha thalassemia, results from the loss or alteration of all four alpha-globin alleles. Such changes prevent the production of any normal alpha-globin.",
-          "sha256": "8fcf134146c7fad1b241814bfa2d2ecb34ad3e7d07550a456f425d80aa93aa72"
+          "sha256": "8fcf134146c7fad1b241814bfa2d2ecb34ad3e7d07550a456f425d80aa93aa72",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:2:4",
           "text": "HbH disease is usually caused by loss or alteration of three of the four alpha-globin alleles, which sharply reduces the amount of normal alpha-globin produced. Because nondeletion variants are usually more severe than deletions, nondeletion variants in two of the four alpha-globin alleles can result in HbH disease.",
-          "sha256": "9b99c8ad60269d6e3f87c8bd47b5c538e6af27da15452f4112bd00c37418aaa5"
+          "sha256": "9b99c8ad60269d6e3f87c8bd47b5c538e6af27da15452f4112bd00c37418aaa5",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:2:5",
           "text": "With a shortage of alpha-globin, cells make little or no normal hemoglobin. Instead, cells produce abnormal forms of hemoglobin called hemoglobin Bart (Hb Bart) or hemoglobin H (HbH). These abnormal hemoglobin molecules cannot effectively carry oxygen to the body's tissues. The substitution of Hb Bart or HbH for normal hemoglobin causes anemia and the other serious health problems associated with alpha thalassemia.",
-          "sha256": "abe1fbf8f4816b62cd94454b312790aaa0fdea407c92f0d383f9bf853a59c4f8"
+          "sha256": "abe1fbf8f4816b62cd94454b312790aaa0fdea407c92f0d383f9bf853a59c4f8",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:2:6",
           "text": "Two additional forms of alpha thalassemia are related to a reduced amount of alpha-globin. Because cells still produce some normal hemoglobin, these forms tend to cause few or no health problems. A loss of two of the four alpha-globin alleles results in alpha thalassemia trait. People with alpha thalassemia trait may have unusually small, pale red blood cells and mild anemia. A loss of one alpha-globin allele is found in alpha thalassemia silent carriers. These individuals typically have no thalassemia-related signs or symptoms.",
-          "sha256": "137b7fa19f8bdfab544b4bc8b80b38d403a5e249f71d4fcf3de20b9a39a38931"
+          "sha256": "137b7fa19f8bdfab544b4bc8b80b38d403a5e249f71d4fcf3de20b9a39a38931",
+          "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:2:7",
           "text": "Nondeletion variants in one or two alleles cause a range of conditions, from alpha thalassemia silent carrier to HbH disease, depending on the allele involved.",
-          "sha256": "85c6d253a73d6f29f108da54977abbeebf5054da36202e51220a5fba5b615949"
+          "sha256": "85c6d253a73d6f29f108da54977abbeebf5054da36202e51220a5fba5b615949",
+          "us_specific": false
         }
       ]
     },
@@ -110,7 +124,8 @@
         {
           "id": "mp:alpha-thalassemia:3:0",
           "text": "The inheritance of alpha thalassemia is complex. Each person inherits two alpha-globin alleles from each parent. If both parents are missing at least one alpha-globin allele, their children are at risk of having Hb Bart syndrome, HbH disease, or alpha thalassemia trait. The precise risk depends on how many alleles are missing and which combination of the HBA1 and HBA2 genes is affected.",
-          "sha256": "c6134307c3dfa9846cd68a1100f7701bbb9449313c51e699535d7dbdb46ec122"
+          "sha256": "c6134307c3dfa9846cd68a1100f7701bbb9449313c51e699535d7dbdb46ec122",
+          "us_specific": false
         }
       ]
     }

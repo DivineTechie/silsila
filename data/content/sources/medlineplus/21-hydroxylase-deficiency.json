@@ -3,7 +3,7 @@
   "kind": "condition",
   "title": "21-hydroxylase deficiency",
   "url": "https://medlineplus.gov/genetics/condition/21-hydroxylase-deficiency/",
-  "retrieved_at": "2026-11-06T06:54:56+00:00",
+  "retrieved_at": "2026-11-06T07:02:11+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -24,32 +24,38 @@
         {
           "id": "mp:21-hydroxylase-deficiency:0:0",
           "text": "21-hydroxylase deficiency is an inherited disorder that affects the adrenal glands. The adrenal glands are located on top of the kidneys and produce a variety of hormones that regulate many essential functions in the body. In people with 21-hydroxylase deficiency, the adrenal glands produce excess androgens, which are male sex hormones.",
-          "sha256": "19c68541154b424680dc2f560a6c065483fa37f877a5a7d5d54c29a05f520dec"
+          "sha256": "19c68541154b424680dc2f560a6c065483fa37f877a5a7d5d54c29a05f520dec",
+          "us_specific": false
         },
         {
           "id": "mp:21-hydroxylase-deficiency:0:1",
           "text": "There are three types of 21-hydroxylase deficiency. Two types are classic forms, known as the salt-wasting and simple virilizing types. The third type is called the non-classic type. The salt-wasting type is the most severe, the simple virilizing type is less severe, and the non-classic type is the least severe form.",
-          "sha256": "e5226c4a42b469985a11fa552c37798023272dfe1d3dc002835d66280d2ee66e"
+          "sha256": "e5226c4a42b469985a11fa552c37798023272dfe1d3dc002835d66280d2ee66e",
+          "us_specific": false
         },
         {
           "id": "mp:21-hydroxylase-deficiency:0:2",
           "text": "Males and females with either classic form of 21-hydroxylase deficiency tend to have an early growth spurt, but their final adult height is usually shorter than others in their family. Additionally, affected individuals may have a reduced ability to have biological children (decreased fertility). Females may also develop excessive body hair growth (hirsutism), male pattern baldness, and irregular menstruation.",
-          "sha256": "65be8ee7d6e1e520de09a200b29753ed6fe57dd044cca5fd9bca0c22e1f77ab6"
+          "sha256": "65be8ee7d6e1e520de09a200b29753ed6fe57dd044cca5fd9bca0c22e1f77ab6",
+          "us_specific": false
         },
         {
           "id": "mp:21-hydroxylase-deficiency:0:3",
           "text": "Approximately 75 percent of individuals with classic 21-hydroxylase deficiency have the salt-wasting type. Hormone production is extremely low in this form of the disorder. Affected individuals lose large amounts of sodium in their urine, which can be life-threatening in early infancy. Babies with the salt-wasting type can experience poor feeding, weight loss, dehydration, and vomiting. Individuals with the simple virilizing form do not experience salt loss.",
-          "sha256": "44285c9058036db549219f6849f18a621e19d5d27a507de0c7151528999783be"
+          "sha256": "44285c9058036db549219f6849f18a621e19d5d27a507de0c7151528999783be",
+          "us_specific": false
         },
         {
           "id": "mp:21-hydroxylase-deficiency:0:4",
           "text": "In both the salt-wasting and simple virilizing forms of this disorder, females typically have external genitalia that do not look clearly male or female. Males usually have male-typical genitalia but the testes may be small.",
-          "sha256": "51a774e408a0788c3a831870c32437ca803685fe58de970431863c8c8b5c0ef5"
+          "sha256": "51a774e408a0788c3a831870c32437ca803685fe58de970431863c8c8b5c0ef5",
+          "us_specific": false
         },
         {
           "id": "mp:21-hydroxylase-deficiency:0:5",
           "text": "Females with the non-classic type of 21-hydroxylase deficiency have female-typical genitalia . As affected females get older, they may experience hirsutism, male pattern baldness, irregular menstruation, and decreased fertility. Males with the non-classic type may have early beard growth and small testes. Some individuals with this type of 21-hydroxylase deficiency have no symptoms of the disorder.",
-          "sha256": "b05debabedaca9bfbc679de72bb5b799f891d9047c654f13e75a6a53d2a53f45"
+          "sha256": "b05debabedaca9bfbc679de72bb5b799f891d9047c654f13e75a6a53d2a53f45",
+          "us_specific": false
         }
       ]
     },
@@ -59,12 +65,14 @@
         {
           "id": "mp:21-hydroxylase-deficiency:1:0",
           "text": "The classic forms of 21-hydroxylase deficiency occur in 1 in 15,000 newborns. The prevalence of the non-classic form of 21-hydroxylase deficiency is estimated to be 1 in 1,000 individuals. The prevalence of both classic and non-classic forms varies among different ethnic populations.",
-          "sha256": "120ad6d363ca7ff668c12e1b50a52b57baaf6c37b12036bc0463592ccfa6ac77"
+          "sha256": "120ad6d363ca7ff668c12e1b50a52b57baaf6c37b12036bc0463592ccfa6ac77",
+          "us_specific": false
         },
         {
           "id": "mp:21-hydroxylase-deficiency:1:1",
           "text": "21-hydroxylase deficiency is one of a group of disorders known as congenital adrenal hyperplasias that impair hormone production and disrupt sexual development. 21-hydroxylase deficiency is responsible for about 95 percent of all cases of congenital adrenal hyperplasia.",
-          "sha256": "a4bfd62de7480e6c48ae0831c34f5a413a9f3a47c0718c3c43f4196aab352c60"
+          "sha256": "a4bfd62de7480e6c48ae0831c34f5a413a9f3a47c0718c3c43f4196aab352c60",
+          "us_specific": false
         }
       ]
     },
@@ -74,17 +82,20 @@
         {
           "id": "mp:21-hydroxylase-deficiency:2:0",
           "text": "Mutations in the CYP21A2 gene cause 21-hydroxylase deficiency. The CYP21A2 gene provides instructions for making an enzyme called 21-hydroxylase. This enzyme is found in the adrenal glands, where it plays a role in producing hormones called cortisol and aldosterone. Cortisol has numerous functions, such as maintaining blood sugar (glucose) levels, protecting the body from stress, and suppressing inflammation. Aldosterone is sometimes called the salt-retaining hormone because it regulates the amount of salt retained by the kidneys. The retention of salt affects fluid levels in the body and blood pressure.",
-          "sha256": "617b3adc939e9894a03a5e7d45b5023d8c80425130425081f263c99202bcc202"
+          "sha256": "617b3adc939e9894a03a5e7d45b5023d8c80425130425081f263c99202bcc202",
+          "us_specific": false
         },
         {
           "id": "mp:21-hydroxylase-deficiency:2:1",
           "text": "21-hydroxylase deficiency is caused by a shortage (deficiency) of the 21-hydroxylase enzyme. When 21-hydroxylase is lacking, substances that are usually used to form cortisol and aldosterone instead build up in the adrenal glands and are converted to androgens. The excess production of androgens leads to abnormalities of sexual development in people with 21-hydroxylase deficiency. A lack of aldosterone production contributes to the salt loss in people with the salt-wasting form of this condition.",
-          "sha256": "e96bbf3e2975504d3f8b885ae9121eab0bf08b5c1c82acd6edac92f7843f36e8"
+          "sha256": "e96bbf3e2975504d3f8b885ae9121eab0bf08b5c1c82acd6edac92f7843f36e8",
+          "us_specific": false
         },
         {
           "id": "mp:21-hydroxylase-deficiency:2:2",
           "text": "The amount of functional 21-hydroxylase enzyme determines the severity of the disorder. Individuals with the salt-wasting type have CYP21A2 mutations that result in a completely nonfunctional enzyme. People with the simple virilizing type of this condition have CYP21A2 gene mutations that allow the production of low levels of functional enzyme. Individuals with the non-classic type of this disorder have CYP21A2 mutations that result in the production of reduced amounts of the enzyme, but more enzyme than either of the other types.",
-          "sha256": "bfa5f42374c8d6213bfa0213ed91bd7254f97fa61eddbf71a7f9231e4039769c"
+          "sha256": "bfa5f42374c8d6213bfa0213ed91bd7254f97fa61eddbf71a7f9231e4039769c",
+          "us_specific": false
         }
       ]
     },
@@ -94,7 +105,8 @@
         {
           "id": "mp:21-hydroxylase-deficiency:3:0",
           "text": "This condition is inherited in an autosomal recessive pattern , which means both copies of the gene in each cell have mutations. The parents of an individual with an autosomal recessive condition each carry one copy of the mutated gene, but they typically do not show signs and symptoms of the condition.",
-          "sha256": "7306cd480e8fae49ae15c37854aa60b6a1497eb21500eac9c049a5d4afe831bb"
+          "sha256": "7306cd480e8fae49ae15c37854aa60b6a1497eb21500eac9c049a5d4afe831bb",
+          "us_specific": false
         }
       ]
     }
