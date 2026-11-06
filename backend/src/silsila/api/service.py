@@ -119,7 +119,7 @@ def compute_report(case: dict[str, Any], lang: str = "en") -> dict[str, Any]:
         sentence = None
         if pr.informative and pr.p_affected < 0.999:
             m = reg.template(Message(lang), "result.carrier_probability",
-                             {"person": _name(case, pid), "gene": gene, "chance": one_in(pr.p_any_pathogenic)})
+                             {"person": _name(case, pid), "gene": gene, "chance": one_in(pr.p_any_pathogenic, lang)})
             sentence = reg.gate(m).parts
         residual_note = None
         if raw.get("test") is not None and not raw["test"]["detected"] and not all(rec.residual_risk_modelled.values()):
@@ -129,7 +129,7 @@ def compute_report(case: dict[str, Any], lang: str = "en") -> dict[str, Any]:
                          "test": raw.get("test"), "pregnant": bool(raw.get("pregnant")),
                          "deceased": bool(raw.get("deceased"))},
             "computed": {"p_carrier": pr.p_carrier, "p_affected": pr.p_affected, "p_any_variant": pr.p_any_pathogenic,
-                         "chance_text": one_in(pr.p_any_pathogenic), "genotypes": pr.genotype_posterior},
+                         "chance_text": one_in(pr.p_any_pathogenic, lang), "genotypes": pr.genotype_posterior},
             "informative": pr.informative, "sentence": sentence, "residual_note": residual_note,
         }
     couples = []
@@ -137,7 +137,7 @@ def compute_report(case: dict[str, Any], lang: str = "en") -> dict[str, Any]:
         affected = {k: v for k, v in c.child_phenotypes.items() if k in rec.locus.affected_phenotypes}
         m = reg.template(Message(lang), "result.couple_child_risk", {
             "a": _name(case, c.female), "b": _name(case, c.male), "condition": rec.display,
-            "chance": one_in(c.p_child_affected), "baseline": one_in(c.baseline_child_affected)})
+            "chance": one_in(c.p_child_affected, lang), "baseline": one_in(c.baseline_child_affected, lang)})
         couples.append({"female": c.female, "male": c.male, "kinship": c.kinship,
                         "computed": {"p_both_carry": c.p_both_carry, "p_child_affected": c.p_child_affected,
                                      "child_affected_by_condition": affected,

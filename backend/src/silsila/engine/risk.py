@@ -18,25 +18,32 @@ from .locus import Locus
 from .pedigree import Pedigree
 
 
-def one_in(p: float) -> str:
-    """Express a probability for display.
+_ONE_IN = {
+    "en": {"zero": "0", "certain": "1 in 1 (certain)", "exact": "{n} in {d}", "tenths": "about {t} in 10",
+           "over": "more than 9 in 10", "small": "about 1 in {n}"},
+    "ar": {"zero": "0", "certain": "1 من 1 (مؤكد)", "exact": "{n} من {d}", "tenths": "حوالي {t} من 10",
+           "over": "أكثر من 9 من 10", "small": "حوالي 1 من {n}"},
+}
+
+
+def one_in(p: float, lang: str = "en") -> str:
+    """Express a probability for display, in English or Arabic.
 
     Exact simple fractions (1/2, 2/3, 1/4, 1/8 ...) are shown exactly. Other
     chances of 1 in 5 or more are shown in tenths ("about 9 in 10"), and smaller
     chances as "about 1 in N", the convention used in genetic counselling."""
+    w = _ONE_IN["ar" if lang == "ar" else "en"]
     if p <= 0:
-        return "0"
-    if p >= 1 - 1e-12:
-        return "1 in 1"
+        return w["zero"]
+    if p >= 1 - 1e-9:
+        return w["certain"]
     frac = Fraction(p).limit_denominator(64)
     if abs(float(frac) - p) < 1e-9:
-        return f"{frac.numerator} in {frac.denominator}"
+        return w["exact"].format(n=frac.numerator, d=frac.denominator)
     if p >= 0.2:
         tenths = round(p * 10)
-        if tenths >= 10:
-            return "more than 9 in 10"
-        return f"about {tenths} in 10"
-    return f"about 1 in {round(1 / p):,}"
+        return w["over"] if tenths >= 10 else w["tenths"].format(t=tenths)
+    return w["small"].format(n=f"{round(1 / p):,}")
 
 
 @dataclass

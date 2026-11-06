@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* Dark mode follows the data-theme attribute set before first paint
+   (see ThemeScript in layout.tsx). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Palette: deep teal ink on warm sand. Risk values are never coloured as
+   good or bad; every value uses the same neutral ink. */
+:root {
+  --bg: #f7f3ec;
+  --surface: #fffdf9;
+  --surface-2: #efe8dc;
+  --line: #ddd2bf;
+  --line-strong: #b9aa90;
+  --ink: #12302f;
+  --ink-2: #3c5250;
+  --muted: #5d6b67;
+  --accent: #0e5a57;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcebe8;
+  --brass: #8a6a2f;
+  --focus: #b4782a;
+  --tag-recorded: #6b5530;
+  --tag-recorded-bg: #f3ead9;
+  --tag-calculated: #0e5a57;
+  --tag-calculated-bg: #e1efec;
+  --tag-source: #3e4f73;
+  --tag-source-bg: #e6eaf3;
+  --tag-template: #5a5d2c;
+  --tag-template-bg: #ecedda;
+  --notice-bg: #f4ecdc;
+  --notice-line: #d8c39c;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0d1716;
+  --surface: #132120;
+  --surface-2: #1a2b2a;
+  --line: #2b3f3d;
+  --line-strong: #46605d;
+  --ink: #ece6da;
+  --ink-2: #c9c2b4;
+  --muted: #9fa9a4;
+  --accent: #5fb3ab;
+  --accent-ink: #08201f;
+  --accent-soft: #1d3a38;
+  --brass: #d3b07a;
+  --focus: #e3b56a;
+  --tag-recorded: #dcc59c;
+  --tag-recorded-bg: #2c2618;
+  --tag-calculated: #8ad0c8;
+  --tag-calculated-bg: #173533;
+  --tag-source: #b7c4e6;
+  --tag-source-bg: #1d2538;
+  --tag-template: #d4d6a4;
+  --tag-template-bg: #2a2c18;
+  --notice-bg: #251f14;
+  --notice-line: #5c4b2c;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-brass: var(--brass);
+  --color-notice: var(--notice-bg);
+  --color-notice-line: var(--notice-line);
+  --font-sans: var(--font-plex), var(--font-plex-ar), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html[lang="ar"] {
+  --font-sans: var(--font-plex-ar), var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  /* Western digits in both languages */
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+html[lang="ar"] body {
+  line-height: 1.75;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.tag-recorded { color: var(--tag-recorded); background: var(--tag-recorded-bg); }
+.tag-calculated { color: var(--tag-calculated); background: var(--tag-calculated-bg); }
+.tag-source { color: var(--tag-source); background: var(--tag-source-bg); }
+.tag-template { color: var(--tag-template); background: var(--tag-template-bg); }
+
+/* Subtle genealogical rule used under section headings */
+.rule-dots {
+  background-image: radial-gradient(circle, var(--line-strong) 1px, transparent 1.5px);
+  background-size: 8px 4px;
+  background-repeat: repeat-x;
+  height: 4px;
+}
