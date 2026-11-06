@@ -1,7 +1,7 @@
 [project]
 name = "translation-qc"
 version = "0.1.0"
-description = "Add your description here"
+description = "Multi-system check of Arabic translations of patient-facing text"
 readme = "README.md"
 authors = [
     { name = "Tushar Agarwal", email = "tusharaggarwal630@gmail.com" }
