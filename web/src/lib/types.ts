@@ -13,6 +13,9 @@ export interface Part {
   attribution?: string;
   source_title?: string;
   sha256?: string;
+  /** Present when a quoted English paragraph is shown in Arabic translation. */
+  original_text?: string;
+  translation?: { language: string; method?: string; reviewed_by_native_clinician?: boolean; sha256?: string };
 }
 
 export interface User {

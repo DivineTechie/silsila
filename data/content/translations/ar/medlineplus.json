@@ -1,0 +1,1692 @@
+{
+ "meta": {
+  "language": "ar",
+  "method": "machine translation by an AI model (Claude, Anthropic), with back-translation self-check",
+  "reviewed_by_native_clinician": false,
+  "source_licence": "MedlinePlus Genetics public domain; translation is a derivative for prototype use",
+  "qc": {
+   "systems": [
+    "Claude (Anthropic)",
+    "Helsinki-NLP/opus-mt-tc-big-en-ar"
+   ],
+   "similarity_model": "sentence-transformers/LaBSE",
+   "sim_floor": 0.8,
+   "agree_floor": 0.85,
+   "paragraphs": 72,
+   "flagged_for_first_review": 7,
+   "note": "Screening heuristics to order human review. Every paragraph still needs native clinical review before use with patients."
+  }
+ },
+ "paragraphs": {
+  "mp:inheritance-patterns:0:3": {
+   "source_sha256": "c0450cfbf8440dc191f1f1c4fd2cf0a88ab69d1b805bec335cdf6e1e16111c5c",
+   "ar": "في الوراثة الجسمية المتنحية (autosomal recessive inheritance)، توجد المتغيّرات الجينية (variants) في نسختَي الجين كلتيهما في كل خلية. ويحمل كلٌّ من والدَي الشخص المصاب بحالة جسمية متنحية نسخةً واحدة من الجين المتغيّر، لكنهما في العادة لا تظهر عليهما علامات الحالة وأعراضها. ولا تظهر الاضطرابات الجسمية المتنحية عادةً في كل جيل من أجيال الأسرة المصابة.",
+   "back_translation_en": "In autosomal recessive inheritance, genetic variants are found in both copies of the gene in every cell. Each of the two parents of a person affected with an autosomal recessive condition carries one copy of the altered gene, but they usually do not show the signs and symptoms of the condition. Autosomal recessive disorders do not usually appear in every generation of the affected family.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9497959613800049,
+     "opus_mt": 0.8948352932929993
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9526593685150146
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "في الوراثة الجسدية المتنحية، تحدث المتغيرات في كلا نسختي الجين في كل خلية. يحمل والدا الشخص المصاب بحالة جسمية متنحية نسخة واحدة من الجين المعدل ، لكنهما عادة لا يظهران علامات وأعراض الحالة. لا تظهر الاضطرابات الجسدية المتنحية عادة في كل جيل من الأسرة المصابة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:risk-assessment:0:2": {
+   "source_sha256": "787e9170f140b32bf9ca0e3add6782f90fe8231ca567ce4d08fe59dc9b8da6e0",
+   "ar": "الوراثة الجسمية المتنحية (autosomal recessive inheritance): إن الشخصين غير المصابين اللذين يحمل كلٌّ منهما نسخةً واحدة من الجين المتغيّر لاضطراب جسمي متنحٍّ (حاملان للمرض، carriers) لديهما احتمال بنسبة 25 بالمئة في كل حمل لإنجاب طفل مصاب بالاضطراب. واحتمال إنجاب طفل غير مصاب لكنه حامل للاضطراب في كل حمل هو 50 بالمئة، واحتمال ألا يكون الطفل مصابًا بالاضطراب وألا يكون حاملًا له هو 25 بالمئة. وإذا كان أحد الوالدين فقط حاملًا للجين المتغيّر ولم يكن الوالد الآخر حاملًا للمتغيّر، فلن يُصاب أيٌّ من أطفالهما بالحالة، ويكون احتمال إنجاب طفل غير مصاب لكنه حامل في كل حمل 50 بالمئة.",
+   "back_translation_en": "Autosomal recessive inheritance: Two unaffected persons who each carry one copy of the altered gene of an autosomal recessive disorder (carriers of the disease) have a 25 percent chance in each pregnancy of having a child affected by the disorder. The chance of having a child who is unaffected but is a carrier of the disorder in each pregnancy is 50 percent, and the chance that the child is not affected by the disorder and is not a carrier of it is 25 percent. If only one of the parents is a carrier of the altered gene and the other parent is not a carrier of the variant, none of their children will be affected by the condition, and the chance of having a child who is unaffected but a carrier in each pregnancy is 50 percent.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.8977495431900024,
+     "opus_mt": 0.887641429901123
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9754993915557861
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "الوراثة الجسدية المتنحية: شخصان غير متأثرين يحمل كل منهما نسخة واحدة من الجين المعدل لاضطراب جسدي متنحي (الناقلون) لديهم فرصة بنسبة 25 في المائة مع كل حمل لإنجاب طفل متأثر بالاضطراب. فرصة مع كل الحمل من وجود طفل غير مصاب الذي هو الناقل لهذا الاضطراب هو 50 في المئة، وفرصة أن الطفل لن يكون اضطراب ولن يكون الناقل هو 25 في المئة. إذا كان أحد الوالدين فقط حاملًا للجين المتغير والوالد الآخر لا يحمل المتغير ، فلن يصاب أي من أطفالهم بالحالة ، وفرصة كل حمل لإنجاب طفل غير مصاب حامل هي 50 في المائة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:risk-assessment:0:9": {
+   "source_sha256": "b3b201783dcd78574969d82c16ebe9139951b70f08a408295b858f9a765eb21a",
+   "ar": "من المهم ملاحظة أن احتمال نقل حالة وراثية ينطبق بالتساوي على كل حمل. فعلى سبيل المثال، إذا كان لدى زوجين طفل مصاب باضطراب جسمي متنحٍّ، فإن احتمال إنجاب طفل آخر مصاب بالاضطراب يظل 25 بالمئة (أي 1 من كل 4). إن إنجاب طفل مصاب باضطراب لا «يحمي» الأطفال في المستقبل من وراثة الحالة. وفي المقابل، فإن إنجاب طفل غير مصاب بالحالة لا يعني أن الأطفال في المستقبل سيكونون مصابين بالتأكيد.",
+   "back_translation_en": "It is important to note that the chance of passing on a genetic condition applies equally to each pregnancy. For example, if a couple has a child affected by an autosomal recessive disorder, the chance of having another child affected by the disorder remains 25 percent (that is, 1 in every 4). Having a child affected by a disorder does not \"protect\" future children from inheriting the condition. Conversely, having a child unaffected by the condition does not mean that future children will definitely be affected.",
+   "fidelity_note": "The English source's last sentence says future children 'will definitely be affected'; the intended meaning is probably 'unaffected'. Translated literally as written, without correcting the source.",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9287598133087158,
+     "opus_mt": 0.9493756294250488
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9796209335327148
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "The English source's last sentence says future children 'will definitely be affected'; the intended meaning is probably 'unaffected'. Translated literally as written, without correcting the source.",
+    "opus_mt_ar": "من المهم أن نلاحظ أن فرصة تمرير حالة وراثية تنطبق بالتساوي على كل حمل. على سبيل المثال ، إذا كان للزوجين طفل يعاني من اضطراب جسدي متنحي ، فإن فرصة إنجاب طفل آخر يعاني من هذا الاضطراب لا تزال 25 في المائة (أو 1 من كل 4). إن إنجاب طفل واحد مصاب باضطراب لا \"يحمي\" الأطفال في المستقبل من وراثة الحالة. على العكس من ذلك ، فإن إنجاب طفل بدون حالة لا يعني أن الأطفال في المستقبل سوف يتأثرون بالتأكيد.",
+    "flags": [
+     "translator noted a fidelity issue"
+    ],
+    "status": "review_first"
+   }
+  },
+  "mp:risk-assessment:0:11": {
+   "source_sha256": "f21119a2dbedca44a67f3f7ef71e8e2226c34a8c4721780ab1829c9c6b28599c",
+   "ar": "قد يكون تقدير احتمال الإصابة باضطراب وراثي أو نقله أمرًا معقدًا. ويمكن لاختصاصيي علم الوراثة مساعدة الناس على فهم هذه الاحتمالات ومساعدتهم على اتخاذ قرارات مستنيرة بشأن صحتهم.",
+   "back_translation_en": "Estimating the chance of developing a genetic disorder or passing it on can be a complex matter. Genetics specialists can help people understand these chances and help them make informed decisions about their health.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9027020931243896,
+     "opus_mt": 0.8985457420349121
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9701046943664551
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "يمكن أن يكون تقدير فرصة الإصابة باضطراب وراثي أو تمريره أمرًا معقدًا. يمكن لمتخصصي علم الوراثة مساعدة الناس على فهم هذه الفرص ومساعدتهم على اتخاذ قرارات مستنيرة بشأن صحتهم.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:screening-vs-diagnostic:0:0": {
+   "source_sha256": "bd8ddbb2821c233d5c2e3f6beb6a4c224dc3ae19be7183f891388531871f607a",
+   "ar": "تقيِّم فحوص الكشف (screening tests) خطر إصابة الشخص بحالة وراثية، بينما تحدِّد الفحوص التشخيصية (diagnostic tests) الحالات الوراثية. ولجميع الفحوص الجينية فوائد وحدود في آنٍ واحد.",
+   "back_translation_en": "Screening tests evaluate a person's risk of developing a genetic condition, while diagnostic tests identify genetic conditions. All genetic tests have both benefits and limitations at the same time.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9115782976150513,
+     "opus_mt": 0.9182910919189453
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9762125015258789
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "تقوم اختبارات الفحص بتقييم خطر إصابة الفرد بحالة وراثية ، بينما تحدد الاختبارات التشخيصية الحالات الوراثية. جميع الاختبارات الجينية لها فوائد وقيود.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:screening-vs-diagnostic:0:1": {
+   "source_sha256": "563218dec879fb8676e4f26c569df8f672a2402ae7925b622d14b0a7d07a92a4",
+   "ar": "تُستخدم فحوص الكشف الجيني (genetic screening tests) عمومًا لدى الأشخاص الذين لا تظهر عليهم علامات أو أعراض اضطراب ما. وتقدِّر هذه الفحوص ما إذا كان خطر إصابة الشخص بحالة معيّنة مرتفعًا أو منخفضًا مقارنةً بالخطر لدى أشخاص آخرين في فئة سكانية مماثلة. وتعني النتيجة الإيجابية أن خطر إصابة الشخص بالحالة أعلى من المتوسط. ويعني فحص الكشف السلبي أن خطر الشخص أقل من المتوسط. ولكن الحصول على نتيجة كشف إيجابية لا يعني أن الشخص مصاب بالحالة. ولأن فحوص الكشف ليست سوى تقديرات، فإن النتائج في بعض الحالات تشير إلى خطر مرتفع للإصابة بخلل وراثي بينما يكون الشخص في الواقع غير مصاب (نتيجة إيجابية كاذبة، false positive)، أو تشير إلى خطر منخفض للإصابة بخلل وراثي بينما يكون الشخص مصابًا فعلًا (نتيجة سلبية كاذبة، false negative). ومع أن فحوص الكشف الجيني لا تقدِّم إجابة قاطعة، فإنها يمكن أن تساعد في توجيه الخطوات التالية، مثل تحديد ما إذا كانت هناك حاجة إلى فحوص إضافية تشخيصية.",
+   "back_translation_en": "Genetic screening tests are generally used in people who do not show signs or symptoms of a disorder. These tests estimate whether a person's risk of developing a certain condition is raised or lowered compared with the risk in other people in a similar population group. A positive result means that the person's risk of developing the condition is higher than average. A negative screening test means that the person's risk is lower than average. But getting a positive screening result does not mean that the person has the condition. Because screening tests are only estimates, in some cases the results indicate a raised risk of a genetic abnormality while the person is in reality unaffected (false positive result), or they indicate a lowered risk of a genetic abnormality while the person is actually affected (false negative result). Although genetic screening tests do not provide a conclusive answer, they can help guide the next steps, such as determining whether there is a need for additional, diagnostic tests.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9450551271438599,
+     "opus_mt": 0.9661248326301575
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9751726388931274
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "عادة ما تستخدم اختبارات الفحص الجيني في الأشخاص الذين ليس لديهم علامات أو أعراض اضطراب. وتقدر هذه الاختبارات ما إذا كان خطر الفرد من وجود حالة معينة هو زيادة أو نقصان مقارنة مع خطر في أشخاص آخرين في مجموعة مماثلة. النتيجة الإيجابية تعني أن خطر إصابة الشخص بالحالة أعلى من المتوسط. اختبار الفحص السلبي يعني أن خطر الشخص أقل من المتوسط. ومع ذلك ، فإن وجود نتيجة فحص إيجابية لا يعني أن الفرد لديه الحالة. نظرًا لأن اختبارات الفحص ليست سوى تقديرات ، تشير النتائج في بعض الحالات إلى زيادة خطر حدوث خلل وراثي عندما يكون الشخص غير متأثر فعليًا (إيجابية كاذبة) ، أو تشير النتائج إلى انخفاض خطر حدوث خلل وراثي عندما يكون الشخص مصابًا بالفعل (سلبية كاذبة). على الرغم من أن اختبارات الفحص الجيني لا تقدم إجابة قاطعة ، إلا أنها يمكن أن تساعد في توجيه الخطوات التالية ، مثل ما إذا كانت هناك حاجة إلى اختبارات تشخيصية إضافية.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:screening-vs-diagnostic:0:2": {
+   "source_sha256": "f53d6016d4123acd3a634af6c41070b557fd417cec127e57a6046d0fbb122916",
+   "ar": "تُستخدم الفحوص الجينية التشخيصية (genetic diagnostic tests) غالبًا لدى الأشخاص الذين تظهر عليهم علامات وأعراض. وتُستخدم هذه الفحوص لتأكيد الحالات الوراثية المشتبه بها أو استبعادها. ويمكن للفحوص التشخيصية أيضًا أن تساعد في معرفة احتمال إصابة الشخص بحالة وراثية أو نقله حالةً وراثية إلى أطفاله. ويمكن إجراء الفحص التشخيصي قبل الولادة أو في أي وقت خلال حياة الشخص، لكنه غير متوفر لجميع الجينات أو لجميع الحالات الوراثية. ويمكن استخدام نتائج الفحص التشخيصي لتوجيه خيارات الشخص المتعلقة بالرعاية الصحية وبالتدبير العلاجي للاضطراب.",
+   "back_translation_en": "Genetic diagnostic tests are often used in people who show signs and symptoms. These tests are used to confirm or rule out suspected genetic conditions. Diagnostic tests can also help in knowing a person's chance of developing a genetic condition or of passing a genetic condition on to his children. Diagnostic testing can be performed before birth or at any time during a person's life, but it is not available for all genes or for all genetic conditions. The results of a diagnostic test can be used to guide the person's choices related to health care and to the management of the disorder.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9447536468505859,
+     "opus_mt": 0.9435725808143616
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9803417921066284
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "غالبًا ما تستخدم الاختبارات التشخيصية الوراثية في الأشخاص الذين لديهم علامات وأعراض. تستخدم هذه الاختبارات لتأكيد أو استبعاد الحالات الوراثية المشتبه بها. يمكن أن تساعد الاختبارات التشخيصية أيضًا في إعلام فرصة الشخص في تطوير حالة وراثية أو نقل حالة وراثية إلى أطفاله. يمكن إجراء الاختبارات التشخيصية قبل الولادة أو في أي وقت خلال حياة الشخص ، ولكنها غير متوفرة لجميع الجينات أو جميع الحالات الوراثية. يمكن استخدام نتائج الاختبار التشخيصي لتوجيه اختيارات الشخص حول الرعاية الصحية وإدارة الاضطراب.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:interpreting-results:0:1": {
+   "source_sha256": "4a9d58613b58a017741757e21942d1987c4db40c5a2f5afd6a20f0bbd4424285",
+   "ar": "تعني نتيجة الفحص الإيجابية أن المختبر وجد تغيّرًا في جين أو كروموسوم أو بروتين معيّن موضع الاهتمام. وبحسب الغرض من الفحص، قد تؤكد هذه النتيجة التشخيص، أو تشير إلى أن الشخص حامل لمتغيّر جيني معيّن، أو تحدد خطرًا مرتفعًا للإصابة بمرض (مثل السرطان)، أو تشير إلى الحاجة إلى مزيد من الفحوص. ولأن أفراد الأسرة يشتركون في بعض المادة الوراثية، فقد تكون لنتيجة الفحص الإيجابية أيضًا آثار على بعض الأقارب بالدم للشخص الذي يخضع للفحص. ومن المهم ملاحظة أن النتيجة الإيجابية لفحص جيني تنبُّئي أو فحص ما قبل ظهور الأعراض (predictive or presymptomatic genetic test) لا يمكنها عادةً أن تحدد الخطر الدقيق للإصابة باضطراب ما. كذلك لا يستطيع مقدمو الرعاية الصحية عادةً استخدام نتيجة فحص إيجابية للتنبؤ بمسار الحالة أو شدتها. ونادرًا ما تكون نتائج الفحوص إيجابية كاذبة (false positive)، وهو ما يحدث عندما تشير النتائج إلى خطر مرتفع للإصابة بحالة وراثية بينما يكون الشخص غير مصاب.",
+   "back_translation_en": "A positive test result means that the laboratory found a change in a particular gene, chromosome, or protein of interest. Depending on the purpose of the test, this result may confirm the diagnosis, or indicate that the person is a carrier of a particular genetic variant, or identify a raised risk of developing a disease (such as cancer), or indicate the need for more tests. Because family members share some genetic material, a positive test result may also have implications for some blood relatives of the person undergoing the test. It is important to note that the positive result of a predictive genetic test or a pre-symptom test usually cannot determine the exact risk of developing a disorder. Also, health care providers usually cannot use a positive test result to predict the course of the condition or its severity. Rarely, test results are false positive, which happens when the results indicate a raised risk of developing a genetic condition while the person is unaffected.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9521222114562988,
+     "opus_mt": 0.9567809104919434
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9829196929931641
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "نتيجة الاختبار الإيجابية تعني أن المختبر وجد تغييرًا في جين معين أو كروموسوم أو بروتين ذي أهمية. اعتمادًا على الغرض من الاختبار ، قد تؤكد هذه النتيجة التشخيص ، أو تشير إلى أن الشخص يحمل متغيرًا جينيًا معينًا ، أو يحدد زيادة خطر الإصابة بمرض (مثل السرطان) ، أو يشير إلى الحاجة إلى مزيد من الاختبارات. نظرًا لأن أفراد الأسرة لديهم بعض المواد الوراثية المشتركة ، فقد يكون لنتيجة الاختبار الإيجابية أيضًا آثار على بعض أقارب الدم للشخص الذي يخضع للاختبار. من المهم ملاحظة أن النتيجة الإيجابية للاختبار الجيني التنبؤي أو قبل الأعراض عادة لا يمكن أن تحدد الخطر الدقيق لتطور الاضطراب. أيضا ، لا يمكن لمقدمي الرعاية الصحية عادة استخدام نتيجة اختبار إيجابية للتنبؤ بطبيعة الحال أو شدة الحالة. نادراً ما تكون نتائج الاختبارات إيجابية كاذبة ، والتي تحدث عندما تشير النتائج إلى زيادة خطر الإصابة بحالة وراثية عندما لا يتأثر الشخص.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:interpreting-results:0:2": {
+   "source_sha256": "c8a1f4666ac9e855b0ee8c79a6799608a14ff10c7c019399ae93e09cba6245c7",
+   "ar": "تعني نتيجة الفحص السلبية أن المختبر لم يجد في الجين أو الكروموسوم أو البروتين قيد الدراسة تغيّرًا معروفًا بتأثيره في الصحة أو النمو. ويمكن أن تشير هذه النتيجة إلى أن الشخص غير مصاب باضطراب معيّن، أو أنه ليس حاملًا لمتغيّر جيني محدد، أو أنه ليس لديه خطر مرتفع للإصابة بمرض معيّن. ومع ذلك، من الممكن أن يكون الفحص قد أغفل تغيّرًا جينيًا مسببًا للمرض، لأن كثيرًا من الفحوص لا تستطيع الكشف عن جميع التغيّرات الجينية التي قد تسبب اضطرابًا معيّنًا. وقد يلزم إجراء فحوص إضافية، أو إعادة الفحص في وقت لاحق، لتأكيد النتيجة السلبية. ونادرًا ما تكون نتائج الفحوص سلبية كاذبة (false negative)، وهو ما يحدث عندما تشير النتائج إلى خطر منخفض للإصابة بحالة وراثية بينما يكون الشخص مصابًا في الواقع.",
+   "back_translation_en": "A negative test result means that the laboratory did not find, in the gene, chromosome, or protein under study, a change known to affect health or development. This result can indicate that the person is not affected by a particular disorder, or that he is not a carrier of a specific genetic variant, or that he does not have a raised risk of developing a particular disease. However, it is possible that the test missed a disease-causing genetic change, because many tests cannot detect all the genetic changes that may cause a particular disorder. Additional tests, or repeating the test at a later time, may be needed to confirm the negative result. Rarely, test results are false negative, which happens when the results indicate a lowered risk of developing a genetic condition while the person is in reality affected.",
+   "fidelity_note": "The English source reads 'a decreased risk or a genetic condition', apparently a typo for 'of'; translated as 'a decreased risk of a genetic condition'.",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9523047208786011,
+     "opus_mt": 0.9570552110671997
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9783990383148193
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "The English source reads 'a decreased risk or a genetic condition', apparently a typo for 'of'; translated as 'a decreased risk of a genetic condition'.",
+    "opus_mt_ar": "نتيجة الاختبار السلبية تعني أن المختبر لم يجد تغييرًا معروفًا يؤثر على الصحة أو التطور في الجين أو الكروموسوم أو البروتين قيد النظر. يمكن أن تشير هذه النتيجة إلى أن الشخص لا يتأثر باضطراب معين ، أو ليس حاملًا لمتغير جيني معين ، أو ليس لديه خطر متزايد للإصابة بمرض معين. ومع ذلك، من الممكن أن يكون الاختبار قد فاته تغيير وراثي مسبب للمرض لأن العديد من الاختبارات لا يمكنها اكتشاف جميع التغيرات الجينية التي يمكن أن تسبب اضطرابًا معينًا. قد تكون هناك حاجة إلى مزيد من الاختبارات، أو إعادة الاختبار في وقت لاحق، لتأكيد نتيجة سلبية. نادرًا ما تكون نتائج الاختبارات سلبية كاذبة ، والتي تحدث عندما تشير النتائج إلى انخفاض المخاطر أو حالة وراثية عندما يتأثر الشخص فعليًا.",
+    "flags": [
+     "translator noted a fidelity issue"
+    ],
+    "status": "review_first"
+   }
+  },
+  "mp:interpreting-results:0:3": {
+   "source_sha256": "823903c3cfb3cacd525f3f6e0277bfd7b59cdf5fff731ecbd73a46a2601b031a",
+   "ar": "في بعض الحالات، قد لا تقدّم نتيجة الفحص أي معلومات مفيدة. ويُسمّى هذا النوع من النتائج غير مفيد أو غير محدد أو غير حاسم أو ملتبس (uninformative, indeterminate, inconclusive, or ambiguous). وتحدث النتائج غير المفيدة أحيانًا لأن لدى كل شخص اختلافات شائعة وطبيعية في حمضه النووي (DNA)، تُسمّى تعدد الأشكال (polymorphisms)، ولا تؤثر في الصحة. وإذا وجد الفحص الجيني تغيّرًا في الحمض النووي لم يتأكد أن له دورًا في نشوء المرض، ويُعرف بالمتغيّر غير مؤكد الأهمية (variant of uncertain significance، VUS أو VOUS)، فقد يصعب معرفة ما إذا كان تعددًا طبيعيًا في الأشكال أم متغيّرًا مسببًا للمرض. وبالنسبة لهذه المتغيّرات، قد لا تتوفر أبحاث علمية كافية لتأكيد ارتباطها بمرض أو نفيه، أو قد تكون الأبحاث متعارضة. ولا يمكن للنتيجة غير المفيدة أن تؤكد تشخيصًا محددًا أو تستبعده، ولا يمكنها أن تبيّن ما إذا كان لدى الشخص خطر مرتفع للإصابة باضطراب ما. وفي بعض الحالات، قد يساعد فحص أفراد آخرين من الأسرة، مصابين وغير مصابين، في توضيح هذا النوع من النتائج.",
+   "back_translation_en": "In some cases, the test result may not provide any useful information. This type of result is called uninformative, indeterminate, inconclusive, or ambiguous. Uninformative results sometimes occur because every person has common and natural variations in his DNA, called polymorphisms, which do not affect health. If a genetic test finds a change in DNA that has not been confirmed to have a role in the development of disease, known as a variant of uncertain significance (VUS or VOUS), it may be difficult to know whether it is a natural polymorphism or a disease-causing variant. For these variants, there may not be enough scientific research to confirm or deny their association with a disease, or the research may be conflicting. An uninformative result cannot confirm or rule out a specific diagnosis, and it cannot show whether the person has a raised risk of developing a disorder. In some cases, testing other family members, affected and unaffected, may help clarify this type of result.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9343611598014832,
+     "opus_mt": 0.9554638266563416
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9585241675376892
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "في بعض الحالات ، قد لا تعطي نتيجة الاختبار أي معلومات مفيدة. ويطلق على هذا النوع من النتائج غير معلوماتية أو غير محددة أو غير حاسمة أو غامضة. تحدث نتائج الاختبار غير المستنيرة في بعض الأحيان لأن كل شخص لديه اختلافات طبيعية شائعة في الحمض النووي الخاص به ، والتي تسمى تعدد الأشكال ، والتي لا تؤثر على الصحة. إذا وجد الاختبار الجيني تغييرًا في الحمض النووي لم يتم التأكد من أنه يلعب دورًا في تطور المرض ، والمعروف باسم متغير ذو أهمية غير مؤكدة (VUS أو VOUS) ، فقد يكون من الصعب معرفة ما إذا كان متعدد الأشكال الطبيعي أو متغير مسبب للمرض. بالنسبة لهذه المتغيرات ، قد لا يكون هناك ما يكفي من البحث العلمي لتأكيد أو دحض ارتباط المرض أو قد يكون البحث متضاربًا. لا يمكن للنتيجة غير المستنيرة أن تؤكد أو تستبعد تشخيصًا محددًا ، ولا يمكنها أن تشير إلى ما إذا كان الشخص يعاني من خطر متزايد للإصابة باضطراب. في بعض الحالات، يمكن أن يساعد اختبار أفراد الأسرة الآخرين المتضررين وغير المتأثرين في توضيح هذا النوع من النتائج.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:family-history:0:0": {
+   "source_sha256": "b00a2df7c1618bc7f498531b4314fffc848a353911bb7182da5231d4f1c0bdae",
+   "ar": "التاريخ الصحي العائلي (family health history) هو سجل للمعلومات الصحية عن الشخص وأقاربه المقرّبين. ويتضمن السجل الكامل معلومات عن ثلاثة أجيال من الأقارب، بما في ذلك الأبناء، والإخوة والأخوات، والوالدان، والأعمام والعمّات والأخوال والخالات، وأبناء الإخوة والأخوات، والأجداد والجدّات، وأبناء العمومة والخؤولة.",
+   "back_translation_en": "A family health history is a record of health information about the person and his close relatives. A complete record includes information about three generations of relatives, including children, brothers and sisters, parents, paternal uncles and aunts and maternal uncles and aunts, children of brothers and sisters, grandfathers and grandmothers, and paternal and maternal cousins.",
+   "fidelity_note": "English 'his or her' is rendered with the Arabic generic masculine. 'Aunts and uncles' and 'cousins' are expanded to paternal and maternal terms because Arabic has no single neutral word; no relatives are added or omitted.",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9601889848709106,
+     "opus_mt": 0.956697940826416
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9726887941360474
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "English 'his or her' is rendered with the Arabic generic masculine. 'Aunts and uncles' and 'cousins' are expanded to paternal and maternal terms because Arabic has no single neutral word; no relatives are added or omitted.",
+    "opus_mt_ar": "التاريخ الصحي للأسرة هو سجل للمعلومات الصحية عن الشخص وأقاربه المقربين. يتضمن السجل الكامل معلومات من ثلاثة أجيال من الأقارب ، بما في ذلك الأطفال والإخوة والأخوات والآباء والعمات والأعمام وأبناء الأخ وابن أخيه والأجداد وأبناء العم.",
+    "flags": [
+     "translator noted a fidelity issue"
+    ],
+    "status": "review_first"
+   }
+  },
+  "mp:family-history:0:1": {
+   "source_sha256": "2db7a2b91e854e56251130a670747b68f5438d4dc3df47d5bff1756f70dd58dd",
+   "ar": "تتشابه الأسر في خلفياتها الجينية، وغالبًا ما تتشابه في بيئاتها وأنماط حياتها. ويمكن لهذه العوامل مجتمعةً أن تعطي مؤشرات على حالات قد تنتشر في أسرة ما. ومن خلال ملاحظة أنماط الاضطرابات بين الأقارب، يمكن لمختصي الرعاية الصحية تحديد ما إذا كان الشخص أو أفراد أسرته أو الأجيال القادمة قد يكونون معرّضين لخطر مرتفع للإصابة بحالة معيّنة.",
+   "back_translation_en": "Families are similar in their genetic backgrounds, and often similar in their environments and lifestyles. Together, these factors can give indications of conditions that may run in a family. By noticing patterns of disorders among relatives, health care professionals can determine whether the person, his family members, or future generations may be at a raised risk of developing a particular condition.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9334256649017334,
+     "opus_mt": 0.9375899434089661
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9537867903709412
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "لدى العائلات خلفيات وراثية متشابهة ، وغالبًا ما تكون بيئات وأنماط حياة متشابهة. معًا ، يمكن أن تعطي هذه العوامل أدلة على الظروف التي قد تعمل في الأسرة. من خلال ملاحظة أنماط الاضطرابات بين الأقارب ، يمكن لأخصائيي الرعاية الصحية تحديد ما إذا كان الفرد أو أفراد الأسرة أو الأجيال القادمة معرضين لخطر متزايد لتطوير حالة معينة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:0:0": {
+   "source_sha256": "91adfd497764273792dea390e119f357d33347ca2828be857d1d2eab0b1c47e3",
+   "ar": "الثلاسيميا بيتا (beta thalassemia) اضطراب في الدم يقلل إنتاج الهيموغلوبين (hemoglobin). والهيموغلوبين هو البروتين المحتوي على الحديد في خلايا الدم الحمراء، والذي ينقل الأكسجين إلى الخلايا في جميع أنحاء الجسم.",
+   "back_translation_en": "Beta thalassemia is a disorder of the blood that reduces the production of hemoglobin. Hemoglobin is the iron-containing protein in red blood cells, which carries oxygen to the cells throughout the body.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9315073490142822,
+     "opus_mt": 0.9066635370254517
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9633703827857971
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "بيتا ثلاسيميا هو اضطراب في الدم يقلل من إنتاج الهيموغلوبين. الهيموجلوبين هو البروتين الذي يحتوي على الحديد في خلايا الدم الحمراء التي تحمل الأكسجين إلى الخلايا في جميع أنحاء الجسم.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:0:1": {
+   "source_sha256": "1551b995f7d1670c24d8e94ebe03b952e35c23bb473ffdc503dc2632734c1071",
+   "ar": "لدى الأشخاص المصابين بالثلاسيميا بيتا، تؤدي المستويات المنخفضة من الهيموغلوبين (hemoglobin) إلى انخفاض مستويات الأكسجين في الجسم. ويعاني المصابون أيضًا من نقص في خلايا الدم الحمراء (فقر الدم، anemia)، وهو ما قد يسبب شحوب الجلد والضعف والتعب ومضاعفات أكثر خطورة. والأشخاص المصابون بالثلاسيميا بيتا معرّضون لخطر مرتفع لتكوّن جلطات دموية غير طبيعية.",
+   "back_translation_en": "In people affected with beta thalassemia, low levels of hemoglobin lead to reduced oxygen levels in the body. Affected people also suffer from a shortage of red blood cells (anemia), which may cause pale skin, weakness, fatigue, and more serious complications. People affected with beta thalassemia are at a raised risk of forming abnormal blood clots.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9145054817199707,
+     "opus_mt": 0.8940637707710266
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9620280265808105
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "في الأشخاص الذين يعانون من الثلاسيميا بيتا، وانخفاض مستويات الهيموغلوبين يقلل من مستويات الأكسجين في الجسم. يعاني الأفراد المصابون أيضًا من نقص في خلايا الدم الحمراء (فقر الدم) ، والتي يمكن أن تسبب بشرة شاحبة وضعفًا وتعبًا ومضاعفات أكثر خطورة. الأشخاص الذين يعانون من ثلاسيميا بيتا هم في خطر متزايد لتطوير جلطات الدم غير طبيعية.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:0:2": {
+   "source_sha256": "3c6003a2b871ba9ea5d883f2a5dedfde5e554529fb076122c0946829aa10a678",
+   "ar": "تُصنَّف الثلاسيميا بيتا إلى نوعين بحسب شدة الأعراض: الثلاسيميا الكبرى (thalassemia major) (وتُعرف أيضًا بالثلاسيميا المعتمدة على نقل الدم أو فقر دم كولي، Cooley's anemia)، والثلاسيميا الوسطى (thalassemia intermedia) (وهي ثلاسيميا غير معتمدة على نقل الدم). ومن بين النوعين، تُعد الثلاسيميا الكبرى الأشدّ.",
+   "back_translation_en": "Beta thalassemia is classified into two types according to the severity of symptoms: thalassemia major (also known as transfusion-dependent thalassemia or Cooley's anemia), and thalassemia intermedia (which is a non-transfusion-dependent thalassemia). Of the two types, thalassemia major is considered the more severe.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9220516681671143,
+     "opus_mt": 0.8800660371780396
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.918975830078125
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "يصنف الثلاسيميا بيتا إلى نوعين اعتمادا على شدة الأعراض: الثلاسيميا الكبرى (المعروف أيضا باسم الثلاسيميا المعتمدة على نقل الدم أو فقر الدم كولي) والثلاسيميا إنترميديا (وهو الثلاسيميا غير المعتمدة على النقل). من النوعين ، الثلاسيميا الرئيسية أكثر حدة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:0:3": {
+   "source_sha256": "0819f7a6ca19f0c4fed75163db1bffab9b0a692bcba3fac8543300ce8f788372",
+   "ar": "تظهر علامات الثلاسيميا الكبرى وأعراضها خلال أول عامَين (2) من العمر. ويُصاب الأطفال بفقر دم (anemia) مهدِّد للحياة. ولا يكتسبون الوزن ولا ينمون بالمعدل المتوقع (تعثّر زيادة الوزن، faltering weight)، وقد يُصابون باصفرار الجلد وبياض العينين (اليرقان، jaundice). وقد يعاني المصابون من تضخّم الطحال والكبد والقلب، وقد تكون عظامهم مشوّهة الشكل. ويتأخر البلوغ لدى بعض المراهقين المصابين بالثلاسيميا الكبرى.",
+   "back_translation_en": "The signs and symptoms of thalassemia major appear within the first two (2) years of life. Children develop life-threatening anemia. They do not gain weight and do not grow at the expected rate (faltering weight), and they may develop yellowing of the skin and the whites of the eyes (jaundice). Affected people may have an enlarged spleen, liver, and heart, and their bones may be misshapen. Puberty is delayed in some adolescents affected with thalassemia major.",
+   "fidelity_note": "The digit '2' is shown in parentheses after the Arabic dual word for 'two years', because Arabic normally writes 'two years' as a single dual word.",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9290077090263367,
+     "opus_mt": 0.9101955890655518
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9553676843643188
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": false
+    },
+    "fidelity_note": "The digit '2' is shown in parentheses after the Arabic dual word for 'two years', because Arabic normally writes 'two years' as a single dual word.",
+    "opus_mt_ar": "تظهر علامات وأعراض الثلاسيميا الرئيسية خلال العامين الأولين من الحياة. يصاب الأطفال بفقر الدم الذي يهدد الحياة. فهي لا تكتسب الوزن وتنمو بالمعدل المتوقع (الوزن المتذبذب) وقد تتطور إلى اصفرار الجلد وبياض العينين (اليرقان). قد يكون لدى الأفراد المصابين تضخم في الطحال والكبد والقلب ، وقد تكون عظامهم مشوهة. تأخر سن البلوغ في بعض المراهقين مع الثلاسيميا الكبرى.",
+    "flags": [
+     "translator noted a fidelity issue"
+    ],
+    "status": "review_first"
+   }
+  },
+  "mp:beta-thalassemia:0:4": {
+   "source_sha256": "8a573cb321ebfdbe97add4e927ae242aeb7e236bc050393e7c28934cc6d676bc",
+   "ar": "يعاني كثير من المصابين بالثلاسيميا الكبرى من أعراض شديدة إلى درجة أنهم يحتاجون إلى عمليات نقل دم متكررة لتعويض مخزونهم من خلايا الدم الحمراء. ومع مرور الوقت، قد يؤدي تدفّق الهيموغلوبين المحتوي على الحديد من عمليات نقل الدم المزمنة إلى تراكم الحديد في الجسم، مما يسبب مشكلات في الكبد والقلب والهرمونات.",
+   "back_translation_en": "Many people affected with thalassemia major have symptoms so severe that they need frequent blood transfusions to replenish their supply of red blood cells. Over time, the influx of iron-containing hemoglobin from chronic blood transfusions may lead to a buildup of iron in the body, causing problems in the liver, heart, and hormones.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.912790834903717,
+     "opus_mt": 0.9132455587387085
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9623969793319702
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "كثير من الناس الذين يعانون من الثلاسيميا الكبرى لديهم مثل هذه الأعراض الشديدة التي يحتاجونها عمليات نقل الدم المتكررة لتجديد إمدادات خلايا الدم الحمراء. مع مرور الوقت ، يمكن أن يؤدي تدفق الهيموغلوبين الذي يحتوي على الحديد من عمليات نقل الدم المزمنة إلى تراكم الحديد في الجسم ، مما يؤدي إلى مشاكل في الكبد والقلب والهرمونات.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:0:5": {
+   "source_sha256": "a0bd869921aef462a8c92717ec92e5a9472fd25c2473b6f799ca8c91bc1993eb",
+   "ar": "الثلاسيميا الوسطى أخفّ من الثلاسيميا الكبرى. وتظهر علامات الثلاسيميا الوسطى وأعراضها في مرحلة الطفولة المبكرة أو في مرحلة لاحقة من الحياة. ويعاني المصابون من فقر دم خفيف إلى متوسط، وقد يعانون أيضًا من بطء النمو، وتشوّهات في العظام، وخطر مرتفع لتكوّن جلطات دموية غير طبيعية.",
+   "back_translation_en": "Thalassemia intermedia is milder than thalassemia major. The signs and symptoms of thalassemia intermedia appear in early childhood or at a later stage of life. Affected people have mild to moderate anemia, and may also have slow growth, bone deformities, and a raised risk of forming abnormal blood clots.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9032750725746155,
+     "opus_mt": 0.9278126955032349
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9599976539611816
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "الثلاسيميا الوسيطة أكثر اعتدالا من الثلاسيميا الكبرى. تظهر علامات وأعراض الثلاسيميا في مرحلة الطفولة المبكرة أو في وقت لاحق من الحياة. الأفراد المصابون يعانون من فقر الدم الخفيف إلى المتوسط وقد يكون لديهم أيضًا نمو بطيء وتشوهات في العظام وزيادة خطر الإصابة بجلطات دموية غير طبيعية.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:1:0": {
+   "source_sha256": "e613202a2e51cc740a54c1a0f0dd0f68d33b0f061522ca38a5fc07fc6c182165",
+   "ar": "الثلاسيميا بيتا اضطراب دموي شائع إلى حد ما في جميع أنحاء العالم. ويولد آلاف الرضّع المصابين بالثلاسيميا بيتا كل عام. وتحدث الثلاسيميا بيتا بأكبر تكرار لدى الأشخاص المنحدرين من دول البحر الأبيض المتوسط، وشمال أفريقيا، والشرق الأوسط، والهند، وآسيا الوسطى، وجنوب شرق آسيا.",
+   "back_translation_en": "Beta thalassemia is a fairly common blood disorder throughout the world. Thousands of infants affected with beta thalassemia are born each year. Beta thalassemia occurs most frequently in people descended from Mediterranean countries, North Africa, the Middle East, India, Central Asia, and Southeast Asia.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.8915702700614929,
+     "opus_mt": 0.9341771006584167
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9531041383743286
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "بيتا ثلاسيميا هو اضطراب دم شائع إلى حد ما في جميع أنحاء العالم. يولد الآلاف من الأطفال الذين يعانون من ثلاسيميا بيتا كل عام. يحدث الثلاسيميا بيتا في كثير من الأحيان في الناس من بلدان البحر الأبيض المتوسط وشمال أفريقيا والشرق الأوسط والهند وآسيا الوسطى وجنوب شرق آسيا.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:2:0": {
+   "source_sha256": "0e0c080ad5d20e6b633979690cc14e1613da6f44b3fe8eab8147c2e431a17b53",
+   "ar": "تسبب المتغيّرات (variants) (وتُعرف أيضًا بالطفرات، mutations) في جين HBB الثلاسيميا بيتا. ويوفّر جين HBB التعليمات اللازمة لصنع بروتين يُسمّى بيتا غلوبين (beta-globin). والبيتا غلوبين مكوِّن (وحدة فرعية، subunit) من مكونات الهيموغلوبين. ويتكون الهيموغلوبين من أربع وحدات بروتينية فرعية، عادةً وحدتان فرعيتان من البيتا غلوبين ووحدتان فرعيتان من بروتين آخر يُسمّى ألفا غلوبين (alpha-globin).",
+   "back_translation_en": "Variants (also known as mutations) in the HBB gene cause beta thalassemia. The HBB gene provides the instructions needed to make a protein called beta-globin. Beta-globin is a component (subunit) of hemoglobin. Hemoglobin consists of four protein subunits, usually two subunits of beta-globin and two subunits of another protein called alpha-globin.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9418275952339172,
+     "opus_mt": 0.9466292858123779
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.961768627166748
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "المتغيرات (المعروفة أيضًا باسم الطفرات) في جين HBB تسبب ثلاسيميا بيتا. يوفر جين HBB تعليمات لصنع بروتين يسمى بيتا-غلوبين. بيتا-غلوبين هو مكون (وحدة فرعية) من الهيموغلوبين. يتكون الهيموغلوبين من أربع وحدات فرعية من البروتين، عادة وحدتين فرعيتين من بيتا-غلوبين ووحدتين فرعيتين من بروتين آخر يسمى ألفا-غلوبين.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:2:1": {
+   "source_sha256": "4a83d8d88d1602f8dee4340c24dc2fc9182cede55dd5d3640366296ff05d9918",
+   "ar": "تمنع بعض المتغيّرات في جين HBB إنتاج أي بيتا غلوبين. ويُشار إلى غياب البيتا غلوبين باسم الثلاسيميا بيتا صفر (β0). وتسمح متغيّرات أخرى في جين HBB بإنتاج بعض البيتا غلوبين ولكن بكميات منخفضة. وتُسمّى الكمية المنخفضة من البيتا غلوبين الثلاسيميا بيتا زائد (β+). غير أن الإصابة بالثلاسيميا β0 أو β+ لا تتنبأ بالضرورة بشدة المرض؛ إذ شُخِّص أشخاص مصابون بكلا النوعين بالثلاسيميا الكبرى والثلاسيميا الوسطى.",
+   "back_translation_en": "Some variants in the HBB gene prevent the production of any beta-globin. The absence of beta-globin is referred to as beta-zero (β0) thalassemia. Other variants in the HBB gene allow some beta-globin to be produced but in reduced amounts. A reduced amount of beta-globin is called beta-plus (β+) thalassemia. However, having β0 or β+ thalassemia does not necessarily predict the severity of the disease; people with both types have been diagnosed with thalassemia major and thalassemia intermedia.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9361084699630737,
+     "opus_mt": 0.8972113132476807
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9391568899154663
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "بعض المتغيرات في جين HBB تمنع إنتاج أي بيتا-غلوبين. يشار إلى غياب بيتا-غلوبين باسم بيتا-صفر (0) الثلاسيميا. وهناك متغيرات جينية أخرى من سداسي البروم ثنائي الفينيل تسمح بإنتاج بعض بيتا-غلوبين ولكن بكميات مخفضة. ويسمى انخفاض كمية بيتا غلوبين بيتا زائد () الثلاسيميا. وجود إما  0 أو  الثلاسيميا لا يتنبأ بالضرورة شدة المرض، ومع ذلك، فقد تم تشخيص الناس مع كلا النوعين مع الثلاسيميا الكبرى والثلاسيميا وسائل الإعلام.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:2:2": {
+   "source_sha256": "dba0b4fbc7ef811557323000913d2015dd0ebf1e312833ecbf24d76b7982a8e2",
+   "ar": "يعيق نقص البيتا غلوبين (beta-globin) تكوين هيموغلوبين قادر على أداء وظيفته. ومن دون كمية كافية من الهيموغلوبين، لا تتطور خلايا الدم الحمراء بشكل طبيعي، مما يسبب نقصًا في خلايا الدم الحمراء الناضجة. ويؤدي انخفاض عدد خلايا الدم الحمراء الناضجة إلى فقر الدم ومشكلات صحية أخرى مرتبطة به لدى الأشخاص المصابين بالثلاسيميا بيتا.",
+   "back_translation_en": "A shortage of beta-globin hinders the formation of hemoglobin able to perform its function. Without a sufficient amount of hemoglobin, red blood cells do not develop normally, causing a shortage of mature red blood cells. The low number of mature red blood cells leads to anemia and other health problems associated with it in people affected with beta thalassemia.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9412035942077637,
+     "opus_mt": 0.942275881767273
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.967474102973938
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "نقص بيتا-غلوبين يعوق تشكيل الهيموغلوبين الوظيفي. بدون الهيموجلوبين الكافي ، لا تتطور خلايا الدم الحمراء بشكل طبيعي ، مما يسبب نقصًا في خلايا الدم الحمراء الناضجة. انخفاض عدد خلايا الدم الحمراء الناضجة يؤدي إلى فقر الدم وغيرها من المشاكل الصحية المرتبطة بها في الأشخاص الذين يعانون من ثلاسيميا بيتا.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:3:0": {
+   "source_sha256": "ba442a21d17d8fbe905aa3c369cf14ebec0515e1286fd2b48c5c0bde0e9c29ed",
+   "ar": "تُورَّث الثلاسيميا الكبرى والثلاسيميا الوسطى بنمط جسمي متنحٍّ (autosomal recessive)، ما يعني أن نسختَي جين HBB كلتيهما في كل خلية تحملان متغيّرات. ويحمل كلٌّ من والدَي الشخص المصاب بحالة جسمية متنحية نسخةً واحدة من الجين المتغيّر، لكنهما في العادة لا تظهر عليهما علامات الحالة وأعراضها. ولكن في بعض الأحيان، يُصاب الأشخاص الذين لديهم متغيّر واحد فقط في جين HBB في كل خلية بفقر دم خفيف. ويُقال إن هؤلاء المصابين إصابةً خفيفة لديهم الثلاسيميا الصغرى (thalassemia minor).",
+   "back_translation_en": "Thalassemia major and thalassemia intermedia are inherited in an autosomal recessive pattern, which means that both copies of the HBB gene in each cell carry variants. Each of the two parents of a person affected with an autosomal recessive condition carries one copy of the altered gene, but they usually do not show the signs and symptoms of the condition. But sometimes, people who have only one variant in the HBB gene in each cell develop mild anemia. These mildly affected people are said to have thalassemia minor.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9423115849494934,
+     "opus_mt": 0.920366644859314
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.966514527797699
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "يتم وراثة الثلاسيميا الكبرى والثلاسيميا الوسيطة في نمط جسمي متنحي ، مما يعني أن كلا النسختين من جين HBB في كل خلية لهما متغيرات. يحمل والدا الشخص المصاب بحالة جسمية متنحية نسخة واحدة من الجين المعدل ، لكنهما عادة لا يظهران علامات وأعراض الحالة. ومع ذلك ، في بعض الأحيان ، يصاب الأشخاص الذين لديهم متغير جيني واحد فقط من HBB في كل خلية بفقر الدم الخفيف. ويقال إن هؤلاء الأشخاص المتضررين بشكل معتدل لديهم الثلاسيميا طفيفة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:beta-thalassemia:3:1": {
+   "source_sha256": "90a80a8064c910033ed7399fecd4c8dd0bb7085ddd423c633d2ebcb7ce162c27",
+   "ar": "في نسبة صغيرة من الأسر، يُورَّث متغيّر جين HBB بطريقة جسمية سائدة (autosomal dominant). وفي هذه الحالات، تكفي نسخة واحدة من الجين المتغيّر في كل خلية لإحداث علامات الثلاسيميا بيتا وأعراضها.",
+   "back_translation_en": "In a small percentage of families, the HBB gene variant is inherited in an autosomal dominant manner. In these cases, one copy of the altered gene in each cell is enough to cause the signs and symptoms of beta thalassemia.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9435120820999146,
+     "opus_mt": 0.8003303408622742
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.8349604606628418
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "وفي نسبة مئوية صغيرة من الأسر، يورث متغير الجين سداسي البروم ثنائي الفينيل بطريقة جسمية سائدة. في هذه الحالات، تكون نسخة واحدة من الجين المتغير في كل خلية كافية للتسبب في علامات وأعراض الثلاسيميا بيتا.",
+    "flags": [
+     "systems disagree (0.83 < 0.85)"
+    ],
+    "status": "review_first"
+   }
+  },
+  "mp:sickle-cell-disease:0:0": {
+   "source_sha256": "60bcb13cd274bad732b2f17eb8af0a9e3439da9b7e7885e702a5b177b255e422",
+   "ar": "مرض الخلايا المنجلية (sickle cell disease) مجموعة من الاضطرابات التي تؤثر في الهيموغلوبين (hemoglobin)، وهو الجزيء الموجود في خلايا الدم الحمراء الذي يوصل الأكسجين إلى الخلايا في جميع أنحاء الجسم. ولدى المصابين بهذا المرض جزيئات هيموغلوبين غير نمطية تُسمّى الهيموغلوبين S، يمكن أن تشوّه خلايا الدم الحمراء فتجعلها على شكل منجل أو هلال.",
+   "back_translation_en": "Sickle cell disease is a group of disorders that affect hemoglobin, which is the molecule in red blood cells that delivers oxygen to cells throughout the body. People affected with this disease have atypical hemoglobin molecules called hemoglobin S, which can distort red blood cells, making them shaped like a sickle or a crescent.",
+   "fidelity_note": "'Sickle cell disease' is rendered as مرض الخلايا المنجلية throughout, and فقر الدم المنجلي is kept for 'sickle cell anemia' (HbSS) to preserve the source's distinction, although in everyday Gulf usage فقر الدم المنجلي is often used for the whole group.",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9356414675712585,
+     "opus_mt": 0.9185863733291626
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9627426862716675
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "'Sickle cell disease' is rendered as مرض الخلايا المنجلية throughout, and فقر الدم المنجلي is kept for 'sickle cell anemia' (HbSS) to preserve the source's distinction, although in everyday Gulf usage فقر الدم المنجلي is often used for the whole group.",
+    "opus_mt_ar": "مرض الخلايا المنجلية هو مجموعة من الاضطرابات التي تؤثر على الهيموغلوبين ، وهو جزيء في خلايا الدم الحمراء التي توفر الأكسجين للخلايا في جميع أنحاء الجسم. الأشخاص الذين يعانون من هذا المرض لديهم جزيئات الهيموغلوبين غير النمطية تسمى الهيموغلوبين S ، والتي يمكن أن تشوه خلايا الدم الحمراء إلى شكل منجل أو هلال.",
+    "flags": [
+     "translator noted a fidelity issue"
+    ],
+    "status": "review_first"
+   }
+  },
+  "mp:sickle-cell-disease:0:1": {
+   "source_sha256": "315536a6fe94c29a0b681d90666bad12413ca96b0b8b6e3c233782cb08fa6fe4",
+   "ar": "تبدأ علامات مرض الخلايا المنجلية وأعراضه عادةً في مرحلة الطفولة المبكرة. ومن السمات المميزة لهذا الاضطراب انخفاض عدد خلايا الدم الحمراء (فقر الدم، anemia)، والعدوى المتكررة، ونوبات ألم دورية. وتختلف شدة العلامات والأعراض من شخص إلى آخر. فبعض الأشخاص لديهم مشكلات صحية خفيفة، بينما يُدخَل آخرون إلى المستشفى بشكل متكرر بسبب مضاعفات أكثر خطورة.",
+   "back_translation_en": "The signs and symptoms of sickle cell disease usually begin in early childhood. Characteristic features of this disorder include a low number of red blood cells (anemia), repeated infections, and periodic episodes of pain. The severity of signs and symptoms differs from one person to another. Some people have mild health problems, while others are admitted to hospital frequently because of more serious complications.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.922120213508606,
+     "opus_mt": 0.9141155481338501
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9680222272872925
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "عادة ما تبدأ علامات وأعراض مرض الخلايا المنجلية في مرحلة الطفولة المبكرة. وتشمل السمات المميزة لهذا الاضطراب انخفاض عدد خلايا الدم الحمراء (فقر الدم)، والالتهابات المتكررة، وحلقات دورية من الألم. تختلف شدة العلامات والأعراض من شخص لآخر. بعض الناس لديهم مشاكل صحية خفيفة ، في حين أن البعض الآخر يتم إدخاله إلى المستشفى في كثير من الأحيان لمضاعفات أكثر خطورة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:sickle-cell-disease:0:2": {
+   "source_sha256": "52d9c15823e4b94518aff0f235250fc9fc2aafd8807fcb17276bd5286019d7d4",
+   "ar": "تنتج علامات مرض الخلايا المنجلية وأعراضه عن تحوّل خلايا الدم الحمراء إلى الشكل المنجلي. وعندما تتحول خلايا الدم الحمراء إلى الشكل المنجلي، فإنها تتكسر قبل أوانها، مما قد يؤدي إلى فقر الدم (anemia). وقد يسبب فقر الدم ضيق التنفس والتعب وتأخر النمو والتطور لدى الأطفال. وقد يسبب التكسّر السريع لخلايا الدم الحمراء أيضًا اصفرار الجلد وبياض العينين (اليرقان، jaundice). ويمكن أن تحدث نوبات مؤلمة عندما تَعلَق خلايا الدم الحمراء المنجلية، وهي صلبة وغير مرنة، في الأوعية الدموية الصغيرة. وتحرم هذه النوبات الأنسجة والأعضاء، مثل الرئتين والكليتين والطحال والدماغ، من الدم الغني بالأكسجين، وقد تؤدي إلى تلف الأعضاء. ومن المضاعفات الخطيرة بشكل خاص لمرض الخلايا المنجلية ارتفاع ضغط الدم في الأوعية الدموية التي تغذّي الرئتين (ارتفاع ضغط الدم الرئوي، pulmonary hypertension)، والذي قد يؤدي إلى فشل القلب. ويحدث ارتفاع ضغط الدم الرئوي لدى نحو 10 بالمئة من البالغين المصابين بمرض الخلايا المنجلية.",
+   "back_translation_en": "The signs and symptoms of sickle cell disease result from the change of red blood cells into the sickle shape. When red blood cells change into the sickle shape, they break down before their time, which may lead to anemia. Anemia may cause shortness of breath, fatigue, and delayed growth and development in children. The rapid breakdown of red blood cells may also cause yellowing of the skin and the whites of the eyes (jaundice). Painful episodes can occur when sickled red blood cells, which are stiff and inflexible, get stuck in small blood vessels. These episodes deprive tissues and organs, such as the lungs, kidneys, spleen, and brain, of oxygen-rich blood, and may lead to organ damage. A particularly serious complication of sickle cell disease is high blood pressure in the blood vessels that supply the lungs (pulmonary hypertension), which may lead to heart failure. Pulmonary hypertension occurs in about 10 percent of adults affected with sickle cell disease.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9175466895103455,
+     "opus_mt": 0.9283985495567322
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9697970151901245
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "تحدث علامات وأعراض مرض الخلايا المنجلية بسبب منجل خلايا الدم الحمراء. عندما تنزف خلايا الدم الحمراء ، فإنها تنهار قبل الأوان ، مما قد يؤدي إلى فقر الدم. فقر الدم يمكن أن يسبب ضيق في التنفس، والتعب، وتأخر النمو والتنمية في الأطفال. الانهيار السريع لخلايا الدم الحمراء قد يسبب أيضا اصفرار الجلد وبياض العينين (اليرقان). يمكن أن تحدث نوبات مؤلمة عندما تتعثر خلايا الدم الحمراء المنجلية ، وهي قاسية وغير مرنة ، في الأوعية الدموية الصغيرة. هذه الحلقات تحرم الأنسجة والأعضاء ، مثل الرئتين والكلى والطحال والدماغ ، من الدم الغني بالأكسجين ويمكن أن تؤدي إلى تلف الأعضاء. من المضاعفات الخطيرة بشكل خاص لمرض الخلايا المنجلية ارتفاع ضغط الدم في الأوعية الدموية التي تغذي الرئتين (ارتفاع ضغط الدم الرئوي) ، والذي يمكن أن يؤدي إلى قصور القلب. يحدث ارتفاع ضغط الدم الرئوي في حوالي 10 في المئة من البالغين الذين يعانون من مرض الخلايا المنجلية.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:sickle-cell-disease:0:3": {
+   "source_sha256": "ea28d1aca6301d911e597eebffa1a90735a2d73add4796430c2c86c3b462b120",
+   "ar": "تتوفر حاليًا مجموعة من خيارات العلاج للأشخاص المصابين بمرض الخلايا المنجلية. فبعض العلاجات تعالج أعراض الحالة، بينما يعالج بعضها الآخر السبب الجيني لمرض الخلايا المنجلية ويؤدي فعليًا إلى شفاء الحالة. ومن دون علاج، غالبًا ما يعاني المصابون بمرض الخلايا المنجلية من مشكلات صحية مدى الحياة.",
+   "back_translation_en": "There is currently a range of treatment options for people affected with sickle cell disease. Some treatments address the symptoms of the condition, while others address the genetic cause of sickle cell disease and effectively lead to a cure of the condition. Without treatment, people affected with sickle cell disease often suffer from lifelong health problems.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.919262170791626,
+     "opus_mt": 0.9275345802307129
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9765484929084778
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "هناك حاليا مجموعة من خيارات العلاج للأشخاص الذين يعانون من مرض الخلايا المنجلية. بعض العلاجات تعالج أعراض الحالة ، في حين أن البعض الآخر يعالج السبب الوراثي لمرض الخلايا المنجلية ويعالج الحالة بشكل فعال. بدون علاج ، غالبًا ما يعاني الأفراد المصابون بمرض الخلايا المنجلية من مشاكل صحية مدى الحياة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:sickle-cell-disease:1:0": {
+   "source_sha256": "5974087dbe25ea1de580a5b8c2364b741cb949fd649c7dedffc0881597207427",
+   "ar": "يصيب مرض الخلايا المنجلية ملايين الأشخاص في جميع أنحاء العالم. وهو أكثر شيوعًا بين الأشخاص الذين ينحدر أسلافهم من أفريقيا؛ ودول البحر الأبيض المتوسط مثل اليونان وتركيا وإيطاليا؛ وشبه الجزيرة العربية؛ والهند؛ والمناطق الناطقة بالإسبانية في أمريكا الجنوبية وأمريكا الوسطى وأجزاء من منطقة البحر الكاريبي.",
+   "back_translation_en": "Sickle cell disease affects millions of people throughout the world. It is most common among people whose ancestors come from Africa; Mediterranean countries such as Greece, Turkey, and Italy; the Arabian Peninsula; India; and Spanish-speaking regions in South America, Central America, and parts of the Caribbean region.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.903228759765625,
+     "opus_mt": 0.9293792843818665
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9743257761001587
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "مرض الخلايا المنجلية يصيب الملايين من الناس في جميع أنحاء العالم. وهو أكثر شيوعًا بين الأشخاص الذين يأتي أسلافهم من إفريقيا ؛ بلدان البحر الأبيض المتوسط مثل اليونان وتركيا وإيطاليا ؛ شبه الجزيرة العربية ؛ الهند ؛ والمناطق الناطقة بالإسبانية في أمريكا الجنوبية وأمريكا الوسطى وأجزاء من منطقة البحر الكاريبي.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:sickle-cell-disease:2:0": {
+   "source_sha256": "825a722f23c82a3f8c16a3c947beb304a3629893a6921f2a0feb5ae6fd1fa37b",
+   "ar": "تسبب المتغيّرات (variants) (وتُسمّى أيضًا الطفرات، mutations) في جين HBB مرضَ الخلايا المنجلية. ويوفّر جين HBB التعليمات اللازمة لصنع جزء واحد من الهيموغلوبين (hemoglobin). ويتكون الهيموغلوبين عادةً من أربع وحدات بروتينية فرعية: وحدتان فرعيتان من ألفا غلوبين (alpha-globin) ووحدتان فرعيتان من بيتا غلوبين (beta-globin). ويوفّر جين HBB التعليمات اللازمة لصنع البيتا غلوبين. ويمكن أن تنتج المتغيّرات المختلفة في جين HBB أشكالًا غير طبيعية من البيتا غلوبين. وينتج أحد متغيّرات جين HBB تحديدًا شكلًا غير طبيعي من البيتا غلوبين يُعرف بالهيموغلوبين S (HbS). وتؤدي متغيّرات أخرى في جين HBB إلى أشكال غير طبيعية أخرى من البيتا غلوبين، مثل الهيموغلوبين C (HbC) والهيموغلوبين E (HbE). ويمكن أن تسبب متغيّرات جين HBB مستويات منخفضة على نحو غير معتاد من البيتا غلوبين؛ وتُسمّى هذه الحالة الثلاسيميا بيتا.",
+   "back_translation_en": "Variants (also called mutations) in the HBB gene cause sickle cell disease. The HBB gene provides the instructions needed to make one part of hemoglobin. Hemoglobin usually consists of four protein subunits: two subunits of alpha-globin and two subunits of beta-globin. The HBB gene provides the instructions needed to make beta-globin. Different variants in the HBB gene can produce abnormal forms of beta-globin. One particular HBB gene variant produces an abnormal form of beta-globin known as hemoglobin S (HbS). Other variants in the HBB gene lead to other abnormal forms of beta-globin, such as hemoglobin C (HbC) and hemoglobin E (HbE). HBB gene variants can cause unusually low levels of beta-globin; this condition is called beta thalassemia.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9421721696853638,
+     "opus_mt": 0.9607285261154175
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9753624796867371
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "المتغيرات (وتسمى أيضا الطفرات) في جين HBB تسبب مرض الخلايا المنجلية. يوفر جين HBB تعليمات لصنع جزء واحد من الهيموغلوبين. يتكون الهيموغلوبين عادة من أربع وحدات فرعية للبروتين، وحدتين فرعيتين من ألفا-غلوبين ووحدتين فرعيتين من بيتا-غلوبين. يوفر جين HBB تعليمات لصنع بيتا-غلوبين. المتغيرات المختلفة في الجين HBB يمكن أن تنتج إصدارات غير طبيعية من بيتا غلوبين. ينتج أحد متغيرات الجين HBB نسخة غير طبيعية من بيتا-غلوبين المعروفة باسم الهيموغلوبين S (HbS). تؤدي المتغيرات الأخرى في جين HBB إلى إصدارات غير طبيعية أخرى من بيتا-غلوبين مثل الهيموغلوبين C (HbC) والهيموغلوبين E (HbE). يمكن أن تسبب متغيرات الجين HBB مستويات منخفضة بشكل غير عادي من بيتا غلوبين ؛ وتسمى هذه الحالة ثلاسيميا بيتا.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:sickle-cell-disease:2:1": {
+   "source_sha256": "a7c0a7c5c6e50620f71141142cffcb0d38cf399d49ef61376ced79eff24e70e6",
+   "ar": "لدى الأشخاص المصابين بمرض الخلايا المنجلية (sickle cell disease)، تُستبدَل وحدة فرعية واحدة على الأقل من وحدات البيتا غلوبين (beta-globin) في الهيموغلوبين بالهيموغلوبين S. وفي فقر الدم المنجلي (sickle cell anemia) (ويُسمّى أيضًا مرض الخلايا المنجلية متماثل الزيجوت أو مرض HbSS)، وهو الشكل الأكثر شيوعًا من مرض الخلايا المنجلية، يحلّ الهيموغلوبين S محلّ وحدتَي البيتا غلوبين الفرعيتين كلتيهما. وفي أنواع أخرى من مرض الخلايا المنجلية، تُستبدَل وحدة فرعية واحدة فقط من وحدات البيتا غلوبين في الهيموغلوبين بالهيموغلوبين S. وتُستبدَل وحدة البيتا غلوبين الفرعية الأخرى بشكل مختلف من البيتا غلوبين، مثل الهيموغلوبين C. فعلى سبيل المثال، لدى الأشخاص المصابين بمرض الهيموغلوبين C (HbSC) جزيئات هيموغلوبين تحتوي على الهيموغلوبين S والهيموغلوبين C بدلًا من البيتا غلوبين. وإذا حدثت المتغيّرات التي تنتج الهيموغلوبين S والثلاسيميا بيتا لدى الشخص نفسه، فسيكون مصابًا بمرض الهيموغلوبين S-الثلاسيميا بيتا (HbSBetaThal).",
+   "back_translation_en": "In people affected with sickle cell disease, at least one of the beta-globin subunits in hemoglobin is replaced with hemoglobin S. In sickle cell anemia (also called homozygous sickle cell disease or HbSS disease), which is the most common form of sickle cell disease, hemoglobin S takes the place of both beta-globin subunits. In other types of sickle cell disease, only one of the beta-globin subunits in hemoglobin is replaced with hemoglobin S. The other beta-globin subunit is replaced with a different form of beta-globin, such as hemoglobin C. For example, people affected with hemoglobin C (HbSC) disease have hemoglobin molecules that contain hemoglobin S and hemoglobin C instead of beta-globin. If the variants that produce hemoglobin S and beta thalassemia occur in the same person, he will be affected with hemoglobin S-beta thalassemia (HbSBetaThal) disease.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9296799898147583,
+     "opus_mt": 0.9332849979400635
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9606873989105225
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "في الأشخاص الذين يعانون من مرض الخلايا المنجلية ، يتم استبدال واحدة على الأقل من وحدات بيتا-غلوبين في الهيموغلوبين بالهيموغلوبين S. في فقر الدم المنجلي (وتسمى أيضا مرض الخلية المنجلية المتماثلة أو مرض HbSS) ، وهو الشكل الأكثر شيوعا من مرض الخلايا المنجلية ، يحل الهيموغلوبين S محل كل من وحدات بيتا جلوبين. في أنواع أخرى من مرض الخلايا المنجلية ، يتم استبدال واحدة فقط من وحدات بيتا-غلوبين في الهيموغلوبين بالهيموغلوبين S. يتم استبدال وحدة بيتا-غلوبين الفرعية الأخرى بنسخة مختلفة من بيتا-غلوبين، مثل الهيموغلوبين C. على سبيل المثال ، الأشخاص الذين يعانون من مرض الهيموغلوبين C (HbSC) لديهم جزيئات الهيموغلوبين مع الهيموغلوبين S والهيموغلوبين C بدلاً من بيتا-غلوبين. إذا كانت المتغيرات التي تنتج الهيموغلوبين S والثلاسيميا بيتا تحدث في نفس الفرد، فإن هذا الفرد سيكون مرض الهيموغلوبين S-بيتا الثلاسيميا (HbSBetaThal).",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:sickle-cell-disease:3:0": {
+   "source_sha256": "03e2e78f0009a58d3bd239aab75b8100fc646cee3c523e1f715342a4a983ad10",
+   "ar": "تُورَّث هذه الحالة بنمط جسمي متنحٍّ (autosomal recessive)، ما يعني أن نسختَي الجين كلتيهما في كل خلية يجب أن تحملا متغيّرًا لكي يحدث الاضطراب. ويحمل كلٌّ من والدَي الشخص المصاب بحالة جسمية متنحية نسخةً واحدة من الجين المتغيّر، لكنهما في العادة لا تظهر عليهما علامات الحالة وأعراضها.",
+   "back_translation_en": "This condition is inherited in an autosomal recessive pattern, which means that both copies of the gene in each cell must carry a variant for the disorder to occur. Each of the two parents of a person affected with an autosomal recessive condition carries one copy of the altered gene, but they usually do not show the signs and symptoms of the condition.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9453255534172058,
+     "opus_mt": 0.8743901252746582
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9134494066238403
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "هذه الحالة موروثة في نمط جسمي متنحي ، مما يعني أن كلا النسختين من الجين في كل خلية يجب أن يكون لها متغير للتسبب في الاضطراب. يحمل والدا الشخص المصاب بحالة جسمية متنحية نسخة واحدة من الجين المعدل ، لكنهما عادة لا يظهران علامات وأعراض الحالة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:0:0": {
+   "source_sha256": "f9f0bad035aff1906064633ce69c34ef2697d53a31341cec8bfb2b79c1af3130",
+   "ar": "الثلاسيميا ألفا (alpha thalassemia) اضطراب في الدم يقلل إنتاج الهيموغلوبين (hemoglobin). والهيموغلوبين هو البروتين الموجود في خلايا الدم الحمراء الذي ينقل الأكسجين إلى الخلايا في جميع أنحاء الجسم.",
+   "back_translation_en": "Alpha thalassemia is a disorder of the blood that reduces the production of hemoglobin. Hemoglobin is the protein found in red blood cells that carries oxygen to the cells throughout the body.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9249778985977173,
+     "opus_mt": 0.8962315320968628
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9675520658493042
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "ألفا الثلاسيميا هو اضطراب في الدم يقلل من إنتاج الهيموغلوبين. الهيموغلوبين هو البروتين الموجود في خلايا الدم الحمراء الذي يحمل الأكسجين إلى الخلايا في جميع أنحاء الجسم.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:0:1": {
+   "source_sha256": "3ccec856ec3f2d50cb303024867549e067b90423ee498bc6c4d6c5677b9489f3",
+   "ar": "لدى الأشخاص الذين تظهر عليهم السمات المميزة للثلاسيميا ألفا، يمنع انخفاضُ كمية الهيموغلوبين (hemoglobin) وصولَ ما يكفي من الأكسجين إلى أنسجة الجسم. ويعاني المصابون أيضًا من نقص في خلايا الدم الحمراء (فقر الدم، anemia)، وهو ما قد يسبب شحوب الجلد والضعف والتعب ومضاعفات أكثر خطورة.",
+   "back_translation_en": "In people who show the characteristic features of alpha thalassemia, a reduction in the amount of hemoglobin prevents enough oxygen from reaching the body's tissues. Affected people also suffer from a shortage of red blood cells (anemia), which may cause pale skin, weakness, fatigue, and more serious complications.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.910557746887207,
+     "opus_mt": 0.8922890424728394
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9590185284614563
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "في الأشخاص الذين يعانون من السمات المميزة للثلاسيميا ألفا ، فإن انخفاض كمية الهيموغلوبين يمنع كمية كافية من الأكسجين من الوصول إلى أنسجة الجسم. يعاني الأفراد المصابون أيضًا من نقص في خلايا الدم الحمراء (فقر الدم) ، والتي يمكن أن تسبب بشرة شاحبة وضعفًا وتعبًا ومضاعفات أكثر خطورة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:0:2": {
+   "source_sha256": "ca2dff8bf4618e107c2bc96b80e9b384831e99cc194f3a2379e54f84502dcb4a",
+   "ar": "هناك نوعان من الثلاسيميا ألفا يمكن أن يسببا مشكلات صحية. يُعرف النوع الأشد باسم متلازمة استسقاء الجنين بالهيموغلوبين بارت (hemoglobin Bart hydrops fetalis syndrome)، وتُسمّى أيضًا متلازمة Hb Bart أو الثلاسيميا ألفا الكبرى. ويُسمّى الشكل الأخف مرض HbH (HbH disease).",
+   "back_translation_en": "There are two types of alpha thalassemia that can cause health problems. The more severe type is known as hemoglobin Bart hydrops fetalis syndrome, which is also called Hb Bart syndrome or alpha thalassemia major. The milder form is called HbH disease.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9495836496353149,
+     "opus_mt": 0.943100094795227
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9480336904525757
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "نوعين من الثلاسيميا ألفا يمكن أن يسبب مشاكل صحية. يُعرف النوع الأكثر شدة باسم متلازمة هيموغلوبين بارت هيدروس جينيليس ، والتي تسمى أيضًا متلازمة Hb Bart أو ألفا ثلاسيميا الكبرى. الشكل الأكثر اعتدالا يسمى مرض HbH.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:0:3": {
+   "source_sha256": "026507914e450e489f807ead9ed1ea5f3c6be1eb97e637bfb2250b8913a8d56b",
+   "ar": "تتميز متلازمة Hb Bart باستسقاء الجنين (hydrops fetalis)، وهي حالة تتراكم فيها سوائل زائدة في الجسم قبل الولادة. ويمكن أن تشمل العلامات والأعراض الإضافية فقر الدم الشديد، وتضخم الكبد والطحال (hepatosplenomegaly)، وعيوبًا في القلب، وتشوهات في الجهاز البولي أو الأعضاء التناسلية. ومن دون علاج، يولد معظم الأطفال المصابين بهذه الحالة أمواتًا أو يموتون بعد الولادة بوقت قصير بسبب هذه المشكلات الصحية الخطيرة. ويمكن أن تسبب متلازمة Hb Bart أيضًا مضاعفات خطيرة للنساء أثناء الحمل، منها ارتفاع ضغط الدم إلى مستوى خطير مع تورّم (تسمّم الحمل، preeclampsia)، والولادة المبكرة، والنزيف غير الطبيعي.",
+   "back_translation_en": "Hb Bart syndrome is characterized by hydrops fetalis, which is a condition in which excess fluid builds up in the body before birth. Additional signs and symptoms can include severe anemia, enlargement of the liver and spleen (hepatosplenomegaly), heart defects, and abnormalities of the urinary system or the genital organs. Without treatment, most babies affected with this condition are born dead or die shortly after birth because of these serious health problems. Hb Bart syndrome can also cause serious complications for women during pregnancy, including high blood pressure to a dangerous level with swelling (preeclampsia), premature delivery, and abnormal bleeding.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9608116745948792,
+     "opus_mt": 0.9458171725273132
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9803473949432373
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "تتميز متلازمة Hb Bart بالهيدروبات الجنينية ، وهي حالة يتراكم فيها السائل الزائد في الجسم قبل الولادة. يمكن أن تشمل العلامات والأعراض الإضافية فقر الدم الشديد ، تضخم الكبد والطحال (تضخم الكبد) ، عيوب القلب ، وتشوهات الجهاز البولي أو الأعضاء التناسلية. بدون علاج ، يولد معظم الأطفال الذين يعانون من هذه الحالة ميتين أو يموتون بعد الولادة مباشرة بسبب هذه المشاكل الصحية الخطيرة. يمكن أن تسبب متلازمة Hb Bart أيضًا مضاعفات خطيرة للنساء أثناء الحمل ، بما في ذلك ارتفاع ضغط الدم بشكل خطير مع تورم (تسمم الحمل) ، والولادة المبكرة ، والنزيف غير الطبيعي.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:0:4": {
+   "source_sha256": "edfda411273646d21503447b96f0e875d6e0ef7b3ea49a3192da698a2b566fe2",
+   "ar": "يسبب مرض HbH (HbH disease) فقر دم خفيفًا إلى متوسط، وتضخم الكبد والطحال (hepatosplenomegaly)، واصفرار العينين والجلد (اليرقان، jaundice). وتظهر سمات مرض HbH عادةً في مرحلة الطفولة المبكرة، ويعيش المصابون عادةً حتى سن الرشد.",
+   "back_translation_en": "HbH disease causes mild to moderate anemia, enlargement of the liver and spleen (hepatosplenomegaly), and yellowing of the eyes and skin (jaundice). The features of HbH disease usually appear in early childhood, and affected people usually live into adulthood.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9388430118560791,
+     "opus_mt": 0.9195647239685059
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9548215866088867
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "مرض HbH يسبب فقر الدم الخفيف إلى المعتدل ، تضخم الكبد ، واصفرار العينين والجلد (اليرقان). عادة ما تظهر ملامح مرض HbH في مرحلة الطفولة المبكرة ، وعادة ما يعيش الأفراد المصابون في مرحلة البلوغ.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:1:0": {
+   "source_sha256": "cf14ae3bc1a1161465903503cb519067578f92ccda34a6adc5fc0d5a873e1acb",
+   "ar": "الثلاسيميا ألفا اضطراب دموي شائع إلى حد ما في جميع أنحاء العالم. ويولد كل عام آلاف الرضّع المصابين بمتلازمة Hb Bart ومرض HbH، ولا سيما في جنوب شرق آسيا. وتحدث الثلاسيميا ألفا أيضًا بشكل متكرر لدى الأشخاص المنحدرين من دول البحر الأبيض المتوسط، وأفريقيا، والشرق الأوسط، والهند، وآسيا الوسطى.",
+   "back_translation_en": "Alpha thalassemia is a fairly common blood disorder throughout the world. Thousands of infants affected with Hb Bart syndrome and HbH disease are born each year, particularly in Southeast Asia. Alpha thalassemia also occurs frequently in people descended from Mediterranean countries, Africa, the Middle East, India, and Central Asia.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9270362854003906,
+     "opus_mt": 0.9389253854751587
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9672833681106567
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "ألفا الثلاسيميا هو اضطراب دم شائع إلى حد ما في جميع أنحاء العالم. يولد الآلاف من الأطفال المصابين بمتلازمة Hb Bart ومرض HbH كل عام ، خاصة في جنوب شرق آسيا. كما يحدث الثلاسيميا ألفا في كثير من الأحيان في الناس من بلدان البحر الأبيض المتوسط وأفريقيا والشرق الأوسط والهند وآسيا الوسطى.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:2:0": {
+   "source_sha256": "a0e4f66db73893f4e64dce1c5d99606d49b8cffd5229aa61f4409b26fc31320d",
+   "ar": "تنتج الثلاسيميا ألفا عادةً عن حالات حذف (deletions) تشمل جينَي HBA1 وHBA2. وبشكل أقل شيوعًا، تسبب التغيّرات في تسلسل الحمض النووي (DNA) داخل هذين الجينين أو بالقرب منهما الثلاسيميا ألفا. وغالبًا ما يُشار إلى مثل هذه التغيّرات بالمتغيّرات غير الحذفية (nondeletion variants). ويوفّر كلٌّ من جينَي HBA1 وHBA2 التعليمات اللازمة لصنع بروتين يُسمّى ألفا غلوبين (alpha-globin)، وهو مكوِّن (وحدة فرعية، subunit) من مكونات الهيموغلوبين.",
+   "back_translation_en": "Alpha thalassemia usually results from deletions involving the HBA1 and HBA2 genes. Less commonly, changes in the DNA sequence within or near these two genes cause alpha thalassemia. Such changes are often referred to as nondeletion variants. Each of the HBA1 and HBA2 genes provides the instructions needed to make a protein called alpha-globin, which is a component (subunit) of hemoglobin.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9384562969207764,
+     "opus_mt": 0.9382402896881104
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9583244323730469
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "ينتج الثلاسيميا ألفا عادة عن عمليات الحذف التي تنطوي على جينات HBA1 و HBA2. أقل شيوعا، والتغيرات في تسلسل الحمض النووي في أو بالقرب من هذه الجينات تسبب الثلاسيميا ألفا. غالبًا ما يشار إلى هذه التغييرات باسم المتغيرات غير الحذف. توفر كل من جينات HBA1 و HBA2 تعليمات لصنع بروتين يسمى ألفا-غلوبين ، وهو مكون (وحدة فرعية) من الهيموغلوبين.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:2:1": {
+   "source_sha256": "ed703ed7f33ec29707583923eb8759c74beea77467ca9db172c73cbe038e0efa",
+   "ar": "لدى الإنسان نسختان من جين HBA1 ونسختان من جين HBA2 في كل خلية. وتُسمّى كل نسخة أليلًا (allele). وبالنسبة لكل جين، يُورَث أليل واحد من الأب، ويُورَث الآخر من الأم. ونتيجة لذلك، توجد أربعة أليلات تنتج الألفا غلوبين (alpha-globin). وتنتج الأنواع المختلفة من الثلاسيميا ألفا عن فقدان بعض هذه الأليلات أو جميعها أو تغيّرها.",
+   "back_translation_en": "A person has two copies of the HBA1 gene and two copies of the HBA2 gene in each cell. Each copy is called an allele. For each gene, one allele is inherited from the father, and the other is inherited from the mother. As a result, there are four alleles that produce alpha-globin. The different types of alpha thalassemia result from the loss or alteration of some or all of these alleles.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9250670671463013,
+     "opus_mt": 0.9265621900558472
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9758743047714233
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "الناس لديهم نسختين من الجين HBA1 ونسختين من الجين HBA2 في كل خلية. وتسمى كل نسخة أليل. لكل جين ، يتم وراثة أليل واحد من والد الشخص ، والآخر موروث من والدة الشخص. نتيجة لذلك ، هناك أربعة أليلات تنتج ألفا-غلوبين. تنتج الأنواع المختلفة من الثلاسيميا ألفا عن فقدان أو تغيير بعض أو كل هذه الأليلات.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:2:2": {
+   "source_sha256": "46082f5c5f5f7e1261e9519a49d9e47d76d18647e4a320cf5ef789b1d62d79d1",
+   "ar": "تؤدي حالات الحذف (deletions) والمتغيّرات غير الحذفية (nondeletion variants) في أليل واحد أو أكثر إلى تقليل كمية الألفا غلوبين التي تنتجها الخلايا. وتميل المتغيّرات غير الحذفية إلى تقليل الألفا غلوبين أكثر مما تفعله حالات الحذف.",
+   "back_translation_en": "Deletions and nondeletion variants in one or more alleles lead to a reduction in the amount of alpha-globin that cells produce. Nondeletion variants tend to reduce alpha-globin more than deletions do.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9273989796638489,
+     "opus_mt": 0.9244275093078613
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9461761713027954
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "تؤدي عمليات الحذف والمتغيرات غير الحذف في واحد أو أكثر من الأليلات إلى تقليل كمية خلايا ألفا غلوبين المنتجة. تميل متغيرات عدم الحذف إلى تقليل ألفا-غلوبين أكثر من عمليات الحذف.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:2:3": {
+   "source_sha256": "8fcf134146c7fad1b241814bfa2d2ecb34ad3e7d07550a456f425d80aa93aa72",
+   "ar": "تنتج متلازمة Hb Bart، وهي أشد أشكال الثلاسيميا ألفا، عن فقدان أليلات الألفا غلوبين (alpha-globin) الأربعة كلها أو تغيّرها. وتمنع هذه التغيّرات إنتاج أي ألفا غلوبين طبيعي.",
+   "back_translation_en": "Hb Bart syndrome, which is the most severe form of alpha thalassemia, results from the loss or alteration of all four alpha-globin alleles. These changes prevent the production of any normal alpha-globin.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9281092882156372,
+     "opus_mt": 0.8972282409667969
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9540005922317505
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "متلازمة هب بارت، أشد أشكال الثلاسيميا ألفا، تنتج عن فقدان أو تغيير جميع أليلات ألفا-غلوبين الأربعة. هذه التغييرات تمنع إنتاج أي ألفا غلوبين طبيعي.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:2:4": {
+   "source_sha256": "9b99c8ad60269d6e3f87c8bd47b5c538e6af27da15452f4112bd00c37418aaa5",
+   "ar": "ينتج مرض HbH عادةً عن فقدان ثلاثة من أليلات الألفا غلوبين (alpha-globin) الأربعة أو تغيّرها، مما يقلل بشدة كمية الألفا غلوبين الطبيعي المُنتَج. ولأن المتغيّرات غير الحذفية (nondeletion variants) تكون عادةً أشد من حالات الحذف، فإن وجود متغيّرات غير حذفية في اثنين من أليلات الألفا غلوبين الأربعة يمكن أن يؤدي إلى مرض HbH.",
+   "back_translation_en": "HbH disease usually results from the loss or alteration of three of the four alpha-globin alleles, which sharply reduces the amount of normal alpha-globin produced. Because nondeletion variants are usually more severe than deletions, the presence of nondeletion variants in two of the four alpha-globin alleles can lead to HbH disease.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9314332604408264,
+     "opus_mt": 0.9279043674468994
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.96334308385849
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "عادة ما يحدث مرض الهيموغلوبين عن طريق فقدان أو تغيير ثلاثة من أليلات ألفا-غلوبين الأربعة، مما يقلل بشكل حاد من كمية ألفا-غلوبين الطبيعية المنتجة. نظرًا لأن المتغيرات غير الحذف عادة ما تكون أكثر حدة من عمليات الحذف ، يمكن أن تؤدي المتغيرات غير الحذف في اثنين من أليلات ألفا-غلوبين الأربعة إلى مرض HbH.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:2:5": {
+   "source_sha256": "abe1fbf8f4816b62cd94454b312790aaa0fdea407c92f0d383f9bf853a59c4f8",
+   "ar": "عند نقص الألفا غلوبين (alpha-globin)، تصنع الخلايا قليلًا من الهيموغلوبين الطبيعي أو لا تصنع منه شيئًا. وبدلًا من ذلك، تنتج الخلايا أشكالًا غير طبيعية من الهيموغلوبين تُسمّى هيموغلوبين بارت (Hb Bart) أو الهيموغلوبين H (HbH). ولا تستطيع جزيئات الهيموغلوبين غير الطبيعية هذه نقل الأكسجين بفعالية إلى أنسجة الجسم. ويؤدي حلول Hb Bart أو HbH محلّ الهيموغلوبين الطبيعي إلى فقر الدم والمشكلات الصحية الخطيرة الأخرى المرتبطة بالثلاسيميا ألفا.",
+   "back_translation_en": "When there is a shortage of alpha-globin, cells make little or none of normal hemoglobin. Instead, cells produce abnormal forms of hemoglobin called hemoglobin Bart (Hb Bart) or hemoglobin H (HbH). These abnormal hemoglobin molecules cannot effectively carry oxygen to the body's tissues. The replacement of normal hemoglobin by Hb Bart or HbH leads to anemia and the other serious health problems associated with alpha thalassemia.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9534743428230286,
+     "opus_mt": 0.9578893184661865
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9751837253570557
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "مع نقص ألفا غلوبين ، تجعل الخلايا الهيموغلوبين الطبيعي قليلًا أو معدومًا. بدلاً من ذلك ، تنتج الخلايا أشكالًا غير طبيعية من الهيموجلوبين تسمى الهيموغلوبين بارت (Hb Bart) أو الهيموغلوبين H (HbH). لا يمكن لجزيئات الهيموجلوبين غير الطبيعية هذه أن تحمل الأكسجين بشكل فعال إلى أنسجة الجسم. استبدال Hb Bart أو HbH للهيموغلوبين الطبيعي يسبب فقر الدم وغيرها من المشاكل الصحية الخطيرة المرتبطة بالثلاسيميا ألفا.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:2:6": {
+   "source_sha256": "137b7fa19f8bdfab544b4bc8b80b38d403a5e249f71d4fcf3de20b9a39a38931",
+   "ar": "يرتبط شكلان إضافيان من الثلاسيميا ألفا بانخفاض كمية الألفا غلوبين (alpha-globin). ولأن الخلايا لا تزال تنتج بعض الهيموغلوبين الطبيعي، فإن هذين الشكلين يميلان إلى التسبب في مشكلات صحية قليلة أو عدم التسبب في أي مشكلات. ويؤدي فقدان اثنين من أليلات الألفا غلوبين الأربعة إلى سمة الثلاسيميا ألفا (alpha thalassemia trait). وقد تكون لدى الأشخاص الذين لديهم سمة الثلاسيميا ألفا خلايا دم حمراء صغيرة وشاحبة على نحو غير معتاد، وفقر دم خفيف. ويوجد فقدان أليل واحد من أليلات الألفا غلوبين لدى الحاملين الصامتين للثلاسيميا ألفا (alpha thalassemia silent carriers). ولا تظهر على هؤلاء الأشخاص عادةً أي علامات أو أعراض مرتبطة بالثلاسيميا.",
+   "back_translation_en": "Two additional forms of alpha thalassemia are related to a reduced amount of alpha-globin. Because cells still produce some normal hemoglobin, these two forms tend to cause few health problems or none. The loss of two of the four alpha-globin alleles leads to alpha thalassemia trait. People who have alpha thalassemia trait may have unusually small and pale red blood cells, and mild anemia. The loss of one alpha-globin allele is found in alpha thalassemia silent carriers. These people usually show no signs or symptoms related to thalassemia.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9397101402282715,
+     "opus_mt": 0.9259575605392456
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9723067283630371
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "يرتبط شكلان إضافيان من الثلاسيميا ألفا بانخفاض كمية ألفا-غلوبين. ولأن الخلايا لا تزال تنتج بعض الهيموجلوبين الطبيعي، فإن هذه الأشكال تميل إلى التسبب في مشاكل صحية قليلة أو معدومة. فقدان اثنين من أليلات ألفا-غلوبين الأربعة يؤدي إلى سمة ثلاسيميا ألفا. قد يكون لدى الأشخاص الذين يعانون من سمة ألفا ثلاسيميا خلايا دم حمراء شاحبة صغيرة بشكل غير عادي وفقر دم خفيف. تم العثور على فقدان أليل ألفا غلوبين واحد في ناقلات ألفا الثلاسيميا الصامتة. هؤلاء الأفراد عادة ليس لديهم علامات أو أعراض متعلقة بالثلاسيميا.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:2:7": {
+   "source_sha256": "85c6d253a73d6f29f108da54977abbeebf5054da36202e51220a5fba5b615949",
+   "ar": "تسبب المتغيّرات غير الحذفية (nondeletion variants) في أليل واحد أو اثنين مجموعةً من الحالات، تتراوح من حالة الحامل الصامت للثلاسيميا ألفا إلى مرض HbH، بحسب الأليل المعني.",
+   "back_translation_en": "Nondeletion variants in one or two alleles cause a range of conditions, ranging from the alpha thalassemia silent carrier state to HbH disease, depending on the allele involved.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9133521318435669,
+     "opus_mt": 0.9314131736755371
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.939960241317749
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "تتسبب المتغيرات غير الحذفية في واحد أو اثنين من الأليلات في مجموعة من الحالات ، من ناقل ألفا ثلاسيميا الصامت إلى مرض HbH ، اعتمادًا على الأليل المعني.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:alpha-thalassemia:3:0": {
+   "source_sha256": "c6134307c3dfa9846cd68a1100f7701bbb9449313c51e699535d7dbdb46ec122",
+   "ar": "إن وراثة الثلاسيميا ألفا معقدة. فكل شخص يرث أليلين (alleles) من أليلات الألفا غلوبين من كل والد. وإذا كان كلا الوالدين يفتقدان أليلًا واحدًا على الأقل من أليلات الألفا غلوبين، فإن أطفالهما معرّضون لخطر الإصابة بمتلازمة Hb Bart أو مرض HbH أو سمة الثلاسيميا ألفا. ويعتمد الخطر الدقيق على عدد الأليلات المفقودة وعلى التوليفة المتأثرة من جينَي HBA1 وHBA2.",
+   "back_translation_en": "The inheritance of alpha thalassemia is complex. Each person inherits two alpha-globin alleles from each parent. If both parents are missing at least one alpha-globin allele, their children are at risk of having Hb Bart syndrome, HbH disease, or alpha thalassemia trait. The precise risk depends on the number of missing alleles and on the affected combination of the HBA1 and HBA2 genes.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9446123838424683,
+     "opus_mt": 0.9384072422981262
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9753966331481934
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "وراثة ألفا ثلاسيميا معقدة. يرث كل شخص اثنين من أليلات ألفا-غلوبين من كل من الوالدين. إذا كان كلا الوالدين في عداد المفقودين واحد على الأقل أليل ألفا غلوبين، أطفالهم معرضون لخطر الإصابة بمتلازمة Hb بارت، مرض HbH، أو سمة الثلاسيميا ألفا. يعتمد الخطر الدقيق على عدد الأليلات المفقودة وأي مجموعة من جينات HBA1 و HBA2 تتأثر.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:0:0": {
+   "source_sha256": "19c68541154b424680dc2f560a6c065483fa37f877a5a7d5d54c29a05f520dec",
+   "ar": "نقص إنزيم 21-هيدروكسيليز (21-hydroxylase deficiency) اضطراب موروث يؤثر في الغدتين الكظريتين (adrenal glands). وتقع الغدتان الكظريتان فوق الكليتين، وتنتجان مجموعة متنوعة من الهرمونات التي تنظّم كثيرًا من الوظائف الأساسية في الجسم. ولدى الأشخاص المصابين بنقص إنزيم 21-هيدروكسيليز، تنتج الغدتان الكظريتان كميات زائدة من الأندروجينات (androgens)، وهي هرمونات جنسية ذكرية.",
+   "back_translation_en": "21-hydroxylase enzyme deficiency is an inherited disorder that affects the adrenal glands. The adrenal glands are located on top of the kidneys, and produce a variety of hormones that regulate many essential functions in the body. In people affected with 21-hydroxylase enzyme deficiency, the adrenal glands produce excess amounts of androgens, which are male sex hormones.",
+   "fidelity_note": "The word إنزيم ('enzyme') is included in the condition name, as is usual in Arabic; the English name omits it.",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9466660618782043,
+     "opus_mt": 0.9411402940750122
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9567140340805054
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "The word إنزيم ('enzyme') is included in the condition name, as is usual in Arabic; the English name omits it.",
+    "opus_mt_ar": "21-hydroxylase نقص هو اضطراب الموروثة التي تؤثر على الغدد الكظرية. تقع الغدد الكظرية فوق الكلى وتنتج مجموعة متنوعة من الهرمونات التي تنظم العديد من الوظائف الأساسية في الجسم. في الأشخاص الذين يعانون من نقص 21-هيدروكسيلاز ، تنتج الغدد الكظرية الأندروجينات الزائدة ، وهي هرمونات جنسية ذكورية.",
+    "flags": [
+     "translator noted a fidelity issue"
+    ],
+    "status": "review_first"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:0:1": {
+   "source_sha256": "e5226c4a42b469985a11fa552c37798023272dfe1d3dc002835d66280d2ee66e",
+   "ar": "هناك ثلاثة أنواع من نقص إنزيم 21-هيدروكسيليز. نوعان منها شكلان تقليديان (classic)، يُعرفان بالنوع الفاقد للملح (salt-wasting) والنوع المُذكِّر البسيط (simple virilizing). ويُسمّى النوع الثالث النوع غير التقليدي (non-classic). والنوع الفاقد للملح هو الأشد، والنوع المذكِّر البسيط أقل شدة، والنوع غير التقليدي هو الشكل الأقل شدة.",
+   "back_translation_en": "There are three types of 21-hydroxylase enzyme deficiency. Two of them are classic forms, known as the salt-losing type and the simple virilizing type. The third type is called the non-classic type. The salt-losing type is the most severe, the simple virilizing type is less severe, and the non-classic type is the least severe form.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9309542179107666,
+     "opus_mt": 0.9015011787414551
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9529562592506409
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "هناك ثلاثة أنواع من نقص 21 هيدروكسيلاز. هناك نوعان من الأشكال الكلاسيكية ، والمعروفة باسم أنواع هدر الملح وأنواع virilizing البسيطة. النوع الثالث يسمى النوع غير الكلاسيكي. نوع هدر الملح هو الأكثر شدة ، والنوع البسيط أقل حدة ، والنوع غير الكلاسيكي هو الأقل حدة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:0:2": {
+   "source_sha256": "65be8ee7d6e1e520de09a200b29753ed6fe57dd044cca5fd9bca0c22e1f77ab6",
+   "ar": "يميل الذكور والإناث المصابون بأيٍّ من الشكلين التقليديين لنقص إنزيم 21-هيدروكسيليز إلى تسارع مبكر في النمو، لكن طولهم النهائي في سن الرشد يكون عادةً أقصر من غيرهم من أفراد أسرتهم. وبالإضافة إلى ذلك، قد تكون لدى المصابين قدرة منخفضة على إنجاب أطفال بيولوجيين (انخفاض الخصوبة، decreased fertility). وقد تُصاب الإناث أيضًا بنمو مفرط لشعر الجسم (الشَّعرانية، hirsutism)، والصلع ذي النمط الذكوري، وعدم انتظام الدورة الشهرية.",
+   "back_translation_en": "Males and females affected with either of the two classic forms of 21-hydroxylase enzyme deficiency tend to have an early acceleration in growth, but their final height in adulthood is usually shorter than the others in their family. In addition, affected people may have a reduced ability to have biological children (decreased fertility). Females may also develop excessive growth of body hair (hirsutism), male-pattern baldness, and irregular menstrual periods.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9401671886444092,
+     "opus_mt": 0.9482831954956055
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.967483639717102
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "يميل الذكور والإناث الذين يعانون من أي شكل كلاسيكي من نقص 21-هيدروكسيلاز إلى حدوث طفرة نمو مبكرة ، ولكن طولهم النهائي للبالغين عادة ما يكون أقصر من الآخرين في أسرهم. بالإضافة إلى ذلك ، قد يكون لدى الأفراد المصابين قدرة منخفضة على إنجاب أطفال بيولوجيين (انخفاض الخصوبة). قد تطور الإناث أيضًا نموًا مفرطًا لشعر الجسم (الشعرانية) ، ونمط صلع الذكور ، وعدم انتظام الدورة الشهرية.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:0:3": {
+   "source_sha256": "44285c9058036db549219f6849f18a621e19d5d27a507de0c7151528999783be",
+   "ar": "لدى نحو 75 بالمئة من الأفراد المصابين بنقص إنزيم 21-هيدروكسيليز التقليدي النوعُ الفاقد للملح (salt-wasting). ويكون إنتاج الهرمونات منخفضًا للغاية في هذا الشكل من الاضطراب. ويفقد المصابون كميات كبيرة من الصوديوم في بولهم، وهو ما قد يكون مهددًا للحياة في مرحلة الرضاعة المبكرة. وقد يعاني الرضّع المصابون بالنوع الفاقد للملح من ضعف الرضاعة، وفقدان الوزن، والجفاف، والتقيؤ. أما الأفراد المصابون بالشكل المذكِّر البسيط فلا يعانون من فقدان الملح.",
+   "back_translation_en": "About 75 percent of individuals affected with classic 21-hydroxylase enzyme deficiency have the salt-losing type. Hormone production is extremely low in this form of the disorder. Affected people lose large amounts of sodium in their urine, which may be life-threatening in early infancy. Infants affected with the salt-losing type may suffer from poor feeding, weight loss, dehydration, and vomiting. As for individuals affected with the simple virilizing form, they do not suffer from salt loss.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.932702898979187,
+     "opus_mt": 0.9463291168212891
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.952172040939331
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "ما يقرب من 75 في المئة من الأفراد الذين يعانون من نقص 21-هيدروكسيلاز الكلاسيكية لديهم نوع هدر الملح. إنتاج الهرمونات منخفض للغاية في هذا الشكل من الاضطراب. الأفراد المتضررين يفقدون كميات كبيرة من الصوديوم في البول، والتي يمكن أن تكون مهددة للحياة في مرحلة الطفولة المبكرة. يمكن أن يعاني الأطفال الذين يعانون من نوع هدر الملح من سوء التغذية وفقدان الوزن والجفاف والقيء. الأفراد الذين يعانون من شكل virilizing بسيط لا يعانون من فقدان الملح.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:0:4": {
+   "source_sha256": "51a774e408a0788c3a831870c32437ca803685fe58de970431863c8c8b5c0ef5",
+   "ar": "في كلٍّ من الشكلين الفاقد للملح والمذكِّر البسيط لهذا الاضطراب، تكون لدى الإناث عادةً أعضاء تناسلية خارجية لا تبدو بوضوح ذكرية أو أنثوية. أما الذكور فتكون لديهم عادةً أعضاء تناسلية ذكرية نمطية، لكن قد تكون الخصيتان صغيرتين.",
+   "back_translation_en": "In both the salt-losing and simple virilizing forms of this disorder, females usually have external genital organs that do not clearly look male or female. As for males, they usually have male-typical genital organs, but the testes may be small.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9069890379905701,
+     "opus_mt": 0.9435626268386841
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.929427981376648
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "في كل من أشكال إهدار الملح و فيريليزينغ بسيطة من هذا الاضطراب، الإناث عادة ما يكون الأعضاء التناسلية الخارجية التي لا تبدو بوضوح الذكور أو الإناث. الذكور عادة ما يكون لديهم الأعضاء التناسلية الذكورية ولكن الخصيتين قد تكون صغيرة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:0:5": {
+   "source_sha256": "5791dd60da855858b56b026cd6689e39f24cda33dc84bc33ad20e07883b46357",
+   "ar": "تكون لدى الإناث المصابات بالنوع غير التقليدي من نقص إنزيم 21-هيدروكسيليز أعضاء تناسلية أنثوية نمطية. ومع تقدّم الإناث المصابات في العمر، قد يعانين من الشعرانية (hirsutism)، والصلع ذي النمط الذكوري، وعدم انتظام الدورة الشهرية، وانخفاض الخصوبة. وقد يكون لدى الذكور المصابين بالنوع غير التقليدي نموّ مبكر للحية وخصيتان صغيرتان. وبعض الأفراد المصابين بهذا النوع من نقص إنزيم 21-هيدروكسيليز لا تظهر عليهم أي أعراض للاضطراب.",
+   "back_translation_en": "Females affected with the non-classic type of 21-hydroxylase enzyme deficiency have female-typical genital organs. As affected females grow older, they may suffer from hirsutism, male-pattern baldness, irregular menstrual periods, and decreased fertility. Males affected with the non-classic type may have early growth of the beard and small testes. Some individuals affected with this type of 21-hydroxylase enzyme deficiency do not show any symptoms of the disorder.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.936055600643158,
+     "opus_mt": 0.949981689453125
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9564980864524841
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "الإناث مع النوع غير الكلاسيكي من نقص 21-هيدروكسيلاز لديها الأعضاء التناسلية الأنثوية النموذجية. مع تقدم الإناث المصابات في السن ، قد يتعرضن للشعرانية ، والصلع الذكوري ، وعدم انتظام الدورة الشهرية ، وانخفاض الخصوبة. قد يكون لدى الذكور ذوي النوع غير الكلاسيكي نمو اللحية المبكر والخصيتين الصغيرة. بعض الأفراد الذين يعانون من هذا النوع من نقص 21-هيدروكسيلاز ليس لديهم أعراض لهذا الاضطراب.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:1:0": {
+   "source_sha256": "120ad6d363ca7ff668c12e1b50a52b57baaf6c37b12036bc0463592ccfa6ac77",
+   "ar": "تحدث الأشكال التقليدية لنقص إنزيم 21-هيدروكسيليز لدى 1 من كل 15,000 مولود جديد. ويُقدَّر انتشار الشكل غير التقليدي لنقص إنزيم 21-هيدروكسيليز بـ 1 من كل 1,000 فرد. ويتفاوت انتشار الشكلين التقليدي وغير التقليدي بين المجموعات العرقية المختلفة.",
+   "back_translation_en": "The classic forms of 21-hydroxylase enzyme deficiency occur in 1 of every 15,000 newborns. The prevalence of the non-classic form of 21-hydroxylase enzyme deficiency is estimated at 1 of every 1,000 individuals. The prevalence of both the classic and non-classic forms varies among different ethnic groups.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9120417833328247,
+     "opus_mt": 0.9006233215332031
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.94107985496521
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "تحدث الأشكال الكلاسيكية لنقص 21-هيدروكسيلاز في 1 من كل 15000 مولود جديد. يقدر انتشار الشكل غير الكلاسيكي لنقص 21 هيدروكسيلاز بواحد من كل 1000 فرد. يختلف انتشار كل من الأشكال الكلاسيكية وغير الكلاسيكية بين مختلف المجموعات العرقية.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:1:1": {
+   "source_sha256": "a4bfd62de7480e6c48ae0831c34f5a413a9f3a47c0718c3c43f4196aab352c60",
+   "ar": "نقص إنزيم 21-هيدروكسيليز هو أحد مجموعة من الاضطرابات تُعرف بأنواع تضخم الغدة الكظرية الخلقي (congenital adrenal hyperplasias)، وهي اضطرابات تُضعف إنتاج الهرمونات وتُخلّ بالنمو الجنسي. ونقص إنزيم 21-هيدروكسيليز مسؤول عن نحو 95 بالمئة من جميع حالات تضخم الغدة الكظرية الخلقي.",
+   "back_translation_en": "21-hydroxylase enzyme deficiency is one of a group of disorders known as the types of congenital adrenal hyperplasia, which are disorders that impair hormone production and disrupt sexual development. 21-hydroxylase enzyme deficiency is responsible for about 95 percent of all cases of congenital adrenal hyperplasia.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9496318101882935,
+     "opus_mt": 0.9391893148422241
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9493997097015381
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "نقص 21-هيدروكسيلاز هو واحد من مجموعة من الاضطرابات المعروفة باسم تضخم الغدة الكظرية الخلقي الذي يضعف إنتاج الهرمونات ويعطل التطور الجنسي. نقص 21-هيدروكسيلاز هو المسؤول عن حوالي 95 في المئة من جميع حالات تضخم الغدة الكظرية الخلقية.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:2:0": {
+   "source_sha256": "617b3adc939e9894a03a5e7d45b5023d8c80425130425081f263c99202bcc202",
+   "ar": "تسبب الطفرات (mutations) في جين CYP21A2 نقصَ إنزيم 21-هيدروكسيليز. ويوفّر جين CYP21A2 التعليمات اللازمة لصنع إنزيم يُسمّى 21-هيدروكسيليز (21-hydroxylase). ويوجد هذا الإنزيم في الغدتين الكظريتين، حيث يؤدي دورًا في إنتاج هرمونات تُسمّى الكورتيزول (cortisol) والألدوستيرون (aldosterone). وللكورتيزول وظائف عديدة، مثل الحفاظ على مستويات السكر في الدم (الغلوكوز، glucose)، وحماية الجسم من الإجهاد، وتثبيط الالتهاب. ويُسمّى الألدوستيرون أحيانًا الهرمون الحافظ للملح لأنه ينظّم كمية الملح التي تحتفظ بها الكليتان. ويؤثر احتباس الملح في مستويات السوائل في الجسم وفي ضغط الدم.",
+   "back_translation_en": "Mutations in the CYP21A2 gene cause 21-hydroxylase enzyme deficiency. The CYP21A2 gene provides the instructions needed to make an enzyme called 21-hydroxylase. This enzyme is found in the adrenal glands, where it plays a role in producing hormones called cortisol and aldosterone. Cortisol has numerous functions, such as maintaining blood sugar (glucose) levels, protecting the body from stress, and suppressing inflammation. Aldosterone is sometimes called the salt-retaining hormone because it regulates the amount of salt that the kidneys retain. The retention of salt affects fluid levels in the body and blood pressure.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.944133996963501,
+     "opus_mt": 0.9525676369667053
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.965714693069458
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "الطفرات في جين CYP21A2 تسبب نقص 21-هيدروكسيلاس. يوفر جين CYP21A2 تعليمات لصنع إنزيم يسمى 21-hydroxylase. يوجد هذا الإنزيم في الغدد الكظرية ، حيث يلعب دورًا في إنتاج هرمونات تسمى الكورتيزول والألدوستيرون. يحتوي الكورتيزول على العديد من الوظائف ، مثل الحفاظ على مستويات السكر في الدم (الجلوكوز) ، وحماية الجسم من الإجهاد ، وقمع الالتهاب. يُطلق على الدوستيرون أحيانًا هرمون الاحتفاظ بالملح لأنه ينظم كمية الملح التي تحتفظ بها الكلى. يؤثر الاحتفاظ بالملح على مستويات السوائل في الجسم وضغط الدم.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:2:1": {
+   "source_sha256": "e96bbf3e2975504d3f8b885ae9121eab0bf08b5c1c82acd6edac92f7843f36e8",
+   "ar": "ينتج نقص إنزيم 21-هيدروكسيليز عن قلّة (عَوَز، deficiency) في إنزيم 21-هيدروكسيليز. وعندما يكون 21-هيدروكسيليز ناقصًا، فإن المواد التي تُستخدم عادةً لتكوين الكورتيزول والألدوستيرون تتراكم بدلًا من ذلك في الغدتين الكظريتين وتتحول إلى أندروجينات (androgens). ويؤدي الإنتاج المفرط للأندروجينات إلى اضطرابات في النمو الجنسي لدى الأشخاص المصابين بنقص إنزيم 21-هيدروكسيليز. ويسهم نقص إنتاج الألدوستيرون في فقدان الملح لدى الأشخاص المصابين بالشكل الفاقد للملح من هذه الحالة.",
+   "back_translation_en": "21-hydroxylase enzyme deficiency results from a shortage (deficiency) of the 21-hydroxylase enzyme. When 21-hydroxylase is lacking, substances that are usually used to form cortisol and aldosterone instead build up in the adrenal glands and are converted into androgens. The excess production of androgens leads to abnormalities in sexual development in people affected with 21-hydroxylase enzyme deficiency. The lack of aldosterone production contributes to salt loss in people affected with the salt-losing form of this condition.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9451347589492798,
+     "opus_mt": 0.9556739330291748
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9730216264724731
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "يحدث نقص 21-hydroxylase بسبب نقص (نقص) في إنزيم 21-hydroxylase. عندما يكون هناك نقص في 21-هيدروكسيلاز ، فإن المواد التي تستخدم عادة لتشكيل الكورتيزول والألدوستيرون تتراكم بدلاً من ذلك في الغدد الكظرية ويتم تحويلها إلى الأندروجينات. يؤدي الإنتاج الزائد من الأندروجينات إلى تشوهات في التطور الجنسي لدى الأشخاص الذين يعانون من نقص 21-hydroxylase. يساهم نقص إنتاج الألدوستيرون في فقدان الملح لدى الأشخاص الذين يعانون من شكل هدر الملح من هذه الحالة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:2:2": {
+   "source_sha256": "bfa5f42374c8d6213bfa0213ed91bd7254f97fa61eddbf71a7f9231e4039769c",
+   "ar": "تحدد كمية إنزيم 21-هيدروكسيليز الفعّال شدة الاضطراب. فلدى الأفراد المصابين بالنوع الفاقد للملح طفرات في جين CYP21A2 تؤدي إلى إنزيم غير فعّال تمامًا. ولدى الأشخاص المصابين بالنوع المذكِّر البسيط من هذه الحالة طفرات في جين CYP21A2 تسمح بإنتاج مستويات منخفضة من الإنزيم الفعّال. ولدى الأفراد المصابين بالنوع غير التقليدي من هذا الاضطراب طفرات في جين CYP21A2 تؤدي إلى إنتاج كميات منخفضة من الإنزيم، ولكن بكمية أكبر مما في أيٍّ من النوعين الآخرين.",
+   "back_translation_en": "The amount of functional 21-hydroxylase enzyme determines the severity of the disorder. Individuals affected with the salt-losing type have mutations in the CYP21A2 gene that result in a completely nonfunctional enzyme. People affected with the simple virilizing type of this condition have mutations in the CYP21A2 gene that allow the production of low levels of functional enzyme. Individuals affected with the non-classic type of this disorder have mutations in the CYP21A2 gene that result in the production of reduced amounts of the enzyme, but in a greater amount than in either of the other two types.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.8898987770080566,
+     "opus_mt": 0.9221981167793274
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9452354907989502
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "تحدد كمية إنزيم 21-hydroxylase الوظيفي شدة الاضطراب. الأفراد الذين يعانون من نوع هدر الملح لديهم طفرات CYP21A2 التي تؤدي إلى إنزيم غير وظيفي تمامًا. الأشخاص الذين يعانون من هذا النوع البسيط من هذه الحالة لديهم طفرات جينية CYP21A2 تسمح بإنتاج مستويات منخفضة من الإنزيم الوظيفي. الأفراد الذين يعانون من النوع غير الكلاسيكي من هذا الاضطراب لديهم طفرات CYP21A2 التي تؤدي إلى إنتاج كميات مخفضة من الإنزيم ، ولكن أكثر إنزيم من أي من الأنواع الأخرى.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:21-hydroxylase-deficiency:3:0": {
+   "source_sha256": "0b1a11b37934d20835309e73c12695fe5109de582c4f92572ce7397059d983ab",
+   "ar": "تُورَّث هذه الحالة بنمط جسمي متنحٍّ (autosomal recessive)، ما يعني أن نسختَي الجين كلتيهما في كل خلية تحملان طفرات. ويحمل كلٌّ من والدَي الشخص المصاب بحالة جسمية متنحية نسخةً واحدة من الجين الطافر، لكنهما في العادة لا تظهر عليهما علامات الحالة وأعراضها.",
+   "back_translation_en": "This condition is inherited in an autosomal recessive pattern, which means that both copies of the gene in each cell carry mutations. Each of the two parents of a person affected with an autosomal recessive condition carries one copy of the mutated gene, but they usually do not show the signs and symptoms of the condition.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9348549842834473,
+     "opus_mt": 0.8769481182098389
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.925827145576477
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "هذه الحالة موروثة في نمط جسمي متنحي ، مما يعني أن كلا النسختين من الجين في كل خلية لها طفرات. يحمل والدا الشخص المصاب بحالة جسمية متنحية نسخة واحدة من الجين المتحور ، لكنهما لا يظهران عادة علامات وأعراض الحالة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:0:0": {
+   "source_sha256": "0b3a8a24556885168f95a3e0f8efb8851d32b713988154627b1e7ddbc1212015",
+   "ar": "ضمور العضلات الشوكي (spinal muscular atrophy) اضطراب وراثي يتميز بضعف وهُزال (ضمور، atrophy) في العضلات المستخدمة في الحركة (العضلات الهيكلية، skeletal muscles). وينتج عن فقدان خلايا عصبية متخصصة، تُسمّى الخلايا العصبية الحركية (motor neurons)، تتحكم في حركة العضلات. ويميل الضعف إلى أن يكون أشد في العضلات القريبة من مركز الجسم (الدانية، proximal) مقارنةً بالعضلات البعيدة عن مركز الجسم (القاصية، distal). ويزداد ضعف العضلات عادةً سوءًا مع التقدم في العمر. وهناك أنواع كثيرة من ضمور العضلات الشوكي تنتج عن تغيّرات في الجينات نفسها. وتختلف هذه الأنواع في العمر الذي تبدأ فيه وفي شدة ضعف العضلات؛ ومع ذلك، هناك تداخل بين الأنواع. أما الأشكال الأخرى من ضمور العضلات الشوكي وأمراض الخلايا العصبية الحركية ذات الصلة، مثل ضمور العضلات الشوكي المصحوب بالصرع الرمعي العضلي المترقّي، وضمور العضلات الشوكي الغالب في الأطراف السفلية، وضمور العضلات الشوكي الطفولي المرتبط بالكروموسوم X، وضمور العضلات الشوكي المصحوب بضائقة تنفسية من النوع 1، فتنتج عن طفرات في جينات أخرى.",
+   "back_translation_en": "Spinal muscular atrophy is a genetic disorder characterized by weakness and wasting (atrophy) in the muscles used for movement (skeletal muscles). It results from the loss of specialized nerve cells, called motor neurons, that control muscle movement. The weakness tends to be more severe in the muscles near the center of the body (proximal) compared with the muscles far from the center of the body (distal). Muscle weakness usually gets worse with advancing age. There are many types of spinal muscular atrophy that result from changes in the same genes. These types differ in the age at which they begin and in the severity of muscle weakness; however, there is overlap between the types. As for the other forms of spinal muscular atrophy and related motor neuron diseases, such as spinal muscular atrophy with progressive myoclonic epilepsy, spinal muscular atrophy predominant in the lower limbs, X-chromosome-linked infantile spinal muscular atrophy, and spinal muscular atrophy with respiratory distress type 1, they result from mutations in other genes.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9262521266937256,
+     "opus_mt": 0.9429848194122314
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9230108261108398
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "ضمور العضلات الشوكية هو اضطراب وراثي يتميز بالضعف والهزال (الضمور) في العضلات المستخدمة للحركة (العضلات الهيكلية). وهو ناتج عن فقدان الخلايا العصبية المتخصصة ، والتي تسمى الخلايا العصبية الحركية التي تتحكم في حركة العضلات. يميل الضعف إلى أن يكون أكثر حدة في العضلات القريبة من مركز الجسم (القريبة) مقارنة بالعضلات البعيدة عن مركز الجسم (البعيدة). ضعف العضلات عادة ما يتفاقم مع التقدم في السن. هناك العديد من أنواع ضمور العضلات الشوكية التي تسببها التغيرات في نفس الجينات. تختلف الأنواع في عمر بداية وشدة ضعف العضلات ؛ ومع ذلك ، هناك تداخل بين الأنواع. وهناك أشكال أخرى من ضمور العضلات الشوكية والأمراض العصبية الحركية ذات الصلة، مثل ضمور العضلات الشوكية مع الصرع العضلي التدريجي، وضمور العضلات الشوكية مع غلبة الطرف السفلي، وضمور العضلات الشوكية الطفولي المرتبط بـ X، وضمور العضلات الشوكية مع النوع 1 من الضائقة التنفسية بسبب طفرات في جينات أخرى.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:0:1": {
+   "source_sha256": "86e292b902ff8de2dc60eec3a9116e27eaee4bff35b2c07a0cb0cb49517b8422",
+   "ar": "يكون ضمور العضلات الشوكي من النوع 0 واضحًا قبل الولادة، وهو الشكل الأندر والأشد من هذه الحالة. ويتحرك الرضّع المصابون بشكل أقل في الرحم، ونتيجة لذلك يولدون غالبًا بتشوّهات في المفاصل (تقفّعات، contractures). ويكون لديهم توتر عضلي ضعيف للغاية (نقص التوتر العضلي، hypotonia) عند الولادة. وتكون عضلاتهم التنفسية ضعيفة جدًا، وغالبًا لا يبقون على قيد الحياة بعد مرحلة الرضاعة بسبب فشل الجهاز التنفسي. ولدى بعض الرضّع المصابين بضمور العضلات الشوكي من النوع 0 أيضًا عيوب في القلب موجودة منذ الولادة (خِلقية، congenital).",
+   "back_translation_en": "Spinal muscular atrophy type 0 is evident before birth, and it is the rarest and most severe form of this condition. Affected infants move less in the womb, and as a result they are often born with joint deformities (contractures). They have extremely weak muscle tone (hypotonia) at birth. Their respiratory muscles are very weak, and they often do not survive beyond infancy because of respiratory failure. Some infants affected with spinal muscular atrophy type 0 also have heart defects present since birth (congenital).",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9384500980377197,
+     "opus_mt": 0.9487524628639221
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9597858190536499
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "الضمور العضلي الشوكي من النوع 0 واضح قبل الولادة وهو أندر وأشد أشكال الحالة. يتحرك الأطفال المصابون أقل في الرحم ، ونتيجة لذلك غالباً ما يولدون بتشوهات مشتركة (تقلصات). لديهم ضعف شديد في العضلات (hypotonia) عند الولادة. عضلات الجهاز التنفسي ضعيفة جدا وغالبا ما لا البقاء على قيد الحياة بعد الطفولة بسبب فشل الجهاز التنفسي. بعض الأطفال الذين يعانون من ضمور العضلات الشوكي من النوع 0 لديهم أيضًا عيوب في القلب موجودة منذ الولادة (خلقية).",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:0:2": {
+   "source_sha256": "c3a271bf9d883db1faaae18866e6b8de9a487ffe2758da6bafe64e5c9a0c95a6",
+   "ar": "ضمور العضلات الشوكي من النوع الأول (type I) (ويُسمّى أيضًا مرض فيردنيغ-هوفمان، Werdnig-Hoffmann disease) هو الشكل الأكثر شيوعًا من هذه الحالة. وهو شكل شديد من الاضطراب يكون فيه ضعف العضلات واضحًا عند الولادة أو خلال الأشهر القليلة الأولى من العمر. ولا يستطيع معظم الأطفال المصابين التحكم في حركات رؤوسهم أو الجلوس دون مساعدة. وقد يعاني الأطفال المصابون بهذا النوع من مشكلات في البلع قد تؤدي إلى صعوبة في التغذية وضعف في النمو. وقد يعانون أيضًا من مشكلات في التنفس بسبب ضعف عضلات التنفس وشكل غير طبيعي للصدر يشبه الجرس يمنع الرئتين من التمدد بالكامل. ولا يبقى معظم الأطفال المصابين بضمور العضلات الشوكي من النوع الأول على قيد الحياة بعد مرحلة الطفولة المبكرة بسبب فشل الجهاز التنفسي.",
+   "back_translation_en": "Spinal muscular atrophy type I (also called Werdnig-Hoffmann disease) is the most common form of this condition. It is a severe form of the disorder in which muscle weakness is evident at birth or within the first few months of life. Most affected children cannot control the movements of their heads or sit without help. Children affected with this type may suffer from swallowing problems that may lead to difficulty in feeding and poor growth. They may also suffer from breathing problems because of weakness of the breathing muscles and an abnormal bell-like shape of the chest that prevents the lungs from fully expanding. Most children affected with spinal muscular atrophy type I do not survive beyond early childhood because of respiratory failure.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9570621252059937,
+     "opus_mt": 0.9275537729263306
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9705139398574829
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "ضمور العضلات الشوكية من النوع الأول (وتسمى أيضا مرض فيردنيغ هوفمان) هو الشكل الأكثر شيوعا للحالة. وهو شكل حاد من الاضطراب مع ضعف العضلات واضح عند الولادة أو خلال الأشهر القليلة الأولى من الحياة. معظم الأطفال المصابين لا يستطيعون التحكم في حركات رؤوسهم أو الجلوس دون مساعدة. قد يعاني الأطفال الذين يعانون من هذا النوع من مشاكل البلع التي يمكن أن تؤدي إلى صعوبة في التغذية وضعف النمو. يمكن أن يكون لديهم أيضا مشاكل في التنفس بسبب ضعف عضلات الجهاز التنفسي والصدر على شكل جرس غير طبيعي يمنع الرئتين من التوسع بشكل كامل. معظم الأطفال الذين يعانون من ضمور العضلات الشوكي من النوع الأول لا ينجون من مرحلة الطفولة المبكرة بسبب فشل الجهاز التنفسي.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:0:3": {
+   "source_sha256": "42d8ac92e130de2e82ccfa97add7bf868856a8639f13b0882c9ed8f82cbfce90",
+   "ar": "يتميز ضمور العضلات الشوكي من النوع الثاني (type II) (ويُسمّى أيضًا مرض دوبوفيتز، Dubowitz disease) بضعف في العضلات يظهر لدى الأطفال بين عمر 6 و12 شهرًا. ويستطيع الأطفال المصابون بهذا النوع الجلوس دون دعم، مع أنهم قد يحتاجون إلى مساعدة للوصول إلى وضعية الجلوس. ولكن مع تفاقم ضعف العضلات في مرحلة لاحقة من الطفولة، قد يحتاج المصابون إلى دعم للجلوس. ولا يستطيع الأفراد المصابون بضمور العضلات الشوكي من النوع الثاني الوقوف أو المشي دون مساعدة. وغالبًا ما يعانون من ارتعاش لا إرادي (رُعاش، tremors) في أصابعهم، وانحناء في العمود الفقري من جانب إلى آخر (الجنف، scoliosis)، وضعف في عضلات التنفس قد يكون مهددًا للحياة. وتتفاوت مدة حياة الأفراد المصابين بضمور العضلات الشوكي من النوع الثاني، ولكن كثيرًا من المصابين بهذه الحالة يعيشون حتى العشرينات أو الثلاثينات من أعمارهم.",
+   "back_translation_en": "Spinal muscular atrophy type II (also called Dubowitz disease) is characterized by muscle weakness that appears in children between the ages of 6 and 12 months. Children affected with this type can sit without support, although they may need help getting to a sitting position. But as muscle weakness worsens at a later stage of childhood, affected people may need support to sit. Individuals affected with spinal muscular atrophy type II cannot stand or walk without help. They often suffer from involuntary trembling (tremors) in their fingers, a curving of the spine from side to side (scoliosis), and weakness in the breathing muscles that may be life-threatening. The life span of individuals affected with spinal muscular atrophy type II varies, but many people affected with this condition live into their twenties or thirties.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9405301809310913,
+     "opus_mt": 0.922894299030304
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9680640697479248
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "يتميز النوع الثاني من ضمور العضلات الشوكي (المعروف أيضًا باسم مرض دوبويتز) بضعف العضلات الذي يتطور عند الأطفال الذين تتراوح أعمارهم بين 6 و 12 شهرًا. يمكن للأطفال الذين يعانون من هذا النوع الجلوس دون دعم ، على الرغم من أنهم قد يحتاجون إلى مساعدة في الوصول إلى وضع الجلوس. ومع ذلك ، مع تفاقم ضعف العضلات في وقت لاحق في مرحلة الطفولة ، قد يحتاج الأفراد المصابون إلى الدعم للجلوس. الأفراد الذين يعانون من ضمور العضلات الشوكي من النوع الثاني لا يستطيعون الوقوف أو المشي دون مساعدة. غالبًا ما يكون لديهم ارتعاش لا إرادي (هزات) في أصابعهم ، وعمود فقري ينحني جنبًا إلى جنب (الجنف) ، وضعف في العضلات التنفسية يمكن أن يهدد الحياة. يختلف العمر الافتراضي للأفراد المصابين بالضمور العضلي النخاعي من النوع الثاني ، لكن العديد من الأشخاص الذين يعانون من هذه الحالة يعيشون في العشرينات أو الثلاثينات من العمر.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:0:4": {
+   "source_sha256": "a233f7b0ca7b287777a1c250103fb8cda7dcfc0f087744c57e7855ddd5500692",
+   "ar": "يسبب ضمور العضلات الشوكي من النوع الثالث (type III) (ويُسمّى أيضًا مرض كوغلبرغ-فيلاندر، Kugelberg-Welander disease) عادةً ضعفًا في العضلات بعد مرحلة الطفولة المبكرة. ويستطيع الأفراد المصابون بهذه الحالة الوقوف والمشي دون مساعدة، ولكن مع مرور الوقت قد يصبح المشي وصعود الدرج أكثر صعوبة تدريجيًا. ويحتاج كثير من المصابين إلى الاستعانة بكرسي متحرك في مرحلة لاحقة من الحياة. ويكون متوسط العمر المتوقع للأشخاص المصابين بضمور العضلات الشوكي من النوع الثالث طبيعيًا عادةً.",
+   "back_translation_en": "Spinal muscular atrophy type III (also called Kugelberg-Welander disease) usually causes muscle weakness after early childhood. Individuals affected with this condition can stand and walk without help, but over time walking and climbing stairs may become gradually more difficult. Many affected people need the assistance of a wheelchair at a later stage of life. The life expectancy of people affected with spinal muscular atrophy type III is usually normal.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9555668830871582,
+     "opus_mt": 0.9321912527084351
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9635521769523621
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "النوع الثالث من ضمور العضلات الشوكية (وتسمى أيضا مرض كوجيلبرغ-ويلاندر) عادة ما يسبب ضعف العضلات بعد مرحلة الطفولة المبكرة. يمكن للأفراد الذين يعانون من هذه الحالة الوقوف والمشي دون مساعدة ، ولكن مع مرور الوقت ، قد يصبح المشي وتسلق السلالم أمرًا صعبًا بشكل متزايد. يحتاج العديد من الأفراد المتضررين إلى مساعدة الكرسي المتحرك في وقت لاحق من الحياة. الأشخاص الذين يعانون من الضمور العضلي النخاعي من النوع الثالث عادة ما يكون لديهم متوسط العمر المتوقع الطبيعي.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:0:5": {
+   "source_sha256": "098e56e093f962f110805c3642cfae1c547e04fa6198f5c75fa1dd6138ccbc73",
+   "ar": "ضمور العضلات الشوكي من النوع الرابع (type IV) نادر، وغالبًا ما يبدأ في بداية سن الرشد. ويعاني المصابون عادةً من ضعف عضلي خفيف إلى متوسط، ورُعاش (tremors)، ومشكلات تنفسية خفيفة. ويكون متوسط العمر المتوقع للأشخاص المصابين بضمور العضلات الشوكي من النوع الرابع طبيعيًا.",
+   "back_translation_en": "Spinal muscular atrophy type IV is rare, and it often begins at the start of adulthood. Affected people usually suffer from mild to moderate muscle weakness, tremors, and mild breathing problems. The life expectancy of people affected with spinal muscular atrophy type IV is normal.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9331314563751221,
+     "opus_mt": 0.900486171245575
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9504582285881042
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "الضمور العضلي الشوكي من النوع الرابع نادر وغالبا ما يبدأ في مرحلة البلوغ المبكر. عادة ما يعاني الأفراد المصابون من ضعف العضلات الخفيف إلى المعتدل ، والهزات ، ومشاكل التنفس الخفيفة. الأشخاص الذين يعانون من ضمور العضلات الشوكية من النوع الرابع لديهم متوسط عمر متوقع طبيعي.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:1:0": {
+   "source_sha256": "0ca023e2680a872d56982962d5158d829a38ed7f6075d72fe5404af262f2fad0",
+   "ar": "يصيب ضمور العضلات الشوكي 1 من كل 8,000 إلى 10,000 شخص في جميع أنحاء العالم. ويُعد ضمور العضلات الشوكي من النوع الأول النوعَ الأكثر شيوعًا، إذ يمثل نحو نصف جميع الحالات. ويليه في الشيوع النوعان الثاني والثالث، أما النوعان 0 والرابع فنادران.",
+   "back_translation_en": "Spinal muscular atrophy affects 1 of every 8,000 to 10,000 people throughout the world. Spinal muscular atrophy type I is considered the most common type, accounting for about half of all cases. It is followed in commonness by types II and III, while types 0 and IV are rare.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9064590930938721,
+     "opus_mt": 0.9260752201080322
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9602354764938354
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "يؤثر ضمور العضلات الشوكية على 1 لكل 8000 إلى 10000 شخص في جميع أنحاء العالم. النوع الأول من ضمور العضلات الشوكية هو النوع الأكثر شيوعًا ، حيث يمثل حوالي نصف جميع الحالات. النوعان الثاني والثالث هما الأكثر شيوعًا والنوعان 0 و IV نادران.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:2:0": {
+   "source_sha256": "2a9c2e5f9e07fb26a9d5d57dac65e99f27950816031004aabee6a096ab10e9be",
+   "ar": "تسبب الطفرات (mutations) في جين SMN1 جميع أنواع ضمور العضلات الشوكي الموصوفة أعلاه. ويعدِّل عدد نسخ جين SMN2 شدة الحالة ويساعد في تحديد النوع الذي يحدث.",
+   "back_translation_en": "Mutations in the SMN1 gene cause all the types of spinal muscular atrophy described above. The number of copies of the SMN2 gene modifies the severity of the condition and helps determine which type occurs.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.957516610622406,
+     "opus_mt": 0.9603562951087952
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9809005856513977
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "الطفرات في جين SMN1 تسبب جميع أنواع ضمور العضلات الشوكية المذكورة أعلاه. عدد النسخ من جين SMN2 يغير شدة الحالة ويساعد على تحديد النوع الذي يتطور.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:2:1": {
+   "source_sha256": "dd2689a7026f48d178101fb88773381f404e7d1064e5d23b26022254f0beaa33",
+   "ar": "يوفّر كلٌّ من جينَي SMN1 وSMN2 التعليمات اللازمة لصنع بروتين يُسمّى بروتين بقاء الخلايا العصبية الحركية (survival motor neuron، SMN). وفي الحالة الطبيعية، يُنتَج معظم بروتين SMN الفعّال من جين SMN1، مع إنتاج كمية صغيرة من جين SMN2. وتُنتَج عدة أشكال مختلفة من بروتين SMN من جين SMN2، لكن شكلًا واحدًا فقط منها فعّال؛ أما الأشكال الأخرى فهي أصغر وتتحلل بسرعة. وبروتين SMN واحد من مجموعة من البروتينات تُسمّى مُعقَّد SMN (SMN complex)، وهو مهم للحفاظ على الخلايا العصبية الحركية. وتنقل الخلايا العصبية الحركية الإشارات من الدماغ والحبل الشوكي التي تأمر العضلات الهيكلية بالشدّ (الانقباض، contract)، مما يسمح للجسم بالحركة.",
+   "back_translation_en": "Each of the SMN1 and SMN2 genes provides the instructions needed to make a protein called the survival motor neuron (SMN) protein. Normally, most of the functional SMN protein is produced from the SMN1 gene, with a small amount produced from the SMN2 gene. Several different forms of the SMN protein are produced from the SMN2 gene, but only one form of them is functional; the other forms are smaller and break down quickly. The SMN protein is one of a group of proteins called the SMN complex, which is important for maintaining motor neurons. Motor neurons transmit signals from the brain and spinal cord that instruct skeletal muscles to tense (contract), which allows the body to move.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9464747309684753,
+     "opus_mt": 0.9560619592666626
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9679791927337646
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "توفر جينات SMN1 و SMN2 تعليمات لصنع بروتين يسمى بروتين الخلايا العصبية الحركية (SMN). عادة ، يتم إنتاج معظم بروتين SMN الوظيفي من جين SMN1 ، مع كمية صغيرة تنتج من جين SMN2. يتم إنتاج العديد من الإصدارات المختلفة من بروتين SMN من جين SMN2 ، ولكن إصدار واحد فقط يعمل ؛ الإصدارات الأخرى أصغر وكسر بسرعة. بروتين SMN هو واحد من مجموعة من البروتينات تسمى مجمع SMN ، وهو أمر مهم للحفاظ على الخلايا العصبية الحركية. تنقل الخلايا العصبية الحركية إشارات من الدماغ والحبل الشوكي تخبر العضلات الهيكلية بالتوتر (العقد) ، مما يسمح للجسم بالتحرك.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:2:2": {
+   "source_sha256": "16a23e8f78b446cc30e527139df0b364e7946369035835a2b11a5a8991613b8c",
+   "ar": "يفتقد معظم المصابين بضمور العضلات الشوكي جزءًا من جين SMN1، مما يُضعف إنتاج بروتين SMN. ويؤدي نقص بروتين SMN إلى موت الخلايا العصبية الحركية (motor neurons)، ونتيجة لذلك لا تنتقل الإشارات بين الدماغ والعضلات. ولا تستطيع العضلات الانقباض دون تلقّي إشارات من الدماغ، ولذلك تضعف كثير من العضلات الهيكلية وتضمر، مما يؤدي إلى علامات ضمور العضلات الشوكي وأعراضه.",
+   "back_translation_en": "Most people affected with spinal muscular atrophy are missing a part of the SMN1 gene, which impairs SMN protein production. A shortage of SMN protein leads to the death of motor neurons, and as a result signals are not transmitted between the brain and the muscles. Muscles cannot contract without receiving signals from the brain, so many skeletal muscles become weak and waste away, leading to the signs and symptoms of spinal muscular atrophy.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9577444791793823,
+     "opus_mt": 0.9619466662406921
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9852222204208374
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "معظم الأشخاص الذين يعانون من ضمور العضلات الشوكية يفقدون جزءًا من جين SMN1 ، مما يضعف إنتاج بروتين SMN. نقص بروتين SMN يؤدي إلى موت الخلايا العصبية الحركية ، ونتيجة لذلك ، لا تنتقل الإشارات بين الدماغ والعضلات. لا يمكن للعضلات أن تنقبض دون تلقي إشارات من الدماغ ، لذلك تصبح العديد من عضلات الهيكل العظمي ضعيفة وتهدر ، مما يؤدي إلى علامات وأعراض ضمور العضلات الشوكي.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:2:3": {
+   "source_sha256": "74b8d9778658aaed6a038da30e261eee063734d644805cb89b25c3ae83e1272b",
+   "ar": "عادةً ما يكون لدى الأشخاص نسختان من جين SMN1 ونسخة إلى نسختين من جين SMN2 في كل خلية. ولكن عدد نسخ جين SMN2 يتفاوت، إذ يكون لدى بعض الأشخاص ما يصل إلى ثماني نسخ. ولدى الأشخاص المصابين بضمور العضلات الشوكي، يرتبط وجود نسخ متعددة من جين SMN2 عادةً بسمات أخف للحالة تظهر في مرحلة لاحقة من الحياة. ويمكن لبروتين SMN الذي تنتجه جينات SMN2 أن يساعد في تعويض نقص البروتين الناجم عن طفرات جين SMN1. ولدى الأشخاص المصابين بضمور العضلات الشوكي من النوع 0 عادةً نسخة واحدة من جين SMN2 في كل خلية، بينما يكون لدى المصابين بالنوع الأول عمومًا نسخة واحدة أو نسختان، ولدى المصابين بالنوع الثاني عادةً ثلاث نسخ، ولدى المصابين بالنوع الثالث ثلاث أو أربع نسخ، ولدى المصابين بالنوع الرابع أربع نسخ أو أكثر. وتسهم أيضًا عوامل أخرى، كثير منها غير معروف، في تفاوت شدة ضمور العضلات الشوكي.",
+   "back_translation_en": "Usually people have two copies of the SMN1 gene and one to two copies of the SMN2 gene in each cell. But the number of copies of the SMN2 gene varies, with some people having up to eight copies. In people affected with spinal muscular atrophy, having multiple copies of the SMN2 gene is usually associated with milder features of the condition that appear at a later stage of life. The SMN protein produced by the SMN2 genes can help make up for the protein shortage caused by SMN1 gene mutations. People affected with spinal muscular atrophy type 0 usually have one copy of the SMN2 gene in each cell, while those affected with type I generally have one or two copies, those affected with type II usually have three copies, those affected with type III have three or four copies, and those affected with type IV have four or more copies. Other factors, many of them unknown, also contribute to the variability in the severity of spinal muscular atrophy.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9189341068267822,
+     "opus_mt": 0.934968113899231
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9879028797149658
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "عادة، يكون لدى الناس نسختان من جين SMN1 ونسخة واحدة إلى نسختين من جين SMN2 في كل خلية. ومع ذلك، يختلف عدد النسخ من جين SMN2، حيث يمتلك بعض الأشخاص ما يصل إلى ثماني نسخ. في الأشخاص الذين يعانون من ضمور العضلات الشوكية ، عادة ما يرتبط وجود نسخ متعددة من جين SMN2 بميزات أقل حدة للحالة التي تتطور في وقت لاحق من الحياة. يمكن أن يساعد بروتين SMN الذي تنتجه جينات SMN2 في تعويض نقص البروتين الناجم عن طفرات جين SMN1. عادة ما يكون لدى الأشخاص المصابين بالضمور العضلي النخاعي من النوع 0 نسخة واحدة من جين SMN2 في كل خلية، في حين أن أولئك الذين يعانون من النوع الأول لديهم عادة نسخة أو نسختان، وأولئك الذين يعانون من النوع الثاني عادة ما يكون لديهم ثلاث نسخ، وأولئك الذين يعانون من النوع الثالث لديهم ثلاث أو أربع نسخ، وأولئك الذين يعانون من النوع الرابع لديهم أربع نسخ أو أكثر. عوامل أخرى ، العديد منها غير معروف ، تساهم أيضًا في شدة الضمور العضلي الشوكي.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:3:0": {
+   "source_sha256": "7d273771197f2577edab5cf77cedb51fda4b9bc11b9c1aee8bc055f2a87e620a",
+   "ar": "يُورَّث ضمور العضلات الشوكي بنمط جسمي متنحٍّ (autosomal recessive)، ما يعني أن نسختَي جين SMN1 كلتيهما في كل خلية تحملان طفرات. وفي معظم الحالات، يحمل كلٌّ من والدَي الشخص المصاب بحالة جسمية متنحية نسخةً واحدة من الجين الطافر، لكنهما في العادة لا تظهر عليهما علامات الحالة وأعراضها. وفي حالات نادرة، يرث الشخص المصاب بضمور العضلات الشوكي طفرةً في جين SMN1 من أحد والديه، ويكتسب طفرة جديدة في النسخة الأخرى من الجين تحدث أثناء تكوّن الخلايا التناسلية (البويضات أو الحيوانات المنوية) أو في المراحل المبكرة من نمو الجنين. وفي هذه الحالات، يكون أحد الوالدين فقط حاملًا لطفرة جين SMN1.",
+   "back_translation_en": "Spinal muscular atrophy is inherited in an autosomal recessive pattern, which means that both copies of the SMN1 gene in each cell carry mutations. In most cases, each of the two parents of a person affected with an autosomal recessive condition carries one copy of the mutated gene, but they usually do not show the signs and symptoms of the condition. In rare cases, a person affected with spinal muscular atrophy inherits a mutation in the SMN1 gene from one of his parents, and acquires a new mutation in the other copy of the gene that occurs during the formation of reproductive cells (eggs or sperm) or in the early stages of embryonic development. In these cases, only one of the parents is a carrier of the SMN1 gene mutation.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9499286413192749,
+     "opus_mt": 0.9469183683395386
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9797704219818115
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "يتم وراثة ضمور العضلات الشوكية في نمط جسمي متنحي ، مما يعني أن كلا النسختين من جين SMN1 في كل خلية لهما طفرات. في معظم الحالات، يحمل والدا الشخص المصاب بحالة جسمية متنحية نسخة واحدة من الجين المتحور، لكنهما عادة لا يظهران علامات وأعراض الحالة. في حالات نادرة ، يرث الشخص المصاب بالضمور العضلي الشوكي طفرة جينية SMN1 من أحد الوالدين ويكتسب طفرة جديدة في النسخة الأخرى من الجين التي تحدث أثناء تكوين الخلايا التناسلية (البيض أو الحيوانات المنوية) أو في التطور الجنيني المبكر. في هذه الحالات ، يكون أحد الوالدين فقط حاملًا لطفرة جين SMN1.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  },
+  "mp:spinal-muscular-atrophy:3:1": {
+   "source_sha256": "f1580853c306314a3298db4925ebbb3b171b9189223cf7df4060acf4d619b20b",
+   "ar": "الأفراد الذين لديهم أكثر من النسختين المعتادتين من جين SMN2 لا يرثون عادةً النسخ الإضافية من أحد الوالدين. وتنشأ هذه النسخ عادةً نتيجة خطأ عشوائي أثناء صنع نسخ جديدة من الحمض النووي (التضاعف، replication) في البويضة أو الحيوان المنوي، أو بعد الإخصاب مباشرة.",
+   "back_translation_en": "Individuals who have more than the usual two copies of the SMN2 gene do not usually inherit the extra copies from a parent. These copies usually arise as a result of a random error while making new copies of DNA (replication) in the egg or sperm, or just after fertilization.",
+   "fidelity_note": "",
+   "qc": {
+    "similarity_en_vs": {
+     "claude": 0.9421641230583191,
+     "opus_mt": 0.9498628973960876
+    },
+    "agreement": {
+     "claude_vs_opus_mt": 0.9856237173080444
+    },
+    "numbers_ok": {
+     "claude": true,
+     "opus_mt": true
+    },
+    "fidelity_note": "",
+    "opus_mt_ar": "الأفراد الذين لديهم أكثر من النسختين المعتادتين من جين SMN2 عادة لا يرثون النسخ الإضافية من أحد الوالدين. وعادة ما تنشأ أثناء خطأ عشوائي عند صنع نسخ جديدة من الحمض النووي (النسخ المتماثل) في البويضة أو خلية الحيوانات المنوية أو بعد الإخصاب مباشرة.",
+    "flags": [],
+    "status": "consistent_across_systems"
+   }
+  }
+ }
+}

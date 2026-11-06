@@ -56,7 +56,33 @@ export function Parts({
             <Prov kind={p.type === "source" ? "source" : "template"} />
             {showIds && <code className="text-[0.7rem] text-muted">{p.id}</code>}
           </div>
-          {p.type === "source" ? (
+          {p.type === "source" && p.translation ? (
+            <>
+              <blockquote
+                lang="ar"
+                dir="rtl"
+                className={cx(
+                  "border-s-2 border-line-strong ps-3 text-ink-2",
+                  compact ? "text-sm" : "text-[0.95rem] leading-relaxed",
+                )}
+              >
+                {p.text}
+              </blockquote>
+              <p className="mt-1 text-xs text-muted">
+                {lang === "ar"
+                  ? "ترجمة آلية للنص الأصلي، بانتظار مراجعة طبية من متحدث أصلي."
+                  : "Machine translation of the original text, pending native clinical review."}
+              </p>
+              {p.original_text && (
+                <details className="mt-1 text-xs text-muted">
+                  <summary className="cursor-pointer">{lang === "ar" ? "النص الأصلي بالإنجليزية" : "Original English"}</summary>
+                  <blockquote lang="en" dir="ltr" className="mt-1 border-s-2 border-line ps-3 text-start">
+                    {p.original_text}
+                  </blockquote>
+                </details>
+              )}
+            </>
+          ) : p.type === "source" ? (
             <blockquote
               lang="en"
               dir="ltr"

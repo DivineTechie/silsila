@@ -91,6 +91,18 @@ class Registry:
         self.template_meta: dict[str, Any] = tdoc["meta"]
         self.teachback: list[dict[str, Any]] = tdoc["teachback"]
         self.faq: list[dict[str, Any]] = yaml.safe_load((root / "faq.yaml").read_text())["topics"]
+        # Arabic translations of quoted paragraphs, each tied to the hash of its
+        # English source. A translation whose source changed is ignored.
+        self.translations: dict[str, dict[str, Any]] = {}
+        self.translation_meta: dict[str, Any] = {}
+        tfile = root / "translations" / "ar" / "medlineplus.json"
+        if tfile.exists():
+            tdoc = json.loads(tfile.read_text())
+            self.translation_meta = tdoc.get("meta", {})
+            for pid, t in tdoc.get("paragraphs", {}).items():
+                p = self.paragraphs.get(pid)
+                if p is not None and t.get("source_sha256") == p.sha256 and t.get("ar"):
+                    self.translations[pid] = t
         self._check_references()
 
     def _check_references(self) -> None:
@@ -131,8 +143,16 @@ class Registry:
         p = self.paragraphs[paragraph_id]
         if p.us_specific:
             raise GateError(f"{paragraph_id} is about US law or programmes and is not shown to UAE users")
-        msg.parts.append({"type": "source", "id": p.id, "text": p.text, "sha256": p.sha256,
-                          "url": p.url, "attribution": p.attribution, "source_title": p.source_title})
+        part = {"type": "source", "id": p.id, "text": p.text, "sha256": p.sha256,
+                "url": p.url, "attribution": p.attribution, "source_title": p.source_title}
+        t = self.translations.get(p.id) if msg.lang == "ar" else None
+        if t is not None:
+            part.update(text=t["ar"], original_text=p.text,
+                        translation={"language": "ar", "method": self.translation_meta.get("method"),
+                                     "reviewed_by_native_clinician": self.translation_meta.get(
+                                         "reviewed_by_native_clinician", False),
+                                     "sha256": sha256(t["ar"])})
+        msg.parts.append(part)
         return msg
 
     def condition_paragraphs(self, content_id: str, headings: tuple[str, ...] = ("Description", "Inheritance")) -> list[Paragraph]:
@@ -155,7 +175,14 @@ class Registry:
                     raise GateError(f"Text for template {part['id']} does not match the approved wording")
             elif part["type"] == "source":
                 p = self.paragraphs.get(part["id"])
-                if p is None or part["text"] != p.text or sha256(part["text"]) != p.sha256:
+                if p is None:
+                    raise GateError(f"Unknown quoted paragraph {part['id']}")
+                if "translation" in part:
+                    t = self.translations.get(p.id)
+                    if (t is None or part["text"] != t["ar"] or part.get("original_text") != p.text
+                            or part["translation"].get("sha256") != sha256(t["ar"])):
+                        raise GateError(f"Translated text {part['id']} does not match the stored translation")
+                elif part["text"] != p.text or sha256(part["text"]) != p.sha256:
                     raise GateError(f"Quoted text {part['id']} does not match the imported source")
                 if p.us_specific:
                     raise GateError(f"{p.id} is not shown to UAE users")

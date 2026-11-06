@@ -1,0 +1,434 @@
+[
+ {
+  "id": "mp:inheritance-patterns:0:3",
+  "source_sha256": "c0450cfbf8440dc191f1f1c4fd2cf0a88ab69d1b805bec335cdf6e1e16111c5c",
+  "source_title": "What are the different ways a genetic condition can be inherited?",
+  "en": "In autosomal recessive inheritance, variants occur in both copies of the gene in each cell. The parents of an individual with an autosomal recessive condition each carry one copy of the altered gene, but they typically do not show signs and symptoms of the condition. Autosomal recessive disorders are typically not seen in every generation of an affected family."
+ },
+ {
+  "id": "mp:risk-assessment:0:2",
+  "source_sha256": "787e9170f140b32bf9ca0e3add6782f90fe8231ca567ce4d08fe59dc9b8da6e0",
+  "source_title": "If a genetic disorder runs in my family, what are the chances that my children will have the condition?",
+  "en": "Autosomal recessive inheritance: Two unaffected people who each carry one copy of the altered gene for an autosomal recessive disorder (carriers) have a 25 percent chance with each pregnancy of having a child affected by the disorder. The chance with each pregnancy of having an unaffected child who is a carrier of the disorder is 50 percent, and the chance that a child will not have the disorder and will not be a carrier is 25 percent. If only one parent is a carrier of the altered gene and the other parent does not carry the variant, none of their children will develop the condition, and the chance with each pregnancy of having an unaffected child who is a carrier is 50 percent."
+ },
+ {
+  "id": "mp:risk-assessment:0:9",
+  "source_sha256": "b3b201783dcd78574969d82c16ebe9139951b70f08a408295b858f9a765eb21a",
+  "source_title": "If a genetic disorder runs in my family, what are the chances that my children will have the condition?",
+  "en": "It is important to note that the chance of passing on a genetic condition applies equally to each pregnancy. For example, if a couple has a child with an autosomal recessive disorder, the chance of having another child with the disorder is still 25 percent (or 1 in 4). Having one child with a disorder does not “protect” future children from inheriting the condition. Conversely, having a child without the condition does not mean that future children will definitely be affected."
+ },
+ {
+  "id": "mp:risk-assessment:0:11",
+  "source_sha256": "f21119a2dbedca44a67f3f7ef71e8e2226c34a8c4721780ab1829c9c6b28599c",
+  "source_title": "If a genetic disorder runs in my family, what are the chances that my children will have the condition?",
+  "en": "Estimating the chance of developing or passing on a genetic disorder can be complex. Genetics professionals can help people understand these chances and help them make informed decisions about their health."
+ },
+ {
+  "id": "mp:screening-vs-diagnostic:0:0",
+  "source_sha256": "bd8ddbb2821c233d5c2e3f6beb6a4c224dc3ae19be7183f891388531871f607a",
+  "source_title": "How are genetic screening tests different from genetic diagnostic tests?",
+  "en": "Screening tests evaluate an individual’s risk of developing a genetic condition, while diagnostic tests identify genetic conditions. All genetic tests have both benefits and limitations."
+ },
+ {
+  "id": "mp:screening-vs-diagnostic:0:1",
+  "source_sha256": "563218dec879fb8676e4f26c569df8f672a2402ae7925b622d14b0a7d07a92a4",
+  "source_title": "How are genetic screening tests different from genetic diagnostic tests?",
+  "en": "Genetic screening tests are generally used in people who do not have signs or symptoms of a disorder. These tests estimate whether an individual’s risk of having a certain condition is increased or decreased compared with the risk in other people in a similar population. A positive result means that a person’s risk of developing the condition is higher than average. A negative screening test means that a person’s risk is lower than average. However, having a positive screening result does not mean the individual has the condition. Because screening tests are only estimates, in some cases the results indicate an increased risk for a genetic abnormality when the person is actually unaffected (false positive), or the results indicate a decreased risk for a genetic abnormality when the person is really affected (false negative). While genetic screening tests do not provide a conclusive answer, they can help guide next steps, such as whether additional, diagnostic testing is needed."
+ },
+ {
+  "id": "mp:screening-vs-diagnostic:0:2",
+  "source_sha256": "f53d6016d4123acd3a634af6c41070b557fd417cec127e57a6046d0fbb122916",
+  "source_title": "How are genetic screening tests different from genetic diagnostic tests?",
+  "en": "Genetic diagnostic tests are often used in people who have signs and symptoms. These tests are used to confirm or rule out suspected genetic conditions. Diagnostic tests can also help inform a person’s chance of developing a genetic condition or of passing on a genetic condition to their children. Diagnostic testing can be performed before birth or at any time during a person's life, but it is not available for all genes or all genetic conditions. The results of a diagnostic test can be used to guide a person's choices about health care and the management of the disorder."
+ },
+ {
+  "id": "mp:interpreting-results:0:1",
+  "source_sha256": "4a9d58613b58a017741757e21942d1987c4db40c5a2f5afd6a20f0bbd4424285",
+  "source_title": "What do the results of genetic tests mean?",
+  "en": "A positive test result means that the laboratory found a change in a particular gene, chromosome, or protein of interest. Depending on the purpose of the test, this result may confirm a diagnosis, indicate that a person is a carrier of a particular genetic variant, identify an increased risk of developing a disease (such as cancer), or suggest a need for further testing. Because family members have some genetic material in common, a positive test result may also have implications for certain blood relatives of the person undergoing testing. It is important to note that a positive result of a predictive or presymptomatic genetic test usually cannot establish the exact risk of developing a disorder. Also, health care providers typically cannot use a positive test result to predict the course or severity of a condition. Rarely, tests results can be false positive, which occur when results indicate an increased risk for a genetic condition when the person is unaffected."
+ },
+ {
+  "id": "mp:interpreting-results:0:2",
+  "source_sha256": "c8a1f4666ac9e855b0ee8c79a6799608a14ff10c7c019399ae93e09cba6245c7",
+  "source_title": "What do the results of genetic tests mean?",
+  "en": "A negative test result means that the laboratory did not find a change that is known to affect health or development in the gene, chromosome, or protein under consideration. This result can indicate that a person is not affected by a particular disorder, is not a carrier of a specific genetic variant, or does not have an increased risk of developing a certain disease. It is possible, however, that the test missed a disease-causing genetic alteration because many tests cannot detect all genetic changes that can cause a particular disorder. Further testing, or re-testing at a later date, may be required to confirm a negative result. Rarely, tests results can be false negative, which occur when the results indicate a decreased risk or a genetic condition when the person is actually affected."
+ },
+ {
+  "id": "mp:interpreting-results:0:3",
+  "source_sha256": "823903c3cfb3cacd525f3f6e0277bfd7b59cdf5fff731ecbd73a46a2601b031a",
+  "source_title": "What do the results of genetic tests mean?",
+  "en": "In some cases, a test result might not give any useful information. This type of result is called uninformative, indeterminate, inconclusive, or ambiguous. Uninformative test results sometimes occur because everyone has common, natural variations in their DNA, called polymorphisms, that do not affect health. If a genetic test finds a change in DNA that has not been confirmed to play a role in the development of disease, known as a variant of uncertain significance (VUS or VOUS), it can be difficult to tell whether it is a natural polymorphism or a disease-causing variant. For these variants, there may not be enough scientific research to confirm or refute a disease association or the research may be conflicting. An uninformative result cannot confirm or rule out a specific diagnosis, and it cannot indicate whether a person has an increased risk of developing a disorder. In some cases, testing other affected and unaffected family members can help clarify this type of result."
+ },
+ {
+  "id": "mp:family-history:0:0",
+  "source_sha256": "b00a2df7c1618bc7f498531b4314fffc848a353911bb7182da5231d4f1c0bdae",
+  "source_title": "Why is it important to know my family health history?",
+  "en": "A family health history is a record of health information about a person and his or her close relatives. A complete record includes information from three generations of relatives, including children, brothers and sisters, parents, aunts and uncles, nieces and nephews, grandparents, and cousins."
+ },
+ {
+  "id": "mp:family-history:0:1",
+  "source_sha256": "2db7a2b91e854e56251130a670747b68f5438d4dc3df47d5bff1756f70dd58dd",
+  "source_title": "Why is it important to know my family health history?",
+  "en": "Families have similar genetic backgrounds, and often similar environments and lifestyles. Together, these factors can give clues to conditions that may run in a family. By noticing patterns of disorders among relatives, healthcare professionals can determine whether an individual, family members, or future generations may be at an increased risk of developing a particular condition."
+ },
+ {
+  "id": "mp:beta-thalassemia:0:0",
+  "source_sha256": "91adfd497764273792dea390e119f357d33347ca2828be857d1d2eab0b1c47e3",
+  "source_title": "Beta thalassemia",
+  "en": "Beta thalassemia is a blood disorder that reduces the production of hemoglobin. Hemoglobin is the iron-containing protein in red blood cells that carries oxygen to cells throughout the body."
+ },
+ {
+  "id": "mp:beta-thalassemia:0:1",
+  "source_sha256": "1551b995f7d1670c24d8e94ebe03b952e35c23bb473ffdc503dc2632734c1071",
+  "source_title": "Beta thalassemia",
+  "en": "In people with beta thalassemia, low levels of hemoglobin reduce oxygen levels in the body. Affected individuals also have a shortage of red blood cells (anemia), which can cause pale skin, weakness, fatigue, and more serious complications. People with beta thalassemia are at an increased risk of developing abnormal blood clots."
+ },
+ {
+  "id": "mp:beta-thalassemia:0:2",
+  "source_sha256": "3c6003a2b871ba9ea5d883f2a5dedfde5e554529fb076122c0946829aa10a678",
+  "source_title": "Beta thalassemia",
+  "en": "Beta thalassemia is classified into two types depending on the severity of symptoms: thalassemia major (also known as transfusion-dependent thalassemia or Cooley's anemia) and thalassemia intermedia (which is a non-transfusion-dependent thalassemia). Of the two types, thalassemia major is more severe."
+ },
+ {
+  "id": "mp:beta-thalassemia:0:3",
+  "source_sha256": "0819f7a6ca19f0c4fed75163db1bffab9b0a692bcba3fac8543300ce8f788372",
+  "source_title": "Beta thalassemia",
+  "en": "The signs and symptoms of thalassemia major appear within the first 2 years of life. Children develop life-threatening anemia. They do not gain weight and grow at the expected rate (faltering weight) and may develop yellowing of the skin and whites of the eyes (jaundice). Affected individuals may have an enlarged spleen, liver, and heart, and their bones may be misshapen. Puberty is delayed in some adolescents with thalassemia major."
+ },
+ {
+  "id": "mp:beta-thalassemia:0:4",
+  "source_sha256": "8a573cb321ebfdbe97add4e927ae242aeb7e236bc050393e7c28934cc6d676bc",
+  "source_title": "Beta thalassemia",
+  "en": "Many people with thalassemia major have such severe symptoms that they need frequent blood transfusions to replenish their red blood cell supply. Over time, an influx of iron-containing hemoglobin from chronic blood transfusions can lead to a buildup of iron in the body, resulting in liver, heart, and hormone problems."
+ },
+ {
+  "id": "mp:beta-thalassemia:0:5",
+  "source_sha256": "a0bd869921aef462a8c92717ec92e5a9472fd25c2473b6f799ca8c91bc1993eb",
+  "source_title": "Beta thalassemia",
+  "en": "Thalassemia intermedia is milder than thalassemia major. The signs and symptoms of thalassemia intermedia appear in early childhood or later in life. Affected individuals have mild to moderate anemia and may also have slow growth, bone abnormalities, and an increased risk of developing abnormal blood clots."
+ },
+ {
+  "id": "mp:beta-thalassemia:1:0",
+  "source_sha256": "e613202a2e51cc740a54c1a0f0dd0f68d33b0f061522ca38a5fc07fc6c182165",
+  "source_title": "Beta thalassemia",
+  "en": "Beta thalassemia is a fairly common blood disorder worldwide. Thousands of infants with beta thalassemia are born each year. Beta thalassemia occurs most frequently in people from Mediterranean countries, North Africa, the Middle East, India, Central Asia, and Southeast Asia."
+ },
+ {
+  "id": "mp:beta-thalassemia:2:0",
+  "source_sha256": "0e0c080ad5d20e6b633979690cc14e1613da6f44b3fe8eab8147c2e431a17b53",
+  "source_title": "Beta thalassemia",
+  "en": "Variants (also known as mutations) in the HBB gene cause beta thalassemia. The HBB gene provides instructions for making a protein called beta-globin. Beta-globin is a component (subunit) of hemoglobin. Hemoglobin consists of four protein subunits, typically two subunits of beta-globin and two subunits of another protein called alpha-globin."
+ },
+ {
+  "id": "mp:beta-thalassemia:2:1",
+  "source_sha256": "4a83d8d88d1602f8dee4340c24dc2fc9182cede55dd5d3640366296ff05d9918",
+  "source_title": "Beta thalassemia",
+  "en": "Some variants in the HBB gene prevent the production of any beta-globin. The absence of beta-globin is referred to as beta-zero (β0) thalassemia. Other HBB gene variants allow some beta-globin to be produced but in reduced amounts. A reduced amount of beta-globin is called beta-plus (β+) thalassemia. Having either β0 or β+ thalassemia does not necessarily predict disease severity, however; people with both types have been diagnosed with thalassemia major and thalassemia intermedia."
+ },
+ {
+  "id": "mp:beta-thalassemia:2:2",
+  "source_sha256": "dba0b4fbc7ef811557323000913d2015dd0ebf1e312833ecbf24d76b7982a8e2",
+  "source_title": "Beta thalassemia",
+  "en": "A shortage of beta-globin hinders the formation of functional hemoglobin. Without sufficient hemoglobin, red blood cells do not develop normally, causing a shortage of mature red blood cells. The low number of mature red blood cells leads to anemia and other associated health problems in people with beta thalassemia."
+ },
+ {
+  "id": "mp:beta-thalassemia:3:0",
+  "source_sha256": "ba442a21d17d8fbe905aa3c369cf14ebec0515e1286fd2b48c5c0bde0e9c29ed",
+  "source_title": "Beta thalassemia",
+  "en": "Thalassemia major and thalassemia intermedia are inherited in an autosomal recessive pattern, which means both copies of the HBB gene in each cell have variants. The parents of an individual with an autosomal recessive condition each carry one copy of the altered gene, but they typically do not show signs and symptoms of the condition. Sometimes, however, people with only one HBB gene variant in each cell develop mild anemia. These mildly affected people are said to have thalassemia minor."
+ },
+ {
+  "id": "mp:beta-thalassemia:3:1",
+  "source_sha256": "90a80a8064c910033ed7399fecd4c8dd0bb7085ddd423c633d2ebcb7ce162c27",
+  "source_title": "Beta thalassemia",
+  "en": "In a small percentage of families, the HBB gene variant is inherited in an autosomal dominant manner. In these cases, one copy of the altered gene in each cell is sufficient to cause the signs and symptoms of beta thalassemia."
+ },
+ {
+  "id": "mp:sickle-cell-disease:0:0",
+  "source_sha256": "60bcb13cd274bad732b2f17eb8af0a9e3439da9b7e7885e702a5b177b255e422",
+  "source_title": "Sickle cell disease",
+  "en": "Sickle cell disease is a group of disorders that affects hemoglobin, the molecule in red blood cells that delivers oxygen to cells throughout the body. People with this disease have atypical hemoglobin molecules called hemoglobin S, which can distort red blood cells into a sickle or crescent shape."
+ },
+ {
+  "id": "mp:sickle-cell-disease:0:1",
+  "source_sha256": "315536a6fe94c29a0b681d90666bad12413ca96b0b8b6e3c233782cb08fa6fe4",
+  "source_title": "Sickle cell disease",
+  "en": "Signs and symptoms of sickle cell disease usually begin in early childhood. Characteristic features of this disorder include a low number of red blood cells (anemia), repeated infections, and periodic episodes of pain. The severity of signs and symptoms varies from person to person. Some people have mild health issues, while others are frequently hospitalized for more serious complications."
+ },
+ {
+  "id": "mp:sickle-cell-disease:0:2",
+  "source_sha256": "52d9c15823e4b94518aff0f235250fc9fc2aafd8807fcb17276bd5286019d7d4",
+  "source_title": "Sickle cell disease",
+  "en": "The signs and symptoms of sickle cell disease are caused by the sickling of red blood cells. When red blood cells sickle, they break down prematurely, which can lead to anemia. Anemia can cause shortness of breath, fatigue, and delayed growth and development in children. The rapid breakdown of red blood cells may also cause yellowing of the skin and whites of the eyes (jaundice). Painful episodes can occur when sickled red blood cells, which are stiff and inflexible, get stuck in small blood vessels. These episodes deprive tissues and organs, such as the lungs, kidneys, spleen, and brain, of oxygen-rich blood and can lead to organ damage. A particularly serious complication of sickle cell disease is high blood pressure in the blood vessels that supply the lungs (pulmonary hypertension), which can lead to heart failure. Pulmonary hypertension occurs in about 10 percent of adults with sickle cell disease."
+ },
+ {
+  "id": "mp:sickle-cell-disease:0:3",
+  "source_sha256": "ea28d1aca6301d911e597eebffa1a90735a2d73add4796430c2c86c3b462b120",
+  "source_title": "Sickle cell disease",
+  "en": "There are currently a range of treatment options for people with sickle cell disease. Some treatments address the symptoms of the condition, while others address the genetic cause of sickle cell disease and effectively cure the condition. Without treatment, individuals with sickle cell disease often have lifelong health problems."
+ },
+ {
+  "id": "mp:sickle-cell-disease:1:0",
+  "source_sha256": "5974087dbe25ea1de580a5b8c2364b741cb949fd649c7dedffc0881597207427",
+  "source_title": "Sickle cell disease",
+  "en": "Sickle cell disease affects millions of people worldwide. It is most common among people whose ancestors come from Africa; Mediterranean countries such as Greece, Turkey, and Italy; the Arabian Peninsula; India; and Spanish-speaking regions in South America, Central America, and parts of the Caribbean."
+ },
+ {
+  "id": "mp:sickle-cell-disease:2:0",
+  "source_sha256": "825a722f23c82a3f8c16a3c947beb304a3629893a6921f2a0feb5ae6fd1fa37b",
+  "source_title": "Sickle cell disease",
+  "en": "Variants (also called mutations) in the HBB gene cause sickle cell disease. The HBB gene provides instructions for making one part of hemoglobin. Hemoglobin typically consists of four protein subunits, two subunits of alpha-globin and two subunits of beta-globin. The HBB gene provides instructions for making beta-globin. Different variants in the HBB gene can produce abnormal versions of beta-globin. One particular HBB gene variant produces an abnormal version of beta-globin known as hemoglobin S (HbS). Other variants in the HBB gene lead to other abnormal versions of beta-globin such as hemoglobin C (HbC) and hemoglobin E (HbE). HBB gene variants can cause unusually low levels of beta-globin; this condition is called beta thalassemia."
+ },
+ {
+  "id": "mp:sickle-cell-disease:2:1",
+  "source_sha256": "a7c0a7c5c6e50620f71141142cffcb0d38cf399d49ef61376ced79eff24e70e6",
+  "source_title": "Sickle cell disease",
+  "en": "In people with sickle cell disease, at least one of the beta-globin subunits in hemoglobin is replaced with hemoglobin S. In sickle cell anemia (also called homozygous sickle cell disease or HbSS disease), which is the most common form of sickle cell disease, hemoglobin S replaces both beta-globin subunits. In other types of sickle cell disease, just one of the beta-globin subunits in hemoglobin is replaced with hemoglobin S. The other beta-globin subunit is replaced with a different version of beta-globin, such as hemoglobin C. For example, people with hemoglobin C (HbSC) disease have hemoglobin molecules with hemoglobin S and hemoglobin C instead of beta-globin. If the variants that produce hemoglobin S and beta thalassemia occur in the same individual, that individual will have hemoglobin S-beta thalassemia (HbSBetaThal) disease."
+ },
+ {
+  "id": "mp:sickle-cell-disease:3:0",
+  "source_sha256": "03e2e78f0009a58d3bd239aab75b8100fc646cee3c523e1f715342a4a983ad10",
+  "source_title": "Sickle cell disease",
+  "en": "This condition is inherited in an autosomal recessive pattern, which means both copies of the gene in each cell must have a variant to cause the disorder. The parents of an individual with an autosomal recessive condition each carry one copy of the altered gene, but they typically do not show signs and symptoms of the condition."
+ },
+ {
+  "id": "mp:alpha-thalassemia:0:0",
+  "source_sha256": "f9f0bad035aff1906064633ce69c34ef2697d53a31341cec8bfb2b79c1af3130",
+  "source_title": "Alpha thalassemia",
+  "en": "Alpha thalassemia is a blood disorder that reduces the production of hemoglobin. Hemoglobin is the protein in red blood cells that carries oxygen to cells throughout the body."
+ },
+ {
+  "id": "mp:alpha-thalassemia:0:1",
+  "source_sha256": "3ccec856ec3f2d50cb303024867549e067b90423ee498bc6c4d6c5677b9489f3",
+  "source_title": "Alpha thalassemia",
+  "en": "In people with the characteristic features of alpha thalassemia, a reduction in the amount of hemoglobin prevents enough oxygen from reaching the body's tissues. Affected individuals also have a shortage of red blood cells (anemia), which can cause pale skin, weakness, fatigue, and more serious complications."
+ },
+ {
+  "id": "mp:alpha-thalassemia:0:2",
+  "source_sha256": "ca2dff8bf4618e107c2bc96b80e9b384831e99cc194f3a2379e54f84502dcb4a",
+  "source_title": "Alpha thalassemia",
+  "en": "Two types of alpha thalassemia can cause health problems. The more severe type is known as hemoglobin Bart hydrops fetalis syndrome, which is also called Hb Bart syndrome or alpha thalassemia major. The milder form is called HbH disease."
+ },
+ {
+  "id": "mp:alpha-thalassemia:0:3",
+  "source_sha256": "026507914e450e489f807ead9ed1ea5f3c6be1eb97e637bfb2250b8913a8d56b",
+  "source_title": "Alpha thalassemia",
+  "en": "Hb Bart syndrome is characterized by hydrops fetalis, a condition in which excess fluid builds up in the body before birth. Additional signs and symptoms can include severe anemia, an enlarged liver and spleen (hepatosplenomegaly), heart defects, and abnormalities of the urinary system or genitalia. Without treatment, most babies with this condition are stillborn or die soon after birth because of these serious health problems. Hb Bart syndrome can also cause serious complications for women during pregnancy, including dangerously high blood pressure with swelling (preeclampsia), premature delivery, and abnormal bleeding."
+ },
+ {
+  "id": "mp:alpha-thalassemia:0:4",
+  "source_sha256": "edfda411273646d21503447b96f0e875d6e0ef7b3ea49a3192da698a2b566fe2",
+  "source_title": "Alpha thalassemia",
+  "en": "HbH disease causes mild to moderate anemia, hepatosplenomegaly, and yellowing of the eyes and skin (jaundice). The features of HbH disease usually appear in early childhood, and affected individuals typically live into adulthood."
+ },
+ {
+  "id": "mp:alpha-thalassemia:1:0",
+  "source_sha256": "cf14ae3bc1a1161465903503cb519067578f92ccda34a6adc5fc0d5a873e1acb",
+  "source_title": "Alpha thalassemia",
+  "en": "Alpha thalassemia is a fairly common blood disorder worldwide. Thousands of infants with Hb Bart syndrome and HbH disease are born each year, particularly in Southeast Asia. Alpha thalassemia also occurs frequently in people from Mediterranean countries, Africa, the Middle East, India, and Central Asia."
+ },
+ {
+  "id": "mp:alpha-thalassemia:2:0",
+  "source_sha256": "a0e4f66db73893f4e64dce1c5d99606d49b8cffd5229aa61f4409b26fc31320d",
+  "source_title": "Alpha thalassemia",
+  "en": "Alpha thalassemia typically results from deletions involving the HBA1 and HBA2 genes. Less commonly, changes to the DNA sequence in or near these genes cause alpha thalassemia. Such changes are often referred to as nondeletion variants. Both the HBA1 and HBA2 genes provide instructions for making a protein called alpha-globin, which is a component (subunit) of hemoglobin."
+ },
+ {
+  "id": "mp:alpha-thalassemia:2:1",
+  "source_sha256": "ed703ed7f33ec29707583923eb8759c74beea77467ca9db172c73cbe038e0efa",
+  "source_title": "Alpha thalassemia",
+  "en": "People have two copies of the HBA1 gene and two copies of the HBA2 gene in each cell. Each copy is called an allele. For each gene, one allele is inherited from a person's father, and the other is inherited from a person's mother. As a result, there are four alleles that produce alpha-globin. The different types of alpha thalassemia result from the loss or alteration of some or all of these alleles."
+ },
+ {
+  "id": "mp:alpha-thalassemia:2:2",
+  "source_sha256": "46082f5c5f5f7e1261e9519a49d9e47d76d18647e4a320cf5ef789b1d62d79d1",
+  "source_title": "Alpha thalassemia",
+  "en": "Deletions and nondeletion variants in one or more alleles reduce the amount of alpha-globin cells produce. Nondeletion variants tend to reduce alpha-globin more than deletions."
+ },
+ {
+  "id": "mp:alpha-thalassemia:2:3",
+  "source_sha256": "8fcf134146c7fad1b241814bfa2d2ecb34ad3e7d07550a456f425d80aa93aa72",
+  "source_title": "Alpha thalassemia",
+  "en": "Hb Bart syndrome, the most severe form of alpha thalassemia, results from the loss or alteration of all four alpha-globin alleles. Such changes prevent the production of any normal alpha-globin."
+ },
+ {
+  "id": "mp:alpha-thalassemia:2:4",
+  "source_sha256": "9b99c8ad60269d6e3f87c8bd47b5c538e6af27da15452f4112bd00c37418aaa5",
+  "source_title": "Alpha thalassemia",
+  "en": "HbH disease is usually caused by loss or alteration of three of the four alpha-globin alleles, which sharply reduces the amount of normal alpha-globin produced. Because nondeletion variants are usually more severe than deletions, nondeletion variants in two of the four alpha-globin alleles can result in HbH disease."
+ },
+ {
+  "id": "mp:alpha-thalassemia:2:5",
+  "source_sha256": "abe1fbf8f4816b62cd94454b312790aaa0fdea407c92f0d383f9bf853a59c4f8",
+  "source_title": "Alpha thalassemia",
+  "en": "With a shortage of alpha-globin, cells make little or no normal hemoglobin. Instead, cells produce abnormal forms of hemoglobin called hemoglobin Bart (Hb Bart) or hemoglobin H (HbH). These abnormal hemoglobin molecules cannot effectively carry oxygen to the body's tissues. The substitution of Hb Bart or HbH for normal hemoglobin causes anemia and the other serious health problems associated with alpha thalassemia."
+ },
+ {
+  "id": "mp:alpha-thalassemia:2:6",
+  "source_sha256": "137b7fa19f8bdfab544b4bc8b80b38d403a5e249f71d4fcf3de20b9a39a38931",
+  "source_title": "Alpha thalassemia",
+  "en": "Two additional forms of alpha thalassemia are related to a reduced amount of alpha-globin. Because cells still produce some normal hemoglobin, these forms tend to cause few or no health problems. A loss of two of the four alpha-globin alleles results in alpha thalassemia trait. People with alpha thalassemia trait may have unusually small, pale red blood cells and mild anemia. A loss of one alpha-globin allele is found in alpha thalassemia silent carriers. These individuals typically have no thalassemia-related signs or symptoms."
+ },
+ {
+  "id": "mp:alpha-thalassemia:2:7",
+  "source_sha256": "85c6d253a73d6f29f108da54977abbeebf5054da36202e51220a5fba5b615949",
+  "source_title": "Alpha thalassemia",
+  "en": "Nondeletion variants in one or two alleles cause a range of conditions, from alpha thalassemia silent carrier to HbH disease, depending on the allele involved."
+ },
+ {
+  "id": "mp:alpha-thalassemia:3:0",
+  "source_sha256": "c6134307c3dfa9846cd68a1100f7701bbb9449313c51e699535d7dbdb46ec122",
+  "source_title": "Alpha thalassemia",
+  "en": "The inheritance of alpha thalassemia is complex. Each person inherits two alpha-globin alleles from each parent. If both parents are missing at least one alpha-globin allele, their children are at risk of having Hb Bart syndrome, HbH disease, or alpha thalassemia trait. The precise risk depends on how many alleles are missing and which combination of the HBA1 and HBA2 genes is affected."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:0:0",
+  "source_sha256": "19c68541154b424680dc2f560a6c065483fa37f877a5a7d5d54c29a05f520dec",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "21-hydroxylase deficiency is an inherited disorder that affects the adrenal glands. The adrenal glands are located on top of the kidneys and produce a variety of hormones that regulate many essential functions in the body. In people with 21-hydroxylase deficiency, the adrenal glands produce excess androgens, which are male sex hormones."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:0:1",
+  "source_sha256": "e5226c4a42b469985a11fa552c37798023272dfe1d3dc002835d66280d2ee66e",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "There are three types of 21-hydroxylase deficiency. Two types are classic forms, known as the salt-wasting and simple virilizing types. The third type is called the non-classic type. The salt-wasting type is the most severe, the simple virilizing type is less severe, and the non-classic type is the least severe form."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:0:2",
+  "source_sha256": "65be8ee7d6e1e520de09a200b29753ed6fe57dd044cca5fd9bca0c22e1f77ab6",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "Males and females with either classic form of 21-hydroxylase deficiency tend to have an early growth spurt, but their final adult height is usually shorter than others in their family. Additionally, affected individuals may have a reduced ability to have biological children (decreased fertility). Females may also develop excessive body hair growth (hirsutism), male pattern baldness, and irregular menstruation."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:0:3",
+  "source_sha256": "44285c9058036db549219f6849f18a621e19d5d27a507de0c7151528999783be",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "Approximately 75 percent of individuals with classic 21-hydroxylase deficiency have the salt-wasting type. Hormone production is extremely low in this form of the disorder. Affected individuals lose large amounts of sodium in their urine, which can be life-threatening in early infancy. Babies with the salt-wasting type can experience poor feeding, weight loss, dehydration, and vomiting. Individuals with the simple virilizing form do not experience salt loss."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:0:4",
+  "source_sha256": "51a774e408a0788c3a831870c32437ca803685fe58de970431863c8c8b5c0ef5",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "In both the salt-wasting and simple virilizing forms of this disorder, females typically have external genitalia that do not look clearly male or female. Males usually have male-typical genitalia but the testes may be small."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:0:5",
+  "source_sha256": "5791dd60da855858b56b026cd6689e39f24cda33dc84bc33ad20e07883b46357",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "Females with the non-classic type of 21-hydroxylase deficiency have female-typical genitalia. As affected females get older, they may experience hirsutism, male pattern baldness, irregular menstruation, and decreased fertility. Males with the non-classic type may have early beard growth and small testes. Some individuals with this type of 21-hydroxylase deficiency have no symptoms of the disorder."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:1:0",
+  "source_sha256": "120ad6d363ca7ff668c12e1b50a52b57baaf6c37b12036bc0463592ccfa6ac77",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "The classic forms of 21-hydroxylase deficiency occur in 1 in 15,000 newborns. The prevalence of the non-classic form of 21-hydroxylase deficiency is estimated to be 1 in 1,000 individuals. The prevalence of both classic and non-classic forms varies among different ethnic populations."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:1:1",
+  "source_sha256": "a4bfd62de7480e6c48ae0831c34f5a413a9f3a47c0718c3c43f4196aab352c60",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "21-hydroxylase deficiency is one of a group of disorders known as congenital adrenal hyperplasias that impair hormone production and disrupt sexual development. 21-hydroxylase deficiency is responsible for about 95 percent of all cases of congenital adrenal hyperplasia."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:2:0",
+  "source_sha256": "617b3adc939e9894a03a5e7d45b5023d8c80425130425081f263c99202bcc202",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "Mutations in the CYP21A2 gene cause 21-hydroxylase deficiency. The CYP21A2 gene provides instructions for making an enzyme called 21-hydroxylase. This enzyme is found in the adrenal glands, where it plays a role in producing hormones called cortisol and aldosterone. Cortisol has numerous functions, such as maintaining blood sugar (glucose) levels, protecting the body from stress, and suppressing inflammation. Aldosterone is sometimes called the salt-retaining hormone because it regulates the amount of salt retained by the kidneys. The retention of salt affects fluid levels in the body and blood pressure."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:2:1",
+  "source_sha256": "e96bbf3e2975504d3f8b885ae9121eab0bf08b5c1c82acd6edac92f7843f36e8",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "21-hydroxylase deficiency is caused by a shortage (deficiency) of the 21-hydroxylase enzyme. When 21-hydroxylase is lacking, substances that are usually used to form cortisol and aldosterone instead build up in the adrenal glands and are converted to androgens. The excess production of androgens leads to abnormalities of sexual development in people with 21-hydroxylase deficiency. A lack of aldosterone production contributes to the salt loss in people with the salt-wasting form of this condition."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:2:2",
+  "source_sha256": "bfa5f42374c8d6213bfa0213ed91bd7254f97fa61eddbf71a7f9231e4039769c",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "The amount of functional 21-hydroxylase enzyme determines the severity of the disorder. Individuals with the salt-wasting type have CYP21A2 mutations that result in a completely nonfunctional enzyme. People with the simple virilizing type of this condition have CYP21A2 gene mutations that allow the production of low levels of functional enzyme. Individuals with the non-classic type of this disorder have CYP21A2 mutations that result in the production of reduced amounts of the enzyme, but more enzyme than either of the other types."
+ },
+ {
+  "id": "mp:21-hydroxylase-deficiency:3:0",
+  "source_sha256": "0b1a11b37934d20835309e73c12695fe5109de582c4f92572ce7397059d983ab",
+  "source_title": "21-hydroxylase deficiency",
+  "en": "This condition is inherited in an autosomal recessive pattern, which means both copies of the gene in each cell have mutations. The parents of an individual with an autosomal recessive condition each carry one copy of the mutated gene, but they typically do not show signs and symptoms of the condition."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:0:0",
+  "source_sha256": "0b3a8a24556885168f95a3e0f8efb8851d32b713988154627b1e7ddbc1212015",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Spinal muscular atrophy is a genetic disorder characterized by weakness and wasting (atrophy) in muscles used for movement (skeletal muscles). It is caused by a loss of specialized nerve cells, called motor neurons that control muscle movement. The weakness tends to be more severe in the muscles that are close to the center of the body (proximal) compared to muscles away from the body's center (distal). The muscle weakness usually worsens with age. There are many types of spinal muscular atrophy that are caused by changes in the same genes. The types differ in age of onset and severity of muscle weakness; however, there is overlap between the types. Other forms of spinal muscular atrophy and related motor neuron diseases, such as spinal muscular atrophy with progressive myoclonic epilepsy, spinal muscular atrophy with lower extremity predominance, X-linked infantile spinal muscular atrophy, and spinal muscular atrophy with respiratory distress type 1 are caused by mutations in other genes."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:0:1",
+  "source_sha256": "86e292b902ff8de2dc60eec3a9116e27eaee4bff35b2c07a0cb0cb49517b8422",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Spinal muscular atrophy type 0 is evident before birth and is the rarest and most severe form of the condition. Affected infants move less in the womb, and as a result they are often born with joint deformities (contractures). They have extremely weak muscle tone (hypotonia) at birth. Their respiratory muscles are very weak and they often do not survive past infancy due to respiratory failure. Some infants with spinal muscular atrophy type 0 also have heart defects that are present from birth (congenital)."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:0:2",
+  "source_sha256": "c3a271bf9d883db1faaae18866e6b8de9a487ffe2758da6bafe64e5c9a0c95a6",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Spinal muscular atrophy type I (also called Werdnig-Hoffmann disease) is the most common form of the condition. It is a severe form of the disorder with muscle weakness evident at birth or within the first few months of life. Most affected children cannot control their head movements or sit unassisted. Children with this type may have swallowing problems that can lead to difficulty feeding and poor growth. They can also have breathing problems due to weakness of respiratory muscles and an abnormally bell-shaped chest that prevents the lungs from fully expanding. Most children with spinal muscular atrophy type I do not survive past early childhood due to respiratory failure."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:0:3",
+  "source_sha256": "42d8ac92e130de2e82ccfa97add7bf868856a8639f13b0882c9ed8f82cbfce90",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Spinal muscular atrophy type II (also called Dubowitz disease) is characterized by muscle weakness that develops in children between ages 6 and 12 months. Children with this type can sit without support, although they may need help getting to a seated position. However, as the muscle weakness worsens later in childhood, affected individuals may need support to sit. Individuals with spinal muscular atrophy type II cannot stand or walk unaided. They often have involuntary trembling (tremors) in their fingers, a spine that curves side-to-side (scoliosis), and respiratory muscle weakness that can be life-threatening. The life span of individuals with spinal muscular atrophy type II varies, but many people with this condition live into their twenties or thirties."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:0:4",
+  "source_sha256": "a233f7b0ca7b287777a1c250103fb8cda7dcfc0f087744c57e7855ddd5500692",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Spinal muscular atrophy type III (also called Kugelberg-Welander disease) typically causes muscle weakness after early childhood. Individuals with this condition can stand and walk unaided, but over time, walking and climbing stairs may become increasingly difficult. Many affected individuals require wheelchair assistance later in life. People with spinal muscular atrophy type III typically have a normal life expectancy."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:0:5",
+  "source_sha256": "098e56e093f962f110805c3642cfae1c547e04fa6198f5c75fa1dd6138ccbc73",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Spinal muscular atrophy type IV is rare and often begins in early adulthood. Affected individuals usually experience mild to moderate muscle weakness, tremors, and mild breathing problems. People with spinal muscular atrophy type IV have a normal life expectancy."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:1:0",
+  "source_sha256": "0ca023e2680a872d56982962d5158d829a38ed7f6075d72fe5404af262f2fad0",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Spinal muscular atrophy affects 1 per 8,000 to 10,000 people worldwide. Spinal muscular atrophy type I is the most common type, accounting for about half of all cases. Types II and III are the next most common and types 0 and IV are rare."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:2:0",
+  "source_sha256": "2a9c2e5f9e07fb26a9d5d57dac65e99f27950816031004aabee6a096ab10e9be",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Mutations in the SMN1 gene cause all types of spinal muscular atrophy described above. The number of copies of the SMN2 gene modifies the severity of the condition and helps determine which type develops."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:2:1",
+  "source_sha256": "dd2689a7026f48d178101fb88773381f404e7d1064e5d23b26022254f0beaa33",
+  "source_title": "Spinal muscular atrophy",
+  "en": "The SMN1 and SMN2 genes both provide instructions for making a protein called the survival motor neuron (SMN) protein. Normally, most functional SMN protein is produced from the SMN1 gene, with a small amount produced from the SMN2 gene. Several different versions of the SMN protein are produced from the SMN2 gene, but only one version is functional; the other versions are smaller and quickly broken down. The SMN protein is one of a group of proteins called the SMN complex, which is important for the maintenance of motor neurons. Motor neurons transmit signals from the brain and spinal cord that tell skeletal muscles to tense (contract), which allows the body to move."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:2:2",
+  "source_sha256": "16a23e8f78b446cc30e527139df0b364e7946369035835a2b11a5a8991613b8c",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Most people with spinal muscular atrophy are missing a piece of the SMN1 gene, which impairs SMN protein production. A shortage of SMN protein leads to motor neuron death, and as a result, signals are not transmitted between the brain and muscles. Muscles cannot contract without receiving signals from the brain, so many skeletal muscles become weak and waste away, leading to the signs and symptoms of spinal muscular atrophy."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:2:3",
+  "source_sha256": "74b8d9778658aaed6a038da30e261eee063734d644805cb89b25c3ae83e1272b",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Typically, people have two copies of the SMN1 gene and one to two copies of the SMN2 gene in each cell. However, the number of copies of the SMN2 gene varies, with some people having up to eight copies. In people with spinal muscular atrophy, having multiple copies of the SMN2 gene is usually associated with less severe features of the condition that develop later in life. The SMN protein produced by the SMN2 genes can help make up for the protein deficiency caused by SMN1 gene mutations. People with spinal muscular atrophy type 0 usually have one copy of the SMN2 gene in each cell, while those with type I generally have one or two copies, those with type II usually have three copies, those with type III have three or four copies, and those with type IV have four or more copies. Other factors, many unknown, also contribute to the variable severity of spinal muscular atrophy."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:3:0",
+  "source_sha256": "7d273771197f2577edab5cf77cedb51fda4b9bc11b9c1aee8bc055f2a87e620a",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Spinal muscular atrophy is inherited in an autosomal recessive pattern, which means both copies of the SMN1 gene in each cell have mutations. In most cases, the parents of an individual with an autosomal recessive condition each carry one copy of the mutated gene, but they typically do not show signs and symptoms of the condition. In rare cases, a person with spinal muscular atrophy inherits an SMN1 gene mutation from one parent and acquires a new mutation in the other copy of the gene that occurs during the formation of reproductive cells (eggs or sperm) or in early embryonic development. In these cases, only one parent is a carrier of the SMN1 gene mutation."
+ },
+ {
+  "id": "mp:spinal-muscular-atrophy:3:1",
+  "source_sha256": "f1580853c306314a3298db4925ebbb3b171b9189223cf7df4060acf4d619b20b",
+  "source_title": "Spinal muscular atrophy",
+  "en": "Individuals who have more than the usual two copies of the SMN2 gene usually do not inherit the extra copies from a parent. They typically arise during a random error when making new copies of DNA (replication) in an egg or sperm cell or just after fertilization."
+ }
+]
