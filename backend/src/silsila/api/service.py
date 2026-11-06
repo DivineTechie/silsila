@@ -90,7 +90,8 @@ def compute_report(case: dict[str, Any], lang: str = "en") -> dict[str, Any]:
     if case["locus_id"] not in loci:
         excluded = {e["id"]: e for e in params.register().get("excluded_loci", [])}
         e = excluded.get(case["locus_id"])
-        msg = reg.template(Message(lang), "result.excluded_locus", {"condition": e["display"] if e else case["locus_id"]})
+        msg = reg.template(Message(lang), "result.excluded_locus",
+                           {"condition": params.display_for(e, lang) if e else case["locus_id"]})
         out.update(status="not_calculated", message=reg.gate(msg).parts, reason=e["reason"] if e else None)
         return out
     rec = loci[case["locus_id"]]
@@ -136,7 +137,7 @@ def compute_report(case: dict[str, Any], lang: str = "en") -> dict[str, Any]:
     for c in rep.couples:
         affected = {k: v for k, v in c.child_phenotypes.items() if k in rec.locus.affected_phenotypes}
         m = reg.template(Message(lang), "result.couple_child_risk", {
-            "a": _name(case, c.female), "b": _name(case, c.male), "condition": rec.display,
+            "a": _name(case, c.female), "b": _name(case, c.male), "condition": params.display_for(rec, lang),
             "chance": one_in(c.p_child_affected, lang), "baseline": one_in(c.baseline_child_affected, lang)})
         couples.append({"female": c.female, "male": c.male, "kinship": c.kinship,
                         "computed": {"p_both_carry": c.p_both_carry, "p_child_affected": c.p_child_affected,
@@ -265,7 +266,7 @@ def relative_view(store: Store, code: str, lang: str) -> dict[str, Any]:
     case = store.get("case", inv["case_id"])
     assert case is not None
     rec = params.load().get(case["locus_id"])
-    display = rec.display if rec else case["locus_id"]
+    display = params.display_for(rec, lang) if rec else case["locus_id"]
     msg = Message(lang)
     if inv["disclose_sender"]:
         reg.template(msg, "invite.with_sender", {"sender": inv["sender_name"]})

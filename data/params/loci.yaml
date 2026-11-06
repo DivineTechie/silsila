@@ -8,6 +8,7 @@
 # re-derive it by hand.
 #
 # Population: UAE nationals (Emiratis) unless stated otherwise.
+# display_ar: Arabic condition names (machine-translated interface labels, pending native clinical review).
 
 background_inbreeding:
   value: 0.0222
@@ -28,6 +29,7 @@ loci:
   - id: HBB
     gene: HBB
     display: Haemoglobin disorders (beta-thalassaemia and sickle cell)
+    display_ar: اضطرابات الهيموغلوبين (الثلاسيميا بيتا وفقر الدم المنجلي)
     content_ids: [mp:beta-thalassemia, mp:sickle-cell-disease]
     reference_allele: {id: N, label: "typical HBB"}
     alleles:
@@ -78,6 +80,7 @@ loci:
   - id: CYP21A2
     gene: CYP21A2
     display: Congenital adrenal hyperplasia (21-hydroxylase deficiency, classic form)
+    display_ar: تضخم الغدة الكظرية الخلقي (نقص إنزيم 21-هيدروكسيليز، الشكل التقليدي)
     content_ids: [mp:21-hydroxylase-deficiency]
     reference_allele: {id: N, label: "typical CYP21A2"}
     alleles:
@@ -106,6 +109,7 @@ loci:
   - id: SMN1
     gene: SMN1
     display: Spinal muscular atrophy
+    display_ar: ضمور العضلات الشوكي
     content_ids: [mp:spinal-muscular-atrophy]
     reference_allele: {id: N, label: "typical SMN1"}
     alleles:
@@ -138,6 +142,7 @@ loci:
 excluded_loci:
   - id: HBA1/HBA2
     display: Alpha-thalassaemia
+    display_ar: الثلاسيميا ألفا
     reason: >-
       Not calculated in this version. A UAE population frequency was found for
       the single alpha-gene deletion (-alpha3.7 0.2847, -alpha4.2 0.0072;
@@ -149,6 +154,7 @@ excluded_loci:
       missing, so the app refers alpha-thalassaemia results to a counsellor.
   - id: CYP1B1
     display: Primary congenital glaucoma
+    display_ar: الزرق الخلقي الأولي
     reason: >-
       No population carrier frequency or penetrance figure was found for the
       UAE or Gulf. Incomplete penetrance is documented (Bejjani 2000, PMID

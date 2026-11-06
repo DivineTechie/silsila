@@ -47,6 +47,7 @@ class Derivation:
 class LocusRecord:
     locus: Locus
     display: str
+    display_ar: str
     content_ids: list[str]
     background_f: float
     derivations: list[Derivation]
@@ -118,7 +119,15 @@ def build_locus(entry: dict[str, Any], f: float) -> LocusRecord:
         if ph["affected"]:
             affected.add(ph["label"])
     locus = Locus(entry["id"], entry["gene"], tuple(alleles), phenotypes, frozenset(affected))
-    return LocusRecord(locus, entry["display"], entry.get("content_ids", []), f, derivations, residual, entry)
+    return LocusRecord(locus, entry["display"], entry.get("display_ar", entry["display"]), entry.get("content_ids", []),
+                       f, derivations, residual, entry)
+
+
+def display_for(entry_or_record: Any, lang: str) -> str:
+    """Condition name in the reader's language (Arabic falls back to English)."""
+    if isinstance(entry_or_record, LocusRecord):
+        return entry_or_record.display_ar if lang == "ar" else entry_or_record.display
+    return entry_or_record.get("display_ar", entry_or_record["display"]) if lang == "ar" else entry_or_record["display"]
 
 
 @lru_cache(maxsize=1)
