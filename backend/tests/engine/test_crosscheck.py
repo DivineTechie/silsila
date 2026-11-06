@@ -164,3 +164,14 @@ def test_engine_matches_monte_carlo(seed):
         # binomial standard error at the effective sample size, 5 sigma
         tol = 5 * np.sqrt(np.maximum(ours[pid] * (1 - ours[pid]), 1e-6) / ess)
         assert np.all(np.abs(mc - ours[pid]) <= tol + 1e-9), f"{pid}: mc={mc} exact={ours[pid]}"
+
+
+def test_monte_carlo_background_inbreeding_matches_exact_prior():
+    from silsila.engine import Pedigree as _Ped
+    loc = biallelic(0.05)
+    ped = _Ped.from_people([P("x", "F")])
+    exact = marginals(ped, loc, background_f=0.0222)["x"]
+    genos, w = gene_drop(ped, loc, n=2_000_000, seed=7, background_f=0.0222)
+    mc = mc_marginal(genos["x"], w, loc.n_genotypes)
+    tol = 5 * np.sqrt(exact * (1 - exact) / 2_000_000) + 1e-12
+    assert np.all(np.abs(mc - exact) <= tol), (mc, exact)

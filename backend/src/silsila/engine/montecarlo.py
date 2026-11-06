@@ -25,8 +25,14 @@ def gene_drop(
     n: int = 200_000,
     seed: int = 0,
     virtual_children: dict[str, tuple[str, str]] | None = None,
+    background_f: float = 0.0,
 ) -> tuple[dict[str, np.ndarray], np.ndarray]:
-    """Return (genotype index per person per sample, sample weights)."""
+    """Return (genotype index per person per sample, sample weights).
+
+    With background inbreeding F, a founder's two alleles are identical by
+    descent with probability F (one draw, duplicated), otherwise drawn
+    independently. This gives P(i,i) = p_i^2 + F p_i (1 - p_i), matching
+    Locus.founder_prior."""
     rng = np.random.default_rng(seed)
     freqs = np.array([a.frequency for a in locus.alleles])
     gi = np.full((len(locus.alleles), len(locus.alleles)), -1)
@@ -39,7 +45,11 @@ def gene_drop(
     for pid in order:
         p = ped.people[pid]
         if p.mother is None:
-            alleles[pid] = rng.choice(len(freqs), size=(n, 2), p=freqs)
+            pair = rng.choice(len(freqs), size=(n, 2), p=freqs)
+            if background_f > 0:
+                ibd = rng.random(n) < background_f
+                pair[ibd, 1] = pair[ibd, 0]
+            alleles[pid] = pair
         else:
             m = alleles[p.mother][rows, rng.integers(0, 2, n)]
             f = alleles[p.father][rows, rng.integers(0, 2, n)]  # type: ignore[index]
