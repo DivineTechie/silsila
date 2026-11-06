@@ -21,13 +21,13 @@ CALIBRATION_FILE = DATA / "calibration" / "12_sim_calibration.yaml"
 ASSUMPTIONS_FILE = Path(__file__).with_name("assumptions.yaml")
 
 CITATIONS = {
-    "ahmed2002": "Ahmed S, Saleem M, Modell B, Petrou M. N Engl J Med 2002;347(15):1162-8. PMID 12374877, doi 10.1056/NEJMsa013234 (full text: https://discovery.ucl.ac.uk/id/eprint/7166/1/7166.pdf)",
+    "ahmed2002": "Ahmed S, Saleem M, Modell B, Petrou M. Screening extended families for genetic hemoglobin disorders in Pakistan. N Engl J Med 2002;347(15):1162-8. PMID 12374877, doi 10.1056/NEJMsa013234 (full text: https://discovery.ucl.ac.uk/id/eprint/7166/1/7166.pdf)",
     "algazali1997": "al-Gazali LI, Bener A, Abdulrazzaq YM, et al. J Biosoc Sci 1997;29(4):491-497. PMID 9881148",
-    "denic2013": "Denic S, Aden B, Nagelkerke N, Essa A. Abu Dhabi premarital screening, 2013. PMID 23600619 (https://pubmed.ncbi.nlm.nih.gov/23600619/)",
+    "denic2013": "Denic S, Aden B, Nagelkerke N, Essa AA. Beta-thalassemia in Abu Dhabi: consanguinity and tribal stratification are major factors explaining the high prevalence of the disease. Hemoglobin 2013;37:351-358. PMID 23600619 (https://pubmed.ncbi.nlm.nih.gov/23600619/)",
     "fcsc_tfr": "Emirati TFR 2016-2022, FCSC/MoHAP via GLMM: https://gulfmigration.grc.net/uae-crude-birth-rates-and-emirati-womens-total-fertility-rates-2016-2022/",
     "ad_premarital": "Abu Dhabi premarital genetic programme, Gulf News (updated 3 Oct 2026): https://gulfnews.com/uae/health/abu-dhabi-genetic-screening-flags-565-incompatible-cases-among-couples-1.500697261",
     "ehs_premarital": "Federal (EHS) premarital screening, Gulf News: https://gulfnews.com/uae/health/uae-premarital-genetic-screening-71-per-cent-of-incompatible-couples-choose-marriage-1.500731467",
-    "balding_nichols1995": "Balding DJ, Nichols RA. Genetica 1995;96:3-12 (clan allele-frequency model; method, no numbers taken)",
+    "balding_nichols1995": "Balding DJ, Nichols RA. A method for quantifying differentiation between populations at multi-allelic loci and its implications for investigating identity and paternity. Genetica 1995;96:3-12. PMID 7607457 (clan allele-frequency model; method, no numbers taken)",
     "loci_yaml": "data/params/loci.yaml (per-allele citations: Belhoul 2013 PMID 23647352; Al Hosani 2014 PMID 24932929; Rabea 2024 PMID 38879606; detection: ARUP HBB; Sugarman 2012 PMID 21811307)",
 }
 

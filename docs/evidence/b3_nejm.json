@@ -1,0 +1,511 @@
+{
+  "benchmark": "B3 NEJM 2002 reproduction (synthetic kindreds)",
+  "provenance": {
+    "generated_utc": "2026-11-06T13:08:52Z",
+    "git_commit": "742f4ef",
+    "working_tree_dirty": true,
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "workers": 8,
+    "quick": false,
+    "seed": 3000000,
+    "data_note": "SYNTHETIC: all families are simulated; no real person's data is used."
+  },
+  "source": "Ahmed S, Saleem M, Modell B, Petrou M. N Engl J Med 2002;347(15):1162-8. PMID 12374877, doi 10.1056/NEJMsa013234 (full text: https://discovery.ucl.ac.uk/id/eprint/7166/1/7166.pdf)",
+  "inputs": {
+    "population_carrier_rate": {
+      "value": 0.05,
+      "source": "Ahmed S, Saleem M, Modell B, Petrou M. N Engl J Med 2002;347(15):1162-8. PMID 12374877, doi 10.1056/NEJMsa013234 (full text: https://discovery.ucl.ac.uk/id/eprint/7166/1/7166.pdf)"
+    },
+    "couple_types": {
+      "value": {
+        "consanguineous_2nd_cousin_or_closer": 0.44,
+        "same_biradri": 0.5,
+        "unrelated": 0.06
+      },
+      "source": "Ahmed S, Saleem M, Modell B, Petrou M. N Engl J Med 2002;347(15):1162-8. PMID 12374877, doi 10.1056/NEJMsa013234 (full text: https://discovery.ucl.ac.uk/id/eprint/7166/1/7166.pdf)"
+    },
+    "per_family_tested_fractions": {
+      "value": "tested/members from the published per-family table",
+      "source": "Ahmed S, Saleem M, Modell B, Petrou M. N Engl J Med 2002;347(15):1162-8. PMID 12374877, doi 10.1056/NEJMsa013234 (full text: https://discovery.ucl.ac.uk/id/eprint/7166/1/7166.pdf)"
+    },
+    "assumptions_used": {
+      "n_generations": 5,
+      "sibship_mean_nejm": 3.25,
+      "marriage_prob": 0.85,
+      "p_living_grandparent_gen": 0.7,
+      "nejm_consanguineous_split": {
+        "first_cousin": 0.519,
+        "double_first_cousin": 0.069,
+        "second_cousin": 0.412
+      },
+      "theta_nejm": 0.0,
+      "founder_f_nejm": 0.0,
+      "nejm_test_sensitivity": 1.0,
+      "nejm_tested_selection": "random",
+      "ascertainment": "complete",
+      "clan_model": "balding_nichols"
+    }
+  },
+  "relationship_mix": {
+    "target": {
+      "first_cousin": 0.22836,
+      "double_first_cousin": 0.03036,
+      "second_cousin": 0.18128,
+      "same_clan": 0.5,
+      "other_clan": 0.06
+    },
+    "generator_request_mix": {
+      "double_first_cousin": 0.002618691266851838,
+      "first_cousin": 0.07220179544719894,
+      "second_cousin": 0.615208218403089,
+      "distant_relative": 0.0,
+      "same_clan": 0.25337915457505533,
+      "other_clan": 0.05659214030780487
+    },
+    "achieved_over_unascertained_kindreds": {
+      "double_first_cousin": 0.04666027484819431,
+      "first_cousin": 0.2422499201022691,
+      "second_cousin": 0.1684244167465644,
+      "distant_relative": 0.0,
+      "same_clan": 0.4873761585170981,
+      "other_clan": 0.05528922978587408
+    }
+  },
+  "ascertainment_method": "rejection sampling: accept every (structure, genotype replicate) with >=1 affected child; exact for P(family | ascertained)",
+  "theta_fit": {
+    "grid": [
+      {
+        "theta": 0.0,
+        "carrier_rate": 0.25775008801293897
+      },
+      {
+        "theta": 0.025,
+        "carrier_rate": 0.28292658963391315
+      },
+      {
+        "theta": 0.05,
+        "carrier_rate": 0.3114464233631472
+      },
+      {
+        "theta": 0.075,
+        "carrier_rate": 0.33712039066031824
+      },
+      {
+        "theta": 0.1,
+        "carrier_rate": 0.3539704216469245
+      },
+      {
+        "theta": 0.15,
+        "carrier_rate": 0.39334473349434906
+      },
+      {
+        "theta": 0.2,
+        "carrier_rate": 0.4210551461885434
+      }
+    ],
+    "fit_to_published_31pct": {
+      "theta": 0.04842061376523829
+    },
+    "fit_ci_low": {
+      "theta": 0.014700409734835888
+    },
+    "fit_ci_high": {
+      "theta": 0.09210656753561754
+    }
+  },
+  "evaluations": {
+    "theta_default_no_biradri_effect": {
+      "theta": 0.0,
+      "n_index_families_simulated": 5816,
+      "n_control_families_simulated": 5516,
+      "i_carriers_among_tested": {
+        "published": {
+          "k": 183,
+          "n": 591,
+          "value": 0.3096446700507614,
+          "exact_ci95": [
+            0.2725542835936622,
+            0.34865023838230336
+          ]
+        },
+        "model": {
+          "estimate": 0.25852004264694695,
+          "ci95": [
+            0.25441984213891206,
+            0.2623767257655589
+          ]
+        },
+        "replicate_study_10_families": {
+          "predictive_95_low": 0.18633519056847545,
+          "predictive_95_high": 0.3444827039035227,
+          "p_two_sided": 0.247,
+          "compatible": true
+        },
+        "true_carrier_rate_among_tested_model": {
+          "estimate": 0.25852004264694695,
+          "ci95": [
+            0.2544652779455079,
+            0.2626630072000437
+          ]
+        }
+      },
+      "ii_atrisk_couples_identified": {
+        "published": {
+          "k": 17,
+          "n": 214,
+          "value": 0.0794392523364486,
+          "exact_ci95": [
+            0.0469562992824734,
+            0.12414405696091203
+          ]
+        },
+        "model": {
+          "estimate": 0.09230521753941069,
+          "ci95": [
+            0.09014696376201424,
+            0.09441321211770666
+          ]
+        },
+        "replicate_study_10_families": {
+          "predictive_95_low": 0.06043956043956044,
+          "predictive_95_high": 0.14012887671885232,
+          "p_two_sided": 0.517,
+          "compatible": true
+        },
+        "model_true_both_carrier_couples": {
+          "estimate": 0.10147423402282318,
+          "ci95": [
+            0.09902077037458416,
+            0.10374960547125238
+          ]
+        },
+        "definition": "both partners living; identified = both tested positive, or the couple has an affected child"
+      },
+      "iii_control_family_carriers": {
+        "published": {
+          "k": 0,
+          "n": 397,
+          "value": 0.0,
+          "exact_ci95": [
+            0.0,
+            0.009248851603319806
+          ]
+        },
+        "model": {
+          "estimate": 0.03804038252943108,
+          "ci95": [
+            0.03615555999087359,
+            0.039882413744497865
+          ]
+        },
+        "replicate_study_5_families": {
+          "predictive_95_low": 0.0,
+          "predictive_95_high": 0.11932327508149224,
+          "p_two_sided": 0.1715,
+          "compatible": true
+        },
+        "p_zero_carriers_in_5_family_study": 0.08575,
+        "definition": "control kindreds conditioned on no affected member"
+      },
+      "iv_random_couples_atrisk": {
+        "published": {
+          "k": 0,
+          "n": 350,
+          "value": 0.0,
+          "exact_ci95": [
+            0.0,
+            0.010484308031983464
+          ]
+        },
+        "model": {
+          "estimate": 0.0045320181,
+          "ci95": [
+            0.004323863725868002,
+            0.004740172474131998
+          ],
+          "simulated_couples_per_type": 400000
+        },
+        "replicate_study_350_couples": {
+          "predictive_95_low": 0.0,
+          "predictive_95_high": 0.011428571428571429,
+          "p_two_sided": 0.426,
+          "compatible": true
+        },
+        "p_zero_atrisk_in_350": 0.20396403702863955,
+        "women_carrier_rate_model": 0.0505705375,
+        "women_carriers_published": {
+          "k": 17,
+          "n": 350,
+          "exact_ci95": [
+            0.028545763039314158,
+            0.07663031260947657
+          ]
+        },
+        "by_couple_type": {
+          "first_cousin": {
+            "both_carry": 0.008575,
+            "both_test_positive": 0.008575,
+            "woman_carries": 0.050805,
+            "child_affected": 0.00221,
+            "n": 400000
+          },
+          "double_first_cousin": {
+            "both_carry": 0.0144825,
+            "both_test_positive": 0.0144825,
+            "woman_carries": 0.0504975,
+            "child_affected": 0.0037,
+            "n": 400000
+          },
+          "second_cousin": {
+            "both_carry": 0.0040175,
+            "both_test_positive": 0.0040175,
+            "woman_carries": 0.0504325,
+            "child_affected": 0.0010075,
+            "n": 400000
+          },
+          "same_clan": {
+            "both_carry": 0.0024925,
+            "both_test_positive": 0.0024925,
+            "woman_carries": 0.0505375,
+            "child_affected": 0.00064,
+            "n": 400000
+          },
+          "other_clan": {
+            "both_carry": 0.00266,
+            "both_test_positive": 0.00266,
+            "woman_carries": 0.0504075,
+            "child_affected": 0.000655,
+            "n": 400000
+          }
+        }
+      },
+      "family_structure_check": {
+        "living_members_per_index_family": {
+          "model": 88.55656993805022,
+          "published": 84.6,
+          "published_range": [
+            48,
+            199
+          ],
+          "note": "fitted through sibship_mean_nejm (calibrated assumption)"
+        },
+        "couples_per_index_family": {
+          "model": 17.228888164329963,
+          "published": 21.4
+        },
+        "consanguineous_share_of_couples": {
+          "model": 0.510957400503397,
+          "published_index_families": 0.43457943925233644,
+          "note": "the generator targets 44% over all couples; ascertainment through an affected child enriches consanguineous families"
+        },
+        "unmarried_share_of_living": {
+          "model": 0.6108953141165598,
+          "published_all_15_families": 0.54
+        },
+        "tested_share_of_living": {
+          "model": 0.7139749929124494,
+          "published": 0.6985815602836879
+        }
+      }
+    },
+    "theta_fitted_to_i": {
+      "theta": 0.04842061376523829,
+      "n_index_families_simulated": 7974,
+      "n_control_families_simulated": 5520,
+      "i_carriers_among_tested": {
+        "published": {
+          "k": 183,
+          "n": 591,
+          "value": 0.3096446700507614,
+          "exact_ci95": [
+            0.2725542835936622,
+            0.34865023838230336
+          ]
+        },
+        "model": {
+          "estimate": 0.31264880798306294,
+          "ci95": [
+            0.30896691895270334,
+            0.3165910779611154
+          ]
+        },
+        "replicate_study_10_families": {
+          "predictive_95_low": 0.22433974066669005,
+          "predictive_95_high": 0.4103438449848024,
+          "p_two_sided": 0.954,
+          "compatible": true
+        },
+        "true_carrier_rate_among_tested_model": {
+          "estimate": 0.31264880798306294,
+          "ci95": [
+            0.30843877519320523,
+            0.31686947814202154
+          ]
+        }
+      },
+      "ii_atrisk_couples_identified": {
+        "published": {
+          "k": 17,
+          "n": 214,
+          "value": 0.0794392523364486,
+          "exact_ci95": [
+            0.0469562992824734,
+            0.12414405696091203
+          ]
+        },
+        "model": {
+          "estimate": 0.12274212999268519,
+          "ci95": [
+            0.12025181413916161,
+            0.1255352142454869
+          ]
+        },
+        "replicate_study_10_families": {
+          "predictive_95_low": 0.075,
+          "predictive_95_high": 0.19820356070356074,
+          "p_two_sided": 0.0875,
+          "compatible": true
+        },
+        "model_true_both_carrier_couples": {
+          "estimate": 0.13929105682484663,
+          "ci95": [
+            0.13623286335597953,
+            0.14241884998154283
+          ]
+        },
+        "definition": "both partners living; identified = both tested positive, or the couple has an affected child"
+      },
+      "iii_control_family_carriers": {
+        "published": {
+          "k": 0,
+          "n": 397,
+          "value": 0.0,
+          "exact_ci95": [
+            0.0,
+            0.009248851603319806
+          ]
+        },
+        "model": {
+          "estimate": 0.03005851070626753,
+          "ci95": [
+            0.028001197213395126,
+            0.03201471803806655
+          ]
+        },
+        "replicate_study_5_families": {
+          "predictive_95_low": 0.0,
+          "predictive_95_high": 0.11397846638655465,
+          "p_two_sided": 0.377,
+          "compatible": true
+        },
+        "p_zero_carriers_in_5_family_study": 0.1885,
+        "definition": "control kindreds conditioned on no affected member"
+      },
+      "iv_random_couples_atrisk": {
+        "published": {
+          "k": 0,
+          "n": 350,
+          "value": 0.0,
+          "exact_ci95": [
+            0.0,
+            0.010484308031983464
+          ]
+        },
+        "model": {
+          "estimate": 0.00866518,
+          "ci95": [
+            0.008377953140058122,
+            0.008952406859941878
+          ],
+          "simulated_couples_per_type": 400000
+        },
+        "replicate_study_350_couples": {
+          "predictive_95_low": 0.0,
+          "predictive_95_high": 0.02,
+          "p_two_sided": 0.098,
+          "compatible": true
+        },
+        "p_zero_atrisk_in_350": 0.0475473444712894,
+        "women_carrier_rate_model": 0.051898854700000004,
+        "women_carriers_published": {
+          "k": 17,
+          "n": 350,
+          "exact_ci95": [
+            0.028545763039314158,
+            0.07663031260947657
+          ]
+        },
+        "by_couple_type": {
+          "first_cousin": {
+            "both_carry": 0.01256,
+            "both_test_positive": 0.01256,
+            "woman_carries": 0.051845,
+            "child_affected": 0.003485,
+            "n": 400000
+          },
+          "double_first_cousin": {
+            "both_carry": 0.01772,
+            "both_test_positive": 0.01772,
+            "woman_carries": 0.0522375,
+            "child_affected": 0.00499,
+            "n": 400000
+          },
+          "second_cousin": {
+            "both_carry": 0.008515,
+            "both_test_positive": 0.008515,
+            "woman_carries": 0.0525,
+            "child_affected": 0.0024225,
+            "n": 400000
+          },
+          "same_clan": {
+            "both_carry": 0.007105,
+            "both_test_positive": 0.007105,
+            "woman_carries": 0.05171,
+            "child_affected": 0.002095,
+            "n": 400000
+          },
+          "other_clan": {
+            "both_carry": 0.002715,
+            "both_test_positive": 0.002715,
+            "woman_carries": 0.05169,
+            "child_affected": 0.00071,
+            "n": 400000
+          }
+        }
+      },
+      "family_structure_check": {
+        "living_members_per_index_family": {
+          "model": 87.74099023240149,
+          "published": 84.6,
+          "published_range": [
+            48,
+            199
+          ],
+          "note": "fitted through sibship_mean_nejm (calibrated assumption)"
+        },
+        "couples_per_index_family": {
+          "model": 17.03682496912541,
+          "published": 21.4
+        },
+        "consanguineous_share_of_couples": {
+          "model": 0.4973739184300184,
+          "published_index_families": 0.43457943925233644,
+          "note": "the generator targets 44% over all couples; ascertainment through an affected child enriches consanguineous families"
+        },
+        "unmarried_share_of_living": {
+          "model": 0.6116564236624275,
+          "published_all_15_families": 0.54
+        },
+        "tested_share_of_living": {
+          "model": 0.7106133774531067,
+          "published": 0.6985815602836879
+        }
+      }
+    }
+  },
+  "log": "docs/evidence/logs/b3_nejm_families.csv",
+  "runtime_seconds": 14.18
+}

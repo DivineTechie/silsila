@@ -1,0 +1,1492 @@
+{
+  "benchmark": "B5 sensitivity (one assumption at a time)",
+  "provenance": {
+    "generated_utc": "2026-11-06T13:21:14Z",
+    "git_commit": "742f4ef",
+    "working_tree_dirty": true,
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "workers": 8,
+    "quick": false,
+    "seed": 5000000,
+    "data_note": "SYNTHETIC: all families are simulated; no real person's data is used."
+  },
+  "baseline": {
+    "b3": {
+      "carriers_among_tested": {
+        "estimate": 0.2592572018378216,
+        "ci95": [
+          0.25279254007897173,
+          0.26576249809756325
+        ]
+      },
+      "atrisk_couples_identified": {
+        "estimate": 0.09025325864769439,
+        "ci95": [
+          0.08644084471266257,
+          0.09385461980040312
+        ]
+      },
+      "living_per_family": 89.03492647058823,
+      "theta_needed_for_31pct": 0.04622109270709191
+    },
+    "b4_hbb": {
+      "n_families": 176,
+      "achieved_mix": {
+        "double_first_cousin": 0.03495729199620373,
+        "first_cousin": 0.2488136665612148,
+        "second_cousin": 0.05378044922492882,
+        "distant_relative": 0.15533059158494147,
+        "same_clan": 0.262100601075609,
+        "other_clan": 0.2450173995571022
+      },
+      "families_too_complex_for_exact_engine": 0,
+      "ranked_per_1000_at_5": {
+        "estimate": 66.93363844393593,
+        "ci95": [
+          49.63978027677388,
+          83.4390841126192
+        ]
+      },
+      "ranked_per_1000_at_all": {
+        "estimate": 43.60381172393878,
+        "ci95": [
+          32.999055766605494,
+          55.19834030630834
+        ]
+      },
+      "unranked_per_1000_at_5": {
+        "estimate": 52.63157894736842,
+        "ci95": [
+          37.09930344255287,
+          67.37279226240538
+        ]
+      },
+      "unranked_per_1000_at_all": {
+        "estimate": 43.60381172393878,
+        "ci95": [
+          32.999055766605494,
+          55.19834030630834
+        ]
+      },
+      "ranked_over_unranked_at_5": {
+        "estimate": 1.271739130434783,
+        "ci95": [
+          1.018124098124098,
+          1.5961805555555557
+        ],
+        "bootstrap_draws_dropped_infinite": 0
+      },
+      "random_couples_per_1000": 9.060023800000002,
+      "cascade_all_over_random": 4.8127701081688965
+    }
+  },
+  "variations": [
+    {
+      "assumption": "n_generations",
+      "setting": "alt2",
+      "value": 6,
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.17008522565801162,
+          "ci95": [
+            0.16518978172329013,
+            0.17468686485106683
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.047965239646650955,
+          "ci95": [
+            0.04599923009977058,
+            0.049965763353220935
+          ]
+        },
+        "living_per_family": 184.08058864751226,
+        "theta_needed_for_31pct": 0.15333995644258275
+      },
+      "b4_note": "larger trees make the engine slower; run on 40% of the usual number of family structures",
+      "b4": {
+        "n_families": 113,
+        "achieved_mix": {
+          "double_first_cousin": 0.03573500406079592,
+          "first_cousin": 0.257802529295742,
+          "second_cousin": 0.06276830258730712,
+          "distant_relative": 0.1521058127392969,
+          "same_clan": 0.2442278686622578,
+          "other_clan": 0.2473604826546003
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 67.31549067315491,
+          "ci95": [
+            46.93628952203941,
+            89.7608269765434
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 36.35652853792025,
+          "ci95": [
+            25.660175392078877,
+            47.97500508391987
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 30.008110300081103,
+          "ci95": [
+            15.925865744506657,
+            44.95005216363686
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 36.35652853792025,
+          "ci95": [
+            25.660175392078877,
+            47.97500508391987
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 2.2432432432432434,
+          "ci95": [
+            1.5789181286549707,
+            3.64607771260997
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 4.0128513280417915
+      },
+      "seconds": 24.99
+    },
+    {
+      "assumption": "sibship_mean_uae",
+      "setting": "low",
+      "value": 3.0,
+      "b4": {
+        "n_families": 87,
+        "achieved_mix": {
+          "double_first_cousin": 0.031982942430703626,
+          "first_cousin": 0.27896233120113717,
+          "second_cousin": 0.06538734896943853,
+          "distant_relative": 0.15209665955934612,
+          "same_clan": 0.24520255863539445,
+          "other_clan": 0.2263681592039801
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 59.56907477820025,
+          "ci95": [
+            34.04179173401062,
+            85.79950930591835
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 39.91130820399113,
+          "ci95": [
+            23.436846780936456,
+            57.803821242303854
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 36.755386565272495,
+          "ci95": [
+            19.302010129348258,
+            57.01678533323104
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 39.91130820399113,
+          "ci95": [
+            23.436846780936456,
+            57.803821242303854
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.620689655172414,
+          "ci95": [
+            1.162108108108108,
+            2.4865714285714278
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 4.4052100838842305
+      },
+      "seconds": 5.7
+    },
+    {
+      "assumption": "sibship_mean_uae",
+      "setting": "high",
+      "value": 5.5,
+      "b4": {
+        "n_families": 292,
+        "achieved_mix": {
+          "double_first_cousin": 0.035276294906939835,
+          "first_cousin": 0.2647525609580147,
+          "second_cousin": 0.05605251767421728,
+          "distant_relative": 0.15329678257105755,
+          "same_clan": 0.24195642764391861,
+          "other_clan": 0.24866541624585198
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 85.43025784405094,
+          "ci95": [
+            69.3093631681375,
+            101.93184487581951
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 42.415528396836805,
+          "ci95": [
+            34.63152876967463,
+            50.07451715701125
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 40.69586828207518,
+          "ci95": [
+            29.62686819503618,
+            51.61738455520454
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 42.415528396836805,
+          "ci95": [
+            34.63152876967463,
+            50.07451715701125
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 2.0992366412213737,
+          "ci95": [
+            1.7432987967914437,
+            2.606337810714837
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 4.681613352587087
+      },
+      "seconds": 73.53
+    },
+    {
+      "assumption": "sibship_mean_nejm",
+      "setting": "low",
+      "value": 2.9,
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.30758738038151356,
+          "ci95": [
+            0.29915231160074934,
+            0.315283072191558
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.11944020234800039,
+          "ci95": [
+            0.1144777916888941,
+            0.12442938058731975
+          ]
+        },
+        "living_per_family": 62.76382846488502,
+        "theta_needed_for_31pct": 0.007467147358934016
+      },
+      "seconds": 2.23
+    },
+    {
+      "assumption": "sibship_mean_nejm",
+      "setting": "high",
+      "value": 3.6,
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.22700281729510247,
+          "ci95": [
+            0.22080066080802152,
+            0.2331050205374778
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.07161635129279215,
+          "ci95": [
+            0.0687248023791714,
+            0.07449480061479322
+          ]
+        },
+        "living_per_family": 126.09227181878748,
+        "theta_needed_for_31pct": 0.08682454836399074
+      },
+      "seconds": 4.36
+    },
+    {
+      "assumption": "marriage_prob",
+      "setting": "low",
+      "value": 0.7,
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.3159678897081279,
+          "ci95": [
+            0.3064672005110241,
+            0.32541607531323513
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.13737657707076248,
+          "ci95": [
+            0.1317284433610534,
+            0.1434428360588336
+          ]
+        },
+        "living_per_family": 57.4282624369142,
+        "theta_needed_for_31pct": null
+      },
+      "b4": {
+        "n_families": 109,
+        "achieved_mix": {
+          "double_first_cousin": 0.04147982062780269,
+          "first_cousin": 0.242152466367713,
+          "second_cousin": 0.05941704035874439,
+          "distant_relative": 0.163957399103139,
+          "same_clan": 0.25448430493273544,
+          "other_clan": 0.23850896860986548
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 91.24087591240875,
+          "ci95": [
+            68.92932271191117,
+            113.46710526315789
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 54.08163265306123,
+          "ci95": [
+            41.30000580382,
+            66.42780754030207
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 57.481751824817515,
+          "ci95": [
+            39.19195178673571,
+            76.57353469602111
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 54.08163265306123,
+          "ci95": [
+            41.30000580382,
+            66.42780754030207
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.5873015873015872,
+          "ci95": [
+            1.2758148323098724,
+            2.088939393939394
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 5.969259446433377
+      },
+      "seconds": 10.79
+    },
+    {
+      "assumption": "marriage_prob",
+      "setting": "high",
+      "value": 0.95,
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.2274682649088466,
+          "ci95": [
+            0.22147622968702707,
+            0.23327622612600962
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.07273995740618344,
+          "ci95": [
+            0.06994758267188642,
+            0.0756415284092272
+          ]
+        },
+        "living_per_family": 115.57176789955888,
+        "theta_needed_for_31pct": 0.08496613394180842
+      },
+      "b4": {
+        "n_families": 224,
+        "achieved_mix": {
+          "double_first_cousin": 0.0356610337972167,
+          "first_cousin": 0.261058648111332,
+          "second_cousin": 0.05417495029821073,
+          "distant_relative": 0.14773856858846918,
+          "same_clan": 0.24987574552683897,
+          "other_clan": 0.2514910536779324
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 72.64957264957265,
+          "ci95": [
+            57.31641555134575,
+            89.12320551339346
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 46.2962962962963,
+          "ci95": [
+            36.702167582727895,
+            56.37623862358632
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 49.14529914529915,
+          "ci95": [
+            36.53946825397479,
+            61.9503607949709
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 46.2962962962963,
+          "ci95": [
+            36.702167582727895,
+            56.37623862358632
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.4782608695652173,
+          "ci95": [
+            1.2401810818047931,
+            1.8333333333333333
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 5.1099530551229115
+      },
+      "seconds": 28.84
+    },
+    {
+      "assumption": "p_living_grandparent_gen",
+      "setting": "low",
+      "value": 0.4,
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.258060918390893,
+          "ci95": [
+            0.2511261400003516,
+            0.26477099731836884
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.09650757949223564,
+          "ci95": [
+            0.0925443354170595,
+            0.10072254422013266
+          ]
+        },
+        "living_per_family": 83.50505514705883,
+        "theta_needed_for_31pct": 0.047325934349247284
+      },
+      "b4": {
+        "n_families": 176,
+        "achieved_mix": {
+          "double_first_cousin": 0.03495729199620373,
+          "first_cousin": 0.2488136665612148,
+          "second_cousin": 0.05378044922492882,
+          "distant_relative": 0.15533059158494147,
+          "same_clan": 0.262100601075609,
+          "other_clan": 0.2450173995571022
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 62.61075014766686,
+          "ci95": [
+            47.82004579366526,
+            79.08979344862803
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 39.827414537006305,
+          "ci95": [
+            30.282891421246298,
+            50.67206638563802
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 46.07206142941524,
+          "ci95": [
+            31.87371319710862,
+            61.12910058937767
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 39.827414537006305,
+          "ci95": [
+            30.282891421246298,
+            50.67206638563802
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.3589743589743588,
+          "ci95": [
+            1.1144965277777779,
+            1.7033353365384614
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 4.395950321566076
+      },
+      "seconds": 17.21
+    },
+    {
+      "assumption": "p_living_grandparent_gen",
+      "setting": "high",
+      "value": 0.9,
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.2574036970513137,
+          "ci95": [
+            0.25071060055726335,
+            0.26474472881839073
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.08457482716078121,
+          "ci95": [
+            0.08108747672068277,
+            0.08805652451586292
+          ]
+        },
+        "living_per_family": 92.8359375,
+        "theta_needed_for_31pct": 0.04536339381505469
+      },
+      "b4": {
+        "n_families": 176,
+        "achieved_mix": {
+          "double_first_cousin": 0.03495729199620373,
+          "first_cousin": 0.2488136665612148,
+          "second_cousin": 0.05378044922492882,
+          "distant_relative": 0.15533059158494147,
+          "same_clan": 0.262100601075609,
+          "other_clan": 0.2450173995571022
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 77.35742518351213,
+          "ci95": [
+            60.66945712997249,
+            96.28102174153514
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 47.467515247944846,
+          "ci95": [
+            36.51887526615569,
+            59.31503281858469
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 56.46527385657821,
+          "ci95": [
+            40.98266114546108,
+            72.46605403922645
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 47.467515247944846,
+          "ci95": [
+            36.51887526615569,
+            59.31503281858469
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.3699999999999999,
+          "ci95": [
+            1.120293233082707,
+            1.691312789160608
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 5.23922633050311
+      },
+      "seconds": 17.15
+    },
+    {
+      "assumption": "nejm_consanguineous_split",
+      "setting": "alt1",
+      "value": {
+        "first_cousin": 0.8,
+        "double_first_cousin": 0.05,
+        "second_cousin": 0.15
+      },
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.2389411532312327,
+          "ci95": [
+            0.23127892629363864,
+            0.24594765019818016
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.0856238226015116,
+          "ci95": [
+            0.08214665505722768,
+            0.08925825614687079
+          ]
+        },
+        "living_per_family": 93.16926229508196,
+        "theta_needed_for_31pct": 0.0598505489398081
+      },
+      "seconds": 2.63
+    },
+    {
+      "assumption": "nejm_consanguineous_split",
+      "setting": "alt2",
+      "value": {
+        "first_cousin": 0.3,
+        "double_first_cousin": 0.05,
+        "second_cousin": 0.65
+      },
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.30377545056405575,
+          "ci95": [
+            0.29677134082806134,
+            0.31133396055297247
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.1120522398864854,
+          "ci95": [
+            0.10764556810373935,
+            0.11648900990084844
+          ]
+        },
+        "living_per_family": 77.76127320954907,
+        "theta_needed_for_31pct": 0.01126016439126124
+      },
+      "seconds": 2.62
+    },
+    {
+      "assumption": "uae_other_relatives_second_cousin_share",
+      "setting": "low",
+      "value": 0.0,
+      "b4": {
+        "n_families": 174,
+        "achieved_mix": {
+          "double_first_cousin": 0.032675509543836946,
+          "first_cousin": 0.2589776771271433,
+          "second_cousin": 0.04577806535101909,
+          "distant_relative": 0.20381753477838888,
+          "same_clan": 0.22355224846328048,
+          "other_clan": 0.23519896473633128
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 69.48640483383686,
+          "ci95": [
+            51.64223224811424,
+            87.3811130436806
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 43.05343511450382,
+          "ci95": [
+            32.84990846572157,
+            53.80022212998891
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 45.9214501510574,
+          "ci95": [
+            32.66394306886608,
+            59.929784075478594
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 43.05343511450382,
+          "ci95": [
+            32.84990846572157,
+            53.80022212998891
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.5131578947368423,
+          "ci95": [
+            1.2051136363636366,
+            1.9714484126984124
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 8.955975,
+        "cascade_all_over_random": 4.807230381338025
+      },
+      "seconds": 13.34
+    },
+    {
+      "assumption": "uae_other_relatives_second_cousin_share",
+      "setting": "high",
+      "value": 1.0,
+      "b4": {
+        "n_families": 148,
+        "achieved_mix": {
+          "double_first_cousin": 0.03228285933897002,
+          "first_cousin": 0.27267486548808606,
+          "second_cousin": 0.20541890853189854,
+          "distant_relative": 0.0,
+          "same_clan": 0.2544196771714066,
+          "other_clan": 0.23520368946963874
+        },
+        "families_too_complex_for_exact_engine": 1,
+        "ranked_per_1000_at_5": {
+          "estimate": 73.84823848238483,
+          "ci95": [
+            52.55124284749903,
+            100.0032722513089
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 43.125,
+          "ci95": [
+            31.59218161457803,
+            56.42893756335285
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 42.68292682926829,
+          "ci95": [
+            29.20662344479741,
+            59.08699401170249
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 43.125,
+          "ci95": [
+            31.59218161457803,
+            56.42893756335285
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.7301587301587305,
+          "ci95": [
+            1.3792615484710473,
+            2.2759099616858234
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.253414999999999,
+        "cascade_all_over_random": 4.660441577514897
+      },
+      "seconds": 28.14
+    },
+    {
+      "assumption": "uae_same_tribe_share",
+      "setting": "low",
+      "value": 0.0,
+      "b4": {
+        "n_families": 141,
+        "achieved_mix": {
+          "double_first_cousin": 0.03358443188951663,
+          "first_cousin": 0.25502197112366604,
+          "second_cousin": 0.046610169491525424,
+          "distant_relative": 0.15238543628374138,
+          "same_clan": 0.0761142498430634,
+          "other_clan": 0.43628374136848713
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 50.370370370370374,
+          "ci95": [
+            32.01050135501355,
+            72.89937648328964
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 30.540037243947857,
+          "ci95": [
+            19.15397573866496,
+            43.976262144695596
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 34.81481481481482,
+          "ci95": [
+            19.121708881853024,
+            52.995955525819234
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 30.540037243947857,
+          "ci95": [
+            19.15397573866496,
+            43.976262144695596
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.446808510638298,
+          "ci95": [
+            1.1362564322469983,
+            2.0
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 7.5890488000000005,
+        "cascade_all_over_random": 4.024224649069045
+      },
+      "seconds": 12.37
+    },
+    {
+      "assumption": "uae_same_tribe_share",
+      "setting": "high",
+      "value": 1.0,
+      "b4": {
+        "n_families": 174,
+        "achieved_mix": {
+          "double_first_cousin": 0.03252561392096276,
+          "first_cousin": 0.26134330785493576,
+          "second_cousin": 0.0624491787282485,
+          "distant_relative": 0.15189461701089607,
+          "same_clan": 0.4917872824849569,
+          "other_clan": 0.0
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 70.54871220604703,
+          "ci95": [
+            52.52376864129225,
+            91.45007897250042
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 51.68539325842696,
+          "ci95": [
+            39.3188753048298,
+            66.23770774923966
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 57.110862262038076,
+          "ci95": [
+            40.33037881282549,
+            75.20368147935295
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 51.68539325842696,
+          "ci95": [
+            39.3188753048298,
+            66.23770774923966
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.2352941176470587,
+          "ci95": [
+            0.9401179941002948,
+            1.6099162355259915
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 10.5738988,
+        "cascade_all_over_random": 4.888016637574303
+      },
+      "seconds": 14.84
+    },
+    {
+      "assumption": "theta_uae",
+      "setting": "low",
+      "value": 0.017,
+      "b4": {
+        "n_families": 133,
+        "achieved_mix": {
+          "double_first_cousin": 0.03495729199620373,
+          "first_cousin": 0.2488136665612148,
+          "second_cousin": 0.05378044922492882,
+          "distant_relative": 0.15533059158494147,
+          "same_clan": 0.262100601075609,
+          "other_clan": 0.2450173995571022
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 40.6015037593985,
+          "ci95": [
+            26.032695486837977,
+            56.49849156648534
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 26.835631755497577,
+          "ci95": [
+            18.455869515628127,
+            35.77446752324639
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 28.571428571428573,
+          "ci95": [
+            16.895787609120614,
+            41.608381157340986
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 26.835631755497577,
+          "ci95": [
+            18.455869515628127,
+            35.77446752324639
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.4210526315789473,
+          "ci95": [
+            1.0416666666666667,
+            2.063020833333333
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 5.3503288,
+        "cascade_all_over_random": 5.015697681140191
+      },
+      "seconds": 12.76
+    },
+    {
+      "assumption": "theta_uae",
+      "setting": "high",
+      "value": 0.223,
+      "b4": {
+        "n_families": 179,
+        "achieved_mix": {
+          "double_first_cousin": 0.03495729199620373,
+          "first_cousin": 0.2488136665612148,
+          "second_cousin": 0.05378044922492882,
+          "distant_relative": 0.15533059158494147,
+          "same_clan": 0.262100601075609,
+          "other_clan": 0.2450173995571022
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 108.76803551609324,
+          "ci95": [
+            86.5874363327674,
+            132.29298034124628
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 77.9436152570481,
+          "ci95": [
+            61.83946739507934,
+            95.83538206220518
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 89.90011098779134,
+          "ci95": [
+            70.74780340868628,
+            109.36613765270506
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 77.9436152570481,
+          "ci95": [
+            61.83946739507934,
+            95.83538206220518
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.2098765432098766,
+          "ci95": [
+            1.078094951923077,
+            1.3758500927829882
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 15.104015066666667,
+        "cascade_all_over_random": 5.160456667516395
+      },
+      "seconds": 17.71
+    },
+    {
+      "assumption": "theta_nejm",
+      "setting": "high",
+      "value": 0.2,
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.423718637757911,
+          "ci95": [
+            0.4170800811211854,
+            0.431357304999926
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.22374165860435116,
+          "ci95": [
+            0.21651059603269532,
+            0.23077334450092823
+          ]
+        },
+        "living_per_family": 82.43235177079188,
+        "theta_needed_for_31pct": 0.04622109270709191
+      },
+      "seconds": 2.97
+    },
+    {
+      "assumption": "founder_f_nejm",
+      "setting": "high",
+      "value": 0.03,
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.2576813365233778,
+          "ci95": [
+            0.2514103694591788,
+            0.2638096784203558
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.09224185257274042,
+          "ci95": [
+            0.0886669638360488,
+            0.09590666530227293
+          ]
+        },
+        "living_per_family": 89.11578490893322,
+        "theta_needed_for_31pct": 0.04624466861545541
+      },
+      "seconds": 3.09
+    },
+    {
+      "assumption": "nejm_test_sensitivity",
+      "setting": "low",
+      "value": 0.95,
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.24553088242672727,
+          "ci95": [
+            0.23929911572911622,
+            0.25184196007405474
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.08889272345960869,
+          "ci95": [
+            0.08527746992730202,
+            0.09243454071337917
+          ]
+        },
+        "living_per_family": 89.03492647058823,
+        "theta_needed_for_31pct": 0.06667068588965211
+      },
+      "seconds": 3.06
+    },
+    {
+      "assumption": "nejm_tested_selection",
+      "setting": "alt2",
+      "value": "kin_first",
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.30727464854766695,
+          "ci95": [
+            0.2992415114747263,
+            0.3149553424822071
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.09240356792057129,
+          "ci95": [
+            0.08856765206263058,
+            0.0962587377260372
+          ]
+        },
+        "living_per_family": 89.03492647058823,
+        "theta_needed_for_31pct": 0.0052421188716295355
+      },
+      "seconds": 3.12
+    },
+    {
+      "assumption": "ascertainment",
+      "setting": "alt2",
+      "value": "single",
+      "b3": {
+        "carriers_among_tested": {
+          "estimate": 0.2805063502219451,
+          "ci95": [
+            0.2717663265661084,
+            0.2887440984520952
+          ]
+        },
+        "atrisk_couples_identified": {
+          "estimate": 0.10564045417173454,
+          "ci95": [
+            0.10038734383645648,
+            0.11143744972150252
+          ]
+        },
+        "living_per_family": 92.58816373699896,
+        "theta_needed_for_31pct": 0.017332416554986296
+      },
+      "b4": {
+        "n_families": 176,
+        "achieved_mix": {
+          "double_first_cousin": 0.03495729199620373,
+          "first_cousin": 0.2488136665612148,
+          "second_cousin": 0.05378044922492882,
+          "distant_relative": 0.15533059158494147,
+          "same_clan": 0.262100601075609,
+          "other_clan": 0.2450173995571022
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 109.35722411831627,
+          "ci95": [
+            78.98449231543104,
+            140.14880720734746
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 79.20930884620776,
+          "ci95": [
+            54.98076556161959,
+            103.50003162395656
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 110.06825938566553,
+          "ci95": [
+            74.15819394831732,
+            145.0749629641255
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 79.20930884620776,
+          "ci95": [
+            54.98076556161959,
+            103.50003162395656
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 0.9935400516795866,
+          "ci95": [
+            0.8009592326139089,
+            1.2688659688013133
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 8.742726354229637
+      },
+      "seconds": 18.71
+    },
+    {
+      "assumption": "uae_uptake",
+      "setting": "low",
+      "value": 0.4,
+      "b4": {
+        "n_families": 176,
+        "achieved_mix": {
+          "double_first_cousin": 0.03495729199620373,
+          "first_cousin": 0.2488136665612148,
+          "second_cousin": 0.05378044922492882,
+          "distant_relative": 0.15533059158494147,
+          "same_clan": 0.262100601075609,
+          "other_clan": 0.2450173995571022
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 29.106029106029105,
+          "ci95": [
+            17.432539382336,
+            42.46944852934146
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 22.29299363057325,
+          "ci95": [
+            13.399457179407392,
+            33.010742489155106
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 25.641025641025642,
+          "ci95": [
+            14.709915221931851,
+            38.64666952941473
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 22.29299363057325,
+          "ci95": [
+            13.399457179407392,
+            33.010742489155106
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.135135135135135,
+          "ci95": [
+            1.0,
+            1.4166666666666665
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 2.460588859664281
+      },
+      "seconds": 15.42
+    },
+    {
+      "assumption": "uae_uptake",
+      "setting": "high",
+      "value": 1.0,
+      "b4": {
+        "n_families": 176,
+        "achieved_mix": {
+          "double_first_cousin": 0.03495729199620373,
+          "first_cousin": 0.2488136665612148,
+          "second_cousin": 0.05378044922492882,
+          "distant_relative": 0.15533059158494147,
+          "same_clan": 0.262100601075609,
+          "other_clan": 0.2450173995571022
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 124.03100775193798,
+          "ci95": [
+            104.23100367640056,
+            147.63401226758194
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 63.588338876932106,
+          "ci95": [
+            51.29423926678607,
+            76.90922604012437
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 69.21373200442967,
+          "ci95": [
+            52.33142216573608,
+            85.73243367456617
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 63.588338876932106,
+          "ci95": [
+            51.29423926678607,
+            76.90922604012437
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.792,
+          "ci95": [
+            1.5,
+            2.2116477272727275
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 7.0185620127103965
+      },
+      "seconds": 15.54
+    },
+    {
+      "assumption": "uae_drawn_tree_scope",
+      "setting": "alt2",
+      "value": "great_grandparents",
+      "b4_note": "larger trees make the engine slower; run on 40% of the usual number of family structures",
+      "b4": {
+        "n_families": 68,
+        "achieved_mix": {
+          "double_first_cousin": 0.03495729199620373,
+          "first_cousin": 0.2488136665612148,
+          "second_cousin": 0.05378044922492882,
+          "distant_relative": 0.15533059158494147,
+          "same_clan": 0.262100601075609,
+          "other_clan": 0.2450173995571022
+        },
+        "families_too_complex_for_exact_engine": 8,
+        "ranked_per_1000_at_5": {
+          "estimate": 98.59154929577464,
+          "ci95": [
+            69.31641791044775,
+            132.30769230769232
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 30.75666848121938,
+          "ci95": [
+            20.544196824098684,
+            41.87864856484165
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 38.028169014084504,
+          "ci95": [
+            19.7177763551003,
+            60.007352941176464
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 30.75666848121938,
+          "ci95": [
+            20.544196824098684,
+            41.87864856484165
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 2.5925925925925926,
+          "ci95": [
+            1.8297568389057752,
+            4.308333333333333
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 3.3947668527338055
+      },
+      "seconds": 67.65
+    },
+    {
+      "assumption": "uae_living_phenotypes_known",
+      "setting": "alt2",
+      "value": false,
+      "b4": {
+        "n_families": 176,
+        "achieved_mix": {
+          "double_first_cousin": 0.03495729199620373,
+          "first_cousin": 0.2488136665612148,
+          "second_cousin": 0.05378044922492882,
+          "distant_relative": 0.15533059158494147,
+          "same_clan": 0.262100601075609,
+          "other_clan": 0.2450173995571022
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 57.78032036613272,
+          "ci95": [
+            42.8961600539616,
+            73.25864995971938
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 43.12590448625181,
+          "ci95": [
+            32.47152822249447,
+            53.72083544674918
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 49.77116704805492,
+          "ci95": [
+            35.54987430070584,
+            64.65592597058115
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 43.12590448625181,
+          "ci95": [
+            32.47152822249447,
+            53.72083544674918
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.160919540229885,
+          "ci95": [
+            0.9368253079507279,
+            1.4474518161601186
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 9.060023800000002,
+        "cascade_all_over_random": 4.760021103504364
+      },
+      "seconds": 13.28
+    },
+    {
+      "assumption": "theta_uae",
+      "setting": "zero",
+      "value": 0.0,
+      "b4": {
+        "n_families": 140,
+        "achieved_mix": {
+          "double_first_cousin": 0.03495729199620373,
+          "first_cousin": 0.2488136665612148,
+          "second_cousin": 0.05378044922492882,
+          "distant_relative": 0.15533059158494147,
+          "same_clan": 0.262100601075609,
+          "other_clan": 0.2450173995571022
+        },
+        "families_too_complex_for_exact_engine": 0,
+        "ranked_per_1000_at_5": {
+          "estimate": 27.757487216946675,
+          "ci95": [
+            15.416666421247127,
+            42.38955263198673
+          ]
+        },
+        "ranked_per_1000_at_all": {
+          "estimate": 16.69085631349782,
+          "ci95": [
+            9.62219355952812,
+            24.947342953917964
+          ]
+        },
+        "unranked_per_1000_at_5": {
+          "estimate": 17.531044558071585,
+          "ci95": [
+            7.836837169796962,
+            28.67978680955367
+          ]
+        },
+        "unranked_per_1000_at_all": {
+          "estimate": 16.69085631349782,
+          "ci95": [
+            9.62219355952812,
+            24.947342953917964
+          ]
+        },
+        "ranked_over_unranked_at_5": {
+          "estimate": 1.5833333333333333,
+          "ci95": [
+            1.153846153846154,
+            2.429220779220779
+          ],
+          "bootstrap_draws_dropped_infinite": 0
+        },
+        "random_couples_per_1000": 4.459951066666667,
+        "cascade_all_over_random": 3.7423855248646123
+      },
+      "seconds": 14.24
+    }
+  ],
+  "not_varied": {
+    "exchange_prob": "generator",
+    "generation_interval_years": "display",
+    "uae_detection_cyp21a2": "assumption",
+    "reproductive_generation": "assumption",
+    "clan_model": "assumption"
+  },
+  "robustness": {
+    "b4_ranked_over_unranked_at_5_tests_range": [
+      0.9935400516795866,
+      2.5925925925925926
+    ],
+    "b4_settings_where_ratio_ci_excludes_1": 16,
+    "b4_settings": 20,
+    "b4_cascade_all_over_random_couples_range": [
+      2.460588859664281,
+      8.742726354229637
+    ],
+    "b3_carriers_among_tested_range": [
+      0.17008522565801162,
+      0.423718637757911
+    ],
+    "b3_theta_needed_for_31pct_range": [
+      0.0052421188716295355,
+      0.15333995644258275
+    ],
+    "b3_settings_theta_not_found_in_grid": 1
+  },
+  "log": "docs/evidence/logs/b5_sensitivity.csv",
+  "runtime_seconds": 465.9
+}

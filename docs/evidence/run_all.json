@@ -1,0 +1,25 @@
+{
+  "provenance": {
+    "generated_utc": "2026-11-06T13:22:10Z",
+    "git_commit": "742f4ef",
+    "working_tree_dirty": true,
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "workers": 8,
+    "quick": false,
+    "seed": 0,
+    "data_note": "SYNTHETIC: all families are simulated; no real person's data is used."
+  },
+  "steps_seconds": {
+    "b1": 22.01,
+    "b2": 0.12,
+    "b3": 14.19,
+    "b4": 276.33,
+    "b5": 465.9,
+    "perf": 56.03
+  },
+  "total_seconds": 834.86,
+  "command": "cd backend && uv run python -m bench.run_all"
+}

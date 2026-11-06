@@ -1,0 +1,79 @@
+{
+  "benchmark": "Engine latency (family_report)",
+  "provenance": {
+    "generated_utc": "2026-11-06T13:22:10Z",
+    "git_commit": "742f4ef",
+    "working_tree_dirty": true,
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "workers": 8,
+    "quick": false,
+    "seed": 6000000,
+    "data_note": "SYNTHETIC: all families are simulated; no real person's data is used."
+  },
+  "genotypes": {
+    "HBB": 6,
+    "SMN1": 3
+  },
+  "results": {
+    "HBB_10": {
+      "locus": "HBB",
+      "size_class": 10,
+      "n_trees": 40,
+      "mean_people": 11.125,
+      "median_ms": 3.2690415100660175,
+      "p95_ms": 3.9664222713327035,
+      "max_ms": 4.026499984320253
+    },
+    "HBB_30": {
+      "locus": "HBB",
+      "size_class": 30,
+      "n_trees": 40,
+      "mean_people": 30.4,
+      "median_ms": 30.827249982394278,
+      "p95_ms": 42.95652742439415,
+      "max_ms": 43.86141698341817
+    },
+    "HBB_60": {
+      "locus": "HBB",
+      "size_class": 60,
+      "n_trees": 40,
+      "mean_people": 60.1,
+      "median_ms": 173.3948120381683,
+      "p95_ms": 238.60180423653213,
+      "max_ms": 309.33887499850243
+    },
+    "SMN1_10": {
+      "locus": "SMN1",
+      "size_class": 10,
+      "n_trees": 40,
+      "mean_people": 11.125,
+      "median_ms": 3.2453540188726038,
+      "p95_ms": 3.882341642747633,
+      "max_ms": 3.9530000067315996
+    },
+    "SMN1_30": {
+      "locus": "SMN1",
+      "size_class": 30,
+      "n_trees": 40,
+      "mean_people": 30.4,
+      "median_ms": 30.545374989742413,
+      "p95_ms": 41.694220824865624,
+      "max_ms": 42.20141703262925
+    },
+    "SMN1_60": {
+      "locus": "SMN1",
+      "size_class": 60,
+      "n_trees": 40,
+      "mean_people": 60.1,
+      "median_ms": 171.38868803158402,
+      "p95_ms": 228.38646185118702,
+      "max_ms": 245.47937494935468
+    }
+  },
+  "log": "docs/evidence/logs/perf_engine_latency.csv",
+  "note": "Single thread, best of 3 runs per tree; every tree has at least one consanguineous loop.",
+  "runtime_seconds": 56.03
+}

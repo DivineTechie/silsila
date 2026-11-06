@@ -1,8 +1,8 @@
 {
   "benchmark": "B2 input robustness",
   "provenance": {
-    "generated_utc": "2026-11-06T11:45:59Z",
-    "git_commit": "f829430",
+    "generated_utc": "2026-11-06T13:08:38Z",
+    "git_commit": "742f4ef",
     "working_tree_dirty": true,
     "python": "3.12.15",
     "numpy": "2.5.4",
@@ -262,5 +262,5 @@
   "silent_failure_cases": [],
   "non_pass_cases": [],
   "log": "docs/evidence/logs/b2_robustness_cases.csv",
-  "runtime_seconds": 0.95
+  "runtime_seconds": 0.12
 }

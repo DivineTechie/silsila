@@ -1,0 +1,3709 @@
+{
+  "benchmark": "B4 UAE cascade yield projection (synthetic kindreds)",
+  "provenance": {
+    "generated_utc": "2026-11-06T13:13:28Z",
+    "git_commit": "742f4ef",
+    "working_tree_dirty": true,
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "workers": 8,
+    "quick": false,
+    "seed": 4000000,
+    "data_note": "SYNTHETIC: all families are simulated; no real person's data is used."
+  },
+  "inputs": {
+    "loci": {
+      "value": "HBB (B, S), CYP21A2 (c), SMN1 (del); allele frequencies, detection rates",
+      "source": "data/params/loci.yaml (per-allele citations: Belhoul 2013 PMID 23647352; Al Hosani 2014 PMID 24932929; Rabea 2024 PMID 38879606; detection: ARUP HBB; Sugarman 2012 PMID 21811307)"
+    },
+    "background_F": {
+      "value": 0.0222,
+      "source": "al-Gazali LI, Bener A, Abdulrazzaq YM, et al. J Biosoc Sci 1997;29(4):491-497. PMID 9881148"
+    },
+    "marriage_mix": {
+      "overall": 0.505,
+      "first_cousin": 0.262,
+      "double_first_cousin": 0.035,
+      "source": "al-Gazali LI, Bener A, Abdulrazzaq YM, et al. J Biosoc Sci 1997;29(4):491-497. PMID 9881148"
+    },
+    "uptake_proxy": {
+      "value": 0.7,
+      "source": "Ahmed S, Saleem M, Modell B, Petrou M. N Engl J Med 2002;347(15):1162-8. PMID 12374877, doi 10.1056/NEJMsa013234 (full text: https://discovery.ucl.ac.uk/id/eprint/7166/1/7166.pdf) (591/846 tested)"
+    },
+    "assumptions_used": {
+      "n_generations": 5,
+      "sibship_mean_uae": 4.0,
+      "marriage_prob": 0.85,
+      "p_living_grandparent_gen": 0.7,
+      "uae_other_relatives_second_cousin_share": 0.26,
+      "uae_same_tribe_share": 0.5,
+      "theta_uae": 0.093,
+      "uae_uptake": 0.7,
+      "uae_drawn_tree_scope": "grandparents",
+      "uae_living_phenotypes_known": true,
+      "uae_detection_cyp21a2": 1.0,
+      "reproductive_generation": "index_parents",
+      "ascertainment": "complete",
+      "clan_model": "balding_nichols"
+    }
+  },
+  "relationship_mix": {
+    "target": {
+      "first_cousin": 0.262,
+      "double_first_cousin": 0.035,
+      "second_cousin": 0.054079999999999996,
+      "distant_relative": 0.15392,
+      "same_clan": 0.2475,
+      "other_clan": 0.2475
+    },
+    "generator_request_mix": {
+      "double_first_cousin": 0.16905889361870013,
+      "first_cousin": 0.24825159988361406,
+      "second_cousin": 0.020751709782588112,
+      "distant_relative": 0.15208092169214302,
+      "same_clan": 0.16481931277188108,
+      "other_clan": 0.2450375622510735
+    },
+    "achieved_over_unascertained_kindreds": {
+      "double_first_cousin": 0.03495729199620373,
+      "first_cousin": 0.2488136665612148,
+      "second_cousin": 0.05378044922492882,
+      "distant_relative": 0.15533059158494147,
+      "same_clan": 0.262100601075609,
+      "other_clan": 0.2450173995571022
+    },
+    "target_from": "al-Gazali 1997 mix: first cousin 26.2%, double first cousin 3.5%,\n    other relatives 20.8% (split by assumption), non-consanguineous 49.5%\n    (same-tribe share by assumption)."
+  },
+  "theta_calibration_denic2013": {
+    "source": "Denic S, Aden B, Nagelkerke N, Essa A. Abu Dhabi premarital screening, 2013. PMID 23600619 (https://pubmed.ncbi.nlm.nih.gov/23600619/)",
+    "observed": {
+      "atrisk_couples": 10,
+      "couples": 2262,
+      "rate": 0.004420866489832007,
+      "exact_ci95": [
+        0.0021219511283607087,
+        0.00811505576132482
+      ],
+      "carrier_rate_used": 0.023
+    },
+    "denic_expected_one_in_at_F_0.022": 646,
+    "denic_expected_one_in_at_F_0": 1858,
+    "model_one_in_at_theta_0": 634.4599002118931,
+    "grid": [
+      {
+        "theta": 0.0,
+        "p_both_carriers": 0.00157614374,
+        "one_in": 634.4599002118931
+      },
+      {
+        "theta": 0.02,
+        "p_both_carriers": 0.00223554266,
+        "one_in": 447.31868368819227
+      },
+      {
+        "theta": 0.04,
+        "p_both_carriers": 0.0028121357,
+        "one_in": 355.6016162377939
+      },
+      {
+        "theta": 0.06,
+        "p_both_carriers": 0.00351335326,
+        "one_in": 284.6283666903453
+      },
+      {
+        "theta": 0.08,
+        "p_both_carriers": 0.0040738114,
+        "one_in": 245.4703720452056
+      },
+      {
+        "theta": 0.1,
+        "p_both_carriers": 0.0046238568,
+        "one_in": 216.26967340338047
+      },
+      {
+        "theta": 0.12,
+        "p_both_carriers": 0.00518785772,
+        "one_in": 192.7577921315853
+      },
+      {
+        "theta": 0.15,
+        "p_both_carriers": 0.00606744578,
+        "one_in": 164.8139985521222
+      },
+      {
+        "theta": 0.2,
+        "p_both_carriers": 0.0074180800000000005,
+        "one_in": 134.80577184392726
+      },
+      {
+        "theta": 0.25,
+        "p_both_carriers": 0.00885880692,
+        "one_in": 112.8820177514378
+      },
+      {
+        "theta": 0.3,
+        "p_both_carriers": 0.01034735556,
+        "one_in": 96.6430499272415
+      }
+    ],
+    "theta_fit": 0.09261914343186971,
+    "theta_fit_ci95": [
+      0.01655469464101363,
+      0.22418833686139564
+    ],
+    "theta_used": 0.093,
+    "simulated_couples_per_type": 1000000
+  },
+  "results": {
+    "theta_calibrated": {
+      "theta": 0.093,
+      "loci": {
+        "HBB": {
+          "atrisk_couples": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9959404600811907,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.972936400541272,
+              "ranked_per_1000_tests": 99.10836762688615,
+              "ranked_ci95": [
+                84.256160968964,
+                114.50724347349332
+              ],
+              "unranked_per_1000_tests": 39.78052126200274,
+              "unranked_ci95": [
+                29.82495684747879,
+                49.664063605490306
+              ],
+              "ranked_over_unranked": 2.491379310344828,
+              "ratio_ci95": [
+                2.0142757936507936,
+                3.2250603467193324
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.921515561569689,
+              "ranked_per_1000_tests": 78.97174617878647,
+              "ranked_ci95": [
+                67.8345180221336,
+                90.66035361466464
+              ],
+              "unranked_per_1000_tests": 41.2227883279296,
+              "unranked_ci95": [
+                33.170887174104536,
+                49.66972291195224
+              ],
+              "ranked_over_unranked": 1.9157303370786516,
+              "ratio_ci95": [
+                1.6496653287687404,
+                2.2927194190559654
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.706359945872801,
+              "ranked_per_1000_tests": 65.26739505462909,
+              "ranked_ci95": [
+                56.23127067841977,
+                74.05885016551122
+              ],
+              "unranked_per_1000_tests": 41.403105232892464,
+              "unranked_ci95": [
+                34.51640280509192,
+                48.394353610898605
+              ],
+              "ranked_over_unranked": 1.5763888888888888,
+              "ratio_ci95": [
+                1.4281232592953625,
+                1.7686500459558823
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 7.884979702300406,
+              "ranked_per_1000_tests": 47.19409644757165,
+              "ranked_ci95": [
+                40.575847723817134,
+                53.119165453188664
+              ],
+              "unranked_per_1000_tests": 42.3030719066415,
+              "unranked_ci95": [
+                36.52916122591044,
+                47.738271177576344
+              ],
+              "ranked_over_unranked": 1.1156186612576064,
+              "ratio_ci95": [
+                1.059670164136988,
+                1.1820227375355272
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.133288227334235,
+              "ranked_per_1000_tests": 42.07719090302985,
+              "ranked_ci95": [
+                36.41519936079916,
+                47.46492023255325
+              ],
+              "unranked_per_1000_tests": 41.63271353433588,
+              "unranked_ci95": [
+                36.04792632556841,
+                46.90983346832792
+              ],
+              "ranked_over_unranked": 1.0106761565836297,
+              "ratio_ci95": [
+                0.9891299416081434,
+                1.0308265636614633
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.372801082543978,
+              "ranked_per_1000_tests": 41.507254746264344,
+              "ranked_ci95": [
+                36.00551328115558,
+                46.6026619211478
+              ],
+              "unranked_per_1000_tests": 41.36288168627734,
+              "unranked_ci95": [
+                35.87990375482229,
+                46.46351916516617
+              ],
+              "ranked_over_unranked": 1.0034904013961605,
+              "ratio_ci95": [
+                1.0,
+                1.0127398709834965
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.397834912043301,
+              "ranked_per_1000_tests": 41.3966882649388,
+              "ranked_ci95": [
+                35.94696787859513,
+                46.50074029873674
+              ],
+              "unranked_per_1000_tests": 41.3966882649388,
+              "unranked_ci95": [
+                35.94696787859513,
+                46.50074029873674
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.397834912043301,
+              "ranked_per_1000_tests": 41.3966882649388,
+              "ranked_ci95": [
+                35.94696787859513,
+                46.50074029873674
+              ],
+              "unranked_per_1000_tests": 41.3966882649388,
+              "unranked_ci95": [
+                35.94696787859513,
+                46.50074029873674
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "atrisk_couples_reproductive": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9959404600811907,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.972936400541272,
+              "ranked_per_1000_tests": 67.55829903978052,
+              "ranked_ci95": [
+                55.94627503807241,
+                81.1309840626719
+              ],
+              "unranked_per_1000_tests": 26.406035665294926,
+              "unranked_ci95": [
+                18.741192230781657,
+                34.42883585979593
+              ],
+              "ranked_over_unranked": 2.5584415584415585,
+              "ratio_ci95": [
+                2.0304798501679153,
+                3.4490296118447374
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.921515561569689,
+              "ranked_per_1000_tests": 53.265400648448356,
+              "ranked_ci95": [
+                44.13542575473167,
+                63.28514896327377
+              ],
+              "unranked_per_1000_tests": 28.948587308939324,
+              "unranked_ci95": [
+                22.419402324529894,
+                35.97202363274228
+              ],
+              "ranked_over_unranked": 1.84,
+              "ratio_ci95": [
+                1.5395238095238095,
+                2.2368901890189012
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.706359945872801,
+              "ranked_per_1000_tests": 47.2972972972973,
+              "ranked_ci95": [
+                39.68266965439744,
+                54.836822369692676
+              ],
+              "unranked_per_1000_tests": 28.17711328349626,
+              "unranked_ci95": [
+                23.0207909572833,
+                33.50199035847216
+              ],
+              "ranked_over_unranked": 1.6785714285714286,
+              "ratio_ci95": [
+                1.4833640512550466,
+                1.9153535758872837
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 7.884979702300406,
+              "ranked_per_1000_tests": 33.8081345460786,
+              "ranked_ci95": [
+                28.432786755259755,
+                38.91479585909679
+              ],
+              "unranked_per_1000_tests": 29.946799382186374,
+              "unranked_ci95": [
+                25.267039563508437,
+                34.480609137895605
+              ],
+              "ranked_over_unranked": 1.1289398280802292,
+              "ratio_ci95": [
+                1.0672674532698818,
+                1.204865766298633
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.133288227334235,
+              "ranked_per_1000_tests": 29.854063263945477,
+              "ranked_ci95": [
+                25.279683283422038,
+                34.29816262686557
+              ],
+              "unranked_per_1000_tests": 29.557745018149493,
+              "unranked_ci95": [
+                25.03572707028901,
+                33.85668775069684
+              ],
+              "ranked_over_unranked": 1.0100250626566416,
+              "ratio_ci95": [
+                0.9902646434863903,
+                1.03125
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.372801082543978,
+              "ranked_per_1000_tests": 29.2355446473688,
+              "ranked_ci95": [
+                24.855215121559773,
+                33.65715134399913
+              ],
+              "unranked_per_1000_tests": 29.091171587381794,
+              "unranked_ci95": [
+                24.656770499386656,
+                33.44797172958029
+              ],
+              "ranked_over_unranked": 1.0049627791563276,
+              "ratio_ci95": [
+                1.0,
+                1.018102639689133
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.397834912043301,
+              "ranked_per_1000_tests": 29.15766738660907,
+              "ranked_ci95": [
+                24.811873412377487,
+                33.55567178655255
+              ],
+              "unranked_per_1000_tests": 29.15766738660907,
+              "unranked_ci95": [
+                24.811873412377487,
+                33.55567178655255
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.397834912043301,
+              "ranked_per_1000_tests": 29.15766738660907,
+              "ranked_ci95": [
+                24.811873412377487,
+                33.55567178655255
+              ],
+              "unranked_per_1000_tests": 29.15766738660907,
+              "unranked_ci95": [
+                24.811873412377487,
+                33.55567178655255
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "carriers": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9959404600811907,
+              "ranked_per_1000_tests": 643.3423913043479,
+              "ranked_ci95": [
+                603.7075348432056,
+                679.2364721605071
+              ],
+              "unranked_per_1000_tests": 500.0,
+              "unranked_ci95": [
+                466.352462729061,
+                533.201219512195
+              ],
+              "ranked_over_unranked": 1.2866847826086958,
+              "ratio_ci95": [
+                1.189007251271875,
+                1.4011675047140164
+              ]
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.972936400541272,
+              "ranked_per_1000_tests": 572.0164609053498,
+              "ranked_ci95": [
+                542.108484448252,
+                601.203551346799
+              ],
+              "unranked_per_1000_tests": 478.05212620027436,
+              "unranked_ci95": [
+                452.78381234998864,
+                503.76454750132905
+              ],
+              "ranked_over_unranked": 1.1965566714490674,
+              "ratio_ci95": [
+                1.1298342203158718,
+                1.2613854263382127
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.921515561569689,
+              "ranked_per_1000_tests": 537.0541917554424,
+              "ranked_ci95": [
+                513.1985414736538,
+                561.8872088285345
+              ],
+              "unranked_per_1000_tests": 471.2830013895322,
+              "unranked_ci95": [
+                449.13079587673303,
+                493.12611953508537
+              ],
+              "ranked_over_unranked": 1.1395577395577396,
+              "ratio_ci95": [
+                1.091674850586132,
+                1.1903286642054447
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.706359945872801,
+              "ranked_per_1000_tests": 500.7188039102933,
+              "ranked_ci95": [
+                481.5371307930183,
+                519.8174505118012
+              ],
+              "unranked_per_1000_tests": 465.2098907418056,
+              "unranked_ci95": [
+                446.7524316826161,
+                484.11571000664696
+              ],
+              "ranked_over_unranked": 1.0763288009888752,
+              "ratio_ci95": [
+                1.0432635567681563,
+                1.1108385201390432
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 7.884979702300406,
+              "ranked_per_1000_tests": 473.3138836451004,
+              "ranked_ci95": [
+                457.54347409252875,
+                488.39199197599214
+              ],
+              "unranked_per_1000_tests": 471.42611978719754,
+              "unranked_ci95": [
+                455.8543353378547,
+                487.3570686435995
+              ],
+              "ranked_over_unranked": 1.004004368401893,
+              "ratio_ci95": [
+                0.991606592824406,
+                1.0164882294271154
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.133288227334235,
+              "ranked_per_1000_tests": 473.29431809763685,
+              "ranked_ci95": [
+                458.43071954335886,
+                488.0252642643131
+              ],
+              "unranked_per_1000_tests": 474.7759093266168,
+              "unranked_ci95": [
+                460.12354979131834,
+                489.24326944890106
+              ],
+              "ranked_over_unranked": 0.9968793883601186,
+              "ratio_ci95": [
+                0.9907316027253975,
+                1.0027433379005155
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.372801082543978,
+              "ranked_per_1000_tests": 474.8429942972641,
+              "ranked_ci95": [
+                459.99615932743984,
+                489.4150530557765
+              ],
+              "unranked_per_1000_tests": 474.77080776727064,
+              "unranked_ci95": [
+                460.0891250793087,
+                489.29766998539264
+              ],
+              "ranked_over_unranked": 1.0001520450053216,
+              "ratio_ci95": [
+                0.9987756116983758,
+                1.0016447799238217
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.397834912043301,
+              "ranked_per_1000_tests": 475.0179985601152,
+              "ranked_ci95": [
+                460.243340572134,
+                489.5225858082149
+              ],
+              "unranked_per_1000_tests": 475.0179985601152,
+              "unranked_ci95": [
+                460.243340572134,
+                489.5225858082149
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.397834912043301,
+              "ranked_per_1000_tests": 475.0179985601152,
+              "ranked_ci95": [
+                460.243340572134,
+                489.5225858082149
+              ],
+              "unranked_per_1000_tests": 475.0179985601152,
+              "unranked_ci95": [
+                460.243340572134,
+                489.5225858082149
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "fraction_of_true_atrisk_couples_found_when_all_invited": 0.45743834526650756,
+          "true_atrisk_couples_per_family": 0.8504736129905277,
+          "n_families": 700,
+          "families_too_complex_for_exact_engine": 0,
+          "n_structures": 522,
+          "drawn_tree_size": {
+            "median": 51.0,
+            "p95": 87.04999999999995
+          },
+          "eligible_relatives_per_family": 12.392422192151557,
+          "index_parents_consanguineous_pct": 56.359945872801084,
+          "engine_seconds": {
+            "median": 0.3063030625053216,
+            "p95": 1.411539683345472,
+            "max": 2.608115084003657
+          },
+          "engine_errors": 0,
+          "random_couples": {
+            "per_1000_tests": 9.05050722,
+            "ci95": [
+              8.9198567613147,
+              9.1811576786853
+            ],
+            "p_both_test_positive": 0.01810101444,
+            "by_type": {
+              "first_cousin": {
+                "both_carry": 0.02651,
+                "both_test_positive": 0.025999,
+                "woman_carries": 0.082189,
+                "child_affected": 0.008184,
+                "n": 1000000
+              },
+              "double_first_cousin": {
+                "both_carry": 0.034382,
+                "both_test_positive": 0.033827,
+                "woman_carries": 0.082275,
+                "child_affected": 0.010558,
+                "n": 1000000
+              },
+              "second_cousin": {
+                "both_carry": 0.020822,
+                "both_test_positive": 0.020503,
+                "woman_carries": 0.081993,
+                "child_affected": 0.006591,
+                "n": 1000000
+              },
+              "distant_relative": {
+                "both_carry": 0.018715,
+                "both_test_positive": 0.018385,
+                "woman_carries": 0.081624,
+                "child_affected": 0.006064,
+                "n": 1000000
+              },
+              "same_clan": {
+                "both_carry": 0.018678,
+                "both_test_positive": 0.018357,
+                "woman_carries": 0.081628,
+                "child_affected": 0.005885,
+                "n": 1000000
+              },
+              "other_clan": {
+                "both_carry": 0.006699,
+                "both_test_positive": 0.006559,
+                "woman_carries": 0.081275,
+                "child_affected": 0.002016,
+                "n": 1000000
+              }
+            },
+            "note": "two tests per couple; Monte Carlo interval"
+          }
+        },
+        "CYP21A2": {
+          "atrisk_couples": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9851694915254238,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.951271186440678,
+              "ranked_per_1000_tests": 77.63300760043431,
+              "ranked_ci95": [
+                62.22332051359418,
+                96.0922399985603
+              ],
+              "unranked_per_1000_tests": 34.74484256243214,
+              "unranked_ci95": [
+                23.77475668542091,
+                47.06925987449243
+              ],
+              "ranked_over_unranked": 2.234375,
+              "ratio_ci95": [
+                1.711642054035912,
+                3.062396580253722
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.8887711864406778,
+              "ranked_per_1000_tests": 59.03923725705904,
+              "ranked_ci95": [
+                47.65326918622369,
+                72.42631537415154
+              ],
+              "unranked_per_1000_tests": 30.803080308030804,
+              "unranked_ci95": [
+                22.165618204678868,
+                39.7009653371133
+              ],
+              "ranked_over_unranked": 1.9166666666666667,
+              "ratio_ci95": [
+                1.5444255663430422,
+                2.4854499002991024
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.685381355932203,
+              "ranked_per_1000_tests": 50.644359032330996,
+              "ranked_ci95": [
+                41.228050269582916,
+                61.2440860884105
+              ],
+              "unranked_per_1000_tests": 33.00926972643003,
+              "unranked_ci95": [
+                25.168293630140788,
+                40.74986708110097
+              ],
+              "ranked_over_unranked": 1.5342465753424657,
+              "ratio_ci95": [
+                1.2887655672397087,
+                1.8537697758734344
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 7.975635593220339,
+              "ranked_per_1000_tests": 36.52543498472573,
+              "ranked_ci95": [
+                30.128272658608434,
+                43.87272651864127
+              ],
+              "unranked_per_1000_tests": 32.67366184088192,
+              "unranked_ci95": [
+                26.885158950193933,
+                39.19265987473556
+              ],
+              "ranked_over_unranked": 1.1178861788617886,
+              "ratio_ci95": [
+                1.048509105463278,
+                1.2040932282003711
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.34322033898305,
+              "ranked_per_1000_tests": 32.31292517006803,
+              "ranked_ci95": [
+                26.769755128873154,
+                38.58164206258878
+              ],
+              "unranked_per_1000_tests": 31.405895691609977,
+              "unranked_ci95": [
+                25.975718204664894,
+                37.40294805179244
+              ],
+              "ranked_over_unranked": 1.0288808664259927,
+              "ratio_ci95": [
+                1.0,
+                1.0676691729323309
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.685381355932204,
+              "ranked_per_1000_tests": 31.171387947063327,
+              "ranked_ci95": [
+                25.701563417807684,
+                37.36802134759859
+              ],
+              "unranked_per_1000_tests": 31.171387947063327,
+              "unranked_ci95": [
+                25.701563417807684,
+                37.36802134759859
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.76165254237288,
+              "ranked_per_1000_tests": 30.927835051546392,
+              "ranked_ci95": [
+                25.506597490812148,
+                36.99372318312071
+              ],
+              "unranked_per_1000_tests": 30.927835051546392,
+              "unranked_ci95": [
+                25.506597490812148,
+                36.99372318312071
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.76165254237288,
+              "ranked_per_1000_tests": 30.927835051546392,
+              "ranked_ci95": [
+                25.506597490812148,
+                36.99372318312071
+              ],
+              "unranked_per_1000_tests": 30.927835051546392,
+              "unranked_ci95": [
+                25.506597490812148,
+                36.99372318312071
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "atrisk_couples_reproductive": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9851694915254238,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.951271186440678,
+              "ranked_per_1000_tests": 52.11726384364821,
+              "ranked_ci95": [
+                38.3750404247531,
+                67.61281502094567
+              ],
+              "unranked_per_1000_tests": 19.54397394136808,
+              "unranked_ci95": [
+                11.108490566037736,
+                28.344072353233393
+              ],
+              "ranked_over_unranked": 2.6666666666666665,
+              "ratio_ci95": [
+                1.8332446808510638,
+                4.366874999999999
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.8887711864406778,
+              "ranked_per_1000_tests": 41.07077374404107,
+              "ranked_ci95": [
+                31.308905288181325,
+                51.87708035550895
+              ],
+              "unranked_per_1000_tests": 17.601760176017603,
+              "unranked_ci95": [
+                11.082142756895879,
+                24.602302987982682
+              ],
+              "ranked_over_unranked": 2.333333333333333,
+              "ratio_ci95": [
+                1.723014705882353,
+                3.4484975369458124
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.685381355932203,
+              "ranked_per_1000_tests": 33.6875423920416,
+              "ranked_ci95": [
+                25.68226032528577,
+                42.539858566858754
+              ],
+              "unranked_per_1000_tests": 20.80036174542166,
+              "unranked_ci95": [
+                15.085240289914562,
+                27.35189737292337
+              ],
+              "ranked_over_unranked": 1.6195652173913042,
+              "ratio_ci95": [
+                1.2708040730337078,
+                2.1388888888888893
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 7.975635593220339,
+              "ranked_per_1000_tests": 25.5013946075176,
+              "ranked_ci95": [
+                20.156626714173566,
+                31.38622575811222
+              ],
+              "unranked_per_1000_tests": 22.977819099482,
+              "unranked_ci95": [
+                18.01222437077108,
+                28.19284361509155
+              ],
+              "ranked_over_unranked": 1.1098265895953758,
+              "ratio_ci95": [
+                1.013209765272934,
+                1.2187757554945056
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.34322033898305,
+              "ranked_per_1000_tests": 22.448979591836736,
+              "ranked_ci95": [
+                18.00303355898478,
+                27.471578384215665
+              ],
+              "unranked_per_1000_tests": 21.768707482993197,
+              "unranked_ci95": [
+                17.437326073568425,
+                26.618197197451213
+              ],
+              "ranked_over_unranked": 1.03125,
+              "ratio_ci95": [
+                1.0,
+                1.0696517412935322
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.685381355932204,
+              "ranked_per_1000_tests": 21.65591162638084,
+              "ranked_ci95": [
+                17.370771960669025,
+                26.503220757314732
+              ],
+              "unranked_per_1000_tests": 21.65591162638084,
+              "unranked_ci95": [
+                17.370771960669025,
+                26.503220757314732
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.76165254237288,
+              "ranked_per_1000_tests": 21.48670645686381,
+              "ranked_ci95": [
+                17.22982231864833,
+                26.272962040097454
+              ],
+              "unranked_per_1000_tests": 21.48670645686381,
+              "unranked_ci95": [
+                17.22982231864833,
+                26.272962040097454
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.76165254237288,
+              "ranked_per_1000_tests": 21.48670645686381,
+              "ranked_ci95": [
+                17.22982231864833,
+                26.272962040097454
+              ],
+              "unranked_per_1000_tests": 21.48670645686381,
+              "unranked_ci95": [
+                17.22982231864833,
+                26.272962040097454
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "carriers": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9851694915254238,
+              "ranked_per_1000_tests": 555.9139784946236,
+              "ranked_ci95": [
+                509.552128729467,
+                606.5651142824817
+              ],
+              "unranked_per_1000_tests": 517.2043010752689,
+              "unranked_ci95": [
+                473.3823639965952,
+                563.055339187084
+              ],
+              "ranked_over_unranked": 1.0748440748440746,
+              "ratio_ci95": [
+                0.9718879610269419,
+                1.203625335026097
+              ]
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.951271186440678,
+              "ranked_per_1000_tests": 517.9153094462541,
+              "ranked_ci95": [
+                485.902740768938,
+                552.2528789243437
+              ],
+              "unranked_per_1000_tests": 452.22584147665583,
+              "unranked_ci95": [
+                423.26452846844194,
+                483.0840428997967
+              ],
+              "ranked_over_unranked": 1.1452581032412965,
+              "ratio_ci95": [
+                1.0663047271072226,
+                1.2354208807977571
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.8887711864406778,
+              "ranked_per_1000_tests": 486.982031536487,
+              "ranked_ci95": [
+                459.9763797783034,
+                517.4263046619441
+              ],
+              "unranked_per_1000_tests": 439.6773010634397,
+              "unranked_ci95": [
+                412.6500368752309,
+                467.06808656447447
+              ],
+              "ranked_over_unranked": 1.1075896580483737,
+              "ratio_ci95": [
+                1.0478688976106865,
+                1.1767632059254662
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.685381355932203,
+              "ranked_per_1000_tests": 455.799231290979,
+              "ranked_ci95": [
+                433.67094096179176,
+                479.9845404386371
+              ],
+              "unranked_per_1000_tests": 439.97286909337555,
+              "unranked_ci95": [
+                420.69913418347045,
+                459.96369054471637
+              ],
+              "ranked_over_unranked": 1.0359712230215827,
+              "ratio_ci95": [
+                0.9974623324061691,
+                1.0814627902186387
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 7.975635593220339,
+              "ranked_per_1000_tests": 436.1801035994156,
+              "ranked_ci95": [
+                418.9826594811261,
+                454.4254481540018
+              ],
+              "unranked_per_1000_tests": 435.25036525434984,
+              "unranked_ci95": [
+                418.5490291338391,
+                452.7927102161419
+              ],
+              "ranked_over_unranked": 1.0021361000915472,
+              "ratio_ci95": [
+                0.983706765483254,
+                1.0201737478197999
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.34322033898305,
+              "ranked_per_1000_tests": 437.5283446712018,
+              "ranked_ci95": [
+                421.7722964844522,
+                454.71898807109636
+              ],
+              "unranked_per_1000_tests": 437.0748299319728,
+              "unranked_ci95": [
+                421.77962150223203,
+                454.15972170974794
+              ],
+              "ranked_over_unranked": 1.0010376134889754,
+              "ratio_ci95": [
+                0.9938018347061053,
+                1.0082896873355989
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.685381355932204,
+              "ranked_per_1000_tests": 437.1650442961829,
+              "ranked_ci95": [
+                421.5055336481395,
+                453.82421775328226
+              ],
+              "unranked_per_1000_tests": 437.1650442961829,
+              "unranked_ci95": [
+                421.09021227222166,
+                453.9943081609748
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                0.9970664866524988,
+                1.0030864992180646
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.76165254237288,
+              "ranked_per_1000_tests": 437.00488334237656,
+              "ranked_ci95": [
+                420.94937999379255,
+                453.92135151021097
+              ],
+              "unranked_per_1000_tests": 437.00488334237656,
+              "unranked_ci95": [
+                420.94937999379255,
+                453.92135151021097
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.76165254237288,
+              "ranked_per_1000_tests": 437.00488334237656,
+              "ranked_ci95": [
+                420.94937999379255,
+                453.92135151021097
+              ],
+              "unranked_per_1000_tests": 437.00488334237656,
+              "unranked_ci95": [
+                420.94937999379255,
+                453.92135151021097
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "fraction_of_true_atrisk_couples_found_when_all_invited": 0.4863481228668942,
+          "true_atrisk_couples_per_family": 0.6207627118644068,
+          "n_families": 434,
+          "families_too_complex_for_exact_engine": 0,
+          "n_structures": 333,
+          "drawn_tree_size": {
+            "median": 54.5,
+            "p95": 90.0
+          },
+          "eligible_relatives_per_family": 12.877118644067796,
+          "index_parents_consanguineous_pct": 62.07627118644068,
+          "engine_seconds": {
+            "median": 0.4773551039979793,
+            "p95": 1.7264784101891553,
+            "max": 3.79673412500415
+          },
+          "engine_errors": 0,
+          "random_couples": {
+            "per_1000_tests": 0.14775955,
+            "ci95": [
+              0.13091518386676546,
+              0.16460391613323452
+            ],
+            "p_both_test_positive": 0.0002955191,
+            "by_type": {
+              "first_cousin": {
+                "both_carry": 0.000508,
+                "both_test_positive": 0.000508,
+                "woman_carries": 0.001942,
+                "child_affected": 0.000148,
+                "n": 1000000
+              },
+              "double_first_cousin": {
+                "both_carry": 0.000699,
+                "both_test_positive": 0.000699,
+                "woman_carries": 0.001851,
+                "child_affected": 0.000214,
+                "n": 1000000
+              },
+              "second_cousin": {
+                "both_carry": 0.000345,
+                "both_test_positive": 0.000345,
+                "woman_carries": 0.001883,
+                "child_affected": 0.000107,
+                "n": 1000000
+              },
+              "distant_relative": {
+                "both_carry": 0.000275,
+                "both_test_positive": 0.000275,
+                "woman_carries": 0.001785,
+                "child_affected": 7.6e-05,
+                "n": 1000000
+              },
+              "same_clan": {
+                "both_carry": 0.00031,
+                "both_test_positive": 0.00031,
+                "woman_carries": 0.001855,
+                "child_affected": 9.5e-05,
+                "n": 1000000
+              },
+              "other_clan": {
+                "both_carry": 1e-06,
+                "both_test_positive": 1e-06,
+                "woman_carries": 0.001762,
+                "child_affected": 0.0,
+                "n": 1000000
+              }
+            },
+            "note": "two tests per couple; Monte Carlo interval"
+          }
+        },
+        "SMN1": {
+          "atrisk_couples": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9972067039106145,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9792498004788508,
+              "ranked_per_1000_tests": 87.5,
+              "ranked_ci95": [
+                73.60037191616512,
+                99.72712380304573
+              ],
+              "unranked_per_1000_tests": 29.233870967741936,
+              "unranked_ci95": [
+                20.6449663156502,
+                38.10107187899817
+              ],
+              "ranked_over_unranked": 2.993103448275862,
+              "ratio_ci95": [
+                2.3216954022988507,
+                4.0523875562218885
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.925778132482043,
+              "ranked_per_1000_tests": 65.1936715766503,
+              "ranked_ci95": [
+                56.003819064831745,
+                73.9432479983024
+              ],
+              "unranked_per_1000_tests": 31.914893617021278,
+              "unranked_ci95": [
+                24.796453754309713,
+                38.48865620785429
+              ],
+              "ranked_over_unranked": 2.0427350427350426,
+              "ratio_ci95": [
+                1.7081274114535918,
+                2.557432260256519
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.684756584197925,
+              "ranked_per_1000_tests": 54.003407155025556,
+              "ranked_ci95": [
+                46.344471852854,
+                60.69760354765409
+              ],
+              "unranked_per_1000_tests": 34.66780238500852,
+              "unranked_ci95": [
+                28.01405462288366,
+                40.68404752003403
+              ],
+              "ranked_over_unranked": 1.5577395577395576,
+              "ratio_ci95": [
+                1.3892220113851994,
+                1.8074054855448476
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 7.860335195530726,
+              "ranked_per_1000_tests": 37.87186516397604,
+              "ranked_ci95": [
+                32.702121969587715,
+                42.3455477187476
+              ],
+              "unranked_per_1000_tests": 33.20134023758757,
+              "unranked_ci95": [
+                28.16140748771959,
+                37.54160587523308
+              ],
+              "ranked_over_unranked": 1.1406727828746177,
+              "ratio_ci95": [
+                1.0748981777945192,
+                1.2234541990348398
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.191540303272147,
+              "ranked_per_1000_tests": 33.25518798298168,
+              "ranked_ci95": [
+                28.542140605889326,
+                37.318296590157615
+              ],
+              "unranked_per_1000_tests": 32.126421811235566,
+              "unranked_ci95": [
+                27.473261565054397,
+                36.246591850826015
+              ],
+              "ranked_over_unranked": 1.0351351351351352,
+              "ratio_ci95": [
+                1.0127188259627278,
+                1.0656502617929144
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.500798084596967,
+              "ranked_per_1000_tests": 32.17270779957159,
+              "ranked_ci95": [
+                27.58780654897168,
+                36.189534596791205
+              ],
+              "unranked_per_1000_tests": 32.17270779957159,
+              "unranked_ci95": [
+                27.58780654897168,
+                36.189534596791205
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.541899441340782,
+              "ranked_per_1000_tests": 32.03412512546002,
+              "ranked_ci95": [
+                27.491928714936414,
+                36.06355931400254
+              ],
+              "unranked_per_1000_tests": 32.03412512546002,
+              "unranked_ci95": [
+                27.491928714936414,
+                36.06355931400254
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.541899441340782,
+              "ranked_per_1000_tests": 32.03412512546002,
+              "ranked_ci95": [
+                27.491928714936414,
+                36.06355931400254
+              ],
+              "unranked_per_1000_tests": 32.03412512546002,
+              "unranked_ci95": [
+                27.491928714936414,
+                36.06355931400254
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "atrisk_couples_reproductive": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9972067039106145,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9792498004788508,
+              "ranked_per_1000_tests": 56.45161290322581,
+              "ranked_ci95": [
+                44.628450016578746,
+                68.79806262003552
+              ],
+              "unranked_per_1000_tests": 23.588709677419356,
+              "unranked_ci95": [
+                15.9473135986119,
+                32.030266644672956
+              ],
+              "ranked_over_unranked": 2.393162393162393,
+              "ratio_ci95": [
+                1.8218396616714168,
+                3.3414538770053475
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.925778132482043,
+              "ranked_per_1000_tests": 42.689579923622475,
+              "ranked_ci95": [
+                34.744293799400566,
+                51.067538794386266
+              ],
+              "unranked_per_1000_tests": 25.095471903982542,
+              "unranked_ci95": [
+                18.79302718457739,
+                31.546783824617133
+              ],
+              "ranked_over_unranked": 1.701086956521739,
+              "ratio_ci95": [
+                1.3762823307178145,
+                2.1714906832298135
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.684756584197925,
+              "ranked_per_1000_tests": 37.47870528109029,
+              "ranked_ci95": [
+                31.662340214078615,
+                43.65685701608532
+              ],
+              "unranked_per_1000_tests": 25.298126064735946,
+              "unranked_ci95": [
+                19.712379294025297,
+                30.78845901133261
+              ],
+              "ranked_over_unranked": 1.4814814814814816,
+              "ratio_ci95": [
+                1.296518531931724,
+                1.7769143259840936
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 7.860335195530726,
+              "ranked_per_1000_tests": 26.753985176160015,
+              "ranked_ci95": [
+                22.549577119936263,
+                30.87027372322357
+              ],
+              "unranked_per_1000_tests": 23.86029038481064,
+              "unranked_ci95": [
+                19.764513542511065,
+                27.96423008107919
+              ],
+              "ranked_over_unranked": 1.1212765957446809,
+              "ratio_ci95": [
+                1.0414729194464727,
+                1.2110838007258329
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.191540303272147,
+              "ranked_per_1000_tests": 23.573847356082315,
+              "ranked_ci95": [
+                19.88362789880685,
+                27.215723075120103
+              ],
+              "unranked_per_1000_tests": 22.53190935139359,
+              "unranked_ci95": [
+                18.909145622119258,
+                26.332959774418615
+              ],
+              "ranked_over_unranked": 1.0462427745664742,
+              "ratio_ci95": [
+                1.0159346740024031,
+                1.0884075262594155
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.500798084596967,
+              "ranked_per_1000_tests": 22.806501743038346,
+              "ranked_ci95": [
+                19.230714452196505,
+                26.36005640149242
+              ],
+              "unranked_per_1000_tests": 22.806501743038346,
+              "unranked_ci95": [
+                19.230714452196505,
+                26.36005640149242
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.541899441340782,
+              "ranked_per_1000_tests": 22.708263633322183,
+              "ranked_ci95": [
+                19.13024351464765,
+                26.274010071255905
+              ],
+              "unranked_per_1000_tests": 22.708263633322183,
+              "unranked_ci95": [
+                19.13024351464765,
+                26.274010071255905
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.541899441340782,
+              "ranked_per_1000_tests": 22.708263633322183,
+              "ranked_ci95": [
+                19.13024351464765,
+                26.274010071255905
+              ],
+              "unranked_per_1000_tests": 22.708263633322183,
+              "unranked_ci95": [
+                19.13024351464765,
+                26.274010071255905
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "carriers": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9972067039106145,
+              "ranked_per_1000_tests": 560.6242496998799,
+              "ranked_ci95": [
+                525.2314454341598,
+                596.7066182466926
+              ],
+              "unranked_per_1000_tests": 446.97879151660663,
+              "unranked_ci95": [
+                411.33708729490496,
+                484.91328145501194
+              ],
+              "ranked_over_unranked": 1.2542524619516562,
+              "ratio_ci95": [
+                1.1396944531036552,
+                1.375643340320122
+              ]
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9792498004788508,
+              "ranked_per_1000_tests": 493.3467741935484,
+              "ranked_ci95": [
+                462.7849132124619,
+                520.1753078923738
+              ],
+              "unranked_per_1000_tests": 424.39516129032256,
+              "unranked_ci95": [
+                399.3179635948454,
+                448.1434127935556
+              ],
+              "ranked_over_unranked": 1.1624703087885986,
+              "ratio_ci95": [
+                1.0921728180465158,
+                1.2342926563429135
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.925778132482043,
+              "ranked_per_1000_tests": 470.67648663393345,
+              "ranked_ci95": [
+                447.5648311050304,
+                494.06940825947447
+              ],
+              "unranked_per_1000_tests": 426.2138570649209,
+              "unranked_ci95": [
+                406.4979343016992,
+                445.630022494008
+              ],
+              "ranked_over_unranked": 1.10432,
+              "ratio_ci95": [
+                1.048712395238704,
+                1.1564249128480293
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.684756584197925,
+              "ranked_per_1000_tests": 434.92333901192507,
+              "ranked_ci95": [
+                417.7601698861637,
+                451.91028602271564
+              ],
+              "unranked_per_1000_tests": 425.3833049403748,
+              "unranked_ci95": [
+                408.30179049258817,
+                440.257020059098
+              ],
+              "ranked_over_unranked": 1.0224269122947538,
+              "ratio_ci95": [
+                0.9927069027450967,
+                1.0555636947118738
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 7.860335195530726,
+              "ranked_per_1000_tests": 418.46888008934917,
+              "ranked_ci95": [
+                403.98401632264176,
+                431.83616350772917
+              ],
+              "unranked_per_1000_tests": 419.0780789927911,
+              "unranked_ci95": [
+                405.60633585798905,
+                432.69786186513403
+              ],
+              "ranked_over_unranked": 0.9985463355542096,
+              "ratio_ci95": [
+                0.9852575024793748,
+                1.0123073640253288
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.191540303272147,
+              "ranked_per_1000_tests": 414.99522445081186,
+              "ranked_ci95": [
+                401.2755638608678,
+                429.3427592402713
+              ],
+              "unranked_per_1000_tests": 418.2946947989928,
+              "unranked_ci95": [
+                404.73377493515375,
+                431.9464448524267
+              ],
+              "ranked_over_unranked": 0.9921120913336794,
+              "ratio_ci95": [
+                0.9866217216984173,
+                0.997456694968355
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.500798084596967,
+              "ranked_per_1000_tests": 415.473140409089,
+              "ranked_ci95": [
+                401.3766476495223,
+                429.0823672872713
+              ],
+              "unranked_per_1000_tests": 416.3131588894956,
+              "unranked_ci95": [
+                402.6263629683499,
+                429.6791502934984
+              ],
+              "ranked_over_unranked": 0.9979822437449556,
+              "ratio_ci95": [
+                0.9948365014086906,
+                0.9998979939780047
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.541899441340782,
+              "ranked_per_1000_tests": 416.06724657075944,
+              "ranked_ci95": [
+                402.1217435457615,
+                429.74540520800383
+              ],
+              "unranked_per_1000_tests": 416.06724657075944,
+              "unranked_ci95": [
+                402.1217435457615,
+                429.74540520800383
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.541899441340782,
+              "ranked_per_1000_tests": 416.06724657075944,
+              "ranked_ci95": [
+                402.1217435457615,
+                429.74540520800383
+              ],
+              "unranked_per_1000_tests": 416.06724657075944,
+              "unranked_ci95": [
+                402.1217435457615,
+                429.74540520800383
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "fraction_of_true_atrisk_couples_found_when_all_invited": 0.41630434782608694,
+          "true_atrisk_couples_per_family": 0.7342378292098962,
+          "n_families": 844,
+          "families_too_complex_for_exact_engine": 0,
+          "n_structures": 496,
+          "drawn_tree_size": {
+            "median": 51.0,
+            "p95": 89.0
+          },
+          "eligible_relatives_per_family": 12.666001596169194,
+          "index_parents_consanguineous_pct": 60.534716679968085,
+          "engine_seconds": {
+            "median": 0.4037915829976555,
+            "p95": 1.7222416124102888,
+            "max": 7.103118375001941
+          },
+          "engine_errors": 0,
+          "random_couples": {
+            "per_1000_tests": 1.11301989,
+            "ci95": [
+              1.0668340742160094,
+              1.1592057057839904
+            ],
+            "p_both_test_positive": 0.00222603978,
+            "by_type": {
+              "first_cousin": {
+                "both_carry": 0.004269,
+                "both_test_positive": 0.003631,
+                "woman_carries": 0.015452,
+                "child_affected": 0.001288,
+                "n": 1000000
+              },
+              "double_first_cousin": {
+                "both_carry": 0.005726,
+                "both_test_positive": 0.004832,
+                "woman_carries": 0.015245,
+                "child_affected": 0.001713,
+                "n": 1000000
+              },
+              "second_cousin": {
+                "both_carry": 0.003134,
+                "both_test_positive": 0.002628,
+                "woman_carries": 0.015495,
+                "child_affected": 0.000907,
+                "n": 1000000
+              },
+              "distant_relative": {
+                "both_carry": 0.00269,
+                "both_test_positive": 0.002312,
+                "woman_carries": 0.015336,
+                "child_affected": 0.000819,
+                "n": 1000000
+              },
+              "same_clan": {
+                "both_carry": 0.002703,
+                "both_test_positive": 0.00227,
+                "woman_carries": 0.015213,
+                "child_affected": 0.000843,
+                "n": 1000000
+              },
+              "other_clan": {
+                "both_carry": 0.000221,
+                "both_test_positive": 0.000185,
+                "woman_carries": 0.015043,
+                "child_affected": 6.5e-05,
+                "n": 1000000
+              }
+            },
+            "note": "two tests per couple; Monte Carlo interval"
+          }
+        }
+      }
+    },
+    "theta_0_engine_assumption": {
+      "theta": 0.0,
+      "loci": {
+        "HBB": {
+          "atrisk_couples": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 1.0,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9874213836477987,
+              "ranked_per_1000_tests": 79.11392405063292,
+              "ranked_ci95": [
+                59.86900171877178,
+                99.26090260794038
+              ],
+              "unranked_per_1000_tests": 30.854430379746834,
+              "unranked_ci95": [
+                17.82655506871887,
+                46.420636795385036
+              ],
+              "ranked_over_unranked": 2.5641025641025643,
+              "ratio_ci95": [
+                1.7497685185185183,
+                4.2083881578947375
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.959119496855346,
+              "ranked_per_1000_tests": 56.323060573857596,
+              "ranked_ci95": [
+                43.05559676383777,
+                70.30576469912064
+              ],
+              "unranked_per_1000_tests": 30.8182784272051,
+              "unranked_ci95": [
+                19.89789240303451,
+                41.79635589285428
+              ],
+              "ranked_over_unranked": 1.8275862068965516,
+              "ratio_ci95": [
+                1.4077583440308088,
+                2.5806639159789952
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.789308176100629,
+              "ranked_per_1000_tests": 42.35062376887721,
+              "ranked_ci95": [
+                31.498608471354874,
+                53.0212259451301
+              ],
+              "unranked_per_1000_tests": 27.905449770190415,
+              "unranked_ci95": [
+                20.33260946479505,
+                34.73957165854951
+              ],
+              "ranked_over_unranked": 1.5176470588235291,
+              "ratio_ci95": [
+                1.2790550485722698,
+                1.8611111111111112
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 8.017295597484276,
+              "ranked_per_1000_tests": 28.240831535595216,
+              "ranked_ci95": [
+                21.382968815564585,
+                34.6622368830551
+              ],
+              "unranked_per_1000_tests": 26.67189645028437,
+              "unranked_ci95": [
+                20.13754736016279,
+                32.657503858804134
+              ],
+              "ranked_over_unranked": 1.0588235294117647,
+              "ratio_ci95": [
+                1.0124923780487805,
+                1.126154791154791
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.34433962264151,
+              "ranked_per_1000_tests": 24.566717146222448,
+              "ranked_ci95": [
+                18.4427129597107,
+                30.232351010705443
+              ],
+              "unranked_per_1000_tests": 24.566717146222448,
+              "unranked_ci95": [
+                18.4427129597107,
+                30.232351010705443
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.63679245283019,
+              "ranked_per_1000_tests": 23.821178006200032,
+              "ranked_ci95": [
+                17.903779692546095,
+                29.358605406741802
+              ],
+              "unranked_per_1000_tests": 23.821178006200032,
+              "unranked_ci95": [
+                17.903779692546095,
+                29.358605406741802
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.668238993710691,
+              "ranked_per_1000_tests": 23.743698162302813,
+              "ranked_ci95": [
+                17.82539287644209,
+                29.268892983750735
+              ],
+              "unranked_per_1000_tests": 23.743698162302813,
+              "unranked_ci95": [
+                17.82539287644209,
+                29.268892983750735
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.668238993710691,
+              "ranked_per_1000_tests": 23.743698162302813,
+              "ranked_ci95": [
+                17.82539287644209,
+                29.268892983750735
+              ],
+              "unranked_per_1000_tests": 23.743698162302813,
+              "unranked_ci95": [
+                17.82539287644209,
+                29.268892983750735
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "atrisk_couples_reproductive": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 1.0,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9874213836477987,
+              "ranked_per_1000_tests": 49.050632911392405,
+              "ranked_ci95": [
+                33.48757500959109,
+                66.24411292431549
+              ],
+              "unranked_per_1000_tests": 16.61392405063291,
+              "unranked_ci95": [
+                7.435889645114244,
+                27.34375
+              ],
+              "ranked_over_unranked": 2.9523809523809526,
+              "ratio_ci95": [
+                1.718523185483871,
+                6.583749999999999
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.959119496855346,
+              "ranked_per_1000_tests": 36.13177470775771,
+              "ranked_ci95": [
+                25.423056228140975,
+                48.505149707146714
+              ],
+              "unranked_per_1000_tests": 14.346439957492029,
+              "unranked_ci95": [
+                7.534377497609225,
+                21.928287398875632
+              ],
+              "ranked_over_unranked": 2.5185185185185186,
+              "ratio_ci95": [
+                1.6842105263157896,
+                4.4287946428571425
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.789308176100629,
+              "ranked_per_1000_tests": 26.263952724885094,
+              "ranked_ci95": [
+                18.280248931008327,
+                34.678181999703895
+              ],
+              "unranked_per_1000_tests": 15.430072225869994,
+              "unranked_ci95": [
+                9.782607214030037,
+                21.46656929064747
+              ],
+              "ranked_over_unranked": 1.7021276595744679,
+              "ratio_ci95": [
+                1.2888095238095236,
+                2.394736842105263
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 8.017295597484276,
+              "ranked_per_1000_tests": 17.846636595410864,
+              "ranked_ci95": [
+                12.563132385655072,
+                22.837376468757295
+              ],
+              "unranked_per_1000_tests": 16.66993528142773,
+              "unranked_ci95": [
+                11.719901976610418,
+                21.617241741214116
+              ],
+              "ranked_over_unranked": 1.0705882352941176,
+              "ratio_ci95": [
+                1.0,
+                1.1690260205299596
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.34433962264151,
+              "ranked_per_1000_tests": 15.648662291771833,
+              "ranked_ci95": [
+                11.131481234330165,
+                20.18415445258517
+              ],
+              "unranked_per_1000_tests": 15.648662291771833,
+              "unranked_ci95": [
+                11.131481234330165,
+                20.18415445258517
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.63679245283019,
+              "ranked_per_1000_tests": 15.173764072442486,
+              "ranked_ci95": [
+                10.814788081153202,
+                19.605857221840157
+              ],
+              "unranked_per_1000_tests": 15.173764072442486,
+              "unranked_ci95": [
+                10.814788081153202,
+                19.605857221840157
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.668238993710691,
+              "ranked_per_1000_tests": 15.124410473247682,
+              "ranked_ci95": [
+                10.765595897974336,
+                19.548732599779523
+              ],
+              "unranked_per_1000_tests": 15.124410473247682,
+              "unranked_ci95": [
+                10.765595897974336,
+                19.548732599779523
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.668238993710691,
+              "ranked_per_1000_tests": 15.124410473247682,
+              "ranked_ci95": [
+                10.765595897974336,
+                19.548732599779523
+              ],
+              "unranked_per_1000_tests": 15.124410473247682,
+              "unranked_ci95": [
+                10.765595897974336,
+                19.548732599779523
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "carriers": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 1.0,
+              "ranked_per_1000_tests": 600.62893081761,
+              "ranked_ci95": [
+                549.3559747567504,
+                650.1799985600114
+              ],
+              "unranked_per_1000_tests": 402.5157232704403,
+              "unranked_ci95": [
+                348.7200829955607,
+                456.07213438735175
+              ],
+              "ranked_over_unranked": 1.4921874999999998,
+              "ratio_ci95": [
+                1.271443133225047,
+                1.744940668575122
+              ]
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9874213836477987,
+              "ranked_per_1000_tests": 503.1645569620253,
+              "ranked_ci95": [
+                461.45666131621186,
+                542.3872627253896
+              ],
+              "unranked_per_1000_tests": 401.8987341772152,
+              "unranked_ci95": [
+                361.84738458490193,
+                441.9392952188676
+              ],
+              "ranked_over_unranked": 1.2519685039370079,
+              "ratio_ci95": [
+                1.1266613309695095,
+                1.3907589937142217
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.959119496855346,
+              "ranked_per_1000_tests": 472.36981934112646,
+              "ranked_ci95": [
+                436.5036231884058,
+                506.2763149247519
+              ],
+              "unranked_per_1000_tests": 407.01381509032944,
+              "unranked_ci95": [
+                374.3045617173524,
+                436.03727460108473
+              ],
+              "ranked_over_unranked": 1.1605744125326372,
+              "ratio_ci95": [
+                1.073230783444198,
+                1.2546058101752806
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.789308176100629,
+              "ranked_per_1000_tests": 438.6080105055811,
+              "ranked_ci95": [
+                411.2605758126959,
+                464.67914459703763
+              ],
+              "unranked_per_1000_tests": 405.12147078135257,
+              "unranked_ci95": [
+                379.68816666508644,
+                429.04651447065123
+              ],
+              "ranked_over_unranked": 1.0826580226904376,
+              "ratio_ci95": [
+                1.0260178266213547,
+                1.1375785542521015
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 8.017295597484276,
+              "ranked_per_1000_tests": 415.3755638360463,
+              "ranked_ci95": [
+                396.0068487057677,
+                435.1422579865261
+              ],
+              "unranked_per_1000_tests": 415.17944695038244,
+              "unranked_ci95": [
+                396.6990021301595,
+                434.3162560009254
+              ],
+              "ranked_over_unranked": 1.000472366556448,
+              "ratio_ci95": [
+                0.9753307711438013,
+                1.025289193995689
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 9.34433962264151,
+              "ranked_per_1000_tests": 410.5670536765943,
+              "ranked_ci95": [
+                393.1262098483922,
+                428.2674361015749
+              ],
+              "unranked_per_1000_tests": 413.09103146558977,
+              "unranked_ci95": [
+                395.7679956384365,
+                430.57347126401
+              ],
+              "ranked_over_unranked": 0.9938900203665988,
+              "ratio_ci95": [
+                0.9865956822734299,
+                1.0020620691127191
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 9.63679245283019,
+              "ranked_per_1000_tests": 411.3232174906184,
+              "ranked_ci95": [
+                394.20193935664923,
+                428.23304052831116
+              ],
+              "unranked_per_1000_tests": 410.9968999836841,
+              "unranked_ci95": [
+                393.836174481594,
+                428.2229069844122
+              ],
+              "ranked_over_unranked": 1.0007939658594682,
+              "ratio_ci95": [
+                0.9975057644832642,
+                1.0043801438741393
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 9.668238993710691,
+              "ranked_per_1000_tests": 411.6116441697837,
+              "ranked_ci95": [
+                394.40916994043704,
+                428.59503339671755
+              ],
+              "unranked_per_1000_tests": 411.6116441697837,
+              "unranked_ci95": [
+                394.40916994043704,
+                428.59503339671755
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 9.668238993710691,
+              "ranked_per_1000_tests": 411.6116441697837,
+              "ranked_ci95": [
+                394.40916994043704,
+                428.59503339671755
+              ],
+              "unranked_per_1000_tests": 411.6116441697837,
+              "unranked_ci95": [
+                394.40916994043704,
+                428.59503339671755
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "fraction_of_true_atrisk_couples_found_when_all_invited": 0.45482866043613707,
+          "true_atrisk_couples_per_family": 0.5047169811320755,
+          "n_families": 302,
+          "families_too_complex_for_exact_engine": 0,
+          "n_structures": 228,
+          "drawn_tree_size": {
+            "median": 54.0,
+            "p95": 91.94999999999999
+          },
+          "eligible_relatives_per_family": 12.973270440251572,
+          "index_parents_consanguineous_pct": 61.0062893081761,
+          "engine_seconds": {
+            "median": 0.45996989600826055,
+            "p95": 1.7837114351394117,
+            "max": 3.4660969579708762
+          },
+          "engine_errors": 0,
+          "random_couples": {
+            "per_1000_tests": 4.4630091599999995,
+            "ci95": [
+              4.370835252227356,
+              4.555183067772643
+            ],
+            "p_both_test_positive": 0.00892601832,
+            "by_type": {
+              "first_cousin": {
+                "both_carry": 0.014946,
+                "both_test_positive": 0.01466,
+                "woman_carries": 0.077899,
+                "child_affected": 0.004012,
+                "n": 1000000
+              },
+              "double_first_cousin": {
+                "both_carry": 0.02391,
+                "both_test_positive": 0.023446,
+                "woman_carries": 0.077707,
+                "child_affected": 0.00636,
+                "n": 1000000
+              },
+              "second_cousin": {
+                "both_carry": 0.008311,
+                "both_test_positive": 0.008158,
+                "woman_carries": 0.077323,
+                "child_affected": 0.002154,
+                "n": 1000000
+              },
+              "distant_relative": {
+                "both_carry": 0.006017,
+                "both_test_positive": 0.005904,
+                "woman_carries": 0.077027,
+                "child_affected": 0.001579,
+                "n": 1000000
+              },
+              "same_clan": {
+                "both_carry": 0.005916,
+                "both_test_positive": 0.005806,
+                "woman_carries": 0.07682,
+                "child_affected": 0.001574,
+                "n": 1000000
+              },
+              "other_clan": {
+                "both_carry": 0.006086,
+                "both_test_positive": 0.00597,
+                "woman_carries": 0.077368,
+                "child_affected": 0.001603,
+                "n": 1000000
+              }
+            },
+            "note": "two tests per couple; Monte Carlo interval"
+          }
+        },
+        "CYP21A2": {
+          "atrisk_couples": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9983221476510067,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9924496644295302,
+              "ranked_per_1000_tests": 54.31578947368421,
+              "ranked_ci95": [
+                37.76897544204878,
+                73.91519717294608
+              ],
+              "unranked_per_1000_tests": 15.578947368421053,
+              "unranked_ci95": [
+                6.743213288900653,
+                25.963693151423502
+              ],
+              "ranked_over_unranked": 3.4864864864864864,
+              "ratio_ci95": [
+                2.1904761904761907,
+                7.0019230769230765
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.9798657718120807,
+              "ranked_per_1000_tests": 39.695945945945944,
+              "ranked_ci95": [
+                28.289650931626284,
+                53.793974081454195
+              ],
+              "unranked_per_1000_tests": 17.736486486486488,
+              "unranked_ci95": [
+                10.41087131557759,
+                26.189758262583812
+              ],
+              "ranked_over_unranked": 2.2380952380952377,
+              "ratio_ci95": [
+                1.5685908691834942,
+                3.5004464285714283
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.885906040268456,
+              "ranked_per_1000_tests": 28.846153846153847,
+              "ranked_ci95": [
+                20.70042856191202,
+                37.881957651832124
+              ],
+              "unranked_per_1000_tests": 16.65521978021978,
+              "unranked_ci95": [
+                10.60273895461056,
+                23.920354113329676
+              ],
+              "ranked_over_unranked": 1.7319587628865978,
+              "ratio_ci95": [
+                1.3748946629213483,
+                2.3289553915275993
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 8.880872483221477,
+              "ranked_per_1000_tests": 18.89287738522577,
+              "ranked_ci95": [
+                13.635537250093478,
+                24.54392373150373
+              ],
+              "unranked_per_1000_tests": 14.169658038919328,
+              "unranked_ci95": [
+                9.888251162161621,
+                18.880254550468884
+              ],
+              "ranked_over_unranked": 1.3333333333333333,
+              "ratio_ci95": [
+                1.1147514879398561,
+                1.6689331397986027
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 10.958053691275168,
+              "ranked_per_1000_tests": 15.464706783034757,
+              "ranked_ci95": [
+                11.22428177457825,
+                20.10234968980245
+              ],
+              "unranked_per_1000_tests": 13.550757923748277,
+              "unranked_ci95": [
+                9.710416282393156,
+                17.927324907004596
+              ],
+              "ranked_over_unranked": 1.1412429378531073,
+              "ratio_ci95": [
+                1.0257499839918036,
+                1.300854411321891
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 11.604865771812081,
+              "ranked_per_1000_tests": 14.602761512325598,
+              "ranked_ci95": [
+                10.63740186474484,
+                18.868489285920468
+              ],
+              "unranked_per_1000_tests": 14.602761512325598,
+              "unranked_ci95": [
+                10.63740186474484,
+                18.868489285920468
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 11.75503355704698,
+              "ranked_per_1000_tests": 14.416214673137311,
+              "ranked_ci95": [
+                10.53027827256213,
+                18.59945206909302
+              ],
+              "unranked_per_1000_tests": 14.416214673137311,
+              "unranked_ci95": [
+                10.53027827256213,
+                18.59945206909302
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 11.75503355704698,
+              "ranked_per_1000_tests": 14.416214673137311,
+              "ranked_ci95": [
+                10.53027827256213,
+                18.59945206909302
+              ],
+              "unranked_per_1000_tests": 14.416214673137311,
+              "unranked_ci95": [
+                10.53027827256213,
+                18.59945206909302
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "atrisk_couples_reproductive": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9983221476510067,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9924496644295302,
+              "ranked_per_1000_tests": 37.473684210526315,
+              "ranked_ci95": [
+                23.494685462289397,
+                54.60617498116515
+              ],
+              "unranked_per_1000_tests": 13.473684210526315,
+              "unranked_ci95": [
+                4.895033775049861,
+                23.33906956262465
+              ],
+              "ranked_over_unranked": 2.78125,
+              "ratio_ci95": [
+                1.6853817733990148,
+                6.062604166666667
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.9798657718120807,
+              "ranked_per_1000_tests": 28.434684684684683,
+              "ranked_ci95": [
+                18.138797815450467,
+                40.57789034931366
+              ],
+              "unranked_per_1000_tests": 15.484234234234235,
+              "unranked_ci95": [
+                8.400926998841252,
+                23.41896077968094
+              ],
+              "ranked_over_unranked": 1.8363636363636362,
+              "ratio_ci95": [
+                1.28734375,
+                2.920333333333333
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.885906040268456,
+              "ranked_per_1000_tests": 21.634615384615383,
+              "ranked_ci95": [
+                14.3066440650512,
+                30.206200458166926
+              ],
+              "unranked_per_1000_tests": 13.04945054945055,
+              "unranked_ci95": [
+                7.4531298629819975,
+                19.74148024158251
+              ],
+              "ranked_over_unranked": 1.657894736842105,
+              "ratio_ci95": [
+                1.2621042634022794,
+                2.409328752642706
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 8.880872483221477,
+              "ranked_per_1000_tests": 14.075193651993198,
+              "ranked_ci95": [
+                9.590617295532839,
+                19.119786183364536
+              ],
+              "unranked_per_1000_tests": 10.485546948800302,
+              "unranked_ci95": [
+                6.665849292162291,
+                15.116400688623466
+              ],
+              "ranked_over_unranked": 1.3423423423423424,
+              "ratio_ci95": [
+                1.1118881720430107,
+                1.7143298059964724
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 10.958053691275168,
+              "ranked_per_1000_tests": 11.560251110090338,
+              "ranked_ci95": [
+                7.940488893760286,
+                15.659600025969059
+              ],
+              "unranked_per_1000_tests": 9.952534068289696,
+              "unranked_ci95": [
+                6.659385463516716,
+                13.920450705181116
+              ],
+              "ranked_over_unranked": 1.1615384615384614,
+              "ratio_ci95": [
+                1.0333333333333332,
+                1.3523368768328445
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 11.604865771812081,
+              "ranked_per_1000_tests": 10.915925684956264,
+              "ranked_ci95": [
+                7.556933953334596,
+                14.668671535258243
+              ],
+              "unranked_per_1000_tests": 10.915925684956264,
+              "unranked_ci95": [
+                7.556933953334596,
+                14.668671535258243
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 11.75503355704698,
+              "ranked_per_1000_tests": 10.776477305166999,
+              "ranked_ci95": [
+                7.452837534235682,
+                14.474997055913903
+              ],
+              "unranked_per_1000_tests": 10.776477305166999,
+              "unranked_ci95": [
+                7.452837534235682,
+                14.474997055913903
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 11.75503355704698,
+              "ranked_per_1000_tests": 10.776477305166999,
+              "ranked_ci95": [
+                7.452837534235682,
+                14.474997055913903
+              ],
+              "unranked_per_1000_tests": 10.776477305166999,
+              "unranked_ci95": [
+                7.452837534235682,
+                14.474997055913903
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "carriers": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9983221476510067,
+              "ranked_per_1000_tests": 516.8067226890756,
+              "ranked_ci95": [
+                465.4596514557671,
+                570.1171102504944
+              ],
+              "unranked_per_1000_tests": 393.2773109243698,
+              "unranked_ci95": [
+                343.36473802185486,
+                445.1192683545527
+              ],
+              "ranked_over_unranked": 1.314102564102564,
+              "ratio_ci95": [
+                1.1398358585858588,
+                1.5281005072778373
+              ]
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9924496644295302,
+              "ranked_per_1000_tests": 448.42105263157896,
+              "ranked_ci95": [
+                411.3422322540473,
+                485.8609749182843
+              ],
+              "unranked_per_1000_tests": 393.2631578947368,
+              "unranked_ci95": [
+                363.00017754968746,
+                426.17501670419955
+              ],
+              "ranked_over_unranked": 1.1402569593147753,
+              "ratio_ci95": [
+                1.0449422267512878,
+                1.2385546935216585
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.9798657718120807,
+              "ranked_per_1000_tests": 424.26801801801804,
+              "ranked_ci95": [
+                397.1531549710525,
+                455.03892334081013
+              ],
+              "unranked_per_1000_tests": 387.95045045045043,
+              "unranked_ci95": [
+                362.3027673243146,
+                415.6417909102722
+              ],
+              "ranked_over_unranked": 1.0936139332365749,
+              "ratio_ci95": [
+                1.0174097707945453,
+                1.1780264754934282
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.885906040268456,
+              "ranked_per_1000_tests": 396.4629120879121,
+              "ranked_ci95": [
+                373.6930673342631,
+                418.7496572985615
+              ],
+              "unranked_per_1000_tests": 379.4642857142857,
+              "unranked_ci95": [
+                358.86628693709014,
+                401.22875921643873
+              ],
+              "ranked_over_unranked": 1.0447963800904978,
+              "ratio_ci95": [
+                0.9952785451197054,
+                1.101823117939942
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 8.880872483221477,
+              "ranked_per_1000_tests": 382.675231437748,
+              "ranked_ci95": [
+                366.3568128753543,
+                398.56168249838976
+              ],
+              "unranked_per_1000_tests": 384.65898356319667,
+              "unranked_ci95": [
+                367.9913553043,
+                401.19824968256853
+              ],
+              "ranked_over_unranked": 0.9948428290766209,
+              "ratio_ci95": [
+                0.9712745186163791,
+                1.0176127383501583
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 10.958053691275168,
+              "ranked_per_1000_tests": 379.80401163680904,
+              "ranked_ci95": [
+                365.0613767273966,
+                394.0995540636344
+              ],
+              "unranked_per_1000_tests": 382.4835400398101,
+              "unranked_ci95": [
+                367.59189656322,
+                398.02438358466
+              ],
+              "ranked_over_unranked": 0.9929943955164131,
+              "ratio_ci95": [
+                0.9827036373075142,
+                1.0033965352427325
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 11.604865771812081,
+              "ranked_per_1000_tests": 382.201980770621,
+              "ranked_ci95": [
+                367.34331919200537,
+                397.06528922767313
+              ],
+              "unranked_per_1000_tests": 381.623653582014,
+              "unranked_ci95": [
+                366.6389852059583,
+                396.7918339229507
+              ],
+              "ranked_over_unranked": 1.0015154385300247,
+              "ratio_ci95": [
+                0.9975694719888802,
+                1.0055162081776816
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 11.75503355704698,
+              "ranked_per_1000_tests": 381.530117042535,
+              "ranked_ci95": [
+                366.77270958795106,
+                396.9024824917714
+              ],
+              "unranked_per_1000_tests": 381.530117042535,
+              "unranked_ci95": [
+                366.77270958795106,
+                396.9024824917714
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 11.75503355704698,
+              "ranked_per_1000_tests": 381.530117042535,
+              "ranked_ci95": [
+                366.77270958795106,
+                396.9024824917714
+              ],
+              "unranked_per_1000_tests": 381.530117042535,
+              "unranked_ci95": [
+                366.77270958795106,
+                396.9024824917714
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "fraction_of_true_atrisk_couples_found_when_all_invited": 0.4519015659955257,
+          "true_atrisk_couples_per_family": 0.375,
+          "n_families": 420,
+          "families_too_complex_for_exact_engine": 0,
+          "n_structures": 250,
+          "drawn_tree_size": {
+            "median": 61.0,
+            "p95": 100.0
+          },
+          "eligible_relatives_per_family": 15.355704697986576,
+          "index_parents_consanguineous_pct": 91.19127516778524,
+          "engine_seconds": {
+            "median": 0.618833666521823,
+            "p95": 2.2829769853909956,
+            "max": 3.966770916013047
+          },
+          "engine_errors": 0,
+          "random_couples": {
+            "per_1000_tests": 0.2183857,
+            "ci95": [
+              0.19790907826284146,
+              0.23886232173715854
+            ],
+            "p_both_test_positive": 0.0004367714,
+            "by_type": {
+              "first_cousin": {
+                "both_carry": 0.001151,
+                "both_test_positive": 0.001151,
+                "woman_carries": 0.008422,
+                "child_affected": 0.000309,
+                "n": 1000000
+              },
+              "double_first_cousin": {
+                "both_carry": 0.002203,
+                "both_test_positive": 0.002203,
+                "woman_carries": 0.008602,
+                "child_affected": 0.000528,
+                "n": 1000000
+              },
+              "second_cousin": {
+                "both_carry": 0.000339,
+                "both_test_positive": 0.000339,
+                "woman_carries": 0.008289,
+                "child_affected": 6.9e-05,
+                "n": 1000000
+              },
+              "distant_relative": {
+                "both_carry": 5.9e-05,
+                "both_test_positive": 5.9e-05,
+                "woman_carries": 0.00831,
+                "child_affected": 1.2e-05,
+                "n": 1000000
+              },
+              "same_clan": {
+                "both_carry": 7.3e-05,
+                "both_test_positive": 7.3e-05,
+                "woman_carries": 0.008266,
+                "child_affected": 2e-05,
+                "n": 1000000
+              },
+              "other_clan": {
+                "both_carry": 5.1e-05,
+                "both_test_positive": 5.1e-05,
+                "woman_carries": 0.008062,
+                "child_affected": 1.5e-05,
+                "n": 1000000
+              }
+            },
+            "note": "two tests per couple; Monte Carlo interval"
+          }
+        },
+        "SMN1": {
+          "atrisk_couples": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9974226804123711,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9858247422680413,
+              "ranked_per_1000_tests": 58.40363400389358,
+              "ranked_ci95": [
+                38.724073291867164,
+                77.50521849965826
+              ],
+              "unranked_per_1000_tests": 14.276443867618429,
+              "unranked_ci95": [
+                4.981320405097816,
+                26.42007926023778
+              ],
+              "ranked_over_unranked": 4.090909090909092,
+              "ratio_ci95": [
+                2.341260162601626,
+                11.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.963917525773196,
+              "ranked_per_1000_tests": 42.17391304347826,
+              "ranked_ci95": [
+                28.494195947494905,
+                55.466132507785225
+              ],
+              "unranked_per_1000_tests": 16.08695652173913,
+              "unranked_ci95": [
+                7.71776446783426,
+                25.28082527601787
+              ],
+              "ranked_over_unranked": 2.6216216216216215,
+              "ratio_ci95": [
+                1.7068470887507066,
+                4.752403846153844
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.895618556701031,
+              "ranked_per_1000_tests": 31.85048697025533,
+              "ranked_ci95": [
+                22.333269740770234,
+                41.06592296053109
+              ],
+              "unranked_per_1000_tests": 16.846538562779678,
+              "unranked_ci95": [
+                9.949892738656489,
+                24.669915667282197
+              ],
+              "ranked_over_unranked": 1.890625,
+              "ratio_ci95": [
+                1.3977047258297257,
+                2.68309503784693
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 8.737113402061855,
+              "ranked_per_1000_tests": 19.02654867256637,
+              "ranked_ci95": [
+                13.307357023382043,
+                24.595413341664784
+              ],
+              "unranked_per_1000_tests": 17.551622418879056,
+              "unranked_ci95": [
+                12.289682825088155,
+                22.96038591330847
+              ],
+              "ranked_over_unranked": 1.084033613445378,
+              "ratio_ci95": [
+                1.0149226091763404,
+                1.1913365539452496
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 10.603092783505154,
+              "ranked_per_1000_tests": 15.921244530870199,
+              "ranked_ci95": [
+                11.24656469791889,
+                20.435943811930795
+              ],
+              "unranked_per_1000_tests": 15.921244530870199,
+              "unranked_ci95": [
+                11.24656469791889,
+                20.435943811930795
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 11.179123711340207,
+              "ranked_per_1000_tests": 15.100864553314121,
+              "ranked_ci95": [
+                10.718598315148569,
+                19.497862911361644
+              ],
+              "unranked_per_1000_tests": 15.100864553314121,
+              "unranked_ci95": [
+                10.718598315148569,
+                19.497862911361644
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 11.31701030927835,
+              "ranked_per_1000_tests": 14.916875427009792,
+              "ranked_ci95": [
+                10.566510097898162,
+                19.37844859183532
+              ],
+              "unranked_per_1000_tests": 14.916875427009792,
+              "unranked_ci95": [
+                10.566510097898162,
+                19.37844859183532
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 11.31701030927835,
+              "ranked_per_1000_tests": 14.916875427009792,
+              "ranked_ci95": [
+                10.566510097898162,
+                19.37844859183532
+              ],
+              "unranked_per_1000_tests": 14.916875427009792,
+              "unranked_ci95": [
+                10.566510097898162,
+                19.37844859183532
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "atrisk_couples_reproductive": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9974226804123711,
+              "ranked_per_1000_tests": 0.0,
+              "ranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "unranked_per_1000_tests": 0.0,
+              "unranked_ci95": [
+                0.0,
+                0.0
+              ],
+              "ranked_over_unranked": null,
+              "ratio_ci95": null
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9858247422680413,
+              "ranked_per_1000_tests": 41.53147306943543,
+              "ranked_ci95": [
+                24.721734362833622,
+                59.48029511711177
+              ],
+              "unranked_per_1000_tests": 10.382868267358857,
+              "unranked_ci95": [
+                2.043369981169896,
+                21.094612857274544
+              ],
+              "ranked_over_unranked": 4.0,
+              "ratio_ci95": [
+                2.0293067226890757,
+                15.604166666666666
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.963917525773196,
+              "ranked_per_1000_tests": 30.869565217391305,
+              "ranked_ci95": [
+                18.81688026876536,
+                43.585687634790986
+              ],
+              "unranked_per_1000_tests": 10.869565217391305,
+              "unranked_ci95": [
+                4.189449075346774,
+                19.548594449262378
+              ],
+              "ranked_over_unranked": 2.84,
+              "ratio_ci95": [
+                1.6293981481481483,
+                6.308974358974357
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.895618556701031,
+              "ranked_per_1000_tests": 23.163990523822058,
+              "ranked_ci95": [
+                15.151132923584992,
+                31.97227090710838
+              ],
+              "unranked_per_1000_tests": 11.84522242695446,
+              "unranked_ci95": [
+                6.468322026779351,
+                18.76269088593373
+              ],
+              "ranked_over_unranked": 1.9555555555555557,
+              "ratio_ci95": [
+                1.3792025862068966,
+                2.970454545454545
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 8.737113402061855,
+              "ranked_per_1000_tests": 13.864306784660767,
+              "ranked_ci95": [
+                9.296779539085401,
+                19.14261597228205
+              ],
+              "unranked_per_1000_tests": 12.389380530973451,
+              "unranked_ci95": [
+                7.971716857158239,
+                17.404025187720105
+              ],
+              "ranked_over_unranked": 1.119047619047619,
+              "ratio_ci95": [
+                1.019607843137255,
+                1.2973648648648648
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 10.603092783505154,
+              "ranked_per_1000_tests": 11.66747690811862,
+              "ranked_ci95": [
+                7.8959349962491014,
+                15.986297422863348
+              ],
+              "unranked_per_1000_tests": 11.66747690811862,
+              "unranked_ci95": [
+                7.8959349962491014,
+                15.986297422863348
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 11.179123711340207,
+              "ranked_per_1000_tests": 11.06628242074928,
+              "ranked_ci95": [
+                7.45644129340092,
+                15.178782834225183
+              ],
+              "unranked_per_1000_tests": 11.06628242074928,
+              "unranked_ci95": [
+                7.45644129340092,
+                15.178782834225183
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 11.31701030927835,
+              "ranked_per_1000_tests": 10.931450694602596,
+              "ranked_ci95": [
+                7.336632318443441,
+                15.021985317346841
+              ],
+              "unranked_per_1000_tests": 10.931450694602596,
+              "unranked_ci95": [
+                7.336632318443441,
+                15.021985317346841
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 11.31701030927835,
+              "ranked_per_1000_tests": 10.931450694602596,
+              "ranked_ci95": [
+                7.336632318443441,
+                15.021985317346841
+              ],
+              "unranked_per_1000_tests": 10.931450694602596,
+              "unranked_ci95": [
+                7.336632318443441,
+                15.021985317346841
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "carriers": [
+            {
+              "budget_tests_per_family": 1,
+              "mean_tests_per_family": 0.9974226804123711,
+              "ranked_per_1000_tests": 470.2842377260982,
+              "ranked_ci95": [
+                416.42886778535865,
+                520.1661639169334
+              ],
+              "unranked_per_1000_tests": 375.968992248062,
+              "unranked_ci95": [
+                322.1018132810586,
+                429.508506037859
+              ],
+              "ranked_over_unranked": 1.2508591065292096,
+              "ratio_ci95": [
+                1.0404335508241758,
+                1.5172733077905491
+              ]
+            },
+            {
+              "budget_tests_per_family": 2,
+              "mean_tests_per_family": 1.9858247422680413,
+              "ranked_per_1000_tests": 419.8572355613238,
+              "ranked_ci95": [
+                380.1014557199026,
+                460.2803090002997
+              ],
+              "unranked_per_1000_tests": 370.53861129136925,
+              "unranked_ci95": [
+                337.79339415315826,
+                405.4350811221903
+              ],
+              "ranked_over_unranked": 1.1330998248686515,
+              "ratio_ci95": [
+                1.003964922984141,
+                1.2891390475538984
+              ]
+            },
+            {
+              "budget_tests_per_family": 3,
+              "mean_tests_per_family": 2.963917525773196,
+              "ranked_per_1000_tests": 405.6521739130435,
+              "ranked_ci95": [
+                373.18973042120507,
+                439.5570321089679
+              ],
+              "unranked_per_1000_tests": 354.7826086956522,
+              "unranked_ci95": [
+                328.3084437122102,
+                382.46456572747564
+              ],
+              "ranked_over_unranked": 1.1433823529411764,
+              "ratio_ci95": [
+                1.0518400167084376,
+                1.2486808942699132
+              ]
+            },
+            {
+              "budget_tests_per_family": 5,
+              "mean_tests_per_family": 4.895618556701031,
+              "ranked_per_1000_tests": 368.51803106080547,
+              "ranked_ci95": [
+                341.94662153734845,
+                392.60576202424403
+              ],
+              "unranked_per_1000_tests": 342.7217688865491,
+              "unranked_ci95": [
+                318.4388113480666,
+                363.80845693042426
+              ],
+              "ranked_over_unranked": 1.075268817204301,
+              "ratio_ci95": [
+                1.0083113414142029,
+                1.1450748479820911
+              ]
+            },
+            {
+              "budget_tests_per_family": 10,
+              "mean_tests_per_family": 8.737113402061855,
+              "ranked_per_1000_tests": 358.8495575221239,
+              "ranked_ci95": [
+                339.5215112767639,
+                377.72648331930384
+              ],
+              "unranked_per_1000_tests": 357.66961651917404,
+              "unranked_ci95": [
+                337.1877825335051,
+                377.09459882995543
+              ],
+              "ranked_over_unranked": 1.003298969072165,
+              "ratio_ci95": [
+                0.9700564260847895,
+                1.0365386769670322
+              ]
+            },
+            {
+              "budget_tests_per_family": 15,
+              "mean_tests_per_family": 10.603092783505154,
+              "ranked_per_1000_tests": 359.1395235780262,
+              "ranked_ci95": [
+                340.90376945017556,
+                376.04446402859844
+              ],
+              "unranked_per_1000_tests": 358.04569761789014,
+              "unranked_ci95": [
+                338.64028894228557,
+                375.6586129270726
+              ],
+              "ranked_over_unranked": 1.0030549898167005,
+              "ratio_ci95": [
+                0.984170527357581,
+                1.0192667612308601
+              ]
+            },
+            {
+              "budget_tests_per_family": 20,
+              "mean_tests_per_family": 11.179123711340207,
+              "ranked_per_1000_tests": 357.46397694524495,
+              "ranked_ci95": [
+                339.692299068875,
+                374.2942062475707
+              ],
+              "unranked_per_1000_tests": 357.0028818443804,
+              "unranked_ci95": [
+                337.8723661008465,
+                374.0596073184707
+              ],
+              "ranked_over_unranked": 1.001291572489506,
+              "ratio_ci95": [
+                0.9900234543414168,
+                1.0118207315977656
+              ]
+            },
+            {
+              "budget_tests_per_family": 30,
+              "mean_tests_per_family": 11.31701030927835,
+              "ranked_per_1000_tests": 357.0940560236848,
+              "ranked_ci95": [
+                338.9892792265642,
+                373.69034238917277
+              ],
+              "unranked_per_1000_tests": 357.0940560236848,
+              "unranked_ci95": [
+                338.9892792265642,
+                373.69034238917277
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "budget_tests_per_family": "all",
+              "mean_tests_per_family": 11.31701030927835,
+              "ranked_per_1000_tests": 357.0940560236848,
+              "ranked_ci95": [
+                338.9892792265642,
+                373.69034238917277
+              ],
+              "unranked_per_1000_tests": 357.0940560236848,
+              "unranked_ci95": [
+                338.9892792265642,
+                373.69034238917277
+              ],
+              "ranked_over_unranked": 1.0,
+              "ratio_ci95": [
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "fraction_of_true_atrisk_couples_found_when_all_invited": 0.4309210526315789,
+          "true_atrisk_couples_per_family": 0.3917525773195876,
+          "n_families": 299,
+          "families_too_complex_for_exact_engine": 0,
+          "n_structures": 189,
+          "drawn_tree_size": {
+            "median": 61.0,
+            "p95": 96.09999999999997
+          },
+          "eligible_relatives_per_family": 15.021907216494846,
+          "index_parents_consanguineous_pct": 86.21134020618557,
+          "engine_seconds": {
+            "median": 0.6585758330184035,
+            "p95": 2.12709593749023,
+            "max": 3.6926994579844177
+          },
+          "engine_errors": 0,
+          "random_couples": {
+            "per_1000_tests": 0.34466069,
+            "ci95": [
+              0.3189397276175368,
+              0.3703816523824632
+            ],
+            "p_both_test_positive": 0.00068932138,
+            "by_type": {
+              "first_cousin": {
+                "both_carry": 0.001995,
+                "both_test_positive": 0.001653,
+                "woman_carries": 0.014531,
+                "child_affected": 0.000487,
+                "n": 1000000
+              },
+              "double_first_cousin": {
+                "both_carry": 0.003881,
+                "both_test_positive": 0.00321,
+                "woman_carries": 0.014637,
+                "child_affected": 0.000984,
+                "n": 1000000
+              },
+              "second_cousin": {
+                "both_carry": 0.000685,
+                "both_test_positive": 0.000583,
+                "woman_carries": 0.014933,
+                "child_affected": 0.000183,
+                "n": 1000000
+              },
+              "distant_relative": {
+                "both_carry": 0.000209,
+                "both_test_positive": 0.000172,
+                "woman_carries": 0.014442,
+                "child_affected": 4.9e-05,
+                "n": 1000000
+              },
+              "same_clan": {
+                "both_carry": 0.000195,
+                "both_test_positive": 0.000167,
+                "woman_carries": 0.014553,
+                "child_affected": 4.5e-05,
+                "n": 1000000
+              },
+              "other_clan": {
+                "both_carry": 0.000208,
+                "both_test_positive": 0.00018,
+                "woman_carries": 0.014455,
+                "child_affected": 5.8e-05,
+                "n": 1000000
+              }
+            },
+            "note": "two tests per couple; Monte Carlo interval"
+          }
+        }
+      }
+    }
+  },
+  "premarital_context": {
+    "abu_dhabi_premarital": {
+      "incompatible_couples": 565,
+      "couples": 11748,
+      "per_1000_tests": 24.046646237657473,
+      "per_1000_tests_ci95": [
+        22.147031435246824,
+        26.0591968788402
+      ],
+      "period": "2022 - Jul 2026",
+      "source": "https://gulfnews.com/uae/health/abu-dhabi-genetic-screening-flags-565-incompatible-cases-among-couples-1.500697261"
+    },
+    "federal_ehs_premarital": {
+      "incompatible_couples": 282,
+      "couples": 6990,
+      "per_1000_tests": 20.17167381974249,
+      "per_1000_tests_ci95": [
+        17.925898920697414,
+        22.611617902101607
+      ],
+      "period": "to 2026-09",
+      "source": "https://gulfnews.com/uae/health/uae-premarital-genetic-screening-71-per-cent-of-incompatible-couples-choose-marriage-1.500731467"
+    },
+    "note": "Premarital panels cover ~570 genes / >840 conditions (Gulf News), so these yields are NOT comparable with the single-gene yields above; they are shown for scale. Premarital testing is mandatory for Emiratis marrying from 1 Jan 2025 and reaches only couples before marriage; couples already married (all couples in the cascade simulation) are outside it. Per test, premarital screening of a random couple for one gene has the same expected yield as the 'random couples' comparator."
+  },
+  "chart": "docs/evidence/b4_uae_chart.json",
+  "log": "docs/evidence/logs/b4_uae_families.csv",
+  "runtime_seconds": 276.32
+}

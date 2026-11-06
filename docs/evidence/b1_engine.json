@@ -1,0 +1,57 @@
+{
+  "benchmark": "B1 engine correctness",
+  "provenance": {
+    "generated_utc": "2026-11-06T13:08:38Z",
+    "git_commit": "742f4ef",
+    "working_tree_dirty": true,
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "workers": 8,
+    "quick": false,
+    "seed": 20261106,
+    "data_note": "SYNTHETIC: all families are simulated; no real person's data is used."
+  },
+  "textbook": {
+    "n_cases": 67,
+    "n_pass": 67,
+    "max_abs_error": 1.4999998498854694e-07,
+    "failures": [],
+    "log": "docs/evidence/logs/b1_textbook_cases.csv"
+  },
+  "pgmpy_crosscheck": {
+    "n_pedigrees": 10000,
+    "n_queries": 30000,
+    "pedigree_size_median": 21.0,
+    "pedigree_size_max": 40,
+    "pct_pedigrees_with_consanguineous_loop": 39.190000000000005,
+    "max_abs_error": 5.551115123125783e-16,
+    "median_abs_error": 1.1102230246251565e-16,
+    "pct_within_1e-9": 100.0,
+    "pct_within_1e-9_ci95": [
+      99.98770449111262,
+      100.0
+    ],
+    "n_engine_errors": 0,
+    "log": "docs/evidence/logs/b1_pgmpy_crosscheck.csv"
+  },
+  "montecarlo": {
+    "n_pedigrees": 273,
+    "n_skipped_low_ess": 27,
+    "draws_per_pedigree": 100000,
+    "n_genotype_probabilities": 21497,
+    "pct_abs_z_le_1.96": 95.57612690142811,
+    "pct_abs_z_le_1.96_ci95": [
+      95.29269661065507,
+      95.84714832284448
+    ],
+    "expected_pct_if_exact": 95.0,
+    "max_abs_z": 4.9914431115086515,
+    "max_abs_error": 0.09640837126270996,
+    "deterministic_mismatches": 0,
+    "note": "z = (MC - exact)/sqrt(p(1-p)/ESS). z-scores within one pedigree are correlated, so the coverage interval is approximate.",
+    "log": "docs/evidence/logs/b1_montecarlo.csv"
+  },
+  "runtime_seconds": 22.0
+}
