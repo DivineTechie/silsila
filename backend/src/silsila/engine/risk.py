@@ -19,17 +19,24 @@ from .pedigree import Pedigree
 
 
 def one_in(p: float) -> str:
-    """Express a probability as 'about 1 in N' for display. Exact small
-    fractions (1/2, 2/3, 1/4, 1/8 ...) are shown exactly."""
+    """Express a probability for display.
+
+    Exact simple fractions (1/2, 2/3, 1/4, 1/8 ...) are shown exactly. Other
+    chances of 1 in 5 or more are shown in tenths ("about 9 in 10"), and smaller
+    chances as "about 1 in N", the convention used in genetic counselling."""
     if p <= 0:
         return "0"
-    if p >= 1:
+    if p >= 1 - 1e-12:
         return "1 in 1"
     frac = Fraction(p).limit_denominator(64)
     if abs(float(frac) - p) < 1e-9:
         return f"{frac.numerator} in {frac.denominator}"
-    n = round(1 / p)
-    return f"about 1 in {n:,}"
+    if p >= 0.2:
+        tenths = round(p * 10)
+        if tenths >= 10:
+            return "more than 9 in 10"
+        return f"about {tenths} in 10"
+    return f"about 1 in {round(1 / p):,}"
 
 
 @dataclass

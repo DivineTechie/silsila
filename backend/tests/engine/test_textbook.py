@@ -221,6 +221,9 @@ def test_one_in_formatting():
     assert one_in(1 / 8) == "1 in 8"
     assert one_in(0.0123) == "about 1 in 81"
     assert one_in(0.0) == "0"
+    assert one_in(0.87) == "about 9 in 10"
+    assert one_in(0.31) == "about 3 in 10"
+    assert one_in(0.996) == "more than 9 in 10"
 
 
 def test_probabilities_are_valid_everywhere(cousin_ped):
