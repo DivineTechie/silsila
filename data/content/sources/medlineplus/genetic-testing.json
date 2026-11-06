@@ -3,7 +3,7 @@
   "kind": "handbook",
   "title": "What is genetic testing?",
   "url": "https://medlineplus.gov/genetics/understanding/testing/genetictesting/",
-  "retrieved_at": "2026-11-06T07:02:11+00:00",
+  "retrieved_at": "2026-11-06T11:43:16+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -27,26 +27,26 @@
         },
         {
           "id": "mp:genetic-testing:0:2",
-          "text": "Genes : Gene tests study DNA sequences to identify variations (mutations) in genes that can cause or increase the risk of a genetic disorder. Gene tests can be narrow or large in scope, analyzing an individual DNA building block (nucleotide), one or more genes, or all of a person’s DNA (which is known as their genome).",
-          "sha256": "5f1ec2db04de13a30fa75dd60d30d0b821821ddccd13061ef81135bba21a5b3c",
+          "text": "Genes: Gene tests study DNA sequences to identify variations (mutations) in genes that can cause or increase the risk of a genetic disorder. Gene tests can be narrow or large in scope, analyzing an individual DNA building block (nucleotide), one or more genes, or all of a person’s DNA (which is known as their genome).",
+          "sha256": "6cbcd3fdba00befd935a1fe068e73cedf9adc094cdd9ae607fbb8b5f617db2bd",
           "us_specific": false
         },
         {
           "id": "mp:genetic-testing:0:3",
-          "text": "Chromosomes : Chromosomal genetic tests analyze whole chromosomes or long lengths of DNA to see if there are large genetic changes, such as an extra copy of a chromosome, that cause a genetic condition.",
-          "sha256": "02929f9264e46ec4738e3ac7d73e85de474a8feffd4c190b98b5a00e256a09f4",
+          "text": "Chromosomes: Chromosomal genetic tests analyze whole chromosomes or long lengths of DNA to see if there are large genetic changes, such as an extra copy of a chromosome, that cause a genetic condition.",
+          "sha256": "7bf8a5f4debdd04f075d7486fe1f67a352a25477a3ad490740ba077e5042ed04",
           "us_specific": false
         },
         {
           "id": "mp:genetic-testing:0:4",
-          "text": "Proteins : Biochemical genetic tests study the amount or activity level of proteins or enzymes; abnormalities in either can indicate changes to the DNA that result in a genetic disorder.",
-          "sha256": "61ac60e794b9ade4e058124f093ddfd0aabd3c62e42cf483ada2d7cdde107565",
+          "text": "Proteins: Biochemical genetic tests study the amount or activity level of proteins or enzymes; abnormalities in either can indicate changes to the DNA that result in a genetic disorder.",
+          "sha256": "bc8fec92baf30ada12ce107cf605b7c3886cbce2a2feac46db93a6af67aadb1d",
           "us_specific": false
         },
         {
           "id": "mp:genetic-testing:0:5",
-          "text": "Genetic testing is voluntary. Because testing has benefits as well as limitations and risks , the decision about whether to be tested is a personal and complex one. A geneticist or genetic counselor can help by providing information about the pros and cons of the test and discussing the social and emotional aspects of testing.",
-          "sha256": "91e5604a0affcd81bb127ecab4914762697c34d49ef0860ae99b14031a7812b7",
+          "text": "Genetic testing is voluntary. Because testing has benefits as well as limitations and risks, the decision about whether to be tested is a personal and complex one. A geneticist or genetic counselor can help by providing information about the pros and cons of the test and discussing the social and emotional aspects of testing.",
+          "sha256": "ec009edb60bb81a07c3d7d0d3522e59be457ebb6f6b1a734fbffc6b06e044f73",
           "us_specific": false
         }
       ]

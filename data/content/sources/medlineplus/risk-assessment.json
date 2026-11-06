@@ -3,7 +3,7 @@
   "kind": "handbook",
   "title": "If a genetic disorder runs in my family, what are the chances that my children will have the condition?",
   "url": "https://medlineplus.gov/genetics/understanding/inheritance/riskassessment/",
-  "retrieved_at": "2026-11-06T07:02:11+00:00",
+  "retrieved_at": "2026-11-06T11:43:16+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -15,8 +15,8 @@
       "paragraphs": [
         {
           "id": "mp:risk-assessment:0:0",
-          "text": "When a genetic disorder is diagnosed in a family, family members often want to know the likelihood that they or their children will develop the condition. This can be difficult to predict in some cases because many factors influence a person's chances of developing a genetic condition. One important factor is how the condition is inherited . For example:",
-          "sha256": "aaa333938b26c031e813c12d175d88b533130847e074d754a47ca583e6bedd36",
+          "text": "When a genetic disorder is diagnosed in a family, family members often want to know the likelihood that they or their children will develop the condition. This can be difficult to predict in some cases because many factors influence a person's chances of developing a genetic condition. One important factor is how the condition is inherited. For example:",
+          "sha256": "02a92d3b51f09689e55d93dda6de940c4cd66a86fa9c694c986097d0b459c8d7",
           "us_specific": false
         },
         {
@@ -33,8 +33,8 @@
         },
         {
           "id": "mp:risk-assessment:0:3",
-          "text": "X-linked dominant inheritance: The chance of passing on an X-linked dominant condition differs between men and women because men have one X chromosome and one Y chromosome , while women have two X chromosomes. A man passes on his Y chromosome to all of his sons and his X chromosome to all of his daughters. Therefore, the sons of a man with an X-linked dominant disorder will not be affected, but all of his daughters will inherit the condition. A woman passes on one or the other of her X chromosomes to each child. Therefore, a woman with an X-linked dominant disorder has a 50 percent chance of having an affected daughter or son with each pregnancy.",
-          "sha256": "37f7bfed963f4aabc4986f987302add1c5332ff4c2af667da7b6c46d2394176b",
+          "text": "X-linked dominant inheritance: The chance of passing on an X-linked dominant condition differs between men and women because men have one X chromosome and one Y chromosome, while women have two X chromosomes. A man passes on his Y chromosome to all of his sons and his X chromosome to all of his daughters. Therefore, the sons of a man with an X-linked dominant disorder will not be affected, but all of his daughters will inherit the condition. A woman passes on one or the other of her X chromosomes to each child. Therefore, a woman with an X-linked dominant disorder has a 50 percent chance of having an affected daughter or son with each pregnancy.",
+          "sha256": "7f05c87f84cba51edd426be958d9f22a8ddacb89232e484cfcaab85a0a29355a",
           "us_specific": false
         },
         {
@@ -51,20 +51,20 @@
         },
         {
           "id": "mp:risk-assessment:0:6",
-          "text": "Y-linked inheritance: Because only males have a Y chromosome, only males can be affected by and pass on Y-linked disorders . All sons of a man with a Y-linked disorder will inherit the condition from their father.",
-          "sha256": "5df6c51ac9b095466ce7e4c46e93430ee1906e9674dc7d85988e8f6ea374fd50",
+          "text": "Y-linked inheritance: Because only males have a Y chromosome, only males can be affected by and pass on Y-linked disorders. All sons of a man with a Y-linked disorder will inherit the condition from their father.",
+          "sha256": "a583093b92103d1a2db291e94253c9bf11649faad49eb5f0a1c46f089fb56be4",
           "us_specific": false
         },
         {
           "id": "mp:risk-assessment:0:7",
-          "text": "Codominant inheritance: In codominant inheritance , each parent contributes a different version of a particular gene, and both versions influence the resulting genetic trait. The chance of developing a genetic condition with codominant inheritance, and the characteristic features of that condition, depend on which versions of the gene are passed from parents to their child.",
-          "sha256": "5843744d27cb75333d322ae03fa2542a5c24a30bf37c5f62aed01e5c6c536576",
+          "text": "Codominant inheritance: In codominant inheritance, each parent contributes a different version of a particular gene, and both versions influence the resulting genetic trait. The chance of developing a genetic condition with codominant inheritance, and the characteristic features of that condition, depend on which versions of the gene are passed from parents to their child.",
+          "sha256": "184491d5a4c067f505566cd974f2d01b50ee59b3ee3876a69fa3d1efa437f8cc",
           "us_specific": false
         },
         {
           "id": "mp:risk-assessment:0:8",
-          "text": "Mitochondrial inheritance: Mitochondria, which are the energy-producing centers inside cells, each contain a small amount of DNA. Disorders with mitochondrial inheritance result from variants in mitochondrial DNA . Although these disorders can affect both males and females, only females can pass variants in mitochondrial DNA to their children. A woman with a disorder caused by changes in mitochondrial DNA will pass the variants to all of her daughters and sons, but the children of a man with such a disorder will not inherit the variant.",
-          "sha256": "44b092cc91848981eb3fd072d15c5d9f6dc27bfb607c12bd676d6c49949b1916",
+          "text": "Mitochondrial inheritance: Mitochondria, which are the energy-producing centers inside cells, each contain a small amount of DNA. Disorders with mitochondrial inheritance result from variants in mitochondrial DNA. Although these disorders can affect both males and females, only females can pass variants in mitochondrial DNA to their children. A woman with a disorder caused by changes in mitochondrial DNA will pass the variants to all of her daughters and sons, but the children of a man with such a disorder will not inherit the variant.",
+          "sha256": "56eb39b4822b3c5d0ac920166ae21cf078a927890d7298cf48f522c584072434",
           "us_specific": false
         },
         {

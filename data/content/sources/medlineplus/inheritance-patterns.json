@@ -3,7 +3,7 @@
   "kind": "handbook",
   "title": "What are the different ways a genetic condition can be inherited?",
   "url": "https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/",
-  "retrieved_at": "2026-11-06T07:02:11+00:00",
+  "retrieved_at": "2026-11-06T11:43:16+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -21,32 +21,32 @@
         },
         {
           "id": "mp:inheritance-patterns:0:1",
-          "text": "One altered copy of the gene in each cell is sufficient for a person to be affected by an autosomal dominant disorder. In some cases, an affected person inherits the condition from an affected parent . In others, the condition may result from a new variant in the gene and occur in people with no history of the disorder in their family.",
-          "sha256": "4504eb5d1d8cb8388dc15f54df15b96c3637cfab7d701518f2e8cf8cfeb0f9eb",
+          "text": "One altered copy of the gene in each cell is sufficient for a person to be affected by an autosomal dominant disorder. In some cases, an affected person inherits the condition from an affected parent. In others, the condition may result from a new variant in the gene and occur in people with no history of the disorder in their family.",
+          "sha256": "bdac339cb99b31314949e91b3de4f2bc3415a87040d6bc09dbe0ff9b968da903",
           "us_specific": false
         },
         {
           "id": "mp:inheritance-patterns:0:2",
-          "text": "Huntington's disease , Marfan syndrome",
-          "sha256": "7eef4fa8c28878d48e9a28f5671bb1309a2a9c0b18f53154e5f87306994b2a6c",
+          "text": "Huntington's disease, Marfan syndrome",
+          "sha256": "1e0d79d6bc74e5f4d95fc4a20f0ffcae07b9457dc4e7e467c80eeedfe77d75aa",
           "us_specific": false
         },
         {
           "id": "mp:inheritance-patterns:0:3",
-          "text": "In autosomal recessive inheritance , variants occur in both copies of the gene in each cell. The parents of an individual with an autosomal recessive condition each carry one copy of the altered gene, but they typically do not show signs and symptoms of the condition. Autosomal recessive disorders are typically not seen in every generation of an affected family.",
-          "sha256": "fd034879d18bd92437f88ff14140fa68621df417a894639e5e155efd04d55ab0",
+          "text": "In autosomal recessive inheritance, variants occur in both copies of the gene in each cell. The parents of an individual with an autosomal recessive condition each carry one copy of the altered gene, but they typically do not show signs and symptoms of the condition. Autosomal recessive disorders are typically not seen in every generation of an affected family.",
+          "sha256": "c0450cfbf8440dc191f1f1c4fd2cf0a88ab69d1b805bec335cdf6e1e16111c5c",
           "us_specific": false
         },
         {
           "id": "mp:inheritance-patterns:0:4",
-          "text": "cystic fibrosis , sickle cell disease",
-          "sha256": "cdcd85e7ed42e19f122e89bcd2ccf8d9c67d4dcce243d2c16d265a95a46e13ea",
+          "text": "cystic fibrosis, sickle cell disease",
+          "sha256": "8397413d56c99a6fffd5dda362f829a280000cb9fc65a8869a05611acd6edfb3",
           "us_specific": false
         },
         {
           "id": "mp:inheritance-patterns:0:5",
-          "text": "X-linked dominant disorders are caused by variants in genes on the X chromosome . In males (who have only one X chromosome), a variant in the only copy of the gene in each cell causes the disorder. In females (who have two X chromosomes), a variant in one of the two copies of the gene in each cell is sufficient to cause the disorder. Females may experience less severe symptoms of the disorder than males. A characteristic of X-linked inheritance is that fathers cannot pass X-linked traits to their sons (no male-to-male transmission).",
-          "sha256": "aa21056529b4f9e7a3c12158ed92812ce40f9c0033b3feba2be7f2808d244aec",
+          "text": "X-linked dominant disorders are caused by variants in genes on the X chromosome. In males (who have only one X chromosome), a variant in the only copy of the gene in each cell causes the disorder. In females (who have two X chromosomes), a variant in one of the two copies of the gene in each cell is sufficient to cause the disorder. Females may experience less severe symptoms of the disorder than males. A characteristic of X-linked inheritance is that fathers cannot pass X-linked traits to their sons (no male-to-male transmission).",
+          "sha256": "6edaba644c80fb2890b32f704cb63f41fb5871e734f6138506119e57a8427e70",
           "us_specific": false
         },
         {
@@ -57,32 +57,32 @@
         },
         {
           "id": "mp:inheritance-patterns:0:7",
-          "text": "Because the inheritance pattern of many X-linked disorders is not clearly dominant or recessive, some experts suggest that conditions be considered X-linked rather than X-linked dominant or X-linked recessive. X-linked disorders are caused by variants in genes on the X chromosome , one of the two sex chromosomes in each cell. In males (who have only one X chromosome), an alteration in the only copy of the gene in each cell is sufficient to cause the condition. In females (who have two X chromosomes), one altered copy of the gene usually leads to less severe health problems than those in affected males, or it may cause no signs or symptoms at all. A characteristic of X-linked inheritance is that fathers cannot pass X-linked traits to their sons (no male-to-male transmission).",
-          "sha256": "07ff5568e93e8bb7b764e70c7433d71800f760bb1f20d7d3d89a2d5c2ee878f9",
+          "text": "Because the inheritance pattern of many X-linked disorders is not clearly dominant or recessive, some experts suggest that conditions be considered X-linked rather than X-linked dominant or X-linked recessive. X-linked disorders are caused by variants in genes on the X chromosome, one of the two sex chromosomes in each cell. In males (who have only one X chromosome), an alteration in the only copy of the gene in each cell is sufficient to cause the condition. In females (who have two X chromosomes), one altered copy of the gene usually leads to less severe health problems than those in affected males, or it may cause no signs or symptoms at all. A characteristic of X-linked inheritance is that fathers cannot pass X-linked traits to their sons (no male-to-male transmission).",
+          "sha256": "96dca6a5ad8b591ca5bb0b526f1a2198702176cc0091c4281ac074124ce07aa7",
           "us_specific": false
         },
         {
           "id": "mp:inheritance-patterns:0:8",
-          "text": "glucose-6-phosphate-dehydrogenase-deficiency , X-linked thrombocytopenia",
-          "sha256": "c9d0ff2f7753a8ade90e5e52a03bd343f91634ce89981b7046a23b8edc53ad37",
+          "text": "glucose-6-phosphate-dehydrogenase-deficiency, X-linked thrombocytopenia",
+          "sha256": "67d8ae035a93ed45ffa27910e03d0a3f93d9d009693fb53d10f2b9da280baf7d",
           "us_specific": false
         },
         {
           "id": "mp:inheritance-patterns:0:9",
-          "text": "A condition is considered Y-linked if the altered gene that causes the disorder is located on the Y chromosome , one of the two sex chromosomes in each of a male's cells. Because only males have a Y chromosome, in Y-linked inheritance, a variant can only be passed from father to son.",
-          "sha256": "639afa014acdf44a22359e2c02062f9b82c28014e94c4c4277581174f878a64b",
+          "text": "A condition is considered Y-linked if the altered gene that causes the disorder is located on the Y chromosome, one of the two sex chromosomes in each of a male's cells. Because only males have a Y chromosome, in Y-linked inheritance, a variant can only be passed from father to son.",
+          "sha256": "3243ad1cf5166ae82f8d6f6bc0bd8059fcf3a333f1ec1d8548fe13f9ac4beadb",
           "us_specific": false
         },
         {
           "id": "mp:inheritance-patterns:0:10",
-          "text": "Y chromosome infertility , some cases of Swyer syndrome",
-          "sha256": "f8ce204c2a67087c491b1a9a80f9859c38fcbc4c0dc8b37c814c339e5f7f62c5",
+          "text": "Y chromosome infertility, some cases of Swyer syndrome",
+          "sha256": "a7765133f1bd02b5d9b7559539ed3b97c34474382f017148ffd02b17f4265801",
           "us_specific": false
         },
         {
           "id": "mp:inheritance-patterns:0:11",
-          "text": "In codominant inheritance , two different versions (alleles) of a gene are expressed, and each version makes a slightly different protein. Both alleles influence the genetic trait or determine the characteristics of the genetic condition.",
-          "sha256": "4ab38732331a38411a4e63d1437d52e57708196e3eda5f7205bd21d5757c3988",
+          "text": "In codominant inheritance, two different versions (alleles) of a gene are expressed, and each version makes a slightly different protein. Both alleles influence the genetic trait or determine the characteristics of the genetic condition.",
+          "sha256": "90c0bc55c8c426b92747d5fc7f352670dda6136247b9be5ca684776ebc103656",
           "us_specific": false
         },
         {
@@ -93,8 +93,8 @@
         },
         {
           "id": "mp:inheritance-patterns:0:13",
-          "text": "Mitochondrial inheritance , also known as maternal inheritance, applies to genes in mitochondrial DNA . Mitochondria, which are structures in each cell that convert molecules into energy, each contain a small amount of DNA. Because only egg cells contribute mitochondria to the developing embryo, only females can pass on mitochondrial variants to their children. Conditions resulting from variants in mitochondrial DNA can appear in every generation of a family and can affect both males and females, but fathers do not pass these disorders to their daughters or sons.",
-          "sha256": "cc8c1ccac2e141d72ce4bcf4f23447cbd862c2f8bcb688a0a74a2b871a4440f8",
+          "text": "Mitochondrial inheritance, also known as maternal inheritance, applies to genes in mitochondrial DNA. Mitochondria, which are structures in each cell that convert molecules into energy, each contain a small amount of DNA. Because only egg cells contribute mitochondria to the developing embryo, only females can pass on mitochondrial variants to their children. Conditions resulting from variants in mitochondrial DNA can appear in every generation of a family and can affect both males and females, but fathers do not pass these disorders to their daughters or sons.",
+          "sha256": "285d898dd9d6e00ca6f1c02b776d95a6c17a4be878d17775f0f0e84f0b57951b",
           "us_specific": false
         },
         {
@@ -105,8 +105,8 @@
         },
         {
           "id": "mp:inheritance-patterns:0:15",
-          "text": "Many health conditions are caused by the combined effects of multiple genes (described as polygenic) or by interactions between genes and the environment. Such disorders usually do not follow the patterns of inheritance listed above. Examples of conditions caused by variants in multiple genes or gene/environment interactions include heart disease, type 2 diabetes , schizophrenia , and certain types of cancer. For more information, please see What are complex or multifactorial disorders?",
-          "sha256": "307b71116f9e45aea6e51025538a1eb46cf89ad7bc317def631a4727b97eb09a",
+          "text": "Many health conditions are caused by the combined effects of multiple genes (described as polygenic) or by interactions between genes and the environment. Such disorders usually do not follow the patterns of inheritance listed above. Examples of conditions caused by variants in multiple genes or gene/environment interactions include heart disease, type 2 diabetes, schizophrenia, and certain types of cancer. For more information, please see What are complex or multifactorial disorders?",
+          "sha256": "876f7b8e0439593afdd45c646f66f3620e7acc94ab8e12a290d6943813212a56",
           "us_specific": false
         },
         {

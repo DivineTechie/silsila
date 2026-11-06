@@ -3,7 +3,7 @@
   "kind": "condition",
   "title": "Alpha thalassemia",
   "url": "https://medlineplus.gov/genetics/condition/alpha-thalassemia/",
-  "retrieved_at": "2026-11-06T07:02:11+00:00",
+  "retrieved_at": "2026-11-06T11:43:16+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -24,14 +24,14 @@
       "paragraphs": [
         {
           "id": "mp:alpha-thalassemia:0:0",
-          "text": "Alpha thalassemia is a blood disorder that reduces the production of hemoglobin . Hemoglobin is the protein in red blood cells that carries oxygen to cells throughout the body.",
-          "sha256": "c3d8fddde4df9572d4e934956c7507e6704d59da95d1f6c4b5e04ee79429882c",
+          "text": "Alpha thalassemia is a blood disorder that reduces the production of hemoglobin. Hemoglobin is the protein in red blood cells that carries oxygen to cells throughout the body.",
+          "sha256": "f9f0bad035aff1906064633ce69c34ef2697d53a31341cec8bfb2b79c1af3130",
           "us_specific": false
         },
         {
           "id": "mp:alpha-thalassemia:0:1",
-          "text": "In people with the characteristic features of alpha thalassemia, a reduction in the amount of hemoglobin prevents enough oxygen from reaching the body's tissues. Affected individuals also have a shortage of red blood cells ( anemia ), which can cause pale skin, weakness, fatigue, and more serious complications.",
-          "sha256": "2adb78f6b1538bd81942a6cf8e6b27153a6071c7032aa918713957239573ea2d",
+          "text": "In people with the characteristic features of alpha thalassemia, a reduction in the amount of hemoglobin prevents enough oxygen from reaching the body's tissues. Affected individuals also have a shortage of red blood cells (anemia), which can cause pale skin, weakness, fatigue, and more serious complications.",
+          "sha256": "3ccec856ec3f2d50cb303024867549e067b90423ee498bc6c4d6c5677b9489f3",
           "us_specific": false
         },
         {
@@ -42,8 +42,8 @@
         },
         {
           "id": "mp:alpha-thalassemia:0:3",
-          "text": "Hb Bart syndrome is characterized by hydrops fetalis, a condition in which excess fluid builds up in the body before birth. Additional signs and symptoms can include severe anemia, an enlarged liver and spleen (hepatosplenomegaly), heart defects, and abnormalities of the urinary system or genitalia. Without treatment, most babies with this condition are stillborn or die soon after birth because of these serious health problems. Hb Bart syndrome can also cause serious complications for women during pregnancy, including dangerously high blood pressure with swelling ( preeclampsia ), premature delivery, and abnormal bleeding.",
-          "sha256": "d8a8809d8f31ea0eee5b9d5afdc7540e6282c92b8fd76f7c2fbb5ec8fde33b22",
+          "text": "Hb Bart syndrome is characterized by hydrops fetalis, a condition in which excess fluid builds up in the body before birth. Additional signs and symptoms can include severe anemia, an enlarged liver and spleen (hepatosplenomegaly), heart defects, and abnormalities of the urinary system or genitalia. Without treatment, most babies with this condition are stillborn or die soon after birth because of these serious health problems. Hb Bart syndrome can also cause serious complications for women during pregnancy, including dangerously high blood pressure with swelling (preeclampsia), premature delivery, and abnormal bleeding.",
+          "sha256": "026507914e450e489f807ead9ed1ea5f3c6be1eb97e637bfb2250b8913a8d56b",
           "us_specific": false
         },
         {
@@ -70,8 +70,8 @@
       "paragraphs": [
         {
           "id": "mp:alpha-thalassemia:2:0",
-          "text": "Alpha thalassemia typically results from deletions involving the HBA1 and HBA2 genes. Less commonly, changes to the DNA sequence in or near these genes cause alpha thalassemia. Such changes are often referred to as nondeletion variants. Both the HBA1 and HBA2 genes provide instructions for making a protein called alpha-globin, which is a component (subunit) of hemoglobin .",
-          "sha256": "0f965b0a9f3d1b7c455699f9b58e8a4441b1a513980d8420a8b5b355da7b10ad",
+          "text": "Alpha thalassemia typically results from deletions involving the HBA1 and HBA2 genes. Less commonly, changes to the DNA sequence in or near these genes cause alpha thalassemia. Such changes are often referred to as nondeletion variants. Both the HBA1 and HBA2 genes provide instructions for making a protein called alpha-globin, which is a component (subunit) of hemoglobin.",
+          "sha256": "a0e4f66db73893f4e64dce1c5d99606d49b8cffd5229aa61f4409b26fc31320d",
           "us_specific": false
         },
         {

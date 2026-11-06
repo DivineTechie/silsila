@@ -3,7 +3,7 @@
   "kind": "handbook",
   "title": "What is informed consent?",
   "url": "https://medlineplus.gov/genetics/understanding/testing/informedconsent/",
-  "retrieved_at": "2026-11-06T07:02:11+00:00",
+  "retrieved_at": "2026-11-06T11:43:16+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -51,20 +51,20 @@
         },
         {
           "id": "mp:informed-consent:0:6",
-          "text": "What the test results mean , including positive and negative results, and the potential for uninformative results or incorrect results such as false positives or false negatives.",
-          "sha256": "15148f484bd5509b8810efe3fc7d5f93350a2e8a4ecc7e3c137cf76791defbb6",
+          "text": "What the test results mean, including positive and negative results, and the potential for uninformative results or incorrect results such as false positives or false negatives.",
+          "sha256": "2b0b62bb0b0af02c54e845afd8cbdcef2bd44672e51962a0c38ce30005077833",
           "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:7",
-          "text": "Any physical or emotional risks associated with the test .",
-          "sha256": "36e24aa3f7636b3058b15c505516a33a1dc73c3a41fefb0fc1a2697e35d8c12d",
+          "text": "Any physical or emotional risks associated with the test.",
+          "sha256": "543b8f77b042d842945534e0c8812bfca754ffd009c127bf4620b504d5e0928a",
           "us_specific": false
         },
         {
           "id": "mp:informed-consent:0:8",
-          "text": "Whether the results can be used for research purposes .",
-          "sha256": "52e399e80fc26fe24b344903ce354a105fc3c64da26e0b08b9c2f65998bf5dd0",
+          "text": "Whether the results can be used for research purposes.",
+          "sha256": "8eaf2eb003dac67d7548415893f94ae0febcaabe9400c763a0d17cf2c1db773f",
           "us_specific": false
         },
         {

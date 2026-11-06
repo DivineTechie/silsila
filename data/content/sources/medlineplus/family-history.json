@@ -3,7 +3,7 @@
   "kind": "handbook",
   "title": "Why is it important to know my family health history?",
   "url": "https://medlineplus.gov/genetics/understanding/inheritance/familyhistory/",
-  "retrieved_at": "2026-11-06T07:02:11+00:00",
+  "retrieved_at": "2026-11-06T11:43:16+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -21,14 +21,14 @@
         },
         {
           "id": "mp:family-history:0:1",
-          "text": "Families have similar genetic backgrounds, and often similar environments and lifestyles. Together, these factors can give clues to conditions that may run in a family . By noticing patterns of disorders among relatives, healthcare professionals can determine whether an individual, family members, or future generations may be at an increased risk of developing a particular condition.",
-          "sha256": "266961bc65fc4e840a56110234ae6773f6a790aee0f413f05ee1bb3cba6a3d04",
+          "text": "Families have similar genetic backgrounds, and often similar environments and lifestyles. Together, these factors can give clues to conditions that may run in a family. By noticing patterns of disorders among relatives, healthcare professionals can determine whether an individual, family members, or future generations may be at an increased risk of developing a particular condition.",
+          "sha256": "2db7a2b91e854e56251130a670747b68f5438d4dc3df47d5bff1756f70dd58dd",
           "us_specific": false
         },
         {
           "id": "mp:family-history:0:2",
-          "text": "A family health history can identify people with a higher-than-usual chance of having common disorders, such as heart disease, high blood pressure , stroke, certain cancers, and type 2 diabetes. These complex disorders are influenced by a combination of genetic factors, environmental conditions, and lifestyle choices. A family history also can provide information about the risk of rarer conditions caused by variants (mutations) in a single gene, such as cystic fibrosis and sickle cell disease .",
-          "sha256": "c477404bbeafec689be39523965afdf7337d79e837dc56530d2d5ee6ac32eb2e",
+          "text": "A family health history can identify people with a higher-than-usual chance of having common disorders, such as heart disease, high blood pressure, stroke, certain cancers, and type 2 diabetes. These complex disorders are influenced by a combination of genetic factors, environmental conditions, and lifestyle choices. A family history also can provide information about the risk of rarer conditions caused by variants (mutations) in a single gene, such as cystic fibrosis and sickle cell disease.",
+          "sha256": "d88c130707e60d77e6d2632c8cf7d3ddbe2e813f915ef760f73fe6302f8e59e5",
           "us_specific": false
         },
         {

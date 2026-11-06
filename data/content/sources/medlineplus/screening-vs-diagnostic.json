@@ -3,7 +3,7 @@
   "kind": "handbook",
   "title": "How are genetic screening tests different from genetic diagnostic tests?",
   "url": "https://medlineplus.gov/genetics/understanding/testing/differenttests/",
-  "retrieved_at": "2026-11-06T07:02:11+00:00",
+  "retrieved_at": "2026-11-06T11:43:16+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -15,8 +15,8 @@
       "paragraphs": [
         {
           "id": "mp:screening-vs-diagnostic:0:0",
-          "text": "Screening tests evaluate an individual’s risk of developing a genetic condition, while diagnostic tests identify genetic conditions. All genetic tests have both benefits and limitations .",
-          "sha256": "ac16d484c4aba24aea451d00881576af0a57acafe07714d6fd00dfcf479da0c2",
+          "text": "Screening tests evaluate an individual’s risk of developing a genetic condition, while diagnostic tests identify genetic conditions. All genetic tests have both benefits and limitations.",
+          "sha256": "bd8ddbb2821c233d5c2e3f6beb6a4c224dc3ae19be7183f891388531871f607a",
           "us_specific": false
         },
         {
@@ -39,14 +39,14 @@
         },
         {
           "id": "mp:screening-vs-diagnostic:0:4",
-          "text": "Noninvasive prenatal testing/screening (NIPT/NIPS) : This screening test is performed before birth to help determine the risk that a fetus will be born with certain genetic abnormalities, such as Down syndrome and other chromosomal disorders.",
-          "sha256": "4dd3971a57d8fea36f44e554590d1801ccaacd09b8ee4af5a28fa6e4ac5ea051",
+          "text": "Noninvasive prenatal testing/screening (NIPT/NIPS): This screening test is performed before birth to help determine the risk that a fetus will be born with certain genetic abnormalities, such as Down syndrome and other chromosomal disorders.",
+          "sha256": "039a40468887f363444cbd1a4c974b40f3acf80cf5fca00405bedfba85f3f5d4",
           "us_specific": false
         },
         {
           "id": "mp:screening-vs-diagnostic:0:5",
-          "text": "Newborn screening : In the United States, a screening test is performed on all newborns shortly after birth. This test can assess the risk for developing more than 35 genetic conditions. For many of these conditions, the test analyzes various protein and enzyme levels, which would be abnormal in affected individuals.",
-          "sha256": "e48dcd45807575721db263b3efbf336cc2e16212175bb4d47533fa9d4d89888e",
+          "text": "Newborn screening: In the United States, a screening test is performed on all newborns shortly after birth. This test can assess the risk for developing more than 35 genetic conditions. For many of these conditions, the test analyzes various protein and enzyme levels, which would be abnormal in affected individuals.",
+          "sha256": "d8762d80a298202894498c64c163c0d3a86ad1764d1748f958dd66d0fd42313f",
           "us_specific": true
         },
         {
@@ -57,14 +57,14 @@
         },
         {
           "id": "mp:screening-vs-diagnostic:0:7",
-          "text": "Molecular gene tests : These tests determine the order of DNA building blocks (nucleotides) in an individual's genetic code, a process called DNA sequencing. The purpose of these tests is to identify genetic changes that can cause disease.",
-          "sha256": "2a2c091465e5e9b4daf88d1d6a70ae26af8ca6f9dd60d801edf1ab9a33a01b5b",
+          "text": "Molecular gene tests: These tests determine the order of DNA building blocks (nucleotides) in an individual's genetic code, a process called DNA sequencing. The purpose of these tests is to identify genetic changes that can cause disease.",
+          "sha256": "91d5d2f99b0999de2e0818087ce716353f52f579f3fec0239bfa7f0a9532725d",
           "us_specific": false
         },
         {
           "id": "mp:screening-vs-diagnostic:0:8",
-          "text": "Chromosomal tests: These tests analyze whole chromosomes or long lengths of DNA to identify large-scale changes, such as an extra or missing copy of a chromosome (trisomy or monosomy, respectively) or abnormalities of large segments of chromosomes , that underlie certain genetic conditions.",
-          "sha256": "6b853899b188a620f37fc8b2c4be9491da69892ae962b7103981e9f795d36575",
+          "text": "Chromosomal tests: These tests analyze whole chromosomes or long lengths of DNA to identify large-scale changes, such as an extra or missing copy of a chromosome (trisomy or monosomy, respectively) or abnormalities of large segments of chromosomes, that underlie certain genetic conditions.",
+          "sha256": "480933f6ae8f1a4b168b985a51ddb93dc1aa59caf9227ccbbf94db8b3d782504",
           "us_specific": false
         }
       ]

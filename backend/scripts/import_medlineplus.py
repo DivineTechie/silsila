@@ -73,7 +73,9 @@ def extract(html: str) -> tuple[str, list[dict], dict]:
             continue
         if el.name == "li" and el.find_parent("ul") is None:
             continue
-        txt = clean(el.get_text(" "))
+        # no separator: MedlinePlus links sit inside sentences, and a separator
+        # would add a space before following punctuation ("inheritance , variants")
+        txt = clean(el.get_text())
         if len(txt) < 25 or txt.lower().startswith(("from genetics home reference", "the information on this site")):
             continue
         if txt in seen:  # the same text can appear as both <p> and <li>

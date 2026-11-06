@@ -3,7 +3,7 @@
   "kind": "condition",
   "title": "Sickle cell disease",
   "url": "https://medlineplus.gov/genetics/condition/sickle-cell-disease/",
-  "retrieved_at": "2026-11-06T07:02:11+00:00",
+  "retrieved_at": "2026-11-06T11:43:16+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -23,20 +23,20 @@
       "paragraphs": [
         {
           "id": "mp:sickle-cell-disease:0:0",
-          "text": "Sickle cell disease is a group of disorders that affects hemoglobin , the molecule in red blood cells that delivers oxygen to cells throughout the body. People with this disease have atypical hemoglobin molecules called hemoglobin S, which can distort red blood cells into a sickle or crescent shape.",
-          "sha256": "a0c6437cca3f97fecdf27c09069ff3aff5ccb8aa19e626927f09e144cd092810",
+          "text": "Sickle cell disease is a group of disorders that affects hemoglobin, the molecule in red blood cells that delivers oxygen to cells throughout the body. People with this disease have atypical hemoglobin molecules called hemoglobin S, which can distort red blood cells into a sickle or crescent shape.",
+          "sha256": "60bcb13cd274bad732b2f17eb8af0a9e3439da9b7e7885e702a5b177b255e422",
           "us_specific": false
         },
         {
           "id": "mp:sickle-cell-disease:0:1",
-          "text": "Signs and symptoms of sickle cell disease usually begin in early childhood. Characteristic features of this disorder include a low number of red blood cells ( anemia ), repeated infections, and periodic episodes of pain. The severity of signs and symptoms varies from person to person. Some people have mild health issues, while others are frequently hospitalized for more serious complications.",
-          "sha256": "e30080679374d856afae2e3e9a6a2f60ef4d3fdac213599451b324784873375d",
+          "text": "Signs and symptoms of sickle cell disease usually begin in early childhood. Characteristic features of this disorder include a low number of red blood cells (anemia), repeated infections, and periodic episodes of pain. The severity of signs and symptoms varies from person to person. Some people have mild health issues, while others are frequently hospitalized for more serious complications.",
+          "sha256": "315536a6fe94c29a0b681d90666bad12413ca96b0b8b6e3c233782cb08fa6fe4",
           "us_specific": false
         },
         {
           "id": "mp:sickle-cell-disease:0:2",
-          "text": "The signs and symptoms of sickle cell disease are caused by the sickling of red blood cells. When red blood cells sickle, they break down prematurely, which can lead to anemia. Anemia can cause shortness of breath, fatigue, and delayed growth and development in children. The rapid breakdown of red blood cells may also cause yellowing of the skin and whites of the eyes (jaundice). Painful episodes can occur when sickled red blood cells, which are stiff and inflexible, get stuck in small blood vessels . These episodes deprive tissues and organs, such as the lungs, kidneys, spleen, and brain, of oxygen-rich blood and can lead to organ damage. A particularly serious complication of sickle cell disease is high blood pressure in the blood vessels that supply the lungs (pulmonary hypertension), which can lead to heart failure. Pulmonary hypertension occurs in about 10 percent of adults with sickle cell disease.",
-          "sha256": "1330f6ba27cae09e23be616e27105aa0d73fa8befbb95b96f61fb52c5a078fb9",
+          "text": "The signs and symptoms of sickle cell disease are caused by the sickling of red blood cells. When red blood cells sickle, they break down prematurely, which can lead to anemia. Anemia can cause shortness of breath, fatigue, and delayed growth and development in children. The rapid breakdown of red blood cells may also cause yellowing of the skin and whites of the eyes (jaundice). Painful episodes can occur when sickled red blood cells, which are stiff and inflexible, get stuck in small blood vessels. These episodes deprive tissues and organs, such as the lungs, kidneys, spleen, and brain, of oxygen-rich blood and can lead to organ damage. A particularly serious complication of sickle cell disease is high blood pressure in the blood vessels that supply the lungs (pulmonary hypertension), which can lead to heart failure. Pulmonary hypertension occurs in about 10 percent of adults with sickle cell disease.",
+          "sha256": "52d9c15823e4b94518aff0f235250fc9fc2aafd8807fcb17276bd5286019d7d4",
           "us_specific": false
         },
         {
@@ -69,8 +69,8 @@
       "paragraphs": [
         {
           "id": "mp:sickle-cell-disease:2:0",
-          "text": "Variants (also called mutations) in the HBB gene cause sickle cell disease. The HBB gene provides instructions for making one part of hemoglobin. Hemoglobin typically consists of four protein subunits, two subunits of alpha-globin and two subunits of beta-globin. The HBB gene provides instructions for making beta-globin. Different variants in the HBB gene can produce abnormal versions of beta-globin. One particular HBB gene variant produces an abnormal version of beta-globin known as hemoglobin S (HbS). Other variants in the HBB gene lead to other abnormal versions of beta-globin such as hemoglobin C (HbC) and hemoglobin E (HbE). HBB gene variants can cause unusually low levels of beta-globin; this condition is called beta thalassemia .",
-          "sha256": "0bb83b5d78ee76e04765d436a924fc72127b2ad53a1828a010cfd394f2780d86",
+          "text": "Variants (also called mutations) in the HBB gene cause sickle cell disease. The HBB gene provides instructions for making one part of hemoglobin. Hemoglobin typically consists of four protein subunits, two subunits of alpha-globin and two subunits of beta-globin. The HBB gene provides instructions for making beta-globin. Different variants in the HBB gene can produce abnormal versions of beta-globin. One particular HBB gene variant produces an abnormal version of beta-globin known as hemoglobin S (HbS). Other variants in the HBB gene lead to other abnormal versions of beta-globin such as hemoglobin C (HbC) and hemoglobin E (HbE). HBB gene variants can cause unusually low levels of beta-globin; this condition is called beta thalassemia.",
+          "sha256": "825a722f23c82a3f8c16a3c947beb304a3629893a6921f2a0feb5ae6fd1fa37b",
           "us_specific": false
         },
         {
@@ -86,8 +86,8 @@
       "paragraphs": [
         {
           "id": "mp:sickle-cell-disease:3:0",
-          "text": "This condition is inherited in an autosomal recessive pattern , which means both copies of the gene in each cell must have a variant to cause the disorder. The parents of an individual with an autosomal recessive condition each carry one copy of the altered gene, but they typically do not show signs and symptoms of the condition.",
-          "sha256": "6b947224c2952c03ad008b4a1411df62703d5ade75a65488a14ae940f063ab3b",
+          "text": "This condition is inherited in an autosomal recessive pattern, which means both copies of the gene in each cell must have a variant to cause the disorder. The parents of an individual with an autosomal recessive condition each carry one copy of the altered gene, but they typically do not show signs and symptoms of the condition.",
+          "sha256": "03e2e78f0009a58d3bd239aab75b8100fc646cee3c523e1f715342a4a983ad10",
           "us_specific": false
         }
       ]

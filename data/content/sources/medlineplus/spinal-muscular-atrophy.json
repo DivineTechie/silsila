@@ -3,7 +3,7 @@
   "kind": "condition",
   "title": "Spinal muscular atrophy",
   "url": "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/",
-  "retrieved_at": "2026-11-06T07:02:11+00:00",
+  "retrieved_at": "2026-11-06T11:43:16+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -24,8 +24,8 @@
       "paragraphs": [
         {
           "id": "mp:spinal-muscular-atrophy:0:0",
-          "text": "Spinal muscular atrophy is a genetic disorder characterized by weakness and wasting ( atrophy ) in muscles used for movement (skeletal muscles). It is caused by a loss of specialized nerve cells, called motor neurons that control muscle movement. The weakness tends to be more severe in the muscles that are close to the center of the body (proximal) compared to muscles away from the body's center (distal). The muscle weakness usually worsens with age. There are many types of spinal muscular atrophy that are caused by changes in the same genes. The types differ in age of onset and severity of muscle weakness; however, there is overlap between the types. Other forms of spinal muscular atrophy and related motor neuron diseases, such as spinal muscular atrophy with progressive myoclonic epilepsy , spinal muscular atrophy with lower extremity predominance , X-linked infantile spinal muscular atrophy , and spinal muscular atrophy with respiratory distress type 1 are caused by mutations in other genes.",
-          "sha256": "24728a9dab507516bdad12b781186ab8e49c8f2e30dc54a3eb4cb8af5bcb5be7",
+          "text": "Spinal muscular atrophy is a genetic disorder characterized by weakness and wasting (atrophy) in muscles used for movement (skeletal muscles). It is caused by a loss of specialized nerve cells, called motor neurons that control muscle movement. The weakness tends to be more severe in the muscles that are close to the center of the body (proximal) compared to muscles away from the body's center (distal). The muscle weakness usually worsens with age. There are many types of spinal muscular atrophy that are caused by changes in the same genes. The types differ in age of onset and severity of muscle weakness; however, there is overlap between the types. Other forms of spinal muscular atrophy and related motor neuron diseases, such as spinal muscular atrophy with progressive myoclonic epilepsy, spinal muscular atrophy with lower extremity predominance, X-linked infantile spinal muscular atrophy, and spinal muscular atrophy with respiratory distress type 1 are caused by mutations in other genes.",
+          "sha256": "0b3a8a24556885168f95a3e0f8efb8851d32b713988154627b1e7ddbc1212015",
           "us_specific": false
         },
         {
@@ -42,8 +42,8 @@
         },
         {
           "id": "mp:spinal-muscular-atrophy:0:3",
-          "text": "Spinal muscular atrophy type II (also called Dubowitz disease) is characterized by muscle weakness that develops in children between ages 6 and 12 months. Children with this type can sit without support, although they may need help getting to a seated position. However, as the muscle weakness worsens later in childhood, affected individuals may need support to sit. Individuals with spinal muscular atrophy type II cannot stand or walk unaided. They often have involuntary trembling (tremors) in their fingers, a spine that curves side-to-side ( scoliosis ), and respiratory muscle weakness that can be life-threatening. The life span of individuals with spinal muscular atrophy type II varies, but many people with this condition live into their twenties or thirties.",
-          "sha256": "80da9bdbaf90012baa8865e2242589bb870e21c64f9f75b0c3c40e131431339a",
+          "text": "Spinal muscular atrophy type II (also called Dubowitz disease) is characterized by muscle weakness that develops in children between ages 6 and 12 months. Children with this type can sit without support, although they may need help getting to a seated position. However, as the muscle weakness worsens later in childhood, affected individuals may need support to sit. Individuals with spinal muscular atrophy type II cannot stand or walk unaided. They often have involuntary trembling (tremors) in their fingers, a spine that curves side-to-side (scoliosis), and respiratory muscle weakness that can be life-threatening. The life span of individuals with spinal muscular atrophy type II varies, but many people with this condition live into their twenties or thirties.",
+          "sha256": "42d8ac92e130de2e82ccfa97add7bf868856a8639f13b0882c9ed8f82cbfce90",
           "us_specific": false
         },
         {
@@ -82,8 +82,8 @@
         },
         {
           "id": "mp:spinal-muscular-atrophy:2:1",
-          "text": "The SMN1 and SMN2 genes both provide instructions for making a protein called the survival motor neuron (SMN) protein. Normally, most functional SMN protein is produced from the SMN1 gene, with a small amount produced from the SMN2 gene. Several different versions of the SMN protein are produced from the SMN2 gene, but only one version is functional; the other versions are smaller and quickly broken down. The SMN protein is one of a group of proteins called the SMN complex, which is important for the maintenance of motor neurons . Motor neurons transmit signals from the brain and spinal cord that tell skeletal muscles to tense (contract), which allows the body to move.",
-          "sha256": "6b6c6d5fa5940c06ac6bbb41cbe32b8a5affc047f8aa0c45f8fcc6663423f873",
+          "text": "The SMN1 and SMN2 genes both provide instructions for making a protein called the survival motor neuron (SMN) protein. Normally, most functional SMN protein is produced from the SMN1 gene, with a small amount produced from the SMN2 gene. Several different versions of the SMN protein are produced from the SMN2 gene, but only one version is functional; the other versions are smaller and quickly broken down. The SMN protein is one of a group of proteins called the SMN complex, which is important for the maintenance of motor neurons. Motor neurons transmit signals from the brain and spinal cord that tell skeletal muscles to tense (contract), which allows the body to move.",
+          "sha256": "dd2689a7026f48d178101fb88773381f404e7d1064e5d23b26022254f0beaa33",
           "us_specific": false
         },
         {
@@ -105,8 +105,8 @@
       "paragraphs": [
         {
           "id": "mp:spinal-muscular-atrophy:3:0",
-          "text": "Spinal muscular atrophy is inherited in an autosomal recessive pattern , which means both copies of the SMN1 gene in each cell have mutations. In most cases, the parents of an individual with an autosomal recessive condition each carry one copy of the mutated gene, but they typically do not show signs and symptoms of the condition. In rare cases, a person with spinal muscular atrophy inherits an SMN1 gene mutation from one parent and acquires a new mutation in the other copy of the gene that occurs during the formation of reproductive cells (eggs or sperm) or in early embryonic development. In these cases, only one parent is a carrier of the SMN1 gene mutation.",
-          "sha256": "aa9cd0e592a93539006473c74d137397d767c0ea88173c96ce69a2f2dead9795",
+          "text": "Spinal muscular atrophy is inherited in an autosomal recessive pattern, which means both copies of the SMN1 gene in each cell have mutations. In most cases, the parents of an individual with an autosomal recessive condition each carry one copy of the mutated gene, but they typically do not show signs and symptoms of the condition. In rare cases, a person with spinal muscular atrophy inherits an SMN1 gene mutation from one parent and acquires a new mutation in the other copy of the gene that occurs during the formation of reproductive cells (eggs or sperm) or in early embryonic development. In these cases, only one parent is a carrier of the SMN1 gene mutation.",
+          "sha256": "7d273771197f2577edab5cf77cedb51fda4b9bc11b9c1aee8bc055f2a87e620a",
           "us_specific": false
         },
         {

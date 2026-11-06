@@ -3,7 +3,7 @@
   "kind": "condition",
   "title": "21-hydroxylase deficiency",
   "url": "https://medlineplus.gov/genetics/condition/21-hydroxylase-deficiency/",
-  "retrieved_at": "2026-11-06T07:02:11+00:00",
+  "retrieved_at": "2026-11-06T11:43:16+00:00",
   "publisher": "MedlinePlus, National Library of Medicine",
   "licence": "Public domain (US federal work)",
   "licence_url": "https://medlineplus.gov/copyright.html",
@@ -53,8 +53,8 @@
         },
         {
           "id": "mp:21-hydroxylase-deficiency:0:5",
-          "text": "Females with the non-classic type of 21-hydroxylase deficiency have female-typical genitalia . As affected females get older, they may experience hirsutism, male pattern baldness, irregular menstruation, and decreased fertility. Males with the non-classic type may have early beard growth and small testes. Some individuals with this type of 21-hydroxylase deficiency have no symptoms of the disorder.",
-          "sha256": "b05debabedaca9bfbc679de72bb5b799f891d9047c654f13e75a6a53d2a53f45",
+          "text": "Females with the non-classic type of 21-hydroxylase deficiency have female-typical genitalia. As affected females get older, they may experience hirsutism, male pattern baldness, irregular menstruation, and decreased fertility. Males with the non-classic type may have early beard growth and small testes. Some individuals with this type of 21-hydroxylase deficiency have no symptoms of the disorder.",
+          "sha256": "5791dd60da855858b56b026cd6689e39f24cda33dc84bc33ad20e07883b46357",
           "us_specific": false
         }
       ]
@@ -104,8 +104,8 @@
       "paragraphs": [
         {
           "id": "mp:21-hydroxylase-deficiency:3:0",
-          "text": "This condition is inherited in an autosomal recessive pattern , which means both copies of the gene in each cell have mutations. The parents of an individual with an autosomal recessive condition each carry one copy of the mutated gene, but they typically do not show signs and symptoms of the condition.",
-          "sha256": "7306cd480e8fae49ae15c37854aa60b6a1497eb21500eac9c049a5d4afe831bb",
+          "text": "This condition is inherited in an autosomal recessive pattern, which means both copies of the gene in each cell have mutations. The parents of an individual with an autosomal recessive condition each carry one copy of the mutated gene, but they typically do not show signs and symptoms of the condition.",
+          "sha256": "0b1a11b37934d20835309e73c12695fe5109de582c4f92572ce7397059d983ab",
           "us_specific": false
         }
       ]
