@@ -1,0 +1,422 @@
+"""Silsila HTTP API (FastAPI). Run: uv run uvicorn silsila.api.app:app --reload"""
+
+from __future__ import annotations
+
+import json
+import os
+from pathlib import Path
+from typing import Any, Literal
+
+from fastapi import Depends, FastAPI, Header, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field
+
+from .. import params
+from ..content import GateError, Message, registry
+from ..engine import Pedigree
+from ..triage import classify, reply_for
+from . import auth, fhir, service
+from .store import Store, new_id, now
+
+DEMO = os.environ.get("SILSILA_DEMO", "1") == "1"
+EVIDENCE_DIR = Path(__file__).resolve().parents[4] / "docs" / "evidence"
+
+app = FastAPI(title="Silsila API", version="0.1.0",
+              description="Consent-led family cascade for inherited disease risk. No AI-written advice.")
+app.add_middleware(CORSMiddleware, allow_origins=os.environ.get("SILSILA_CORS", "*").split(","),
+                   allow_methods=["*"], allow_headers=["*"])
+_store: Store | None = None
+
+
+def store() -> Store:
+    global _store
+    if _store is None:
+        _store = Store()
+    return _store
+
+
+@app.exception_handler(service.Forbidden)
+async def _forbidden(_: Request, exc: service.Forbidden) -> JSONResponse:
+    return JSONResponse({"detail": str(exc)}, status_code=403)
+
+
+@app.exception_handler(service.Invalid)
+async def _invalid(_: Request, exc: service.Invalid) -> JSONResponse:
+    return JSONResponse({"detail": str(exc)}, status_code=422)
+
+
+@app.exception_handler(GateError)
+async def _gate(_: Request, exc: GateError) -> JSONResponse:
+    store().audit("system", "system", "output_gate.block", outcome="blocked", detail={"reason": str(exc)})
+    return JSONResponse({"detail": "Blocked by the output gate: " + str(exc)}, status_code=451)
+
+
+def current_user(authorization: str = Header(default="")) -> dict[str, Any]:
+    if not authorization.startswith("Bearer "):
+        raise HTTPException(401, "Sign in first")
+    try:
+        claims = auth.decode(authorization[7:])
+    except Exception:
+        raise HTTPException(401, "Your session has expired; sign in again")
+    user = store().get("user", claims["sub"])
+    if user is None:
+        raise HTTPException(401, "Unknown user")
+    return user
+
+
+def counsellor(user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
+    if user["role"] != "counsellor":
+        store().audit(user["id"], user["role"], "counsellor_area", outcome="denied")
+        raise HTTPException(403, "This area is for the genetic counselling team")
+    return user
+
+
+# ------------------------------------------------------------------ models --
+class Login(BaseModel):
+    username: str
+    password: str
+
+
+class PedigreeIn(BaseModel):
+    people: list[dict[str, Any]]
+    unions: list[dict[str, str]] = []
+
+
+class EngineRequest(BaseModel):
+    locus_id: str
+    pedigree: PedigreeIn
+    lang: Literal["en", "ar"] = "en"
+
+
+class ConsentIn(BaseModel):
+    scope: Literal["compute", "invite"]
+    granted: bool
+
+
+class InvitationIn(BaseModel):
+    person_id: str
+    channel: Literal["self_share_letter", "clinic_contact", "anonymous_invite"]
+    disclose_condition: bool = False
+    disclose_sender: bool = False
+    sender_name: str | None = Field(default=None, max_length=60)
+
+
+class TransitionIn(BaseModel):
+    status: str
+    note: str | None = Field(default=None, max_length=500)
+
+
+class ResultIn(BaseModel):
+    detected: list[str] = []
+
+
+class MessageIn(BaseModel):
+    text: str = Field(min_length=1, max_length=2000)
+    lang: Literal["en", "ar"] = "en"
+    case_id: str | None = None
+    invite_code: str | None = None
+
+
+class TeachbackIn(BaseModel):
+    answers: dict[str, str]
+
+
+class CaseIn(BaseModel):
+    locus_id: str
+    index_person_id: str
+    index_source: Literal["newborn_screen", "premarital_at_risk", "diagnosed_child", "carrier_result"]
+    family_user_id: str
+    pedigree: PedigreeIn
+
+
+# ------------------------------------------------------------------ basics --
+@app.get("/api/health")
+def health() -> dict[str, Any]:
+    reg = registry()
+    return {"ok": True, "demo_mode": DEMO, "paragraphs": len(reg.paragraphs), "templates": len(reg.templates),
+            "loci": list(params.load()), "audit": store().verify_chain()}
+
+
+@app.post("/api/auth/login")
+def login(body: Login) -> dict[str, Any]:
+    user = next(iter(store().find("user", username=body.username)), None)
+    if user is None or not auth.check_password(body.password, user["password_hash"]):
+        store().audit(body.username[:40], "unknown", "auth.login", outcome="denied")
+        raise HTTPException(401, "Username or password is not correct")
+    store().audit(user["id"], user["role"], "auth.login")
+    return {"token": auth.issue(user), "user": {k: user[k] for k in ("id", "role", "display_name", "lang")}}
+
+
+@app.get("/api/me")
+def me(user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
+    return {k: user[k] for k in ("id", "role", "display_name", "lang")}
+
+
+# ---------------------------------------------------------------- content --
+@app.get("/api/content/loci")
+def loci() -> dict[str, Any]:
+    reg_doc = params.register()
+    return {"background_inbreeding": reg_doc["background_inbreeding"],
+            "loci": [{"id": k, "display": r.display, "gene": r.locus.gene,
+                      "alleles": [{"id": a.id, "label": a.label, "frequency": a.frequency, "detection_rate": a.detection_rate}
+                                  for a in r.locus.alleles],
+                      "phenotypes": r.raw["phenotypes"], "derivations": [d.__dict__ for d in r.derivations],
+                      "sources": r.raw["alleles"], "limitations": r.raw.get("known_limitations", [])}
+                     for k, r in params.load().items()],
+            "excluded": reg_doc.get("excluded_loci", [])}
+
+
+@app.get("/api/content/condition/{content_id}")
+def condition(content_id: str, lang: Literal["en", "ar"] = "en") -> dict[str, Any]:
+    reg = registry()
+    if content_id not in reg.documents:
+        raise HTTPException(404, "Unknown condition")
+    doc = reg.documents[content_id]
+    msg = Message(lang)
+    for p in reg.condition_paragraphs(content_id, ("Description", "Frequency", "Causes", "Inheritance")):
+        reg.quote(msg, p.id)
+    return {"title": doc["title"], "url": doc["url"], "attribution": doc["attribution"], "licence": doc["licence"],
+            "retrieved_at": doc["retrieved_at"], "reviewed": doc.get("medlineplus_reviewed"),
+            "paragraphs": reg.gate(msg).parts, "translation_status": reg.template_meta["ar_status"] if lang == "ar" else None}
+
+
+@app.get("/api/content/faq")
+def faq() -> list[dict[str, Any]]:
+    return [{k: t[k] for k in ("id", "title_en", "title_ar", "paragraphs")} for t in registry().faq]
+
+
+# ----------------------------------------------------------------- engine --
+@app.post("/api/engine/report")
+def engine_report(body: EngineRequest) -> dict[str, Any]:
+    """Stateless calculation for a family tree (no storage, no audit of content)."""
+    case = {"locus_id": body.locus_id, "pedigree": body.pedigree.model_dump(), "id": "adhoc"}
+    return service.compute_report(case, body.lang)
+
+
+# ------------------------------------------------------------------ cases --
+@app.get("/api/cases")
+def list_cases(user: dict[str, Any] = Depends(current_user)) -> list[dict[str, Any]]:
+    cases = store().list("case")
+    if user["role"] != "counsellor":
+        cases = [c for c in cases if c.get("family_user_id") == user["id"]]
+    out = []
+    for c in cases:
+        invs = store().list("invitation", c["id"])
+        out.append({"id": c["id"], "title": c.get("title"), "locus_id": c["locus_id"], "index_source": c["index_source"],
+                    "people": len(c["pedigree"]["people"]), "invitations": len(invs),
+                    "open_invitations": sum(i["status"] not in service.TERMINAL for i in invs), "updated": c["updated"]})
+    return out
+
+
+@app.post("/api/cases")
+def create_case(body: CaseIn, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    case = {"id": new_id("case"), "case_id": None, "locus_id": body.locus_id, "index_person_id": body.index_person_id,
+            "index_source": body.index_source, "family_user_id": body.family_user_id,
+            "pedigree": body.pedigree.model_dump(), "consents": {}}
+    case["case_id"] = case["id"]
+    service.to_engine(case)
+    store().put("case", case)
+    store().audit(user["id"], user["role"], "case.create", case_id=case["id"])
+    return case
+
+
+@app.get("/api/cases/{case_id}")
+def get_case(case_id: str, lang: Literal["en", "ar"] = "en", user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
+    case = service.visible_case(store(), user, case_id)
+    store().audit(user["id"], user["role"], "case.read", case_id=case_id)
+    report = service.compute_report(case, lang) if case.get("consents", {}).get("compute", {}).get("granted") else {
+        "status": "awaiting_consent",
+        "message": registry().gate(registry().template(Message(lang), "consent.compute")).parts}
+    invs = store().list("invitation", case_id)
+    if user["role"] != "counsellor":
+        invs = [{k: v for k, v in i.items() if k != "code" or i["status"] not in ("awaiting_counsellor",)} for i in invs]
+    return {"case": case, "report": report, "invitations": invs,
+            "consent_text": {s: registry().gate(registry().template(Message(lang), f"consent.{s}")).parts
+                             for s in ("compute", "invite")}}
+
+
+@app.put("/api/cases/{case_id}/pedigree")
+def put_pedigree(case_id: str, body: PedigreeIn, user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
+    case = service.visible_case(store(), user, case_id)
+    return service.update_pedigree(store(), user, case, body.model_dump())
+
+
+@app.post("/api/cases/{case_id}/consents")
+def consent(case_id: str, body: ConsentIn, user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
+    case = service.visible_case(store(), user, case_id)
+    return service.set_consent(store(), user, case, body.scope, body.granted)["consents"]
+
+
+@app.post("/api/cases/{case_id}/invitations")
+def invite(case_id: str, body: InvitationIn, user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
+    case = service.visible_case(store(), user, case_id)
+    return service.create_invitation(store(), user, case, body.person_id, body.channel, body.disclose_condition,
+                                     body.disclose_sender, body.sender_name)
+
+
+@app.post("/api/cases/{case_id}/decline")
+def decline(case_id: str, person_id: str, lang: Literal["en", "ar"] = "en",
+            user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
+    case = service.visible_case(store(), user, case_id)
+    if user["role"] != "family":
+        raise HTTPException(403, "Only the family decides who is told")
+    store().audit(user["id"], user["role"], "invitation.declined_by_index", case_id=case["id"], entity=person_id)
+    return {"message": registry().gate(registry().template(Message(lang), "consent.decline_recorded")).parts}
+
+
+@app.post("/api/invitations/{inv_id}/status")
+def set_status(inv_id: str, body: TransitionIn, user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
+    inv = store().get("invitation", inv_id)
+    if inv is None:
+        raise HTTPException(404, "Invitation not found")
+    service.visible_case(store(), user, inv["case_id"])
+    if user["role"] == "family" and body.status != "withdrawn":
+        raise HTTPException(403, "Families can only withdraw an invitation before it is sent")
+    return service.transition(store(), user, inv, body.status, {"note": body.note} if body.note else None)
+
+
+@app.post("/api/invitations/{inv_id}/result")
+def result(inv_id: str, body: ResultIn, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    inv = store().get("invitation", inv_id)
+    if inv is None:
+        raise HTTPException(404, "Invitation not found")
+    return service.record_test_result(store(), user, inv, body.detected)
+
+
+# --------------------------------------------------------------- relatives --
+@app.get("/api/r/{code}")
+def relative(code: str, lang: Literal["en", "ar"] = "en") -> dict[str, Any]:
+    return service.relative_view(store(), code, lang)
+
+
+@app.post("/api/r/{code}/teachback")
+def teachback(code: str, body: TeachbackIn) -> dict[str, Any]:
+    inv = next((i for i in store().list("invitation") if i["code"] == code), None)
+    if inv is None:
+        raise HTTPException(404, "This link is not valid")
+    score = service.score_teachback(body.answers)
+    inv["teachback"] = {"at": now(), **score}
+    store().put("invitation", inv)
+    store().audit(f"relative:{inv['id']}", "relative", "teachback.submit", case_id=inv["case_id"], entity=inv["id"],
+                  detail={"score": score["score"], "total": score["total"]})
+    if score["passed"] and inv["status"] == "opened":
+        service.transition(store(), {"id": f"relative:{inv['id']}", "role": "relative"}, inv, "understood")
+    return score
+
+
+@app.post("/api/r/{code}/respond")
+def respond(code: str, action: Literal["book", "decline"]) -> dict[str, Any]:
+    inv = next((i for i in store().list("invitation") if i["code"] == code), None)
+    if inv is None:
+        raise HTTPException(404, "This link is not valid")
+    new = "booked" if action == "book" else "declined_by_relative"
+    return {"status": service.transition(store(), {"id": f"relative:{inv['id']}", "role": "relative"}, inv, new)["status"]}
+
+
+# ---------------------------------------------------------------- messages --
+@app.post("/api/messages")
+def message(body: MessageIn, authorization: str = Header(default="")) -> dict[str, Any]:
+    case_id, sender = body.case_id, "anonymous"
+    if body.invite_code:
+        inv = next((i for i in store().list("invitation") if i["code"] == body.invite_code), None)
+        if inv is None:
+            raise HTTPException(404, "This link is not valid")
+        case_id, sender = inv["case_id"], f"relative:{inv['id']}"
+    elif authorization:
+        user = current_user(authorization)
+        if case_id:
+            service.visible_case(store(), user, case_id)
+        sender = user["id"]
+    result = classify(body.text, body.lang)
+    reply = reply_for(result, body.lang)
+    doc = {"id": new_id("msg"), "case_id": case_id, "sender": sender, "text": body.text, "lang": body.lang,
+           "labels": sorted(result.labels), "rule_labels": sorted(result.rule_labels),
+           "model_labels": sorted(result.model_labels), "model": result.model_used, "topic": result.topic,
+           "reply": reply.parts, "reply_digest": reply.digest, "escalate": reply.escalate, "resolved": False}
+    store().put("message", doc)
+    store().audit(sender, "relative" if sender.startswith("relative:") else "family", "message.triage",
+                  case_id=case_id, entity=doc["id"],
+                  detail={"labels": doc["labels"], "escalate": reply.escalate, "reply_digest": reply.digest})
+    return {"reply": reply.parts, "escalated": reply.escalate, "labels": doc["labels"]}
+
+
+@app.get("/api/messages")
+def messages(user: dict[str, Any] = Depends(counsellor)) -> list[dict[str, Any]]:
+    return list(reversed(store().list("message")))
+
+
+@app.post("/api/messages/{msg_id}/resolve")
+def resolve(msg_id: str, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    m = store().get("message", msg_id)
+    if m is None:
+        raise HTTPException(404, "Message not found")
+    m["resolved"], m["resolved_by"], m["resolved_at"] = True, user["id"], now()
+    store().put("message", m)
+    store().audit(user["id"], user["role"], "message.resolve", case_id=m.get("case_id"), entity=msg_id)
+    return m
+
+
+# ---------------------------------------------------------- counsellor area --
+@app.get("/api/queue")
+def work_queue(user: dict[str, Any] = Depends(counsellor)) -> list[dict[str, Any]]:
+    return service.queue(store())
+
+
+@app.post("/api/invitations/{inv_id}/approve")
+def approve(inv_id: str, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    inv = store().get("invitation", inv_id)
+    if inv is None:
+        raise HTTPException(404, "Invitation not found")
+    service.transition(store(), user, inv, "approved", {"signed_by": user["display_name"]})
+    return service.transition(store(), user, inv, "sent")
+
+
+@app.get("/api/audit")
+def audit(case_id: str | None = None, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    return {"events": store().audit_events(case_id), "chain": store().verify_chain()}
+
+
+@app.get("/api/fhir/cases/{case_id}")
+def fhir_case(case_id: str, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    case = service.visible_case(store(), user, case_id)
+    store().audit(user["id"], user["role"], "fhir.export", case_id=case_id)
+    return fhir.case_bundle(store(), case)
+
+
+@app.get("/api/evidence")
+def evidence() -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    if EVIDENCE_DIR.exists():
+        for f in sorted(EVIDENCE_DIR.glob("*.json")):
+            out[f.stem] = json.loads(f.read_text())
+    return out
+
+
+# --------------------------------------------------------------- demo only --
+@app.post("/api/demo/tamper")
+def demo_tamper(seq: int, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    if not DEMO:
+        raise HTTPException(404, "Not available")
+    store().tamper_for_demo(seq)
+    return store().verify_chain()
+
+
+@app.post("/api/demo/inject")
+def demo_inject(lang: Literal["en", "ar"] = "en", user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    """Show the output gate stopping text that is not approved: render an
+    approved reply, then alter it the way an unconstrained model might."""
+    if not DEMO:
+        raise HTTPException(404, "Not available")
+    reg = registry()
+    msg = reg.template(Message(lang), "reply.decision_request")
+    original = msg.parts[0]["text"]
+    msg.parts[0]["text"] = ("Based on your results, it would be better not to go ahead with the marriage."
+                            if lang == "en" else "بناءً على نتائجكما، من الأفضل عدم إتمام الزواج.")
+    try:
+        reg.gate(msg)
+        blocked, reason = False, None
+    except GateError as e:
+        blocked, reason = True, str(e)
+        store().audit(user["id"], user["role"], "output_gate.block", outcome="blocked", detail={"reason": reason, "demo": True})
+    return {"attempted": msg.parts[0]["text"], "approved_original": original, "blocked": blocked, "reason": reason}
