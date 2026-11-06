@@ -1,0 +1,50 @@
+# Assumptions and limitations
+
+Silsila is a prototype tested only on synthetic data. Nothing here has been used with real patients.
+
+## Clinical scope
+- Calculates chances only for autosomal recessive conditions at three loci with published UAE data:
+  HBB (beta-thalassaemia, sickle cell), CYP21A2 (classic congenital adrenal hyperplasia) and SMN1 (spinal
+  muscular atrophy). Alpha-thalassaemia and primary congenital glaucoma are deliberately not calculated
+  because the UAE parameters they need are not published (`data/params/loci.yaml`, `excluded_loci`).
+- Full penetrance is assumed: a person recorded as unaffected is treated as not having two pathogenic
+  alleles. This is not true for every condition (for example CYP1B1, which is excluded partly for this reason).
+- Beta-zero and beta-plus thalassaemia alleles are combined; severity is not modelled. HbD-Punjab, HbE and
+  other variants are not modelled and are referred to a counsellor.
+- Carrier tests are assumed to have no false positives (specificity 1). Sensitivity uses published detection
+  rates where they exist. No detection rate is published for CYP21A2, so residual risk after a negative test
+  is not calculated for that gene, and the app says so.
+- Population inputs come from UAE-national studies from 1997-2024 with the sample sizes stated in the
+  register. They may not describe a particular family, tribe or emirate, or non-Emirati residents.
+- Background inbreeding (F = 0.0222, al-Gazali 1997) represents relatedness not drawn in the family tree.
+  Relatedness that is drawn is computed exactly.
+- The invitation order uses family structure and pregnancy only. It does not yet use age, so couples past
+  childbearing age can rank highly; counsellors approve every invitation.
+- Very large or highly interlinked family trees can exceed the engine's memory limit; the app then shows no
+  number and refers the case to a counsellor.
+
+## Content and language
+- Clinical explanations are verbatim MedlinePlus Genetics text (US National Library of Medicine). It is
+  authoritative but written for a US audience; paragraphs about US law or programmes are excluded.
+- Arabic versions of quoted paragraphs, condition names and interface templates are machine translations.
+  Three systems were compared (`data/content/translations/ar/qc_report.json`), but none has been reviewed by
+  a native-speaking clinician. This review is required before any use with patients.
+- Templates are the development team's procedural wording and have not been reviewed by a genetic
+  counsellor or by religious and cultural advisers.
+
+## Message triage
+- Trained and tested on synthetic messages written by an AI model; not validated on real messages.
+  Specificity is deliberately low. Safety does not rely on it: every message is read by a person and every
+  reply carries the 998/999 emergency line.
+
+## Evidence
+- All benchmarks use synthetic families and messages. The family simulator relies on labelled structural
+  assumptions (`backend/src/silsila/sim/assumptions.yaml`) tested in a sensitivity analysis.
+- Cascade yields are projections, not observed outcomes. Uptake, comprehension and family effects need a
+  pilot to measure.
+
+## Engineering
+- SQLite storage and demo passwords are for the prototype only. A pilot needs a managed database in a UAE
+  region with encryption at rest, UAE PASS identity, MFA for staff, and ADHICS-aligned security review.
+- The service targets used to flag overdue steps (for example 2 days for counsellor approval) are pilot
+  assumptions, not published standards.
