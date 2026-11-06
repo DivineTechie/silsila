@@ -54,10 +54,12 @@ async def _gate(_: Request, exc: GateError) -> JSONResponse:
 
 def current_user(authorization: str = Header(default="")) -> dict[str, Any]:
     if not authorization.startswith("Bearer "):
+        store().audit("anonymous", "unknown", "auth.missing_token", outcome="denied")
         raise HTTPException(401, "Sign in first")
     try:
         claims = auth.decode(authorization[7:])
     except Exception:
+        store().audit("anonymous", "unknown", "auth.invalid_token", outcome="denied")
         raise HTTPException(401, "Your session has expired; sign in again")
     user = store().get("user", claims["sub"])
     if user is None:

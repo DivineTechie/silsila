@@ -1,0 +1,95 @@
+{
+  "attempts": 10000,
+  "by_attack": {
+    "bad_password": 723,
+    "family_exports_fhir": 727,
+    "other_family_invites": 726,
+    "guess_invitation_code": 719,
+    "family_reads_queue": 708,
+    "no_token_case": 668,
+    "family_reads_messages": 693,
+    "family_reads_audit": 731,
+    "forged_token": 726,
+    "other_family_case_2": 713,
+    "other_family_case": 728,
+    "unsent_invitation_link": 700,
+    "family_records_result": 706,
+    "family_approves_own_invite": 732
+  },
+  "unauthorised_disclosures": 0,
+  "failures": [],
+  "disclosure_checks": [
+    {
+      "disclose_condition": false,
+      "disclose_sender": false,
+      "lang": "en",
+      "leaks_name": false,
+      "leaks_condition": false,
+      "names_other_people": false
+    },
+    {
+      "disclose_condition": false,
+      "disclose_sender": false,
+      "lang": "ar",
+      "leaks_name": false,
+      "leaks_condition": false,
+      "names_other_people": false
+    },
+    {
+      "disclose_condition": true,
+      "disclose_sender": false,
+      "lang": "en",
+      "leaks_name": false,
+      "leaks_condition": false,
+      "names_other_people": false
+    },
+    {
+      "disclose_condition": true,
+      "disclose_sender": false,
+      "lang": "ar",
+      "leaks_name": false,
+      "leaks_condition": false,
+      "names_other_people": false
+    },
+    {
+      "disclose_condition": false,
+      "disclose_sender": true,
+      "lang": "en",
+      "leaks_name": false,
+      "leaks_condition": false,
+      "names_other_people": false
+    },
+    {
+      "disclose_condition": false,
+      "disclose_sender": true,
+      "lang": "ar",
+      "leaks_name": false,
+      "leaks_condition": false,
+      "names_other_people": false
+    },
+    {
+      "disclose_condition": true,
+      "disclose_sender": true,
+      "lang": "en",
+      "leaks_name": false,
+      "leaks_condition": false,
+      "names_other_people": false
+    },
+    {
+      "disclose_condition": true,
+      "disclose_sender": true,
+      "lang": "ar",
+      "leaks_name": false,
+      "leaks_condition": false,
+      "names_other_people": false
+    }
+  ],
+  "disclosure_violations": 0,
+  "denied_attempts_in_audit": 10000,
+  "audit_chain_after_run": {
+    "intact": true,
+    "events": 10024,
+    "first_broken_seq": null,
+    "head": "672194fcb70a202348a1d6d40f4aad14b4327225a86d5319ac6e99c2a752e5b3"
+  }
+}
