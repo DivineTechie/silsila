@@ -1,0 +1,39 @@
+{
+  "id": "mp:risks-limitations",
+  "kind": "handbook",
+  "title": "What are the risks and limitations of genetic testing?",
+  "url": "https://medlineplus.gov/genetics/understanding/testing/riskslimitations/",
+  "retrieved_at": "2026-11-06T06:54:56+00:00",
+  "publisher": "MedlinePlus, National Library of Medicine",
+  "licence": "Public domain (US federal work)",
+  "licence_url": "https://medlineplus.gov/copyright.html",
+  "attribution": "Source: MedlinePlus, National Library of Medicine",
+  "page_last_updated": "July 28, 2021",
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        {
+          "id": "mp:risks-limitations:0:0",
+          "text": "The physical risks associated with most genetic tests are very small, particularly for those tests that require only a blood sample or buccal smear (a method that samples cells from the inside surface of the cheek). The procedures used for prenatal diagnostic testing (called amniocentesis and chorionic villus sampling) carry a small but real risk of losing the pregnancy (miscarriage) because they require a sample of amniotic fluid or tissue from around the fetus.",
+          "sha256": "0abb1f60057ab868a7b9cf83312e4384dfe7be855cda5d90b598dbf1072a06e4"
+        },
+        {
+          "id": "mp:risks-limitations:0:1",
+          "text": "Many of the risks associated with genetic testing involve the emotional, social, or financial consequences of the test results. People may feel angry, depressed, anxious, or guilty about their results. In some cases, genetic testing creates tension within a family because the results can reveal information about other family members in addition to the person who is tested. The possibility of genetic discrimination in employment or insurance is also a concern. (Refer to What is genetic discrimination? for additional information.)",
+          "sha256": "2c6e1eb7878a6a60cc3942dea690fd86049fa42c57c9a02b55c5f6ad0ab0692b"
+        },
+        {
+          "id": "mp:risks-limitations:0:2",
+          "text": "Genetic testing can provide only limited information about an inherited condition. The test often can't determine if a person will show symptoms of a disorder, how severe the symptoms will be, or whether the disorder will progress over time. Another major limitation is the lack of treatment strategies for many genetic disorders once they are diagnosed.",
+          "sha256": "4081d7e68dbe57661a11158ea1270024e06b156d1f41848dd4e8f896ffedc326"
+        },
+        {
+          "id": "mp:risks-limitations:0:3",
+          "text": "A genetics professional can explain in detail the benefits, risks, and limitations of a particular test. It is important that any person who is considering genetic testing understand and weigh these factors before making a decision.",
+          "sha256": "e1eaaa0faf1bce44fb2a9ece64e906d7014d3d2c9523a7aa859b53f0b6bcc548"
+        }
+      ]
+    }
+  ]
+}

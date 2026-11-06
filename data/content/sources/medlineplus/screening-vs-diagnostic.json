@@ -1,0 +1,64 @@
+{
+  "id": "mp:screening-vs-diagnostic",
+  "kind": "handbook",
+  "title": "How are genetic screening tests different from genetic diagnostic tests?",
+  "url": "https://medlineplus.gov/genetics/understanding/testing/differenttests/",
+  "retrieved_at": "2026-11-06T06:54:56+00:00",
+  "publisher": "MedlinePlus, National Library of Medicine",
+  "licence": "Public domain (US federal work)",
+  "licence_url": "https://medlineplus.gov/copyright.html",
+  "attribution": "Source: MedlinePlus, National Library of Medicine",
+  "page_last_updated": "July 28, 2021",
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        {
+          "id": "mp:screening-vs-diagnostic:0:0",
+          "text": "Screening tests evaluate an individual’s risk of developing a genetic condition, while diagnostic tests identify genetic conditions. All genetic tests have both benefits and limitations .",
+          "sha256": "ac16d484c4aba24aea451d00881576af0a57acafe07714d6fd00dfcf479da0c2"
+        },
+        {
+          "id": "mp:screening-vs-diagnostic:0:1",
+          "text": "Genetic screening tests are generally used in people who do not have signs or symptoms of a disorder. These tests estimate whether an individual’s risk of having a certain condition is increased or decreased compared with the risk in other people in a similar population. A positive result means that a person’s risk of developing the condition is higher than average. A negative screening test means that a person’s risk is lower than average. However, having a positive screening result does not mean the individual has the condition. Because screening tests are only estimates, in some cases the results indicate an increased risk for a genetic abnormality when the person is actually unaffected (false positive), or the results indicate a decreased risk for a genetic abnormality when the person is really affected (false negative). While genetic screening tests do not provide a conclusive answer, they can help guide next steps, such as whether additional, diagnostic testing is needed.",
+          "sha256": "563218dec879fb8676e4f26c569df8f672a2402ae7925b622d14b0a7d07a92a4"
+        },
+        {
+          "id": "mp:screening-vs-diagnostic:0:2",
+          "text": "Genetic diagnostic tests are often used in people who have signs and symptoms. These tests are used to confirm or rule out suspected genetic conditions. Diagnostic tests can also help inform a person’s chance of developing a genetic condition or of passing on a genetic condition to their children. Diagnostic testing can be performed before birth or at any time during a person's life, but it is not available for all genes or all genetic conditions. The results of a diagnostic test can be used to guide a person's choices about health care and the management of the disorder.",
+          "sha256": "f53d6016d4123acd3a634af6c41070b557fd417cec127e57a6046d0fbb122916"
+        },
+        {
+          "id": "mp:screening-vs-diagnostic:0:3",
+          "text": "Examples of genetic screening tests include:",
+          "sha256": "7afae8706e0d3716536ca9e345f08adb8d4e537a94f438bcb33660eef8aff4df"
+        },
+        {
+          "id": "mp:screening-vs-diagnostic:0:4",
+          "text": "Noninvasive prenatal testing/screening (NIPT/NIPS) : This screening test is performed before birth to help determine the risk that a fetus will be born with certain genetic abnormalities, such as Down syndrome and other chromosomal disorders.",
+          "sha256": "4dd3971a57d8fea36f44e554590d1801ccaacd09b8ee4af5a28fa6e4ac5ea051"
+        },
+        {
+          "id": "mp:screening-vs-diagnostic:0:5",
+          "text": "Newborn screening : In the United States, a screening test is performed on all newborns shortly after birth. This test can assess the risk for developing more than 35 genetic conditions. For many of these conditions, the test analyzes various protein and enzyme levels, which would be abnormal in affected individuals.",
+          "sha256": "e48dcd45807575721db263b3efbf336cc2e16212175bb4d47533fa9d4d89888e"
+        },
+        {
+          "id": "mp:screening-vs-diagnostic:0:6",
+          "text": "Examples of genetic diagnostic tests include:",
+          "sha256": "37917ecb8b4072f8de3cf6f8a93ba52fed4b9af50b098f840fef3cd7b5001e4c"
+        },
+        {
+          "id": "mp:screening-vs-diagnostic:0:7",
+          "text": "Molecular gene tests : These tests determine the order of DNA building blocks (nucleotides) in an individual's genetic code, a process called DNA sequencing. The purpose of these tests is to identify genetic changes that can cause disease.",
+          "sha256": "2a2c091465e5e9b4daf88d1d6a70ae26af8ca6f9dd60d801edf1ab9a33a01b5b"
+        },
+        {
+          "id": "mp:screening-vs-diagnostic:0:8",
+          "text": "Chromosomal tests: These tests analyze whole chromosomes or long lengths of DNA to identify large-scale changes, such as an extra or missing copy of a chromosome (trisomy or monosomy, respectively) or abnormalities of large segments of chromosomes , that underlie certain genetic conditions.",
+          "sha256": "6b853899b188a620f37fc8b2c4be9491da69892ae962b7103981e9f795d36575"
+        }
+      ]
+    }
+  ]
+}

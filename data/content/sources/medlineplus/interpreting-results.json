@@ -1,0 +1,39 @@
+{
+  "id": "mp:interpreting-results",
+  "kind": "handbook",
+  "title": "What do the results of genetic tests mean?",
+  "url": "https://medlineplus.gov/genetics/understanding/testing/interpretingresults/",
+  "retrieved_at": "2026-11-06T06:54:56+00:00",
+  "publisher": "MedlinePlus, National Library of Medicine",
+  "licence": "Public domain (US federal work)",
+  "licence_url": "https://medlineplus.gov/copyright.html",
+  "attribution": "Source: MedlinePlus, National Library of Medicine",
+  "page_last_updated": "July 28, 2021",
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        {
+          "id": "mp:interpreting-results:0:0",
+          "text": "The results of genetic tests are not always straightforward, which often makes them challenging to interpret and explain. Therefore, it is important for patients and their families to ask questions about the potential meaning of genetic test results both before and after the test is performed. When interpreting test results, health care providers consider a person’s medical history, family history , and the type of genetic test that was done.",
+          "sha256": "e5f2715257fe0af39c56b027350021a4df7191ab6f69ecb5c38fe1991f89ddd9"
+        },
+        {
+          "id": "mp:interpreting-results:0:1",
+          "text": "A positive test result means that the laboratory found a change in a particular gene, chromosome, or protein of interest. Depending on the purpose of the test, this result may confirm a diagnosis, indicate that a person is a carrier of a particular genetic variant, identify an increased risk of developing a disease (such as cancer), or suggest a need for further testing. Because family members have some genetic material in common, a positive test result may also have implications for certain blood relatives of the person undergoing testing. It is important to note that a positive result of a predictive or presymptomatic genetic test usually cannot establish the exact risk of developing a disorder. Also, health care providers typically cannot use a positive test result to predict the course or severity of a condition. Rarely, tests results can be false positive, which occur when results indicate an increased risk for a genetic condition when the person is unaffected.",
+          "sha256": "4a9d58613b58a017741757e21942d1987c4db40c5a2f5afd6a20f0bbd4424285"
+        },
+        {
+          "id": "mp:interpreting-results:0:2",
+          "text": "A negative test result means that the laboratory did not find a change that is known to affect health or development in the gene, chromosome, or protein under consideration. This result can indicate that a person is not affected by a particular disorder, is not a carrier of a specific genetic variant, or does not have an increased risk of developing a certain disease. It is possible, however, that the test missed a disease-causing genetic alteration because many tests cannot detect all genetic changes that can cause a particular disorder. Further testing, or re-testing at a later date, may be required to confirm a negative result. Rarely, tests results can be false negative, which occur when the results indicate a decreased risk or a genetic condition when the person is actually affected.",
+          "sha256": "c8a1f4666ac9e855b0ee8c79a6799608a14ff10c7c019399ae93e09cba6245c7"
+        },
+        {
+          "id": "mp:interpreting-results:0:3",
+          "text": "In some cases, a test result might not give any useful information. This type of result is called uninformative, indeterminate, inconclusive, or ambiguous. Uninformative test results sometimes occur because everyone has common, natural variations in their DNA, called polymorphisms, that do not affect health. If a genetic test finds a change in DNA that has not been confirmed to play a role in the development of disease, known as a variant of uncertain significance (VUS or VOUS), it can be difficult to tell whether it is a natural polymorphism or a disease-causing variant. For these variants, there may not be enough scientific research to confirm or refute a disease association or the research may be conflicting. An uninformative result cannot confirm or rule out a specific diagnosis, and it cannot indicate whether a person has an increased risk of developing a disorder. In some cases, testing other affected and unaffected family members can help clarify this type of result.",
+          "sha256": "823903c3cfb3cacd525f3f6e0277bfd7b59cdf5fff731ecbd73a46a2601b031a"
+        }
+      ]
+    }
+  ]
+}

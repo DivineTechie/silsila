@@ -1,0 +1,69 @@
+{
+  "id": "mp:test-types",
+  "kind": "handbook",
+  "title": "What are the different types of genetic tests?",
+  "url": "https://medlineplus.gov/genetics/understanding/testing/types/",
+  "retrieved_at": "2026-11-06T06:54:56+00:00",
+  "publisher": "MedlinePlus, National Library of Medicine",
+  "licence": "Public domain (US federal work)",
+  "licence_url": "https://medlineplus.gov/copyright.html",
+  "attribution": "Source: MedlinePlus, National Library of Medicine",
+  "page_last_updated": "July 28, 2021",
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        {
+          "id": "mp:test-types:0:0",
+          "text": "Many types of genetic tests are available to analyze changes in genes, chromosomes, or proteins. A health care provider will consider several factors when selecting the appropriate test, including what condition or conditions are suspected and the genetic variations typically associated with those conditions. If a diagnosis is unclear, a test that looks at many genes or chromosomes may be used. However, if a specific condition is suspected, a more focused test may be done.",
+          "sha256": "0d2259930c651a424576acc1ed8bb2f8e1a13e736db8841de357d8e5d1124aef"
+        },
+        {
+          "id": "mp:test-types:0:1",
+          "text": "There are several types of genetic tests:",
+          "sha256": "0b5b6febe647a996207da5c5037e0353f73a8fe7e4d03391ed9190686859c2ef"
+        },
+        {
+          "id": "mp:test-types:0:2",
+          "text": "Molecular tests look for changes in one or more genes. These types of tests determine the order of DNA building blocks (nucleotides) in an individual's genetic code, a process called DNA sequencing. These tests can vary in scope:",
+          "sha256": "0898fc031c3da0c2d8d11b4b66dab0718cdfc9e34748980eb7c6bf520929a56a"
+        },
+        {
+          "id": "mp:test-types:0:3",
+          "text": "Targeted single variant : Single variant tests look for a specific variant in one gene. The selected variant is known to cause a disorder (for example, the specific variant in the HBB gene that causes sickle cell disease ). This type of test is often used to test family members of someone who is known to have a particular variant, to determine whether they have a familial condition . Also, direct-to-consumer genetic testing companies typically analyze a number of specific variants in particular genes (rather than finding all the variants in those genes) when providing health or disease risk information.",
+          "sha256": "d624ff32067d0f1d3754a68d34e2c124e337a4e0ad29f4fe859a31c5842a01dd"
+        },
+        {
+          "id": "mp:test-types:0:4",
+          "text": "Single gene : Single gene tests look for any genetic changes in one gene. These tests are typically used to confirm (or rule out) a specific diagnosis, particularly when there are many variants in the gene that can cause the suspected condition.",
+          "sha256": "ed85a1951355089decf2546025ca9b52b56deb4bc17f687cd1dcb037858cb277"
+        },
+        {
+          "id": "mp:test-types:0:5",
+          "text": "Gene panel : Panel tests look for variants in more than one gene. This type of test is often used to pinpoint a diagnosis when a person has symptoms that may fit a wide array of conditions, or when the suspected condition can be caused by variants in many genes. (For example, there are hundreds of genetic causes of epilepsy.)",
+          "sha256": "d8c2dfc97cf60fe4087745392bc3c524896c9085e5d0874ce549cfff8ee39c30"
+        },
+        {
+          "id": "mp:test-types:0:6",
+          "text": "Whole exome sequencing/whole genome sequencing : These tests analyze the bulk of an individual’s DNA to find genetic variations. Whole exome or whole genome sequencing is typically used when single gene or panel testing has not provided a diagnosis, or when the suspected condition or genetic cause is unclear. Whole exome or whole genome sequencing is often more cost- and time-effective than performing multiple single gene or panel tests.",
+          "sha256": "6393a051d206203d865200ae8089dc995d80a4656e526e435ebb2a1643c0a87c"
+        },
+        {
+          "id": "mp:test-types:0:7",
+          "text": "Chromosomal tests analyze whole chromosomes or long lengths of DNA to identify large-scale changes. Changes that can be found include an extra or missing copy of a chromosome (trisomy or monosomy, respectively), a large piece of a chromosome that is added ( duplicated ) or missing (deleted), or rearrangements (translocations) of segments of chromosomes. Certain genetic conditions are associated with specific chromosomal changes, and a chromosomal test can be used when one of these conditions is suspected. (For example, Williams syndrome is caused by a deletion of a section of chromosome 7 .)",
+          "sha256": "a25a130ebca9b7239f45e507655660cfc81c3243873bf2e3b6441103a0fab636"
+        },
+        {
+          "id": "mp:test-types:0:8",
+          "text": "Gene expression tests look at which genes are turned on or off (expressed) in different types of cells. When a gene is turned on (active), the cell produces a molecule called mRNA from the instructions in the genes, and the mRNA molecule is used as a blueprint to make proteins . Gene expression tests study the mRNA in cells to determine which genes are active. Too much activity (overexpression) or too little activity (underexpression) of certain genes can be suggestive of particular genetic disorders, such as many types of cancer.",
+          "sha256": "7b7aff9d9f73e9ef0ad5d32e2e13857f4ac82b7205ecd4667caafa9bca86def9"
+        },
+        {
+          "id": "mp:test-types:0:9",
+          "text": "Biochemical tests do not directly analyze DNA, but they study the amount or activity level of proteins or enzymes that are produced from genes. Abnormalities in these substances can indicate that there are changes in the DNA that underlie a genetic disorder. (For example, low levels of biotinidase enzyme activity is suggestive of biotinidase deficiency , which is caused by BTD gene variants.)",
+          "sha256": "06a442a4914511ce03dbc40d00e31f3b3f8f09d61f2fd43df21460210f3df110"
+        }
+      ]
+    }
+  ]
+}

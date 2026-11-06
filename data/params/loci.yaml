@@ -1,0 +1,155 @@
+# Silsila parameter register: population genetics inputs.
+#
+# Every number in this file is copied from a cited publication. Nothing is
+# estimated by the developers or by AI. Where the engine needs a value in a
+# different form (an allele frequency rather than a published carrier rate or
+# incidence), the conversion is a stated formula applied in code
+# (silsila/params.py) and shown in docs/parameters.md, so a reviewer can
+# re-derive it by hand.
+#
+# Population: UAE nationals (Emiratis) unless stated otherwise.
+
+background_inbreeding:
+  value: 0.0222
+  meaning: >-
+    Mean inbreeding coefficient F of UAE nationals. Used for founders (people
+    whose parents are not entered in the family tree) to represent relatedness
+    that the drawn tree does not show. Relatedness that IS drawn (for example a
+    first-cousin marriage) is computed exactly from the tree.
+  source:
+    citation: "al-Gazali LI, Bener A, Abdulrazzaq YM, et al. Consanguineous marriages in the United Arab Emirates. J Biosoc Sci 1997;29(4):491-497."
+    pmid: "9881148"
+    url: https://pubmed.ncbi.nlm.nih.gov/9881148/
+    population: UAE national women, 1994-95
+    sample_size: 2033
+    note: "Same study: 50.5% of marriages consanguineous, 26.2% first cousins, 3.5% double first cousins. No newer national survey was found."
+
+loci:
+  - id: HBB
+    gene: HBB
+    display: Haemoglobin disorders (beta-thalassaemia and sickle cell)
+    content_ids: [mp:beta-thalassemia, mp:sickle-cell-disease]
+    reference_allele: {id: N, label: "typical HBB"}
+    alleles:
+      - id: B
+        label: beta-thalassaemia variant
+        published_measure: heterozygote_proportion
+        published_value: 0.0456
+        detection_rate: 0.99
+        detection_source:
+          citation: "ARUP Laboratories. Beta Globin (HBB) Sequencing and Deletion/Duplication, test interpretation: 'This test is 99% sensitive for beta thalassemia and hemoglobinopathies associated with the HBB gene.'"
+          url: https://arupconsult.com/ati/beta-globin-hbb-sequencing-and-deletionduplication
+          note: "Single reference-laboratory validation. Small insertions/deletions 93.8-94.8%. UAE programme residual risk not published."
+        source:
+          citation: "Belhoul KM, Abdulrahman M, Alraei RF. Hemoglobinopathy carrier prevalence in the United Arab Emirates: first analysis of the Dubai Health Authority premarital screening program results. Hemoglobin 2013;37(4):359-368."
+          pmid: "23647352"
+          url: https://pubmed.ncbi.nlm.nih.gov/23647352/
+          population: UAE nationals, Dubai premarital screening
+          sample_size: 6420
+          note: "293 of 6,420 beta-thalassaemia carriers by CBC/HPLC (phenotype, not DNA). A further 0.87% suspected silent carriers were not confirmed and are not included."
+      - id: S
+        label: sickle (HbS) variant
+        published_measure: heterozygote_proportion
+        published_value: 0.029
+        detection_rate: 0.99
+        detection_source:
+          citation: "ARUP Laboratories. Beta Globin (HBB) Sequencing and Deletion/Duplication, test interpretation: 'This test is 99% sensitive for beta thalassemia and hemoglobinopathies associated with the HBB gene.'"
+          url: https://arupconsult.com/ati/beta-globin-hbb-sequencing-and-deletionduplication
+        source:
+          citation: "Belhoul KM, Abdulrahman M, Alraei RF. Hemoglobin 2013;37(4):359-368 (as above)."
+          pmid: "23647352"
+          url: https://pubmed.ncbi.nlm.nih.gov/23647352/
+          population: UAE nationals, Dubai premarital screening
+          sample_size: 6420
+          note: "186 of 6,420 HbS carriers. Authors note this is lower than other regional reports."
+    phenotypes:
+      - {genotype: [N, B], label: beta-thalassaemia carrier, affected: false}
+      - {genotype: [N, S], label: sickle cell trait, affected: false}
+      - {genotype: [S, S], label: sickle cell disease, affected: true, content_id: mp:sickle-cell-disease}
+      - {genotype: [B, S], label: sickle beta-thalassaemia, affected: true, content_id: mp:sickle-cell-disease}
+      - {genotype: [B, B], label: beta-thalassaemia major or intermedia, affected: true, content_id: mp:beta-thalassemia}
+    phenotype_source:
+      citation: "MedlinePlus Genetics: Beta thalassemia; Sickle cell disease (public domain)."
+      url: https://medlineplus.gov/genetics/condition/sickle-cell-disease/
+    known_limitations:
+      - "Beta-zero and beta-plus variants are combined; severity differences are not modelled (no UAE allele-severity split was found)."
+      - "HbD-Punjab (0.78% of UAE nationals in the same study) and other variants are not yet modelled. HbS/HbD-Punjab is a sickling disorder, so HbD carriers are referred to a counsellor rather than calculated."
+
+  - id: CYP21A2
+    gene: CYP21A2
+    display: Congenital adrenal hyperplasia (21-hydroxylase deficiency, classic form)
+    content_ids: [mp:21-hydroxylase-deficiency]
+    reference_allele: {id: N, label: "typical CYP21A2"}
+    alleles:
+      - id: c
+        label: classic 21-hydroxylase deficiency variant
+        published_measure: affected_incidence
+        published_value: 0.00011074197   # 1 in 9,030 newborns
+        detection_rate: null
+        detection_note: "No published analytical detection rate was found for CYP21A2 carrier testing, which is difficult because of the CYP21A1P pseudogene. Residual risk after a negative test is therefore NOT calculated for this gene; the app says so instead of showing a number."
+        source:
+          citation: "Al Hosani H, Salah M, Osman HM, Farag HM, El-Assiouty L, Saade D, Hertecant J. Expanding the comprehensive national neonatal screening programme in the United Arab Emirates from 1995 to 2011. East Mediterr Health J 2014;20(1):17-23."
+          pmid: "24932929"
+          url: https://pubmed.ncbi.nlm.nih.gov/24932929/
+          population: UAE newborns, national screening
+          sample_size: 750365
+          note: "Classic CAH incidence 1 in 9,030. The frequency of the condition-causing allele is derived from incidence using the inbreeding-adjusted Hardy-Weinberg formula (see docs/parameters.md)."
+    phenotypes:
+      - {genotype: [N, c], label: carrier, affected: false}
+      - {genotype: [c, c], label: classic congenital adrenal hyperplasia, affected: true, content_id: mp:21-hydroxylase-deficiency}
+    phenotype_source:
+      citation: "MedlinePlus Genetics: 21-hydroxylase deficiency (public domain)."
+      url: https://medlineplus.gov/genetics/condition/21-hydroxylase-deficiency/
+    known_limitations:
+      - "An Emirati exome study (Jain et al. 2025, PMID 40893834) reports a much higher CYP21A2 carrier rate (5.6%), but in referred patients and including non-classic variants. The incidence-derived value is used because it matches the classic condition the app explains."
+
+  - id: SMN1
+    gene: SMN1
+    display: Spinal muscular atrophy
+    content_ids: [mp:spinal-muscular-atrophy]
+    reference_allele: {id: N, label: "typical SMN1"}
+    alleles:
+      - id: del
+        label: SMN1 copy loss
+        published_measure: detected_heterozygote_proportion
+        published_value: 0.013       # "SMA carrier frequency (1.3%)" in 1,502 Emirati newborns (abstract)
+        detection_rate: 0.912
+        detection_source:
+          citation: "Sugarman EA, Nagan N, Zhu H, Akmaev VR, Zhou Z, Rohlfs EM, Flynn K, Hendrickson BC, Scholl T, et al. Pan-ethnic carrier screening and prenatal diagnosis for spinal muscular atrophy: clinical laboratory analysis of >72,400 specimens. Eur J Hum Genet 2012;20(1):27-32. Table 3."
+          pmid: "21811307"
+          url: https://pubmed.ncbi.nlm.nih.gov/21811307/
+          note: "Abstract: 'pan-ethnic ... detection rate of 91.2%'. The study has no Arab or Middle Eastern row; the pan-ethnic figure is used and this is stated as an assumption."
+        source:
+          citation: "Rabea F, El Naofal M, Chekroun I, et al. Spinal muscular atrophy genetic epidemiology and the case for premarital genomic screening in Arab populations. Commun Med (Lond) 2024;4(1):119."
+          pmid: "38879606"
+          url: https://pubmed.ncbi.nlm.nih.gov/38879606/
+          population: Emirati newborns
+          sample_size: 1502
+          note: "Abstract: carrier frequency 1.3% in 1,502 healthy Emirati newborns (19 carriers per full text), measured by ddPCR, which cannot see '2+0' silent carriers. Because the measured rate counts only detectable carriers, the true carrier rate is the measured rate divided by the detection rate (docs/parameters.md)."
+    phenotypes:
+      - {genotype: [N, del], label: carrier, affected: false}
+      - {genotype: [del, del], label: spinal muscular atrophy, affected: true, content_id: mp:spinal-muscular-atrophy}
+    phenotype_source:
+      citation: "MedlinePlus Genetics: Spinal muscular atrophy (public domain)."
+      url: https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/
+    known_limitations:
+      - "About 5% of SMA is caused by SMN1 point variants rather than copy loss (MedlinePlus); these are not modelled separately."
+
+excluded_loci:
+  - id: HBA1/HBA2
+    display: Alpha-thalassaemia
+    reason: >-
+      Not calculated in this version. A UAE population frequency was found for
+      the single alpha-gene deletion (-alpha3.7 0.2847, -alpha4.2 0.0072;
+      El-Kalla & Baysal 1998, PMID 9691147) but not for the double (cis)
+      deletion that causes HbH disease and Hb Bart's hydrops, and
+      non-deletional variants are the majority of UAE alpha-thalassaemia
+      alleles (PMID 22074123). A model limited to deletions would understate
+      risk. The engine supports these alleles (see tests); the parameters are
+      missing, so the app refers alpha-thalassaemia results to a counsellor.
+  - id: CYP1B1
+    display: Primary congenital glaucoma
+    reason: >-
+      No population carrier frequency or penetrance figure was found for the
+      UAE or Gulf. Incomplete penetrance is documented (Bejjani 2000, PMID
+      10655546). Referred to a counsellor; not calculated.

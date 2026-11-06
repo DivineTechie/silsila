@@ -1,0 +1,87 @@
+{
+  "id": "mp:sickle-cell-disease",
+  "kind": "condition",
+  "title": "Sickle cell disease",
+  "url": "https://medlineplus.gov/genetics/condition/sickle-cell-disease/",
+  "retrieved_at": "2026-11-06T06:54:56+00:00",
+  "publisher": "MedlinePlus, National Library of Medicine",
+  "licence": "Public domain (US federal work)",
+  "licence_url": "https://medlineplus.gov/copyright.html",
+  "attribution": "Source: MedlinePlus, National Library of Medicine",
+  "page_last_updated": "March 14, 2024",
+  "medlineplus_reviewed": "2024-03",
+  "medlineplus_published": "2025-04-03",
+  "inheritance": [
+    "Autosomal recessive"
+  ],
+  "genes": [
+    "HBB"
+  ],
+  "sections": [
+    {
+      "heading": "Description",
+      "paragraphs": [
+        {
+          "id": "mp:sickle-cell-disease:0:0",
+          "text": "Sickle cell disease is a group of disorders that affects hemoglobin , the molecule in red blood cells that delivers oxygen to cells throughout the body. People with this disease have atypical hemoglobin molecules called hemoglobin S, which can distort red blood cells into a sickle or crescent shape.",
+          "sha256": "a0c6437cca3f97fecdf27c09069ff3aff5ccb8aa19e626927f09e144cd092810"
+        },
+        {
+          "id": "mp:sickle-cell-disease:0:1",
+          "text": "Signs and symptoms of sickle cell disease usually begin in early childhood. Characteristic features of this disorder include a low number of red blood cells ( anemia ), repeated infections, and periodic episodes of pain. The severity of signs and symptoms varies from person to person. Some people have mild health issues, while others are frequently hospitalized for more serious complications.",
+          "sha256": "e30080679374d856afae2e3e9a6a2f60ef4d3fdac213599451b324784873375d"
+        },
+        {
+          "id": "mp:sickle-cell-disease:0:2",
+          "text": "The signs and symptoms of sickle cell disease are caused by the sickling of red blood cells. When red blood cells sickle, they break down prematurely, which can lead to anemia. Anemia can cause shortness of breath, fatigue, and delayed growth and development in children. The rapid breakdown of red blood cells may also cause yellowing of the skin and whites of the eyes (jaundice). Painful episodes can occur when sickled red blood cells, which are stiff and inflexible, get stuck in small blood vessels . These episodes deprive tissues and organs, such as the lungs, kidneys, spleen, and brain, of oxygen-rich blood and can lead to organ damage. A particularly serious complication of sickle cell disease is high blood pressure in the blood vessels that supply the lungs (pulmonary hypertension), which can lead to heart failure. Pulmonary hypertension occurs in about 10 percent of adults with sickle cell disease.",
+          "sha256": "1330f6ba27cae09e23be616e27105aa0d73fa8befbb95b96f61fb52c5a078fb9"
+        },
+        {
+          "id": "mp:sickle-cell-disease:0:3",
+          "text": "There are currently a range of treatment options for people with sickle cell disease. Some treatments address the symptoms of the condition, while others address the genetic cause of sickle cell disease and effectively cure the condition. Without treatment, individuals with sickle cell disease often have lifelong health problems.",
+          "sha256": "ea28d1aca6301d911e597eebffa1a90735a2d73add4796430c2c86c3b462b120"
+        }
+      ]
+    },
+    {
+      "heading": "Frequency",
+      "paragraphs": [
+        {
+          "id": "mp:sickle-cell-disease:1:0",
+          "text": "Sickle cell disease affects millions of people worldwide. It is most common among people whose ancestors come from Africa; Mediterranean countries such as Greece, Turkey, and Italy; the Arabian Peninsula; India; and Spanish-speaking regions in South America, Central America, and parts of the Caribbean.",
+          "sha256": "5974087dbe25ea1de580a5b8c2364b741cb949fd649c7dedffc0881597207427"
+        },
+        {
+          "id": "mp:sickle-cell-disease:1:1",
+          "text": "Sickle cell disease is the most common inherited blood disorder in the United States, affecting an estimated 100,000 Americans. The disease is estimated to occur in 1 in 500 African Americans and 1 in 1,000 to 1,400 Hispanic Americans.",
+          "sha256": "1926f2ec94800bbb5cd85983b2c06fbf511c58651cda3fe50dbbcffa1b56fbc4"
+        }
+      ]
+    },
+    {
+      "heading": "Causes",
+      "paragraphs": [
+        {
+          "id": "mp:sickle-cell-disease:2:0",
+          "text": "Variants (also called mutations) in the HBB gene cause sickle cell disease. The HBB gene provides instructions for making one part of hemoglobin. Hemoglobin typically consists of four protein subunits, two subunits of alpha-globin and two subunits of beta-globin. The HBB gene provides instructions for making beta-globin. Different variants in the HBB gene can produce abnormal versions of beta-globin. One particular HBB gene variant produces an abnormal version of beta-globin known as hemoglobin S (HbS). Other variants in the HBB gene lead to other abnormal versions of beta-globin such as hemoglobin C (HbC) and hemoglobin E (HbE). HBB gene variants can cause unusually low levels of beta-globin; this condition is called beta thalassemia .",
+          "sha256": "0bb83b5d78ee76e04765d436a924fc72127b2ad53a1828a010cfd394f2780d86"
+        },
+        {
+          "id": "mp:sickle-cell-disease:2:1",
+          "text": "In people with sickle cell disease, at least one of the beta-globin subunits in hemoglobin is replaced with hemoglobin S. In sickle cell anemia (also called homozygous sickle cell disease or HbSS disease), which is the most common form of sickle cell disease, hemoglobin S replaces both beta-globin subunits. In other types of sickle cell disease, just one of the beta-globin subunits in hemoglobin is replaced with hemoglobin S. The other beta-globin subunit is replaced with a different version of beta-globin, such as hemoglobin C. For example, people with hemoglobin C (HbSC) disease have hemoglobin molecules with hemoglobin S and hemoglobin C instead of beta-globin. If the variants that produce hemoglobin S and beta thalassemia occur in the same individual, that individual will have hemoglobin S-beta thalassemia (HbSBetaThal) disease.",
+          "sha256": "a7c0a7c5c6e50620f71141142cffcb0d38cf399d49ef61376ced79eff24e70e6"
+        }
+      ]
+    },
+    {
+      "heading": "Inheritance",
+      "paragraphs": [
+        {
+          "id": "mp:sickle-cell-disease:3:0",
+          "text": "This condition is inherited in an autosomal recessive pattern , which means both copies of the gene in each cell must have a variant to cause the disorder. The parents of an individual with an autosomal recessive condition each carry one copy of the altered gene, but they typically do not show signs and symptoms of the condition.",
+          "sha256": "6b947224c2952c03ad008b4a1411df62703d5ade75a65488a14ae940f063ab3b"
+        }
+      ]
+    }
+  ]
+}

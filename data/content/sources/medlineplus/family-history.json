@@ -1,0 +1,49 @@
+{
+  "id": "mp:family-history",
+  "kind": "handbook",
+  "title": "Why is it important to know my family health history?",
+  "url": "https://medlineplus.gov/genetics/understanding/inheritance/familyhistory/",
+  "retrieved_at": "2026-11-06T06:54:56+00:00",
+  "publisher": "MedlinePlus, National Library of Medicine",
+  "licence": "Public domain (US federal work)",
+  "licence_url": "https://medlineplus.gov/copyright.html",
+  "attribution": "Source: MedlinePlus, National Library of Medicine",
+  "page_last_updated": "May 12, 2021",
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        {
+          "id": "mp:family-history:0:0",
+          "text": "A family health history is a record of health information about a person and his or her close relatives. A complete record includes information from three generations of relatives, including children, brothers and sisters, parents, aunts and uncles, nieces and nephews, grandparents, and cousins.",
+          "sha256": "b00a2df7c1618bc7f498531b4314fffc848a353911bb7182da5231d4f1c0bdae"
+        },
+        {
+          "id": "mp:family-history:0:1",
+          "text": "Families have similar genetic backgrounds, and often similar environments and lifestyles. Together, these factors can give clues to conditions that may run in a family . By noticing patterns of disorders among relatives, healthcare professionals can determine whether an individual, family members, or future generations may be at an increased risk of developing a particular condition.",
+          "sha256": "266961bc65fc4e840a56110234ae6773f6a790aee0f413f05ee1bb3cba6a3d04"
+        },
+        {
+          "id": "mp:family-history:0:2",
+          "text": "A family health history can identify people with a higher-than-usual chance of having common disorders, such as heart disease, high blood pressure , stroke, certain cancers, and type 2 diabetes. These complex disorders are influenced by a combination of genetic factors, environmental conditions, and lifestyle choices. A family history also can provide information about the risk of rarer conditions caused by variants (mutations) in a single gene, such as cystic fibrosis and sickle cell disease .",
+          "sha256": "c477404bbeafec689be39523965afdf7337d79e837dc56530d2d5ee6ac32eb2e"
+        },
+        {
+          "id": "mp:family-history:0:3",
+          "text": "While a family health history provides information about the risk of specific health concerns, having relatives with a condition does not mean that an individual will definitely develop that condition. On the other hand, a person with no family history of a disorder may still be at risk of developing the disorder.",
+          "sha256": "568404c8be387c602c049a7dc232ce9a10d24fdfd8db5fa4765397937d3af222"
+        },
+        {
+          "id": "mp:family-history:0:4",
+          "text": "Knowing one’s family health history allows a person to take steps to reduce his or her risk. For people at an increased risk of certain cancers, healthcare professionals may recommend more frequent screening (such as mammography or colonoscopy) starting at an earlier age. Healthcare providers may also encourage regular checkups or testing for people with a condition that runs in their family. Additionally, lifestyle changes such as adopting a healthier diet, getting regular exercise, and quitting smoking help many people lower their chances of developing heart disease and other common illnesses.",
+          "sha256": "830a5322bc9a18f8c769a8f3a5abfce9ab0b4bcf99bd378aaf310698be2bfb35"
+        },
+        {
+          "id": "mp:family-history:0:5",
+          "text": "The easiest way to get information about family health history is to talk to relatives about their health. Have they had any health problems, and when did they occur? A family gathering could be a good time to discuss these issues. Additionally, obtaining medical records and other documents (such as obituaries and death certificates) can help complete a family health history. It is important to keep this information up-to-date and to share it with a healthcare professional regularly.",
+          "sha256": "845bc6e4e4dad628d0ab81a40e7fa10272f5d216a410d6ce6c9b636dd2099809"
+        }
+      ]
+    }
+  ]
+}

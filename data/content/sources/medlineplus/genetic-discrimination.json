@@ -1,0 +1,39 @@
+{
+  "id": "mp:genetic-discrimination",
+  "kind": "handbook",
+  "title": "What is genetic discrimination?",
+  "url": "https://medlineplus.gov/genetics/understanding/testing/discrimination/",
+  "retrieved_at": "2026-11-06T06:54:56+00:00",
+  "publisher": "MedlinePlus, National Library of Medicine",
+  "licence": "Public domain (US federal work)",
+  "licence_url": "https://medlineplus.gov/copyright.html",
+  "attribution": "Source: MedlinePlus, National Library of Medicine",
+  "page_last_updated": "July 28, 2021",
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        {
+          "id": "mp:genetic-discrimination:0:0",
+          "text": "Genetic discrimination occurs when people are treated differently by their employer or insurance company because they have a gene mutation that causes or increases the risk of an inherited disorder. Fear of discrimination is a common concern among people considering genetic testing.",
+          "sha256": "db6d5bf3f1a9ba23970f6f5e35588d5ca5d958ea7f04490929ba6910ce5a9a63"
+        },
+        {
+          "id": "mp:genetic-discrimination:0:1",
+          "text": "Several laws at the federal and state levels help protect people against genetic discrimination. In particular, a federal law called the Genetic Information Nondiscrimination Act (GINA) is designed to protect people from this form of discrimination.",
+          "sha256": "4faf32b190f8b0448494fb7f4c7b996c6b991fdb67a24522b9d9c012ed9ca4e9"
+        },
+        {
+          "id": "mp:genetic-discrimination:0:2",
+          "text": "GINA has two parts: Title I, which prohibits genetic discrimination in health insurance, and Title II, which prohibits genetic discrimination in employment. Title I makes it illegal for health insurance providers to use or require genetic information to make decisions about a person's insurance eligibility or coverage. This part of the law went into effect on May 21, 2009. Title II makes it illegal for employers to use a person's genetic information when making decisions about hiring, promotion, and several other terms of employment. This part of the law went into effect on November 21, 2009.",
+          "sha256": "79a98a9287bf17451940390032e64c8e4aa56359ddf2f5ca7d587e72a5a0ea8e"
+        },
+        {
+          "id": "mp:genetic-discrimination:0:3",
+          "text": "GINA and other laws do not protect people from genetic discrimination in every circumstance. For example, GINA does not apply when an employer has fewer than 15 employees. GINA also does not protect against genetic discrimination in forms of insurance other than health insurance, such as life, disability, or long-term care insurance.",
+          "sha256": "32adbf1d1a73a1556b1b754c46725ec8d018599c0f54bc1ceabec3ba3d500f1f"
+        }
+      ]
+    }
+  ]
+}
