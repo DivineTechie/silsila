@@ -84,10 +84,12 @@ class TriageResult:
     ngram_labels: set[str] = field(default_factory=set)
     topic: str | None = None
     model_used: str | None = None
+    # Labels used to order the counsellor queue (recall-tuned, over-alerts by design).
+    alert_labels: set[str] = field(default_factory=set)
 
     @property
     def escalate(self) -> bool:
-        return bool(self.labels & ESCALATE)
+        return bool((self.labels | self.alert_labels) & ESCALATE)
 
 
 def normalise(text: str) -> str:
@@ -167,24 +169,32 @@ def ngram_model() -> dict | None:
     return _ngram
 
 
-def ngram_labels(text: str) -> set[str]:
+REPLY_THRESHOLD = 0.5  # conventional default; replies use confident predictions only
+
+
+def ngram_labels(text: str) -> tuple[set[str], set[str]]:
+    """Return (alert labels at the recall-tuned thresholds, reply labels at >= 0.5)."""
     m = ngram_model()
     if not m:
-        return set()
-    return {lab for lab, clf in m["models"].items() if clf.predict_proba([text])[0, 1] >= m["thresholds"][lab]}
+        return set(), set()
+    probs = {lab: clf.predict_proba([text])[0, 1] for lab, clf in m["models"].items()}
+    alert = {lab for lab, p in probs.items() if p >= m["thresholds"][lab]}
+    reply = {lab for lab, p in probs.items() if p >= max(m["thresholds"][lab], REPLY_THRESHOLD)}
+    return alert, reply
 
 
 def classify(text: str, lang: str = "en", use_model: bool = True, use_ngram: bool = True) -> TriageResult:
     """Combine classifiers by union: each layer can only add labels, so adding
     a layer can make the system more cautious, never less."""
     rl = rule_labels(text)
-    nl = ngram_labels(text) if use_ngram else set()
+    n_alert, n_reply = ngram_labels(text) if use_ngram else (set(), set())
     ml, used = model_labels(text) if use_model else (set(), None)
-    labels = rl | nl | ml
+    labels = rl | n_reply | ml
+    alert = rl | n_alert | ml
     topic = match_topic(text, lang)
     if topic and not labels:
         labels.add("information")
-    return TriageResult(labels, rl, ml, nl, topic, used)
+    return TriageResult(labels, rl, ml, n_alert, topic, used, alert)
 
 
 def reply_for(result: TriageResult, lang: str) -> Message:

@@ -68,7 +68,7 @@ def run(use_model: bool, use_ngram: bool = True) -> dict:
             gate_failures += 1
             first, escalated, has_emergency = "GATE_FAILURE", False, False
         gold = set(r["labels"])
-        pred = set(res.labels)
+        pred = set(res.alert_labels) | set(res.labels)
         for scope in ("all", r["variety"]):
             for lab in LABELS:
                 c = counts[(scope, lab)]
@@ -91,7 +91,7 @@ def run(use_model: bool, use_ngram: bool = True) -> dict:
                 c["fn"] += not has_emergency
         per_case.append({"id": r["id"], "variety": r["variety"], "hard": r.get("hard", False), "text": r["text"],
                          "expected": sorted(gold), "predicted": sorted(pred), "rule_labels": sorted(res.rule_labels), "ngram_labels": sorted(res.ngram_labels),
-                         "model_labels": sorted(res.model_labels), "first_reply": first, "escalated": escalated,
+                         "model_labels": sorted(res.model_labels), "reply_labels": sorted(res.labels), "first_reply": first, "escalated": escalated,
                          "missed": sorted(gold - pred), "extra": sorted(pred - gold),
                          "error_source": ("rules" if not use_model else "rules+model") if gold != pred else ""})
 
