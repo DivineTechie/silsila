@@ -29,7 +29,7 @@ from typing import Any, Callable
 import numpy as np
 
 from .. import params
-from ..engine import InconsistentEvidence, Locus, Pedigree, Person, Phenotype, TestResult, family_report
+from ..engine import InconsistentEvidence, Locus, Pedigree, PedigreeTooComplex, Person, Phenotype, TestResult, family_report
 from .genedrop import TruthModel, derive, drop
 from .kindred import CONSANGUINEOUS, Kindred, KindredConfig, _ancestors_at, calibrate_request_mix, generate_kindred, kinship_matrix
 from .sources import ahmed, ahmed_per_family, denic2013, nejm_mix, uae_mix
@@ -404,6 +404,10 @@ def uae_worker(job: dict[str, Any]) -> list[dict[str, Any]]:
             err = None
         except InconsistentEvidence as e:  # should not happen with simulated truth
             rep, err = None, str(e)
+        except PedigreeTooComplex:
+            # Real programme: no number, counsellor review. Here the ranked
+            # strategy falls back to random order (conservative for Silsila).
+            rep, err = None, "too_complex"
         t_engine = time.perf_counter() - t0
         _, kmat = kinship_matrix(dped)
         korder = dped.topological_order()

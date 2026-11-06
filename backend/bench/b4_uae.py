@@ -92,6 +92,7 @@ def summarise(rows, seed, b=1000):
     out["fraction_of_true_atrisk_couples_found_when_all_invited"] = float((w * found_all).sum() / (w * true_all).sum()) if true_all.sum() else None
     out["true_atrisk_couples_per_family"] = float((w * true_all).sum() / w.sum())
     out["n_families"] = len(rows)
+    out["families_too_complex_for_exact_engine"] = sum(r.get("engine_error") == "too_complex" for r in rows)
     out["n_structures"] = n_struct
     out["drawn_tree_size"] = {"median": float(np.median([r["drawn_size"] for r in rows])),
                               "p95": float(np.percentile([r["drawn_size"] for r in rows], 95))}
@@ -230,7 +231,8 @@ def headline(quick: bool, seed: int, overrides: dict, locus: str = "HBB", size_f
     n = max(30, int((100 if quick else 250) * size_factor))
     rows = S.run(mapper, S.uae_worker, S.uae_jobs(a, cfg, locus, float(a["theta_uae"]), n, seed, REPLICATES[locus]))
     rng = np.random.default_rng(seed)
-    out: dict[str, Any] = {"n_families": len(rows), "achieved_mix": mixrec["achieved_in_calibration"]}
+    out: dict[str, Any] = {"n_families": len(rows), "achieved_mix": mixrec["achieved_in_calibration"],
+                           "families_too_complex_for_exact_engine": sum(r.get("engine_error") == "too_complex" for r in rows)}
     idx = None
     boots = {}
     for strat in ("ranked", "unranked"):
