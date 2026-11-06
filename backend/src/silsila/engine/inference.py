@@ -133,6 +133,61 @@ def build_factors(
     return factors
 
 
+# Largest table the engine will build (entries). 2e7 float64 entries is 160 MB.
+MAX_FACTOR_ENTRIES = 20_000_000
+
+
+class PedigreeTooComplex(ValueError):
+    """The family tree is too large or interlinked for exact calculation within
+    the memory limit. No number is shown; the case goes to a counsellor."""
+
+
+def plan_elimination(factors: list[Factor], query: tuple[str, ...], card: int) -> list[str]:
+    """Greedy min-fill elimination order on the interaction graph (Kjaerulff
+    1990; Koller and Friedman 2009, ch. 9). Raises PedigreeTooComplex before
+    any table is built if the order would need a table above the limit."""
+    adj: dict[str, set[str]] = {}
+    for f in factors:
+        for v in f.vars:
+            adj.setdefault(v, set()).update(u for u in f.vars if u != v)
+    remaining = set(adj) - set(query)
+    order: list[str] = []
+    while remaining:
+        best, best_key = None, None
+        for v in sorted(remaining):
+            nb = adj[v]
+            nbl = list(nb)
+            fill = sum(1 for i in range(len(nbl)) for j in range(i + 1, len(nbl)) if nbl[j] not in adj[nbl[i]])
+            key = (fill, len(nb))
+            if best_key is None or key < best_key:
+                best, best_key = v, key
+        assert best is not None
+        if card ** len(adj[best]) > MAX_FACTOR_ENTRIES:
+            raise PedigreeTooComplex(
+                "This family tree is too large or interlinked for an exact calculation in this version.")
+        nb = adj.pop(best)
+        for u in nb:
+            adj[u].discard(best)
+            adj[u].update(w for w in nb if w != u)
+        order.append(best)
+        remaining.discard(best)
+    return order
+
+
+def _product_sum_out(factors: list[Factor], var: str) -> Factor:
+    """Multiply factors and sum out `var` in one einsum, without building the
+    full product table first."""
+    names: list[str] = []
+    for f in factors:
+        for v in f.vars:
+            if v not in names:
+                names.append(v)
+    keep = [v for v in names if v != var]
+    lt = _letters(names)
+    spec = ",".join("".join(lt[v] for v in f.vars) for f in factors) + "->" + "".join(lt[v] for v in keep)
+    return Factor(tuple(keep), np.einsum(spec, *[f.table for f in factors], optimize=True))
+
+
 def eliminate(factors: list[Factor], query: tuple[str, ...]) -> tuple[np.ndarray, float]:
     """Return the normalised joint posterior over `query` (in that order) and
     log P(evidence)."""
@@ -141,29 +196,18 @@ def eliminate(factors: list[Factor], query: tuple[str, ...]) -> tuple[np.ndarray
     missing = [q for q in query if q not in all_vars]
     if missing:
         raise KeyError(f"Unknown people in query: {missing}")
-    to_eliminate = all_vars - set(query)
+    card = max((f.table.shape[0] for f in factors if f.table.ndim), default=1)
     log_z = 0.0
-
-    while to_eliminate:
-        # greedy min-size heuristic: eliminate the variable whose product is smallest
-        def cost(v: str) -> int:
-            scope: set[str] = set()
-            for f in factors:
-                if v in f.vars:
-                    scope.update(f.vars)
-            return len(scope)
-
-        var = min(sorted(to_eliminate), key=cost)
+    for var in plan_elimination(factors, query, card):
         involved = [f for f in factors if var in f.vars]
         rest = [f for f in factors if var not in f.vars]
-        new = _sum_out(_product(involved), var)
+        new = _product_sum_out(involved, var)
         m = new.table.max()
         if m <= 0:
             raise InconsistentEvidence("The recorded results are not compatible with each other.")
         new.table = new.table / m
         log_z += math.log(m)
         factors = rest + [new]
-        to_eliminate.discard(var)
 
     joint = _product(factors) if factors else Factor((), np.array(1.0))
     # reorder to query order

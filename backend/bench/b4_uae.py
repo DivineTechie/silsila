@@ -242,11 +242,16 @@ def headline(quick: bool, seed: int, overrides: dict, locus: str = "HBB", size_f
             boots[(strat, k)] = b
             out[f"{strat}_per_1000_at_{'all' if k == 1000 else k}"] = {"estimate": 1000 * rn.sum() / rd.sum(),
                                                                          "ci95": list(np.percentile(b, [2.5, 97.5]))}
-    ratio = boots[("ranked", 5)] / boots[("unranked", 5)]
+    with np.errstate(divide="ignore", invalid="ignore"):
+        ratio = boots[("ranked", 5)] / boots[("unranked", 5)]
+    # Bootstrap draws where the unranked strategy found nothing give an infinite
+    # ratio; they are dropped (which can only lower the ratio) and counted.
+    n_dropped = int((~np.isfinite(ratio)).sum())
     ratio = ratio[np.isfinite(ratio)]
     out["ranked_over_unranked_at_5"] = {"estimate": out["ranked_per_1000_at_5"]["estimate"] / out["unranked_per_1000_at_5"]["estimate"]
                                         if out["unranked_per_1000_at_5"]["estimate"] > 0 else None,
-                                        "ci95": list(np.percentile(ratio, [2.5, 97.5])) if len(ratio) else None}
+                                        "ci95": list(np.percentile(ratio, [2.5, 97.5])) if len(ratio) else None,
+                                        "bootstrap_draws_dropped_infinite": n_dropped}
     rc = S.uae_random_couples(a, locus, float(a["theta_uae"]), 100_000 if quick else 300_000, seed + 1)
     out["random_couples_per_1000"] = 1000 * rc["mixed"]["both_test_positive"] / 2
     out["cascade_all_over_random"] = out["ranked_per_1000_at_all"]["estimate"] / out["random_couples_per_1000"]
