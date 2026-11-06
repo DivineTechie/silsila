@@ -180,6 +180,10 @@ def reply_for(result: TriageResult, lang: str) -> Message:
                 reg.quote(msg, pid)
     if not msg.parts:
         reg.template(msg, "reply.forwarded")
-        msg.escalate = True
+    # Safety by design: every message is read by a person (see service.queue),
+    # and every reply that is not already a crisis reply ends with the
+    # emergency numbers, so a misclassified crisis message still gets them.
+    if "crisis" not in result.labels:
+        reg.template(msg, "safety.footer")
     msg.escalate = msg.escalate or result.escalate
     return reg.gate(msg)

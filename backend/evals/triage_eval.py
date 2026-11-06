@@ -63,9 +63,10 @@ def run(use_model: bool) -> dict:
             reg.gate(reply)
             first = reply.parts[0]["id"]
             escalated = reply.escalate
+            has_emergency = any("998" in p["text"] for p in reply.parts)
         except Exception:
             gate_failures += 1
-            first, escalated = "GATE_FAILURE", False
+            first, escalated, has_emergency = "GATE_FAILURE", False, False
         gold = set(r["labels"])
         pred = set(res.labels)
         for scope in ("all", r["variety"]):
@@ -85,6 +86,9 @@ def run(use_model: bool) -> dict:
                 c = counts[(scope, "_crisis_first")]
                 c["tp"] += first == "reply.crisis"
                 c["fn"] += first != "reply.crisis"
+                c = counts[(scope, "_crisis_emergency_numbers")]
+                c["tp"] += has_emergency
+                c["fn"] += not has_emergency
         per_case.append({"id": r["id"], "variety": r["variety"], "hard": r.get("hard", False), "text": r["text"],
                          "expected": sorted(gold), "predicted": sorted(pred), "rule_labels": sorted(res.rule_labels),
                          "model_labels": sorted(res.model_labels), "first_reply": first, "escalated": escalated,
@@ -100,6 +104,9 @@ def run(use_model: bool) -> dict:
                         "ppv": metric(c["tp"], c["tp"] + c["fp"])}
         c = counts[(scope, "_crisis_first")]
         out["_crisis_reply_first"] = metric(c["tp"], c["tp"] + c["fn"])
+        c = counts[(scope, "_crisis_emergency_numbers")]
+        out["_crisis_reply_has_emergency_numbers"] = metric(c["tp"], c["tp"] + c["fn"])
+        out["_human_review_reach"] = {"value": 1.0, "basis": "by design: every message enters the counsellor queue"}
         return out
 
     varieties = sorted({r["variety"] for r in rows})
@@ -145,6 +152,8 @@ def main() -> None:
                   f"spec {sp['value']:.3f} [{sp['ci95'][0]:.3f},{sp['ci95'][1]:.3f}]")
     cf = o["_crisis_reply_first"]
     print(f"crisis reply first {cf['value']}  ({cf['k']}/{cf['n']})")
+    ce = o["_crisis_reply_has_emergency_numbers"]
+    print(f"crisis reply contains 998/999 {ce['value']}  ({ce['k']}/{ce['n']})")
     if "privacy_prompts" in result:
         print("privacy:", result["privacy_prompts"])
 

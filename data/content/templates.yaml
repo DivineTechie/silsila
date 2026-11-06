@@ -157,6 +157,18 @@ templates:
     source:
       citation: "UAE Government portal, Handling emergencies: 998 ambulance, 999 police."
       url: https://u.ae/en/information-and-services/justice-safety-and-the-law/handling-emergencies
+  safety.footer:
+    kind: footer
+    en: >-
+      If you or someone else is in danger now, call 998 for an ambulance or 999
+      for the police. Every message you send here is read by a member of the
+      counselling team.
+    ar: >-
+      إذا كنت أنت أو أي شخص آخر في خطر الآن، اتصل بالرقم 998 للإسعاف أو 999
+      للشرطة. كل رسالة ترسلها هنا يقرؤها أحد أعضاء فريق الاستشارة.
+    source:
+      citation: "UAE Government portal, Handling emergencies: 998 ambulance, 999 police."
+      url: https://u.ae/en/information-and-services/justice-safety-and-the-law/handling-emergencies
   reply.decision_request:
     kind: safety
     en: >-

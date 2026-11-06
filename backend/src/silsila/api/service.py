@@ -314,10 +314,15 @@ def queue(store: Store) -> list[dict[str, Any]]:
     cases = {c["id"]: c for c in store.list("case")}
     pregnant_cases = {cid for cid, c in cases.items() if any(p.get("pregnant") for p in c["pedigree"]["people"])}
     for m in store.list("message"):
-        if m.get("escalate") and not m.get("resolved"):
-            crisis = "crisis" in m["labels"]
-            items.append({"type": "message", "id": m["id"], "case_id": m.get("case_id"),
-                          "priority": 0 if crisis else (1 if m.get("case_id") in pregnant_cases else 2),
+        # Every message is queued for a person to read; triage only sets the order.
+        if not m.get("resolved"):
+            if "crisis" in m["labels"]:
+                prio = 0
+            elif m.get("escalate"):
+                prio = 1 if m.get("case_id") in pregnant_cases else 2
+            else:
+                prio = 5
+            items.append({"type": "message", "id": m["id"], "case_id": m.get("case_id"), "priority": prio,
                           "reasons": sorted(m["labels"]) or ["unclassified"], "since": m["created"]})
     for cid, c in cases.items():
         rep = compute_report(c)

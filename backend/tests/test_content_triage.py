@@ -92,10 +92,12 @@ def test_crisis_reply_comes_first_and_has_emergency_numbers():
 def test_information_reply_quotes_sources_verbatim():
     msg = reply_for(classify("What does it mean to be a carrier?", "en", use_model=False), "en")
     assert msg.parts[0]["id"] == "reply.information"
-    assert all(p["type"] == "source" for p in msg.parts[1:]) and len(msg.parts) > 1
+    assert all(p["type"] == "source" for p in msg.parts[1:-1]) and len(msg.parts) > 2
+    assert msg.parts[-1]["id"] == "safety.footer"
     assert not msg.escalate
 
 
-def test_unknown_message_is_forwarded_to_a_human():
+def test_unknown_message_is_forwarded_and_shows_emergency_numbers():
     msg = reply_for(classify("hmm", "en", use_model=False), "en")
-    assert msg.parts[0]["id"] == "reply.forwarded" and msg.escalate
+    assert msg.parts[0]["id"] == "reply.forwarded"
+    assert msg.parts[-1]["id"] == "safety.footer" and "998" in msg.parts[-1]["text"]
