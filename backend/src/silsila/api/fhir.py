@@ -14,6 +14,7 @@ Codes were checked against tx.fhir.org (LOINC) and rest.genenames.org (HGNC).
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from fhir.resources.R4B.bundle import Bundle
@@ -29,8 +30,13 @@ TASK_STATUS = {"awaiting_counsellor": "requested", "approved": "accepted", "sent
                "declined_by_relative": "rejected", "no_response": "failed"}
 
 
+def fid(id_: str) -> str:
+    """FHIR ids allow only [A-Za-z0-9-.] (max 64); map anything else to '-'."""
+    return re.sub(r"[^A-Za-z0-9.-]", "-", id_)[:64]
+
+
 def _ref(kind: str, id_: str) -> dict[str, str]:
-    return {"reference": f"{kind}/{id_}"}
+    return {"reference": f"{kind}/{fid(id_)}"}
 
 
 def case_bundle(store: Store, case: dict[str, Any]) -> dict[str, Any]:
@@ -41,6 +47,7 @@ def case_bundle(store: Store, case: dict[str, Any]) -> dict[str, Any]:
     entries: list[dict[str, Any]] = []
 
     def add(resource: dict[str, Any]) -> None:
+        resource["id"] = fid(resource["id"])
         entries.append({"fullUrl": f"urn:uuid:{resource['resourceType'].lower()}-{resource['id']}", "resource": resource})
 
     sex_map = {"female": "female", "male": "male"}

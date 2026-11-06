@@ -125,11 +125,16 @@ def test_audit_chain_detects_tampering_and_gate_blocks_injection(client):
     assert broken["intact"] is False and broken["first_broken_seq"] == 2
 
 
-def test_fhir_bundle_validates(client):
+def test_fhir_bundle_validates_with_invitations(client):
+    fam = login(client, "mariam", FAMILY_PW)
     cou = login(client, "counsellor", COUNSELLOR_PW)
-    b = client.get("/api/fhir/cases/case_cah_demo", headers=cou).json()
-    kinds = {e["resource"]["resourceType"] for e in b["entry"]}
-    assert {"Patient", "FamilyMemberHistory", "RiskAssessment", "Consent", "AuditEvent"} <= kinds
+    client.post("/api/cases/case_cah_demo/consents", json={"scope": "invite", "granted": True}, headers=fam)
+    client.post("/api/cases/case_cah_demo/invitations", json={"person_id": "noura", "channel": "clinic_contact"},
+                headers=fam)
+    r = client.get("/api/fhir/cases/case_cah_demo", headers=cou)
+    assert r.status_code == 200, r.text
+    kinds = {e["resource"]["resourceType"] for e in r.json()["entry"]}
+    assert {"Patient", "FamilyMemberHistory", "RiskAssessment", "Consent", "Task", "AuditEvent"} <= kinds
 
 
 def test_bad_family_tree_gets_a_clear_message(client):

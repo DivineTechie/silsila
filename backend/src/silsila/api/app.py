@@ -333,7 +333,8 @@ def message(body: MessageIn, authorization: str = Header(default="")) -> dict[st
     result = classify(body.text, body.lang)
     reply = reply_for(result, body.lang)
     doc = {"id": new_id("msg"), "case_id": case_id, "sender": sender, "text": body.text, "lang": body.lang,
-           "labels": sorted(result.labels), "rule_labels": sorted(result.rule_labels),
+           "labels": sorted(result.labels | result.alert_labels), "reply_labels": sorted(result.labels),
+           "rule_labels": sorted(result.rule_labels), "ngram_labels": sorted(result.ngram_labels),
            "model_labels": sorted(result.model_labels), "model": result.model_used, "topic": result.topic,
            "reply": reply.parts, "reply_digest": reply.digest, "escalate": reply.escalate, "resolved": False}
     store().put("message", doc)
