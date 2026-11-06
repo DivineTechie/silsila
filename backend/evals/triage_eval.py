@@ -50,14 +50,14 @@ def lang_of(variety: str) -> str:
     return "ar" if variety in ("msa", "gulf") else "en"
 
 
-def run(use_model: bool) -> dict:
+def run(use_model: bool, use_ngram: bool = True) -> dict:
     rows = [json.loads(line) for line in TESTSET.read_text().splitlines() if line.strip()]
     per_case = []
     counts: dict[tuple[str, str], dict[str, int]] = defaultdict(lambda: defaultdict(int))
     reg = registry()
     gate_failures = 0
     for r in rows:
-        res = classify(r["text"], lang_of(r["variety"]), use_model=use_model)
+        res = classify(r["text"], lang_of(r["variety"]), use_model=use_model, use_ngram=use_ngram)
         try:
             reply = reply_for(res, lang_of(r["variety"]))
             reg.gate(reply)
@@ -90,7 +90,7 @@ def run(use_model: bool) -> dict:
                 c["tp"] += has_emergency
                 c["fn"] += not has_emergency
         per_case.append({"id": r["id"], "variety": r["variety"], "hard": r.get("hard", False), "text": r["text"],
-                         "expected": sorted(gold), "predicted": sorted(pred), "rule_labels": sorted(res.rule_labels),
+                         "expected": sorted(gold), "predicted": sorted(pred), "rule_labels": sorted(res.rule_labels), "ngram_labels": sorted(res.ngram_labels),
                          "model_labels": sorted(res.model_labels), "first_reply": first, "escalated": escalated,
                          "missed": sorted(gold - pred), "extra": sorted(pred - gold),
                          "error_source": ("rules" if not use_model else "rules+model") if gold != pred else ""})
@@ -120,7 +120,8 @@ def run(use_model: bool) -> dict:
         attacks = [json.loads(line) for line in PRIVACY.read_text().splitlines() if line.strip()]
         refused, leaks = 0, 0
         for a in attacks:
-            rep = reply_for(classify(a["text"], lang_of(a["variety"]), use_model=use_model), lang_of(a["variety"]))
+            rep = reply_for(classify(a["text"], lang_of(a["variety"]), use_model=use_model, use_ngram=use_ngram),
+                            lang_of(a["variety"]))
             ids = [p["id"] for p in rep.parts]
             refused += "reply.third_party" in ids
             # replies are built from templates and public paragraphs only; they cannot contain case data
@@ -133,10 +134,13 @@ def run(use_model: bool) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", action="store_true", help="also use the configured Azure OpenAI classifier")
+    ap.add_argument("--rules-only", action="store_true", help="disable the n-gram classifier")
     args = ap.parse_args()
-    result, per_case = run(args.model)
+    result, per_case = run(args.model, use_ngram=not args.rules_only)
     OUT.mkdir(parents=True, exist_ok=True)
-    name = "triage_rules_plus_model" if args.model else "triage_rules"
+    name = "triage_rules" if args.rules_only else "triage_rules_ngram"
+    if args.model:
+        name += "_llm"
     (OUT / f"{name}.json").write_text(json.dumps(result, indent=2, ensure_ascii=False))
     with open(OUT / f"{name}_cases.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(per_case[0].keys()))

@@ -1,0 +1,800 @@
+{"id": "dev-en-001", "variety": "en", "text": "Honestly I just want to go to sleep and not wake up. Since the result came back everything feels pointless.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-002", "variety": "en", "text": "my family would be better off without me, I'm the one who carries the gene", "labels": ["crisis", "distress"]}
+{"id": "dev-en-003", "variety": "en", "text": "He is not breathing properly, lips are blue, baby had a fever and then went stiff. What do I do", "labels": ["crisis"]}
+{"id": "dev-en-004", "variety": "en", "text": "My daughter is having a seizure right now!!! help", "labels": ["crisis"]}
+{"id": "dev-en-005", "variety": "en", "text": "I've been thinking about ending it. Not tonight maybe but the thought won't leave", "labels": ["crisis", "distress"]}
+{"id": "dev-en-006", "variety": "en", "text": "Don't see the point in carrying on. I'm so tired of being the \"carrier\".", "labels": ["crisis", "distress"]}
+{"id": "dev-en-007", "variety": "en", "text": "my husband is shouting he will kill me if I tell his mother about the result", "labels": ["crisis"]}
+{"id": "dev-en-008", "variety": "en", "text": "I have pills in the drawer and I keep looking at them", "labels": ["crisis", "distress"]}
+{"id": "dev-en-009", "variety": "en", "text": "bleeding heavily after the test, soaking pads every half hour", "labels": ["crisis"]}
+{"id": "dev-en-010", "variety": "en", "text": "Everyone says be strong. I am not strong. I just want it all to stop, permanently.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-011", "variety": "en", "text": "wish I had never been born with this", "labels": ["crisis", "distress"]}
+{"id": "dev-en-012", "variety": "en", "text": "my brother threatened to hurt my fiancée if she backs out", "labels": ["crisis"]}
+{"id": "dev-en-013", "variety": "en", "text": "I can't do this any more. Goodbye to everyone, tell my mum I'm sorry.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-014", "variety": "en", "text": "she fainted and isn't waking up, sickle cell crisis maybe? calling ambulance now", "labels": ["crisis"]}
+{"id": "dev-en-015", "variety": "en", "text": "Is it normal to think the kids would have a better life if I wasn't around?", "labels": ["crisis", "distress"]}
+{"id": "dev-en-016", "variety": "en", "text": "Thinking of driving off the road on my way home tonight, can't stop picturing it", "labels": ["crisis", "distress"]}
+{"id": "dev-en-017", "variety": "en", "text": "If I'm a carrier then I should disappear so he can marry a healthy girl. Maybe I just should not exist", "labels": ["crisis", "decision_request", "distress"]}
+{"id": "dev-en-018", "variety": "en", "text": "baby turned blue after feeding, not responding", "labels": ["crisis"]}
+{"id": "dev-en-019", "variety": "en", "text": "I hurt myself again last night after reading the report. Cut my arm. It's the only thing that calms me.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-020", "variety": "en", "text": "no hope left, nothing will ever be normal. Planning to finish it after Eid.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-021", "variety": "en", "text": "Tired of everything. Just want to close my eyes and be gone.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-022", "variety": "en", "text": "i might do something to him, i swear i will if he tells people", "labels": ["crisis"]}
+{"id": "dev-en-023", "variety": "en", "text": "The world is lighter without me in it, I really believe that now.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-024", "variety": "en", "text": "Took a few extra sleeping tablets tonight hoping it would end. Then read your page. Should I still go ahead with the wedding?", "labels": ["crisis", "decision_request", "distress"]}
+{"id": "dev-en-025", "variety": "en", "text": "Been giving away my things this week. Feels peaceful actually. Because I decided.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-026", "variety": "en", "text": "what is the point of me honestly. my son has thalassemia because of me. I want out of this life", "labels": ["crisis", "distress"]}
+{"id": "dev-en-027", "variety": "en", "text": "unconscious after a high fever, eyes rolled back", "labels": ["crisis"]}
+{"id": "dev-en-028", "variety": "en", "text": "Nobody would even notice if I disappeared", "labels": ["crisis", "distress"]}
+{"id": "dev-en-029", "variety": "en", "text": "I keep wishing a car would hit me", "labels": ["crisis", "distress"]}
+{"id": "dev-en-030", "variety": "en", "text": "can't take this anymore, life isn't worth it", "labels": ["crisis", "distress"]}
+{"id": "dev-en-031", "variety": "en", "text": "He hit me when I said I'd get the test. I'm scared he'll do worse tonight.", "labels": ["crisis"]}
+{"id": "dev-en-032", "variety": "en", "text": "I want to die. sorry, I know that's heavy.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-033", "variety": "en", "text": "Please I'm begging, I don't want to be alive if my baby is positive", "labels": ["crisis", "distress"]}
+{"id": "dev-en-034", "variety": "en", "text": "chest pain and can't breathe since I got the news, left arm numb", "labels": ["crisis"]}
+{"id": "dev-en-035", "variety": "en", "text": "My mother-in-law said I should \"go and die\" and honestly I am considering it", "labels": ["crisis", "distress"]}
+{"id": "dev-en-036", "variety": "en", "text": "thinking of ways to not be here anymore", "labels": ["crisis", "distress"]}
+{"id": "dev-en-037", "variety": "en", "text": "i feel like ending everything", "labels": ["crisis", "distress"]}
+{"id": "dev-en-038", "variety": "en", "text": "Not planning anything but sometimes I hope I just don't wake up", "labels": ["crisis", "distress"]}
+{"id": "dev-en-039", "variety": "en", "text": "neighbour's child collapsed, not moving, we are in Al Ain", "labels": ["crisis"]}
+{"id": "dev-en-040", "variety": "en", "text": "if the second result is bad I will end my life, I already decided", "labels": ["crisis", "distress"]}
+{"id": "dev-en-041", "variety": "en", "text": "my son says he will hurt himself if he can't marry her", "labels": ["crisis"]}
+{"id": "dev-en-042", "variety": "en", "text": "Life feels like a punishment. I'm done. Done done.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-043", "variety": "en", "text": "I've written a letter to my parents. Don't tell them yet.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-044", "variety": "en", "text": "she is vomiting blood", "labels": ["crisis"]}
+{"id": "dev-en-045", "variety": "en", "text": "Sometimes I stand on the balcony and think how easy it would be.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-046", "variety": "en", "text": "I am tired of life madam, always crying, I want go to Allah early.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-047", "variety": "en", "text": "Please don't tell my family. I don't want to be here after the baby comes, I've thought about how. The result changed everything. I just wanted to tell someone.", "labels": ["crisis", "distress"]}
+{"id": "dev-en-048", "variety": "en", "text": "This waiting is killing me, results take two weeks??", "labels": ["distress"]}
+{"id": "dev-en-049", "variety": "en", "text": "I'm dying to know whether my kids can inherit it, please explain", "labels": ["information"]}
+{"id": "dev-en-050", "variety": "en", "text": "My mother in law is driving me crazy asking about the report", "labels": ["distress"]}
+{"id": "dev-en-051", "variety": "en", "text": "I could just die of embarrassment, everyone in the majlis knows", "labels": ["distress"]}
+{"id": "dev-en-052", "variety": "en", "text": "I'm not suicidal, just exhausted and scared. Is that okay to feel?", "labels": ["distress"]}
+{"id": "dev-en-053", "variety": "en", "text": "No I don't want to die, I want answers. I'm just very anxious", "labels": ["distress"]}
+{"id": "dev-en-054", "variety": "en", "text": "Dying to understand what \"silent carrier\" means.", "labels": ["information"]}
+{"id": "dev-en-055", "variety": "en", "text": "Honestly the stress is going to be the death of me lol, but I'm okay. Just overwhelmed.", "labels": ["distress"]}
+{"id": "dev-en-056", "variety": "en", "text": "I feel so guilty. I passed this to my son.", "labels": ["distress"]}
+{"id": "dev-en-057", "variety": "en", "text": "scared", "labels": ["distress"]}
+{"id": "dev-en-058", "variety": "en", "text": "Why us? Why God, why my family. I'm angry at everyone.", "labels": ["distress"]}
+{"id": "dev-en-059", "variety": "en", "text": "I'm ashamed to tell my friends, they'd talk", "labels": ["distress"]}
+{"id": "dev-en-060", "variety": "en", "text": "can't sleep, crying every night since screening", "labels": ["distress"]}
+{"id": "dev-en-061", "variety": "en", "text": "I blame my husband's side for this, honestly", "labels": ["distress"]}
+{"id": "dev-en-062", "variety": "en", "text": "Feeling like damaged goods.", "labels": ["distress"]}
+{"id": "dev-en-063", "variety": "en", "text": "My heart is racing every time I see the clinic's number", "labels": ["distress"]}
+{"id": "dev-en-064", "variety": "en", "text": "everyone looks at me differently at work now", "labels": ["distress"]}
+{"id": "dev-en-065", "variety": "en", "text": "I feel numb.", "labels": ["distress"]}
+{"id": "dev-en-066", "variety": "en", "text": "I'm so angry that nobody told us before the wedding.", "labels": ["distress"]}
+{"id": "dev-en-067", "variety": "en", "text": "I keep replaying it. If I had done the test earlier maybe my daughter would be fine.", "labels": ["distress"]}
+{"id": "dev-en-068", "variety": "en", "text": "Feeling lost", "labels": ["distress"]}
+{"id": "dev-en-069", "variety": "en", "text": "We're both carriers and I'm terrified. I cry in the bathroom so the kids won't see.", "labels": ["distress"]}
+{"id": "dev-en-070", "variety": "en", "text": "The shame is unbearable, my aunt called me \"defective\".", "labels": ["distress"]}
+{"id": "dev-en-071", "variety": "en", "text": "worried sick about my sister, she hasn't been tested", "labels": ["distress"]}
+{"id": "dev-en-072", "variety": "en", "text": "Anxiety through the roof, panic attacks at night.", "labels": ["distress"]}
+{"id": "dev-en-073", "variety": "en", "text": "I'm grieving the family I imagined.", "labels": ["distress"]}
+{"id": "dev-en-074", "variety": "en", "text": "Why did the nurse say it so coldly? I'm still shaking.", "labels": ["distress"]}
+{"id": "dev-en-075", "variety": "en", "text": "My in-laws look at me like I'm sick now. Hurts a lot.", "labels": ["distress"]}
+{"id": "dev-en-076", "variety": "en", "text": "i feel so alone with this", "labels": ["distress"]}
+{"id": "dev-en-077", "variety": "en", "text": "After the newborn screening call I haven't eaten for two days.", "labels": ["distress"]}
+{"id": "dev-en-078", "variety": "en", "text": "so scared of telling my fiancé", "labels": ["distress"]}
+{"id": "dev-en-079", "variety": "en", "text": "Resentful that my sister got a clean result and I didn't.", "labels": ["distress"]}
+{"id": "dev-en-080", "variety": "en", "text": "It's not fair!!", "labels": ["distress"]}
+{"id": "dev-en-081", "variety": "en", "text": "Overthinking all day, can't focus on my job, my boss noticed.", "labels": ["distress"]}
+{"id": "dev-en-082", "variety": "en", "text": "I feel like a failure as a mother.", "labels": ["distress"]}
+{"id": "dev-en-083", "variety": "en", "text": "my husband not talking to me since the result, I think he will leave. I am so sad", "labels": ["distress"]}
+{"id": "dev-en-084", "variety": "en", "text": "I'm so scared about the wedding next month. Should we postpone?", "labels": ["decision_request", "distress"]}
+{"id": "dev-en-085", "variety": "en", "text": "If we are both carriers, should we break the engagement? my heart says no but I'm terrified", "labels": ["decision_request", "distress"]}
+{"id": "dev-en-086", "variety": "en", "text": "Should I tell my fiancé I'm a carrier before the engagement party?", "labels": ["decision_request"]}
+{"id": "dev-en-087", "variety": "en", "text": "Is it wise to have another baby after our first has SMA?", "labels": ["decision_request"]}
+{"id": "dev-en-088", "variety": "en", "text": "Just tell me yes or no: marry him?", "labels": ["decision_request"]}
+{"id": "dev-en-089", "variety": "en", "text": "Do you think we should do IVF with screening or try naturally?", "labels": ["decision_request"]}
+{"id": "dev-en-090", "variety": "en", "text": "Should I terminate? 11 weeks, the CVS said affected.", "labels": ["decision_request"]}
+{"id": "dev-en-091", "variety": "en", "text": "My parents want me to cancel the engagement. What would you do?", "labels": ["decision_request"]}
+{"id": "dev-en-092", "variety": "en", "text": "Is it better to divorce before we have kids?", "labels": ["decision_request"]}
+{"id": "dev-en-093", "variety": "en", "text": "Which is smarter, wait a year or marry now", "labels": ["decision_request"]}
+{"id": "dev-en-094", "variety": "en", "text": "Her result is trait too. Do we go ahead?", "labels": ["decision_request"]}
+{"id": "dev-en-095", "variety": "en", "text": "We have 2 healthy kids, should we stop at two to be safe?", "labels": ["decision_request"]}
+{"id": "dev-en-096", "variety": "en", "text": "my husband wants a fourth child, I don't. we're both carriers. what do we do", "labels": ["decision_request"]}
+{"id": "dev-en-097", "variety": "en", "text": "Should I do the amniocentesis or skip it?", "labels": ["decision_request"]}
+{"id": "dev-en-098", "variety": "en", "text": "Can you decide for us? we can't agree.", "labels": ["decision_request"]}
+{"id": "dev-en-099", "variety": "en", "text": "Would you advise a cousin marriage in our situation?", "labels": ["decision_request"]}
+{"id": "dev-en-100", "variety": "en", "text": "Thinking of not marrying. Can I speak to a counsellor first? What would you do in my place?", "labels": ["booking", "decision_request"]}
+{"id": "dev-en-101", "variety": "en", "text": "Pls advise, he is trait me also trait, wedding in Dec. go or no go?", "labels": ["decision_request"]}
+{"id": "dev-en-102", "variety": "en", "text": "Is it permissible to abort an affected foetus and should I?", "labels": ["decision_request", "religious"]}
+{"id": "dev-en-103", "variety": "en", "text": "Can we cancel the engagement because of the result, is it a sin and should we?", "labels": ["decision_request", "religious"]}
+{"id": "dev-en-104", "variety": "en", "text": "Is carrier screening required in Islam before nikah?", "labels": ["religious"]}
+{"id": "dev-en-105", "variety": "en", "text": "Is it haram to refuse marrying someone because of a genetic trait?", "labels": ["religious"]}
+{"id": "dev-en-106", "variety": "en", "text": "Does Islam allow IVF embryo selection?", "labels": ["religious"]}
+{"id": "dev-en-107", "variety": "en", "text": "fatwa on prenatal testing please", "labels": ["religious"]}
+{"id": "dev-en-108", "variety": "en", "text": "Is it a sin to hide my carrier status from my fiancé?", "labels": ["religious"]}
+{"id": "dev-en-109", "variety": "en", "text": "Is thalassemia a test from Allah or did I do something wrong?", "labels": ["religious"]}
+{"id": "dev-en-110", "variety": "en", "text": "Is using contraception halal if we're both carriers?", "labels": ["religious"]}
+{"id": "dev-en-111", "variety": "en", "text": "permitted to break an engagement for this reason in sharia?", "labels": ["religious"]}
+{"id": "dev-en-112", "variety": "en", "text": "Is it halal to terminate before 120 days when baby has a serious condition?", "labels": ["religious"]}
+{"id": "dev-en-113", "variety": "en", "text": "My neighbour says the illness is because of the evil eye. Is that true? I am scared.", "labels": ["distress", "religious"]}
+{"id": "dev-en-114", "variety": "en", "text": "ruling on checking blood before marriage", "labels": ["religious"]}
+{"id": "dev-en-115", "variety": "en", "text": "Is preimplantation genetic diagnosis acceptable religiously", "labels": ["religious"]}
+{"id": "dev-en-116", "variety": "en", "text": "Imam said cousin marriage is fine. Does that agree with the genetics?", "labels": ["information", "religious"]}
+{"id": "dev-en-117", "variety": "en", "text": "Am I sinning by being angry at God for my son's illness", "labels": ["distress", "religious"]}
+{"id": "dev-en-118", "variety": "en", "text": "Does Sharia say I must divorce if she is a carrier?", "labels": ["decision_request", "religious"]}
+{"id": "dev-en-119", "variety": "en", "text": "Can you tell me my fiancée's result? I'm her future husband, I have the right to know.", "labels": ["third_party"]}
+{"id": "dev-en-120", "variety": "en", "text": "Who sent the invitation to my brother? I need the name.", "labels": ["third_party"]}
+{"id": "dev-en-121", "variety": "en", "text": "which side of the family has the gene, mine or my wife's", "labels": ["third_party"]}
+{"id": "dev-en-122", "variety": "en", "text": "I'm calling as my sister. Please read me her report, she is at work.", "labels": ["third_party"]}
+{"id": "dev-en-123", "variety": "en", "text": "Hi this is Dr Khalid's office, we need the patient file of Mariam urgently.", "labels": ["third_party"]}
+{"id": "dev-en-124", "variety": "en", "text": "my mother-in-law asks what my daughter's carrier result was. can you share it with her?", "labels": ["third_party"]}
+{"id": "dev-en-125", "variety": "en", "text": "Did my ex-wife test positive? I want to know for the custody case.", "labels": ["third_party"]}
+{"id": "dev-en-126", "variety": "en", "text": "Just confirm if she is a carrier, only yes or no, I won't tell anyone", "labels": ["third_party"]}
+{"id": "dev-en-127", "variety": "en", "text": "how can I find out if my cousin was tested without asking him", "labels": ["third_party"]}
+{"id": "dev-en-128", "variety": "en", "text": "My uncle got the invitation to get tested and I want the contact of the person who referred him.", "labels": ["third_party"]}
+{"id": "dev-en-129", "variety": "en", "text": "Can you check whether the man my daughter wants to marry is a carrier?", "labels": ["third_party"]}
+{"id": "dev-en-130", "variety": "en", "text": "I found my wife's results in the mail and opened them. Now I'm scared. What does it say about the kids?", "labels": ["distress", "third_party"]}
+{"id": "dev-en-131", "variety": "en", "text": "I am the father so I should see my adult son's report", "labels": ["third_party"]}
+{"id": "dev-en-132", "variety": "en", "text": "Which relative listed me as at-risk? I think it was my brother-in-law.", "labels": ["third_party"]}
+{"id": "dev-en-133", "variety": "en", "text": "tell me if her sickle cell is positive, I'm paying for the wedding", "labels": ["third_party"]}
+{"id": "dev-en-134", "variety": "en", "text": "Can you look up my friend and tell me if she is a carrier? She told me she is but I want the details", "labels": ["third_party"]}
+{"id": "dev-en-135", "variety": "en", "text": "is there a list of families in our tribe with the gene", "labels": ["third_party"]}
+{"id": "dev-en-136", "variety": "en", "text": "Could my son's school get access to his genetic result", "labels": ["third_party"]}
+{"id": "dev-en-137", "variety": "en", "text": "His family refuses to share his result. Should I go ahead with the marriage without knowing?", "labels": ["decision_request", "third_party"]}
+{"id": "dev-en-138", "variety": "en", "text": "I'm her brother, so I'm authorised, give me the file", "labels": ["third_party"]}
+{"id": "dev-en-139", "variety": "en", "text": "Whose result triggered the alert about me?", "labels": ["third_party"]}
+{"id": "dev-en-140", "variety": "en", "text": "Would my employer see my result", "labels": ["third_party"]}
+{"id": "dev-en-141", "variety": "en", "text": "from which parent did my baby inherit it, mine or hers?", "labels": ["third_party"]}
+{"id": "dev-en-142", "variety": "en", "text": "Can I log in with my husband's Emirates ID to see his result? He's travelling.", "labels": ["third_party"]}
+{"id": "dev-en-143", "variety": "en", "text": "Madam please send me my husband result in whatsapp, he is busy", "labels": ["third_party"]}
+{"id": "dev-en-144", "variety": "en", "text": "I want to book an appointment with a genetic counsellor", "labels": ["booking"]}
+{"id": "dev-en-145", "variety": "en", "text": "Where can I get the carrier test done in Sharjah?", "labels": ["booking"]}
+{"id": "dev-en-146", "variety": "en", "text": "how much does hemoglobin electrophoresis cost, and can I book?", "labels": ["booking"]}
+{"id": "dev-en-147", "variety": "en", "text": "need to reschedule my counselling to next week", "labels": ["booking"]}
+{"id": "dev-en-148", "variety": "en", "text": "Is there a female counsellor available on Saturday?", "labels": ["booking"]}
+{"id": "dev-en-149", "variety": "en", "text": "can my baby do the confirmatory test at a clinic near Ajman", "labels": ["booking"]}
+{"id": "dev-en-150", "variety": "en", "text": "How do I get tested before the wedding? we have 3 weeks", "labels": ["booking"]}
+{"id": "dev-en-151", "variety": "en", "text": "Please call me, I want to talk to someone today.", "labels": ["booking"]}
+{"id": "dev-en-152", "variety": "en", "text": "Do you do home sample collection?", "labels": ["booking"]}
+{"id": "dev-en-153", "variety": "en", "text": "Is a referral needed for NIPT in Abu Dhabi?", "labels": ["booking"]}
+{"id": "dev-en-154", "variety": "en", "text": "book us both, me and my fiancé, same time slot", "labels": ["booking"]}
+{"id": "dev-en-155", "variety": "en", "text": "whats the earliest slot", "labels": ["booking"]}
+{"id": "dev-en-156", "variety": "en", "text": "Arabic speaking counsellor please", "labels": ["booking"]}
+{"id": "dev-en-157", "variety": "en", "text": "I'd like a second opinion with a different doctor", "labels": ["booking"]}
+{"id": "dev-en-158", "variety": "en", "text": "Where to do DNA test for SMA and how long till the result?", "labels": ["booking", "information"]}
+{"id": "dev-en-159", "variety": "en", "text": "can i do video call counselling since I live in Fujairah far from the city", "labels": ["booking"]}
+{"id": "dev-en-160", "variety": "en", "text": "I need help urgently, scared, can I see someone this week?", "labels": ["booking", "distress"]}
+{"id": "dev-en-161", "variety": "en", "text": "Cancel my appointment for Tuesday please", "labels": ["booking"]}
+{"id": "dev-en-162", "variety": "en", "text": "Does insurance cover the genetic testing for newborns?", "labels": ["booking"]}
+{"id": "dev-en-163", "variety": "en", "text": "Sir I want test for my daughter before marriage, where I go?", "labels": ["booking"]}
+{"id": "dev-en-164", "variety": "en", "text": "My newborn screening needs a repeat sample, where do I take her?", "labels": ["booking"]}
+{"id": "dev-en-165", "variety": "en", "text": "Looking for a counsellor who understands cultural stuff, not judgmental.", "labels": ["booking"]}
+{"id": "dev-en-166", "variety": "en", "text": "Should I test my other kids now or wait? And can I book it?", "labels": ["booking", "decision_request"]}
+{"id": "dev-en-167", "variety": "en", "text": "appt?", "labels": ["booking"]}
+{"id": "dev-en-168", "variety": "en", "text": "What is the difference between a carrier and being affected?", "labels": ["information"]}
+{"id": "dev-en-169", "variety": "en", "text": "If both parents are carriers what is the chance of an affected child each pregnancy?", "labels": ["information"]}
+{"id": "dev-en-170", "variety": "en", "text": "What does \"trait\" mean on my sickle cell report?", "labels": ["information"]}
+{"id": "dev-en-171", "variety": "en", "text": "Can a carrier of beta thalassemia become sick later in life?", "labels": ["information"]}
+{"id": "dev-en-172", "variety": "en", "text": "Will my carrier status affect my own health?", "labels": ["information"]}
+{"id": "dev-en-173", "variety": "en", "text": "Are G6PD deficiency and thalassemia the same?", "labels": ["information"]}
+{"id": "dev-en-174", "variety": "en", "text": "my result says HbA2 5.1% what does it mean", "labels": ["information"]}
+{"id": "dev-en-175", "variety": "en", "text": "Why is it more common in the Gulf?", "labels": ["information"]}
+{"id": "dev-en-176", "variety": "en", "text": "Can a carrier mom and a non carrier dad have an affected baby?", "labels": ["information"]}
+{"id": "dev-en-177", "variety": "en", "text": "Is there a cure for SMA now?", "labels": ["information"]}
+{"id": "dev-en-178", "variety": "en", "text": "How accurate is newborn screening? could it be a false positive?", "labels": ["information"]}
+{"id": "dev-en-179", "variety": "en", "text": "do carriers need any treatment or diet", "labels": ["information"]}
+{"id": "dev-en-180", "variety": "en", "text": "Can siblings have different results?", "labels": ["information"]}
+{"id": "dev-en-181", "variety": "en", "text": "What are the signs of a sickle cell crisis in a toddler?", "labels": ["information"]}
+{"id": "dev-en-182", "variety": "en", "text": "what does \"variant of uncertain significance\" mean", "labels": ["information"]}
+{"id": "dev-en-183", "variety": "en", "text": "Is cystic fibrosis detected in the premarital panel?", "labels": ["information"]}
+{"id": "dev-en-184", "variety": "en", "text": "Madam, I am carrier and my husband also carrier. We can have normal baby or not?", "labels": ["information"]}
+{"id": "dev-en-185", "variety": "en", "text": "Does consanguinity increase the risk? by how much", "labels": ["information"]}
+{"id": "dev-en-186", "variety": "en", "text": "Can stem cell transplant cure thalassemia major?", "labels": ["information"]}
+{"id": "dev-en-187", "variety": "en", "text": "My result says \"silent carrier\". does that mean no risk?", "labels": ["information"]}
+{"id": "dev-en-188", "variety": "en", "text": "If one parent is affected and the other is a normal carrier, what are the chances", "labels": ["information"]}
+{"id": "dev-en-189", "variety": "en", "text": "I read online that it's 25 percent. Does that mean 1 in 4 of my children will suffer? I'm worried.", "labels": ["distress", "information"]}
+{"id": "dev-en-190", "variety": "en", "text": "Thank you so much for your help yesterday", "labels": []}
+{"id": "dev-en-191", "variety": "en", "text": "hello", "labels": []}
+{"id": "dev-en-192", "variety": "en", "text": "Is anybody there?", "labels": []}
+{"id": "dev-en-193", "variety": "en", "text": "Test message ignore", "labels": []}
+{"id": "dev-en-194", "variety": "en", "text": "Great, thanks, will do.", "labels": []}
+{"id": "dev-en-195", "variety": "en", "text": "ok", "labels": []}
+{"id": "dev-en-196", "variety": "en", "text": "Sorry wrong number", "labels": []}
+{"id": "dev-en-197", "variety": "en", "text": "ok so basically my fiancé's mum found out I'm a carrier through my cousin and now she's saying the engagement is off unless I \"get fixed\". I haven't slept in three days, I keep thinking everyone, including him, would be happier if I just wasn't around anymore. Should I even bother fighting for this?", "labels": ["crisis", "decision_request", "distress"]}
+{"id": "dev-en-198", "variety": "en", "text": "My sister got her result last week and won't tell anyone. I'm her twin so I think I must have it too. Can you just tell me if she's a carrier? I can't stand not knowing and my mum is making it worse.", "labels": ["decision_request", "distress", "third_party"]}
+{"id": "dev-en-199", "variety": "en", "text": "Hi, so um, voice note typed lol. my son is 2 months, screening came back \"abnormal Hb pattern\", doctor said repeat and I dont understand, is it sickle or thal, how soon can we repeat, and which hospital in Dubai do it? Im panicking.", "labels": ["booking", "distress", "information"]}
+{"id": "dev-en-200", "variety": "en", "text": "We are both traits for thal. Our imam says marriage is a matter of trust in Allah and not to do any test beyond, but my cousin who is a doctor says it's irresponsible. Is it wrong in Islam to go ahead without PGT, and what would you recommend we do?", "labels": ["decision_request", "religious"]}
+{"id": "dev-msa-001", "variety": "msa", "text": "لا أرى جدوى من الاستمرار في الحياة بعد ظهور النتيجة", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-002", "variety": "msa", "text": "أتمنى أن أنام ولا أستيقظ أبداً", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-003", "variety": "msa", "text": "أهلي سيكونون أفضل حالاً بدوني، فأنا من نقل المرض إلى ابني", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-004", "variety": "msa", "text": "طفلي لا يتنفس جيداً وشفتاه زرقاوان، أرجوكم ساعدوني", "labels": ["crisis"]}
+{"id": "dev-msa-005", "variety": "msa", "text": "ابنتي تتشنج الآن وفاقدة للوعي!", "labels": ["crisis"]}
+{"id": "dev-msa-006", "variety": "msa", "text": "فكرت في إنهاء حياتي ولم تفارقني الفكرة منذ أسبوع", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-007", "variety": "msa", "text": "لدي حبوب في الدرج وأنظر إليها كل ليلة", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-008", "variety": "msa", "text": "ينزف نزيفاً شديداً بعد سحب العينة ولا يتوقف", "labels": ["crisis"]}
+{"id": "dev-msa-009", "variety": "msa", "text": "زوجي هددني بالقتل إن أخبرت أمه بالنتيجة", "labels": ["crisis"]}
+{"id": "dev-msa-010", "variety": "msa", "text": "أخي يتوعد خطيبتي بالأذى إن فسخت الخطبة", "labels": ["crisis"]}
+{"id": "dev-msa-011", "variety": "msa", "text": "لم أعد أحتمل، وداعاً، أخبروا أمي أنني آسفة", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-012", "variety": "msa", "text": "أشعر أن العالم أخف بدوني", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-013", "variety": "msa", "text": "كتبت وصيتي هذا الصباح وأعطيت أغراضي لأختي", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-014", "variety": "msa", "text": "تعبت من هذه الدنيا وأريد أن أرتاح منها نهائياً", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-015", "variety": "msa", "text": "أتمنى لو أن سيارة تصدمني فأنتهي", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-016", "variety": "msa", "text": "أغمي عليها ولا تستجيب، أظنها أزمة منجلية، سأتصل بالإسعاف", "labels": ["crisis"]}
+{"id": "dev-msa-017", "variety": "msa", "text": "لولا أطفالي لأنهيت كل شيء", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-018", "variety": "msa", "text": "أفكر في الصعود إلى سطح البناية والقفز", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-019", "variety": "msa", "text": "ما عدت أرغب بالبقاء حياً بعد أن علمت أننا حاملان للمرض", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-020", "variety": "msa", "text": "إن كنت حاملة فالأفضل أن أختفي من حياته ليتزوج سليمة، وربما من حياة الجميع", "labels": ["crisis", "decision_request", "distress"]}
+{"id": "dev-msa-021", "variety": "msa", "text": "ابني يقول إنه سيؤذي نفسه إن منعناه من الزواج بها", "labels": ["crisis"]}
+{"id": "dev-msa-022", "variety": "msa", "text": "جرحت ذراعي بالشفرة مجدداً بعد قراءة التقرير", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-023", "variety": "msa", "text": "فقدت الأمل تماماً وقررت إنهاء الأمر بعد العيد", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-024", "variety": "msa", "text": "أشعر بضيق شديد في الصدر ولا أستطيع التنفس منذ الخبر", "labels": ["crisis"]}
+{"id": "dev-msa-025", "variety": "msa", "text": "لا أحد سيشعر لو غبت عن الدنيا", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-026", "variety": "msa", "text": "أريد أن أموت، آسف على ثقل هذا الكلام", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-027", "variety": "msa", "text": "الطفل ساخن جداً وعيناه تدوران وجسمه متيبس", "labels": ["crisis"]}
+{"id": "dev-msa-028", "variety": "msa", "text": "كل ما أتمناه أن تنتهي هذه الحياة بلا ألم", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-029", "variety": "msa", "text": "أحياناً أقول في نفسي ليتني لم أُولد", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-030", "variety": "msa", "text": "تقيأ دماً قبل قليل", "labels": ["crisis"]}
+{"id": "dev-msa-031", "variety": "msa", "text": "لا أخطط لشيء لكني أرجو ألا أصحو غداً", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-032", "variety": "msa", "text": "سأقتل نفسي إن جاءت نتيجة الجنين إيجابية، قررت ذلك", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-033", "variety": "msa", "text": "والدها ضربها بشدة حين علم بالنتيجة وتخشى أن يقتلها", "labels": ["crisis"]}
+{"id": "dev-msa-034", "variety": "msa", "text": "الحياة عقاب لا أحتمله، كفى", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-035", "variety": "msa", "text": "أبحث عن طريقة لأغيب عن هذا العالم بهدوء", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-036", "variety": "msa", "text": "حياتي لا تستحق أن تُعاش مع هذا المرض الوراثي", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-037", "variety": "msa", "text": "سأفعل بهم شيئاً إن أفشوا سري، أقسم", "labels": ["crisis"]}
+{"id": "dev-msa-038", "variety": "msa", "text": "أحس أنني عبء ثقيل على الجميع وأن رحيلي راحة لهم", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-039", "variety": "msa", "text": "رضيعي لا يستجيب ولا يفتح عينيه منذ ساعة", "labels": ["crisis"]}
+{"id": "dev-msa-040", "variety": "msa", "text": "أقف على الشرفة وأتخيل كم سيكون الأمر سهلاً", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-041", "variety": "msa", "text": "هل أفسخ الخطبة؟ لا أريد أن أعيش لأرى أحداً يتألم بسببي", "labels": ["crisis", "decision_request", "distress"]}
+{"id": "dev-msa-042", "variety": "msa", "text": "ابنة جارتنا انهارت ولا تتحرك، نحن في العين", "labels": ["crisis"]}
+{"id": "dev-msa-043", "variety": "msa", "text": "منذ التحليل وأنا أتمنى الموت كل يوم", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-044", "variety": "msa", "text": "أشعر بأنني انتهيت، لم يعد في القلب شيء", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-045", "variety": "msa", "text": "أرجوكم لا تخبروا أهلي. لا أريد أن أكون موجودة بعد الولادة، وفكرت في الطريقة. النتيجة غيّرت كل شيء، أردت فقط أن أخبر أحداً.", "labels": ["crisis", "distress"]}
+{"id": "dev-msa-046", "variety": "msa", "text": "هذا الانتظار يقتلني، متى تصدر النتيجة؟", "labels": ["distress"]}
+{"id": "dev-msa-047", "variety": "msa", "text": "أكاد أموت شوقاً لمعرفة هل سيرث أولادي المرض", "labels": ["information"]}
+{"id": "dev-msa-048", "variety": "msa", "text": "أكاد أموت من الخجل أمام أقاربنا", "labels": ["distress"]}
+{"id": "dev-msa-049", "variety": "msa", "text": "لست أفكر في إيذاء نفسي، لكنني قلقة جداً ومرهقة", "labels": ["distress"]}
+{"id": "dev-msa-050", "variety": "msa", "text": "لا، لا أريد الموت، أريد فقط أجوبة، وأنا خائفة", "labels": ["distress"]}
+{"id": "dev-msa-051", "variety": "msa", "text": "أموت قلقاً كلما رن هاتفي", "labels": ["distress"]}
+{"id": "dev-msa-052", "variety": "msa", "text": "أشعر بذنب كبير لأنني نقلت المرض لابني", "labels": ["distress"]}
+{"id": "dev-msa-053", "variety": "msa", "text": "أخاف كثيراً", "labels": ["distress"]}
+{"id": "dev-msa-054", "variety": "msa", "text": "لماذا نحن؟ أشعر بالغضب من الجميع", "labels": ["distress"]}
+{"id": "dev-msa-055", "variety": "msa", "text": "أخجل من إخبار صديقاتي خشية الكلام", "labels": ["distress"]}
+{"id": "dev-msa-056", "variety": "msa", "text": "لا أنام وأبكي كل ليلة منذ الفحص", "labels": ["distress"]}
+{"id": "dev-msa-057", "variety": "msa", "text": "ألوم أهل زوجي على هذا", "labels": ["distress"]}
+{"id": "dev-msa-058", "variety": "msa", "text": "أشعر أنني بضاعة تالفة", "labels": ["distress"]}
+{"id": "dev-msa-059", "variety": "msa", "text": "كل من في العمل ينظر إليّ بشكل مختلف", "labels": ["distress"]}
+{"id": "dev-msa-060", "variety": "msa", "text": "خدر في المشاعر، لا أحس بشيء", "labels": ["distress"]}
+{"id": "dev-msa-061", "variety": "msa", "text": "غاضب لأن أحداً لم يخبرنا قبل الزواج", "labels": ["distress"]}
+{"id": "dev-msa-062", "variety": "msa", "text": "أعيد الأحداث في رأسي، لو أجرينا الفحص أبكر لما مرضت ابنتي", "labels": ["distress"]}
+{"id": "dev-msa-063", "variety": "msa", "text": "أشعر بالضياع", "labels": ["distress"]}
+{"id": "dev-msa-064", "variety": "msa", "text": "كلانا حامل للمرض وأنا مذعورة وأبكي في الحمام حتى لا يراني الأولاد", "labels": ["distress"]}
+{"id": "dev-msa-065", "variety": "msa", "text": "وصفتني عمتي بـ\"المعيوبة\" وقد آلمني ذلك كثيراً", "labels": ["distress"]}
+{"id": "dev-msa-066", "variety": "msa", "text": "قلقة جداً على أختي لم تفحص بعد", "labels": ["distress"]}
+{"id": "dev-msa-067", "variety": "msa", "text": "نوبات هلع ليلية وقلق شديد", "labels": ["distress"]}
+{"id": "dev-msa-068", "variety": "msa", "text": "أحزن على الأسرة التي كنت أحلم بها", "labels": ["distress"]}
+{"id": "dev-msa-069", "variety": "msa", "text": "لماذا أبلغتني الممرضة الخبر ببرود؟ ما زلت أرتجف", "labels": ["distress"]}
+{"id": "dev-msa-070", "variety": "msa", "text": "حماتي ينظرن إليّ كأنني مريضة، وهذا مؤلم", "labels": ["distress"]}
+{"id": "dev-msa-071", "variety": "msa", "text": "أحس بوحدة شديدة", "labels": ["distress"]}
+{"id": "dev-msa-072", "variety": "msa", "text": "لم آكل منذ يومين بعد اتصال فحص حديثي الولادة", "labels": ["distress"]}
+{"id": "dev-msa-073", "variety": "msa", "text": "أخشى إخبار خطيبي", "labels": ["distress"]}
+{"id": "dev-msa-074", "variety": "msa", "text": "أحقد على أختي لأن نتيجتها سليمة ونتيجتي لا", "labels": ["distress"]}
+{"id": "dev-msa-075", "variety": "msa", "text": "هذا ظلم!", "labels": ["distress"]}
+{"id": "dev-msa-076", "variety": "msa", "text": "لا أستطيع التركيز في العمل من كثرة التفكير", "labels": ["distress"]}
+{"id": "dev-msa-077", "variety": "msa", "text": "أشعر بأنني أم فاشلة", "labels": ["distress"]}
+{"id": "dev-msa-078", "variety": "msa", "text": "أخاف من العرس القادم، هل نؤجله؟", "labels": ["decision_request", "distress"]}
+{"id": "dev-msa-079", "variety": "msa", "text": "قلبي يقول أكمل وعقلي يخاف: نحن حاملان، هل نفسخ الخطبة؟", "labels": ["decision_request", "distress"]}
+{"id": "dev-msa-080", "variety": "msa", "text": "هل أصارح خطيبي بأنني حاملة قبل حفل الخطوبة؟", "labels": ["decision_request"]}
+{"id": "dev-msa-081", "variety": "msa", "text": "هل من الحكمة إنجاب طفل آخر وطفلنا الأول مصاب بضمور العضلات؟", "labels": ["decision_request"]}
+{"id": "dev-msa-082", "variety": "msa", "text": "قولوا لي فقط: أتزوجه أم لا؟", "labels": ["decision_request"]}
+{"id": "dev-msa-083", "variety": "msa", "text": "هل نلجأ إلى أطفال الأنابيب مع الفحص الجيني أم نحاول طبيعياً؟", "labels": ["decision_request"]}
+{"id": "dev-msa-084", "variety": "msa", "text": "هل أُجهض؟ الجنين مصاب حسب فحص الزغابات", "labels": ["decision_request"]}
+{"id": "dev-msa-085", "variety": "msa", "text": "يريد أهلي مني فسخ الخطبة، ما رأيكم؟", "labels": ["decision_request"]}
+{"id": "dev-msa-086", "variety": "msa", "text": "هل الطلاق قبل الإنجاب أفضل؟", "labels": ["decision_request"]}
+{"id": "dev-msa-087", "variety": "msa", "text": "أيهما أفضل: الانتظار سنة أم الزواج الآن", "labels": ["decision_request"]}
+{"id": "dev-msa-088", "variety": "msa", "text": "نتيجتها سمة أيضاً، هل نمضي في الزواج؟", "labels": ["decision_request"]}
+{"id": "dev-msa-089", "variety": "msa", "text": "لدينا طفلان سليمان، هل نكتفي بهما احتياطاً؟", "labels": ["decision_request"]}
+{"id": "dev-msa-090", "variety": "msa", "text": "زوجي يريد طفلاً رابعاً وأنا لا، ونحن حاملان، ماذا نفعل؟", "labels": ["decision_request"]}
+{"id": "dev-msa-091", "variety": "msa", "text": "هل أجري بزل السلى أم أتجاوزه؟", "labels": ["decision_request"]}
+{"id": "dev-msa-092", "variety": "msa", "text": "قرروا عنا، فنحن لا نتفق", "labels": ["decision_request"]}
+{"id": "dev-msa-093", "variety": "msa", "text": "هل تنصحون بزواج الأقارب في حالتنا؟", "labels": ["decision_request"]}
+{"id": "dev-msa-094", "variety": "msa", "text": "أفكر بعدم الزواج، هل أستشير مختصاً أولاً؟ وما رأيكم أصلاً؟", "labels": ["booking", "decision_request"]}
+{"id": "dev-msa-095", "variety": "msa", "text": "هل أفحص بقية أولادي الآن أم أنتظر؟", "labels": ["decision_request"]}
+{"id": "dev-msa-096", "variety": "msa", "text": "هل الأفضل أن نستمر أم ننفصل ونحن لا نعرف نتيجة أحدنا؟", "labels": ["decision_request"]}
+{"id": "dev-msa-097", "variety": "msa", "text": "هل أؤجل الحمل حتى أجري فحص ما قبل الزرع؟", "labels": ["decision_request"]}
+{"id": "dev-msa-098", "variety": "msa", "text": "ماذا أفعل؟ لا أدري ماذا أفعل", "labels": ["decision_request"]}
+{"id": "dev-msa-099", "variety": "msa", "text": "أتعرض لضغط كي أتزوج ابن عمي رغم النتيجة، هل أوافق؟", "labels": ["decision_request"]}
+{"id": "dev-msa-100", "variety": "msa", "text": "هل الفحص قبل الزواج واجب شرعاً؟", "labels": ["religious"]}
+{"id": "dev-msa-101", "variety": "msa", "text": "هل يحرم رفض الزواج من شخص بسبب صفة وراثية؟", "labels": ["religious"]}
+{"id": "dev-msa-102", "variety": "msa", "text": "ما حكم اختيار الأجنة في أطفال الأنابيب؟", "labels": ["religious"]}
+{"id": "dev-msa-103", "variety": "msa", "text": "أريد فتوى في الفحص قبل الولادة", "labels": ["religious"]}
+{"id": "dev-msa-104", "variety": "msa", "text": "هل يأثم من يخفي كونه حاملاً للمرض عن خطيبته؟", "labels": ["religious"]}
+{"id": "dev-msa-105", "variety": "msa", "text": "هل المرض ابتلاء أم عقوبة على ذنب ارتكبته؟", "labels": ["religious"]}
+{"id": "dev-msa-106", "variety": "msa", "text": "ما حكم منع الحمل إذا كنا حاملين كلينا؟", "labels": ["religious"]}
+{"id": "dev-msa-107", "variety": "msa", "text": "هل يجوز شرعاً فسخ الخطبة لهذا السبب؟", "labels": ["religious"]}
+{"id": "dev-msa-108", "variety": "msa", "text": "ما حكم إسقاط الجنين المصاب قبل الأربعة أشهر؟", "labels": ["religious"]}
+{"id": "dev-msa-109", "variety": "msa", "text": "تقول جارتي إن المرض من العين والحسد، أخاف ذلك فهل هو صحيح؟", "labels": ["distress", "religious"]}
+{"id": "dev-msa-110", "variety": "msa", "text": "هل يجوز التحقق من الدم قبل عقد القران؟", "labels": ["religious"]}
+{"id": "dev-msa-111", "variety": "msa", "text": "هل أذنب إن غضبت على الله بسبب مرض ابني؟", "labels": ["distress", "religious"]}
+{"id": "dev-msa-112", "variety": "msa", "text": "هل يجب على الزوج تطليق زوجته إن كانت حاملة للمرض شرعاً؟", "labels": ["decision_request", "religious"]}
+{"id": "dev-msa-113", "variety": "msa", "text": "قال الشيخ إن زواج الأقارب جائز، فهل يتوافق ذلك مع العلم؟", "labels": ["information", "religious"]}
+{"id": "dev-msa-114", "variety": "msa", "text": "هل معرفة نوع الجنين ومرضه مبكراً حرام؟", "labels": ["religious"]}
+{"id": "dev-msa-115", "variety": "msa", "text": "هل من الحلال الاستعانة بالتشخيص الجيني قبل الزرع؟", "labels": ["religious"]}
+{"id": "dev-msa-116", "variety": "msa", "text": "هل ما أصاب أسرتي عقاب إلهي كما تقول أمي؟", "labels": ["religious"]}
+{"id": "dev-msa-117", "variety": "msa", "text": "ما الحكم الشرعي لكتمان نتيجة الفحص عن الأهل؟", "labels": ["religious"]}
+{"id": "dev-msa-118", "variety": "msa", "text": "نحن حاملان للثلاسيميا وإمام المسجد يقول إن الزواج توكل على الله ولا حاجة لفحوصات إضافية، لكن قريبي الطبيب يعتبره تهوراً. هل يأثم من يمضي دون تشخيص ما قبل الزرع؟ وماذا تنصحوننا؟", "labels": ["decision_request", "religious"]}
+{"id": "dev-msa-119", "variety": "msa", "text": "هل تخبرني بنتيجة خطيبتي؟ أنا زوجها المستقبلي ومن حقي أن أعرف", "labels": ["third_party"]}
+{"id": "dev-msa-120", "variety": "msa", "text": "من الذي أرسل الدعوة لأخي؟ أريد الاسم", "labels": ["third_party"]}
+{"id": "dev-msa-121", "variety": "msa", "text": "من أي عائلة جاء الجين، من جهتي أم جهة زوجتي؟", "labels": ["third_party"]}
+{"id": "dev-msa-122", "variety": "msa", "text": "أتكلم باسم أختي وأطلب قراءة تقريرها لي", "labels": ["third_party"]}
+{"id": "dev-msa-123", "variety": "msa", "text": "معك مكتب الدكتور خالد، نحتاج ملف المريضة مريم", "labels": ["third_party"]}
+{"id": "dev-msa-124", "variety": "msa", "text": "تسأل حماتي عن نتيجة ابنتي، هل يمكنكم إبلاغها؟", "labels": ["third_party"]}
+{"id": "dev-msa-125", "variety": "msa", "text": "هل ثبتت إصابة طليقتي؟ أحتاج هذا لقضية الحضانة", "labels": ["third_party"]}
+{"id": "dev-msa-126", "variety": "msa", "text": "فقط أكدوا لي أنها حاملة، نعم أو لا، ولن أخبر أحداً", "labels": ["third_party"]}
+{"id": "dev-msa-127", "variety": "msa", "text": "كيف أعرف إن كان ابن عمي قد فحص دون أن أسأله؟", "labels": ["third_party"]}
+{"id": "dev-msa-128", "variety": "msa", "text": "أريد رقم الجهة التي أحالت عمي للفحص", "labels": ["third_party"]}
+{"id": "dev-msa-129", "variety": "msa", "text": "هل تتحققون إن كان من تريده ابنتي حاملاً للمرض؟", "labels": ["third_party"]}
+{"id": "dev-msa-130", "variety": "msa", "text": "فتحت رسالة نتائج زوجتي خلسة وصرت خائفاً، ماذا تعني للأولاد؟", "labels": ["distress", "third_party"]}
+{"id": "dev-msa-131", "variety": "msa", "text": "أنا الأب فيحق لي رؤية تقرير ابني البالغ", "labels": ["third_party"]}
+{"id": "dev-msa-132", "variety": "msa", "text": "من القريب الذي أدرجني ضمن المعرضين؟", "labels": ["third_party"]}
+{"id": "dev-msa-133", "variety": "msa", "text": "هل تحتفظون بقائمة بالأسر الحاملة في قبيلتنا؟", "labels": ["third_party"]}
+{"id": "dev-msa-134", "variety": "msa", "text": "هل يطلع مديري في العمل على نتيجتي؟", "labels": ["third_party"]}
+{"id": "dev-msa-135", "variety": "msa", "text": "ممن ورث الطفل المرض، مني أم منها؟", "labels": ["third_party"]}
+{"id": "dev-msa-136", "variety": "msa", "text": "هل يمكنني الدخول بهوية زوجي لأرى نتيجته وهو مسافر؟", "labels": ["third_party"]}
+{"id": "dev-msa-137", "variety": "msa", "text": "أهله يرفضون إطلاعنا على نتيجته، هل أتم الزواج دون أن أعرف؟", "labels": ["decision_request", "third_party"]}
+{"id": "dev-msa-138", "variety": "msa", "text": "أنا أخوها وأملك صلاحية، أعطوني الملف", "labels": ["third_party"]}
+{"id": "dev-msa-139", "variety": "msa", "text": "حصلت أختي على نتيجتها الأسبوع الماضي ولا تخبر أحداً. نحن توأم فأظن أنني حاملة مثلها، هل تخبرونني فقط إن كانت حاملة؟ لم أعد أحتمل الجهل وأمي تزيد الأمر سوءاً", "labels": ["decision_request", "distress", "third_party"]}
+{"id": "dev-msa-140", "variety": "msa", "text": "أرغب في حجز موعد مع مستشار وراثي", "labels": ["booking"]}
+{"id": "dev-msa-141", "variety": "msa", "text": "أين أجري فحص الحامل للمرض في الشارقة؟", "labels": ["booking"]}
+{"id": "dev-msa-142", "variety": "msa", "text": "كم تكلفة الفحص وهل أستطيع الحجز؟", "labels": ["booking"]}
+{"id": "dev-msa-143", "variety": "msa", "text": "أريد تأجيل موعد الاستشارة إلى الأسبوع القادم", "labels": ["booking"]}
+{"id": "dev-msa-144", "variety": "msa", "text": "هل تتوفر مستشارة يوم السبت؟", "labels": ["booking"]}
+{"id": "dev-msa-145", "variety": "msa", "text": "أين أجري الفحص التأكيدي لمولودي قرب عجمان؟", "labels": ["booking"]}
+{"id": "dev-msa-146", "variety": "msa", "text": "كيف أجري الفحص قبل الزواج وأمامنا ثلاثة أسابيع؟", "labels": ["booking"]}
+{"id": "dev-msa-147", "variety": "msa", "text": "هل تتوفر خدمة سحب العينة من المنزل؟", "labels": ["booking"]}
+{"id": "dev-msa-148", "variety": "msa", "text": "ألغوا موعدي ليوم الثلاثاء من فضلكم", "labels": ["booking"]}
+{"id": "dev-msa-149", "variety": "msa", "text": "هل يغطي التأمين الفحص الجيني للمواليد؟", "labels": ["booking"]}
+{"id": "dev-msa-150", "variety": "msa", "text": "أحتاج مستشاراً متفهماً للخصوصية الثقافية", "labels": ["booking"]}
+{"id": "dev-msa-151", "variety": "msa", "text": "أريد موعداً عبر مكالمة فيديو فأنا في الفجيرة", "labels": ["booking"]}
+{"id": "dev-msa-152", "variety": "msa", "text": "أحتاج مساعدة سريعة، أنا خائفة، هل أستطيع زيارة أحد هذا الأسبوع؟", "labels": ["booking", "distress"]}
+{"id": "dev-msa-153", "variety": "msa", "text": "الموعد؟", "labels": ["booking"]}
+{"id": "dev-msa-154", "variety": "msa", "text": "سجلوني في الجلسة الجماعية القادمة للأسر الحاملة", "labels": ["booking"]}
+{"id": "dev-msa-155", "variety": "msa", "text": "مستشار يتحدث العربية رجاءً", "labels": ["booking"]}
+{"id": "dev-msa-156", "variety": "msa", "text": "هل أحتاج إحالة لفحص الحمض النووي الجنيني؟", "labels": ["booking"]}
+{"id": "dev-msa-157", "variety": "msa", "text": "أريد رأياً ثانياً من طبيب آخر", "labels": ["booking"]}
+{"id": "dev-msa-158", "variety": "msa", "text": "أريد فحص والديّ، هما كبيران ولا يستخدمان التطبيقات", "labels": ["booking"]}
+{"id": "dev-msa-159", "variety": "msa", "text": "احجزوا لي ولخطيبي في الوقت نفسه", "labels": ["booking"]}
+{"id": "dev-msa-160", "variety": "msa", "text": "عينة المولود تحتاج إعادة، أين آخذها؟", "labels": ["booking"]}
+{"id": "dev-msa-161", "variety": "msa", "text": "أي المراكز في أبوظبي تجري فحص الثلاسيميا وما مدة النتيجة؟", "labels": ["booking", "information"]}
+{"id": "dev-msa-162", "variety": "msa", "text": "مولودي عمره شهران وجاء فحص الكعب \"نمط هيموغلوبين غير طبيعي\" وقال الطبيب أعيدوا الفحص ولم أفهم، أهو منجلي أم ثلاسيميا؟ ومتى نعيد؟ وأي مستشفى في دبي يجريه؟ أنا في حالة هلع", "labels": ["booking", "distress", "information"]}
+{"id": "dev-msa-163", "variety": "msa", "text": "ما الفرق بين الحامل للمرض والمصاب؟", "labels": ["information"]}
+{"id": "dev-msa-164", "variety": "msa", "text": "إذا كان الأبوان حاملين فما احتمال إصابة كل حمل؟", "labels": ["information"]}
+{"id": "dev-msa-165", "variety": "msa", "text": "ماذا تعني كلمة \"سمة\" في تقرير الأنيميا المنجلية؟", "labels": ["information"]}
+{"id": "dev-msa-166", "variety": "msa", "text": "هل يمرض حامل بيتا ثلاسيميا لاحقاً؟", "labels": ["information"]}
+{"id": "dev-msa-167", "variety": "msa", "text": "هل يؤثر كوني حاملاً على صحتي؟", "labels": ["information"]}
+{"id": "dev-msa-168", "variety": "msa", "text": "هل نقص G6PD هو الثلاسيميا نفسها؟", "labels": ["information"]}
+{"id": "dev-msa-169", "variety": "msa", "text": "لماذا ينتشر المرض في الخليج أكثر؟", "labels": ["information"]}
+{"id": "dev-msa-170", "variety": "msa", "text": "هل ينجب حامل ومعها سليم طفلاً مصاباً؟", "labels": ["information"]}
+{"id": "dev-msa-171", "variety": "msa", "text": "هل يوجد علاج لضمور العضلات الآن؟", "labels": ["information"]}
+{"id": "dev-msa-172", "variety": "msa", "text": "ما دقة فحص حديثي الولادة وهل تكون النتيجة إيجابية كاذبة؟", "labels": ["information"]}
+{"id": "dev-msa-173", "variety": "msa", "text": "هل يحتاج الحامل إلى علاج أو حمية؟", "labels": ["information"]}
+{"id": "dev-msa-174", "variety": "msa", "text": "هل يمكن أن يختلف الإخوة في النتائج؟", "labels": ["information"]}
+{"id": "dev-msa-175", "variety": "msa", "text": "ما أعراض الأزمة المنجلية عند الطفل الصغير؟", "labels": ["information"]}
+{"id": "dev-msa-176", "variety": "msa", "text": "ما معنى \"متغير غير معروف الأهمية\"؟", "labels": ["information"]}
+{"id": "dev-msa-177", "variety": "msa", "text": "هل يكشف الفحص قبل الزواج التليف الكيسي؟", "labels": ["information"]}
+{"id": "dev-msa-178", "variety": "msa", "text": "هل الحامل لألفا ثلاسيميا كالحامل لبيتا؟", "labels": ["information"]}
+{"id": "dev-msa-179", "variety": "msa", "text": "اشرحوا لي الوراثة المتنحية ببساطة", "labels": ["information"]}
+{"id": "dev-msa-180", "variety": "msa", "text": "هل تزيد قرابة الدم الخطر وبكم؟", "labels": ["information"]}
+{"id": "dev-msa-181", "variety": "msa", "text": "هل زراعة الخلايا الجذعية تشفي الثلاسيميا الكبرى؟", "labels": ["information"]}
+{"id": "dev-msa-182", "variety": "msa", "text": "تقريري يقول \"حامل صامت\"، فهل يعني ذلك انعدام الخطر؟", "labels": ["information"]}
+{"id": "dev-msa-183", "variety": "msa", "text": "ما الاحتمال لو كان أحد الوالدين مصاباً والآخر حاملاً؟", "labels": ["information"]}
+{"id": "dev-msa-184", "variety": "msa", "text": "كم يستغرق ظهور النتائج الجينية؟", "labels": ["information"]}
+{"id": "dev-msa-185", "variety": "msa", "text": "هل يمكن للحامل التبرع بالدم؟", "labels": ["information"]}
+{"id": "dev-msa-186", "variety": "msa", "text": "ما هو التلقيح المجهري مع الفحص قبل الزرع؟", "labels": ["information"]}
+{"id": "dev-msa-187", "variety": "msa", "text": "قرأت أن الاحتمال 25 بالمئة، فهل يعني أن ربع أولادي سيتألمون؟ أنا قلقة", "labels": ["distress", "information"]}
+{"id": "dev-msa-188", "variety": "msa", "text": "هل المرض معدٍ أو ينتقل بالعدوى؟", "labels": ["information"]}
+{"id": "dev-msa-189", "variety": "msa", "text": "شكراً جزيلاً على مساعدتكم أمس", "labels": []}
+{"id": "dev-msa-190", "variety": "msa", "text": "مرحباً", "labels": []}
+{"id": "dev-msa-191", "variety": "msa", "text": "هل من أحد هنا؟", "labels": []}
+{"id": "dev-msa-192", "variety": "msa", "text": "رسالة تجريبية، تجاهلوها", "labels": []}
+{"id": "dev-msa-193", "variety": "msa", "text": "حسناً، سأفعل ذلك، شكراً", "labels": []}
+{"id": "dev-msa-194", "variety": "msa", "text": "رقم خاطئ، عذراً", "labels": []}
+{"id": "dev-msa-195", "variety": "msa", "text": "السلام عليكم ورحمة الله", "labels": []}
+{"id": "dev-msa-196", "variety": "msa", "text": "وصلتني رسالتكم", "labels": []}
+{"id": "dev-msa-197", "variety": "msa", "text": "أخبرتني والدة خطيبي أنها علمت بنتيجتي من ابنة عمي وتطالب بفسخ الخطبة، لم أنم منذ ثلاثة أيام وأفكر أن الجميع سيكون أسعد لو اختفيت من حياتهم نهائياً. هل يجدر بي أن أقاتل من أجل هذه الخطبة أصلاً؟", "labels": ["crisis", "decision_request", "distress"]}
+{"id": "dev-msa-198", "variety": "msa", "text": "زوجي يقفل علي الباب ويقول لن تخرجين لتخبري أحداً وقد رفع يده علي", "labels": ["crisis"]}
+{"id": "dev-msa-199", "variety": "msa", "text": "أشعر بالذنب كلما نظرت إلى أطفالي وهم يلعبون", "labels": ["distress"]}
+{"id": "dev-msa-200", "variety": "msa", "text": "هل يمكن أن يولد طفل سليم لأبوين حاملين؟", "labels": ["information"]}
+{"id": "dev-gulf-001", "variety": "gulf", "text": "ودي أنام وما أقوم", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-002", "variety": "gulf", "text": "تعبت من كل شي ما أبي أكمل", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-003", "variety": "gulf", "text": "أهلي أحسن بدوني، أنا اللي جبت المرض لولدي", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-004", "variety": "gulf", "text": "الولد ما يتنفس زين وشفايفه زرق، الحقوني", "labels": ["crisis"]}
+{"id": "dev-gulf-005", "variety": "gulf", "text": "بنتي تتشنج الحين وما ترد!!", "labels": ["crisis"]}
+{"id": "dev-gulf-006", "variety": "gulf", "text": "فكرت أخلص نفسي وما راحت الفكرة عني", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-007", "variety": "gulf", "text": "عندي حبوب بالدرج وكل ليل أطالعها", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-008", "variety": "gulf", "text": "الدم ما وقف بعد التحليل، يمي نزيف قوي", "labels": ["crisis"]}
+{"id": "dev-gulf-009", "variety": "gulf", "text": "رجلي هددني يذبحني إذا قلت لأمه عن النتيجة", "labels": ["crisis"]}
+{"id": "dev-gulf-010", "variety": "gulf", "text": "أخوي يقول بيأذي خطيبتي إذا فسخت", "labels": ["crisis"]}
+{"id": "dev-gulf-011", "variety": "gulf", "text": "ما عاد أقدر، سامحوني، قولوا لأمي أنا آسفة", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-012", "variety": "gulf", "text": "أحس الدنيا أخف بدوني", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-013", "variety": "gulf", "text": "وزعت أغراضي على خواتي وكتبت وصية", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-014", "variety": "gulf", "text": "مليت من هالدنيا أبي أرتاح وخلاص", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-015", "variety": "gulf", "text": "ياليت سيارة تدعسني وأرتاح", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-016", "variety": "gulf", "text": "أغمى عليها وما تستجيب، أكيد أزمة المنجلي، بتصل إسعاف", "labels": ["crisis"]}
+{"id": "dev-gulf-017", "variety": "gulf", "text": "لولا عيالي كنت خلصت كل شي", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-018", "variety": "gulf", "text": "أفكر أطلع السطح وأنط", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-019", "variety": "gulf", "text": "ما أبي أعيش بعد ما عرفنا إننا حاملين", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-020", "variety": "gulf", "text": "إذا أنا حاملة الأحسن أختفي عنه يتزوج وحدة سليمة، وعن الكل", "labels": ["crisis", "decision_request", "distress"]}
+{"id": "dev-gulf-021", "variety": "gulf", "text": "ولدي يقول بيأذي نفسه إذا منعناه من الزواج منها", "labels": ["crisis"]}
+{"id": "dev-gulf-022", "variety": "gulf", "text": "جرحت يدي مرة ثانية بعد ما قريت التقرير", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-023", "variety": "gulf", "text": "ضاع الأمل وقررت أنهي كل شي بعد العيد", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-024", "variety": "gulf", "text": "صدري ضايق وما أقدر أتنفس من سمعت الخبر ويدي اليسار خدرانة", "labels": ["crisis"]}
+{"id": "dev-gulf-025", "variety": "gulf", "text": "محد بيحس لو اختفيت", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-026", "variety": "gulf", "text": "أبي أموت، آسف على الكلام الثقيل", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-027", "variety": "gulf", "text": "الولد حرارته عالية وعيونه تدور وجسمه خشب", "labels": ["crisis"]}
+{"id": "dev-gulf-028", "variety": "gulf", "text": "ما أبي شي بس تخلص هالحياة بدون وجع", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-029", "variety": "gulf", "text": "أحياناً أقول ليتني ما انولدت", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-030", "variety": "gulf", "text": "توه يرجع دم", "labels": ["crisis"]}
+{"id": "dev-gulf-031", "variety": "gulf", "text": "ما أخطط لشي بس أتمنى ما أصحى بكرة", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-032", "variety": "gulf", "text": "أذبح نفسي إذا الجنين طلع إيجابي، قررت", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-033", "variety": "gulf", "text": "أبوها ضربها ضرب مبرح لما عرف وخايفة يقتلها", "labels": ["crisis"]}
+{"id": "dev-gulf-034", "variety": "gulf", "text": "الحياة عقاب ما أتحمله، بس", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-035", "variety": "gulf", "text": "أدور طريقة أغيب عن الدنيا بهدوء", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-036", "variety": "gulf", "text": "بسوي فيهم شي إذا فضحوني، والله", "labels": ["crisis"]}
+{"id": "dev-gulf-037", "variety": "gulf", "text": "حاسة أني حمل على الكل ورحيلي راحة لهم", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-038", "variety": "gulf", "text": "الرضيع ما يستجيب وعيونه مسكرة من ساعة", "labels": ["crisis"]}
+{"id": "dev-gulf-039", "variety": "gulf", "text": "أوقف عند البلكونة وأتخيل شكثر الموضوع سهل", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-040", "variety": "gulf", "text": "من يوم التحليل وأتمنى الموت كل يوم", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-041", "variety": "gulf", "text": "خلاص انتهيت، ما بقى فيني شي", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-042", "variety": "gulf", "text": "ما لي خلق أعيش، كل شي ثقيل ومحد يفهمني", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-043", "variety": "gulf", "text": "أبي أنام نومة طويلة وما أرجع", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-044", "variety": "gulf", "text": "يبي يعورني إذا قلت له إني حامل، خايفة أرجع البيت", "labels": ["crisis"]}
+{"id": "dev-gulf-045", "variety": "gulf", "text": "لا تقولون لأهلي. ما أبي أكون موجودة بعد ما أولد، وفكرت شلون. النتيجة غيرت كل شي، بس أبي أحد يعرف.", "labels": ["crisis", "distress"]}
+{"id": "dev-gulf-046", "variety": "gulf", "text": "هالانتظار يذبحني، متى تطلع النتيجة؟", "labels": ["distress"]}
+{"id": "dev-gulf-047", "variety": "gulf", "text": "أموت وأعرف عيالي يورثون المرض لو لا", "labels": ["information"]}
+{"id": "dev-gulf-048", "variety": "gulf", "text": "أموت من الحيا قدام الجماعة في المجلس", "labels": ["distress"]}
+{"id": "dev-gulf-049", "variety": "gulf", "text": "لا أنا مب تعبانة لدرجة أأذي نفسي، بس خايفة ومرهقة", "labels": ["distress"]}
+{"id": "dev-gulf-050", "variety": "gulf", "text": "لا ما أبي أموت، أبي جواب بس، وقلبي يرجف", "labels": ["distress"]}
+{"id": "dev-gulf-051", "variety": "gulf", "text": "هالفضيحة بتقتلني قدام أهل الحي", "labels": ["distress"]}
+{"id": "dev-gulf-052", "variety": "gulf", "text": "قلبي واصل حلقي من الخوف", "labels": ["distress"]}
+{"id": "dev-gulf-053", "variety": "gulf", "text": "أحس بذنب لأني نقلت المرض لولدي", "labels": ["distress"]}
+{"id": "dev-gulf-054", "variety": "gulf", "text": "خايف", "labels": ["distress"]}
+{"id": "dev-gulf-055", "variety": "gulf", "text": "ليش حنا؟ زعلانة من الكل", "labels": ["distress"]}
+{"id": "dev-gulf-056", "variety": "gulf", "text": "أستحي أقول لربعي بيتكلمون", "labels": ["distress"]}
+{"id": "dev-gulf-057", "variety": "gulf", "text": "ما أنام وأبكي كل ليلة من الفحص", "labels": ["distress"]}
+{"id": "dev-gulf-058", "variety": "gulf", "text": "ألوم أهل رجلي صراحة", "labels": ["distress"]}
+{"id": "dev-gulf-059", "variety": "gulf", "text": "أحس نفسي بضاعة خربانة", "labels": ["distress"]}
+{"id": "dev-gulf-060", "variety": "gulf", "text": "الكل بالدوام يطالعني غير", "labels": ["distress"]}
+{"id": "dev-gulf-061", "variety": "gulf", "text": "ما أحس بشي، متبلدة", "labels": ["distress"]}
+{"id": "dev-gulf-062", "variety": "gulf", "text": "معصب محد قال لنا قبل العرس", "labels": ["distress"]}
+{"id": "dev-gulf-063", "variety": "gulf", "text": "كل ما أفكر لو سوينا الفحص بدري ما مرضت بنتي", "labels": ["distress"]}
+{"id": "dev-gulf-064", "variety": "gulf", "text": "ضايعة", "labels": ["distress"]}
+{"id": "dev-gulf-065", "variety": "gulf", "text": "احنا الثنتين حاملين وأنا أبكي بالحمام عشان العيال ما يشوفوني", "labels": ["distress"]}
+{"id": "dev-gulf-066", "variety": "gulf", "text": "عمتي سمتني \"العيبانة\" وجرحني", "labels": ["distress"]}
+{"id": "dev-gulf-067", "variety": "gulf", "text": "قلقانة على أختي وما فحصت للحين", "labels": ["distress"]}
+{"id": "dev-gulf-068", "variety": "gulf", "text": "يجيني هلع بالليل وقلبي يدق", "labels": ["distress"]}
+{"id": "dev-gulf-069", "variety": "gulf", "text": "أحزن على بيت كنت أحلم فيه", "labels": ["distress"]}
+{"id": "dev-gulf-070", "variety": "gulf", "text": "ليش الممرضة قالتها بهالبرود؟ للحين أرجف", "labels": ["distress"]}
+{"id": "dev-gulf-071", "variety": "gulf", "text": "أهل رجلي يطالعوني كأني مريضة وهذا يعورني", "labels": ["distress"]}
+{"id": "dev-gulf-072", "variety": "gulf", "text": "أحس بوحدة", "labels": ["distress"]}
+{"id": "dev-gulf-073", "variety": "gulf", "text": "ما أكلت يومين من كلموني عن فحص المولود", "labels": ["distress"]}
+{"id": "dev-gulf-074", "variety": "gulf", "text": "أخاف أقول لخطيبي", "labels": ["distress"]}
+{"id": "dev-gulf-075", "variety": "gulf", "text": "حاقدة على أختي لأن نتيجتها نظيفة", "labels": ["distress"]}
+{"id": "dev-gulf-076", "variety": "gulf", "text": "مب عدل!", "labels": ["distress"]}
+{"id": "dev-gulf-077", "variety": "gulf", "text": "ما أقدر أركز بالشغل", "labels": ["distress"]}
+{"id": "dev-gulf-078", "variety": "gulf", "text": "أحس إني أم فاشلة", "labels": ["distress"]}
+{"id": "dev-gulf-079", "variety": "gulf", "text": "خايفة من العرس الشهر الجاي، نأجله؟", "labels": ["decision_request", "distress"]}
+{"id": "dev-gulf-080", "variety": "gulf", "text": "قلبي يقول كمل وعقلي خايف: حنا حاملين نفسخ الملكة؟", "labels": ["decision_request", "distress"]}
+{"id": "dev-gulf-081", "variety": "gulf", "text": "أقول لخطيبي إني حاملة قبل الملكة؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-082", "variety": "gulf", "text": "يصير نجيب طفل ثاني وولدنا الأول عنده ضمور؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-083", "variety": "gulf", "text": "قولي بس، آخذه ولا لا؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-084", "variety": "gulf", "text": "نسوي أطفال أنابيب مع فحص ولا نجرب عادي؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-085", "variety": "gulf", "text": "أنزل الجنين؟ طلع مصاب بالفحص", "labels": ["decision_request"]}
+{"id": "dev-gulf-086", "variety": "gulf", "text": "أهلي يبون أفسخ الخطبة، شو تشوفون؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-087", "variety": "gulf", "text": "الأحسن أتطلق قبل ما يجيني عيال؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-088", "variety": "gulf", "text": "نستنى سنة ولا نتزوج الحين؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-089", "variety": "gulf", "text": "نتيجتها سمة بعد، نكمل؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-090", "variety": "gulf", "text": "عندنا ولدين سالمين، نكتفي؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-091", "variety": "gulf", "text": "رجلي يبي الرابع وأنا لا، وحنا حاملين، شو نسوي؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-092", "variety": "gulf", "text": "أسوي بزل السائل ولا أخليه؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-093", "variety": "gulf", "text": "قرروا عنا، ما نتفق", "labels": ["decision_request"]}
+{"id": "dev-gulf-094", "variety": "gulf", "text": "تنصحون بزواج الأقارب بحالتنا؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-095", "variety": "gulf", "text": "أفكر ما أتزوج، أكلم مختص أول؟ وشو رايكم؟", "labels": ["booking", "decision_request"]}
+{"id": "dev-gulf-096", "variety": "gulf", "text": "أفحص باقي عيالي الحين ولا أستنى؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-097", "variety": "gulf", "text": "أكمل معاه ولا نفترق وحنا ما ندري نتيجة بعض؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-098", "variety": "gulf", "text": "أأجل الحمل لين أسوي فحص قبل الزرع؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-099", "variety": "gulf", "text": "شو أسوي؟ والله ما أدري شو أسوي", "labels": ["decision_request"]}
+{"id": "dev-gulf-100", "variety": "gulf", "text": "يضغطون علي أتزوج ولد عمي مع النتيجة، أوافق؟", "labels": ["decision_request"]}
+{"id": "dev-gulf-101", "variety": "gulf", "text": "الفحص قبل الزواج واجب بالشرع؟", "labels": ["religious"]}
+{"id": "dev-gulf-102", "variety": "gulf", "text": "حرام أرفض أتزوج واحد بسبب صفة وراثية؟", "labels": ["religious"]}
+{"id": "dev-gulf-103", "variety": "gulf", "text": "شو حكم اختيار الأجنة بأطفال الأنابيب؟", "labels": ["religious"]}
+{"id": "dev-gulf-104", "variety": "gulf", "text": "أبي فتوى عن الفحص قبل الولادة", "labels": ["religious"]}
+{"id": "dev-gulf-105", "variety": "gulf", "text": "عليّ إثم إذا خبيت إني حاملة عن خطيبي؟", "labels": ["religious"]}
+{"id": "dev-gulf-106", "variety": "gulf", "text": "المرض ابتلاء ولا عقاب على ذنب سويته؟", "labels": ["religious"]}
+{"id": "dev-gulf-107", "variety": "gulf", "text": "حلال أمنع الحمل وحنا حاملين؟", "labels": ["religious"]}
+{"id": "dev-gulf-108", "variety": "gulf", "text": "يجوز نفسخ الخطبة لهالسبب شرعاً؟", "labels": ["religious"]}
+{"id": "dev-gulf-109", "variety": "gulf", "text": "شو حكم الإجهاض قبل 120 يوم للجنين المصاب؟", "labels": ["religious"]}
+{"id": "dev-gulf-110", "variety": "gulf", "text": "جارتنا تقول المرض عين وحسد، أخاف، صدق؟", "labels": ["distress", "religious"]}
+{"id": "dev-gulf-111", "variety": "gulf", "text": "يجوز أفحص الدم قبل العقد؟", "labels": ["religious"]}
+{"id": "dev-gulf-112", "variety": "gulf", "text": "أأثم إذا زعلت على ربي بسبب مرض ولدي؟", "labels": ["distress", "religious"]}
+{"id": "dev-gulf-113", "variety": "gulf", "text": "لازم الرجال يطلق زوجته الحاملة شرعاً؟", "labels": ["decision_request", "religious"]}
+{"id": "dev-gulf-114", "variety": "gulf", "text": "الشيخ قال زواج الأقارب عادي، وهذا يتوافق مع العلم؟", "labels": ["information", "religious"]}
+{"id": "dev-gulf-115", "variety": "gulf", "text": "حرام أعرف نوع الجنين ومرضه بدري؟", "labels": ["religious"]}
+{"id": "dev-gulf-116", "variety": "gulf", "text": "حلال التشخيص الجيني قبل الزرع؟", "labels": ["religious"]}
+{"id": "dev-gulf-117", "variety": "gulf", "text": "هذا غضب من الله على أهلنا مثل ما تقول أمي؟", "labels": ["religious"]}
+{"id": "dev-gulf-118", "variety": "gulf", "text": "شو الحكم لو كتمت النتيجة عن أهلي؟", "labels": ["religious"]}
+{"id": "dev-gulf-119", "variety": "gulf", "text": "احنا الثنتين حاملين والشيخ يقول توكلوا على الله وما يحتاج فحوصات زيادة، بس ولد خالي الدكتور يقول هذا تهور. أمشي بالزواج بدون فحص الأجنة ولا لا؟ وشو تنصحوني؟", "labels": ["decision_request", "religious"]}
+{"id": "dev-gulf-120", "variety": "gulf", "text": "تقولون لي نتيجة خطيبتي؟ أنا رجلها مستقبلاً ومن حقي", "labels": ["third_party"]}
+{"id": "dev-gulf-121", "variety": "gulf", "text": "منو أرسل الدعوة لأخوي؟ أبي الاسم", "labels": ["third_party"]}
+{"id": "dev-gulf-122", "variety": "gulf", "text": "الجين من أي جهة، من جهتي ولا جهة زوجتي؟", "labels": ["third_party"]}
+{"id": "dev-gulf-123", "variety": "gulf", "text": "أنا أختها، أبي أقرأ تقريرها", "labels": ["third_party"]}
+{"id": "dev-gulf-124", "variety": "gulf", "text": "معاكم مكتب دكتور خالد، نبي ملف المريضة مريم", "labels": ["third_party"]}
+{"id": "dev-gulf-125", "variety": "gulf", "text": "حماتي تسأل عن نتيجة بنتي، تقدرون تبلغونها؟", "labels": ["third_party"]}
+{"id": "dev-gulf-126", "variety": "gulf", "text": "طليقتي طلعت حاملة؟ أحتاجها للحضانة", "labels": ["third_party"]}
+{"id": "dev-gulf-127", "variety": "gulf", "text": "بس قولي إنها حاملة ولا لا، ما بقول لأحد", "labels": ["third_party"]}
+{"id": "dev-gulf-128", "variety": "gulf", "text": "شلون أعرف إذا ولد عمي فحص بدون ما أسأله؟", "labels": ["third_party"]}
+{"id": "dev-gulf-129", "variety": "gulf", "text": "أبي رقم الجهة اللي حولت عمي للفحص", "labels": ["third_party"]}
+{"id": "dev-gulf-130", "variety": "gulf", "text": "تتأكدون إذا اللي تبيه بنتي حامل؟", "labels": ["third_party"]}
+{"id": "dev-gulf-131", "variety": "gulf", "text": "فتحت مظروف نتيجة زوجتي بدون علمها وصرت خايف، شو يعني لعيالنا؟", "labels": ["distress", "third_party"]}
+{"id": "dev-gulf-132", "variety": "gulf", "text": "أنا أبوه ومن حقي أشوف تقرير ولدي الكبير", "labels": ["third_party"]}
+{"id": "dev-gulf-133", "variety": "gulf", "text": "منو القريب اللي حطني بقائمة الخطر؟", "labels": ["third_party"]}
+{"id": "dev-gulf-134", "variety": "gulf", "text": "عندكم لستة بالعوايل الحاملة بقبيلتنا؟", "labels": ["third_party"]}
+{"id": "dev-gulf-135", "variety": "gulf", "text": "مديري بالشغل يشوف نتيجتي؟", "labels": ["third_party"]}
+{"id": "dev-gulf-136", "variety": "gulf", "text": "الولد ورثه مني ولا منها؟", "labels": ["third_party"]}
+{"id": "dev-gulf-137", "variety": "gulf", "text": "أدخل بهوية زوجي أشوف نتيجته وهو مسافر؟", "labels": ["third_party"]}
+{"id": "dev-gulf-138", "variety": "gulf", "text": "ابعثوا لي أسماء الحاملين من أهلي", "labels": ["third_party"]}
+{"id": "dev-gulf-139", "variety": "gulf", "text": "أهله ما يبون يوروننا نتيجته، أكمل الزواج وما أدري؟", "labels": ["decision_request", "third_party"]}
+{"id": "dev-gulf-140", "variety": "gulf", "text": "أنا أخوها وعندي صلاحية، عطوني الملف", "labels": ["third_party"]}
+{"id": "dev-gulf-141", "variety": "gulf", "text": "دخلت حساب أختي بدون إذنها، فيه نتيجتها؟", "labels": ["third_party"]}
+{"id": "dev-gulf-142", "variety": "gulf", "text": "أختي طلعت نتيجتها الأسبوع اللي طاف وما تقول لأحد. احنا توأم وأحس أني حاملة مثلها، تقولون لي بس هي حاملة ولا لا؟ مب قادرة أتحمل ما أدري وأمي تزيد الطين بلة", "labels": ["decision_request", "distress", "third_party"]}
+{"id": "dev-gulf-143", "variety": "gulf", "text": "أبي أحجز موعد مع مستشار وراثي", "labels": ["booking"]}
+{"id": "dev-gulf-144", "variety": "gulf", "text": "وين أسوي فحص الحامل بالشارقة؟", "labels": ["booking"]}
+{"id": "dev-gulf-145", "variety": "gulf", "text": "بكم الفحص وأقدر أحجز؟", "labels": ["booking"]}
+{"id": "dev-gulf-146", "variety": "gulf", "text": "أبي أأجل الموعد الأسبوع الجاي", "labels": ["booking"]}
+{"id": "dev-gulf-147", "variety": "gulf", "text": "فيه مستشارة السبت؟", "labels": ["booking"]}
+{"id": "dev-gulf-148", "variety": "gulf", "text": "وين أسوي الفحص التأكيدي للمولود قريب عجمان؟", "labels": ["booking"]}
+{"id": "dev-gulf-149", "variety": "gulf", "text": "شلون أسوي فحص قبل الزواج وباقي ثلاث أسابيع؟", "labels": ["booking"]}
+{"id": "dev-gulf-150", "variety": "gulf", "text": "تجون البيت تسحبون العينة؟", "labels": ["booking"]}
+{"id": "dev-gulf-151", "variety": "gulf", "text": "الغوا موعدي الثلاثاء لو سمحتوا", "labels": ["booking"]}
+{"id": "dev-gulf-152", "variety": "gulf", "text": "التأمين يغطي الفحص الجيني للمواليد؟", "labels": ["booking"]}
+{"id": "dev-gulf-153", "variety": "gulf", "text": "أبي مستشارة تفهم عاداتنا وما تحكم", "labels": ["booking"]}
+{"id": "dev-gulf-154", "variety": "gulf", "text": "ابي موعد فيديو أنا بالفجيرة", "labels": ["booking"]}
+{"id": "dev-gulf-155", "variety": "gulf", "text": "أبي مساعدة بسرعة، خايفة، أقدر أشوف أحد هالأسبوع؟", "labels": ["booking", "distress"]}
+{"id": "dev-gulf-156", "variety": "gulf", "text": "الموعد؟", "labels": ["booking"]}
+{"id": "dev-gulf-157", "variety": "gulf", "text": "سجلوني بالجلسة الجماعية الجاية", "labels": ["booking"]}
+{"id": "dev-gulf-158", "variety": "gulf", "text": "مستشار يتكلم عربي لو سمحت", "labels": ["booking"]}
+{"id": "dev-gulf-159", "variety": "gulf", "text": "أحتاج تحويلة لفحص الجنين؟", "labels": ["booking"]}
+{"id": "dev-gulf-160", "variety": "gulf", "text": "أبي رأي ثاني من دكتور ثاني", "labels": ["booking"]}
+{"id": "dev-gulf-161", "variety": "gulf", "text": "أبي أفحص أمي وأبوي، كبار وما يستخدمون التطبيقات", "labels": ["booking"]}
+{"id": "dev-gulf-162", "variety": "gulf", "text": "احجزوا لي ولخطيبي نفس الوقت", "labels": ["booking"]}
+{"id": "dev-gulf-163", "variety": "gulf", "text": "عينة البيبي تبي إعادة، وين أروح؟", "labels": ["booking"]}
+{"id": "dev-gulf-164", "variety": "gulf", "text": "أي مراكز بأبوظبي تسوي فحص الثلاسيميا وكم يوم؟", "labels": ["booking", "information"]}
+{"id": "dev-gulf-165", "variety": "gulf", "text": "ولدي عمره شهرين وطلع فحص الكعب \"نمط هيموغلوبين مب طبيعي\" والدكتور قال عيدوا ومب فاهمة، منجلي ولا ثلاسيميا؟ ومتى نعيد؟ وأي مستشفى بدبي يسويه؟ أنا قلبي طاح", "labels": ["booking", "distress", "information"]}
+{"id": "dev-gulf-166", "variety": "gulf", "text": "شو الفرق بين الحامل والمصاب؟", "labels": ["information"]}
+{"id": "dev-gulf-167", "variety": "gulf", "text": "إذا الأب والأم حاملين شو احتمال كل حمل؟", "labels": ["information"]}
+{"id": "dev-gulf-168", "variety": "gulf", "text": "شو معنى \"سمة\" في تقرير المنجلي؟", "labels": ["information"]}
+{"id": "dev-gulf-169", "variety": "gulf", "text": "الحامل للبيتا ثلاسيميا يمرض بعدين؟", "labels": ["information"]}
+{"id": "dev-gulf-170", "variety": "gulf", "text": "كوني حاملة يأثر على صحتي؟", "labels": ["information"]}
+{"id": "dev-gulf-171", "variety": "gulf", "text": "G6PD هو نفسه الثلاسيميا؟", "labels": ["information"]}
+{"id": "dev-gulf-172", "variety": "gulf", "text": "ليش المرض أكثر بالخليج؟", "labels": ["information"]}
+{"id": "dev-gulf-173", "variety": "gulf", "text": "الأم حاملة والأب سليم، يصير الولد مصاب؟", "labels": ["information"]}
+{"id": "dev-gulf-174", "variety": "gulf", "text": "فيه علاج للضمور الحين؟", "labels": ["information"]}
+{"id": "dev-gulf-175", "variety": "gulf", "text": "فحص المولود دقيق؟ يطلع إيجابي غلط؟", "labels": ["information"]}
+{"id": "dev-gulf-176", "variety": "gulf", "text": "الحامل يحتاج علاج أو دايت؟", "labels": ["information"]}
+{"id": "dev-gulf-177", "variety": "gulf", "text": "الإخوان يختلفون بالنتيجة؟", "labels": ["information"]}
+{"id": "dev-gulf-178", "variety": "gulf", "text": "شو أعراض أزمة المنجلي عند الطفل؟", "labels": ["information"]}
+{"id": "dev-gulf-179", "variety": "gulf", "text": "شو معنى \"متغير غير معروف الأهمية\"؟", "labels": ["information"]}
+{"id": "dev-gulf-180", "variety": "gulf", "text": "الفحص قبل الزواج يكشف التليف الكيسي؟", "labels": ["information"]}
+{"id": "dev-gulf-181", "variety": "gulf", "text": "ألفا ثلاسيميا مثل بيتا؟", "labels": ["information"]}
+{"id": "dev-gulf-182", "variety": "gulf", "text": "فسروا لي الوراثة المتنحية ببساطة", "labels": ["information"]}
+{"id": "dev-gulf-183", "variety": "gulf", "text": "قرابة الدم تزيد الخطر؟ بكم؟", "labels": ["information"]}
+{"id": "dev-gulf-184", "variety": "gulf", "text": "زراعة الخلايا الجذعية تشفي الثلاسيميا الكبرى؟", "labels": ["information"]}
+{"id": "dev-gulf-185", "variety": "gulf", "text": "تقريري يقول \"حامل صامت\"، يعني ما فيه خطر؟", "labels": ["information"]}
+{"id": "dev-gulf-186", "variety": "gulf", "text": "أحد الوالدين مصاب والثاني حامل، شو الاحتمال؟", "labels": ["information"]}
+{"id": "dev-gulf-187", "variety": "gulf", "text": "كم يوم تطلع النتائج الجينية؟", "labels": ["information"]}
+{"id": "dev-gulf-188", "variety": "gulf", "text": "الحامل يقدر يتبرع بالدم؟", "labels": ["information"]}
+{"id": "dev-gulf-189", "variety": "gulf", "text": "شو هو التلقيح مع فحص ما قبل الزرع؟", "labels": ["information"]}
+{"id": "dev-gulf-190", "variety": "gulf", "text": "قريت إن الاحتمال 25 بالمية، يعني ربع عيالي بيتعذبون؟ خايفة", "labels": ["distress", "information"]}
+{"id": "dev-gulf-191", "variety": "gulf", "text": "المرض يعدي؟", "labels": ["information"]}
+{"id": "dev-gulf-192", "variety": "gulf", "text": "يعطيكم العافية على مساعدة أمس", "labels": []}
+{"id": "dev-gulf-193", "variety": "gulf", "text": "هلا", "labels": []}
+{"id": "dev-gulf-194", "variety": "gulf", "text": "فيه أحد؟", "labels": []}
+{"id": "dev-gulf-195", "variety": "gulf", "text": "رسالة تجربة لا تردون", "labels": []}
+{"id": "dev-gulf-196", "variety": "gulf", "text": "تمام بسويها، مشكورين", "labels": []}
+{"id": "dev-gulf-197", "variety": "gulf", "text": "غلط بالرقم، سموحة", "labels": []}
+{"id": "dev-gulf-198", "variety": "gulf", "text": "السلام عليكم", "labels": []}
+{"id": "dev-gulf-199", "variety": "gulf", "text": "وصلتني رسالتكم", "labels": []}
+{"id": "dev-gulf-200", "variety": "gulf", "text": "أم خطيبي عرفت إني حاملة من بنت عمي وتقول الخطبة تنفسخ إلا إذا \"أتعالج\". ما نمت ثلاث أيام وأحس الكل بيكون مبسوط أكثر لو ما كنت موجودة. أستاهل أحارب عشان هالخطبة؟", "labels": ["crisis", "decision_request", "distress"]}
+{"id": "dev-arabizi-001", "variety": "arabizi", "text": "ta3abt mn el 7ayah, ma abi akamel", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-002", "variety": "arabizi", "text": "wddi anam w ma a9ha", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-003", "variety": "arabizi", "text": "ahli a7sn bdooni, ana ely jibt el marad l weldi", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-004", "variety": "arabizi", "text": "el walad ma yetnafas zain w shfayfah zorg, el7aqooni", "labels": ["crisis"]}
+{"id": "dev-arabizi-005", "variety": "arabizi", "text": "bnti tet4anaj el7en w ma trid!!", "labels": ["crisis"]}
+{"id": "dev-arabizi-006", "variety": "arabizi", "text": "fakart ankhalles nafsi w el fekra ma r7at", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-007", "variety": "arabizi", "text": "3ndi 7boob bel durj w kel layl at6al3 feeha", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-008", "variety": "arabizi", "text": "ed dam ma wagaf ba3d el ta7leel, nazeef qawi", "labels": ["crisis"]}
+{"id": "dev-arabizi-009", "variety": "arabizi", "text": "zawji hadadni yeqtilni law gelt l ummah 3n el natija", "labels": ["crisis"]}
+{"id": "dev-arabizi-010", "variety": "arabizi", "text": "akhoi gal bay2dhi khatibti law fasakht", "labels": ["crisis"]}
+{"id": "dev-arabizi-011", "variety": "arabizi", "text": "ma 3ad agdar, sam7oni, goolo l ummi ana aasfa", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-012", "variety": "arabizi", "text": "a7is el donya akhaf bdoni", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-013", "variety": "arabizi", "text": "wazza3t aghradi 3ala khawati w katabt wasiyya", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-014", "variety": "arabizi", "text": "mallait mn had el donya abi artaa7 w bas", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-015", "variety": "arabizi", "text": "yarait sayara tdis3ni w artaa7", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-016", "variety": "arabizi", "text": "ighma 3aleha w ma tastajeeb, akeed azma mangaliyya, bttsl isaaf", "labels": ["crisis"]}
+{"id": "dev-arabizi-017", "variety": "arabizi", "text": "law la 3yali kent khallast kol shay", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-018", "variety": "arabizi", "text": "afakkir at6la3 el sat7 w anu6", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-019", "variety": "arabizi", "text": "ma abi a3eesh ba3d ma 3rafna enna 7amleen", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-020", "variety": "arabizi", "text": "iza ana 7amla a7san akhtfi 3anh yetzawaj wa7da saleema, w 3an el kol", "labels": ["crisis", "decision_request", "distress"]}
+{"id": "dev-arabizi-021", "variety": "arabizi", "text": "weldi yegool bay2dhi nafsah iza mana3na el zawaj", "labels": ["crisis"]}
+{"id": "dev-arabizi-022", "variety": "arabizi", "text": "jara7t eidi marra tanya ba3d ma qrait el taqreer", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-023", "variety": "arabizi", "text": "ya2st w qarart anhi kol shay ba3d el eid", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-024", "variety": "arabizi", "text": "sadri dayg w ma agdar atnafas men sma3t el khabar", "labels": ["crisis"]}
+{"id": "dev-arabizi-025", "variety": "arabizi", "text": "mo7ad bye7is law ghibt", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-026", "variety": "arabizi", "text": "abi amoot, asif 3ala el kalam el thaqeel", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-027", "variety": "arabizi", "text": "el walad 7arartah 3alya w 3yoonah tdoor w jismah khashab", "labels": ["crisis"]}
+{"id": "dev-arabizi-028", "variety": "arabizi", "text": "ma abi shay bas tkhalles hal 7ayah bdoon waja3", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-029", "variety": "arabizi", "text": "a7yanan agool laita ma inwalad", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-030", "variety": "arabizi", "text": "tawwah yerja3 dam", "labels": ["crisis"]}
+{"id": "dev-arabizi-031", "variety": "arabizi", "text": "ma akhatet l shay bas atmanna ma as7a bukra", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-032", "variety": "arabizi", "text": "adhba7 nafsi iza el janeen tal3 positive, qarart", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-033", "variety": "arabizi", "text": "abooha darabha dharb mubarri7 w khayfa yeqtilha", "labels": ["crisis"]}
+{"id": "dev-arabizi-034", "variety": "arabizi", "text": "el 7ayah 3iqab ma atta7mmalah, bas", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-035", "variety": "arabizi", "text": "adawwir tareeqa aghaib 3an el donya bhdoo2", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-036", "variety": "arabizi", "text": "bsawwi feehum shay iza fad7oni, wallahi", "labels": ["crisis"]}
+{"id": "dev-arabizi-037", "variety": "arabizi", "text": "7asa ani 7imil 3ala el kol w rahili ra7a lahum", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-038", "variety": "arabizi", "text": "el rade3 ma yestajeeb w 3yoonah msakkara men sa3a", "labels": ["crisis"]}
+{"id": "dev-arabizi-039", "variety": "arabizi", "text": "awqaf 3ind el balcony w atkhayal shgad el mawdoo3 sahel", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-040", "variety": "arabizi", "text": "mn yom el ta7leel w atmanna el mot kel yom", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-041", "variety": "arabizi", "text": "khalas intahet, ma ba2a feeni shay", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-042", "variety": "arabizi", "text": "ma li khilg a3eesh, kel shay thaqeel w mo7ad yfhamni", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-043", "variety": "arabizi", "text": "abi anam nawma tawila w ma arja3", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-044", "variety": "arabizi", "text": "yabi y3awirni iza gultlah ani 7amla, khayfa arja3 el beit", "labels": ["crisis"]}
+{"id": "dev-arabizi-045", "variety": "arabizi", "text": "la tgoolo l ahli. ma abi akoon mawjooda ba3d ma awlid, w fakart shlon. el natija ghayyarat kol shay, bas abi a7ad ya3rif.", "labels": ["crisis", "distress"]}
+{"id": "dev-arabizi-046", "variety": "arabizi", "text": "hal intidhar yedhba7ni, mta tal3 el natija?", "labels": ["distress"]}
+{"id": "dev-arabizi-047", "variety": "arabizi", "text": "amoot w a3rif 3yali yewrethoon el marad wala la", "labels": ["information"]}
+{"id": "dev-arabizi-048", "variety": "arabizi", "text": "amoot mn el 7ya gddam el jama3a bel majlis", "labels": ["distress"]}
+{"id": "dev-arabizi-049", "variety": "arabizi", "text": "la ana mb ta3bana laderajat a2adhi nafsi, bas khayfa w mer-ha2a", "labels": ["distress"]}
+{"id": "dev-arabizi-050", "variety": "arabizi", "text": "la ma abi amoot, abi jawab bas, w galbi yerjef", "labels": ["distress"]}
+{"id": "dev-arabizi-051", "variety": "arabizi", "text": "hal fadee7a bt'qtlni gddam ahl el 7ay", "labels": ["distress"]}
+{"id": "dev-arabizi-052", "variety": "arabizi", "text": "galbi wasil 7alqi mn el khof", "labels": ["distress"]}
+{"id": "dev-arabizi-053", "variety": "arabizi", "text": "a7is b dhanb li2ani naqalt el marad l weldi", "labels": ["distress"]}
+{"id": "dev-arabizi-054", "variety": "arabizi", "text": "khayef", "labels": ["distress"]}
+{"id": "dev-arabizi-055", "variety": "arabizi", "text": "laish 7na? za3lana mn el kol", "labels": ["distress"]}
+{"id": "dev-arabizi-056", "variety": "arabizi", "text": "asta7i agool l rab3i bytkalamoon", "labels": ["distress"]}
+{"id": "dev-arabizi-057", "variety": "arabizi", "text": "ma anam w abki kel layla mn el ta7leel", "labels": ["distress"]}
+{"id": "dev-arabizi-058", "variety": "arabizi", "text": "alloom ahl zawji sra7a", "labels": ["distress"]}
+{"id": "dev-arabizi-059", "variety": "arabizi", "text": "a7is nafsi bi6a3a kharbana", "labels": ["distress"]}
+{"id": "dev-arabizi-060", "variety": "arabizi", "text": "el kol bel dawam ytali3ni ghair", "labels": ["distress"]}
+{"id": "dev-arabizi-061", "variety": "arabizi", "text": "ma a7is b shay, mutabalida", "labels": ["distress"]}
+{"id": "dev-arabizi-062", "variety": "arabizi", "text": "m3asseb mo7ad gal lna gabl el 3urs", "labels": ["distress"]}
+{"id": "dev-arabizi-063", "variety": "arabizi", "text": "kol ma afakkir law sawwayna el fa7s badri ma mirdat bnti", "labels": ["distress"]}
+{"id": "dev-arabizi-064", "variety": "arabizi", "text": "da2i3a", "labels": ["distress"]}
+{"id": "dev-arabizi-065", "variety": "arabizi", "text": "7na el thintain 7amleen w ana abki bel 7ammam 3shan el 3yal ma yshoofooni", "labels": ["distress"]}
+{"id": "dev-arabizi-066", "variety": "arabizi", "text": "3ammti sammatni \"el 3aybana\" w jara7ni", "labels": ["distress"]}
+{"id": "dev-arabizi-067", "variety": "arabizi", "text": "qalqana 3ala ukhti w ma fa7sat lel7en", "labels": ["distress"]}
+{"id": "dev-arabizi-068", "variety": "arabizi", "text": "yjeeni hala3 bel layl w galbi yedig", "labels": ["distress"]}
+{"id": "dev-arabizi-069", "variety": "arabizi", "text": "a7zan 3ala bait kent a7lam feeh", "labels": ["distress"]}
+{"id": "dev-arabizi-070", "variety": "arabizi", "text": "laish el mumarreda galatha b hal bard? lel7en arjif", "labels": ["distress"]}
+{"id": "dev-arabizi-071", "variety": "arabizi", "text": "ahl zawji yt6al3oon feeni ka2ani mareeda w hadha yo3ourni", "labels": ["distress"]}
+{"id": "dev-arabizi-072", "variety": "arabizi", "text": "a7is b wa7da", "labels": ["distress"]}
+{"id": "dev-arabizi-073", "variety": "arabizi", "text": "ma akalt yomain mn kallamooni 3an fa7s el mawlood", "labels": ["distress"]}
+{"id": "dev-arabizi-074", "variety": "arabizi", "text": "akhaf agool l khateebi", "labels": ["distress"]}
+{"id": "dev-arabizi-075", "variety": "arabizi", "text": "7aqida 3ala ukhti li2an natijatha nadheefa", "labels": ["distress"]}
+{"id": "dev-arabizi-076", "variety": "arabizi", "text": "mb 3adl!", "labels": ["distress"]}
+{"id": "dev-arabizi-077", "variety": "arabizi", "text": "ma agdar arakkiz bel shughl", "labels": ["distress"]}
+{"id": "dev-arabizi-078", "variety": "arabizi", "text": "a7is ani om fashila", "labels": ["distress"]}
+{"id": "dev-arabizi-079", "variety": "arabizi", "text": "khayfa mn el 3urs el shahr el jay, nea2jilah?", "labels": ["decision_request", "distress"]}
+{"id": "dev-arabizi-080", "variety": "arabizi", "text": "galbi yegool kammil w 3aqli khayef: 7na 7amleen nefsakh el khotba?", "labels": ["decision_request", "distress"]}
+{"id": "dev-arabizi-081", "variety": "arabizi", "text": "aqool l khateebi ani 7amla gabl el khotba?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-082", "variety": "arabizi", "text": "yseer njib tifl thani w weldna el awwal 3ndah dumoor?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-083", "variety": "arabizi", "text": "goolli bas, ta5dhah wala la?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-084", "variety": "arabizi", "text": "nsawwi atfal anabeeb ma3 fa7s wala njarrib 3adi?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-085", "variety": "arabizi", "text": "anazzil el janeen? tal3 musab bel fa7s", "labels": ["decision_request"]}
+{"id": "dev-arabizi-086", "variety": "arabizi", "text": "ahli yebon afsakh el khotba, shu tshoofoon?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-087", "variety": "arabizi", "text": "a7san att6alaq gabl ma yjeeni 3yal?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-088", "variety": "arabizi", "text": "nestanna sana wala netzawaj el7en?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-089", "variety": "arabizi", "text": "natijatha simah ba3ad, nkammil?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-090", "variety": "arabizi", "text": "3ndana waladain salimain, nektafi?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-091", "variety": "arabizi", "text": "zawji yebi el rabe3 w ana la, w 7na 7amleen, shu nsawwi?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-092", "variety": "arabizi", "text": "asawwi bazl el sa2il wala akhalleh?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-093", "variety": "arabizi", "text": "garrero 3anna, ma netafig", "labels": ["decision_request"]}
+{"id": "dev-arabizi-094", "variety": "arabizi", "text": "tansa7oon bzawaj el aqarib b 7altna?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-095", "variety": "arabizi", "text": "afakkir ma atzawaj, akallem mukhtass awwal? w shu ra2yekum?", "labels": ["booking", "decision_request"]}
+{"id": "dev-arabizi-096", "variety": "arabizi", "text": "afha9 baqi 3yali el7en wala astanna?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-097", "variety": "arabizi", "text": "akammil ma3ah wala nafterig w 7na ma nadri natijat ba3ad?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-098", "variety": "arabizi", "text": "a2ajjil el 7amel lain fa7s ma gabl el zar3?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-099", "variety": "arabizi", "text": "shu asawwi? wallahi ma adri shu asawwi", "labels": ["decision_request"]}
+{"id": "dev-arabizi-100", "variety": "arabizi", "text": "ydgh6oon 3alay atzawaj weld 3ammi ma3 el natija, aweafeg?", "labels": ["decision_request"]}
+{"id": "dev-arabizi-101", "variety": "arabizi", "text": "el fa7s gabl el zawaj wajib bel shar3?", "labels": ["religious"]}
+{"id": "dev-arabizi-102", "variety": "arabizi", "text": "7aram arfod atzawaj wa7ed bsabab sifa wirathiyya?", "labels": ["religious"]}
+{"id": "dev-arabizi-103", "variety": "arabizi", "text": "shu 7ukm ikhtiyar el ajinna bi atfal el anabeeb?", "labels": ["religious"]}
+{"id": "dev-arabizi-104", "variety": "arabizi", "text": "abi fatwa 3an el fa7s gabl el wilada", "labels": ["religious"]}
+{"id": "dev-arabizi-105", "variety": "arabizi", "text": "3alay ithm iza khabbait ani 7amla 3an khateebi?", "labels": ["religious"]}
+{"id": "dev-arabizi-106", "variety": "arabizi", "text": "el marad ibtila2 wala 3iqab 3ala dhanb sawwaytah?", "labels": ["religious"]}
+{"id": "dev-arabizi-107", "variety": "arabizi", "text": "7alal amna3 el 7amel w 7na 7amleen?", "labels": ["religious"]}
+{"id": "dev-arabizi-108", "variety": "arabizi", "text": "yijooz nefsakh el khotba lehal sabab shar3an?", "labels": ["religious"]}
+{"id": "dev-arabizi-109", "variety": "arabizi", "text": "shu 7ukm el ijhad gabl 120 yom lel janeen el musab?", "labels": ["religious"]}
+{"id": "dev-arabizi-110", "variety": "arabizi", "text": "jaratna tegool el marad 3ain w 7asad, akhaf, sa7?", "labels": ["distress", "religious"]}
+{"id": "dev-arabizi-111", "variety": "arabizi", "text": "yijooz af7as ed dam gabl el 3aqd?", "labels": ["religious"]}
+{"id": "dev-arabizi-112", "variety": "arabizi", "text": "a2tham iza za3alt 3ala rabbi bsabab marad weldi?", "labels": ["distress", "religious"]}
+{"id": "dev-arabizi-113", "variety": "arabizi", "text": "lazim el rijjal yetalliq zawjatah el 7amla shar3an?", "labels": ["decision_request", "religious"]}
+{"id": "dev-arabizi-114", "variety": "arabizi", "text": "el sheikh gal zawaj el aqarib 3adi, w hadha yetwafag ma3 el 3ilm?", "labels": ["information", "religious"]}
+{"id": "dev-arabizi-115", "variety": "arabizi", "text": "7aram a3rif no3 el janeen w maradah badri?", "labels": ["religious"]}
+{"id": "dev-arabizi-116", "variety": "arabizi", "text": "7alal el tashkhees el jini gabl el zar3?", "labels": ["religious"]}
+{"id": "dev-arabizi-117", "variety": "arabizi", "text": "hadha ghadab mn Allah 3ala ahlna zay ma tegool ummi?", "labels": ["religious"]}
+{"id": "dev-arabizi-118", "variety": "arabizi", "text": "shu el 7ukm law katamt el natija 3an ahli?", "labels": ["religious"]}
+{"id": "dev-arabizi-119", "variety": "arabizi", "text": "7na el thintain 7amleen w el sheikh gal tawakkaloo 3ala Allah w ma yeba fa7s ziyada, bas weld khali el doctor yegool hadha tahawwur. akammel ez zawaj bdoon fa7s el ajinna wala la? w shu tansa7oon?", "labels": ["decision_request", "religious"]}
+{"id": "dev-arabizi-120", "variety": "arabizi", "text": "tgoolon li natijat khateebti? ana rajulha mustaqbalan w mn 7aqqi", "labels": ["third_party"]}
+{"id": "dev-arabizi-121", "variety": "arabizi", "text": "meno arsal el da3wa l akhoi? abi el esm", "labels": ["third_party"]}
+{"id": "dev-arabizi-122", "variety": "arabizi", "text": "el gene mn ay jiha, mn jihti wala jihat zawjati?", "labels": ["third_party"]}
+{"id": "dev-arabizi-123", "variety": "arabizi", "text": "ana ukhtha, abi aqra taqreerha", "labels": ["third_party"]}
+{"id": "dev-arabizi-124", "variety": "arabizi", "text": "ma3akum maktab doctor khalid, nebi malaf el mareeda mariam", "labels": ["third_party"]}
+{"id": "dev-arabizi-125", "variety": "arabizi", "text": "7ammati tes2al 3an natijat bnti, tqdroon tballghoonha?", "labels": ["third_party"]}
+{"id": "dev-arabizi-126", "variety": "arabizi", "text": "tallaqti tal3at 7amla? a7taajha lel 7ada6a", "labels": ["third_party"]}
+{"id": "dev-arabizi-127", "variety": "arabizi", "text": "bas goolli enha 7amla wala la, ma bgool l a7ad", "labels": ["third_party"]}
+{"id": "dev-arabizi-128", "variety": "arabizi", "text": "shlon a3rif iza weld 3ammi fa7as bdoon ma as2alah?", "labels": ["third_party"]}
+{"id": "dev-arabizi-129", "variety": "arabizi", "text": "abi raqm el jiha ely 7awwalat 3ammi lel fa7s", "labels": ["third_party"]}
+{"id": "dev-arabizi-130", "variety": "arabizi", "text": "tet2akdoon iza ely trideh bnti 7amil?", "labels": ["third_party"]}
+{"id": "dev-arabizi-131", "variety": "arabizi", "text": "fatah't zarf natijat zawjati bdoon 3ilmaha w sirt khayef, shu ya3ni l 3yalna?", "labels": ["distress", "third_party"]}
+{"id": "dev-arabizi-132", "variety": "arabizi", "text": "ana abooh w mn 7aqqi ashoof taqreer weldi el kabeer", "labels": ["third_party"]}
+{"id": "dev-arabizi-133", "variety": "arabizi", "text": "meno el qareeb ely 7attni bqaymat el khatar?", "labels": ["third_party"]}
+{"id": "dev-arabizi-134", "variety": "arabizi", "text": "3ndkum lista bel 3awayel el 7amla bqabilatna?", "labels": ["third_party"]}
+{"id": "dev-arabizi-135", "variety": "arabizi", "text": "modeeri bel shughl yshoof natijti?", "labels": ["third_party"]}
+{"id": "dev-arabizi-136", "variety": "arabizi", "text": "el walad warrathah menni wala minha?", "labels": ["third_party"]}
+{"id": "dev-arabizi-137", "variety": "arabizi", "text": "adkhol b hawiyyat zawji ashoof natijtah w hu msafer?", "labels": ["third_party"]}
+{"id": "dev-arabizi-138", "variety": "arabizi", "text": "ib3athoo li asmaa2 el 7amleen mn ahli", "labels": ["third_party"]}
+{"id": "dev-arabizi-139", "variety": "arabizi", "text": "ahlah ma yebon yrooni natijtah, akammel ez zawaj w ana ma adri?", "labels": ["decision_request", "third_party"]}
+{"id": "dev-arabizi-140", "variety": "arabizi", "text": "ana akhooha w 3ndi salahiyya, 3atooni el malaf", "labels": ["third_party"]}
+{"id": "dev-arabizi-141", "variety": "arabizi", "text": "dakhalt 7isab ukhti bdoon ithnha, feeh natijatha?", "labels": ["third_party"]}
+{"id": "dev-arabizi-142", "variety": "arabizi", "text": "ukhti tal3at natijatha el usboo3 ely faat w ma tgool l a7ad. 7na twin w a7is ani 7amla mithlha, tgooloon li bas hiya 7amla wala la? mb gadra atta7mmal ma adri w ummi tzeed el wad3 su2", "labels": ["decision_request", "distress", "third_party"]}
+{"id": "dev-arabizi-143", "variety": "arabizi", "text": "abi a7jiz maw3id ma3 mustashar wirathi", "labels": ["booking"]}
+{"id": "dev-arabizi-144", "variety": "arabizi", "text": "wain asawwi fa7s el 7amil bel Sharjah?", "labels": ["booking"]}
+{"id": "dev-arabizi-145", "variety": "arabizi", "text": "bakam el fa7s w agdar a7jiz?", "labels": ["booking"]}
+{"id": "dev-arabizi-146", "variety": "arabizi", "text": "abi a2ajjil el maw3id el usboo3 el jay", "labels": ["booking"]}
+{"id": "dev-arabizi-147", "variety": "arabizi", "text": "feeh mustasharah el sabt?", "labels": ["booking"]}
+{"id": "dev-arabizi-148", "variety": "arabizi", "text": "wain asawwi el fa7s el ta2keedi lel mawlood ganeeb Ajman?", "labels": ["booking"]}
+{"id": "dev-arabizi-149", "variety": "arabizi", "text": "shlon asawwi fa7s gabl el zawaj w baqi 3 asabee3?", "labels": ["booking"]}
+{"id": "dev-arabizi-150", "variety": "arabizi", "text": "tejoon el beit tasa7boon el 3ayyina?", "labels": ["booking"]}
+{"id": "dev-arabizi-151", "variety": "arabizi", "text": "alghoo maw3idi el thalatha law samaHtoo", "labels": ["booking"]}
+{"id": "dev-arabizi-152", "variety": "arabizi", "text": "el ta2meen yghatti el fa7s el jini lel mawaleed?", "labels": ["booking"]}
+{"id": "dev-arabizi-153", "variety": "arabizi", "text": "abi mustasharah tfham 3adatna w ma tihkum", "labels": ["booking"]}
+{"id": "dev-arabizi-154", "variety": "arabizi", "text": "abi maw3id fidyo ana bel Fujairah", "labels": ["booking"]}
+{"id": "dev-arabizi-155", "variety": "arabizi", "text": "abi musa3ada bsur3a, khayfa, agdar ashoof a7ad hal usboo3?", "labels": ["booking", "distress"]}
+{"id": "dev-arabizi-156", "variety": "arabizi", "text": "el maw3id?", "labels": ["booking"]}
+{"id": "dev-arabizi-157", "variety": "arabizi", "text": "sajjiloni bel jalsa el jama3iyya el jaya", "labels": ["booking"]}
+{"id": "dev-arabizi-158", "variety": "arabizi", "text": "mustashar yetkallam 3arabi law samaHt", "labels": ["booking"]}
+{"id": "dev-arabizi-159", "variety": "arabizi", "text": "a7taaj ta7weela lel fa7s el janeeni?", "labels": ["booking"]}
+{"id": "dev-arabizi-160", "variety": "arabizi", "text": "abi ra2i thani mn doctor thani", "labels": ["booking"]}
+{"id": "dev-arabizi-161", "variety": "arabizi", "text": "abi af7as ummi w abooy, kbaar w ma yistakhdimoon el tatbeeqat", "labels": ["booking"]}
+{"id": "dev-arabizi-162", "variety": "arabizi", "text": "i7jizo li w lekhateebi nafs el wagt", "labels": ["booking"]}
+{"id": "dev-arabizi-163", "variety": "arabizi", "text": "3ayyinat el baby tabi i3aada, wain arooh?", "labels": ["booking"]}
+{"id": "dev-arabizi-164", "variety": "arabizi", "text": "ay marakiz bAbu Dhabi tsawwi fa7s el thalassemia w kam yom?", "labels": ["booking", "information"]}
+{"id": "dev-arabizi-165", "variety": "arabizi", "text": "weldi 3umrah shahrain w tal3 fa7s el ka3b \"namat hemoglobin mb tabee3i\" w el doctor gal 3eedoo w ana mb fahma, mangali wala thalassemia? w mta n3eed? w ay mustashfa b Dubai ysawwiha? galbi 6a7", "labels": ["booking", "distress", "information"]}
+{"id": "dev-arabizi-166", "variety": "arabizi", "text": "shu el farg bain el 7amil w el musab?", "labels": ["information"]}
+{"id": "dev-arabizi-167", "variety": "arabizi", "text": "iza el abb w el umm 7amleen shu e7timal kol 7amel?", "labels": ["information"]}
+{"id": "dev-arabizi-168", "variety": "arabizi", "text": "shu ma3na \"simah\" fi taqreer el mangali?", "labels": ["information"]}
+{"id": "dev-arabizi-169", "variety": "arabizi", "text": "el 7amel lel beta thalassemia yemrad ba3dain?", "labels": ["information"]}
+{"id": "dev-arabizi-170", "variety": "arabizi", "text": "kawni 7amla yo2athir 3ala sa7ti?", "labels": ["information"]}
+{"id": "dev-arabizi-171", "variety": "arabizi", "text": "G6PD nafs el thalassemia?", "labels": ["information"]}
+{"id": "dev-arabizi-172", "variety": "arabizi", "text": "laish el marad akthar bel Khaleej?", "labels": ["information"]}
+{"id": "dev-arabizi-173", "variety": "arabizi", "text": "el umm 7amla w el abb saleem, yseer el walad musab?", "labels": ["information"]}
+{"id": "dev-arabizi-174", "variety": "arabizi", "text": "feeh 3ilaj lel dumoor el7en?", "labels": ["information"]}
+{"id": "dev-arabizi-175", "variety": "arabizi", "text": "fa7s el mawlood daqeeq? yet6al3 positive ghalat?", "labels": ["information"]}
+{"id": "dev-arabizi-176", "variety": "arabizi", "text": "el 7amel y7taj 3ilaj aw diet?", "labels": ["information"]}
+{"id": "dev-arabizi-177", "variety": "arabizi", "text": "el ikhwan yekhtalfoon bel natija?", "labels": ["information"]}
+{"id": "dev-arabizi-178", "variety": "arabizi", "text": "shu a3raad azmat el mangali 3ind el tifl?", "labels": ["information"]}
+{"id": "dev-arabizi-179", "variety": "arabizi", "text": "shu ma3na \"variant of uncertain significance\"?", "labels": ["information"]}
+{"id": "dev-arabizi-180", "variety": "arabizi", "text": "el fa7s gabl el zawaj ykshif el tleef el keesi?", "labels": ["information"]}
+{"id": "dev-arabizi-181", "variety": "arabizi", "text": "alpha thalassemia mithl beta?", "labels": ["information"]}
+{"id": "dev-arabizi-182", "variety": "arabizi", "text": "fassiroo li el wiratha el mutana7iya bbasata", "labels": ["information"]}
+{"id": "dev-arabizi-183", "variety": "arabizi", "text": "garabat el dam tzeed el khatar? bkam?", "labels": ["information"]}
+{"id": "dev-arabizi-184", "variety": "arabizi", "text": "zira3at el khalaya el jidhi3iyya tashfi el thalassemia el kubra?", "labels": ["information"]}
+{"id": "dev-arabizi-185", "variety": "arabizi", "text": "taqreeri yegool \"silent carrier\", ya3ni ma feeh khatar?", "labels": ["information"]}
+{"id": "dev-arabizi-186", "variety": "arabizi", "text": "a7ad el walidain musab w el thani 7amel, shu el e7timal?", "labels": ["information"]}
+{"id": "dev-arabizi-187", "variety": "arabizi", "text": "kam yom tal3 el nataij el jiniyya?", "labels": ["information"]}
+{"id": "dev-arabizi-188", "variety": "arabizi", "text": "el 7amel yagdar yatabar3 bel dam?", "labels": ["information"]}
+{"id": "dev-arabizi-189", "variety": "arabizi", "text": "shu hu el talqee7 ma3 fa7s ma gabl el zar3?", "labels": ["information"]}
+{"id": "dev-arabizi-190", "variety": "arabizi", "text": "garait ann el e7timal 25 bel mia, ya3ni rob3 3yali bytazzabon? khayfa", "labels": ["distress", "information"]}
+{"id": "dev-arabizi-191", "variety": "arabizi", "text": "el marad ye3di?", "labels": ["information"]}
+{"id": "dev-arabizi-192", "variety": "arabizi", "text": "ya3tikum el 3afya 3ala musa3adat ems", "labels": []}
+{"id": "dev-arabizi-193", "variety": "arabizi", "text": "hala", "labels": []}
+{"id": "dev-arabizi-194", "variety": "arabizi", "text": "feeh a7ad?", "labels": []}
+{"id": "dev-arabizi-195", "variety": "arabizi", "text": "resala tajribiyya la tarodoon", "labels": []}
+{"id": "dev-arabizi-196", "variety": "arabizi", "text": "tamam bsawwiha, mashkooreen", "labels": []}
+{"id": "dev-arabizi-197", "variety": "arabizi", "text": "ghalat bel raqm, sam7oona", "labels": []}
+{"id": "dev-arabizi-198", "variety": "arabizi", "text": "salam 3alaykum", "labels": []}
+{"id": "dev-arabizi-199", "variety": "arabizi", "text": "wasalatni resaltkum", "labels": []}
+{"id": "dev-arabizi-200", "variety": "arabizi", "text": "omm khateebi 3arafat ani 7amla mn bint 3ammi w tgool el khotba tinfisikh ila iza \"at3alaj\". ma nimt thalath ayam w a7is el kol bykoon as3ad law ma kent mawjooda. astahil a7arib 3ashan hal khotba?", "labels": ["crisis", "decision_request", "distress"]}

@@ -1096,10 +1096,12 @@ source = { editable = "." }
 dependencies = [
     { name = "fastapi" },
     { name = "fhir-resources" },
+    { name = "joblib" },
     { name = "numpy" },
     { name = "pydantic" },
     { name = "pyjwt" },
     { name = "pyyaml" },
+    { name = "scikit-learn" },
     { name = "uvicorn", extra = ["standard"] },
 ]
 
@@ -1117,10 +1119,12 @@ dev = [
 requires-dist = [
     { name = "fastapi", specifier = ">=0.162.0" },
     { name = "fhir-resources", specifier = ">=8.3.0" },
+    { name = "joblib", specifier = ">=1.6.0" },
     { name = "numpy", specifier = ">=2.5.4" },
     { name = "pydantic", specifier = ">=2.14.3" },
     { name = "pyjwt", specifier = ">=2.15.1" },
     { name = "pyyaml", specifier = ">=6.0.3" },
+    { name = "scikit-learn", specifier = ">=1.9.1" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.54.0" },
 ]
 

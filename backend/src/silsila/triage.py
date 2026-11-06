@@ -19,6 +19,7 @@ import json
 import os
 import re
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from .content import Message, registry
 
@@ -80,6 +81,7 @@ class TriageResult:
     labels: set[str]
     rule_labels: set[str]
     model_labels: set[str] = field(default_factory=set)
+    ngram_labels: set[str] = field(default_factory=set)
     topic: str | None = None
     model_used: str | None = None
 
@@ -150,14 +152,39 @@ def model_labels(text: str) -> tuple[set[str], str | None]:
         return set(), None
 
 
-def classify(text: str, lang: str = "en", use_model: bool = True) -> TriageResult:
+# --------------------------------------------- character n-gram classifier --
+NGRAM_MODEL = Path(__file__).resolve().parents[3] / "data" / "models" / "triage_ngram.joblib"
+_ngram: dict | None = None
+
+
+def ngram_model() -> dict | None:
+    """Load the trained n-gram classifier (evals/train_triage.py) if present."""
+    global _ngram
+    if _ngram is None and NGRAM_MODEL.exists():
+        import joblib
+
+        _ngram = joblib.load(NGRAM_MODEL)
+    return _ngram
+
+
+def ngram_labels(text: str) -> set[str]:
+    m = ngram_model()
+    if not m:
+        return set()
+    return {lab for lab, clf in m["models"].items() if clf.predict_proba([text])[0, 1] >= m["thresholds"][lab]}
+
+
+def classify(text: str, lang: str = "en", use_model: bool = True, use_ngram: bool = True) -> TriageResult:
+    """Combine classifiers by union: each layer can only add labels, so adding
+    a layer can make the system more cautious, never less."""
     rl = rule_labels(text)
+    nl = ngram_labels(text) if use_ngram else set()
     ml, used = model_labels(text) if use_model else (set(), None)
-    labels = rl | ml
+    labels = rl | nl | ml
     topic = match_topic(text, lang)
     if topic and not labels:
         labels.add("information")
-    return TriageResult(labels, rl, ml, topic, used)
+    return TriageResult(labels, rl, ml, nl, topic, used)
 
 
 def reply_for(result: TriageResult, lang: str) -> Message:
