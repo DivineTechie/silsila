@@ -1,7 +1,9 @@
 # Deployment notes
 
-**Hosting.** Two containers (API, web) in Azure UAE North, for example on Azure Container Apps, so compute
-and storage stay in the UAE (DoH Responsible AI Standard 3.1.4.5.1). SQLite is used for the prototype;
+**Hosting.** Two containers (API, web) on Azure Container Apps in UAE North, so compute and storage stay in
+the UAE (DoH Responsible AI Standard 3.1.4.5.1). `deploy/azure-deploy.sh` creates the resource group,
+registry, environment and both apps, stores demo passwords and the token secret as Container Apps secrets,
+and restricts the API's allowed origin to the web app. SQLite is used for the prototype;
 a pilot would use a managed database in the same region with encryption at rest.
 
 **Identity.** Demo accounts with scrypt-hashed passwords and signed tokens. A pilot would use UAE PASS for

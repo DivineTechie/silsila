@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+# Deploy the Silsila prototype to Azure Container Apps in UAE North.
+#
+# Prerequisites: Azure CLI (`brew install azure-cli`), then `az login`.
+# Run from the repository root:   bash deploy/azure-deploy.sh
+#
+# Images are built in Azure Container Registry (az acr build), so nothing large
+# is uploaded from this machine. The API runs as ONE replica because demo mode
+# uses SQLite and recreates the fictional families on every start.
+# Demo passwords are read from backend/.env and stored as Container Apps secrets.
+set -euo pipefail
+
+RG="${RG:-silsila-rg}"
+LOCATION="${LOCATION:-uaenorth}"
+ENV_NAME="${ENV_NAME:-silsila-env}"
+API_APP="${API_APP:-silsila-api}"
+WEB_APP="${WEB_APP:-silsila-web}"
+TAG="${TAG:-$(git rev-parse --short HEAD)}"
+
+[ -f backend/.env ] || { echo "backend/.env not found (copy backend/.env.example)"; exit 1; }
+set -a; . backend/.env; set +a
+: "${SILSILA_DEMO_FAMILY_PASSWORD:?missing in backend/.env}"
+: "${SILSILA_DEMO_COUNSELLOR_PASSWORD:?missing in backend/.env}"
+JWT_SECRET="${SILSILA_SECRET:-$(openssl rand -hex 32)}"
+
+echo "== Subscription: $(az account show --query name -o tsv)  Region: $LOCATION  Group: $RG"
+az extension add --name containerapp --upgrade --only-show-errors >/dev/null
+for ns in Microsoft.App Microsoft.OperationalInsights Microsoft.ContainerRegistry; do
+  az provider register --namespace "$ns" --only-show-errors >/dev/null
+done
+
+az group create -n "$RG" -l "$LOCATION" --tags project=silsila purpose=future-health-challenge -o none
+
+# Registry name must be globally unique and alphanumeric; derive it from the subscription id.
+ACR="${ACR:-silsila$(az account show --query id -o tsv | tr -d '-' | cut -c1-10)}"
+if ! az acr show -n "$ACR" -g "$RG" -o none 2>/dev/null; then
+  az acr create -n "$ACR" -g "$RG" -l "$LOCATION" --sku Basic --admin-enabled true -o none
+fi
+REG="$(az acr show -n "$ACR" --query loginServer -o tsv)"
+REG_USER="$(az acr credential show -n "$ACR" --query username -o tsv)"
+REG_PASS="$(az acr credential show -n "$ACR" --query 'passwords[0].value' -o tsv)"
+
+echo "== Building API image in ACR"
+az acr build -r "$ACR" -t "silsila-api:$TAG" -f backend/Dockerfile . -o none
+
+if ! az containerapp env show -n "$ENV_NAME" -g "$RG" -o none 2>/dev/null; then
+  az containerapp env create -n "$ENV_NAME" -g "$RG" -l "$LOCATION" -o none
+fi
+
+SECRETS=(fampw="$SILSILA_DEMO_FAMILY_PASSWORD" coupw="$SILSILA_DEMO_COUNSELLOR_PASSWORD" jwt="$JWT_SECRET")
+API_ENV=(SILSILA_DEMO=1 SILSILA_DEMO_FAMILY_PASSWORD=secretref:fampw
+         SILSILA_DEMO_COUNSELLOR_PASSWORD=secretref:coupw SILSILA_SECRET=secretref:jwt SILSILA_CORS='*')
+
+if az containerapp show -n "$API_APP" -g "$RG" -o none 2>/dev/null; then
+  az containerapp secret set -n "$API_APP" -g "$RG" --secrets "${SECRETS[@]}" -o none
+  az containerapp update -n "$API_APP" -g "$RG" --image "$REG/silsila-api:$TAG" --set-env-vars "${API_ENV[@]}" -o none
+else
+  az containerapp create -n "$API_APP" -g "$RG" --environment "$ENV_NAME" \
+    --image "$REG/silsila-api:$TAG" --registry-server "$REG" --registry-username "$REG_USER" --registry-password "$REG_PASS" \
+    --target-port 8000 --ingress external --min-replicas 1 --max-replicas 1 --cpu 1.0 --memory 2.0Gi \
+    --secrets "${SECRETS[@]}" --env-vars "${API_ENV[@]}" -o none
+fi
+API_URL="https://$(az containerapp show -n "$API_APP" -g "$RG" --query properties.configuration.ingress.fqdn -o tsv)"
+
+echo "== Building web image in ACR (API: $API_URL)"
+az acr build -r "$ACR" -t "silsila-web:$TAG" --build-arg NEXT_PUBLIC_API_URL="$API_URL" web -o none
+
+if az containerapp show -n "$WEB_APP" -g "$RG" -o none 2>/dev/null; then
+  az containerapp update -n "$WEB_APP" -g "$RG" --image "$REG/silsila-web:$TAG" -o none
+else
+  az containerapp create -n "$WEB_APP" -g "$RG" --environment "$ENV_NAME" \
+    --image "$REG/silsila-web:$TAG" --registry-server "$REG" --registry-username "$REG_USER" --registry-password "$REG_PASS" \
+    --target-port 3000 --ingress external --min-replicas 1 --max-replicas 2 --cpu 0.5 --memory 1.0Gi -o none
+fi
+WEB_URL="https://$(az containerapp show -n "$WEB_APP" -g "$RG" --query properties.configuration.ingress.fqdn -o tsv)"
+
+# Allow only the web app's origin to call the API.
+az containerapp update -n "$API_APP" -g "$RG" --set-env-vars SILSILA_CORS="$WEB_URL" -o none
+
+echo
+echo "Web app : $WEB_URL"
+echo "API     : $API_URL/api/health"
+echo "Region  : $LOCATION (resource group $RG)"

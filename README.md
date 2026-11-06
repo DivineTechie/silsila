@@ -105,6 +105,19 @@ cd backend && uv run pytest -q
 cd backend && uv run python -m bench.run_all
 ```
 
+## Run with Docker or deploy
+
+```bash
+docker compose up --build        # web on http://localhost:3100, API on http://localhost:8100
+```
+
+Azure (UAE North, Azure Container Apps; images are built in Azure Container Registry):
+
+```bash
+az login
+bash deploy/azure-deploy.sh      # prints the public web and API URLs
+```
+
 ## Repository
 
 | Path | Contents |
