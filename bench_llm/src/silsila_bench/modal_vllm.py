@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import os
 import subprocess
+import threading
 
 import modal
 
@@ -67,7 +68,10 @@ CFG = SERVE[MODEL]
 image = (
     modal.Image.debian_slim(python_version="3.12")
     .uv_pip_install(f"vllm=={VLLM_VERSION}", "huggingface_hub[hf_transfer]")
-    .env({"HF_HUB_ENABLE_HF_TRANSFER": "1", "SILSILA_BENCH_MODEL": MODEL, "VLLM_USE_V1": "1"})
+    .env({"HF_HUB_ENABLE_HF_TRANSFER": "1", "SILSILA_BENCH_MODEL": MODEL, "VLLM_USE_V1": "1",
+          # FlashInfer's top-k sampler compiles a kernel at startup and needs nvcc, which this image
+          # lacks; vLLM's own sampler gives the same tokens at temperature 0.
+          "VLLM_USE_FLASHINFER_SAMPLER": "0"})
 )
 hf_cache = modal.Volume.from_name("silsila-hf-cache", create_if_missing=True)
 vllm_cache = modal.Volume.from_name("silsila-vllm-cache", create_if_missing=True)
@@ -95,7 +99,17 @@ def serve() -> None:
            "--port", str(PORT), "--generation-config", "vllm", *CFG["args"]]
     if n_gpu > 1 and "--tensor-parallel-size" not in cmd:
         cmd += ["--tensor-parallel-size", str(n_gpu)]
-    if os.environ.get("SILSILA_VLLM_API_KEY"):
-        cmd += ["--api-key", os.environ["SILSILA_VLLM_API_KEY"]]
-    print("starting:", " ".join(c if c != os.environ.get("SILSILA_VLLM_API_KEY") else "***" for c in cmd))
-    subprocess.Popen(cmd)
+    key = os.environ.get("SILSILA_VLLM_API_KEY")
+    if key:
+        # "--api-key=<key>" form: a key that starts with "-" would otherwise be read as a new flag.
+        cmd.append(f"--api-key={key}")
+    print("starting:", " ".join("--api-key=***" if c.startswith("--api-key=") else c for c in cmd), flush=True)
+    proc = subprocess.Popen(cmd)
+
+    def _exit_if_server_dies() -> None:
+        # Without this, a vLLM crash leaves Modal waiting the full startup timeout on a paid GPU.
+        code = proc.wait()
+        print(f"vllm serve exited with code {code}; stopping the container", flush=True)
+        os._exit(1)
+
+    threading.Thread(target=_exit_if_server_dies, daemon=True).start()

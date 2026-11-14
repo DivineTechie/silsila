@@ -1,0 +1,174 @@
+{
+ "created_at": "2026-11-14T18:07:46+00:00",
+ "model": "inception42/Jais-3-7B",
+ "model_label": "Jais 3 7B",
+ "transcript": "أنا مريم، ولدي زايد طلع عنده تضخم الغدة الكظرية الخلقي في فحص المواليد. أبوي سعيد وعمي راشد وعمتي سلم. الثلاثة عيال سيدي عبيد ويدتي موزة الله يرحمهم. ريلي أحمد هو ولد عمي راشد وأمه حصّة وعنده أخت اسمها ميثاء. أختي نورة معرسة على خلفان ولد عمتي سلم وأبوه جمعة ونورة الحين حامل. أخوي حمدان معرس على شمّة وعندنا بنت ثانية اسمها سرة ما فيها شيء",
+ "latency_s": 33.76,
+ "tool_called": true,
+ "raw_content": "I'll parse the family story and build the structured tree.\n\nKey facts:\n- **Zayed** (Maryam's son) has **classic congenital adrenal hyperplasia** (CYP21A2 gene) — detected in newborn screening.\n- **Maryam** is the narrator; her father is **Saeed**, and Saeed, **Rashid**, **Salma** are children of **Obaid** and **Moza**.\n- **Ahmed** (Maryam's husband) is son of **Rashid** and **Hessa**, with sister **Methaa**.\n- **Noura** (Maryam's sister) is married to **Khalfan** (son of **Salma** and **Juma**); she's pregnant.\n- **Hamdan** (Maryam's brother) is married to **Shamma**; they have daughter **سرة** (unaffected).\n- No carrier test results are mentioned, so `test_detected` is null for all.",
+ "arguments": {
+  "gene": "CYP21A2",
+  "people": [
+   {
+    "id": "مريم",
+    "sex": "female",
+    "mother": null,
+    "father": "سعيد",
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "زايد",
+    "sex": "male",
+    "mother": "مريم",
+    "father": null,
+    "status": "affected",
+    "affected_with": "classic congenital adrenal hyperplasia",
+    "test_detected": null
+   },
+   {
+    "id": "سعيد",
+    "sex": "male",
+    "mother": "موزة",
+    "father": "عبيد",
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "راشد",
+    "sex": "male",
+    "mother": "موزة",
+    "father": "عبيد",
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "سلم",
+    "sex": "female",
+    "mother": "موزة",
+    "father": "عبيد",
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "عبيد",
+    "sex": "male",
+    "mother": null,
+    "father": null,
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "موزة",
+    "sex": "female",
+    "mother": null,
+    "father": null,
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "أحمد",
+    "sex": "male",
+    "mother": "حصّة",
+    "father": "راشد",
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "حصّة",
+    "sex": "female",
+    "mother": null,
+    "father": null,
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "ميثاء",
+    "sex": "female",
+    "mother": "حصّة",
+    "father": "راشد",
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "نورة",
+    "sex": "female",
+    "mother": null,
+    "father": "سعيد",
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "خلفان",
+    "sex": "male",
+    "mother": "سلم",
+    "father": "جمعة",
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "جمعة",
+    "sex": "male",
+    "mother": null,
+    "father": null,
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "حمدان",
+    "sex": "male",
+    "mother": null,
+    "father": "سعيد",
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "شمّة",
+    "sex": "female",
+    "mother": null,
+    "father": null,
+    "status": "unknown",
+    "affected_with": null,
+    "test_detected": null
+   },
+   {
+    "id": "سرة",
+    "sex": "female",
+    "mother": "مريم",
+    "father": "أحمد",
+    "status": "unaffected",
+    "affected_with": null,
+    "test_detected": null
+   }
+  ],
+  "unions": [
+   {
+    "a": "مريم",
+    "b": "أحمد"
+   },
+   {
+    "a": "نورة",
+    "b": "خلفان"
+   },
+   {
+    "a": "حمدان",
+    "b": "شمّة"
+   }
+  ]
+ },
+ "valid_tree": false,
+ "error": "PedigreeError: مريم: give both parents or neither. Add the missing parent as a person with no details if they are unknown."
+}

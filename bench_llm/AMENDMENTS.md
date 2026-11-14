@@ -94,3 +94,14 @@ share of `finish_reason = length` is logged per model.
 Items are generated deterministically from code and seeds in `src/silsila_bench/items.py`, and the
 per-prompt logs contain the full prompts. To keep the item set unpublished until judging, `data/`,
 `runs/` and the `docs/evidence/logs/bench/` logs must not be pushed to a public repository before then.
+
+## A9. Serving fixes and calibration, 2026-11-14
+
+* vLLM on Modal is started with `--api-key=<key>` (a key beginning with "-" was read as a flag and the
+  server never started) and with `VLLM_USE_FLASHINFER_SAMPLER=0` (FlashInfer's sampler needs a CUDA
+  compiler the image lacks). Decoding is greedy at temperature 0, so the sampler choice does not change
+  the tokens produced. No item, prompt or scoring rule changed.
+* Calibration: the first 20 T1 items for Jais 3 7B were run with the pre-registered settings and are kept
+  as part of the full run (the runner skips completed items). Mean output was about 25,000 tokens per
+  item, and 6 of 20 answers hit the 32,768-token limit before giving a number; under the pre-registered
+  rule these count as "no number" and are reported separately.
