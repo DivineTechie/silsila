@@ -68,15 +68,18 @@ class Store:
         return doc
 
     def get(self, kind: str, id_: str) -> dict[str, Any] | None:
-        row = self.conn.execute("SELECT body FROM docs WHERE kind=? AND id=?", (kind, id_)).fetchone()
+        # One connection is shared by the server's worker threads: every statement holds the lock.
+        with self._lock:
+            row = self.conn.execute("SELECT body FROM docs WHERE kind=? AND id=?", (kind, id_)).fetchone()
         return json.loads(row["body"]) if row else None
 
     def list(self, kind: str, case_id: str | None = None) -> list[dict[str, Any]]:
-        if case_id is None:
-            rows = self.conn.execute("SELECT body FROM docs WHERE kind=? ORDER BY created", (kind,)).fetchall()
-        else:
-            rows = self.conn.execute("SELECT body FROM docs WHERE kind=? AND case_id=? ORDER BY created",
-                                     (kind, case_id)).fetchall()
+        with self._lock:
+            if case_id is None:
+                rows = self.conn.execute("SELECT body FROM docs WHERE kind=? ORDER BY created", (kind,)).fetchall()
+            else:
+                rows = self.conn.execute("SELECT body FROM docs WHERE kind=? AND case_id=? ORDER BY created",
+                                         (kind, case_id)).fetchall()
         return [json.loads(r["body"]) for r in rows]
 
     def find(self, kind: str, **where: Any) -> list[dict[str, Any]]:
@@ -101,7 +104,8 @@ class Store:
 
     def audit_events(self, case_id: str | None = None, limit: int = 500) -> list[dict[str, Any]]:
         q = "SELECT * FROM audit" + (" WHERE case_id=?" if case_id else "") + " ORDER BY seq DESC LIMIT ?"
-        rows = self.conn.execute(q, ((case_id, limit) if case_id else (limit,))).fetchall()
+        with self._lock:
+            rows = self.conn.execute(q, ((case_id, limit) if case_id else (limit,))).fetchall()
         out = []
         for r in rows:
             d = dict(r)
@@ -112,7 +116,9 @@ class Store:
     def verify_chain(self) -> dict[str, Any]:
         prev = GENESIS
         count = 0
-        for r in self.conn.execute("SELECT * FROM audit ORDER BY seq"):
+        with self._lock:
+            rows = self.conn.execute("SELECT * FROM audit ORDER BY seq").fetchall()
+        for r in rows:
             ev = dict(r)
             count += 1
             if ev["prev_hash"] != prev or _event_hash(prev, ev) != ev["hash"]:

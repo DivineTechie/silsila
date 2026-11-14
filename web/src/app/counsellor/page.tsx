@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { RequireRole } from "@/components/case";
 import { AuditLog, DemoTools, Inbox, Queue } from "@/components/counsellor";
+import { VoiceIntake } from "@/components/intake";
 import { Page } from "@/components/Shell";
 import { TabPanel, Tabs } from "@/components/Tabs";
 import { ErrorBox, Eyebrow, H1, Loading, Prov } from "@/components/ui";
@@ -12,7 +13,7 @@ import { age, usePrefs } from "@/lib/prefs";
 import type { CaseSummary } from "@/lib/types";
 import { useLoad } from "@/lib/useLoad";
 
-type TabKey = "queue" | "cases" | "messages" | "audit";
+type TabKey = "queue" | "cases" | "intake" | "messages" | "audit";
 
 function Cases() {
   const { t, session } = usePrefs();
@@ -55,6 +56,7 @@ function Console() {
           tabs={[
             { key: "queue", label: t("c.queue") },
             { key: "cases", label: t("c.cases") },
+            { key: "intake", label: t("vi.tab") },
             { key: "messages", label: t("c.messages") },
             { key: "audit", label: t("c.audit") },
           ]}
@@ -62,6 +64,7 @@ function Console() {
         <TabPanel idBase="con" active={tab}>
           {tab === "queue" && <Queue onOpenMessages={() => setTab("messages")} />}
           {tab === "cases" && <Cases />}
+          {tab === "intake" && <VoiceIntake />}
           {tab === "messages" && <Inbox />}
           {tab === "audit" && (
             <div className="grid gap-8 [&>*]:min-w-0">

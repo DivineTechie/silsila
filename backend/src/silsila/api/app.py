@@ -4,15 +4,16 @@ from __future__ import annotations
 
 import json
 import os
+import threading
 from pathlib import Path
 from typing import Any, Literal
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 
-from .. import params
+from .. import intake, params
 from ..content import GateError, Message, registry
 from ..engine import Pedigree
 from ..triage import classify, reply_for
@@ -27,12 +28,15 @@ app = FastAPI(title="Silsila API", version="0.1.0",
 app.add_middleware(CORSMiddleware, allow_origins=os.environ.get("SILSILA_CORS", "*").split(","),
                    allow_methods=["*"], allow_headers=["*"])
 _store: Store | None = None
+_store_lock = threading.Lock()
 
 
 def store() -> Store:
     global _store
     if _store is None:
-        _store = Store()
+        with _store_lock:
+            if _store is None:
+                _store = Store()
     return _store
 
 
@@ -194,6 +198,70 @@ def engine_report(body: EngineRequest) -> dict[str, Any]:
     """Stateless calculation for a family tree (no storage, no audit of content)."""
     case = {"locus_id": body.locus_id, "pedigree": body.pedigree.model_dump(), "id": "adhoc"}
     return service.compute_report(case, body.lang)
+
+
+# ----------------------------------------------------------------- intake --
+class DraftIn(BaseModel):
+    locus_id: str = ""
+    people: list[dict[str, Any]]
+    unions: list[dict[str, Any]] = []
+
+
+class IntakeAction(BaseModel):
+    draft: DraftIn
+    action: dict[str, Any]
+
+
+class IntakeCompute(BaseModel):
+    draft: DraftIn
+    lang: Literal["en", "ar"] = "en"
+
+
+def _intake_state(draft: dict[str, Any]) -> dict[str, Any]:
+    issues = intake.review(draft)
+    unconfirmed = sum(not p.get("confirmed") for p in draft["people"]) + sum(not u.get("confirmed") for u in draft["unions"])
+    return {"draft": draft, "issues": issues, "unconfirmed": unconfirmed,
+            "ready": unconfirmed == 0 and not any(i["severity"] == "block" for i in issues)}
+
+
+@app.get("/api/intake/demo")
+def intake_demo(user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    """The RECORDED voice-intake demo: synthetic voice, Jais-ASR transcript, Jais 3 draft, review."""
+    store().audit(user["id"], user["role"], "intake.demo_open")
+    demo = intake.load_demo()
+    return {**demo, **_intake_state(demo["draft"])}
+
+
+@app.get("/api/intake/demo/audio")
+def intake_demo_audio(user: dict[str, Any] = Depends(counsellor)) -> FileResponse:
+    return FileResponse(intake.demo_audio_path(), media_type="audio/wav")
+
+
+@app.post("/api/intake/apply")
+def intake_apply(body: IntakeAction, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    try:
+        draft = intake.apply(body.draft.model_dump(), body.action)
+    except intake.IntakeError as e:
+        raise service.Invalid(str(e))
+    store().audit(user["id"], user["role"], "intake.action", detail={"type": body.action.get("type")})
+    return _intake_state(draft)
+
+
+@app.post("/api/intake/compute")
+def intake_compute(body: IntakeCompute, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    """Runs the exact engine on a fully confirmed draft. Refuses anything unconfirmed or blocked."""
+    draft = body.draft.model_dump()
+    try:
+        ped = intake.ready_pedigree(draft)
+    except intake.IntakeError as e:
+        store().audit(user["id"], user["role"], "intake.compute", outcome="refused")
+        raise service.Invalid(str(e))
+    if draft["locus_id"] not in params.load():
+        raise service.Invalid("Choose the condition (gene) before computing")
+    store().audit(user["id"], user["role"], "intake.compute",
+                  detail={"people": len(ped["people"]), "unions": len(ped["unions"]), "locus": draft["locus_id"]})
+    case = {"locus_id": draft["locus_id"], "pedigree": ped, "id": "intake"}
+    return {"pedigree": ped, "report": service.compute_report(case, body.lang)}
 
 
 # ------------------------------------------------------------------ cases --

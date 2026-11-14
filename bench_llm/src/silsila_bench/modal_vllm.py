@@ -36,6 +36,8 @@ SERVE: dict[str, dict] = {
     },
     "jais-3-32b": {
         "repo": "IFM/Jais-3-32B-FP8", "gpu": "H100",
+        # DeepGEMM JIT-compiles FP8 kernels and needs nvcc, which the image lacks; use prebuilt FP8 kernels.
+        "env": {"VLLM_USE_DEEP_GEMM": "0"},
         "args": ["--trust-remote-code", "--model-impl", "vllm", "--reasoning-parser", "k2_horizon",
                  "--enable-auto-tool-choice", "--tool-call-parser", "k2_horizon", "--max-model-len", "49152",
                  "--gpu-memory-utilization", "0.92"],
@@ -71,7 +73,7 @@ image = (
     .env({"HF_HUB_ENABLE_HF_TRANSFER": "1", "SILSILA_BENCH_MODEL": MODEL, "VLLM_USE_V1": "1",
           # FlashInfer's top-k sampler compiles a kernel at startup and needs nvcc, which this image
           # lacks; vLLM's own sampler gives the same tokens at temperature 0.
-          "VLLM_USE_FLASHINFER_SAMPLER": "0"})
+          "VLLM_USE_FLASHINFER_SAMPLER": "0", **CFG.get("env", {})})
 )
 hf_cache = modal.Volume.from_name("silsila-hf-cache", create_if_missing=True)
 vllm_cache = modal.Volume.from_name("silsila-vllm-cache", create_if_missing=True)
