@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Any
 
 from .clients import ChatClient, ChatResult
-from .items import BENCH_DIR, Family, Item, build_items, family_map
+from .items import BENCH_DIR, Family, Item, build_items, family_map, in_subset
 from .prompts import build_messages, tools_for
 from .tools import IncrementalTree, compute_family_risk
 
@@ -122,8 +122,11 @@ async def run_item(client: ChatClient, item: Item, fam: Family, *, t3_mode: str 
 
 
 def select_items(track: str, *, limit: int | None = None, registers: list[str] | None = None,
-                 family_types: list[str] | None = None, families: list[str] | None = None) -> list[Item]:
+                 family_types: list[str] | None = None, families: list[str] | None = None,
+                 subset: str | None = None) -> list[Item]:
     items = build_items(track)
+    if subset:
+        items = [i for i in items if in_subset(i, subset)]
     if registers:
         items = [i for i in items if i.register in registers]
     if family_types:

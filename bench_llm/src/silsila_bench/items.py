@@ -453,6 +453,22 @@ def t5_families() -> list[Family]:
     return [f for i, f in enumerate(generate_families()) if i % 3 == 0]
 
 
+def t5_sample() -> dict[str, str]:
+    """The T5 sample as {family_id: question}: every third family, questions alternating (a)/(b).
+    Also the reduced item set for models that cannot be run on everything (AMENDMENTS A10)."""
+    return {f.family_id: ("a" if i % 2 == 0 else "b") for i, f in enumerate(t5_families())}
+
+
+SUBSETS = {"t5-sample": ("en", "gulf")}  # subset name -> registers kept
+
+
+def in_subset(item: Item, subset: str) -> bool:
+    if subset not in SUBSETS:
+        raise ValueError(f"Unknown subset {subset}; choose from {sorted(SUBSETS)}")
+    q = t5_sample().get(item.family_id)
+    return q is not None and item.qid in (None, q) and item.register in SUBSETS[subset]
+
+
 def build_items(track: str) -> list[Item]:
     fams = generate_families()
     out: list[Item] = []

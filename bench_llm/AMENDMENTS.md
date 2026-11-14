@@ -105,3 +105,19 @@ per-prompt logs contain the full prompts. To keep the item set unpublished until
   as part of the full run (the runner skips completed items). Mean output was about 25,000 tokens per
   item, and 6 of 20 answers hit the 32,768-token limit before giving a number; under the pre-registered
   rule these count as "no number" and are reported separately.
+
+## A10. Reduced item set for Jais 3 32B, 2026-11-15
+
+Recorded before the reduced runs started.
+
+* Reason: budget. Jais 3 32B (FP8, one H100) produced about 19,500 output tokens per T1 answer at about
+  41 answers per hour, so the full 2,150 prompts would take about 52 GPU-hours (about $205), over the
+  benchmark's compute budget. All other models run the full set.
+* Jais 3 32B is run on the **T5 sample**, fixed in advance by `t5_families()` in `items.py`: every third
+  family (50 families, 17/17/16 by type) with questions alternating (a)/(b), in English and Gulf Arabic.
+  This gives T1 100 prompts, T2 100, T3 100 and T5 50 (the full T5 set). Selected with
+  `--subset t5-sample`.
+* T4 (language consistency) needs all four registers and is not computed for Jais 3 32B.
+* The 47 T1 answers already produced on the full order are kept in the logs; only the 2 that fall inside
+  the sample are scored. Jais 3 32B results are reported on the sample, and every other model is also
+  reported on the same sample so the comparison is like for like.

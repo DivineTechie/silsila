@@ -63,6 +63,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--register", action="append", help="en, msa, gulf, arabizi (repeatable)")
     ap.add_argument("--family-type", action="append", help="no_loop, one_loop, multiple (repeatable)")
     ap.add_argument("--family", action="append", help="family id, e.g. one_loop-11 (repeatable)")
+    ap.add_argument("--subset", choices=["t5-sample"], default=None,
+                    help="reduced item set for models that cannot run everything (AMENDMENTS A10)")
     ap.add_argument("--concurrency", type=int, default=None)
     ap.add_argument("--base-url", default=None, help="override the endpoint (e.g. a Modal URL ending in /v1)")
     ap.add_argument("--max-tokens", type=int, default=None)
@@ -94,7 +96,7 @@ def main(argv: list[str] | None = None) -> int:
     if a.dry_run:
         fams = family_map()
         for t in tracks:
-            items = select_items(t, limit=a.limit, registers=a.register, family_types=a.family_type, families=a.family)
+            items = select_items(t, limit=a.limit, registers=a.register, family_types=a.family_type, families=a.family, subset=a.subset)
             print(f"== {t}: {len(items)} items for {spec.name}")
             if items:
                 msgs = build_messages(items[0], fams[items[0].family_id])
@@ -114,7 +116,7 @@ def main(argv: list[str] | None = None) -> int:
                 await wait_until_ready(a.base_url or spec.resolved_base_url(), a.ready_timeout)
             for t in tracks:
                 items = select_items(t, limit=a.limit, registers=a.register, family_types=a.family_type,
-                                     families=a.family)
+                                     families=a.family, subset=a.subset)
                 await run_track(client, t, items, runs_dir=Path(a.runs_dir) if a.runs_dir else None,
                                 concurrency=a.concurrency, t3_mode=a.t3_mode)
         finally:
