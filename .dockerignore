@@ -9,3 +9,5 @@
 docs/evidence/logs
 tools
 research
+# Partial benchmark summary: published only when all runs are scored
+docs/evidence/silsila_bench.*
