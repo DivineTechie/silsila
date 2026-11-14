@@ -26,7 +26,7 @@ from pathlib import Path
 from typing import Any
 
 from . import models
-from .items import BENCH_DIR, TRACK_REGISTERS, build_items, family_map
+from .items import BENCH_DIR, TRACK_REGISTERS, build_items, family_map, in_subset
 from .runner import RUNS_DIR, load_records, run_path
 from .score import (
     T1_METRICS, T2_METRICS, T3_METRICS, T4_METRICS, T5_METRICS, PubMed, score_t1, score_t2, score_t3,
@@ -54,6 +54,9 @@ LABELS = {
     "pmid_unrelated_title": "Existing PMIDs, title unrelated", "answers_with_invalid_pmid": "Answers with a flagged PMID",
 }
 METRICS = {"T1": T1_METRICS, "T2": T2_METRICS, "T3": T3_METRICS, "T4": T4_METRICS, "T5": T5_METRICS}
+# Models run on a reduced, pre-declared item set (AMENDMENTS A10). Every model is also reported on it.
+MODEL_SUBSET = {"jais-3-32b": "t5-sample"}
+SAMPLE = "t5-sample"
 LOG_FIELDS = ["item_id", "family_id", "family_type", "register", "qid", "locus", "prompt", "raw_answer", "parsed",
               "parse_kind", "parse_source", "gold", "band"]
 
@@ -77,12 +80,20 @@ def _write_log(path: Path, rows: list[dict], extra: list[str]) -> None:
             w.writerow({k: (json.dumps(v, ensure_ascii=False) if isinstance(v, (dict, list)) else v) for k, v in r.items()})
 
 
-def score_model(name: str, runs_dir: Path, fams, pubmed: PubMed | None, log_dir: Path | None) -> dict[str, Any]:
+def score_model(name: str, runs_dir: Path, fams, pubmed: PubMed | None, log_dir: Path | None,
+                subset: str | None = None) -> dict[str, Any]:
+    """Score one model. With `subset`, only items in that pre-declared set are scored (T4 needs all four
+    registers and is skipped)."""
     out: dict[str, Any] = {}
     t1_rows = None
     for track in ("T1", "T2", "T3", "T5"):
         recs = load_records(run_path(name, track, runs_dir))
-        expected = len(build_items(track))
+        items = build_items(track)
+        if subset:
+            items = [i for i in items if in_subset(i, subset)]
+            keep = {i.item_id for i in items}
+            recs = {k: r for k, r in recs.items() if k in keep}
+        expected = len(items)
         ok = {k: r for k, r in recs.items() if not r.get("error")}
         if not ok:
             out[track] = {"status": "not run", "expected": expected, "done": 0, "errors": len(recs)}
@@ -117,7 +128,9 @@ def score_model(name: str, runs_dir: Path, fams, pubmed: PubMed | None, log_dir:
                             "text_tree_structure_identical", "text_tree_identical", "text_tree_edge_recall"],
                      "T5": ["n_refs", "n_exist", "n_related", "refs"]}[track]
             _write_log(log_dir / f"{name}_{track}.csv", rows, extra)
-    if t1_rows:
+    if subset:
+        out["T4"] = {"status": "not computed on the sample (needs all four registers)"}
+    elif t1_rows:
         t4 = score_t4(t1_rows)
         out["T4"] = {"status": "computed from T1", "metrics": summarise(t4, T4_METRICS, ("family_type",))}
         if log_dir is not None:
@@ -125,6 +138,41 @@ def score_model(name: str, runs_dir: Path, fams, pubmed: PubMed | None, log_dir:
     else:
         out["T4"] = {"status": "not run"}
     return out
+
+
+def _track_tables(L: list[str], models_: dict[str, Any], tracks: tuple[str, ...], h: str) -> None:
+    for track in ("T1", "T2", "T3", "T4", "T5"):
+        mets = list(METRICS[track])
+        L.append("")
+        L.append(f"{h} {TRACK_TITLES[track]}")
+        L.append("")
+        L.append("| Model | Items | " + " | ".join(LABELS[x] for x in mets) + " |")
+        L.append("|---|---|" + "---|" * len(mets))
+        for name, m in models_.items():
+            t = m["tracks"].get(track, {})
+            if "metrics" not in t:
+                reason = m.get("reason") or t.get("status", "not run")
+                L.append(f"| {m['label']} | not run | {reason} |" + " |" * (len(mets) - 1))
+                continue
+            ov = t["metrics"]["overall"]
+            L.append(f"| {m['label']} | {ov['n_items']} | " + " | ".join(fmt(x, ov.get(x)) for x in mets) + " |")
+        key = {"T1": "exact", "T2": "final_exact", "T3": "engine_answer_correct", "T4": "all_same_band", "T5": "pmid_not_found"}[track]
+        for split in ("register", "family_type"):
+            levels = sorted({lv for m in models_.values()
+                             for lv in m["tracks"].get(track, {}).get("metrics", {}).get(f"by_{split}", {})})
+            if not levels:
+                continue
+            L.append("")
+            L.append(f"{LABELS[key]}, by {split.replace('_', ' ')}:")
+            L.append("")
+            L.append("| Model | " + " | ".join(levels) + " |")
+            L.append("|---|" + "---|" * len(levels))
+            for name, m in models_.items():
+                by = m["tracks"].get(track, {}).get("metrics", {}).get(f"by_{split}")
+                if not by:
+                    L.append(f"| {m['label']} | " + " | ".join("not run" for _ in levels) + " |")
+                    continue
+                L.append(f"| {m['label']} | " + " | ".join(fmt(key, by.get(lv, {}).get(key)) for lv in levels) + " |")
 
 
 def markdown(result: dict[str, Any]) -> str:
@@ -145,38 +193,16 @@ def markdown(result: dict[str, Any]) -> str:
     L.append("|---|---|---|")
     for name, m in result["models"].items():
         L.append(f"| {m['label']} | {m['licence']} | {m['status']} |")
-    for track in ("T1", "T2", "T3", "T4", "T5"):
-        mets = list(METRICS[track])
+    _track_tables(L, result["models"], ("T1", "T2", "T3", "T4", "T5"), "###")
+    if result.get("same_sample"):
+        ss = result["same_sample"]
         L.append("")
-        L.append(f"### {TRACK_TITLES[track]}")
+        L.append("### Same sample for every model (AMENDMENTS A10)")
         L.append("")
-        L.append("| Model | Items | " + " | ".join(LABELS[x] for x in mets) + " |")
-        L.append("|---|---|" + "---|" * len(mets))
-        for name, m in result["models"].items():
-            t = m["tracks"].get(track, {})
-            if "metrics" not in t:
-                reason = m.get("reason") or t.get("status", "not run")
-                L.append(f"| {m['label']} | not run | {reason} |" + " |" * (len(mets) - 1))
-                continue
-            ov = t["metrics"]["overall"]
-            L.append(f"| {m['label']} | {ov['n_items']} | " + " | ".join(fmt(x, ov.get(x)) for x in mets) + " |")
-        key = {"T1": "exact", "T2": "final_exact", "T3": "engine_answer_correct", "T4": "all_same_band", "T5": "pmid_not_found"}[track]
-        for split in ("register", "family_type"):
-            levels = sorted({lv for m in result["models"].values()
-                             for lv in m["tracks"].get(track, {}).get("metrics", {}).get(f"by_{split}", {})})
-            if not levels:
-                continue
-            L.append("")
-            L.append(f"{LABELS[key]}, by {split.replace('_', ' ')}:")
-            L.append("")
-            L.append("| Model | " + " | ".join(levels) + " |")
-            L.append("|---|" + "---|" * len(levels))
-            for name, m in result["models"].items():
-                by = m["tracks"].get(track, {}).get("metrics", {}).get(f"by_{split}")
-                if not by:
-                    L.append(f"| {m['label']} | " + " | ".join("not run" for _ in levels) + " |")
-                    continue
-                L.append(f"| {m['label']} | " + " | ".join(fmt(key, by.get(lv, {}).get(key)) for lv in levels) + " |")
+        L.append("Jais 3 32B was run on the T5 sample only: every third family (50), one question each "
+                 f"(alternating carrier / couple), English and Gulf Arabic ({ss['items']}). To compare like with "
+                 "like, every model is scored again on exactly these items below.")
+        _track_tables(L, ss["models"], ("T1", "T2", "T3", "T5"), "####")
     L.append("")
     L.append("Limitations: synthetic families; Arabic, Gulf Arabic and Arabizi templates written without "
              "native-speaker review; one sample per prompt at temperature 0; PMID relatedness is a keyword check "
@@ -210,7 +236,8 @@ def main(argv: list[str] | None = None) -> int:
     }
     for n in names:
         spec = models.get(n)
-        tracks = score_model(n, runs_dir, fams, pubmed, out_dir / "logs" / "bench")
+        subset = MODEL_SUBSET.get(n)
+        tracks = score_model(n, runs_dir, fams, pubmed, out_dir / "logs" / "bench", subset=subset)
         statuses = {t: v.get("status") for t, v in tracks.items()}
         if all(s in ("not run",) for k, s in statuses.items() if k != "T4"):
             status, reason = "not run", spec.not_run_reason or "no results yet"
@@ -218,8 +245,17 @@ def main(argv: list[str] | None = None) -> int:
             status = "; ".join(f"{t} {v.get('status')} ({v.get('done', '-')}/{v.get('expected', '-')})"
                                for t, v in tracks.items() if t != "T4")
             reason = None
+            if subset:
+                status = f"reduced set ({subset}, AMENDMENTS A10): " + status
         result["models"][n] = {"label": spec.label, "model_id": spec.model_id, "provider": spec.provider,
                                "licence": spec.licence, "status": status, "reason": reason, "tracks": tracks}
+    result["same_sample"] = {
+        "subset": SAMPLE,
+        "items": ", ".join(f"{t} {sum(in_subset(i, SAMPLE) for i in build_items(t))}" for t in ("T1", "T2", "T3", "T5")),
+        "models": {n: {**{k: v for k, v in m.items() if k != "tracks"},
+                       "tracks": score_model(n, runs_dir, fams, pubmed, None, subset=SAMPLE)}
+                   for n, m in result["models"].items()},
+    }
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "silsila_bench.json").write_text(json.dumps(result, indent=1, ensure_ascii=False))
     (out_dir / "silsila_bench.md").write_text(markdown(result))

@@ -111,15 +111,16 @@ def spend_guard() -> dict:
     return {"spent": spent, "stopped": True}
 
 
-def _start(model: str, track: str = "all") -> None:
+def _start(model: str, track: str = "all", extra: list[str] | None = None) -> None:
     fn = modal.Function.from_name("silsila-bench-runner", "run_model")
-    call = fn.spawn(model, track)
-    print(f"spawned {model} {track}: {call.object_id}")
+    call = fn.spawn(model, track, extra or [])
+    print(f"spawned {model} {track} {' '.join(extra or [])}: {call.object_id}")
 
 
 if __name__ == "__main__":
     if len(sys.argv) >= 3 and sys.argv[1] == "start":
-        _start(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "all")
+        # start <model> [track] [extra run.py args...], e.g. start jais-3-32b all --subset t5-sample
+        _start(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "all", sys.argv[4:])
     elif len(sys.argv) == 2 and sys.argv[1] == "spend":
         print(modal.Function.from_name("silsila-bench-runner", "spend_guard").remote())
     else:
