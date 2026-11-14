@@ -1,0 +1,36 @@
+[project]
+name = "silsila-bench"
+version = "0.1.0"
+description = "Silsila-Bench: pre-registered LLM evaluation against the exact Silsila engine"
+readme = "README.md"
+authors = [
+    { name = "Tushar Agarwal", email = "tusharaggarwal630@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "huggingface-hub>=2.4.0",
+    "mlx-lm>=0.32.2",
+    "modal>=1.6.4",
+    "openai>=3.51.0",
+    "pyyaml>=6.0.3",
+    "silsila",
+]
+
+[project.scripts]
+silsila-bench = "silsila_bench:main"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+silsila = { path = "../backend", editable = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
