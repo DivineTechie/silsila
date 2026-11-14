@@ -4,8 +4,9 @@
 # Prerequisites: Azure CLI (`brew install azure-cli`), then `az login`.
 # Run from the repository root:   bash deploy/azure-deploy.sh
 #
-# Images are built in Azure Container Registry (az acr build), so nothing large
-# is uploaded from this machine. The API runs as ONE replica because demo mode
+# Images are built in Azure Container Registry when the subscription allows ACR
+# Tasks; otherwise (common on free/new subscriptions) they are built locally with
+# Docker for linux/amd64 and pushed. Set LOCAL_BUILD=1 to force local builds. The API runs as ONE replica because demo mode
 # uses SQLite and recreates the fictional families on every start.
 # Demo passwords are read from backend/.env and stored as Container Apps secrets.
 set -euo pipefail
@@ -24,7 +25,7 @@ set -a; . backend/.env; set +a
 JWT_SECRET="${SILSILA_SECRET:-$(openssl rand -hex 32)}"
 
 echo "== Subscription: $(az account show --query name -o tsv)  Region: $LOCATION  Group: $RG"
-az extension add --name containerapp --upgrade --only-show-errors >/dev/null
+az extension add --name containerapp --upgrade --only-show-errors >/dev/null 2>&1 || az extension show --name containerapp -o none
 for ns in Microsoft.App Microsoft.OperationalInsights Microsoft.ContainerRegistry; do
   az provider register --namespace "$ns" --only-show-errors >/dev/null
 done
@@ -40,8 +41,20 @@ REG="$(az acr show -n "$ACR" --query loginServer -o tsv)"
 REG_USER="$(az acr credential show -n "$ACR" --query username -o tsv)"
 REG_PASS="$(az acr credential show -n "$ACR" --query 'passwords[0].value' -o tsv)"
 
+# build_image <name:tag> <dockerfile> <context> [build-arg...]
+build_image() {
+  local image="$1" dockerfile="$2" context="$3"; shift 3
+  local args=(); for a in "$@"; do args+=(--build-arg "$a"); done
+  if [ "${LOCAL_BUILD:-0}" != "1" ] && az acr build -r "$ACR" -t "$image" -f "$dockerfile" ${args[@]+"${args[@]}"} "$context" -o none 2>/dev/null; then
+    return 0
+  fi
+  echo "   (cloud build not available; building locally for linux/amd64)"
+  az acr login -n "$ACR" >/dev/null
+  docker buildx build --platform linux/amd64 -t "$REG/$image" -f "$dockerfile" ${args[@]+"${args[@]}"} --push "$context"
+}
+
 echo "== Building API image in ACR"
-az acr build -r "$ACR" -t "silsila-api:$TAG" -f backend/Dockerfile . -o none
+build_image "silsila-api:$TAG" backend/Dockerfile .
 
 if ! az containerapp env show -n "$ENV_NAME" -g "$RG" -o none 2>/dev/null; then
   az containerapp env create -n "$ENV_NAME" -g "$RG" -l "$LOCATION" -o none
@@ -63,7 +76,7 @@ fi
 API_URL="https://$(az containerapp show -n "$API_APP" -g "$RG" --query properties.configuration.ingress.fqdn -o tsv)"
 
 echo "== Building web image in ACR (API: $API_URL)"
-az acr build -r "$ACR" -t "silsila-web:$TAG" --build-arg NEXT_PUBLIC_API_URL="$API_URL" web -o none
+build_image "silsila-web:$TAG" web/Dockerfile web NEXT_PUBLIC_API_URL="$API_URL"
 
 if az containerapp show -n "$WEB_APP" -g "$RG" -o none 2>/dev/null; then
   az containerapp update -n "$WEB_APP" -g "$RG" --image "$REG/silsila-web:$TAG" -o none
