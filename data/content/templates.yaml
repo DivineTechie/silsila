@@ -121,7 +121,7 @@ templates:
       the population data needed for the UAE have not been published. A genetic
       counsellor can help instead.
     ar: >-
-      لا يحسب سلسلة الاحتمالات لـ{condition} في هذا الإصدار لأن البيانات السكانية
+      لا تحسب سلسلة الاحتمالات لـ{condition} في هذا الإصدار لأن البيانات السكانية
       اللازمة للإمارات لم تُنشر. يمكن للمستشار الوراثي المساعدة بدلاً من ذلك.
 
   # -------------------------------------------------------------- consent --
@@ -133,7 +133,7 @@ templates:
       and the genetic counselling team. You can withdraw this permission at any
       time.
     ar: >-
-      سيستخدم سلسلة شجرة العائلة التي تدخلها لحساب الاحتمالات لأقاربك. يبقى الحساب
+      ستستخدم سلسلة شجرة العائلة التي تدخلها لحساب الاحتمالات لأقاربك. يبقى الحساب
       داخل هذه الخدمة ويطلع عليه أنت وفريق الاستشارة الوراثية. يمكنك سحب هذا الإذن
       في أي وقت.
   consent.invite:
@@ -185,7 +185,7 @@ templates:
       cannot tell you what to decide. A genetic counsellor can talk through the
       facts and the options with you. We have asked a counsellor to contact you.
     ar: >-
-      القرارات المتعلقة بالزواج والحمل والعائلة قراراتك أنت. لا يستطيع سلسلة أن يخبرك
+      القرارات المتعلقة بالزواج والحمل والعائلة قراراتك أنت. لا تستطيع سلسلة أن تخبرك
       بما تقرره. يمكن للمستشار الوراثي مناقشة الحقائق والخيارات معك. لقد طلبنا من
       مستشار التواصل معك.
   reply.religious:
@@ -194,7 +194,7 @@ templates:
       Silsila cannot answer religious questions. A genetic counsellor can
       explain the medical facts. We have asked a counsellor to contact you.
     ar: >-
-      لا يستطيع سلسلة الإجابة عن الأسئلة الدينية. يمكن للمستشار الوراثي شرح الحقائق
+      لا تستطيع سلسلة الإجابة عن الأسئلة الدينية. يمكن للمستشار الوراثي شرح الحقائق
       الطبية. لقد طلبنا من مستشار التواصل معك.
   reply.third_party:
     kind: safety
@@ -202,7 +202,7 @@ templates:
       Silsila cannot share another person's results or say who in your family is
       involved. Each person decides what to share about themselves.
     ar: >-
-      لا يستطيع سلسلة مشاركة نتائج شخص آخر أو تحديد من هو المعني في عائلتك. كل شخص
+      لا تستطيع سلسلة مشاركة نتائج شخص آخر أو تحديد من هو المعني في عائلتك. كل شخص
       يقرر ما يشاركه عن نفسه.
   reply.distress:
     kind: safety
@@ -262,7 +262,7 @@ teachback:
     evidence: mp:risk-assessment:0:9
   - id: tb.calculation_not_test
     en: "Is the chance Silsila shows you a test result?"
-    ar: "هل الاحتمال الذي يعرضه سلسلة نتيجة فحص؟"
+    ar: "هل الاحتمال الذي تعرضه سلسلة نتيجة فحص؟"
     options:
       - {id: a, en: "No, it is a calculation from the family tree", ar: "لا، إنه حساب من شجرة العائلة", correct: true}
       - {id: b, en: "Yes, it is my result", ar: "نعم، إنه نتيجتي", correct: false}

@@ -302,7 +302,7 @@ def twin_what_if(body: TwinWhatIf) -> dict[str, Any]:
 # ------------------------------------------------------------------ cases --
 @app.get("/api/cases")
 def list_cases(lang: Literal["en", "ar"] = "en", user: dict[str, Any] = Depends(current_user)) -> list[dict[str, Any]]:
-    cases = store().list("case")
+    cases = [c for c in store().list("case") if not c.get("story")]
     if user["role"] != "counsellor":
         cases = [c for c in cases if c.get("family_user_id") == user["id"]]
     out = []
@@ -552,6 +552,29 @@ def demo_relative() -> dict[str, Any]:
     service.transition(s, cou, inv, "approved", {"signed_by": cou["display_name"], "demo_shortcut": True})
     inv = service.transition(s, cou, inv, "sent", {"demo_shortcut": True})
     return {"code": inv["code"]}
+
+
+@app.post("/api/demo/story")
+def demo_story() -> dict[str, Any]:
+    """Start a guided-story run: a fresh copy of the fictional CAH family under its own case id, plus demo
+    sessions for Mariam and the counsellor. Each run is isolated, so judges running the story at the same
+    time do not interfere. Story copies are hidden from case lists."""
+    _demo_only()
+    from . import seed as seed_mod
+    s = store()
+    case = seed_mod.cah_family()
+    case_id = new_id("case_story")
+    case.update(id=case_id, case_id=case_id, story=True)
+    s.put("case", case)
+    s.audit("demo", "system", "case.create", case_id=case_id, detail={"synthetic": True, "story": True})
+    out: dict[str, Any] = {"case_id": case_id}
+    for key, uid in (("family", "user_family"), ("counsellor", "user_counsellor")):
+        u = s.get("user", uid)
+        if u is None:
+            raise HTTPException(409, "Demo data is missing; reset the demo")
+        s.audit(u["id"], u["role"], "auth.demo_login", detail={"story": True})
+        out[key] = {"token": auth.issue(u), "user": {k: u[k] for k in ("id", "role", "display_name", "lang")}}
+    return out
 
 
 @app.post("/api/demo/reset")

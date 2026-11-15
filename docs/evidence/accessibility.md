@@ -1,6 +1,7 @@
 # Accessibility audit (axe-core)
 
-**Date:** 15 Nov 2026. **Tool:** axe-core 4.10.2, rule sets `wcag2a`, `wcag2aa`, `wcag21aa` and `best-practice`,
+**Date:** 15 Nov 2026. **Tool:** axe-core 4.10.2, rule sets `wcag2a`, `wcag2aa`, `wcag21aa` and `best-practice`
+(the home page, the cascade replay and the Outcomes tab were also checked with `wcag22aa`),
 run in the browser against the local build with demo data.
 
 **Coverage.** Every screen a judge or user can reach, with every tab opened and every collapsed section
@@ -12,6 +13,7 @@ expanded, in two configurations:
 | Screen | States checked |
 |---|---|
 | Home with judge mode | default |
+| Watch a cascade | all 12 steps run live, English desktop and Arabic dark phone |
 | Family Twin (3D) | table view open, a person selected, line of descent shown, cascade race playing |
 | Evidence | scenario calculator, all benchmark files, all tables and raw data expanded |
 | Family case (Mariam, CAH; Reem, beta-thalassaemia; Reem's case list) | all 8 tabs |

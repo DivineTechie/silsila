@@ -19,6 +19,12 @@ Prototype with fictional families. Not for clinical use.
 **Live (Azure UAE North):** https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io. No
 password is needed: the home page has one-click roles.
 
+0. **Watch a cascade** (first button on the home page): one newborn's result travelling through a fictional
+   family in 12 live steps: exact risk for every relative, Mariam's permission, an anonymous invitation,
+   counsellor approval, the relative's private link and comprehension check, booking, a pregnancy question
+   routed to a person, the test result closing the case, and the output gate blocking AI-written advice.
+   Beside the family tree: what each person sees, and the hash-chained audit entries the step created.
+   Each run uses its own fresh copy of the family.
 1. **Family Twin** (top menu): a fictional, simulated five-generation clan in 3D. Click anyone, record a
    test result, and watch every relative's exact carrier chance update across six cousin marriages in under a second
    (about 0.15 s on a laptop, 0.7 s on the hosted server). Press "Where did it come from?" to see the most likely line of descent, or play the cascade

@@ -134,3 +134,8 @@ html[lang="ar"] body {
   background-repeat: repeat-x;
   height: 4px;
 }
+
+/* Cascade replay: a person's ring pulses once when their state changes. */
+.cascade-ring { transform-box: fill-box; transform-origin: center; animation: cascade-pop 700ms ease-out both; }
+@keyframes cascade-pop { from { opacity: 0; transform: scale(1.6); } to { opacity: 1; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .cascade-ring { animation: none; } }

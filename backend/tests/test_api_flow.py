@@ -211,3 +211,19 @@ def test_outcomes_follow_a_full_invitation(client):
     assert o["by_language"]["ar"] == {"opened": 1, "teachback": 1, "understood": 1, "booked_or_tested": 1}
     assert o["uptake"]["booked_or_tested"] == 1 and o["hours"]["request_to_sent"] is not None
     assert o["privacy"]["audit_chain"]["intact"]
+
+
+def test_story_run_is_isolated_and_hidden_from_case_lists(client):
+    a = client.post("/api/demo/story").json()
+    b = client.post("/api/demo/story").json()
+    assert a["case_id"] != b["case_id"]
+    fam = {"Authorization": f"Bearer {a['family']['token']}"}
+    cou = {"Authorization": f"Bearer {a['counsellor']['token']}"}
+    assert client.get(f"/api/cases/{a['case_id']}", headers=fam).json()["case"]["id"] == a["case_id"]
+    ids = [c["id"] for c in client.get("/api/cases", headers=cou).json()]
+    assert a["case_id"] not in ids and "case_cah_demo" in ids
+    # the full invitation path works on the story copy
+    client.post(f"/api/cases/{a['case_id']}/consents", json={"scope": "invite", "granted": True}, headers=fam)
+    inv = client.post(f"/api/cases/{a['case_id']}/invitations", json={"person_id": "noura", "channel": "anonymous_invite"},
+                      headers=fam).json()
+    assert client.post(f"/api/invitations/{inv['id']}/approve", headers=cou).json()["status"] == "sent"

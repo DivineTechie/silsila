@@ -52,6 +52,13 @@ export function JudgeMode() {
     <Card aria-labelledby="judge-h" className="border-accent">
       <H2 id="judge-h">{t("judge.title")}</H2>
       <p className="mt-2 text-sm text-ink-2">{t("judge.lead")}</p>
+      <Link
+        href="/cascade"
+        className="mt-4 flex flex-col gap-1 rounded-xl bg-accent p-4 text-accent-ink hover:opacity-90"
+      >
+        <span className="text-lg font-semibold">▶ {t("judge.cascade")}</span>
+        <span className="text-sm opacity-90">{t("judge.cascadeD")}</span>
+      </Link>
       <ul className="mt-4 grid gap-3 sm:grid-cols-2">
         {PERSONAS.map((p) => (
           <li key={p.key}>

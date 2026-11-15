@@ -67,12 +67,18 @@ export function PedigreeChart({
   indexId,
   selectedId,
   onSelect,
+  marks,
+  startFit = false,
 }: {
   pedigree: Pedigree;
   report?: Report | null;
   indexId?: string;
   selectedId?: string | null;
   onSelect?: (id: string) => void;
+  /** Optional cascade state per person: a ring and a short label (also read to screen readers). */
+  marks?: Record<string, { label: string; tone: "info" | "done" | "alert" }>;
+  /** Start scaled to fit its column (people can still switch to full size). */
+  startFit?: boolean;
 }) {
   const { t } = usePrefs();
   const layout = useMemo(() => layoutPedigree(pedigree), [pedigree]);
@@ -80,7 +86,7 @@ export function PedigreeChart({
   const [wrapW, setWrapW] = useState(0);
   // Start in "fit" mode on phone-width screens so the whole family is visible.
   const [fit, setFit] = useState(
-    () => typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches,
+    () => startFit || (typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches),
   );
 
   useEffect(() => {
@@ -224,6 +230,7 @@ export function PedigreeChart({
               p.pregnant ? t("person.pregnant") : null,
               p.id === indexId ? t("tree.index") : null,
               chance ? `${calcLabel}: ${chance}` : null,
+              marks?.[p.id]?.label ?? null,
             ]
               .filter(Boolean)
               .join(", ");
@@ -258,6 +265,20 @@ export function PedigreeChart({
                   strokeWidth={1.5}
                 />
                 <Symbol sex={p.sex} affected={affected} carrier={carrier} deceased={!!p.deceased} x={x} y={y} />
+                {marks?.[p.id] && (() => {
+                  const m = marks[p.id];
+                  const col = m.tone === "done" ? "var(--accent)" : m.tone === "alert" ? "#c2410c" : "var(--brass)";
+                  return (
+                    <g aria-hidden="true">
+                      <circle cx={x} cy={y} r={S * 0.82} fill="none" stroke={col} strokeWidth={3.5}
+                        strokeDasharray={m.tone === "info" ? "6 5" : undefined} className="cascade-ring" />
+                      <rect x={x - 46} y={y - S / 2 - 40} width={92} height={22} rx={11} fill={col} />
+                      <text x={x} y={y - S / 2 - 25} textAnchor="middle" fontSize="12" fontWeight={700} fill="#fff">
+                        {m.label}
+                      </text>
+                    </g>
+                  );
+                })()}
                 {p.pregnant && (
                   <g transform={`translate(${x + S / 2 + 12},${y - S / 2 - 1})`}>
                     <path d="M0 -10 L10 0 L0 10 L-10 0 Z" fill="var(--surface)" stroke="var(--ink)" strokeWidth={1.5} />
