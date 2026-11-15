@@ -1,0 +1,465 @@
+{
+ "created_at": "2026-11-15T05:55:53+00:00",
+ "recorded": true,
+ "family": "Fictional Mariam family (the app's demo family); not a benchmark item.",
+ "question": {
+  "en": "Question: What is the chance that Noura and Khalfan's baby will have congenital adrenal hyperplasia?",
+  "gulf": "السؤال: شو احتمال إن ياهل نورة وخلفان يكون عنده تضخم الغدة الكظرية الخلقي؟"
+ },
+ "story": {
+  "gulf": "أنا مريم. ولدي زايد طلع عنده تضخم الغدة الكظرية الخلقي في فحص المواليد. أبوي سعيد، وعمي راشد، وعمتي سلمى، الثلاثة عيال سيدي عبيد ويدتي موزة، الله يرحمهم. ريلي أحمد هو ولد عمي راشد، وأمه حصة، وعنده أخت اسمها ميثاء. أختي نورة معرسة على خلفان، ولد عمتي سلمى، وأبوه جمعة، ونورة الحين حامل. أخوي حمدان معرس على شمّة. وعندنا بنت ثانية اسمها سارة، ما فيها شي. وما حد غير زايد في العايلة عنده هالمرض.",
+  "en": "I am Mariam. Newborn screening found that my son Zayed has congenital adrenal hyperplasia. My father Saeed, my uncle Rashid and my aunt Salma are the three children of my grandfather Obaid and my grandmother Moza, may they rest in peace. My husband Ahmed is my uncle Rashid's son; his mother is Hessa and he has a sister, Maitha. My sister Noura is married to Khalfan, my aunt Salma's son, whose father is Juma, and Noura is pregnant now. My brother Hamdan is married to Shamma. We also have a daughter, Sara, who is healthy. No one in the family other than Zayed has this condition."
+ },
+ "settings": "temperature 0, one sample, the benchmark's system prompt",
+ "gold": {
+  "probability": 0.0311270431905,
+  "one_in": "about 1 in 32",
+  "tree": {
+   "gene": "CYP21A2",
+   "people": [
+    {
+     "id": "Obaid",
+     "sex": "male",
+     "mother": null,
+     "father": null,
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Moza",
+     "sex": "female",
+     "mother": null,
+     "father": null,
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Saeed",
+     "sex": "male",
+     "mother": "Moza",
+     "father": "Obaid",
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Rashid",
+     "sex": "male",
+     "mother": "Moza",
+     "father": "Obaid",
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Salma",
+     "sex": "female",
+     "mother": "Moza",
+     "father": "Obaid",
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Mariam's mother",
+     "sex": "female",
+     "mother": null,
+     "father": null,
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Hessa",
+     "sex": "female",
+     "mother": null,
+     "father": null,
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Juma",
+     "sex": "male",
+     "mother": null,
+     "father": null,
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Mariam",
+     "sex": "female",
+     "mother": "Mariam's mother",
+     "father": "Saeed",
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Noura",
+     "sex": "female",
+     "mother": "Mariam's mother",
+     "father": "Saeed",
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Hamdan",
+     "sex": "male",
+     "mother": "Mariam's mother",
+     "father": "Saeed",
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Shamma",
+     "sex": "female",
+     "mother": null,
+     "father": null,
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Ahmed",
+     "sex": "male",
+     "mother": "Hessa",
+     "father": "Rashid",
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Maitha",
+     "sex": "female",
+     "mother": "Hessa",
+     "father": "Rashid",
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Khalfan",
+     "sex": "male",
+     "mother": "Salma",
+     "father": "Juma",
+     "status": "unaffected",
+     "affected_with": null
+    },
+    {
+     "id": "Zayed",
+     "sex": "male",
+     "mother": "Mariam",
+     "father": "Ahmed",
+     "status": "affected",
+     "affected_with": "classic congenital adrenal hyperplasia"
+    },
+    {
+     "id": "Sara",
+     "sex": "female",
+     "mother": "Mariam",
+     "father": "Ahmed",
+     "status": "unaffected",
+     "affected_with": null
+    }
+   ],
+   "unions": [
+    {
+     "a": "Noura",
+     "b": "Khalfan"
+    },
+    {
+     "a": "Hamdan",
+     "b": "Shamma"
+    }
+   ],
+   "question": {
+    "type": "couple",
+    "couple": [
+     "Noura",
+     "Khalfan"
+    ]
+   }
+  }
+ },
+ "models": {
+  "jais-3-7b": {
+   "model": "inception42/Jais-3-7B",
+   "label": "Jais 3 7B",
+   "rows": [
+    {
+     "register": "en",
+     "mode": "free text",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "",
+     "value": null,
+     "finish_reason": "length",
+     "latency_s": 1132.2
+    },
+    {
+     "register": "en",
+     "mode": "engine as a tool",
+     "tool_calls": 2,
+     "tool_values": [
+      0.0343468812594
+     ],
+     "tool_errors": [
+      "Mariam: give both parents or neither. Add the missing parent as a person with no details if they are unknown."
+     ],
+     "error": null,
+     "answer_tail": "The exact calculation on the family tree gives the probability that Noura and Khalfan's child will be affected.\n\nBrief reasoning: Zayed's congenital adrenal hyperplasia (autosomal recessive, CYP21A2) means both of his parents, Mariam and Ahmed, are obligate carriers. This information propagates through the family: it raises the carrier probability of Mariam's parents (Saeed and her mother) and, via the shared grandparents Obaid and Moza, of Salma (Khalfan's mother). Noura (Mariam's sister) and Khalfan (Salma's son) are first cousins, so their child's risk is elevated above the population baseline. The exact computation yields about 3.4% (≈ 1 in 29).\n\nAnswer: 3.4%",
+     "value": 0.034,
+     "finish_reason": "stop",
+     "latency_s": 739.1
+    },
+    {
+     "register": "gulf",
+     "mode": "free text",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "Answer: 3.1%",
+     "value": 0.031,
+     "finish_reason": "stop",
+     "latency_s": 1129.4
+    },
+    {
+     "register": "gulf",
+     "mode": "engine as a tool",
+     "tool_calls": 3,
+     "tool_values": [
+      0.0315994208382
+     ],
+     "tool_errors": [
+      "Saeed: mother 'Obaid' must be female",
+      "Maryam: give both parents or neither. Add the missing parent as a person with no details if they are unknown."
+     ],
+     "error": null,
+     "answer_tail": "احتمال إصابة ياهل نورة وخلفان بتضخم الغدة الكظرية الخلقي يُحسب من شجرة العائلة: زايد مصاب، وهذا يعني إن مريم وسعيد حاملان للجين. نورة أخت مريم (وبالتالي نصف أخت زايد من الأب)، وخلفان ابن عمتها سلمى، ومعامل زواج الأقارب الخلفي يرفع احتمال حمل سلمى للجين، مما يرفع بدوره احتمال حمل خلفان للجين. الحساب الدقيق يعطي احتمال 3.16% تقريباً.\n\nAnswer: 3.16%",
+     "value": 0.0316,
+     "finish_reason": "stop",
+     "latency_s": 1326.4
+    }
+   ]
+  },
+  "jais-3-32b": {
+   "model": "IFM/Jais-3-32B-FP8",
+   "label": "Jais 3 32B (FP8)",
+   "rows": [
+    {
+     "register": "en",
+     "mode": "free text",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "",
+     "value": null,
+     "finish_reason": "length",
+     "latency_s": 1398.6
+    },
+    {
+     "register": "en",
+     "mode": "engine as a tool",
+     "tool_calls": 1,
+     "tool_values": [
+      0.0311270431905
+     ],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "Using the family pedigree and conditioning on Zayed’s affected status (which makes both Mariam and Ahmed carriers), the exact calculation for Noura and Khalfan’s child gives a risk of about 3.11%.\n\nAnswer: 3.11%",
+     "value": 0.0311,
+     "finish_reason": "stop",
+     "latency_s": 348.9
+    },
+    {
+     "register": "gulf",
+     "mode": "free text",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "",
+     "value": null,
+     "finish_reason": "length",
+     "latency_s": 1398.9
+    },
+    {
+     "register": "gulf",
+     "mode": "engine as a tool",
+     "tool_calls": 1,
+     "tool_values": [
+      0.0311270431905
+     ],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "باستخدام شجرة العائلة: إصابة زايد تعني أن مريم وأحمد حاملان بالتأكيد، وهذا يرفع احتمالات أن يكون والدا نورة أو والدا خلفان حاملين، مع وجود ارتباط لأن نورة وخلفان أبناء عمومة. وبمعدل الحاملين 0.82% ومعامل زواج الأقارب، يكون احتمال إصابة الطفل حوالي 3.11% (نحو 1 من 32).\n\nAnswer: 3.11%",
+     "value": 0.0311,
+     "finish_reason": "stop",
+     "latency_s": 294.2
+    }
+   ]
+  },
+  "llama3-med42-8b": {
+   "model": "m42-health/Llama3-Med42-8B",
+   "label": "Llama3-Med42 8B",
+   "rows": [
+    {
+     "register": "en",
+     "mode": "free text",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "First, let's determine the carrier status of Noura and Khalfan. Since Noura is Mariam's sister, they share the same grandparents (Obaid and Moza). As three of their four grandparents are affected (Saeed, Rashid, and Salma), Noura and Mariam are both homozygous carriers of the CYP21A2 variant. Khalfan, being Salma's son, is also a homozygous carrier.\n\nNow, we can calculate the probability of their child having congenital adrenal hyperplasia. Since both Noura and Khalfan are homozygous carriers, their child will inherit two copies of the variant, one from each parent. With complete penetrance, this guarantees the child will have the condition.\n\nAnswer: 100%",
+     "value": 1.0,
+     "finish_reason": "stop",
+     "latency_s": 1.8
+    },
+    {
+     "register": "en",
+     "mode": "engine as a tool",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "ull, \"test_detected\": []},\n      {\"id\": \"Khalfan\", \"sex\": \"male\", \"mother\": \"Salma\", \"father\": \"Juma\", \"status\": \"unaffected\", \"affected_with\": null, \"test_detected\": []},\n      {\"id\": \"Shamma\", \"sex\": \"female\", \"mother\": null, \"father\": \"Hamdan\", \"status\": \"unaffected\", \"affected_with\": null, \"test_detected\": []},\n      {\"id\": \"Sara\", \"sex\": \"female\", \"mother\": \"Mariam\", \"father\": \"Ahmed\", \"status\": \"unaffected\", \"affected_with\": null, \"test_detected\": []}\n    ],\n    \"unions\": [\n      [\"Mariam\", \"Ahmed\"],\n      [\"Noura\", \"Khalfan\"],\n      [\"Hamdan\", \"Shamma\"]\n    ],\n    \"question\": {\n      \"type\": \"child_affected\",\n      \"couple\": [\"Noura\", \"Khalfan\"]\n    }\n  }}\n</tool_call>\n\nAnswer: 0.0204",
+     "value": 0.0204,
+     "finish_reason": "stop",
+     "latency_s": 4.2
+    },
+    {
+     "register": "gulf",
+     "mode": "free text",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "culate the probability of Noura and Khalaf being carriers of the CYP21A2 mutation. Since they are not mentioned to have any family history, we can assume they are unrelated individuals. The probability of being a carrier is 0.82% (given community prevalence).\n\nNext, we need to calculate the probability of their offspring inheriting the condition. Since they are not consanguineous, we can use the Hardy-Weinberg equation to estimate the probability of their offspring being homozygous for the mutation (i.e., having the condition). Assuming complete penetrance, the probability is:\n\nP(homozygous) = F × (2 × carrier frequency)^2\n= 0.0222 × (2 × 0.0082)^2\n= 0.0222 × 0.00016\n= 0.0035%\n\nAnswer: 0.35%",
+     "value": 0.0034999999999999996,
+     "finish_reason": "stop",
+     "latency_s": 2.4
+    },
+    {
+     "register": "gulf",
+     "mode": "engine as a tool",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "\n      {\"id\": \"نورة\", \"sex\": \"female\", \"mother\": null, \"father\": \"خلفان\", \"status\": \"unknown\", \"affected_with\": null, \"test_detected\": []},\n      {\"id\": \"حمدان\", \"sex\": \"male\", \"mother\": null, \"father\": \"معرس شمّة\", \"status\": \"unaffected\", \"affected_with\": null, \"test_detected\": []},\n      {\"id\": \"سارة\", \"sex\": \"female\", \"mother\": null, \"father\": null, \"status\": \"unaffected\", \"affected_with\": null, \"test_detected\": []}\n    ],\n    \"unions\": [\n      [\"سعيد\", \"مريم\"],\n      [\"راشد\", \"حصة\"],\n      [\"خلفان\", \"نورة\"],\n      [\"معرس شمّة\", \"حمدان\"]\n    ],\n    \"question\": {\n      \"type\": \"child_affected\",\n      \"person\": null,\n      \"couple\": [\"نورة\", \"خلفان\"]\n    }\n  }\n}\n</tool_call>\n\nAnswer: 0.0222",
+     "value": 0.0222,
+     "finish_reason": "stop",
+     "latency_s": 4.0
+    }
+   ]
+  },
+  "bimedix2-8b": {
+   "model": "MBZUAI/BiMediX2-8B-hf",
+   "label": "BiMediX2 8B",
+   "rows": [
+    {
+     "register": "en",
+     "mode": "free text",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "es, which is 0.82% * 0.82% = 0.67%.\n\nHowever, this is the probability of the baby being homozygous recessive, which always causes the condition. To find the overall chance that Noura and Khalfan's baby will have congenital adrenal hyperplasia, we need to consider that the baby can also be a carrier (heterozygous) without having the condition. Since we are given that no one in the family other than Zayed has this condition, we can assume that the baby will not have the condition if it is not homozygous recessive. Therefore, the chance that Noura and Khalfan's baby will have congenital adrenal hyperplasia is the probability of the baby being homozygous recessive, which is 0.67%.\n\nAnswer: 0.67%",
+     "value": 0.0067,
+     "finish_reason": "stop",
+     "latency_s": 2.6
+    },
+    {
+     "register": "en",
+     "mode": "engine as a tool",
+     "tool_calls": 1,
+     "tool_values": [],
+     "tool_errors": [
+      "Expecting property name enclosed in double quotes: line 1 column 3 (char 2)"
+     ],
+     "error": null,
+     "answer_tail": "The error message indicates that there is an issue with the JSON format. It seems that the JSON string is not properly formatted, which can cause issues when trying to parse it. To resolve this issue, you should ensure that the JSON string is correctly formatted, with all property names enclosed in double quotes. If you are generating the JSON string programmatically, you should check the code that generates it to ensure that it produces a valid JSON string.",
+     "value": null,
+     "finish_reason": "stop",
+     "latency_s": 6.4
+    },
+    {
+     "register": "gulf",
+     "mode": "free text",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "لنعد إلى المعلومات المذكورة: حوالي 0.82% من الناس في هذا المجتمع يحملون نسخة واحدة من متغير جين CYP21A2. هذا يعني أن هناك احتمال 0.82% لحدوث المرض عند الأفراد الذين يحملون نسخة واحدة من المتغير. ومع أن نورة حامل، إلا أننا لا نعرف ما إذا كانت حاملة للمتغير أم لا. لذلك، من غير المعقول أن نعتبر نورة حاملة للمتغير، وبالتالي، من غير المعقول أن نعتبر نورة حامل للمتغير. \n\nلذلك، من غير المعقول أن نعتبر نورة حامل للمتغير، وبالتالي، من غير المعقول أن نعتبر نورة حامل للمتغير. \n\nAnswer: 0.82%",
+     "value": 0.008199999999999999,
+     "finish_reason": "stop",
+     "latency_s": 1.9
+    },
+    {
+     "register": "gulf",
+     "mode": "engine as a tool",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "cted': 'null'}, {'id': 'obaid', 'sex': 'male', 'status': 'unaffected', 'affected_with': 'null', 'test_detected': 'null'}, {'id': 'mouza', 'sex': 'female', 'status': 'unaffected', 'affected_with': 'null', 'test_detected': 'null'}, {'id': 'salmah', 'sex': 'female', 'status': 'unaffected', 'affected_with': 'null', 'test_detected': 'null'}, {'id': 'obaid', 'sex': 'male', 'status': 'unaffected', 'affected_with': 'null', 'test_detected': 'null'}, {'id': 'mouza', 'sex': 'female', 'status': 'unaffected', 'affected_with': 'null', 'test_detected': 'null'}, {'id': 'salmah', 'sex': 'female', 'status': 'unaffected', 'affected_with': 'null', 'test_detected': 'null'}, {'id': 'obaid', 'sex': 'male', 'status",
+     "value": null,
+     "finish_reason": "length",
+     "latency_s": 22.0
+    }
+   ]
+  },
+  "gpt-oss-120b": {
+   "model": "accounts/fireworks/models/gpt-oss-120b",
+   "label": "gpt-oss-120b (Fireworks, frontier reference)",
+   "rows": [
+    {
+     "register": "en",
+     "mode": "free text",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "The chance that Noura (≈50 % carrier) and Khalfan (≈25 % carrier) both carry a pathogenic CYP21A2 allele and pass it to their child is  \n\n\\[\n0.5 \\times 0.252 \\times \\tfrac14 \\approx 0.0315\\;,\n\\]\n\ni.e. about **3 %**.\n\n**Answer: 3 %** (≈1 in 32).",
+     "value": 0.03,
+     "finish_reason": "stop",
+     "latency_s": 21.3
+    },
+    {
+     "register": "en",
+     "mode": "engine as a tool",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "The calculated probability that the baby of Noura and Khalfan will be affected with congenital adrenal hyperplasia is about **3 %**.\n\n**Answer: 3 %**",
+     "value": 0.03,
+     "finish_reason": "stop",
+     "latency_s": 23.5
+    },
+    {
+     "register": "gulf",
+     "mode": "free text",
+     "tool_calls": 0,
+     "tool_values": [],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "ن** هي أبناء عم أول (F = 0.0222).  \n   باستخدام شجرة العائلة نحسب احتمال أن يكون كلاهما حاملًا في آنٍ واحد:\n\n\\[\n\\begin{aligned}\nP(\\text{كلاهما حامل}) &=\n0.5\\!\\times\\!0.25 \\;(\\text{من الأصل المشترك}) \\\\\n&\\;+\\;0.5\\!\\times\\!0.75\\!\\times\\!0.0041 \\\\\n&\\;+\\;0.5\\!\\times\\!0.0041\\!\\times\\!0.25 \\\\\n&\\;+\\;0.5\\!\\times\\!0.0041\\!\\times\\!0.75\\!\\times\\!0.0041 \\\\\n&\\;+\\;0.5\\!\\times\\!0.0041\\!\\times\\!0.0041 \\\\\n&\\approx 0.1271 .\n\\end{aligned}\n\\]\n\n4. إذا كان كلا الوالدين حاملين، فإن احتمال أن يولد الطفل مصابًا هو \\(\\frac{1}{4}\\).\n\n\\[\nP(\\text{الطفل مصاب}) = 0.1271 \\times \\frac{1}{4} \\approx 0.0318 .\n\\]\n\n**النتيجة:** احتمال أن يكون طفل نورة وخلفان مصابًا بتضخم الغدة الكظرية الخلقي هو نحو **3.2 %**.\n\n**Answer: 3.2 %**",
+     "value": 0.032,
+     "finish_reason": "stop",
+     "latency_s": 39.1
+    },
+    {
+     "register": "gulf",
+     "mode": "engine as a tool",
+     "tool_calls": 1,
+     "tool_values": [
+      0.00108862439602
+     ],
+     "tool_errors": [],
+     "error": null,
+     "answer_tail": "The family tree was entered into the risk calculator, using the population carrier frequency (0.82 %) for CYP21A2, full test sensitivity, and the in‑breeding coefficient (F = 0.0222) for the relevant individuals. The calculation gives a probability that a child of Noura × Khalfan will be affected with classic congenital adrenal hyperplasia of about **0.1089 %**, i.e. roughly **1 in 919**.\n\n**Answer: 0.1089 % (≈ 1 in 919)**",
+     "value": 0.001089,
+     "finish_reason": "stop",
+     "latency_s": 22.3
+    }
+   ]
+  }
+ }
+}

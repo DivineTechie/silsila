@@ -85,7 +85,7 @@ export function Contrast() {
         <Chip>{t("ct.recorded", { date: data.created_at.slice(0, 10) })}</Chip>
       </div>
       <p className="mt-1 max-w-3xl text-sm text-ink-2">{t("ct.lead")}</p>
-      <p className="mt-3 text-sm"><span className="text-muted">{t("ct.question")}:</span> {data.question.en}</p>
+      <p className="mt-3 text-sm"><span className="text-muted">{t("ct.question")}:</span> {data.question.en.replace(/^Question:\s*/, "")}</p>
       <p className="mt-1 text-sm" dir="rtl" lang="ar">{data.question.gulf}</p>
       <div className="mt-4 flex items-center gap-3 rounded-xl border border-accent bg-accent-soft p-3">
         <Prov kind="calculated" />
@@ -119,7 +119,8 @@ export function Contrast() {
           </tbody>
         </table>
       </div>
-      <p className="mt-3 text-xs text-muted">{t("ct.note", { settings: data.settings })}</p>
+      <p className="mt-3 text-sm text-ink-2">{t("ct.tree")}</p>
+      <p className="mt-2 text-xs text-muted">{t("ct.note", { settings: data.settings })}</p>
     </Card>
   );
 }

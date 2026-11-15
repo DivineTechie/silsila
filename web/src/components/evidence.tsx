@@ -263,8 +263,8 @@ export function EvidenceFile({ name, doc }: { name: string; doc: J }) {
     <article className="min-w-0 [overflow-wrap:anywhere] rounded-2xl border border-line bg-surface-2/40 p-4 sm:p-6" aria-labelledby={`ev-${name}`}>
       <p className="font-mono text-xs text-muted">docs/evidence/{name}.json</p>
       <h2 id={`ev-${name}`} className="mt-1 text-lg font-semibold sm:text-xl">{title}</h2>
-      {f.texts.map((x) => (
-        <p key={x.name} className="mt-2 max-w-3xl text-sm text-ink-2" dir="ltr">
+      {f.texts.map((x, i) => (
+        <p key={`x${i}`} className="mt-2 max-w-3xl text-sm text-ink-2" dir="ltr">
           <span className="font-semibold">{human(x.name)}:</span> {x.v}
         </p>
       ))}
