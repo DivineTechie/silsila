@@ -430,11 +430,14 @@ def _median(xs: list[float]) -> float | None:
 FUNNEL = ("awaiting_counsellor", "sent", "opened", "understood", "booked", "tested", "closed")
 
 
-def outcomes(store: Store) -> dict[str, Any]:
+def outcomes(store: Store, case_id: str | None = None) -> dict[str, Any]:
     """The challenge statement's measures, computed from what the system recorded: comprehension, uptake,
-    time to counselling, privacy and equity across languages. Never marriages or reproductive choices."""
-    invs = store.list("invitation")
-    cases = {c["id"]: c for c in store.list("case")}
+    time to counselling, privacy and equity across languages. Never marriages or reproductive choices.
+
+    With `case_id`, the same measures for one family only (used by Watch a cascade for its own run); the
+    audit chain check always covers the whole chain."""
+    invs = store.list("invitation", case_id) if case_id else store.list("invitation")
+    cases = {c["id"]: c for c in store.list("case") if case_id is None or c["id"] == case_id}
 
     def reached(inv: dict[str, Any], status: str) -> bool:
         return any(h["status"] == status for h in inv["history"])
@@ -463,7 +466,11 @@ def outcomes(store: Store) -> dict[str, Any]:
             first_sent[i["case_id"]] = at
     events = store.audit_events(limit=100000)
     msgs = store.list("message")
+    if case_id:
+        events = [e for e in events if e.get("case_id") == case_id]
+        msgs = [m for m in msgs if m.get("case_id") == case_id]
     return {
+        "scope": case_id or "all",
         "invitations": len(invs),
         "funnel": funnel,
         "ended": ended,
@@ -473,11 +480,16 @@ def outcomes(store: Store) -> dict[str, Any]:
             "request_to_sent": _median([_hours(first_at(i, "awaiting_counsellor"), first_at(i, "sent")) for i in invs]),
             "sent_to_opened": _median([_hours(first_at(i, "sent"), first_at(i, "opened")) for i in invs]),
             "opened_to_booked": _median([_hours(first_at(i, "opened"), first_at(i, "booked")) for i in invs]),
+            "sent_to_booked": _median([_hours(first_at(i, "sent"), first_at(i, "booked")) for i in invs]),
             "case_to_first_invitation": _median([_hours(cases[c].get("created"), at) for c, at in first_sent.items()
                                                  if c in cases]),
         },
         "by_language": by_lang,
         "privacy": {
+            # what each invitation revealed, as chosen by the index person
+            "disclosure": {"anonymous": sum(not i["disclose_sender"] and not i["disclose_condition"] for i in invs),
+                           "condition_named": sum(bool(i["disclose_condition"]) for i in invs),
+                           "sender_named": sum(bool(i["disclose_sender"]) for i in invs)},
             "denied_requests": sum(e["outcome"] == "denied" for e in events),
             "blocked_outputs": sum(e["action"] == "output_gate.block" for e in events),
             "audit_chain": store.verify_chain(),

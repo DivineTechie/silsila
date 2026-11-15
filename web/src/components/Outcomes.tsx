@@ -8,7 +8,9 @@ import { usePrefs } from "@/lib/prefs";
 import type { StringKey } from "@/lib/strings";
 import { useLoad } from "@/lib/useLoad";
 
-interface Outcomes {
+export interface Outcomes {
+  /** "all", or the one case these measures cover. */
+  scope?: string;
   invitations: number;
   funnel: Record<string, number>;
   ended: { declined_by_relative: number; no_response: number; withdrawn: number };
@@ -16,15 +18,20 @@ interface Outcomes {
   uptake: { opened: number; booked_or_tested: number };
   hours: Record<string, number | null>;
   by_language: Record<string, { opened: number; teachback: number; understood: number; booked_or_tested: number }>;
-  privacy: { denied_requests: number; blocked_outputs: number; audit_chain: { intact: boolean } };
+  privacy: {
+    disclosure?: { anonymous: number; condition_named: number; sender_named: number };
+    denied_requests: number;
+    blocked_outputs: number;
+    audit_chain: { intact: boolean; events?: number };
+  };
   messages: { total: number; escalated: number; crisis: number };
 }
 
 const STAGES = ["awaiting_counsellor", "sent", "opened", "understood", "booked", "tested", "closed"] as const;
 
-function dur(h: number | null | undefined): string {
+export function dur(h: number | null | undefined): string {
   if (h === null || h === undefined) return "–";
-  if (h < 1 / 60) return "<1 min";
+  if (h < 1 / 60) return `${Math.max(1, Math.round(h * 3600))} s`;
   if (h < 1) return `${Math.round(h * 60)} min`;
   if (h < 48) return `${h.toFixed(1)} h`;
   return `${(h / 24).toFixed(1)} d`;
@@ -132,6 +139,59 @@ export function OutcomesPanel() {
           </dl>
         </Card>
       </div>
+      <p className="text-sm font-medium text-ink-2">{t("oc.notMeasured")}</p>
+    </div>
+  );
+}
+
+function Row({ title, value, detail }: { title: string; value: string; detail: string }) {
+  return (
+    <div className="rounded-lg border border-line bg-surface px-3 py-2">
+      <dt className="text-xs font-semibold uppercase tracking-wide text-ink-2">{title}</dt>
+      <dd className="mt-0.5">
+        <span className="text-xl font-semibold tabular-nums"><Num>{value}</Num></span>
+        <span className="mt-0.5 block text-xs text-ink-2">{detail}</span>
+      </dd>
+    </div>
+  );
+}
+
+/**
+ * The same measures for one family only, in a compact form: Watch a cascade shows them for its own run.
+ * One run is an illustration of how the measures are computed, and the lead text says so.
+ */
+export function RunOutcomes({ data }: { data: Outcomes }) {
+  const { t } = usePrefs();
+  const d = data.privacy.disclosure;
+  const langs = Object.entries(data.by_language);
+  return (
+    <div className="grid gap-3">
+      <p className="text-sm text-ink-2">{t("oc.runLead")}</p>
+      <dl className="grid gap-2 sm:grid-cols-2">
+        <Row title={t("oc.comprehension")} value={`${data.comprehension.passed}/${data.comprehension.submitted}`}
+          detail={t("oc.comprehensionD", { passed: data.comprehension.passed, n: data.comprehension.submitted })} />
+        <Row title={t("oc.uptake")} value={`${data.uptake.booked_or_tested}/${data.uptake.opened}`}
+          detail={t("oc.uptakeD", { n: data.uptake.booked_or_tested, opened: data.uptake.opened })} />
+        <Row title={t("oc.ttc")} value={dur(data.hours.sent_to_booked)} detail={t("oc.ttcD")} />
+        <Row title={t("oc.privacy")} value={d ? `${d.anonymous}/${data.invitations}` : String(data.privacy.denied_requests)}
+          detail={`${d ? `${t("oc.disclosureD")} · ` : ""}${t("oc.privacyD", { denied: data.privacy.denied_requests, blocked: data.privacy.blocked_outputs,
+            chain: data.privacy.audit_chain.intact ? t("oc.intact") : t("oc.broken") })}`} />
+        {langs.map(([lang, r]) => (
+          <Row key={lang} title={t("oc.equity")} value={lang === "ar" ? "العربية" : "English"}
+            detail={`${t("oc.opened")} ${r.opened} · ${t("oc.understood")} ${r.understood}/${r.teachback} · ${t("oc.booked")} ${r.booked_or_tested}`} />
+        ))}
+        <div className="rounded-lg border border-line bg-surface px-3 py-2">
+          <dt className="text-xs font-semibold uppercase tracking-wide text-ink-2">{t("oc.timing")}</dt>
+          <dd className="mt-1 grid gap-0.5 text-xs text-ink-2">
+            {(["request_to_sent", "sent_to_opened", "opened_to_booked"] as const).map((k) => (
+              <span key={k} className="flex justify-between gap-2">
+                <span>{t(`oc.t.${k}` as StringKey)}</span>
+                <span className="tabular-nums text-ink"><Num>{dur(data.hours[k])}</Num></span>
+              </span>
+            ))}
+          </dd>
+        </div>
+      </dl>
       <p className="text-sm font-medium text-ink-2">{t("oc.notMeasured")}</p>
     </div>
   );

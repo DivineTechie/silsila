@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StatusChip } from "@/components/case";
 import { ReasonChip } from "@/components/counsellor";
+import { RunOutcomes, type Outcomes } from "@/components/Outcomes";
 import { Parts } from "@/components/Parts";
 import { PedigreeChart } from "@/components/PedigreeChart";
 import { Page } from "@/components/Shell";
@@ -27,7 +28,6 @@ const QUESTION_AR = "هل نوقف الحمل؟ وش الأفضل لنا؟";
 
 interface AuditEvent { seq: number; ts: string; actor: string; role: string; action: string; outcome: string; hash: string; case_id: string | null }
 interface QueueItem { type: string; id: string; case_id: string | null; reasons: string[]; priority: number }
-interface Outcomes { comprehension: { submitted: number; passed: number }; uptake: { opened: number; booked_or_tested: number }; hours: Record<string, number | null> }
 interface Inject { attempted: string; blocked: boolean; reason: string | null; approved_original: string }
 
 interface World {
@@ -122,10 +122,10 @@ async function perform(i: number, w: World | null, lang: Lang): Promise<World> {
       await refreshFam();
       break;
     case S.gate:
-      next.inject = await call<Inject>("/api/demo/inject", { token: w.couToken, method: "POST", query: { lang } });
+      next.inject = await call<Inject>("/api/demo/inject", { token: w.couToken, method: "POST", query: { lang, case_id: w.caseId } });
       break;
     case S.programme:
-      next.outcomes = await call<Outcomes>("/api/outcomes", { token: w.couToken });
+      next.outcomes = await call<Outcomes>("/api/outcomes", { token: w.couToken, query: { case_id: w.caseId } });
       break;
   }
   return withAudit(next);
@@ -133,7 +133,7 @@ async function perform(i: number, w: World | null, lang: Lang): Promise<World> {
 
 async function withAudit(w: World): Promise<World> {
   const all = await call<{ events: AuditEvent[] }>("/api/audit", { token: w.couToken });
-  const mine = all.events.filter((e) => e.case_id === w.caseId || (e.action === "output_gate.block" && w.inject));
+  const mine = all.events.filter((e) => e.case_id === w.caseId);
   return { ...w, audit: mine.slice(0, 14) };
 }
 
@@ -157,7 +157,7 @@ async function relocalise(snaps: World[], lang: Lang): Promise<World[]> {
     ? await call<TopicAnswer>(`/api/r/${last.code}/topics/${OPTIONS_TOPIC}`, { query: { lang } })
     : undefined;
   const inject = snaps.some((s) => s.inject)
-    ? await call<Inject>("/api/demo/inject", { token: last.couToken, method: "POST", query: { lang } })
+    ? await call<Inject>("/api/demo/inject", { token: last.couToken, method: "POST", query: { lang, case_id: last.caseId } })
     : undefined;
   const out: World[] = [];
   for (const s of snaps) {
@@ -451,7 +451,8 @@ export default function CascadePage() {
                 )}
                 {step === S.programme && (
                   <>
-                    <p className="font-semibold">{t("cx.more")}</p>
+                    {w.outcomes && <RunOutcomes data={w.outcomes} />}
+                    <p className="mt-2 font-semibold">{t("cx.more")}</p>
                     <ul className="grid gap-2">
                       <li><Link className="text-accent underline underline-offset-4" href="/twin">{t("cx.moreTwin")}</Link></li>
                       <li><Link className="text-accent underline underline-offset-4" href="/counsellor">{t("cx.moreIntake")}</Link></li>
@@ -493,12 +494,6 @@ export default function CascadePage() {
                     <p className="mt-1 line-through">{w.inject.attempted}</p>
                     <p className="mt-2 font-semibold">{w.inject.blocked ? t("cx.blocked") : "—"}</p>
                   </div>
-                )}
-                {step === S.programme && w.outcomes && (
-                  <ul className="grid gap-1 text-sm">
-                    <li>{t("oc.comprehension")}: <Num>{w.outcomes.comprehension.passed}/{w.outcomes.comprehension.submitted}</Num></li>
-                    <li>{t("oc.uptake")}: <Num>{w.outcomes.uptake.booked_or_tested}/{w.outcomes.uptake.opened}</Num></li>
-                  </ul>
                 )}
                 <p className="text-xs text-muted">{t("cx.recordedLead")}</p>
                 {w.audit.length === 0 ? (

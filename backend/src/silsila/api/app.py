@@ -477,9 +477,12 @@ def work_queue(user: dict[str, Any] = Depends(counsellor)) -> list[dict[str, Any
 
 
 @app.get("/api/outcomes")
-def outcomes(user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
-    """Programme measures from the challenge statement, computed live from recorded activity."""
-    return service.outcomes(store())
+def outcomes(case_id: str | None = None, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    """Programme measures from the challenge statement, computed live from recorded activity. With
+    `case_id`, the measures for that one family."""
+    if case_id:
+        service.visible_case(store(), user, case_id)
+    return service.outcomes(store(), case_id)
 
 
 @app.post("/api/invitations/{inv_id}/approve")
@@ -603,11 +606,15 @@ def demo_tamper(seq: int, user: dict[str, Any] = Depends(counsellor)) -> dict[st
 
 
 @app.post("/api/demo/inject")
-def demo_inject(lang: Literal["en", "ar"] = "en", user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+def demo_inject(lang: Literal["en", "ar"] = "en", case_id: str | None = None,
+                user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
     """Show the output gate stopping text that is not approved: render an
-    approved reply, then alter it the way an unconstrained model might."""
+    approved reply, then alter it the way an unconstrained model might. `case_id` ties the blocked attempt
+    to one family's audit trail (Watch a cascade)."""
     if not DEMO:
         raise HTTPException(404, "Not available")
+    if case_id:
+        service.visible_case(store(), user, case_id)
     reg = registry()
     msg = reg.template(Message(lang), "reply.decision_request")
     original = msg.parts[0]["text"]
@@ -618,5 +625,6 @@ def demo_inject(lang: Literal["en", "ar"] = "en", user: dict[str, Any] = Depends
         blocked, reason = False, None
     except GateError as e:
         blocked, reason = True, str(e)
-        store().audit(user["id"], user["role"], "output_gate.block", outcome="blocked", detail={"reason": reason, "demo": True})
+        store().audit(user["id"], user["role"], "output_gate.block", outcome="blocked", case_id=case_id,
+                      detail={"reason": reason, "demo": True})
     return {"attempted": msg.parts[0]["text"], "approved_original": original, "blocked": blocked, "reason": reason}

@@ -261,3 +261,37 @@ def test_relative_can_read_reproductive_options_as_quoted_text_only(client):
 
     assert client.get(f"/api/r/{code}/topics/faq.nothing").status_code == 422
     assert client.get("/api/r/not-a-code/topics/faq.reproductive_options").status_code == 403
+
+
+def test_outcomes_for_one_family_cover_only_that_family(client):
+    """Watch a cascade shows its own run's measures: two runs must not leak into each other."""
+    runs = []
+    for lang in ("ar", "en"):
+        r = client.post("/api/demo/story").json()
+        fam = {"Authorization": f"Bearer {r['family']['token']}"}
+        cou = {"Authorization": f"Bearer {r['counsellor']['token']}"}
+        cid = r["case_id"]
+        client.post(f"/api/cases/{cid}/consents", json={"scope": "invite", "granted": True}, headers=fam)
+        inv = client.post(f"/api/cases/{cid}/invitations", json={"person_id": "noura", "channel": "anonymous_invite"},
+                          headers=fam).json()
+        code = client.post(f"/api/invitations/{inv['id']}/approve", headers=cou).json()["code"]
+        view = client.get(f"/api/r/{code}?lang={lang}").json()
+        client.post(f"/api/r/{code}/teachback", json={"answers": {q["id"]: "a" for q in view["teachback"]}})
+        if lang == "ar":
+            client.post(f"/api/r/{code}/respond?action=book")
+            assert client.post(f"/api/demo/inject?case_id={cid}", headers=cou).json()["blocked"]
+        runs.append((cid, cou))
+    (a, cou), (b, _) = runs
+    oa = client.get(f"/api/outcomes?case_id={a}", headers=cou).json()
+    ob = client.get(f"/api/outcomes?case_id={b}", headers=cou).json()
+    assert oa["scope"] == a and oa["invitations"] == 1 and ob["invitations"] == 1
+    assert oa["by_language"] == {"ar": {"opened": 1, "teachback": 1, "understood": 1, "booked_or_tested": 1}}
+    assert ob["by_language"] == {"en": {"opened": 1, "teachback": 1, "understood": 1, "booked_or_tested": 0}}
+    assert oa["uptake"] == {"opened": 1, "booked_or_tested": 1} and ob["uptake"] == {"opened": 1, "booked_or_tested": 0}
+    assert oa["hours"]["sent_to_booked"] is not None and ob["hours"]["sent_to_booked"] is None
+    assert oa["privacy"]["disclosure"] == {"anonymous": 1, "condition_named": 0, "sender_named": 0}
+    assert oa["privacy"]["blocked_outputs"] == 1 and ob["privacy"]["blocked_outputs"] == 0
+    assert oa["privacy"]["audit_chain"]["intact"]
+    whole = client.get("/api/outcomes", headers=cou).json()
+    assert whole["scope"] == "all" and whole["invitations"] == 2 and whole["privacy"]["blocked_outputs"] == 1
+    assert client.get("/api/outcomes?case_id=case_nope", headers=cou).status_code == 422
