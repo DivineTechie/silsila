@@ -191,7 +191,7 @@ class ChatClient:
     def assistant_message(self, res: ChatResult) -> dict:
         if self.spec.tool_mode == "prompted" or not res.tool_calls:
             return {"role": "assistant", "content": res.raw_content if self.spec.tool_mode == "prompted" else res.content}
-        return {
+        msg: dict = {
             "role": "assistant",
             "content": res.content or "",
             "tool_calls": [
@@ -203,6 +203,11 @@ class ChatClient:
                 for tc in res.tool_calls
             ],
         }
+        if self.spec.reasoning and self.spec.provider == "vllm":
+            # Reasoning templates (Jais 3) require the model's own reasoning on an assistant turn that is sent
+            # back with tool calls; vLLM passes this field through to the chat template.
+            msg["reasoning_content"] = res.reasoning or ""
+        return msg
 
     def tool_message(self, tc: ToolCall, result: dict) -> dict:
         body = json.dumps(result, ensure_ascii=False)

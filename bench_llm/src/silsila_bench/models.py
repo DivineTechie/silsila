@@ -31,7 +31,9 @@ class ModelSpec:
     base_url: str | None = None
     api_key_env: str | None = None
     tool_mode: str = "native"          # native | prompted
-    tool_args_as_dict: bool = False    # send earlier tool-call arguments back as objects (Jais template needs it)
+    # Send earlier tool-call arguments back as objects. Only the local MLX server needs this for the Jais
+    # template; vLLM requires strings (OpenAI format) and converts them for the template itself.
+    tool_args_as_dict: bool = False
     max_tokens: int = 4096
     temperature: float = 0.0
     extra_body: dict[str, Any] = field(default_factory=dict)
@@ -77,12 +79,12 @@ MODELS: dict[str, ModelSpec] = {m.name: m for m in [
     ),
     ModelSpec(
         name="jais-3-7b", provider="vllm", model_id="inception42/Jais-3-7B", label="Jais 3 7B",
-        api_key_env="SILSILA_VLLM_API_KEY", tool_args_as_dict=True, max_tokens=32768, concurrency=64,
+        api_key_env="SILSILA_VLLM_API_KEY", max_tokens=32768, concurrency=64,
         reasoning=True, licence="Apache-2.0", gpu="H100", est_output_tokens=4000,
     ),
     ModelSpec(
         name="jais-3-32b", provider="vllm", model_id="IFM/Jais-3-32B-FP8", label="Jais 3 32B (FP8)",
-        api_key_env="SILSILA_VLLM_API_KEY", tool_args_as_dict=True, max_tokens=32768, concurrency=48,
+        api_key_env="SILSILA_VLLM_API_KEY", max_tokens=32768, concurrency=48,
         reasoning=True, licence="Apache-2.0", gpu="H100", est_output_tokens=4000,
     ),
     ModelSpec(

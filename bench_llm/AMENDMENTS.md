@@ -121,3 +121,14 @@ Recorded before the reduced runs started.
 * The 47 T1 answers already produced on the full order are kept in the logs; only the 2 that fall inside
   the sample are scored. Jais 3 32B results are reported on the sample, and every other model is also
   reported on the same sample so the comparison is like for like.
+
+## A11. T2 rerun for Jais 3 after a request-format error, 2026-11-15
+
+* In the first Jais 3 7B and 32B T2 runs, every second request (the one that returns the tool result)
+  was rejected by the server with HTTP 400: our client sent the earlier tool-call arguments as a JSON
+  object and without the model's reasoning, while vLLM requires a string and the Jais 3 template requires
+  the reasoning field. The model never saw the tool result, so these were harness errors, not model
+  answers; they are logged as errors and not scored.
+* Fixed in `clients.py` (arguments as a string; `reasoning_content` passed back on tool-call turns for
+  reasoning models served by vLLM). Prompts, decoding and scoring are unchanged. The errored T2 items are
+  rerun; T1, T3 and T5 are unaffected (no second request).
