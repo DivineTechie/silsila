@@ -16,8 +16,8 @@ import { useLoad } from "@/lib/useLoad";
 type TabKey = "queue" | "cases" | "intake" | "messages" | "audit";
 
 function Cases() {
-  const { t, session } = usePrefs();
-  const { data, error, loading, reload } = useLoad(() => api<CaseSummary[]>("/api/cases"), session?.token || "");
+  const { t, session, lang } = usePrefs();
+  const { data, error, loading, reload } = useLoad(() => api<CaseSummary[]>("/api/cases", { query: { lang } }), `${session?.token || ""}:${lang}`);
   if (loading && !data) return <Loading />;
   if (error && !data) return <ErrorBox error={error} onRetry={reload} />;
   return (

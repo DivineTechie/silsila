@@ -12,9 +12,9 @@ import type { CaseSummary } from "@/lib/types";
 import { useLoad } from "@/lib/useLoad";
 
 function CaseList() {
-  const { t, session } = usePrefs();
+  const { t, session, lang } = usePrefs();
   const router = useRouter();
-  const { data, error, loading, reload } = useLoad(() => api<CaseSummary[]>("/api/cases"), session?.token || "");
+  const { data, error, loading, reload } = useLoad(() => api<CaseSummary[]>("/api/cases", { query: { lang } }), `${session?.token || ""}:${lang}`);
 
   useEffect(() => {
     if (data && data.length === 1) router.replace(`/family/${data[0].id}`);

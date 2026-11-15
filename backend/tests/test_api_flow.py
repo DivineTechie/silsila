@@ -177,3 +177,18 @@ def test_judge_mode_is_off_outside_demo(client, monkeypatch):
     monkeypatch.setattr(app_mod, "DEMO", False)
     assert client.post("/api/demo/login", json={"persona": "mariam"}).status_code == 404
     assert client.post("/api/demo/relative").status_code == 404
+
+
+def test_arabic_view_shows_arabic_names_and_keeps_english_on_save(client):
+    reem = client.post("/api/demo/login", json={"persona": "reem"}).json()
+    h = {"Authorization": f"Bearer {reem['token']}"}
+    assert client.get("/api/cases?lang=ar", headers=h).json()[0]["title"].startswith(("الثلاسيميا", "نتيجة"))
+    ar = client.get("/api/cases/case_hbb_demo?lang=ar", headers=h).json()
+    bride = next(p for p in ar["case"]["pedigree"]["people"] if p["id"] == "bride")
+    assert bride["name"] == "ريم" and bride["name_en"] == "Reem"
+    # saving the Arabic view must not overwrite the stored English names
+    ped = ar["case"]["pedigree"]
+    assert client.put("/api/cases/case_hbb_demo/pedigree", json=ped, headers=h).status_code == 200
+    en = client.get("/api/cases/case_hbb_demo?lang=en", headers=h).json()
+    bride_en = next(p for p in en["case"]["pedigree"]["people"] if p["id"] == "bride")
+    assert bride_en["name"] == "Reem" and bride_en["name_ar"] == "ريم" and "name_en" not in bride_en

@@ -17,6 +17,7 @@ from .store import Store, now
 
 
 def P(id_, sex, name, mother=None, father=None, **kw):
+    """A fictional person. `name_ar` is the Arabic display name (shown when the interface is in Arabic)."""
     return {"id": id_, "sex": sex, "name": name, "mother": mother, "father": father,
             "status": kw.pop("status", "unknown"), **kw}
 
@@ -27,27 +28,28 @@ def cah_family() -> dict:
     another first cousin, Khalfan, and is pregnant; they married in 2019,
     before premarital genetic screening became mandatory."""
     people = [
-        P("obaid", "male", "Obaid (great-grandfather)", deceased=True),
-        P("moza", "female", "Moza (great-grandmother)", deceased=True),
-        P("saeed", "male", "Saeed (Mariam's father)", "moza", "obaid"),
-        P("aisha", "female", "Aisha (Mariam's mother)"),
-        P("rashid", "male", "Rashid (Ahmed's father)", "moza", "obaid"),
-        P("hessa", "female", "Hessa (Ahmed's mother)"),
-        P("salma", "female", "Salma (Khalfan's mother)", "moza", "obaid"),
-        P("juma", "male", "Juma (Khalfan's father)"),
-        P("mariam", "female", "Mariam", "aisha", "saeed", status="unaffected"),
-        P("ahmed", "male", "Ahmed", "hessa", "rashid", status="unaffected"),
-        P("noura", "female", "Noura (Mariam's sister)", "aisha", "saeed", pregnant=True),
-        P("khalfan", "male", "Khalfan (Noura's husband)", "salma", "juma"),
-        P("hamdan", "male", "Hamdan (Mariam's brother)", "aisha", "saeed"),
-        P("shamma", "female", "Shamma (Hamdan's wife)"),
-        P("maitha", "female", "Maitha (Ahmed's sister)", "hessa", "rashid"),
+        P("obaid", "male", "Obaid (great-grandfather)", deceased=True, name_ar="عبيد (الجد الأكبر)"),
+        P("moza", "female", "Moza (great-grandmother)", deceased=True, name_ar="موزة (الجدة الكبرى)"),
+        P("saeed", "male", "Saeed (Mariam's father)", "moza", "obaid", name_ar="سعيد (أبو مريم)"),
+        P("aisha", "female", "Aisha (Mariam's mother)", name_ar="عائشة (أم مريم)"),
+        P("rashid", "male", "Rashid (Ahmed's father)", "moza", "obaid", name_ar="راشد (أبو أحمد)"),
+        P("hessa", "female", "Hessa (Ahmed's mother)", name_ar="حصة (أم أحمد)"),
+        P("salma", "female", "Salma (Khalfan's mother)", "moza", "obaid", name_ar="سلمى (أم خلفان)"),
+        P("juma", "male", "Juma (Khalfan's father)", name_ar="جمعة (أبو خلفان)"),
+        P("mariam", "female", "Mariam", "aisha", "saeed", status="unaffected", name_ar="مريم"),
+        P("ahmed", "male", "Ahmed", "hessa", "rashid", status="unaffected", name_ar="أحمد"),
+        P("noura", "female", "Noura (Mariam's sister)", "aisha", "saeed", pregnant=True, name_ar="نورة (أخت مريم)"),
+        P("khalfan", "male", "Khalfan (Noura's husband)", "salma", "juma", name_ar="خلفان (زوج نورة)"),
+        P("hamdan", "male", "Hamdan (Mariam's brother)", "aisha", "saeed", name_ar="حمدان (أخو مريم)"),
+        P("shamma", "female", "Shamma (Hamdan's wife)", name_ar="شمّة (زوجة حمدان)"),
+        P("maitha", "female", "Maitha (Ahmed's sister)", "hessa", "rashid", name_ar="ميثاء (أخت أحمد)"),
         P("zayed", "male", "Baby Zayed", "mariam", "ahmed", status="affected",
-          affected_with="classic congenital adrenal hyperplasia"),
-        P("sara", "female", "Sara (Zayed's sister)", "mariam", "ahmed", status="unaffected"),
+          affected_with="classic congenital adrenal hyperplasia", name_ar="الطفل زايد"),
+        P("sara", "female", "Sara (Zayed's sister)", "mariam", "ahmed", status="unaffected", name_ar="سارة (أخت زايد)"),
     ]
     unions = [{"a": "shamma", "b": "hamdan"}, {"a": "noura", "b": "khalfan"}]
-    return {"id": "case_cah_demo", "title": "Newborn screening: classic CAH", "locus_id": "CYP21A2",
+    return {"id": "case_cah_demo", "title": "Newborn screening: classic CAH",
+            "title_ar": "فحص حديثي الولادة: تضخم الغدة الكظرية الخلقي التقليدي", "locus_id": "CYP21A2",
             "index_person_id": "zayed", "index_source": "newborn_screen", "family_user_id": "user_family",
             "pedigree": {"people": people, "unions": unions},
             "consents": {"compute": {"granted": True, "granted_at": now(), "withdrawn_at": None,
@@ -58,16 +60,17 @@ def hbb_family() -> dict:
     """Premarital result: a couple of first cousins, both beta-thalassaemia
     carriers. Already married relatives in the wider family are untested."""
     people = [
-        P("gf", "male", "Ali (grandfather)"), P("gm", "female", "Mouza (grandmother)"),
-        P("f1", "male", "Khalid", "gm", "gf"), P("m1", "female", "Fatima"),
-        P("f2", "male", "Sultan", "gm", "gf"), P("m2", "female", "Alia"),
-        P("bride", "female", "Reem", "m1", "f1", status="unaffected", test={"detected": ["B"]}),
-        P("groom", "male", "Saif", "m2", "f2", status="unaffected", test={"detected": ["B"]}),
-        P("rsis", "female", "Latifa (Reem's sister)", "m1", "f1"), P("rsish", "male", "Obaid (Latifa's husband)"),
-        P("sbro", "male", "Mohammed (Saif's brother)", "m2", "f2"), P("sbrow", "female", "Hind (Mohammed's wife)"),
+        P("gf", "male", "Ali (grandfather)", name_ar="علي (الجد)"), P("gm", "female", "Mouza (grandmother)", name_ar="موزة (الجدة)"),
+        P("f1", "male", "Khalid", "gm", "gf", name_ar="خالد"), P("m1", "female", "Fatima", name_ar="فاطمة"),
+        P("f2", "male", "Sultan", "gm", "gf", name_ar="سلطان"), P("m2", "female", "Alia", name_ar="علياء"),
+        P("bride", "female", "Reem", "m1", "f1", status="unaffected", test={"detected": ["B"]}, name_ar="ريم"),
+        P("groom", "male", "Saif", "m2", "f2", status="unaffected", test={"detected": ["B"]}, name_ar="سيف"),
+        P("rsis", "female", "Latifa (Reem's sister)", "m1", "f1", name_ar="لطيفة (أخت ريم)"), P("rsish", "male", "Obaid (Latifa's husband)", name_ar="عبيد (زوج لطيفة)"),
+        P("sbro", "male", "Mohammed (Saif's brother)", "m2", "f2", name_ar="محمد (أخو سيف)"), P("sbrow", "female", "Hind (Mohammed's wife)", name_ar="هند (زوجة محمد)"),
     ]
     unions = [{"a": "bride", "b": "groom"}, {"a": "rsis", "b": "rsish"}, {"a": "sbrow", "b": "sbro"}]
     return {"id": "case_hbb_demo", "title": "Premarital result: both partners beta-thalassaemia carriers",
+            "title_ar": "نتيجة فحص ما قبل الزواج: الزوجان كلاهما حامل للثلاسيميا بيتا",
             "locus_id": "HBB", "index_person_id": "bride", "index_source": "premarital_at_risk",
             "family_user_id": "user_family2", "pedigree": {"people": people, "unions": unions},
             "consents": {"compute": {"granted": True, "granted_at": now(), "withdrawn_at": None,
@@ -75,9 +78,10 @@ def hbb_family() -> dict:
 
 
 def alpha_family() -> dict:
-    people = [P("m", "female", "Shaikha"), P("f", "male", "Majid"),
-              P("c", "female", "Baby Hamda", "m", "f", status="affected", affected_with="HbH disease")]
+    people = [P("m", "female", "Shaikha", name_ar="شيخة"), P("f", "male", "Majid", name_ar="ماجد"),
+              P("c", "female", "Baby Hamda", "m", "f", status="affected", affected_with="HbH disease", name_ar="الطفلة حمدة")]
     return {"id": "case_hba_demo", "title": "Alpha-thalassaemia (not calculated in this version)",
+            "title_ar": "الثلاسيميا ألفا (لا تُحسب في هذا الإصدار)",
             "locus_id": "HBA1/HBA2", "index_person_id": "c", "index_source": "diagnosed_child",
             "family_user_id": "user_family2", "pedigree": {"people": people, "unions": []},
             "consents": {"compute": {"granted": True, "granted_at": now(), "withdrawn_at": None,

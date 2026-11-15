@@ -3,6 +3,8 @@ counsellor queue. All person-facing wording goes through silsila.content."""
 
 from __future__ import annotations
 
+import copy
+
 import datetime as dt
 import secrets
 from typing import Any
@@ -155,6 +157,33 @@ def compute_report(case: dict[str, Any], lang: str = "en") -> dict[str, Any]:
 
 
 # ------------------------------------------------------------------- cases --
+def localise(case: dict[str, Any], lang: str) -> dict[str, Any]:
+    """Display copy of a case in the interface language: Arabic titles and names where they exist. The stored
+    case is unchanged; `name_en` carries the stored name so a save from the Arabic view can restore it."""
+    if lang != "ar":
+        return case
+    c = copy.deepcopy(case)
+    if c.get("title_ar"):
+        c["title"] = c["title_ar"]
+    for p in c["pedigree"]["people"]:
+        if p.get("name_ar"):
+            p["name_en"] = p.get("name")
+            p["name"] = p["name_ar"]
+    return c
+
+
+def delocalise_pedigree(pedigree: dict[str, Any]) -> dict[str, Any]:
+    """Undo `localise` on a tree sent back from the Arabic view. An edited Arabic name becomes the new
+    Arabic name; the stored (English) name is kept."""
+    for p in pedigree.get("people", []):
+        en = p.pop("name_en", None)
+        if en is not None:
+            if p.get("name") != p.get("name_ar"):
+                p["name_ar"] = p.get("name")
+            p["name"] = en
+    return pedigree
+
+
 def visible_case(store: Store, user: dict[str, Any], case_id: str) -> dict[str, Any]:
     case = store.get("case", case_id)
     if case is None:

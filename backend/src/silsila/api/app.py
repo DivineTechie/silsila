@@ -301,14 +301,15 @@ def twin_what_if(body: TwinWhatIf) -> dict[str, Any]:
 
 # ------------------------------------------------------------------ cases --
 @app.get("/api/cases")
-def list_cases(user: dict[str, Any] = Depends(current_user)) -> list[dict[str, Any]]:
+def list_cases(lang: Literal["en", "ar"] = "en", user: dict[str, Any] = Depends(current_user)) -> list[dict[str, Any]]:
     cases = store().list("case")
     if user["role"] != "counsellor":
         cases = [c for c in cases if c.get("family_user_id") == user["id"]]
     out = []
     for c in cases:
         invs = store().list("invitation", c["id"])
-        out.append({"id": c["id"], "title": c.get("title"), "locus_id": c["locus_id"], "index_source": c["index_source"],
+        title = c.get("title_ar") if lang == "ar" and c.get("title_ar") else c.get("title")
+        out.append({"id": c["id"], "title": title, "locus_id": c["locus_id"], "index_source": c["index_source"],
                     "people": len(c["pedigree"]["people"]), "invitations": len(invs),
                     "open_invitations": sum(i["status"] not in service.TERMINAL for i in invs), "updated": c["updated"]})
     return out
@@ -328,7 +329,7 @@ def create_case(body: CaseIn, user: dict[str, Any] = Depends(counsellor)) -> dic
 
 @app.get("/api/cases/{case_id}")
 def get_case(case_id: str, lang: Literal["en", "ar"] = "en", user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
-    case = service.visible_case(store(), user, case_id)
+    case = service.localise(service.visible_case(store(), user, case_id), lang)
     store().audit(user["id"], user["role"], "case.read", case_id=case_id)
     report = service.compute_report(case, lang) if case.get("consents", {}).get("compute", {}).get("granted") else {
         "status": "awaiting_consent",
@@ -344,7 +345,7 @@ def get_case(case_id: str, lang: Literal["en", "ar"] = "en", user: dict[str, Any
 @app.put("/api/cases/{case_id}/pedigree")
 def put_pedigree(case_id: str, body: PedigreeIn, user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
     case = service.visible_case(store(), user, case_id)
-    return service.update_pedigree(store(), user, case, body.model_dump())
+    return service.update_pedigree(store(), user, case, service.delocalise_pedigree(body.model_dump()))
 
 
 @app.post("/api/cases/{case_id}/consents")
