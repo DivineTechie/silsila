@@ -101,11 +101,23 @@ def test_t2_native_tool_loop(fake_server, tmp_path):
     assert second[-1]["role"] == "tool"
 
 
-def test_t2_jais_style_sends_arguments_as_objects(fake_server):
+def test_t2_jais_on_vllm_sends_string_arguments_and_reasoning(fake_server):
+    # vLLM rejects object arguments (HTTP 400) and the Jais 3 template needs the reasoning field (A11).
     fam = I.family_map()["no_loop-04"]
     item = next(i for i in I.build_items("T2") if i.family_id == "no_loop-04" and i.qid == "a")
     srv = fake_server(_tool_loop_handler(fam, "a"))
     rec = run(runner.run_item(srv.client("jais-3-7b"), item, fam))
+    assert rec["error"] is None
+    sent = srv.requests[1]["messages"][-2]
+    assert isinstance(sent["tool_calls"][0]["function"]["arguments"], str)
+    assert "reasoning_content" in sent
+
+
+def test_t2_jais_on_mlx_sends_arguments_as_objects(fake_server):
+    fam = I.family_map()["no_loop-04"]
+    item = next(i for i in I.build_items("T2") if i.family_id == "no_loop-04" and i.qid == "a")
+    srv = fake_server(_tool_loop_handler(fam, "a"))
+    rec = run(runner.run_item(srv.client("jais-3-7b-mlx"), item, fam))
     assert rec["error"] is None
     assert isinstance(srv.requests[1]["messages"][-2]["tool_calls"][0]["function"]["arguments"], dict)
 
