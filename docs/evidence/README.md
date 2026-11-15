@@ -345,6 +345,21 @@ These files are produced by separate evaluations (not by `bench.run_all`) and ar
 - **Message triage** on a blind, held-out set of 400 synthetic messages: rules only ([`triage_rules.json`](triage_rules.json), per-message log [`triage_rules_cases.csv`](triage_rules_cases.csv)) versus rules plus a character n-gram classifier trained on a separate 800-message development set ([`triage_rules_ngram.json`](triage_rules_ngram.json), [`triage_rules_ngram_cases.csv`](triage_rules_ngram_cases.csv)). Rules only: crisis sensitivity 8/76 = 10.5% (5.4% to 19.4%), specificity 319/324 = 98.5% (96.4% to 99.3%). Rules + n-gram: crisis sensitivity 73/76 = 96.1% (89.0% to 98.6%), specificity 210/324 = 64.8% (59.5% to 69.8%). Synthetic messages written blind to the rules by an AI model; labels by that author; not validated by native-speaking clinicians. A stress test, not a clinical validation.
 - **Privacy / API access control** ([`privacy_api.json`](privacy_api.json)): 10,000 unauthorised API requests across 14 attack types; unauthorised disclosures 0; disclosure-wording violations 0; denied attempts recorded in the audit log 10000.
 
+- **Readability of the English text a relative can be shown** ([`readability.json`](readability.json), `backend/scripts/readability.py`, textstat 0.7.3). Flesch-Kincaid grade and Flesch Reading Ease, pooled per group:
+
+  | Text | Words | Flesch-Kincaid grade | Flesch Reading Ease | SMOG |
+  |---|---|---|---|---|
+  | Approved wording on an anonymous invitation link | 97 | 6.8 | 67.7 | too short to score |
+  | All 22 approved templates | 694 | 6.9 | 67.5 | 10.8 |
+  | Comprehension questions with their answers | 101 | 5.7 | 70.6 | too short to score |
+  | Quoted MedlinePlus paragraphs every relative is shown | 182 | 15.1 | 40.7 | too short to score |
+  | Quoted MedlinePlus paragraphs on reproductive options | 324 | 13.5 | 39.6 | too short to score |
+  | All 16 quoted paragraphs behind the relative's page and common questions | 1449 | 13.4 | 39.7 | 16.0 |
+
+  Reading: Silsila's own wording sits inside the commonly recommended sixth to eighth grade range for patient materials ([Rooney et al., J Patient Exp 2021](https://pmc.ncbi.nlm.nih.gov/articles/PMC8205335/)) on Flesch-Kincaid, though SMOG puts it higher (10.8). **The quoted MedlinePlus text does not: it scores at a college reading level** (grade 13.4). It is quoted word for word and cannot be simplified without ceasing to be a quotation; read-aloud, the comprehension check and counsellor booking are the mitigations, and an easy-read layer approved by clinicians is future work (hazard H22). Variable parts of templates were filled with the example values listed in the file. **No formula was applied to the Arabic text:** these formulas are defined for English, and no readability measure validated for Arabic health text has been applied. Formulas count syllables and sentence length; they do not measure understanding.
+- **Read aloud** (`data/content/audio/manifest.json`, `backend/scripts/make_read_aloud.py`, `backend/tests/test_read_aloud.py`): 74 clips, 33.3 minutes (English 13.7, Arabic 19.6), a synthetic voice (Azure AI Speech, `en-GB-SoniaNeural` and `ar-AE-FatimaNeural`) reading every fixed text a relative can be shown: 17 templates with no variable parts, 16 MedlinePlus paragraphs (English original and the Arabic machine translation) and the 4 comprehension questions, in both languages. Each clip is stored under the SHA-256 of the exact text it reads and is offered only when that hash matches, so the voice cannot say a different or older wording; sentences that contain a name or a number have no clip. Labelled "synthetic voice (Azure)" at every button. **No clip has yet been checked by a native listener.**
+- **Announced UAE programmes** ([`uae_context.json`](uae_context.json)): reported figures from three news reports and one PubMed record, read on 15 Nov 2026, with conditional wording where a source does not say something, and the arithmetic for the 100-newborn scenario preset (a projection from B4's simulated yields, not an observed outcome).
+
 ## Files
 
 - `b1_engine.json`
@@ -355,9 +370,11 @@ These files are produced by separate evaluations (not by `bench.run_all`) and ar
 - `b5_sensitivity.json`
 - `perf_engine.json`
 - `privacy_api.json`
+- `readability.json`
 - `run_all.json`
 - `triage_rules.json`
 - `triage_rules_ngram.json`
+- `uae_context.json`
 - `logs/b1_montecarlo.csv`
 - `logs/b1_pgmpy_crosscheck.csv`
 - `logs/b1_textbook_cases.csv`

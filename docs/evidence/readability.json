@@ -1,0 +1,368 @@
+{
+ "benchmark": "Readability of the English text a relative can be shown",
+ "generated": "2026-11-15",
+ "tool": "textstat 0.7.3: Flesch Reading Ease, Flesch-Kincaid Grade Level, SMOG (pooled groups of 30+ sentences only)",
+ "language": "English only. No formula was applied to the Arabic text: these formulas are defined for English, and no readability measure validated for Arabic health text has been applied.",
+ "reference_targets": {
+  "text": "Patient materials are commonly recommended at a sixth grade (AMA) to eighth grade (NIH) reading level.",
+  "source": "Rooney MK, et al. Readability of Patient Education Materials From High-Impact Medical Journals: A 20-Year Analysis. J Patient Exp 2021.",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8205335/"
+ },
+ "example_values": {
+  "person": "Noura",
+  "gene": "CYP21A2",
+  "chance": "about 5 in 10",
+  "baseline": "about 1 in 14,000",
+  "a": "Noura",
+  "b": "Khalfan",
+  "condition": "congenital adrenal hyperplasia",
+  "sender": "Mariam"
+ },
+ "groups": {
+  "approved_wording_relative_invitation": {
+   "what": "Approved wording on an anonymous invitation link: invite.anonymous, invite.anonymity_notice, reply.booking",
+   "words": 97,
+   "sentences": 8,
+   "flesch_reading_ease": 67.7,
+   "flesch_kincaid_grade": 6.8,
+   "smog": null
+  },
+  "approved_wording_all_templates": {
+   "what": "All 22 approved templates (variable parts filled with the example values)",
+   "words": 694,
+   "sentences": 57,
+   "flesch_reading_ease": 67.5,
+   "flesch_kincaid_grade": 6.9,
+   "smog": 10.8
+  },
+  "comprehension_check": {
+   "what": "The 4 comprehension questions with their answers",
+   "words": 101,
+   "sentences": 11,
+   "flesch_reading_ease": 70.6,
+   "flesch_kincaid_grade": 5.7,
+   "smog": null
+  },
+  "quoted_relative_information": {
+   "what": "MedlinePlus paragraphs every relative is shown (quoted, not written by Silsila): mp:inheritance-patterns:0:3, mp:risk-assessment:0:2",
+   "words": 182,
+   "sentences": 6,
+   "flesch_reading_ease": 40.7,
+   "flesch_kincaid_grade": 15.1,
+   "smog": null
+  },
+  "quoted_reproductive_options": {
+   "what": "MedlinePlus paragraphs behind the options question (quoted): mp:testing-uses:0:3, mp:testing-uses:0:4, mp:testing-uses:0:5, mp:risks-limitations:0:0",
+   "words": 324,
+   "sentences": 14,
+   "flesch_reading_ease": 39.6,
+   "flesch_kincaid_grade": 13.5,
+   "smog": null
+  },
+  "quoted_all_common_questions": {
+   "what": "All 16 MedlinePlus paragraphs behind the relative's page and common questions (quoted)",
+   "words": 1449,
+   "sentences": 63,
+   "flesch_reading_ease": 39.7,
+   "flesch_kincaid_grade": 13.4,
+   "smog": 16.0
+  }
+ },
+ "templates": {
+  "invite.anonymous": {
+   "kind": "invitation",
+   "words": 50,
+   "sentences": 4,
+   "flesch_reading_ease": 67.2,
+   "flesch_kincaid_grade": 7.0,
+   "smog": null
+  },
+  "invite.with_condition": {
+   "kind": "invitation",
+   "words": 54,
+   "sentences": 4,
+   "flesch_reading_ease": 66.2,
+   "flesch_kincaid_grade": 7.4,
+   "smog": null
+  },
+  "invite.with_sender": {
+   "kind": "invitation",
+   "words": 54,
+   "sentences": 4,
+   "flesch_reading_ease": 74.7,
+   "flesch_kincaid_grade": 6.2,
+   "smog": null
+  },
+  "invite.anonymity_notice": {
+   "kind": "interface",
+   "words": 22,
+   "sentences": 2,
+   "flesch_reading_ease": 85.7,
+   "flesch_kincaid_grade": 4.0,
+   "smog": null
+  },
+  "result.carrier_probability": {
+   "kind": "numeric",
+   "words": 40,
+   "sentences": 3,
+   "flesch_reading_ease": 74.9,
+   "flesch_kincaid_grade": 6.1,
+   "smog": null
+  },
+  "result.couple_child_risk": {
+   "kind": "numeric",
+   "words": 43,
+   "sentences": 2,
+   "flesch_reading_ease": 58.1,
+   "flesch_kincaid_grade": 10.5,
+   "smog": null
+  },
+  "result.residual_not_modelled": {
+   "kind": "numeric",
+   "words": 31,
+   "sentences": 2,
+   "flesch_reading_ease": 55.7,
+   "flesch_kincaid_grade": 9.3,
+   "smog": null
+  },
+  "result.inconsistent": {
+   "kind": "safety",
+   "words": 34,
+   "sentences": 3,
+   "flesch_reading_ease": 51.5,
+   "flesch_kincaid_grade": 8.9,
+   "smog": null
+  },
+  "result.too_complex": {
+   "kind": "safety",
+   "words": 27,
+   "sentences": 3,
+   "flesch_reading_ease": 62.3,
+   "flesch_kincaid_grade": 6.8,
+   "smog": null
+  },
+  "result.excluded_locus": {
+   "kind": "safety",
+   "words": 30,
+   "sentences": 2,
+   "flesch_reading_ease": 39.3,
+   "flesch_kincaid_grade": 11.5,
+   "smog": null
+  },
+  "consent.compute": {
+   "kind": "consent",
+   "words": 38,
+   "sentences": 3,
+   "flesch_reading_ease": 67.0,
+   "flesch_kincaid_grade": 7.1,
+   "smog": null
+  },
+  "consent.invite": {
+   "kind": "consent",
+   "words": 30,
+   "sentences": 3,
+   "flesch_reading_ease": 86.7,
+   "flesch_kincaid_grade": 3.7,
+   "smog": null
+  },
+  "consent.decline_recorded": {
+   "kind": "consent",
+   "words": 17,
+   "sentences": 2,
+   "flesch_reading_ease": 88.2,
+   "flesch_kincaid_grade": 3.1,
+   "smog": null
+  },
+  "reply.crisis": {
+   "kind": "safety",
+   "words": 31,
+   "sentences": 2,
+   "flesch_reading_ease": 81.1,
+   "flesch_kincaid_grade": 5.8,
+   "smog": null
+  },
+  "safety.footer": {
+   "kind": "footer",
+   "words": 33,
+   "sentences": 2,
+   "flesch_reading_ease": 80.1,
+   "flesch_kincaid_grade": 6.2,
+   "smog": null
+  },
+  "reply.decision_request": {
+   "kind": "safety",
+   "words": 38,
+   "sentences": 4,
+   "flesch_reading_ease": 70.3,
+   "flesch_kincaid_grade": 5.8,
+   "smog": null
+  },
+  "reply.religious": {
+   "kind": "safety",
+   "words": 21,
+   "sentences": 3,
+   "flesch_reading_ease": 47.5,
+   "flesch_kincaid_grade": 8.4,
+   "smog": null
+  },
+  "reply.third_party": {
+   "kind": "safety",
+   "words": 22,
+   "sentences": 2,
+   "flesch_reading_ease": 60.3,
+   "flesch_kincaid_grade": 7.6,
+   "smog": null
+  },
+  "reply.distress": {
+   "kind": "safety",
+   "words": 17,
+   "sentences": 2,
+   "flesch_reading_ease": 88.2,
+   "flesch_kincaid_grade": 3.1,
+   "smog": null
+  },
+  "reply.information": {
+   "kind": "interface",
+   "words": 25,
+   "sentences": 2,
+   "flesch_reading_ease": 58.8,
+   "flesch_kincaid_grade": 8.2,
+   "smog": null
+  },
+  "reply.booking": {
+   "kind": "interface",
+   "words": 25,
+   "sentences": 2,
+   "flesch_reading_ease": 58.8,
+   "flesch_kincaid_grade": 8.2,
+   "smog": null
+  },
+  "reply.forwarded": {
+   "kind": "interface",
+   "words": 12,
+   "sentences": 1,
+   "flesch_reading_ease": 67.8,
+   "flesch_kincaid_grade": 6.8,
+   "smog": null
+  }
+ },
+ "quoted_paragraphs": {
+  "mp:family-history:0:0": {
+   "words": 44,
+   "sentences": 2,
+   "flesch_reading_ease": 40.7,
+   "flesch_kincaid_grade": 13.1,
+   "smog": null
+  },
+  "mp:family-history:0:1": {
+   "words": 55,
+   "sentences": 3,
+   "flesch_reading_ease": 19.1,
+   "flesch_kincaid_grade": 15.1,
+   "smog": null
+  },
+  "mp:inheritance-patterns:0:3": {
+   "words": 59,
+   "sentences": 3,
+   "flesch_reading_ease": 34.6,
+   "flesch_kincaid_grade": 13.3,
+   "smog": null
+  },
+  "mp:interpreting-results:0:1": {
+   "words": 159,
+   "sentences": 6,
+   "flesch_reading_ease": 27.7,
+   "flesch_kincaid_grade": 16.0,
+   "smog": null
+  },
+  "mp:interpreting-results:0:2": {
+   "words": 132,
+   "sentences": 5,
+   "flesch_reading_ease": 36.2,
+   "flesch_kincaid_grade": 14.8,
+   "smog": null
+  },
+  "mp:interpreting-results:0:3": {
+   "words": 159,
+   "sentences": 7,
+   "flesch_reading_ease": 40.0,
+   "flesch_kincaid_grade": 13.3,
+   "smog": null
+  },
+  "mp:risk-assessment:0:11": {
+   "words": 31,
+   "sentences": 2,
+   "flesch_reading_ease": 47.3,
+   "flesch_kincaid_grade": 10.5,
+   "smog": null
+  },
+  "mp:risk-assessment:0:2": {
+   "words": 123,
+   "sentences": 3,
+   "flesch_reading_ease": 29.9,
+   "flesch_kincaid_grade": 19.3,
+   "smog": null
+  },
+  "mp:risk-assessment:0:9": {
+   "words": 81,
+   "sentences": 4,
+   "flesch_reading_ease": 50.9,
+   "flesch_kincaid_grade": 11.2,
+   "smog": null
+  },
+  "mp:risks-limitations:0:0": {
+   "words": 74,
+   "sentences": 2,
+   "flesch_reading_ease": 25.5,
+   "flesch_kincaid_grade": 18.9,
+   "smog": null
+  },
+  "mp:screening-vs-diagnostic:0:0": {
+   "words": 25,
+   "sentences": 2,
+   "flesch_reading_ease": 8.0,
+   "flesch_kincaid_grade": 15.2,
+   "smog": null
+  },
+  "mp:screening-vs-diagnostic:0:1": {
+   "words": 158,
+   "sentences": 7,
+   "flesch_reading_ease": 31.6,
+   "flesch_kincaid_grade": 14.5,
+   "smog": null
+  },
+  "mp:screening-vs-diagnostic:0:2": {
+   "words": 99,
+   "sentences": 5,
+   "flesch_reading_ease": 51.4,
+   "flesch_kincaid_grade": 11.0,
+   "smog": null
+  },
+  "mp:testing-uses:0:3": {
+   "words": 79,
+   "sentences": 3,
+   "flesch_reading_ease": 44.8,
+   "flesch_kincaid_grade": 13.5,
+   "smog": null
+  },
+  "mp:testing-uses:0:4": {
+   "words": 68,
+   "sentences": 4,
+   "flesch_reading_ease": 45.8,
+   "flesch_kincaid_grade": 11.1,
+   "smog": null
+  },
+  "mp:testing-uses:0:5": {
+   "words": 103,
+   "sentences": 5,
+   "flesch_reading_ease": 33.6,
+   "flesch_kincaid_grade": 13.7,
+   "smog": null
+  }
+ },
+ "limits": [
+  "Formulas count syllables, words and sentences. They do not measure whether a reader understands; the comprehension check and the pilot's usability sessions do that.",
+  "Scores for single short texts (a few sentences) are unstable; the pooled group scores are the ones to read.",
+  "Quoted MedlinePlus text is shown word for word and cannot be simplified without ceasing to be a quotation."
+ ]
+}

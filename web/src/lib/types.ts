@@ -16,6 +16,18 @@ export interface Part {
   /** Present when a quoted English paragraph is shown in Arabic translation. */
   original_text?: string;
   translation?: { language: string; method?: string; reviewed_by_native_clinician?: boolean; sha256?: string };
+  /** Read-aloud clip of exactly this text (synthetic voice), when one exists. */
+  audio?: AudioClip;
+}
+
+/** A pre-recorded clip of a synthetic voice reading approved text. */
+export interface AudioClip {
+  url: string;
+  voice: string;
+  seconds?: number | null;
+  synthetic: boolean;
+  provider?: string;
+  lang?: string;
 }
 
 export interface User {
@@ -259,6 +271,8 @@ export interface TeachbackQuestion {
   en: string;
   ar: string;
   evidence: string;
+  /** Read-aloud clips of the question with its answers, by language. */
+  audio?: Partial<Record<Lang, AudioClip>>;
   options: { id: string; en: string; ar: string }[];
 }
 

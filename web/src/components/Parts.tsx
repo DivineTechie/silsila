@@ -2,6 +2,7 @@
 
 import { usePrefs } from "@/lib/prefs";
 import type { Part } from "@/lib/types";
+import { ListenButton } from "./Listen";
 import { Prov, cx } from "./ui";
 
 /** Short citation chip for a quoted MedlinePlus paragraph. */
@@ -55,6 +56,7 @@ export function Parts({
           <div className="mb-1 flex flex-wrap items-center gap-2">
             <Prov kind={p.type === "source" ? "source" : "template"} />
             {showIds && <code className="text-[0.7rem] text-muted">{p.id}</code>}
+            {p.audio && <ListenButton clip={p.audio} />}
           </div>
           {p.type === "source" && p.translation ? (
             <>

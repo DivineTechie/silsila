@@ -1,0 +1,614 @@
+{
+ "clips": {
+  "ar": {
+   "033d6413bd21b8d34d52001364bb7396f89b240d78a6a71fa86bd17ba716ac4f": {
+    "chars": 175,
+    "file": "ar/033d6413bd21b8d3.mp3",
+    "id": "reply.decision_request",
+    "kind": "template",
+    "seconds": 21.8,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "10f2656fd901b58c60ffa0f97a5c7fae2880232a9d9a41528ee94266f0668147": {
+    "chars": 577,
+    "file": "ar/10f2656fd901b58c.mp3",
+    "id": "mp:risk-assessment:0:2",
+    "kind": "translation",
+    "seconds": 62.0,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "146edd26d3cdb86f21b631d1fc81dd3a39e5c9ee860fcfb70fa4545fdf292171": {
+    "chars": 404,
+    "file": "ar/146edd26d3cdb86f.mp3",
+    "id": "mp:testing-uses:0:4",
+    "kind": "translation",
+    "seconds": 42.8,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "171620f64ae48073a10e848d6cdaf5d552f89a80aca9370005b96461a38ffbd0": {
+    "chars": 859,
+    "file": "ar/171620f64ae48073.mp3",
+    "id": "mp:interpreting-results:0:1",
+    "kind": "translation",
+    "seconds": 90.3,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "18f05f914b4cd9df96d1afd1d686550d2771d014e9ee13c6a25ad54ee901b179": {
+    "chars": 179,
+    "file": "ar/18f05f914b4cd9df.mp3",
+    "id": "mp:screening-vs-diagnostic:0:0",
+    "kind": "translation",
+    "seconds": 20.0,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "1af3aa5296470067e8e65d6c012eb0aeff993394223d601c45259c864e417834": {
+    "chars": 130,
+    "file": "ar/1af3aa5296470067.mp3",
+    "id": "safety.footer",
+    "kind": "template",
+    "seconds": 18.0,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "1e91e3415053b692a9be512d9f9144e962b57b592b28c772208f125ea609bbe3": {
+    "chars": 128,
+    "file": "ar/1e91e3415053b692.mp3",
+    "id": "result.too_complex",
+    "kind": "template",
+    "seconds": 16.8,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "2add2860bd89cfb7962a35b3a6239c2fb108768168e80703eaff9a69e2510aed": {
+    "chars": 400,
+    "file": "ar/2add2860bd89cfb7.mp3",
+    "id": "mp:testing-uses:0:3",
+    "kind": "translation",
+    "seconds": 42.5,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "2c3667edc57becf7fa19c7c557587b0be60303ab740700d22f40f9a0ede1bc76": {
+    "chars": 157,
+    "file": "ar/2c3667edc57becf7.mp3",
+    "id": "tb.chance_each_pregnancy",
+    "kind": "teachback",
+    "seconds": 21.5,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "37126ba35a5a26ac7c0f4b8e6a7fb46afaebeac7c4f60fb2f2c8387c7d567f91": {
+    "chars": 118,
+    "file": "ar/37126ba35a5a26ac.mp3",
+    "id": "reply.religious",
+    "kind": "template",
+    "seconds": 14.5,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "3be108ead067afbb7462edef7e44a9cf1e242c7419da41655f2ec373127c838c": {
+    "chars": 164,
+    "file": "ar/3be108ead067afbb.mp3",
+    "id": "consent.compute",
+    "kind": "template",
+    "seconds": 19.2,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "41b3d3c342d717c7747855135ce21e7a1878861c84ae9d0ba6a7c9ecb003208d": {
+    "chars": 44,
+    "file": "ar/41b3d3c342d717c7.mp3",
+    "id": "reply.forwarded",
+    "kind": "template",
+    "seconds": 6.2,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "4359b01da004af044e3e3a3d97fb91bec2afb1cd5d64beb24a4865206392e98a": {
+    "chars": 62,
+    "file": "ar/4359b01da004af04.mp3",
+    "id": "consent.decline_recorded",
+    "kind": "template",
+    "seconds": 8.3,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "443c147ee79b46ea7cea0c1ef70be7911951893f33368562b44d7ef60528526d": {
+    "chars": 75,
+    "file": "ar/443c147ee79b46ea.mp3",
+    "id": "tb.carriers_usually_well",
+    "kind": "teachback",
+    "seconds": 10.8,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "6eca030232fc36c9ac834b43498cf32cb0d7c1f75b67ace168e11769ef527264": {
+    "chars": 175,
+    "file": "ar/6eca030232fc36c9.mp3",
+    "id": "mp:risk-assessment:0:11",
+    "kind": "translation",
+    "seconds": 19.8,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "7c6f2288deefa5f748af6658818f0c3792abd2e894aa8f97608cfe795b3c92d5": {
+    "chars": 123,
+    "file": "ar/7c6f2288deefa5f7.mp3",
+    "id": "reply.crisis",
+    "kind": "template",
+    "seconds": 17.2,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "7e1add951da2200f7222dcb46a2b5e60552f9e642d08b7cd5e76231dfa083ed6": {
+    "chars": 84,
+    "file": "ar/7e1add951da2200f.mp3",
+    "id": "tb.calculation_not_test",
+    "kind": "teachback",
+    "seconds": 13.0,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "80a1752d027f36f90a12e653ae5278e17b12e9cb4f49b38a4b2085bcf65c7ecb": {
+    "chars": 137,
+    "file": "ar/80a1752d027f36f9.mp3",
+    "id": "result.residual_not_modelled",
+    "kind": "template",
+    "seconds": 15.6,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "8b3e04801e8565feb994f5db3c53e962e45471bf6b9094d34e2c9c320edb9e0e": {
+    "chars": 584,
+    "file": "ar/8b3e04801e8565fe.mp3",
+    "id": "mp:testing-uses:0:5",
+    "kind": "translation",
+    "seconds": 62.4,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "9c8be4845cc5c5e075e995d784a09f896ab0d8e44b42ee32c21b913724c17bf2": {
+    "chars": 94,
+    "file": "ar/9c8be4845cc5c5e0.mp3",
+    "id": "invite.anonymity_notice",
+    "kind": "template",
+    "seconds": 10.9,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "a26dfa7151112e3d8a53c4cd5e4ff75f086f2e9d2cf861b963ad4728e8c065e3": {
+    "chars": 100,
+    "file": "ar/a26dfa7151112e3d.mp3",
+    "id": "reply.third_party",
+    "kind": "template",
+    "seconds": 12.8,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "ac0cd6bcac37375b672fd73160dac87952367affc913096f3ee67d36be3dc269": {
+    "chars": 98,
+    "file": "ar/ac0cd6bcac37375b.mp3",
+    "id": "tb.same_each_pregnancy",
+    "kind": "teachback",
+    "seconds": 13.9,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "aeba0adf9c19e27df05997a32020673b46bf05462a68d9b89f228fb6a0e207fe": {
+    "chars": 935,
+    "file": "ar/aeba0adf9c19e27d.mp3",
+    "id": "mp:interpreting-results:0:3",
+    "kind": "translation",
+    "seconds": 101.3,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "b0f9c2eb1cb18f848a7d5d9b366a134815ce0fb4b4eca97b2c7c6b58f1d33f59": {
+    "chars": 66,
+    "file": "ar/b0f9c2eb1cb18f84.mp3",
+    "id": "reply.distress",
+    "kind": "template",
+    "seconds": 8.9,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "bbd40ba1097534d23c055f4b89a4f48ed52acd87349198f075f8c27d1307cd5a": {
+    "chars": 351,
+    "file": "ar/bbd40ba1097534d2.mp3",
+    "id": "mp:inheritance-patterns:0:3",
+    "kind": "translation",
+    "seconds": 37.0,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "d1268a0c9ea4aadafc3000961eceeb2a4f1033ffc3e455e6b5792cfdc5b0b984": {
+    "chars": 682,
+    "file": "ar/d1268a0c9ea4aada.mp3",
+    "id": "mp:interpreting-results:0:2",
+    "kind": "translation",
+    "seconds": 71.8,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "d1593c5d1b073a5b4066175e96506c102e694fcc18d975a852d015ddaa8c1d07": {
+    "chars": 114,
+    "file": "ar/d1593c5d1b073a5b.mp3",
+    "id": "reply.booking",
+    "kind": "template",
+    "seconds": 13.8,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "d3656c5a542d655d26a78f8c095656d70a3a035594d62f75ff254b21b02f6fa6": {
+    "chars": 377,
+    "file": "ar/d3656c5a542d655d.mp3",
+    "id": "mp:risk-assessment:0:9",
+    "kind": "translation",
+    "seconds": 42.6,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "db6a08ddbc7994b2408e8835886a05f46357fec677776ccdfcfa54a813155ab6": {
+    "chars": 158,
+    "file": "ar/db6a08ddbc7994b2.mp3",
+    "id": "result.inconsistent",
+    "kind": "template",
+    "seconds": 19.7,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "ddccd80868bd2f43342fabb2fedeb1ea39270f18d2afb504922ab51bc3794fb2": {
+    "chars": 121,
+    "file": "ar/ddccd80868bd2f43.mp3",
+    "id": "consent.invite",
+    "kind": "template",
+    "seconds": 15.6,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "e29c9c9c7d3c9e61013ee5bf64b610fc3148cee0816824310dd3cde16ab79596": {
+    "chars": 306,
+    "file": "ar/e29c9c9c7d3c9e61.mp3",
+    "id": "mp:family-history:0:0",
+    "kind": "translation",
+    "seconds": 33.1,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "e344fc180b07322f1a7eeccf4b0ddc438c84ac3bdfcd63f1d04c8b23f8569895": {
+    "chars": 331,
+    "file": "ar/e344fc180b07322f.mp3",
+    "id": "mp:family-history:0:1",
+    "kind": "translation",
+    "seconds": 36.0,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "e665fd6b558ea18d56f4f7ef409b2f5ba49cbd2fb22dd42b72248aaf995d3b70": {
+    "chars": 120,
+    "file": "ar/e665fd6b558ea18d.mp3",
+    "id": "reply.information",
+    "kind": "template",
+    "seconds": 14.8,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "ed6006c0a1674996af4e97611e7d08b3049c9ec4244c35bc701bf7b8e7ec85aa": {
+    "chars": 224,
+    "file": "ar/ed6006c0a1674996.mp3",
+    "id": "invite.anonymous",
+    "kind": "template",
+    "seconds": 27.5,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "f662c1dd6ee5ac0e4b986289c5cf7d7b0bc3688f55af8e31275e5906f9537d17": {
+    "chars": 866,
+    "file": "ar/f662c1dd6ee5ac0e.mp3",
+    "id": "mp:screening-vs-diagnostic:0:1",
+    "kind": "translation",
+    "seconds": 93.0,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "f976c30bf38a1e050a62e23d561fc15f1d15954e73fe109c55e9c678763deea5": {
+    "chars": 412,
+    "file": "ar/f976c30bf38a1e05.mp3",
+    "id": "mp:risks-limitations:0:0",
+    "kind": "translation",
+    "seconds": 42.3,
+    "voice": "ar-AE-FatimaNeural"
+   },
+   "ff5969957dfedcc320e9fd485d40f3f8dac40e9939d5cdc264466ba4f8406bdd": {
+    "chars": 525,
+    "file": "ar/ff5969957dfedcc3.mp3",
+    "id": "mp:screening-vs-diagnostic:0:2",
+    "kind": "translation",
+    "seconds": 55.3,
+    "voice": "ar-AE-FatimaNeural"
+   }
+  },
+  "en": {
+   "0abb1f60057ab868a7b9cf83312e4384dfe7be855cda5d90b598dbf1072a06e4": {
+    "chars": 467,
+    "file": "en/0abb1f60057ab868.mp3",
+    "id": "mp:risks-limitations:0:0",
+    "kind": "source",
+    "seconds": 29.5,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "131d0b8f9f1a297b0ea38f6bc4bfeaa847a3df28d5bf7293080e059a7e8412e0": {
+    "chars": 156,
+    "file": "en/131d0b8f9f1a297b.mp3",
+    "id": "result.too_complex",
+    "kind": "template",
+    "seconds": 11.4,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "13a4d8223ecbff4faf4f4f5084376f7d8037b5e8880730b817d4807a96239dc2": {
+    "chars": 457,
+    "file": "en/13a4d8223ecbff4f.mp3",
+    "id": "mp:testing-uses:0:3",
+    "kind": "source",
+    "seconds": 28.5,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "2db7a2b91e854e56251130a670747b68f5438d4dc3df47d5bff1756f70dd58dd": {
+    "chars": 385,
+    "file": "en/2db7a2b91e854e56.mp3",
+    "id": "mp:family-history:0:1",
+    "kind": "source",
+    "seconds": 25.1,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "36a396740ba22c726eee3ca9d90c4338649533569bd85d8dbe79c7cf8d84509a": {
+    "chars": 132,
+    "file": "en/36a396740ba22c72.mp3",
+    "id": "tb.same_each_pregnancy",
+    "kind": "teachback",
+    "seconds": 11.4,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "3edb63857c31ee5ddcc4e6784ddaf341104c9b638d8108d33c6564607e0997a6": {
+    "chars": 201,
+    "file": "en/3edb63857c31ee5d.mp3",
+    "id": "tb.chance_each_pregnancy",
+    "kind": "teachback",
+    "seconds": 16.9,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "41ac314b0ec69777ece310a328418088c5f28c9f9062aba04de09334b4e43cd1": {
+    "chars": 165,
+    "file": "en/41ac314b0ec69777.mp3",
+    "id": "consent.invite",
+    "kind": "template",
+    "seconds": 11.5,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "4a181cee36509ab4e64cd26abd05ba384bb357a811a80b8c77fbfa0556a91499": {
+    "chars": 209,
+    "file": "en/4a181cee36509ab4.mp3",
+    "id": "result.inconsistent",
+    "kind": "template",
+    "seconds": 14.8,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "4a9d58613b58a017741757e21942d1987c4db40c5a2f5afd6a20f0bbd4424285": {
+    "chars": 980,
+    "file": "en/4a9d58613b58a017.mp3",
+    "id": "mp:interpreting-results:0:1",
+    "kind": "source",
+    "seconds": 62.8,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "52ea40ace5ca7167d5f812b3f47cf0d752c2bba6d51cab1125c4bc742c800a09": {
+    "chars": 157,
+    "file": "en/52ea40ace5ca7167.mp3",
+    "id": "reply.information",
+    "kind": "template",
+    "seconds": 11.2,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "53b9f9a7fa719f52670bd2543214f12e758e08226b80df301813b169a362de88": {
+    "chars": 97,
+    "file": "en/53b9f9a7fa719f52.mp3",
+    "id": "tb.carriers_usually_well",
+    "kind": "teachback",
+    "seconds": 9.1,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "54d2257dc4cc9403d1b43007a93e681c3307019c5be633aee605c5bafd45f73c": {
+    "chars": 187,
+    "file": "en/54d2257dc4cc9403.mp3",
+    "id": "result.residual_not_modelled",
+    "kind": "template",
+    "seconds": 12.6,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "55d40bbb4ecbd44e4f310a7891df5902a4c1707c56e61e610c9b0410fe1a3126": {
+    "chars": 136,
+    "file": "en/55d40bbb4ecbd44e.mp3",
+    "id": "reply.third_party",
+    "kind": "template",
+    "seconds": 9.7,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "563218dec879fb8676e4f26c569df8f672a2402ae7925b622d14b0a7d07a92a4": {
+    "chars": 992,
+    "file": "en/563218dec879fb86.mp3",
+    "id": "mp:screening-vs-diagnostic:0:1",
+    "kind": "source",
+    "seconds": 61.7,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "62ec4bc1a148e5603f1ed67f19b53e2d0fdc454a6105560b306f80a1f435017f": {
+    "chars": 137,
+    "file": "en/62ec4bc1a148e560.mp3",
+    "id": "reply.religious",
+    "kind": "template",
+    "seconds": 10.4,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "6d2471cc6991ade44ac2dcff296255b23d3574304850c72d6ba539ff00394a08": {
+    "chars": 113,
+    "file": "en/6d2471cc6991ade4.mp3",
+    "id": "invite.anonymity_notice",
+    "kind": "template",
+    "seconds": 8.0,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "6fbfae688bdb6f3f5c10497fcdde110d780ed91ff3f2c2958dad4a6a731e55d7": {
+    "chars": 156,
+    "file": "en/6fbfae688bdb6f3f.mp3",
+    "id": "reply.crisis",
+    "kind": "template",
+    "seconds": 11.9,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "787e9170f140b32bf9ca0e3add6782f90fe8231ca567ce4d08fe59dc9b8da6e0": {
+    "chars": 688,
+    "file": "en/787e9170f140b32b.mp3",
+    "id": "mp:risk-assessment:0:2",
+    "kind": "source",
+    "seconds": 41.8,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "7b2e01ff11cdd91f0f6b443bcb152172cb2133e9246d5e307bf70742588f6ca6": {
+    "chars": 89,
+    "file": "en/7b2e01ff11cdd91f.mp3",
+    "id": "reply.distress",
+    "kind": "template",
+    "seconds": 6.3,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "823903c3cfb3cacd525f3f6e0277bfd7b59cdf5fff731ecbd73a46a2601b031a": {
+    "chars": 988,
+    "file": "en/823903c3cfb3cacd.mp3",
+    "id": "mp:interpreting-results:0:3",
+    "kind": "source",
+    "seconds": 65.9,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "8b692ae4d819f410227ae24f0416952e9840618a357227a60ee283b4bd36c25c": {
+    "chars": 68,
+    "file": "en/8b692ae4d819f410.mp3",
+    "id": "reply.forwarded",
+    "kind": "template",
+    "seconds": 4.8,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "8e419b6815e10b12964bac9ad06a22ffd9dd0d17721bc55250e2f74e30709ccf": {
+    "chars": 694,
+    "file": "en/8e419b6815e10b12.mp3",
+    "id": "mp:testing-uses:0:5",
+    "kind": "source",
+    "seconds": 47.7,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "9f2fb0e2503bca8754a7244c66b6e1d3e0a507afebbfa55eb17d65e93a371fdb": {
+    "chars": 94,
+    "file": "en/9f2fb0e2503bca87.mp3",
+    "id": "consent.decline_recorded",
+    "kind": "template",
+    "seconds": 6.9,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "b00a2df7c1618bc7f498531b4314fffc848a353911bb7182da5231d4f1c0bdae": {
+    "chars": 296,
+    "file": "en/b00a2df7c1618bc7.mp3",
+    "id": "mp:family-history:0:0",
+    "kind": "source",
+    "seconds": 21.0,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "b3b201783dcd78574969d82c16ebe9139951b70f08a408295b858f9a765eb21a": {
+    "chars": 481,
+    "file": "en/b3b201783dcd7857.mp3",
+    "id": "mp:risk-assessment:0:9",
+    "kind": "source",
+    "seconds": 31.1,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "b8444cd5baf641961a39cf39bf6abb6dcd52468c0872088b113c37add72080e0": {
+    "chars": 222,
+    "file": "en/b8444cd5baf64196.mp3",
+    "id": "reply.decision_request",
+    "kind": "template",
+    "seconds": 15.9,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "b988a81ca7f58ab1a505bfd91d6513206b18858cb8b352cd9529378727c8e02f": {
+    "chars": 142,
+    "file": "en/b988a81ca7f58ab1.mp3",
+    "id": "reply.booking",
+    "kind": "template",
+    "seconds": 9.6,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "bd8ddbb2821c233d5c2e3f6beb6a4c224dc3ae19be7183f891388531871f607a": {
+    "chars": 186,
+    "file": "en/bd8ddbb2821c233d.mp3",
+    "id": "mp:screening-vs-diagnostic:0:0",
+    "kind": "source",
+    "seconds": 13.6,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "c0450cfbf8440dc191f1f1c4fd2cf0a88ab69d1b805bec335cdf6e1e16111c5c": {
+    "chars": 363,
+    "file": "en/c0450cfbf8440dc1.mp3",
+    "id": "mp:inheritance-patterns:0:3",
+    "kind": "source",
+    "seconds": 23.8,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "c8a1f4666ac9e855b0ee8c79a6799608a14ff10c7c019399ae93e09cba6245c7": {
+    "chars": 799,
+    "file": "en/c8a1f4666ac9e855.mp3",
+    "id": "mp:interpreting-results:0:2",
+    "kind": "source",
+    "seconds": 50.4,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "e7dcd55a069238ebdff2f7fb42cac878c65f5b5e4ee3490d5ecf994e42e24b4f": {
+    "chars": 271,
+    "file": "en/e7dcd55a069238eb.mp3",
+    "id": "invite.anonymous",
+    "kind": "template",
+    "seconds": 18.8,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "eac5ce88daedb4fb316ec1c8ed0ec86faf2362dca23a793bc5b4d901ac74786a": {
+    "chars": 112,
+    "file": "en/eac5ce88daedb4fb.mp3",
+    "id": "tb.calculation_not_test",
+    "kind": "teachback",
+    "seconds": 10.4,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "ece0e7c1325210ed6e49ef77f93fe17f7ee2c79088284300a61de615f006fda4": {
+    "chars": 162,
+    "file": "en/ece0e7c1325210ed.mp3",
+    "id": "safety.footer",
+    "kind": "template",
+    "seconds": 12.4,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "f21119a2dbedca44a67f3f7ef71e8e2226c34a8c4721780ab1829c9c6b28599c": {
+    "chars": 206,
+    "file": "en/f21119a2dbedca44.mp3",
+    "id": "mp:risk-assessment:0:11",
+    "kind": "source",
+    "seconds": 13.5,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "f45b290bb2c370352b7581f39b8d649b74c57a13dbdbb94dc1fbb6629f8841b7": {
+    "chars": 421,
+    "file": "en/f45b290bb2c37035.mp3",
+    "id": "mp:testing-uses:0:4",
+    "kind": "source",
+    "seconds": 28.7,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "f53d6016d4123acd3a634af6c41070b557fd417cec127e57a6046d0fbb122916": {
+    "chars": 578,
+    "file": "en/f53d6016d4123acd.mp3",
+    "id": "mp:screening-vs-diagnostic:0:2",
+    "kind": "source",
+    "seconds": 37.8,
+    "voice": "en-GB-SoniaNeural"
+   },
+   "fd2bab9cd26ee6c8c2133ff157122143b50538e97d601e3d121f12f953343214": {
+    "chars": 224,
+    "file": "en/fd2bab9cd26ee6c8.mp3",
+    "id": "consent.compute",
+    "kind": "template",
+    "seconds": 15.2,
+    "voice": "en-GB-SoniaNeural"
+   }
+  }
+ },
+ "meta": {
+  "clips": 74,
+  "format": "audio-16khz-32kbitrate-mono-mp3",
+  "generated": "2026-11-15",
+  "minutes": 33.3,
+  "note": "Synthetic voice reading approved text exactly; each clip is keyed by the SHA-256 of its text. Arabic clips read the machine translation, which is pending native clinical review. No clip has yet been checked by a native listener.",
+  "provider": "Azure AI Speech (neural text to speech)",
+  "rate": "-8%",
+  "synthetic": true,
+  "voices": {
+   "ar": "ar-AE-FatimaNeural",
+   "en": "en-GB-SoniaNeural"
+  }
+ }
+}

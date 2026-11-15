@@ -28,7 +28,10 @@ import yaml
 from .params import DATA
 
 CONTENT = DATA / "content"
+AUDIO = CONTENT / "audio"
 Lang = Literal["en", "ar"]
+# The two paragraphs every relative is shown (service.relative_view).
+RELATIVE_INFO = ("mp:inheritance-patterns:0:3", "mp:risk-assessment:0:2")
 
 
 def sha256(text: str) -> str:
@@ -71,6 +74,11 @@ class GateError(ValueError):
     """Raised when a message contains text that is not approved content."""
 
 
+def teachback_text(q: dict[str, Any], lang: str) -> str:
+    """A comprehension question as it is read aloud: the question, then each answer on its own line."""
+    return "\n".join([q[lang], *(o[lang] for o in q["options"])])
+
+
 class Registry:
     def __init__(self, root: Path = CONTENT) -> None:
         self.paragraphs: dict[str, Paragraph] = {}
@@ -103,7 +111,63 @@ class Registry:
                 p = self.paragraphs.get(pid)
                 if p is not None and t.get("source_sha256") == p.sha256 and t.get("ar"):
                     self.translations[pid] = t
+        # Read-aloud clips (scripts/make_read_aloud.py): a synthetic voice reading approved text, each clip
+        # keyed by the SHA-256 of the exact text it reads. A text without a matching clip gets no audio,
+        # so the voice can never say something other than what is on screen.
+        self.audio: dict[str, Any] = {"meta": {}, "clips": {"en": {}, "ar": {}}}
+        afile = root / "audio" / "manifest.json"
+        if afile.exists():
+            self.audio = json.loads(afile.read_text())
+        self._audio_root = root / "audio"
         self._check_references()
+
+    # ----------------------------------------------------------- read aloud --
+    def read_aloud_texts(self) -> list[dict[str, str]]:
+        """Every fixed text a relative can be shown, in both languages: templates with no variable parts,
+        the paragraphs behind the relative's page and the common questions, and the comprehension check.
+        Texts with names or numbers in them are not pre-recorded."""
+        out: list[dict[str, str]] = []
+        for tid, t in self.templates.items():
+            if re.search(r"\{\w+\}", t["en"]):
+                continue
+            for lang in ("en", "ar"):
+                out.append({"lang": lang, "kind": "template", "id": tid, "text": _norm(t[lang])})
+        pids = list(RELATIVE_INFO)
+        for topic in self.faq:
+            pids += [p for p in topic["paragraphs"] if p not in pids]
+        for q in self.teachback:
+            if q["evidence"].startswith("mp:") and q["evidence"] not in pids:
+                pids.append(q["evidence"])
+        for pid in pids:
+            p = self.paragraphs[pid]
+            if p.us_specific:
+                continue
+            out.append({"lang": "en", "kind": "source", "id": pid, "text": p.text})
+            t = self.translations.get(pid)
+            if t is not None:
+                out.append({"lang": "ar", "kind": "translation", "id": pid, "text": t["ar"]})
+        for q in self.teachback:
+            for lang in ("en", "ar"):
+                out.append({"lang": lang, "kind": "teachback", "id": q["id"], "text": teachback_text(q, lang)})
+        return out
+
+    def audio_for(self, lang: str, text: str) -> dict[str, Any] | None:
+        """The clip that reads exactly `text`, or None. Never a clip of a different or older wording."""
+        clip = self.audio.get("clips", {}).get(lang, {}).get(sha256(text))
+        if clip is None or not (self._audio_root / clip["file"]).exists():
+            return None
+        return {"url": f"/api/audio/{clip['file']}", "voice": clip["voice"], "seconds": clip.get("seconds"),
+                "synthetic": True, "provider": self.audio.get("meta", {}).get("provider", "Azure AI Speech")}
+
+    def with_audio(self, parts: list[dict[str, Any]], lang: str) -> list[dict[str, Any]]:
+        """Copies of message parts with a read-aloud clip attached where one matches the exact text. Called
+        after the gate, on the way out; the gated parts and their digest are not changed."""
+        out = []
+        for p in parts:
+            spoken_lang = lang if (p["type"] == "template" or "translation" in p) else "en"
+            a = self.audio_for(spoken_lang, p["text"])
+            out.append({**p, "audio": {**a, "lang": spoken_lang}} if a else p)
+        return out
 
     def _check_references(self) -> None:
         for t in self.faq:

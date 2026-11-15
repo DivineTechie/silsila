@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { useState } from "react";
 import { AboutInfo } from "@/components/About";
 import { AskBox, SectionTitle, StatusChip } from "@/components/case";
+import { ListenButton } from "@/components/Listen";
 import { Parts } from "@/components/Parts";
 import { Page } from "@/components/Shell";
 import { Button, Card, ErrorBox, H1, Loading, Notice, Prov, cx } from "@/components/ui";
@@ -138,7 +139,11 @@ function Relative() {
         </span>
       </div>
 
-      <Card className="mt-6">
+      {data.message.some((p) => p.audio) && (
+        <p className="mt-4 text-sm text-ink-2">{t("listen.notice")}</p>
+      )}
+
+      <Card className="mt-4">
         <Parts parts={data.message} />
       </Card>
 
@@ -160,6 +165,7 @@ function Relative() {
                   <span className="text-muted tabular-nums">{qi + 1}.</span>
                   <span>{question[lang]}</span>
                 </p>
+                {question.audio?.[lang] && <ListenButton clip={question.audio[lang]} className="mt-2" />}
                 <div className="mt-3 grid gap-2">
                   {question.options.map((o) => (
                     <label

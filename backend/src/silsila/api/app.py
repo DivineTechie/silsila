@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import threading
 from pathlib import Path
 from typing import Annotated, Any, Literal
@@ -14,7 +15,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 
 from .. import intake, params, twin
-from ..content import GateError, Message, registry
+from ..content import AUDIO, GateError, Message, registry
 from ..engine import Pedigree
 from ..triage import classify, reply_for
 from . import auth, fhir, service
@@ -185,6 +186,15 @@ def condition(content_id: str, lang: Literal["en", "ar"] = "en") -> dict[str, An
     return {"title": doc["title"], "url": doc["url"], "attribution": doc["attribution"], "licence": doc["licence"],
             "retrieved_at": doc["retrieved_at"], "reviewed": doc.get("medlineplus_reviewed"),
             "paragraphs": reg.gate(msg).parts, "translation_status": reg.template_meta["ar_status"] if lang == "ar" else None}
+
+
+@app.get("/api/audio/{lang}/{name}")
+def read_aloud(lang: Literal["en", "ar"], name: str) -> FileResponse:
+    """A read-aloud clip: a synthetic voice (labelled as such on screen) reading approved text."""
+    if not re.fullmatch(r"[0-9a-f]{16}\.mp3", name) or not (AUDIO / lang / name).is_file():
+        raise HTTPException(404, "No such clip")
+    return FileResponse(AUDIO / lang / name, media_type="audio/mpeg",
+                        headers={"Cache-Control": "public, max-age=86400"})
 
 
 @app.get("/api/content/faq")
@@ -455,7 +465,9 @@ def message(body: MessageIn, authorization: str = Header(default="")) -> dict[st
     store().audit(sender, "relative" if sender.startswith("relative:") else "family", "message.triage",
                   case_id=case_id, entity=doc["id"],
                   detail={"labels": doc["labels"], "escalate": reply.escalate, "reply_digest": reply.digest})
-    return {"reply": reply.parts, "escalated": reply.escalate, "labels": doc["labels"]}
+    # A relative's reply can be read aloud (clips exist only for exact approved text).
+    parts = registry().with_audio(reply.parts, body.lang) if body.invite_code else reply.parts
+    return {"reply": parts, "escalated": reply.escalate, "labels": doc["labels"]}
 
 
 @app.get("/api/messages")

@@ -10,7 +10,7 @@ import secrets
 from typing import Any
 
 from .. import params
-from ..content import Message, registry
+from ..content import RELATIVE_INFO, Message, registry, teachback_text
 from ..engine import (
     InconsistentEvidence,
     Pedigree,
@@ -310,8 +310,8 @@ def relative_view(store: Store, code: str, lang: str) -> dict[str, Any]:
         reg.template(msg, "invite.anonymous")
         reg.template(msg, "invite.anonymity_notice")
     info = Message(lang)
-    reg.quote(info, "mp:inheritance-patterns:0:3")
-    reg.quote(info, "mp:risk-assessment:0:2")
+    for pid in RELATIVE_INFO:
+        reg.quote(info, pid)
     if inv["disclose_condition"] and rec:
         for cid in rec.content_ids:
             for p in reg.condition_paragraphs(cid, ("Description",))[:2]:
@@ -319,13 +319,16 @@ def relative_view(store: Store, code: str, lang: str) -> dict[str, Any]:
     if inv["status"] == "sent":
         inv["relative_lang"] = lang  # for equity reporting by language; no other detail about the relative
         transition(store, {"id": f"relative:{inv['id']}", "role": "relative"}, inv, "opened")
-    return {"invitation_id": inv["id"], "status": inv["status"], "message": reg.gate(msg).parts,
-            "information": reg.gate(info).parts,
+    return {"invitation_id": inv["id"], "status": inv["status"], "message": reg.with_audio(reg.gate(msg).parts, lang),
+            "information": reg.with_audio(reg.gate(info).parts, lang),
             # Common questions the relative can open; each answer is quoted text (see relative_topic).
             "topics": [{k: t[k] for k in ("id", "title_en", "title_ar")} for t in reg.faq],
             "teachback": [{k: v for k, v in q.items() if k != "options"} | {
-                "options": [{"id": o["id"], "en": o["en"], "ar": o["ar"]} for o in q["options"]]} for q in reg.teachback],
-            "consent_note": reg.gate(reg.template(Message(lang), "reply.booking")).parts}
+                "options": [{"id": o["id"], "en": o["en"], "ar": o["ar"]} for o in q["options"]],
+                # read-aloud: the question and its answers, in each language
+                "audio": {lg: a for lg in ("en", "ar") if (a := reg.audio_for(lg, teachback_text(q, lg)))}}
+                for q in reg.teachback],
+            "consent_note": reg.with_audio(reg.gate(reg.template(Message(lang), "reply.booking")).parts, lang)}
 
 
 def relative_topic(store: Store, code: str, topic_id: str, lang: str) -> dict[str, Any]:
@@ -347,7 +350,8 @@ def relative_topic(store: Store, code: str, topic_id: str, lang: str) -> dict[st
     reg.gate(msg)
     store.audit(f"relative:{inv['id']}", "relative", "information.read", case_id=inv["case_id"], entity=inv["id"],
                 detail={"topic": topic_id, "lang": lang, "digest": msg.digest})
-    return {"id": topic["id"], "title_en": topic["title_en"], "title_ar": topic["title_ar"], "parts": msg.parts}
+    return {"id": topic["id"], "title_en": topic["title_en"], "title_ar": topic["title_ar"],
+            "parts": reg.with_audio(msg.parts, lang)}
 
 
 def score_teachback(answers: dict[str, str]) -> dict[str, Any]:

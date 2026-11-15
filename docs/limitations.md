@@ -31,6 +31,17 @@ Silsila is a prototype tested only on synthetic data. Nothing here has been used
   a native-speaking clinician. This review is required before any use with patients.
 - Templates are the development team's procedural wording and have not been reviewed by a genetic
   counsellor or by religious and cultural advisers.
+- Reading level (English, `docs/evidence/readability.json`): Silsila's own wording scores Flesch-Kincaid grade
+  6.9, but the quoted MedlinePlus text scores grade 13.4 (college level). Quoted text is not
+  simplified. No readability measure was applied to the Arabic text; none validated for Arabic health text
+  was used.
+- Read aloud uses a synthetic voice (Azure AI Speech) reading fixed approved text only. Sentences containing a
+  name or a number (for example an invitation that names its sender) have no audio. No clip has been checked
+  by a native listener; mispronunciation is possible, most of all in the machine-translated Arabic. The
+  listener may be overheard (hazard H20).
+- The interface labels added for these features (Listen, Stop, "synthetic voice (Azure)", the read-aloud
+  notice, "Common questions") are short functional labels written by the development team; like the
+  templates, they await clinical and native-language review.
 
 ## Message triage
 - Trained and tested on synthetic messages written by an AI model; not validated on real messages.
