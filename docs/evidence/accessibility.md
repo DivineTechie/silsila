@@ -1,7 +1,7 @@
 # Accessibility audit (axe-core)
 
 **Date:** 15 Nov 2026. **Tool:** axe-core 4.10.2, rule sets `wcag2a`, `wcag2aa`, `wcag21aa` and `best-practice`
-(the home page, the cascade replay and the Outcomes tab were also checked with `wcag22aa`),
+(the home page and the cascade replay were also checked with `wcag22aa`),
 run in the browser against the local build with demo data.
 
 **Coverage.** Every screen a judge or user can reach, with every tab opened and every collapsed section
