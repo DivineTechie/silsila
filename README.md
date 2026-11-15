@@ -20,8 +20,8 @@ Prototype with fictional families. Not for clinical use.
 password is needed: the home page has one-click roles.
 
 1. **Family Twin** (top menu): a fictional, simulated five-generation clan in 3D. Click anyone, record a
-   test result, and watch every relative's exact carrier chance update across six cousin marriages in about
-   0.3 seconds. Press "Where did it come from?" to see the most likely line of descent, or play the cascade
+   test result, and watch every relative's exact carrier chance update across six cousin marriages in under a second
+   (about 0.15 s on a laptop, 0.7 s on the hosted server). Press "Where did it come from?" to see the most likely line of descent, or play the cascade
    race.
 2. **Mariam** (family): newborn screening found classic CAH in her son. She gives permission and invites her
    pregnant sister Noura anonymously.
