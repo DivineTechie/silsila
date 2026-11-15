@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AboutInfo } from "@/components/About";
+import { JudgeMode } from "@/components/JudgeMode";
 import { Page } from "@/components/Shell";
 import { Button, Card, ErrorBox, Eyebrow, Field, H1, H2, Notice, inputCls } from "@/components/ui";
 import { api, setSession } from "@/lib/api";
@@ -52,6 +53,9 @@ export default function Landing() {
             <span id="intro">{t("landing.title")}</span>
           </H1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-2">{t("landing.lead")}</p>
+          <div className="mt-6">
+            <JudgeMode />
+          </div>
           <div className="rule-dots mt-8" aria-hidden="true" />
           <H2 className="mt-6">{t("landing.how")}</H2>
           <ol className="mt-4 grid gap-3 sm:grid-cols-2">

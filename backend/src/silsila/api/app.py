@@ -465,6 +465,64 @@ def evidence() -> dict[str, Any]:
 
 
 # --------------------------------------------------------------- demo only --
+# Judge mode: in demo mode (fictional families only) anyone can enter as a demo persona without a password,
+# open a relative's invitation, and reset the data. Every endpoint returns 404 when SILSILA_DEMO is off.
+DEMO_PERSONAS = ("mariam", "reem", "counsellor")
+DEMO_RELATIVE = ("case_cah_demo", "hamdan")  # Mariam's brother; Noura is left for the judge to invite
+
+
+class DemoLoginIn(BaseModel):
+    persona: Literal["mariam", "reem", "counsellor"]
+
+
+def _demo_only() -> None:
+    if not DEMO:
+        raise HTTPException(404, "Not found")
+
+
+@app.post("/api/demo/login")
+def demo_login(body: DemoLoginIn) -> dict[str, Any]:
+    _demo_only()
+    user = next(iter(store().find("user", username=body.persona)), None)
+    if user is None:
+        raise HTTPException(404, "Unknown demo persona")
+    store().audit(user["id"], user["role"], "auth.demo_login")
+    return {"token": auth.issue(user), "user": {k: user[k] for k in ("id", "role", "display_name", "lang")}}
+
+
+@app.post("/api/demo/relative")
+def demo_relative() -> dict[str, Any]:
+    """An invitation link as a relative would receive it. Created through the real flow (Mariam gives
+    permission and asks; the counsellor approves and sends), marked as a demo shortcut in the audit log."""
+    _demo_only()
+    s = store()
+    case_id, person = DEMO_RELATIVE
+    live = [i for i in s.list("invitation", case_id)
+            if i["person_id"] == person and i["status"] in ("sent", "opened", "understood", "booked")]
+    if live:
+        return {"code": live[0]["code"]}
+    case, fam, cou = s.get("case", case_id), s.get("user", "user_family"), s.get("user", "user_counsellor")
+    if case is None or fam is None or cou is None:
+        raise HTTPException(409, "Demo data is missing; reset the demo")
+    if not case.get("consents", {}).get("invite", {}).get("granted"):
+        case = service.set_consent(s, fam, case, "invite", True)
+    inv = service.create_invitation(s, fam, case, person, "anonymous_invite", False, False, None)
+    service.transition(s, cou, inv, "approved", {"signed_by": cou["display_name"], "demo_shortcut": True})
+    inv = service.transition(s, cou, inv, "sent", {"demo_shortcut": True})
+    return {"code": inv["code"]}
+
+
+@app.post("/api/demo/reset")
+def demo_reset(user: dict[str, Any] = Depends(current_user)) -> dict[str, Any]:
+    """Recreate the fictional families, accounts and audit log. Signed-in sessions stay valid."""
+    _demo_only()
+    from . import seed as seed_mod
+    seed_mod.seed(store())
+    store().audit(user["id"], user["role"], "demo.reset")
+    return {"ok": True, "audit": store().verify_chain()}
+
+
+
 @app.post("/api/demo/tamper")
 def demo_tamper(seq: int, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
     if not DEMO:

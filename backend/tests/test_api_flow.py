@@ -151,3 +151,29 @@ def test_oversized_family_gets_a_message_not_a_crash(client, monkeypatch):
     rep = client.get("/api/cases/case_cah_demo", headers=cou).json()["report"]
     assert rep["status"] == "too_complex" and rep["message"][0]["id"] == "result.too_complex"
     assert any("family_tree_too_complex" in i["reasons"] for i in client.get("/api/queue", headers=cou).json())
+
+
+def test_judge_mode_personas_relative_link_and_reset(client):
+    r = client.post("/api/demo/login", json={"persona": "counsellor"})
+    assert r.status_code == 200 and r.json()["user"]["role"] == "counsellor"
+    cou = {"Authorization": f"Bearer {r.json()['token']}"}
+    assert client.post("/api/demo/login", json={"persona": "admin"}).status_code == 422
+
+    code = client.post("/api/demo/relative").json()["code"]
+    assert client.post("/api/demo/relative").json()["code"] == code  # reused while open
+    view = client.get(f"/api/r/{code}?lang=ar").json()
+    assert [p["id"] for p in view["message"]] == ["invite.anonymous", "invite.anonymity_notice"]
+    events = client.get("/api/audit", headers=cou).json()["events"]
+    assert any(e["action"] == "invitation.approved" and e["detail"].get("demo_shortcut") for e in events)
+
+    assert client.post("/api/demo/reset").status_code == 401
+    assert client.post("/api/demo/reset", headers=cou).json()["audit"]["intact"]
+    assert client.get(f"/api/r/{code}").status_code == 403  # the invitation is gone after reset
+    assert client.get("/api/queue", headers=cou).status_code == 200  # the session still works
+
+
+def test_judge_mode_is_off_outside_demo(client, monkeypatch):
+    from silsila.api import app as app_mod
+    monkeypatch.setattr(app_mod, "DEMO", False)
+    assert client.post("/api/demo/login", json={"persona": "mariam"}).status_code == 404
+    assert client.post("/api/demo/relative").status_code == 404

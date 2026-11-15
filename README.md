@@ -19,8 +19,9 @@ Prototype with fictional families. Not for clinical use.
 - Testing the extended families of an affected child found 31% of relatives were carriers and 8% of married
   couples were both carriers, versus 0 of 397 people in control families and 0 at-risk couples among 350
   random pregnant couples (Ahmed et al., *NEJM* 2002;347:1162-8, PMID 12374877).
-- Abu Dhabi's premarital programme (570 genes) became mandatory for Emiratis in 2024-2025, so couples married
-  before then were never screened. It has flagged 565 incompatible couples among 11,748 tested (Gulf News,
+- Abu Dhabi's premarital genetic test (570 genes, 840+ recessive disorders, per the
+  [DoH announcement](https://www.doh.gov.ae/en/news/doh-integrates-genetic-testing-as-an-integral-component-of-the-premarital-screening-programme))
+  became mandatory for Emiratis in 2024-2025, so couples married before then were never screened. It has flagged 565 incompatible couples among 11,748 tested (Gulf News,
   Oct 2026).
 - Half of UAE-national marriages were consanguineous in the only national survey (50.5%, al-Gazali 1997,
   PMID 9881148). Beta-thalassaemia carriers vary from 0% to 13.6% between tribes (Denic 2013, PMID 23600619).

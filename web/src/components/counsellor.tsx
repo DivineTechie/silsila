@@ -1,5 +1,6 @@
 "use client";
 
+import { ResetDemo } from "./JudgeMode";
 import Link from "next/link";
 import { useState } from "react";
 import { api } from "@/lib/api";
@@ -331,6 +332,9 @@ export function DemoTools({ onChanged }: { onChanged: () => void }) {
           <p className="mt-2 text-xs text-muted">{t("c.tamperWarn")}</p>
           {tamper && <div className="mt-3"><ChainBadge chain={tamper} /></div>}
         </div>
+      </div>
+      <div className="mt-6 border-t border-line pt-4">
+        <ResetDemo onDone={onChanged} />
       </div>
       {error ? <div className="mt-4"><ErrorBox error={error} /></div> : null}
     </Card>
