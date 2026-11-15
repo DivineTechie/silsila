@@ -39,6 +39,31 @@ MALE = ["Saeed", "Rashid", "Ahmed", "Khalfan", "Hamdan", "Obaid", "Juma", "Zayed
         "Matar", "Butti", "Suhail", "Nasser", "Khamis", "Eissa", "Musabbah", "Hareb", "Fahad", "Rakan", "Badr"]
 
 
+NAME_AR = {
+    "Mariam": "مريم", "Noura": "نورة", "Hessa": "حصة", "Moza": "موزة", "Shamma": "شمّة", "Maitha": "ميثاء",
+    "Salama": "سلامة", "Fatima": "فاطمة", "Aisha": "عائشة", "Latifa": "لطيفة", "Alyazia": "اليازية", "Mahra": "مهرة",
+    "Roudha": "روضة", "Hind": "هند", "Ghaya": "غاية", "Afra": "عفراء", "Sheikha": "شيخة", "Amna": "آمنة", "Meera": "ميرة",
+    "Khawla": "خولة", "Reem": "ريم", "Sara": "سارة", "Hamda": "حمدة", "Wadha": "وضحى", "Ousha": "عوشة", "Lubna": "لبنى",
+    "Asma": "أسماء", "Mouza": "موزة", "Hamama": "حمامة", "Shaikha": "شيخة", "Nouf": "نوف", "Dana": "دانة",
+    "Jawaher": "جواهر", "Hala": "هالة", "Basma": "بسمة", "Muna": "منى", "Najla": "نجلاء", "Fakhra": "فخرة",
+    "Zainab": "زينب", "Kaltham": "كلثم", "Sumaya": "سمية", "Maryam": "مريم", "Habiba": "حبيبة", "Rawda": "روضة",
+    "Sana": "سناء", "Lamya": "لمياء",
+    "Saeed": "سعيد", "Rashid": "راشد", "Ahmed": "أحمد", "Khalfan": "خلفان", "Hamdan": "حمدان", "Obaid": "عبيد",
+    "Juma": "جمعة", "Zayed": "زايد", "Mohammed": "محمد", "Khalifa": "خليفة", "Sultan": "سلطان", "Hamad": "حمد",
+    "Saif": "سيف", "Mansour": "منصور", "Faisal": "فيصل", "Majid": "ماجد", "Thani": "ثاني", "Humaid": "حميد",
+    "Ali": "علي", "Omar": "عمر", "Abdullah": "عبدالله", "Khalid": "خالد", "Salem": "سالم", "Yousef": "يوسف",
+    "Ibrahim": "إبراهيم", "Marwan": "مروان", "Hazza": "هزاع", "Theyab": "ذياب", "Nahyan": "نهيان", "Tahnoun": "طحنون",
+    "Mubarak": "مبارك", "Hilal": "هلال", "Ghanim": "غانم", "Jassim": "جاسم", "Matar": "مطر", "Butti": "بطي",
+    "Suhail": "سهيل", "Nasser": "ناصر", "Khamis": "خميس", "Eissa": "عيسى", "Musabbah": "مصبح", "Hareb": "حارب",
+    "Fahad": "فهد", "Rakan": "راكان", "Badr": "بدر",
+}
+
+
+def name_ar(name: str) -> str:
+    base, _, n = name.partition(" ")
+    return NAME_AR.get(base, base) + (f" {n}" if n else "")
+
+
 def _names(ids_by_sex: list[tuple[str, str]], rng: np.random.Generator) -> dict[str, str]:
     f, m = list(FEMALE), list(MALE)
     rng.shuffle(f)
@@ -224,7 +249,10 @@ def _assemble(c: dict[str, Any]) -> dict[str, Any]:
 @functools.lru_cache(maxsize=1)
 def load() -> dict[str, Any]:
     import json
-    return json.loads(CLAN_PATH.read_text())
+    t = json.loads(CLAN_PATH.read_text())
+    for p in t["people"]:
+        p["name_ar"] = name_ar(p["name"])
+    return t
 
 
 def public() -> dict[str, Any]:

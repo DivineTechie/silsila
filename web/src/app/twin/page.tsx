@@ -27,7 +27,7 @@ function useReducedMotion(): boolean {
 }
 
 export default function TwinPage() {
-  const { t } = usePrefs();
+  const { t, lang } = usePrefs();
   const reduced = useReducedMotion();
   const [clan, setClan] = useState<TwinClan | null>(null);
   const [error, setError] = useState<unknown>(null);
@@ -69,7 +69,11 @@ export default function TwinPage() {
     };
   }, [clan]);
 
-  const byId = useMemo(() => new Map((clan?.people || []).map((p) => [p.id, p])), [clan]);
+  const byId = useMemo(
+    () => new Map((clan?.people || []).map((p) => [p.id, { ...p, name: lang === "ar" && p.name_ar ? p.name_ar : p.name }])),
+    [clan, lang],
+  );
+  const names = useMemo(() => Object.fromEntries([...byId.values()].map((p) => [p.id, p.name])), [byId]);
   const nGen = useMemo(() => new Set((clan?.people || []).map((p) => p.generation)).size, [clan]);
   const probs = calc?.status === "ok" ? calc.p_carrier! : null;
   const origin = useMemo(() => (clan && probs && showOrigin ? originPath(clan, probs) : null), [clan, probs, showOrigin]);
@@ -159,6 +163,8 @@ export default function TwinPage() {
               origin={origin}
               reducedMotion={reduced}
               label={t("tw.sceneLabel")}
+              names={names}
+              affectedLabel={t("tw.affected")}
             />
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-ink-2">
@@ -179,7 +185,7 @@ export default function TwinPage() {
                   <tr><th className="px-3 py-2 text-start">{t("tw.colPerson")}</th><th className="px-3 py-2 text-start">{t("tw.colGen")}</th><th className="px-3 py-2 text-start">{t("tw.colChance")}</th></tr>
                 </thead>
                 <tbody>
-                  {[...clan.people].sort((a, b) => (probs[b.id] ?? 0) - (probs[a.id] ?? 0)).map((p) => (
+                  {[...byId.values()].sort((a, b) => (probs[b.id] ?? 0) - (probs[a.id] ?? 0)).map((p) => (
                     <tr key={p.id} className={cx("border-t border-line", selected === p.id && "bg-accent-soft")}>
                       <td className="px-3 py-1.5">
                         <button type="button" className="text-start underline-offset-4 hover:underline" onClick={() => setSelected(p.id)}>
@@ -227,7 +233,7 @@ export default function TwinPage() {
                 )}
               </div>
             )}
-            {nextNames.length > 0 && <p className="mt-4 border-t border-line pt-3 text-xs text-muted">{t("tw.next", { names: nextNames.join(", ") })}</p>}
+            {nextNames.length > 0 && <p className="mt-4 border-t border-line pt-3 text-xs text-muted">{t("tw.next", { names: nextNames.join(lang === "ar" ? "، " : ", ") })}</p>}
           </Card>
 
           <Card>

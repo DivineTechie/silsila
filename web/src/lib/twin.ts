@@ -5,6 +5,7 @@ import { api } from "./api";
 export interface TwinPerson {
   id: string;
   name: string;
+  name_ar?: string;
   sex: "female" | "male";
   mother: string | null;
   father: string | null;

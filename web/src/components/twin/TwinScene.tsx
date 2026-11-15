@@ -23,6 +23,8 @@ interface Props {
   origin: string[] | null; // line of descent to highlight
   reducedMotion: boolean;
   label: string;
+  names: Record<string, string>; // display names in the current language
+  affectedLabel: string;
 }
 
 const STOPS: [number, THREE.Color][] = [
@@ -235,7 +237,8 @@ export function TwinScene(props: Props) {
       }
       const p = byId.get(id)!;
       const pr = latest.current.probs?.[id];
-      t.textContent = `${p.name}${p.deceased ? " (deceased)" : ""} · ${p.status === "affected" ? "affected" : pr === undefined ? "…" : pct(pr)}`;
+      const cur = latest.current;
+      t.textContent = `${cur.names[id] ?? p.name}${p.deceased ? " †" : ""} · ${p.status === "affected" ? cur.affectedLabel : pr === undefined ? "…" : pct(pr)}`;
       const r = el.getBoundingClientRect();
       t.style.transform = `translate(${ev.clientX - r.left + 14}px, ${ev.clientY - r.top + 14}px)`;
       t.style.opacity = "1";
