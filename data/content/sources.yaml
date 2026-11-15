@@ -40,6 +40,8 @@ handbook:
     url: https://medlineplus.gov/genetics/understanding/testing/genetictesting/
   - id: test-types
     url: https://medlineplus.gov/genetics/understanding/testing/types/
+  - id: testing-uses
+    url: https://medlineplus.gov/genetics/understanding/testing/uses/
   - id: screening-vs-diagnostic
     url: https://medlineplus.gov/genetics/understanding/testing/differenttests/
   - id: interpreting-results

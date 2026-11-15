@@ -1,0 +1,67 @@
+{
+  "id": "mp:testing-uses",
+  "kind": "handbook",
+  "title": "What are the uses of genetic testing?",
+  "url": "https://medlineplus.gov/genetics/understanding/testing/uses/",
+  "retrieved_at": "2026-11-15T06:14:06+00:00",
+  "publisher": "MedlinePlus, National Library of Medicine",
+  "licence": "Public domain (US federal work)",
+  "licence_url": "https://medlineplus.gov/copyright.html",
+  "attribution": "Source: MedlinePlus, National Library of Medicine",
+  "page_last_updated": "July 28, 2021",
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        {
+          "id": "mp:testing-uses:0:0",
+          "text": "Genetic testing can provide information about a person's genetic background. The uses of genetic testing include:",
+          "sha256": "4c7f79da4a40ff5323a2d6a9f7237beb410dde10f7a7afbc7e2e977b0a69ee1e",
+          "us_specific": false
+        },
+        {
+          "id": "mp:testing-uses:0:1",
+          "text": "Newborn screening is used just after birth to identify genetic disorders that can be treated early in life. Millions of babies are tested each year in the United States. The U.S. Health Services and Resource Administration recommends that states screen for a set of 40 conditions, which many states exceed.",
+          "sha256": "b78ccb8132b689dd91d98e0b3fcebbcb8a2984e2df8d9682172690aa3fcdfb6b",
+          "us_specific": true
+        },
+        {
+          "id": "mp:testing-uses:0:2",
+          "text": "Diagnostic testing is used to identify or rule out a specific genetic or chromosomal condition. In many cases, genetic testing is used to confirm a diagnosis when a particular condition is suspected based on physical signs and symptoms. Diagnostic testing can be performed before birth or at any time during a person's life, but is not available for all genes or all genetic conditions. The results of a diagnostic test can influence a person's choices about health care and the management of the disorder.",
+          "sha256": "8a2d5b37725fbbd87f49a16e12a66204c66f897781d4c8616cba5e6909bb9bb5",
+          "us_specific": false
+        },
+        {
+          "id": "mp:testing-uses:0:3",
+          "text": "Carrier testing is used to identify people who carry one copy of a gene mutation that, when present in two copies, causes a genetic disorder. This type of testing is offered to individuals who have a family history of a genetic disorder and to people in certain ethnic groups with an increased risk of specific genetic conditions. If both parents are tested, the test can provide information about a couple's risk of having a child with a genetic condition.",
+          "sha256": "13a4d8223ecbff4faf4f4f5084376f7d8037b5e8880730b817d4807a96239dc2",
+          "us_specific": false
+        },
+        {
+          "id": "mp:testing-uses:0:4",
+          "text": "Prenatal testing is used to detect changes in a fetus's genes or chromosomes before birth. This type of testing is offered during pregnancy if there is an increased risk that the baby will have a genetic or chromosomal disorder. In some cases, prenatal testing can lessen a couple's uncertainty or help them make decisions about a pregnancy. It cannot identify all possible inherited disorders and birth defects, however.",
+          "sha256": "f45b290bb2c370352b7581f39b8d649b74c57a13dbdbb94dc1fbb6629f8841b7",
+          "us_specific": false
+        },
+        {
+          "id": "mp:testing-uses:0:5",
+          "text": "Preimplantation testing, also called preimplantation genetic diagnosis (PGD), is a specialized technique that can reduce the risk of having a child with a particular genetic or chromosomal disorder. It is used to detect genetic changes in embryos that were created using assisted reproductive techniques (ART) such as in-vitro fertilization (IVF). In-vitro fertilization involves removing egg cells from a woman’s ovaries and fertilizing them with sperm cells outside the body. To perform preimplantation testing, a small number of cells are taken from these embryos and tested for certain genetic changes. Only embryos without these changes are implanted in the uterus to initiate a pregnancy.",
+          "sha256": "8e419b6815e10b12964bac9ad06a22ffd9dd0d17721bc55250e2f74e30709ccf",
+          "us_specific": false
+        },
+        {
+          "id": "mp:testing-uses:0:6",
+          "text": "Predictive and presymptomatic types of testing are used to detect gene mutations associated with disorders that appear after birth, often later in life. These tests can be helpful to people who have a family member with a genetic disorder, but who have no features of the disorder themselves at the time of testing. Predictive testing can identify mutations that increase a person's risk of developing disorders with a genetic basis, such as certain types of cancer. Presymptomatic testing can determine whether a person will develop a genetic disorder, such as hereditary hemochromatosis (an iron overload disorder), before any signs or symptoms appear. The results of predictive and presymptomatic testing can provide information about a person’s risk of developing a specific disorder and help with making decisions about medical care.",
+          "sha256": "99b0c8d34113d8d333d25856a31058bb32d9039d5b3b68bcd9dbb779dfa24e70",
+          "us_specific": false
+        },
+        {
+          "id": "mp:testing-uses:0:7",
+          "text": "Forensic testing uses DNA sequences to identify an individual for legal purposes. Unlike the tests described above, forensic testing is not used to detect gene mutations associated with disease. This type of testing can identify crime or catastrophe victims, rule out or implicate a crime suspect, or establish biological relationships between people (for example, paternity).",
+          "sha256": "c64121018d7bfbef4e0ede847b1251e747a488754fc7cf7780f7527a943ade3b",
+          "us_specific": false
+        }
+      ]
+    }
+  ]
+}

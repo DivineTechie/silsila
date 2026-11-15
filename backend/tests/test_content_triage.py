@@ -102,3 +102,19 @@ def test_unknown_message_is_forwarded_and_shows_emergency_numbers():
     msg = reply_for(classify("hmm", "en", use_model=False), "en")
     assert msg.parts[0]["id"] == "reply.forwarded"
     assert msg.parts[-1]["id"] == "safety.footer" and "998" in msg.parts[-1]["text"]
+
+
+def test_reproductive_options_topic_is_found_and_quoted_verbatim():
+    from silsila.content import Message, registry
+    from silsila.triage import match_topic
+
+    assert match_topic("What are our options? Can we do IVF or a prenatal test?", "en") == "faq.reproductive_options"
+    assert match_topic("ما هي الخيارات؟ هل نقدر نسوي أطفال الأنابيب؟", "ar") == "faq.reproductive_options"
+    reg = registry()
+    topic = next(t for t in reg.faq if t["id"] == "faq.reproductive_options")
+    for lang in ("en", "ar"):
+        msg = Message(lang)
+        for pid in topic["paragraphs"]:
+            reg.quote(msg, pid)
+        parts = reg.gate(msg).parts
+        assert len(parts) == len(topic["paragraphs"]) and all(p["type"] == "source" for p in parts)

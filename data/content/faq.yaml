@@ -33,3 +33,9 @@ topics:
     keywords_en: [family history, relatives, cousin, related, family]
     keywords_ar: [تاريخ عائلي, أقارب, ابن عم, ابنة عم, قرابة, عائلة]
     paragraphs: [mp:family-history:0:0, mp:family-history:0:1]
+  - id: faq.reproductive_options
+    title_en: What options do couples have before or during a pregnancy?
+    title_ar: ما الخيارات المتاحة للزوجين قبل الحمل أو أثناءه؟
+    keywords_en: [options, prenatal, pregnancy test, ivf, pgd, pgt, embryo, amniocentesis, "before pregnancy", "what can we do"]
+    keywords_ar: [خيارات, قبل الولادة, أطفال الأنابيب, أجنة, الأجنة, الإخصاب, بزل, "ماذا نفعل", "ما الحل"]
+    paragraphs: [mp:testing-uses:0:3, mp:testing-uses:0:4, mp:testing-uses:0:5, mp:risks-limitations:0:0]

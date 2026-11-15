@@ -1,6 +1,8 @@
 """Import public-domain MedlinePlus Genetics text verbatim.
 
-Usage:  uv run python scripts/import_medlineplus.py
+Usage:  uv run python scripts/import_medlineplus.py [--only ID ...]
+
+`--only` re-imports just the listed pages, leaving every other stored paragraph (and its hash) untouched.
 
 For each page listed in data/content/sources.yaml this writes
 data/content/sources/medlineplus/<id>.json with every section heading and
@@ -92,11 +94,14 @@ def extract(html: str) -> tuple[str, list[dict], dict]:
 
 
 def main() -> int:
+    only = set(sys.argv[sys.argv.index("--only") + 1:]) if "--only" in sys.argv else None
     cfg = yaml.safe_load(CONFIG.read_text())
     OUT.mkdir(parents=True, exist_ok=True)
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     for kind in ("conditions", "handbook"):
         for item in cfg.get(kind, []):
+            if only is not None and item["id"] not in only:
+                continue
             url = item["url"]
             html = fetch(url)
             title, sections, meta = extract(html)

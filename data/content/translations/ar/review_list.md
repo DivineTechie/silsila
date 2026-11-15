@@ -1,6 +1,6 @@
 # Arabic translation review list
 
-7 of 72 paragraphs are flagged for first review. All 72 still need native clinical review; flags only set the order.
+7 of 76 paragraphs are flagged for first review. All 76 still need native clinical review; flags only set the order.
 
 ## mp:risk-assessment:0:9
 Flags: translator noted a fidelity issue
