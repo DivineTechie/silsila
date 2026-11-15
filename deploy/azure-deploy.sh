@@ -66,11 +66,12 @@ API_ENV=(SILSILA_DEMO=1 SILSILA_DEMO_FAMILY_PASSWORD=secretref:fampw
 
 if az containerapp show -n "$API_APP" -g "$RG" -o none 2>/dev/null; then
   az containerapp secret set -n "$API_APP" -g "$RG" --secrets "${SECRETS[@]}" -o none
-  az containerapp update -n "$API_APP" -g "$RG" --image "$REG/silsila-api:$TAG" --set-env-vars "${API_ENV[@]}" -o none
+  az containerapp update -n "$API_APP" -g "$RG" --image "$REG/silsila-api:$TAG" --set-env-vars "${API_ENV[@]}" \
+    --cpu 2.0 --memory 4.0Gi -o none
 else
   az containerapp create -n "$API_APP" -g "$RG" --environment "$ENV_NAME" \
     --image "$REG/silsila-api:$TAG" --registry-server "$REG" --registry-username "$REG_USER" --registry-password "$REG_PASS" \
-    --target-port 8000 --ingress external --min-replicas 1 --max-replicas 1 --cpu 1.0 --memory 2.0Gi \
+    --target-port 8000 --ingress external --min-replicas 1 --max-replicas 1 --cpu 2.0 --memory 4.0Gi \
     --secrets "${SECRETS[@]}" --env-vars "${API_ENV[@]}" -o none
 fi
 API_URL="https://$(az containerapp show -n "$API_APP" -g "$RG" --query properties.configuration.ingress.fqdn -o tsv)"
