@@ -4,6 +4,7 @@ import { AboutInfo } from "@/components/About";
 import { SectionTitle } from "@/components/case";
 import { EvidenceFile } from "@/components/evidence";
 import { CascadeChart, PrivacyEvidence, TriageEvidence, isCascadeChart, isPrivacy, isTriage } from "@/components/evidenceSpecific";
+import { BenchEvidence, isBench } from "@/components/BenchEvidence";
 import { Contrast } from "@/components/Contrast";
 import { ScenarioCalculator, isB4 } from "@/components/Scenario";
 import { Page } from "@/components/Shell";
@@ -131,7 +132,7 @@ function Evidence() {
   const { t } = usePrefs();
   const { data, error, loading, reload } = useLoad(() => api<Record<string, unknown>>("/api/evidence", { auth: false }), "ev");
   const files = data ? Object.entries(data) : [];
-  const rank = (d: unknown) => (isCascadeChart(d) ? 0 : isTriage(d) ? 1 : isPrivacy(d) ? 2 : 3);
+  const rank = (d: unknown) => (isBench(d) ? -1 : isCascadeChart(d) ? 0 : isTriage(d) ? 1 : isPrivacy(d) ? 2 : 3);
   files.sort((a, b) => rank(a[1]) - rank(b[1]) || a[0].localeCompare(b[0]));
   return (
     <>
@@ -146,6 +147,7 @@ function Evidence() {
         {data && files.length === 0 && <Notice>{t("ev.empty")}</Notice>}
         {files.map(([k, v]) => {
           const d = v as Record<string, unknown>;
+          if (isBench(v)) return <BenchEvidence key={k} doc={v} />;
           if (isCascadeChart(v)) return <CascadeChart key={k} file={k} doc={d} />;
           if (isTriage(v)) return <TriageEvidence key={k} file={k} doc={d} />;
           if (isPrivacy(v)) return <PrivacyEvidence key={k} file={k} doc={d} />;
