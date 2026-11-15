@@ -14,6 +14,7 @@ second exact implementation (pgmpy) and against Monte Carlo gene dropping.
 
 from __future__ import annotations
 
+import functools
 import math
 import string
 from dataclasses import dataclass
@@ -145,11 +146,20 @@ class PedigreeTooComplex(ValueError):
 def plan_elimination(factors: list[Factor], query: tuple[str, ...], card: int) -> list[str]:
     """Greedy min-fill elimination order on the interaction graph (Kjaerulff
     1990; Koller and Friedman 2009, ch. 9). Raises PedigreeTooComplex before
-    any table is built if the order would need a table above the limit."""
+    any table is built if the order would need a table above the limit.
+
+    The order depends only on the factors' scopes (who is linked to whom), not on their values, so it is
+    cached: recomputing a family after a new test result reuses the same order and gives identical numbers."""
+    scopes = tuple(sorted({f.vars for f in factors}))
+    return list(_plan_cached(scopes, tuple(query), card))
+
+
+@functools.lru_cache(maxsize=4096)
+def _plan_cached(scopes: tuple[tuple[str, ...], ...], query: tuple[str, ...], card: int) -> tuple[str, ...]:
     adj: dict[str, set[str]] = {}
-    for f in factors:
-        for v in f.vars:
-            adj.setdefault(v, set()).update(u for u in f.vars if u != v)
+    for vars_ in scopes:
+        for v in vars_:
+            adj.setdefault(v, set()).update(u for u in vars_ if u != v)
     remaining = set(adj) - set(query)
     order: list[str] = []
     while remaining:
@@ -171,7 +181,7 @@ def plan_elimination(factors: list[Factor], query: tuple[str, ...], card: int) -
             adj[u].update(w for w in nb if w != u)
         order.append(best)
         remaining.discard(best)
-    return order
+    return tuple(order)
 
 
 def _product_sum_out(factors: list[Factor], var: str) -> Factor:
@@ -185,7 +195,16 @@ def _product_sum_out(factors: list[Factor], var: str) -> Factor:
     keep = [v for v in names if v != var]
     lt = _letters(names)
     spec = ",".join("".join(lt[v] for v in f.vars) for f in factors) + "->" + "".join(lt[v] for v in keep)
-    return Factor(tuple(keep), np.einsum(spec, *[f.table for f in factors], optimize=True))
+    tables = [f.table for f in factors]
+    path = _einsum_path(spec, tuple(t.shape for t in tables))
+    return Factor(tuple(keep), np.einsum(spec, *tables, optimize=path))
+
+
+@functools.lru_cache(maxsize=65536)
+def _einsum_path(spec: str, shapes: tuple[tuple[int, ...], ...]) -> list:
+    """The contraction order numpy would choose for these shapes (optimize=True), cached."""
+    dummies = [np.empty(sh) for sh in shapes]
+    return np.einsum_path(spec, *dummies, optimize=True)[0]
 
 
 def eliminate(factors: list[Factor], query: tuple[str, ...]) -> tuple[np.ndarray, float]:
