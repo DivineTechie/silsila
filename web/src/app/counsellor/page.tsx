@@ -61,7 +61,7 @@ function Console() {
             { key: "audit", label: t("c.audit") },
           ]}
         />
-        <TabPanel idBase="con" active={tab}>
+        <TabPanel idBase="con" active={tab} heading={({ queue: t("c.queue"), cases: t("c.cases"), intake: t("vi.tab"), messages: t("c.messages"), audit: t("c.audit") } as Record<string, string>)[tab]}>
           {tab === "queue" && <Queue onOpenMessages={() => setTab("messages")} />}
           {tab === "cases" && <Cases />}
           {tab === "intake" && <VoiceIntake />}

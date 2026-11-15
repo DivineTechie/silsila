@@ -15,7 +15,7 @@ export function CitationChip({ part }: { part: Part }) {
         <path d="M5.5 7h5M5.5 9.5h5" />
       </svg>
       <span>{short}</span>
-      {part.source_title && <span className="opacity-75">· {part.source_title}</span>}
+      {part.source_title && <span className="font-normal">· {part.source_title}</span>}
     </>
   );
   const cls =

@@ -309,7 +309,7 @@ export function VoiceIntake() {
             <Button size="sm" disabled={busy} onClick={() => act({ type: "confirm_all_people" })}>{t("vi.confirmAllPeople")}</Button>
           </div>
         </div>
-        <div className="mt-2 overflow-x-auto rounded-xl border border-line">
+        <div className="mt-2 overflow-x-auto rounded-xl border border-line" tabIndex={0} role="region" aria-label={t("vi.person")}>
           <table className="w-full min-w-[44rem] text-sm">
             <thead className="bg-surface-2 text-start text-xs uppercase tracking-wide text-muted">
               <tr>
@@ -406,7 +406,7 @@ export function VoiceIntake() {
                 <bdi className="font-semibold">{names[index.person_id]}</bdi>
               </p>
             )}
-            <div className="overflow-x-auto rounded-xl border border-line">
+            <div className="overflow-x-auto rounded-xl border border-line" tabIndex={0} role="region" aria-label={t("vi.carrierChance")}>
               <table className="w-full text-sm">
                 <thead className="bg-surface-2 text-xs uppercase tracking-wide text-muted">
                   <tr>

@@ -179,7 +179,7 @@ export default function TwinPage() {
           {calc?.status === "inconsistent" && <Notice role="alert">{t("tw.inconsistent")}</Notice>}
           {error ? <ErrorBox error={error} /> : null}
           {table && probs && (
-            <div className="max-h-96 overflow-auto rounded-xl border border-line">
+            <div className="max-h-96 overflow-auto rounded-xl border border-line" tabIndex={0} role="region" aria-label={t("tw.table")}>
               <table className="w-full text-sm">
                 <thead className="sticky top-0 bg-surface-2 text-xs uppercase tracking-wide text-muted">
                   <tr><th className="px-3 py-2 text-start">{t("tw.colPerson")}</th><th className="px-3 py-2 text-start">{t("tw.colGen")}</th><th className="px-3 py-2 text-start">{t("tw.colChance")}</th></tr>
@@ -292,7 +292,8 @@ export default function TwinPage() {
                   <span><span className="text-2xl font-semibold tabular-nums text-brass">{raceCouples}</span> <span className="text-sm text-muted">{t("tw.couples")} · {t("tw.of", { n: findable })}</span></span>
                 </div>
                 <div className="mt-2 h-2 w-full rounded-full bg-surface-2"><div className="h-2 rounded-full bg-brass transition-all" style={{ width: `${(raceCouples / Math.max(findable, 1)) * 100}%` }} /></div>
-                <ol className="mt-3 grid max-h-40 gap-1 overflow-auto text-xs text-ink-2">
+                <div className="mt-3 max-h-40 overflow-auto" tabIndex={0} role="region" aria-label={t("tw.race")}>
+                <ol className="grid gap-1 text-xs text-ink-2">
                   {raceEvents.slice().reverse().map((e, i) => (
                     <li key={i}>
                       <Num>{raceEvents.length - i}.</Num> {byId.get(e.person)?.name}: {e.carrier ? t("tw.carrierFound", { v: e.detected.join("/") }) : t("tw.clearFound")}
@@ -300,6 +301,7 @@ export default function TwinPage() {
                     </li>
                   ))}
                 </ol>
+                </div>
               </div>
             )}
             <p className="mt-4 border-t border-line pt-3 text-xs text-muted">{t("tw.raceNote")}</p>

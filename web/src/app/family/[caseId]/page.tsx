@@ -74,7 +74,7 @@ function FamilyCase() {
             { key: "ask", label: t("family.ask") },
           ]}
         />
-        <TabPanel idBase="fam" active={tab}>
+        <TabPanel idBase="fam" active={tab} heading={({ tree: t("family.tree"), relatives: t("family.relatives"), inform: t("family.inform"), invitations: t("family.invitations"), permissions: t("family.permissions"), ask: t("family.ask") } as Record<string, string>)[tab]}>
           {tab === "tree" && (
             <section aria-label={t("family.tree")}>
               <PedigreeChart

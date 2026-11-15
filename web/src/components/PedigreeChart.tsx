@@ -192,6 +192,9 @@ export function PedigreeChart({
         dir="ltr"
         className="relative overflow-x-auto overscroll-x-contain rounded-xl border border-line bg-surface"
         style={{ touchAction: "pan-x pan-y pinch-zoom" }}
+        tabIndex={0}
+        role="region"
+        aria-label={t("tree.region")}
       >
         <svg
           role="group"

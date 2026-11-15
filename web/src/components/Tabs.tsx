@@ -66,9 +66,11 @@ export function Tabs<K extends string>({
   );
 }
 
-export function TabPanel({ idBase, active, children }: { idBase: string; active: string; children: React.ReactNode }) {
+/** `heading` gives the panel a level-2 heading for screen readers, so headings inside it keep their order. */
+export function TabPanel({ idBase, active, children, heading }: { idBase: string; active: string; children: React.ReactNode; heading?: string }) {
   return (
     <div id={`${idBase}-panel`} role="tabpanel" aria-labelledby={`${idBase}-tab-${active}`} tabIndex={0} className="pt-6 focus-visible:outline-offset-4">
+      {heading && <h2 className="sr-only">{heading}</h2>}
       {children}
     </div>
   );

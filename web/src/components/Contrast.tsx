@@ -93,7 +93,7 @@ export function Contrast() {
         <span className="text-2xl font-semibold tabular-nums"><Num>{fmt(gold)}</Num></span>
         <span className="text-sm text-ink-2">({data.gold.one_in})</span>
       </div>
-      <div className="mt-4 overflow-x-auto rounded-xl border border-line">
+      <div className="mt-4 overflow-x-auto rounded-xl border border-line" tabIndex={0} role="region" aria-label={t("ct.title")}>
         <table className="w-full min-w-[640px] text-sm" dir="ltr">
           <thead className="bg-surface-2 text-xs uppercase tracking-wide text-muted">
             <tr>

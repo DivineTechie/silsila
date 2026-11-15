@@ -126,7 +126,7 @@ export function BarChart({ title, data, unit }: { title: string; data: { label: 
   return (
     <figure className="min-w-0 rounded-xl border border-line bg-surface p-4">
       <figcaption className="text-sm font-semibold">{title}</figcaption>
-      <div className="mt-3 overflow-x-auto" dir="ltr">
+      <div className="mt-3 overflow-x-auto" dir="ltr" tabIndex={0} role="region" aria-label={title}>
         <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ minWidth: 340, maxWidth: W }} role="img" aria-label={title}>
           {[0, 0.5, 1].map((f) => (
             <g key={f}>
@@ -163,16 +163,16 @@ export function BarChart({ title, data, unit }: { title: string; data: { label: 
       </div>
       <details className="mt-2 text-sm">
         <summary className="cursor-pointer text-ink-2">Table</summary>
-        <SimpleTable rows={data.map((d) => ({ label: d.label, value: d.value, ci95: d.ci ? `${fmtNum(d.ci[0], 4)} – ${fmtNum(d.ci[1], 4)}` : "—" }))} />
+        <SimpleTable label={`${title}: table`} rows={data.map((d) => ({ label: d.label, value: d.value, ci95: d.ci ? `${fmtNum(d.ci[0], 4)} – ${fmtNum(d.ci[1], 4)}` : "—" }))} />
       </details>
     </figure>
   );
 }
 
-export function SimpleTable({ rows }: { rows: Obj[] }) {
+export function SimpleTable({ rows, label }: { rows: Obj[]; label: string }) {
   const cols = Array.from(new Set(rows.flatMap((r) => Object.keys(r)))).slice(0, 12);
   return (
-    <div className="mt-2 overflow-x-auto rounded-lg border border-line" dir="ltr">
+    <div className="mt-2 overflow-x-auto rounded-lg border border-line" dir="ltr" tabIndex={0} role="region" aria-label={label}>
       <table className="w-full text-sm">
         <thead className="border-b border-line bg-surface-2/60">
           <tr>{cols.map((c) => <th key={c} scope="col" className="px-3 py-2 text-start text-xs font-semibold text-muted">{human(c)}</th>)}</tr>
@@ -290,7 +290,7 @@ export function EvidenceFile({ name, doc }: { name: string; doc: J }) {
       {f.tables.map((tb, i) => (
         <div key={`t${i}`} className="mt-4">
           <H3>{human(tb.name || title)}</H3>
-          <SimpleTable rows={tb.rows} />
+          <SimpleTable label={`${title}: ${human(tb.name || title)} (${i + 1})`} rows={tb.rows} />
         </div>
       ))}
       {f.scalars.length > 0 && (
@@ -307,7 +307,7 @@ export function EvidenceFile({ name, doc }: { name: string; doc: J }) {
       )}
       <details className="mt-4 text-sm">
         <summary className="cursor-pointer text-ink-2">{t("ev.raw")}</summary>
-        <pre dir="ltr" className="mt-2 max-h-96 overflow-auto rounded-lg bg-surface p-3 font-mono text-xs">{JSON.stringify(doc, null, 2)}</pre>
+        <pre dir="ltr" className="mt-2 max-h-96 overflow-auto rounded-lg bg-surface p-3 font-mono text-xs" tabIndex={0} role="region" aria-label={`${title}: raw data`}>{JSON.stringify(doc, null, 2)}</pre>
       </details>
     </article>
   );

@@ -58,7 +58,7 @@ function Register() {
           <H3>
             {l.display} <span className="font-mono text-sm text-muted">({l.gene})</span>
           </H3>
-          <div className="mt-2 overflow-x-auto rounded-xl border border-line bg-surface">
+          <div className="mt-2 overflow-x-auto rounded-xl border border-line bg-surface" tabIndex={0} role="region" aria-label={`${l.display} (${l.gene})`}>
             <table className="w-full min-w-[760px] text-sm">
               <thead className="border-b border-line">
                 <tr>

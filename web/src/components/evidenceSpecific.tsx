@@ -91,10 +91,10 @@ export function TriageEvidence({ file, doc }: { file: string; doc: Obj }) {
         <div><dt className="inline text-muted">{t("ev.messages")}: </dt><dd className="inline font-semibold tabular-nums">{String(doc.n_messages ?? "—")}</dd></div>
         <div><dt className="inline text-muted">{t("ev.gateFailures")}: </dt><dd className="inline font-semibold tabular-nums">{String(doc.gate_failures ?? "—")}</dd></div>
         <div><dt className="inline text-muted">{t("ev.llm")}: </dt><dd className="inline font-semibold">{doc.use_model ? "yes" : "no"}</dd></div>
-        {typeof doc.testset === "string" && <div className="font-mono text-xs text-muted">{doc.testset}</div>}
       </dl>
+      {typeof doc.testset === "string" && <p className="mt-1 font-mono text-xs text-muted" dir="ltr">{doc.testset}</p>}
 
-      <div className="mt-4 overflow-x-auto rounded-xl border border-line bg-surface" dir="ltr">
+      <div className="mt-4 overflow-x-auto rounded-xl border border-line bg-surface" dir="ltr" tabIndex={0} role="region" aria-label={`${title}: results by label`}>
         <table className="w-full min-w-[620px] text-sm">
           <caption className="sr-only">{title}</caption>
           <thead className="border-b border-line">
@@ -150,7 +150,7 @@ export function TriageEvidence({ file, doc }: { file: string; doc: Obj }) {
       )}
 
       <H3 className="mt-6">{t("ev.byVariety")}</H3>
-      <div className="mt-2 overflow-x-auto rounded-xl border border-line bg-surface" dir="ltr">
+      <div className="mt-2 overflow-x-auto rounded-xl border border-line bg-surface" dir="ltr" tabIndex={0} role="region" aria-label={`${title}: ${t("ev.byVariety")}`}>
         <table className="w-full min-w-[720px] text-sm">
           <thead className="border-b border-line">
             <tr>
@@ -224,10 +224,10 @@ export function PrivacyEvidence({ file, doc }: { file: string; doc: Obj }) {
       {Array.isArray(doc.disclosure_checks) && doc.disclosure_checks.length > 0 && (
         <div className="mt-4">
           <H3>{t("ev.disclosureChecks")}</H3>
-          <SimpleTable rows={doc.disclosure_checks as Obj[]} />
+          <SimpleTable label={t("ev.disclosureChecks")} rows={doc.disclosure_checks as Obj[]} />
         </div>
       )}
-      {Array.isArray(doc.failures) && doc.failures.length > 0 && <SimpleTable rows={doc.failures as Obj[]} />}
+      {Array.isArray(doc.failures) && doc.failures.length > 0 && <SimpleTable label={`${file}: failures`} rows={doc.failures as Obj[]} />}
     </Shell>
   );
 }

@@ -55,7 +55,7 @@ export function Queue({ onOpenMessages }: { onOpenMessages: () => void }) {
   if (error && !data) return <ErrorBox error={error} onRetry={reload} />;
   if (!data?.length) return <p className="text-muted">{t("c.queueEmpty")}</p>;
   return (
-    <div className="overflow-x-auto rounded-xl border border-line bg-surface">
+    <div className="overflow-x-auto rounded-xl border border-line bg-surface" tabIndex={0} role="region" aria-label={t("c.queue")}>
       <table className="w-full min-w-[640px] text-sm">
         <thead className="border-b border-line text-start text-xs uppercase tracking-wide text-muted">
           <tr>
@@ -225,7 +225,7 @@ export function AuditLog({ caseId, refreshKey = 0 }: { caseId?: string; refreshK
           <Button size="sm" onClick={reload}>{t("common.retry")}</Button>
         </div>
       </div>
-      <div className="max-h-[32rem] overflow-auto rounded-xl border border-line bg-surface">
+      <div className="max-h-[32rem] overflow-auto rounded-xl border border-line bg-surface" tabIndex={0} role="region" aria-label={t("c.audit")}>
         <table className="w-full min-w-[720px] text-sm">
           <thead className="sticky top-0 bg-surface text-xs uppercase tracking-wide text-muted">
             <tr className="border-b border-line">
@@ -381,7 +381,7 @@ export function Working({ report, names }: { report: Report; names: Record<strin
 
       <section>
         <SectionTitle>{t("c.alleles")} · {L.gene}</SectionTitle>
-        <div className="overflow-x-auto rounded-xl border border-line bg-surface">
+        <div className="overflow-x-auto rounded-xl border border-line bg-surface" tabIndex={0} role="region" aria-label={`${t("c.alleles")} ${L.gene}`}>
           <table className="w-full min-w-[560px] text-sm">
             <thead className="border-b border-line"><tr>
               <th className={th}>{t("c.allele")}</th><th className={th}>{t("c.label")}</th>
@@ -410,7 +410,7 @@ export function Working({ report, names }: { report: Report; names: Record<strin
               <p className="font-semibold">{t("c.allele")} <span className="font-mono">{d.allele}</span> · {d.measure.replace(/_/g, " ")}</p>
               <p className="mt-2 flex flex-wrap items-center gap-2"><Prov kind="recorded" /><span className="text-muted">{t("c.published")}:</span> <span className="tabular-nums">{fmtNum(d.published_value, 6)}</span></p>
               <p className="mt-2 text-muted">{t("c.formula")}</p>
-              <pre className="mt-1 overflow-x-auto rounded-md bg-surface-2 p-2 font-mono text-xs">{d.formula}</pre>
+              <pre className="mt-1 overflow-x-auto rounded-md bg-surface-2 p-2 font-mono text-xs" tabIndex={0} role="region" aria-label={`${t("c.formula")} ${d.allele}`}>{d.formula}</pre>
               <p className="mt-2 text-muted">{t("c.inputs")}</p>
               <ul className="mt-1 flex flex-wrap gap-2 font-mono text-xs">
                 {Object.entries(d.inputs).map(([k, v]) => (
@@ -456,7 +456,7 @@ export function Working({ report, names }: { report: Report; names: Record<strin
       {report.people && (
         <section>
           <SectionTitle>{t("c.peopleTable")}</SectionTitle>
-          <div className="overflow-x-auto rounded-xl border border-line bg-surface">
+          <div className="overflow-x-auto rounded-xl border border-line bg-surface" tabIndex={0} role="region" aria-label={t("c.peopleTable")}>
             <table className="w-full min-w-[720px] text-sm">
               <thead className="border-b border-line"><tr>
                 <th className={th}>{t("edit.person")}</th><th className={th}>{t("c.pCarrier")}</th><th className={th}>{t("c.pAffected")}</th>
@@ -483,7 +483,7 @@ export function Working({ report, names }: { report: Report; names: Record<strin
       {report.couples && report.couples.length > 0 && (
         <section>
           <SectionTitle>{t("c.couples")}</SectionTitle>
-          <div className="overflow-x-auto rounded-xl border border-line bg-surface">
+          <div className="overflow-x-auto rounded-xl border border-line bg-surface" tabIndex={0} role="region" aria-label={t("c.couples")}>
             <table className="w-full min-w-[640px] text-sm">
               <thead className="border-b border-line"><tr>
                 <th className={th}>{t("c.couples")}</th><th className={th}>{t("c.kinship")}</th><th className={th}>{t("c.pBoth")}</th>

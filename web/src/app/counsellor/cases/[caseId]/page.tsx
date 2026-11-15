@@ -71,7 +71,7 @@ function Fhir({ caseId }: { caseId: string }) {
       </div>
       {error ? <div className="mt-3"><ErrorBox error={error} /></div> : null}
       {json && (
-        <pre dir="ltr" className="mt-4 max-h-[28rem] overflow-auto rounded-xl border border-line bg-surface-2 p-4 font-mono text-xs">
+        <pre dir="ltr" className="mt-4 max-h-[28rem] overflow-auto rounded-xl border border-line bg-surface-2 p-4 font-mono text-xs" tabIndex={0} role="region" aria-label="FHIR R4B">
           {json}
         </pre>
       )}
@@ -137,7 +137,7 @@ function CounsellorCase() {
             { key: "fhir", label: t("c.fhir") },
           ]}
         />
-        <TabPanel idBase="cc" active={tab}>
+        <TabPanel idBase="cc" active={tab} heading={({ tree: t("family.tree"), report: t("c.report"), working: t("c.working"), invitations: t("c.invitations"), audit: t("c.audit"), fhir: t("c.fhir") } as Record<string, string>)[tab]}>
           {tab === "tree" && (
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_22rem]">
               <div className="min-w-0">
