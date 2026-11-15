@@ -253,10 +253,22 @@ function walk(v: J, name: string, f: Found, depth: number) {
   }
 }
 
+/** Plain titles for the benchmark files (the files themselves are unchanged). */
+const FILE_TITLES: Record<string, string> = {
+  b1_engine: "B1 Engine correctness: textbook cases, an independent solver, Monte Carlo",
+  b2_robustness: "B2 Malformed and impossible inputs",
+  b3_nejm: "B3 Reproducing the NEJM 2002 extended-family study",
+  b4_uae: "B4 UAE projection: cascade after a newborn diagnosis",
+  b5_sensitivity: "B5 Sensitivity to every labelled assumption",
+  perf_engine: "Engine latency",
+  readability: "Readability of the English text a relative can be shown",
+  run_all: "Benchmark run record",
+};
+
 export function EvidenceFile({ name, doc }: { name: string; doc: J }) {
   const { t } = usePrefs();
   const f: Found = { metrics: [], passfail: [], series: [], tables: [], scalars: [], texts: [] };
-  const title = isObj(doc) && typeof doc.title === "string" ? doc.title : human(name);
+  const title = isObj(doc) && typeof doc.title === "string" ? doc.title : FILE_TITLES[name] || human(name);
   const body = isObj(doc) ? Object.fromEntries(Object.entries(doc).filter(([k]) => k !== "title")) : doc;
   walk(body, "", f, 0);
   return (

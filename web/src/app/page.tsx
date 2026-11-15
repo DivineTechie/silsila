@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AboutInfo } from "@/components/About";
+import { CriteriaGuide, HeroPedigree, OnlySilsila } from "@/components/HomeParts";
 import { JudgeMode } from "@/components/JudgeMode";
 import { Page } from "@/components/Shell";
-import { Button, Card, ErrorBox, Eyebrow, Field, H1, H2, Notice, inputCls } from "@/components/ui";
+import { Button, ErrorBox, Eyebrow, Field, H1, H2, Notice, inputCls } from "@/components/ui";
 import { api, setSession } from "@/lib/api";
 import { usePrefs } from "@/lib/prefs";
 import type { User } from "@/lib/types";
@@ -41,24 +42,47 @@ export default function Landing() {
   const steps = ["landing.step1", "landing.step2", "landing.step3", "landing.step4"] as const;
 
   return (
-    <Page>
+    <Page wide>
       <Notice className="mb-8">
         <strong className="font-semibold">{t("app.prototype")}</strong> {t("footer.fictional")}
       </Notice>
 
-      <div className="grid gap-10">
-        <section aria-labelledby="intro">
-          <Eyebrow>{t("app.tagline")}</Eyebrow>
-          <H1 className="mt-3 max-w-2xl text-balance">
-            <span id="intro">{t("landing.title")}</span>
-          </H1>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-2">{t("landing.lead")}</p>
-          <div className="mt-6">
-            <JudgeMode />
+      <div className="grid gap-12 [&>*]:min-w-0">
+        <section aria-labelledby="intro" className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
+          <div>
+            <Eyebrow>{t("app.tagline")}</Eyebrow>
+            <H1 className="mt-3 text-balance sm:text-4xl">
+              <span id="intro">
+                <span className="block text-ink-2">{t("home.hook1")}</span>
+                <span className="block text-accent">{t("home.hook2")}</span>
+              </span>
+            </H1>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-2">{t("home.lead")}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Link href="/cascade" className="inline-flex min-h-12 flex-col justify-center rounded-xl bg-accent px-5 py-2 text-accent-ink hover:opacity-90">
+                <span className="font-semibold">▶ {t("home.watch")}</span>
+                <span className="text-xs opacity-90">{t("home.watchD")}</span>
+              </Link>
+              <Link href="/twin" className="inline-flex min-h-12 items-center rounded-xl border border-line-strong bg-surface px-4 font-medium text-ink hover:bg-surface-2">
+                {t("home.twin")}
+              </Link>
+              <Link href="/evidence" className="inline-flex min-h-12 items-center rounded-xl border border-line-strong bg-surface px-4 font-medium text-ink hover:bg-surface-2">
+                {t("home.evidence")}
+              </Link>
+            </div>
           </div>
-          <div className="rule-dots mt-8" aria-hidden="true" />
-          <H2 className="mt-6">{t("landing.how")}</H2>
-          <ol className="mt-4 grid gap-3 sm:grid-cols-2">
+          <HeroPedigree />
+        </section>
+
+        <OnlySilsila />
+
+        <JudgeMode />
+
+        <CriteriaGuide />
+
+        <section aria-labelledby="how-h">
+          <H2 id="how-h">{t("landing.how")}</H2>
+          <ol className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {steps.map((k, i) => (
               <li key={k} className="flex gap-3 rounded-xl border border-line bg-surface p-4">
                 <span
@@ -71,15 +95,13 @@ export default function Landing() {
               </li>
             ))}
           </ol>
-          <p className="mt-6">
-            <Link href="/evidence" className="font-medium text-accent underline underline-offset-4">
-              {t("landing.evidenceLink")}
-            </Link>
-          </p>
         </section>
 
-        <Card aria-labelledby="signin-h">
-          <H2 id="signin-h">{t("signin.title")}</H2>
+        <details className="group rounded-2xl border border-line bg-surface p-4 sm:px-6" open={!!session}>
+          <summary className="flex min-h-9 cursor-pointer list-none items-center justify-between gap-3 font-semibold text-ink">
+            <span>{session ? t("signin.title") : t("home.signin")}</span>
+            <span aria-hidden="true" className="text-muted transition-transform group-open:rotate-180">⌄</span>
+          </summary>
           {session ? (
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <p className="text-ink-2">{t("signin.signedInAs", { name: session.user.display_name })}</p>
@@ -122,7 +144,7 @@ export default function Landing() {
             </form>
           )}
           <p className="mt-4 text-sm text-muted">{t("landing.relativeHint")}</p>
-        </Card>
+        </details>
 
         <AboutInfo />
       </div>

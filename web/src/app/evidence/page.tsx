@@ -6,6 +6,8 @@ import { EvidenceFile } from "@/components/evidence";
 import { CascadeChart, PrivacyEvidence, TriageEvidence, isCascadeChart, isPrivacy, isTriage } from "@/components/evidenceSpecific";
 import { BenchEvidence, isBench } from "@/components/BenchEvidence";
 import { Contrast } from "@/components/Contrast";
+import { OnlySilsila } from "@/components/HomeParts";
+import { OnThisPage } from "@/components/OnThisPage";
 import { ProgrammeContext, isUaeContext } from "@/components/ProgrammeContext";
 import { ScenarioCalculator, isB4 } from "@/components/Scenario";
 import { Page } from "@/components/Shell";
@@ -142,6 +144,8 @@ function Evidence() {
       <H1 className="mt-2">{t("ev.title")}</H1>
       <p className="mt-3 max-w-3xl text-ink-2">{t("ev.lead")}</p>
       <div className="mt-8 grid gap-6 [&>*]:min-w-0">
+        <OnlySilsila links={false} />
+        <OnThisPage ready={data} skip={["only-h"]} />
         <Contrast />
         {context && <ProgrammeContext doc={context} />}
         {data && isB4(data.b4_uae) && <ScenarioCalculator b4={data.b4_uae} newborn={context?.newborn_projection} />}
