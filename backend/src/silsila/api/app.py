@@ -18,7 +18,7 @@ from .. import intake, params, twin
 from ..content import AUDIO, GateError, Message, registry
 from ..engine import Pedigree
 from ..triage import classify, reply_for
-from . import auth, fhir, service
+from . import auth, fhir, fhir_import, service
 from .store import Store, new_id, now
 
 DEMO = os.environ.get("SILSILA_DEMO", "1") == "1"
@@ -520,6 +520,51 @@ def fhir_case(case_id: str, user: dict[str, Any] = Depends(counsellor)) -> dict[
     case = service.visible_case(store(), user, case_id)
     store().audit(user["id"], user["role"], "fhir.export", case_id=case_id)
     return fhir.case_bundle(store(), case)
+
+
+# ------------------------------------------------------------- FHIR import --
+FHIR_SAMPLE = Path(__file__).resolve().parents[4] / "data" / "demo" / "fhir" / "newborn_cah_index_result.json"
+
+
+class FhirImportIn(BaseModel):
+    bundle: dict[str, Any]
+    family_user_id: str | None = None
+    index_source: Literal["newborn_screen", "premarital_at_risk", "diagnosed_child", "carrier_result"] | None = None
+    dry_run: bool = True
+
+
+@app.get("/api/fhir/sample")
+def fhir_sample(user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    """A FICTIONAL index result as a FHIR R4B record, of the kind a health information exchange carries."""
+    if not FHIR_SAMPLE.exists():
+        raise HTTPException(404, "No sample record")
+    return json.loads(FHIR_SAMPLE.read_text())
+
+
+@app.get("/api/fhir/families")
+def fhir_families(user: dict[str, Any] = Depends(counsellor)) -> list[dict[str, Any]]:
+    """Family accounts an imported result can be attached to."""
+    return [{"id": u["id"], "display_name": u["display_name"]} for u in store().list("user") if u["role"] == "family"]
+
+
+@app.post("/api/fhir/import")
+def fhir_import_index(body: FhirImportIn, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    """Read an index result from a FHIR R4B genomics record at counsellor intake. With dry_run (the default)
+    nothing is stored: the counsellor sees what was read, what was not stored and any warnings, then confirms.
+    A record that cannot be read safely is refused with the reason (422) and the refusal is audited."""
+    digest = fhir_import.record_hash(body.bundle)
+    try:
+        draft = fhir_import.read_index_result(body.bundle, body.index_source)
+        if body.dry_run:
+            store().audit(user["id"], user["role"], "fhir.import_preview", detail={"sha256": digest, "locus": draft["locus_id"]})
+            return {"created": False, "draft": draft}
+        if not body.family_user_id:
+            raise fhir_import.ImportRefused("Choose the family account this result belongs to.")
+        case = fhir_import.create_case(store(), user, draft, body.family_user_id)
+    except fhir_import.ImportRefused as e:
+        store().audit(user["id"], user["role"], "fhir.import", outcome="refused", detail={"sha256": digest, "reason": str(e)[:300]})
+        raise
+    return {"created": True, "case_id": case["id"], "draft": draft}
 
 
 @app.get("/api/evidence")

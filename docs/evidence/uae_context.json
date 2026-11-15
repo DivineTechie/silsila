@@ -32,8 +32,8 @@
    "source": "Gulf News, 3 Oct 2026",
    "url": "https://gulfnews.com/uae/health/abu-dhabi-genetic-screening-flags-565-incompatible-cases-among-couples-1.500697261",
    "conditional": false,
-   "silsila_en": "Congenital adrenal hyperplasia is the condition in Silsila's demonstration family, and thalassaemia the condition in the Family Twin. Each flagged couple has brothers, sisters and cousins who married before the test existed. Silsila exchanges its records as FHIR R4B, the standard a health information exchange uses.",
-   "silsila_ar": "تضخم الغدة الكظرية الخلقي هو الحالة في عائلة العرض في سلسلة، والثلاسيميا هي الحالة في التوأم العائلي. ولكل زوجين كُشف عدم توافقهما إخوة وأخوات وأبناء عمومة تزوجوا قبل وجود الفحص. وتتبادل سلسلة سجلاتها بمعيار FHIR R4B الذي تستخدمه منصات تبادل المعلومات الصحية."
+   "silsila_en": "Congenital adrenal hyperplasia is the condition in Silsila's demonstration family, and thalassaemia the condition in the Family Twin. Each flagged couple has brothers, sisters and cousins who married before the test existed. Silsila reads an index result from a FHIR R4B record and exports its own records the same way, the standard a health information exchange uses (the sample record is fictional and follows no Malaffi specification).",
+   "silsila_ar": "تضخم الغدة الكظرية الخلقي هو الحالة في عائلة العرض في سلسلة، والثلاسيميا هي الحالة في التوأم العائلي. ولكل زوجين كُشف عدم توافقهما إخوة وأخوات وأبناء عمومة تزوجوا قبل وجود الفحص. وتقرأ سلسلة النتيجة الدليل من سجل FHIR R4B وتصدّر سجلاتها بالمعيار نفسه الذي تستخدمه منصات تبادل المعلومات الصحية (السجل النموذجي خيالي ولا يتبع أي مواصفة لـ«ملفي»)."
   },
   {
    "id": "nejm",

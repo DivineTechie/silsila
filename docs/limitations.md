@@ -43,6 +43,16 @@ Silsila is a prototype tested only on synthetic data. Nothing here has been used
   notice, "Common questions") are short functional labels written by the development team; like the
   templates, they await clinical and native-language review.
 
+## Importing results (FHIR)
+- The import reads one index result from a FHIR R4B Bundle: a Patient, a genomics Observation (LOINC 69548-6
+  with gene, allelic state and clinical significance) and an optional confirmed Condition. It follows no
+  published Malaffi or DoH profile, because the team has not seen one; the sample record is fictional and
+  "Malaffi-style" only in being the kind of record an exchange carries. A pilot would map to the real profile.
+- Variants are mapped to the engine's allele classes very simply: for HBB, c.20A>T is the sickle variant and any
+  other pathogenic variant is treated as beta-thalassaemia; for the other genes, any pathogenic variant is the
+  one modelled allele. A pilot needs the laboratory's own classification.
+- Only the three calculated genes are accepted. Anything else is refused and referred to a counsellor.
+
 ## Message triage
 - Trained and tested on synthetic messages written by an AI model; not validated on real messages.
   Specificity is deliberately low. Safety does not rely on it: every message is read by a person and every

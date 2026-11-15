@@ -1,0 +1,67 @@
+{
+  "resourceType": "Bundle",
+  "id": "fictional-newborn-screen-0001",
+  "meta": {
+    "tag": [
+      {"system": "http://terminology.hl7.org/CodeSystem/v3-ActReason", "code": "HTEST", "display": "test health data"}
+    ]
+  },
+  "type": "collection",
+  "timestamp": "2026-11-10T09:00:00+04:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:8f1c2c1e-0001-4a6b-9c11-000000000001",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "fictional-newborn-0001",
+        "identifier": [{"system": "https://example.org/fictional-hospital/mrn", "value": "FICTIONAL-MRN-0001"}],
+        "name": [{"text": "Baby Zayed (fictional)"}],
+        "gender": "male",
+        "birthDate": "2026-10-28"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8f1c2c1e-0001-4a6b-9c11-000000000002",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "fictional-nbs-cyp21a2",
+        "status": "final",
+        "category": [
+          {"coding": [{"system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "laboratory"}]}
+        ],
+        "code": {"coding": [{"system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment"}]},
+        "subject": {"reference": "Patient/fictional-newborn-0001"},
+        "effectiveDateTime": "2026-11-05",
+        "valueCodeableConcept": {"coding": [{"system": "http://loinc.org", "code": "LA9633-4", "display": "Present"}]},
+        "component": [
+          {
+            "code": {"coding": [{"system": "http://loinc.org", "code": "48018-6", "display": "Gene studied [ID]"}]},
+            "valueCodeableConcept": {"coding": [{"system": "http://www.genenames.org/geneId", "code": "HGNC:2600", "display": "CYP21A2"}]}
+          },
+          {
+            "code": {"coding": [{"system": "http://loinc.org", "code": "53034-5", "display": "Allelic state"}]},
+            "valueCodeableConcept": {"coding": [{"system": "http://loinc.org", "code": "LA6705-3", "display": "Homozygous"}]}
+          },
+          {
+            "code": {"coding": [{"system": "http://loinc.org", "code": "53037-8", "display": "Genetic variation clinical significance [Imp]"}]},
+            "valueCodeableConcept": {"coding": [{"system": "http://loinc.org", "code": "LA6668-3", "display": "Pathogenic"}]}
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8f1c2c1e-0001-4a6b-9c11-000000000003",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "fictional-cah-diagnosis",
+        "clinicalStatus": {"coding": [{"system": "http://terminology.hl7.org/CodeSystem/condition-clinical", "code": "active"}]},
+        "verificationStatus": {"coding": [{"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status", "code": "confirmed"}]},
+        "code": {
+          "coding": [{"system": "http://hl7.org/fhir/sid/icd-10", "code": "E25.0", "display": "Congenital adrenogenital disorders associated with enzyme deficiency"}],
+          "text": "classic congenital adrenal hyperplasia"
+        },
+        "subject": {"reference": "Patient/fictional-newborn-0001"}
+      }
+    }
+  ]
+}

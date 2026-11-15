@@ -85,7 +85,7 @@ password is needed: the home page has one-click roles.
 
 | Step | What happens |
 |---|---|
-| 1. Index result | A newborn screen, premarital result or diagnosis is entered (FHIR genomics observation). |
+| 1. Index result | A newborn screen, premarital result or diagnosis arrives as a FHIR R4B genomics record and is read at counsellor intake: checked first, then confirmed. Names and identifiers in the record are not stored; a record that cannot be read safely is refused with the reason. |
 | 2. Family tree and risk | The family enters its tree, including cousin marriages. An exact engine computes every relative's carrier chance and each couple's chance of an affected child. |
 | 3. The index person decides | Who is told, and how: a letter they hand over, clinic contact, or an invitation that names no person and no condition. Declining ends the process and is recorded. |
 | 4. Counsellor approval | Nothing is sent until a genetic counsellor approves. Pregnancies move to the top of the queue. |
@@ -204,7 +204,7 @@ bash deploy/azure-deploy.sh      # prints the public web and API URLs
 | `backend/src/silsila/params.py`, `data/params/` | Sourced parameter register and conversions |
 | `backend/src/silsila/content.py`, `data/content/` | Approved content, MedlinePlus imports, Arabic translations, output gate |
 | `backend/src/silsila/triage.py`, `data/models/` | Message triage (rules + character n-gram model; optional Azure OpenAI labels) |
-| `backend/src/silsila/api/` | FastAPI service: consent, invitations, queue, audit chain, FHIR R4B export |
+| `backend/src/silsila/api/` | FastAPI service: consent, invitations, queue, audit chain, FHIR R4B import and export |
 | `backend/src/silsila/sim/`, `backend/bench/` | Family simulator and benchmarks |
 | `web/` | Next.js app: family, relative and counsellor views (Arabic and English, installable) |
 | `data/eval/`, `data/dev/` | Held-out triage test set and separate development set |

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { RequireRole } from "@/components/case";
 import { AuditLog, DemoTools, Inbox, Queue } from "@/components/counsellor";
+import { FhirImport } from "@/components/FhirImport";
 import { VoiceIntake } from "@/components/intake";
 import { OutcomesPanel } from "@/components/Outcomes";
 import { Page } from "@/components/Shell";
@@ -22,6 +23,7 @@ function Cases() {
   if (loading && !data) return <Loading />;
   if (error && !data) return <ErrorBox error={error} onRetry={reload} />;
   return (
+    <div className="grid gap-6 [&>*]:min-w-0">
     <ul className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
       {data?.map((c) => (
         <li key={c.id}>
@@ -37,6 +39,8 @@ function Cases() {
         </li>
       ))}
     </ul>
+    <FhirImport onCreated={reload} />
+    </div>
   );
 }
 

@@ -2,20 +2,26 @@
 
 Mapping:
   index person          -> Patient (pseudonymous: no name, no identifiers)
+  index person affected -> Condition (confirmed; ICD-10 code where one maps)
   other family members  -> FamilyMemberHistory (status, condition if affected)
   recorded test results -> Observation, LOINC 69548-6 "Genetic variant assessment"
-                           with component 48018-6 "Gene studied [ID]" (HGNC code)
+                           with component 48018-6 "Gene studied [ID]" (HGNC code),
+                           53034-5 "Allelic state" and 53037-8 clinical significance;
+                           one Observation per variant class found
   engine probabilities  -> RiskAssessment (method: Silsila engine, basis: inputs)
   permissions           -> Consent
   invitations           -> Task (status mapped from the invitation lifecycle)
   audit log entries     -> AuditEvent
-Codes were checked against tx.fhir.org (LOINC) and rest.genenames.org (HGNC).
+Codes were checked against tx.fhir.org (LOINC, ICD-10) and rest.genenames.org (HGNC).
+`fhir_import` reads the index person's part of this bundle back: export then import gives the same result.
 """
 
 from __future__ import annotations
 
 import re
 from typing import Any
+
+from collections import Counter
 
 from fhir.resources.R4B.bundle import Bundle
 
@@ -24,6 +30,14 @@ from .service import compute_report
 from .store import Store
 
 HGNC = {"HBB": "HGNC:4827", "CYP21A2": "HGNC:2600", "SMN1": "HGNC:11117"}
+# Affected phenotypes (labels in data/params/loci.yaml) and the ICD-10 codes read for them; the first is written.
+ICD10_BY_PHENOTYPE = {
+    ("CYP21A2", "classic congenital adrenal hyperplasia"): ("E25.0",),
+    ("HBB", "beta-thalassaemia major or intermedia"): ("D56.1",),
+    ("HBB", "sickle cell disease"): ("D57.1", "D57.0"),
+    ("SMN1", "spinal muscular atrophy"): ("G12.1", "G12.0"),
+}
+LOINC = "http://loinc.org"
 TASK_STATUS = {"awaiting_counsellor": "requested", "approved": "accepted", "sent": "in-progress",
                "opened": "in-progress", "understood": "in-progress", "booked": "in-progress",
                "tested": "in-progress", "closed": "completed", "withdrawn": "cancelled",
@@ -68,21 +82,44 @@ def case_bundle(store: Store, case: dict[str, Any]) -> dict[str, Any]:
         if p.get("status") == "affected":
             fmh["condition"] = [{"code": {"text": p.get("affected_with")}}]
         add(fmh)
+    if people[index].get("status") == "affected" and people[index].get("affected_with"):
+        label = people[index]["affected_with"]
+        icd = ICD10_BY_PHENOTYPE.get((case["locus_id"], label))
+        add({"resourceType": "Condition", "id": f"cond-{index}", "subject": _ref("Patient", index),
+             "clinicalStatus": {"coding": [{"system": "http://terminology.hl7.org/CodeSystem/condition-clinical", "code": "active"}]},
+             "verificationStatus": {"coding": [{"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                                                "code": "confirmed"}]},
+             "code": {"coding": [{"system": "http://hl7.org/fhir/sid/icd-10", "code": icd[0]}] if icd else None, "text": label}})
     for pid, p in people.items():
         if not p.get("test"):
             continue
-        present = bool(p["test"]["detected"])
-        add({"resourceType": "Observation", "id": f"obs-{pid}", "status": "final",
-             "category": [{"coding": [{"system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                       "code": "laboratory"}]}],
-             "code": {"coding": [{"system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment"}]},
-             "subject": _ref("Patient", index), "focus": [_ref("FamilyMemberHistory", pid)] if pid != index else None,
-             "valueCodeableConcept": {"coding": [{"system": "http://loinc.org", "code": "LA9633-4" if present else "LA9634-2",
-                                                  "display": "Present" if present else "Absent"}],
-                                      "text": ", ".join(p["test"]["detected"]) or "no variant detected"},
-             "component": [{"code": {"coding": [{"system": "http://loinc.org", "code": "48018-6", "display": "Gene studied [ID]"}]},
-                            "valueCodeableConcept": {"coding": [{"system": "http://www.genenames.org/geneId",
-                                                                 "code": HGNC.get(gene, gene), "display": gene}]}}]})
+        # One Observation per variant class found (two for a compound heterozygote), or one saying "Absent".
+        groups = sorted(Counter(p["test"]["detected"]).items()) or [(None, 0)]
+        for allele, copies in groups:
+            present = allele is not None
+            component = [{"code": {"coding": [{"system": LOINC, "code": "48018-6", "display": "Gene studied [ID]"}]},
+                          "valueCodeableConcept": {"coding": [{"system": "http://www.genenames.org/geneId",
+                                                               "code": HGNC.get(gene, gene), "display": gene}]}}]
+            if present:
+                component.append({"code": {"coding": [{"system": LOINC, "code": "53034-5", "display": "Allelic state"}]},
+                                  "valueCodeableConcept": {"coding": [
+                                      {"system": LOINC, "code": "LA6705-3", "display": "Homozygous"} if copies == 2 else
+                                      {"system": LOINC, "code": "LA6706-1", "display": "Heterozygous"}]}})
+                component.append({"code": {"coding": [{"system": LOINC, "code": "53037-8",
+                                                       "display": "Genetic variation clinical significance [Imp]"}]},
+                                  "valueCodeableConcept": {"coding": [{"system": LOINC, "code": "LA6668-3", "display": "Pathogenic"}]}})
+                if gene == "HBB" and allele == "S":
+                    component.append({"code": {"coding": [{"system": LOINC, "code": "48004-6", "display": "DNA change (c.HGVS)"}]},
+                                      "valueString": "c.20A>T"})
+            add({"resourceType": "Observation", "id": f"obs-{pid}" + (f"-{allele}" if len(groups) > 1 else ""), "status": "final",
+                 "category": [{"coding": [{"system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                           "code": "laboratory"}]}],
+                 "code": {"coding": [{"system": LOINC, "code": "69548-6", "display": "Genetic variant assessment"}]},
+                 "subject": _ref("Patient", index), "focus": [_ref("FamilyMemberHistory", pid)] if pid != index else None,
+                 "valueCodeableConcept": {"coding": [{"system": LOINC, "code": "LA9633-4" if present else "LA9634-2",
+                                                      "display": "Present" if present else "Absent"}],
+                                          "text": allele or "no variant detected"},
+                 "component": component})
     if rep.get("status") == "ok":
         for pid, pr in rep["people"].items():
             if not pr["informative"]:
@@ -117,5 +154,7 @@ def case_bundle(store: Store, case: dict[str, Any]) -> dict[str, Any]:
                          "detail": [{"type": "hash", "valueString": ev["hash"]}]}]})
     for e in entries:  # drop None values introduced above
         e["resource"] = {k: v for k, v in e["resource"].items() if v is not None}
+        if "code" in e["resource"] and isinstance(e["resource"]["code"], dict):
+            e["resource"]["code"] = {k: v for k, v in e["resource"]["code"].items() if v is not None}
     bundle = {"resourceType": "Bundle", "type": "collection", "entry": entries}
     return Bundle.model_validate(bundle).model_dump(mode="json", exclude_none=True)
