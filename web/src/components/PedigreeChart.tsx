@@ -219,7 +219,10 @@ export function PedigreeChart({
             const affected = p.status === "affected";
             const carrier = isCarrier(p, report?.locus);
             const [nm, rel] = splitName(p.name || p.id);
-            const chance = !affected && pr ? pr.computed.chance_text : null;
+            // A negative test with no published detection rate: the chance that remains cannot be
+            // calculated, so the tree shows the recorded result instead of a calculated "0".
+            const recordedClear = !affected && !!pr?.residual_note;
+            const chance = !affected && pr && !recordedClear ? pr.computed.chance_text : null;
             const selected = selectedId === p.id;
             const aria = [
               p.name || p.id,
@@ -230,6 +233,7 @@ export function PedigreeChart({
               p.pregnant ? t("person.pregnant") : null,
               p.id === indexId ? t("tree.index") : null,
               chance ? `${calcLabel}: ${chance}` : null,
+              recordedClear ? `${t("prov.recorded")}: ${t("tree.noVariant")}` : null,
               marks?.[p.id]?.label ?? null,
             ]
               .filter(Boolean)
@@ -327,6 +331,17 @@ export function PedigreeChart({
                     </text>
                     <text x={x} y={y + S / 2 + 74} textAnchor="middle" fontSize="12.5" fontWeight={500} fill="var(--ink)">
                       {chance}
+                    </text>
+                  </g>
+                )}
+                {recordedClear && (
+                  <g>
+                    <rect x={x - 34} y={y + S / 2 + 44} width={68} height={15} rx={3} fill="var(--tag-recorded-bg)" />
+                    <text x={x} y={y + S / 2 + 55} textAnchor="middle" fontSize="9" fontWeight={700} letterSpacing="0.06em" fill="var(--tag-recorded)">
+                      {t("prov.recorded").toUpperCase()}
+                    </text>
+                    <text x={x} y={y + S / 2 + 74} textAnchor="middle" fontSize="12.5" fontWeight={500} fill="var(--ink)">
+                      {t("tree.noVariant")}
                     </text>
                   </g>
                 )}

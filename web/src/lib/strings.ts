@@ -413,6 +413,7 @@ export const en = {
   "tree.consanguineous": "Couple related by blood",
   "tree.pregnancy": "Pregnancy",
   "tree.index": "Index person",
+  "tree.noVariant": "no variant found",
   "tree.diagramLabel": "Family tree diagram with {n} people",
 
   "person.status.unknown": "Status not known",
@@ -1070,6 +1071,7 @@ export const ar: Record<StringKey, string> = {
   "tree.consanguineous": "زوجان بينهما قرابة دم",
   "tree.pregnancy": "حمل",
   "tree.index": "الشخص الدليل",
+  "tree.noVariant": "لم يُعثر على متغيّر",
   "tree.diagramLabel": "مخطط شجرة العائلة يضم {n} شخصاً",
 
   "person.status.unknown": "الحالة غير معروفة",
