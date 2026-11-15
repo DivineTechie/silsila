@@ -2,6 +2,7 @@
 
 // Judge mode: one-click entry as a demo persona (only when the API runs in demo mode with fictional data).
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button, Card, ErrorBox, H2 } from "./ui";
@@ -67,6 +68,9 @@ export function JudgeMode() {
         ))}
       </ul>
       <p className="mt-4 text-sm text-muted">{t("judge.suggested")}</p>
+      <Link href="/twin" className="mt-3 inline-flex font-medium text-accent underline underline-offset-4">
+        {t("judge.twin")} →
+      </Link>
       {error ? <div className="mt-3"><ErrorBox error={error} /></div> : null}
     </Card>
   );

@@ -6,14 +6,14 @@ import json
 import os
 import threading
 from pathlib import Path
-from typing import Any, Literal
+from typing import Annotated, Any, Literal
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 
-from .. import intake, params
+from .. import intake, params, twin
 from ..content import GateError, Message, registry
 from ..engine import Pedigree
 from ..triage import classify, reply_for
@@ -262,6 +262,29 @@ def intake_compute(body: IntakeCompute, user: dict[str, Any] = Depends(counsello
                   detail={"people": len(ped["people"]), "unions": len(ped["unions"]), "locus": draft["locus_id"]})
     case = {"locus_id": draft["locus_id"], "pedigree": ped, "id": "intake"}
     return {"pedigree": ped, "report": service.compute_report(case, body.lang)}
+
+
+# ------------------------------------------------------------------- twin --
+class TwinWhatIf(BaseModel):
+    # "carrier" (variant B), "clear", or the variants found, e.g. "S" or "B,B"
+    results: dict[str, Annotated[str, Field(pattern=r"^(carrier|clear|[BS](,[BS])?)$")]] = Field(
+        default_factory=dict, max_length=40)
+
+
+@app.get("/api/twin")
+def twin_clan() -> dict[str, Any]:
+    """The Family Twin: a fictional simulated clan (no sign-in needed; no real person)."""
+    return twin.public()
+
+
+@app.post("/api/twin/what-if")
+def twin_what_if(body: TwinWhatIf) -> dict[str, Any]:
+    """Exact carrier chances for the whole clan after recording test results."""
+    ids = {p["id"] for p in twin.public()["people"]}
+    unknown = sorted(set(body.results) - ids)
+    if unknown:
+        raise service.Invalid(f"Not in the clan: {', '.join(unknown[:5])}")
+    return twin.what_if(body.results)
 
 
 # ------------------------------------------------------------------ cases --

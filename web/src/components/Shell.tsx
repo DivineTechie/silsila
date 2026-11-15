@@ -37,6 +37,9 @@ export function Header({ wide = false }: { wide?: boolean }) {
           <span className="text-lg font-semibold tracking-tight text-ink">{t("app.name")}</span>
         </Link>
         <nav className="ms-auto flex items-center gap-1" aria-label="Main">
+          <Link href="/twin" className="hidden min-h-11 items-center rounded-md px-2.5 text-sm text-ink-2 hover:text-ink sm:inline-flex">
+            {t("nav.twin")}
+          </Link>
           <Link href="/evidence" className="hidden min-h-11 items-center rounded-md px-2.5 text-sm text-ink-2 hover:text-ink sm:inline-flex">
             {t("nav.evidence")}
           </Link>
