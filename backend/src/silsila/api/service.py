@@ -317,6 +317,7 @@ def relative_view(store: Store, code: str, lang: str) -> dict[str, Any]:
             for p in reg.condition_paragraphs(cid, ("Description",))[:2]:
                 reg.quote(info, p.id)
     if inv["status"] == "sent":
+        inv["relative_lang"] = lang  # for equity reporting by language; no other detail about the relative
         transition(store, {"id": f"relative:{inv['id']}", "role": "relative"}, inv, "opened")
     return {"invitation_id": inv["id"], "status": inv["status"], "message": reg.gate(msg).parts,
             "information": reg.gate(info).parts,
@@ -384,3 +385,84 @@ def queue(store: Store) -> list[dict[str, Any]]:
                           "reasons": reasons, "status": inv["status"], "since": last})
     items.sort(key=lambda i: (i["priority"], i["since"]))
     return items
+
+
+# ---------------------------------------------------------------- outcomes --
+def _hours(a: str | None, b: str | None) -> float | None:
+    if not a or not b:
+        return None
+    t0, t1 = dt.datetime.fromisoformat(a), dt.datetime.fromisoformat(b)
+    return max(0.0, (t1 - t0).total_seconds() / 3600)
+
+
+def _median(xs: list[float]) -> float | None:
+    xs = sorted(x for x in xs if x is not None)
+    if not xs:
+        return None
+    m = len(xs) // 2
+    return xs[m] if len(xs) % 2 else (xs[m - 1] + xs[m]) / 2
+
+
+FUNNEL = ("awaiting_counsellor", "sent", "opened", "understood", "booked", "tested", "closed")
+
+
+def outcomes(store: Store) -> dict[str, Any]:
+    """The challenge statement's measures, computed from what the system recorded: comprehension, uptake,
+    time to counselling, privacy and equity across languages. Never marriages or reproductive choices."""
+    invs = store.list("invitation")
+    cases = {c["id"]: c for c in store.list("case")}
+
+    def reached(inv: dict[str, Any], status: str) -> bool:
+        return any(h["status"] == status for h in inv["history"])
+
+    def first_at(inv: dict[str, Any], status: str) -> str | None:
+        return next((h["at"] for h in inv["history"] if h["status"] == status), None)
+
+    funnel = {s: sum(reached(i, s) for i in invs) for s in FUNNEL}
+    ended = {s: sum(i["status"] == s for i in invs) for s in ("declined_by_relative", "no_response", "withdrawn")}
+    tb = [i for i in invs if i.get("teachback")]
+    by_lang: dict[str, dict[str, Any]] = {}
+    for i in invs:
+        lang = i.get("relative_lang")
+        if not lang:
+            continue
+        row = by_lang.setdefault(lang, {"opened": 0, "teachback": 0, "understood": 0, "booked_or_tested": 0})
+        row["opened"] += 1
+        if i.get("teachback"):
+            row["teachback"] += 1
+            row["understood"] += bool(i["teachback"].get("passed"))
+        row["booked_or_tested"] += reached(i, "booked") or reached(i, "tested")
+    first_sent: dict[str, str] = {}
+    for i in invs:
+        at = first_at(i, "sent")
+        if at and (i["case_id"] not in first_sent or at < first_sent[i["case_id"]]):
+            first_sent[i["case_id"]] = at
+    events = store.audit_events(limit=100000)
+    msgs = store.list("message")
+    return {
+        "invitations": len(invs),
+        "funnel": funnel,
+        "ended": ended,
+        "comprehension": {"submitted": len(tb), "passed": sum(bool(i["teachback"].get("passed")) for i in tb)},
+        "uptake": {"opened": funnel["opened"], "booked_or_tested": sum(reached(i, "booked") or reached(i, "tested") for i in invs)},
+        "hours": {
+            "request_to_sent": _median([_hours(first_at(i, "awaiting_counsellor"), first_at(i, "sent")) for i in invs]),
+            "sent_to_opened": _median([_hours(first_at(i, "sent"), first_at(i, "opened")) for i in invs]),
+            "opened_to_booked": _median([_hours(first_at(i, "opened"), first_at(i, "booked")) for i in invs]),
+            "case_to_first_invitation": _median([_hours(cases[c].get("created"), at) for c, at in first_sent.items()
+                                                 if c in cases]),
+        },
+        "by_language": by_lang,
+        "privacy": {
+            "denied_requests": sum(e["outcome"] == "denied" for e in events),
+            "blocked_outputs": sum(e["action"] == "output_gate.block" for e in events),
+            "audit_chain": store.verify_chain(),
+        },
+        "messages": {
+            "total": len(msgs),
+            "escalated": sum(bool(m.get("escalate")) for m in msgs),
+            "crisis": sum("crisis" in m.get("labels", []) for m in msgs),
+            "by_language": {lang: sum(m.get("lang") == lang for m in msgs) for lang in ("en", "ar")},
+        },
+        "not_measured": "Marriages, cancelled engagements or any reproductive choice are never measured as success.",
+    }

@@ -33,6 +33,9 @@ password is needed: the home page has one-click roles.
    information, a comprehension check and booking.
 5. **Evidence** (top menu): every number with its source, the benchmarks, and a scenario calculator for
    programme scale. "Reset the demo data" in the counsellor's audit tab starts again.
+6. **Outcomes** (counsellor console): the challenge's measures (comprehension, uptake, time to counselling,
+   privacy, equity by language) computed live from what you just did. Marriages and reproductive choices are
+   never measured as success.
 
 ## Why this matters
 
@@ -158,7 +161,10 @@ bash deploy/azure-deploy.sh      # prints the public web and API URLs
 
 - [DoH Responsible AI Standard clause map](docs/governance/doh-rai-clause-map.md): risk class High (3) under
   the DoH AI Risk Management Protocol.
+- [Commercial case and path to pilot](docs/commercial-case.md): buyer, value, pricing model, costs, risks.
+- [Accessibility audit](docs/evidence/accessibility.md): axe-core, every screen, English and Arabic, 0 violations.
 - [Hazard log](docs/governance/hazard-log.md), [triage model card](docs/governance/model-card-triage.md),
+  [voice-intake model card](docs/governance/model-card-voice-intake.md),
   [pilot protocol (DECIDE-AI)](docs/pilot-protocol.md), [deployment notes](docs/deployment.md),
   [assumptions and limitations](docs/limitations.md).
 

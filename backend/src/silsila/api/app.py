@@ -470,6 +470,12 @@ def work_queue(user: dict[str, Any] = Depends(counsellor)) -> list[dict[str, Any
     return service.queue(store())
 
 
+@app.get("/api/outcomes")
+def outcomes(user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
+    """Programme measures from the challenge statement, computed live from recorded activity."""
+    return service.outcomes(store())
+
+
 @app.post("/api/invitations/{inv_id}/approve")
 def approve(inv_id: str, user: dict[str, Any] = Depends(counsellor)) -> dict[str, Any]:
     inv = store().get("invitation", inv_id)

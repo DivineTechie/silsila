@@ -5,6 +5,7 @@ import { useState } from "react";
 import { RequireRole } from "@/components/case";
 import { AuditLog, DemoTools, Inbox, Queue } from "@/components/counsellor";
 import { VoiceIntake } from "@/components/intake";
+import { OutcomesPanel } from "@/components/Outcomes";
 import { Page } from "@/components/Shell";
 import { TabPanel, Tabs } from "@/components/Tabs";
 import { ErrorBox, Eyebrow, H1, Loading, Prov } from "@/components/ui";
@@ -13,7 +14,7 @@ import { age, usePrefs } from "@/lib/prefs";
 import type { CaseSummary } from "@/lib/types";
 import { useLoad } from "@/lib/useLoad";
 
-type TabKey = "queue" | "cases" | "intake" | "messages" | "audit";
+type TabKey = "queue" | "cases" | "intake" | "outcomes" | "messages" | "audit";
 
 function Cases() {
   const { t, session, lang } = usePrefs();
@@ -57,14 +58,16 @@ function Console() {
             { key: "queue", label: t("c.queue") },
             { key: "cases", label: t("c.cases") },
             { key: "intake", label: t("vi.tab") },
+            { key: "outcomes", label: t("oc.tab") },
             { key: "messages", label: t("c.messages") },
             { key: "audit", label: t("c.audit") },
           ]}
         />
-        <TabPanel idBase="con" active={tab} heading={({ queue: t("c.queue"), cases: t("c.cases"), intake: t("vi.tab"), messages: t("c.messages"), audit: t("c.audit") } as Record<string, string>)[tab]}>
+        <TabPanel idBase="con" active={tab} heading={({ queue: t("c.queue"), cases: t("c.cases"), intake: t("vi.tab"), outcomes: t("oc.tab"), messages: t("c.messages"), audit: t("c.audit") } as Record<string, string>)[tab]}>
           {tab === "queue" && <Queue onOpenMessages={() => setTab("messages")} />}
           {tab === "cases" && <Cases />}
           {tab === "intake" && <VoiceIntake />}
+          {tab === "outcomes" && <OutcomesPanel />}
           {tab === "messages" && <Inbox />}
           {tab === "audit" && (
             <div className="grid gap-8 [&>*]:min-w-0">

@@ -192,3 +192,22 @@ def test_arabic_view_shows_arabic_names_and_keeps_english_on_save(client):
     en = client.get("/api/cases/case_hbb_demo?lang=en", headers=h).json()
     bride_en = next(p for p in en["case"]["pedigree"]["people"] if p["id"] == "bride")
     assert bride_en["name"] == "Reem" and bride_en["name_ar"] == "ريم" and "name_en" not in bride_en
+
+
+def test_outcomes_follow_a_full_invitation(client):
+    fam = login(client, "mariam", FAMILY_PW)
+    cou = login(client, "counsellor", COUNSELLOR_PW)
+    assert client.get("/api/outcomes", headers=fam).status_code == 403
+    client.post("/api/cases/case_cah_demo/consents", json={"scope": "invite", "granted": True}, headers=fam)
+    inv = client.post("/api/cases/case_cah_demo/invitations", json={"person_id": "noura", "channel": "anonymous_invite"},
+                      headers=fam).json()
+    code = client.post(f"/api/invitations/{inv['id']}/approve", headers=cou).json()["code"]
+    view = client.get(f"/api/r/{code}?lang=ar").json()
+    client.post(f"/api/r/{code}/teachback", json={"answers": {q["id"]: "a" for q in view["teachback"]}})
+    client.post(f"/api/r/{code}/respond?action=book")
+    o = client.get("/api/outcomes", headers=cou).json()
+    assert o["funnel"]["sent"] == 1 and o["funnel"]["opened"] == 1 and o["funnel"]["booked"] == 1
+    assert o["comprehension"] == {"submitted": 1, "passed": 1}
+    assert o["by_language"]["ar"] == {"opened": 1, "teachback": 1, "understood": 1, "booked_or_tested": 1}
+    assert o["uptake"]["booked_or_tested"] == 1 and o["hours"]["request_to_sent"] is not None
+    assert o["privacy"]["audit_chain"]["intact"]
