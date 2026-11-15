@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { usePrefs } from "@/lib/prefs";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { cx } from "./ui";
 
 export function Logo({ className }: { className?: string }) {
@@ -22,9 +22,26 @@ export function Logo({ className }: { className?: string }) {
 export function Header({ wide = false }: { wide?: boolean }) {
   const { t, lang, setLang, theme, toggleTheme, session, signOut } = usePrefs();
   const router = useRouter();
+  const pathname = usePathname();
+  const [menu, setMenu] = useState(false);
   const home = session?.user.role === "counsellor" ? "/counsellor" : session ? "/family" : "/";
+  const links = [
+    { href: "/cascade", label: t("nav.cascade") },
+    { href: "/twin", label: t("nav.twin") },
+    { href: "/evidence", label: t("nav.evidence") },
+  ];
+  const leave = () => {
+    setMenu(false);
+    signOut();
+    router.push("/");
+  };
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/80">
+    <header
+      className="sticky top-0 z-30 border-b border-line bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/80"
+      onKeyDown={(e) => {
+        if (e.key === "Escape") setMenu(false);
+      }}
+    >
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:start-2 focus:top-2 focus:z-50 focus:rounded focus:bg-surface focus:px-3 focus:py-2"
@@ -37,15 +54,16 @@ export function Header({ wide = false }: { wide?: boolean }) {
           <span className="text-lg font-semibold tracking-tight text-ink">{t("app.name")}</span>
         </Link>
         <nav className="ms-auto flex items-center gap-1" aria-label="Main">
-          <Link href="/cascade" className="hidden min-h-11 items-center rounded-md px-2.5 text-sm text-ink-2 hover:text-ink sm:inline-flex">
-            {t("nav.cascade")}
-          </Link>
-          <Link href="/twin" className="hidden min-h-11 items-center rounded-md px-2.5 text-sm text-ink-2 hover:text-ink sm:inline-flex">
-            {t("nav.twin")}
-          </Link>
-          <Link href="/evidence" className="hidden min-h-11 items-center rounded-md px-2.5 text-sm text-ink-2 hover:text-ink sm:inline-flex">
-            {t("nav.evidence")}
-          </Link>
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              aria-current={pathname === l.href ? "page" : undefined}
+              className="hidden min-h-11 items-center rounded-md px-2.5 text-sm text-ink-2 hover:text-ink aria-[current=page]:font-semibold aria-[current=page]:text-ink sm:inline-flex"
+            >
+              {l.label}
+            </Link>
+          ))}
           <button
             type="button"
             onClick={() => setLang(lang === "ar" ? "en" : "ar")}
@@ -76,17 +94,50 @@ export function Header({ wide = false }: { wide?: boolean }) {
           {session && (
             <button
               type="button"
-              onClick={() => {
-                signOut();
-                router.push("/");
-              }}
-              className="min-h-11 rounded-md px-2.5 text-sm text-ink-2 hover:bg-surface-2 hover:text-ink"
+              onClick={leave}
+              className="hidden min-h-11 rounded-md px-2.5 text-sm text-ink-2 hover:bg-surface-2 hover:text-ink sm:inline-block"
             >
               {t("nav.signout")}
             </button>
           )}
+          {/* Phones: the page links (and sign out) live in a menu, since they do not fit in one row. */}
+          <button
+            type="button"
+            onClick={() => setMenu((m) => !m)}
+            aria-expanded={menu}
+            aria-controls="nav-menu"
+            aria-label={t("nav.menu")}
+            className="grid h-11 w-11 place-items-center rounded-md text-ink hover:bg-surface-2 sm:hidden"
+          >
+            <svg viewBox="0 0 20 20" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+              {menu ? <path d="M5 5l10 10M15 5L5 15" /> : <path d="M3 6h14M3 10h14M3 14h14" />}
+            </svg>
+          </button>
         </nav>
       </div>
+      <nav id="nav-menu" aria-label={t("nav.menu")} hidden={!menu} className="border-t border-line bg-bg sm:hidden">
+        <ul className={cx("mx-auto grid px-2 py-2", wide ? "max-w-7xl" : "max-w-3xl")}>
+          {links.map((l) => (
+            <li key={l.href}>
+              <Link
+                href={l.href}
+                onClick={() => setMenu(false)}
+                aria-current={pathname === l.href ? "page" : undefined}
+                className="flex min-h-11 items-center rounded-md px-3 text-[0.95rem] text-ink hover:bg-surface-2 aria-[current=page]:font-semibold"
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
+          {session && (
+            <li className="mt-1 border-t border-line pt-1">
+              <button type="button" onClick={leave} className="flex min-h-11 w-full items-center rounded-md px-3 text-start text-[0.95rem] text-ink-2 hover:bg-surface-2">
+                {t("nav.signout")}
+              </button>
+            </li>
+          )}
+        </ul>
+      </nav>
     </header>
   );
 }
