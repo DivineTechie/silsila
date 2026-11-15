@@ -54,6 +54,9 @@ export interface PedPerson {
   id: string;
   sex: Sex;
   name?: string | null;
+  /** Present on a case read in Arabic: the stored (English) name and the Arabic name. */
+  name_en?: string | null;
+  name_ar?: string | null;
   mother?: string | null;
   father?: string | null;
   status?: PersonStatus;

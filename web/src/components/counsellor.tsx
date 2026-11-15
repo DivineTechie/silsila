@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { api } from "@/lib/api";
 import { age, fmtDate, fmtNum, usePrefs } from "@/lib/prefs";
+import type { StringKey } from "@/lib/strings";
 import type { AuditResponse, ChainStatus, Health, InboxMessage, InjectResult, QueueItem, Report, SourceCitation } from "@/lib/types";
 import { useLoad } from "@/lib/useLoad";
 import { Parts } from "./Parts";
@@ -28,8 +29,11 @@ const REASON_LABELS: Record<string, { en: string; ar: string }> = {
 };
 
 export function ReasonChip({ code }: { code: string }) {
-  const { lang } = usePrefs();
-  return <Chip>{REASON_LABELS[code]?.[lang] || code.replace(/_/g, " ")}</Chip>;
+  const { lang, t } = usePrefs();
+  // Queue reasons have labels above; the engine's "whom to tell first" reasons are interface strings.
+  const key = `reason.${code}`;
+  const fromStrings = t(key as StringKey);
+  return <Chip>{REASON_LABELS[code]?.[lang] || (fromStrings !== key ? fromStrings : code.replace(/_/g, " "))}</Chip>;
 }
 
 export function PriorityBadge({ p }: { p: number }) {

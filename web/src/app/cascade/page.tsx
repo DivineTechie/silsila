@@ -13,9 +13,9 @@ import { PedigreeChart } from "@/components/PedigreeChart";
 import { Page } from "@/components/Shell";
 import { Button, Card, Chip, ErrorBox, Eyebrow, H1, H2, Loading, Num, Prov, cx } from "@/components/ui";
 import { API_URL, ApiError } from "@/lib/api";
-import { usePrefs } from "@/lib/prefs";
+import { useHydrated, usePrefs } from "@/lib/prefs";
 import type { StringKey } from "@/lib/strings";
-import type { CaseDetail, Invitation, Part, RelativeView } from "@/lib/types";
+import type { CaseDetail, Invitation, Lang, Part, Report, RelativeView } from "@/lib/types";
 
 const STEPS = 12;
 const NOURA = "noura";
@@ -27,6 +27,8 @@ interface Outcomes { comprehension: { submitted: number; passed: number }; uptak
 interface Inject { attempted: string; blocked: boolean; reason: string | null; approved_original: string }
 
 interface World {
+  /** Language the language-dependent parts (fam, rel, inject) were fetched in. */
+  lang: Lang;
   caseId: string;
   famToken: string;
   couToken: string;
@@ -61,13 +63,13 @@ async function call<T>(path: string, opts: { token?: string; body?: unknown; met
 }
 
 /** Perform step `i` on the live API and return the world after it. */
-async function perform(i: number, w: World | null, lang: string): Promise<World> {
+async function perform(i: number, w: World | null, lang: Lang): Promise<World> {
   if (i === 0 || !w) {
     const s = await call<{ case_id: string; family: { token: string }; counsellor: { token: string } }>("/api/demo/story", { method: "POST" });
     const fam = await call<CaseDetail>(`/api/cases/${s.case_id}`, { token: s.family.token, query: { lang } });
-    return withAudit({ caseId: s.case_id, famToken: s.family.token, couToken: s.counsellor.token, fam, audit: [] });
+    return withAudit({ lang, caseId: s.case_id, famToken: s.family.token, couToken: s.counsellor.token, fam, audit: [] });
   }
-  const next: World = { ...w };
+  const next: World = { ...w, lang };
   const refreshFam = async () => {
     next.fam = await call<CaseDetail>(`/api/cases/${w.caseId}`, { token: w.famToken, query: { lang } });
   };
@@ -127,6 +129,50 @@ async function withAudit(w: World): Promise<World> {
   return { ...w, audit: mine.slice(0, 14) };
 }
 
+/** What the engine was given for each person: the part of a tree that changes the report. */
+const evidenceKey = (c: CaseDetail) =>
+  JSON.stringify(c.case.pedigree.people.map((p) => [p.id, p.status ?? null, p.affected_with ?? null, p.test?.detected ?? null, !!p.pregnant]));
+
+/**
+ * Re-read every step already taken in another language. Each step keeps the family state it had (who was
+ * tested when), so earlier steps are not overwritten with the latest state: names, the case title and the
+ * approved wording come from the case in the new language, and the report for an earlier state is
+ * recalculated by the engine from that state's tree (a stateless call that stores nothing).
+ */
+async function relocalise(snaps: World[], lang: Lang): Promise<World[]> {
+  const last = snaps[snaps.length - 1];
+  const latest = await call<CaseDetail>(`/api/cases/${last.caseId}`, { token: last.famToken, query: { lang } });
+  const person = new Map(latest.case.pedigree.people.map((p) => [p.id, p]));
+  const reports = new Map<string, Report>([[evidenceKey(latest), latest.report]]);
+  const rel = last.code && snaps.some((s) => s.rel) ? await call<RelativeView>(`/api/r/${last.code}`, { query: { lang } }) : undefined;
+  const inject = snaps.some((s) => s.inject)
+    ? await call<Inject>("/api/demo/inject", { token: last.couToken, method: "POST", query: { lang } })
+    : undefined;
+  const out: World[] = [];
+  for (const s of snaps) {
+    const w: World = { ...s, lang };
+    if (s.fam) {
+      const people = s.fam.case.pedigree.people.map((p) => {
+        const now = person.get(p.id);
+        return { ...p, name: now?.name ?? p.name, name_en: now?.name_en, name_ar: now?.name_ar };
+      });
+      const pedigree = { ...s.fam.case.pedigree, people };
+      const fam: CaseDetail = { ...s.fam, case: { ...s.fam.case, title: latest.case.title, pedigree }, consent_text: latest.consent_text };
+      const key = evidenceKey(fam);
+      let report = reports.get(key);
+      if (!report) {
+        report = await call<Report>("/api/engine/report", { body: { locus_id: fam.case.locus_id, pedigree, lang } });
+        reports.set(key, report);
+      }
+      w.fam = { ...fam, report };
+    }
+    if (s.rel && rel) w.rel = rel;
+    if (s.inject && inject) w.inject = inject;
+    out.push(w);
+  }
+  return out;
+}
+
 function nouraMark(step: number): { label: StringKey; tone: "info" | "done" | "alert" } | null {
   if (step >= 9) return { label: "cx.mark.tested", tone: "done" };
   if (step >= 8) return { label: "cx.mark.asked", tone: "alert" };
@@ -141,12 +187,16 @@ function nouraMark(step: number): { label: StringKey; tone: "info" | "done" | "a
 
 export default function CascadePage() {
   const { t, lang } = usePrefs();
+  // The saved language is only known after hydration; nothing is fetched before that.
+  const hydrated = useHydrated();
   const [snaps, setSnaps] = useState<World[]>([]);
   const [view, setView] = useState(0);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<unknown>(null);
   const [playing, setPlaying] = useState(false);
   const started = useRef(false);
+  const run = useRef(0); // increases on "Start again", so a late reply from an abandoned run is dropped
+  const relangFailed = useRef<Lang | null>(null);
 
   const advance = useCallback(async () => {
     if (busy) return;
@@ -158,13 +208,16 @@ export default function CascadePage() {
       setPlaying(false);
       return;
     }
+    const my = run.current;
     setBusy(true);
     setError(null);
     try {
       const w = await perform(snaps.length, snaps[snaps.length - 1] ?? null, lang);
+      if (my !== run.current) return;
       setSnaps((s) => [...s, w]);
       setView(snaps.length);
     } catch (e) {
+      if (my !== run.current) return;
       setError(e);
       setPlaying(false);
     } finally {
@@ -173,25 +226,60 @@ export default function CascadePage() {
   }, [busy, view, snaps, lang]);
 
   const restart = () => {
+    run.current += 1;
+    relangFailed.current = null;
     setSnaps([]);
     setView(0);
     setPlaying(false);
+    setError(null);
     started.current = false;
   };
 
   useEffect(() => {
-    if (!started.current && snaps.length === 0 && !busy) {
+    if (hydrated && !started.current && snaps.length === 0 && !busy) {
       started.current = true;
       void advance();
     }
-  }, [snaps.length, busy, advance]);
+  }, [hydrated, snaps.length, busy, advance]);
+
+  // Language switched (or a step finished in the old language while switching): bring every step taken so
+  // far into the current language, so no step shows text in the other one.
+  const relang = useCallback(async () => {
+    const my = run.current;
+    setBusy(true);
+    setError(null);
+    try {
+      const next = await relocalise(snaps, lang);
+      if (my !== run.current) return;
+      relangFailed.current = null;
+      setSnaps((cur) => (cur.length === next.length ? next : cur));
+    } catch (e) {
+      if (my !== run.current) return;
+      relangFailed.current = lang;
+      setError(e);
+      setPlaying(false);
+    } finally {
+      setBusy(false);
+    }
+  }, [snaps, lang]);
+
+  const stale = snaps.some((s) => s.lang !== lang);
+  useEffect(() => {
+    if (hydrated && stale && !busy && relangFailed.current !== lang) void relang();
+  }, [hydrated, stale, busy, lang, relang]);
+
+  const retry = () => {
+    relangFailed.current = null;
+    if (stale) void relang();
+    else void advance();
+  };
 
   useEffect(() => {
-    if (!playing) return;
+    if (!playing || stale) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const id = window.setTimeout(() => void advance(), reduced ? 4000 : 6500);
     return () => window.clearTimeout(id);
-  }, [playing, view, advance]);
+  }, [playing, stale, view, advance]);
 
   const w = snaps[view];
   const step = view;
@@ -203,7 +291,7 @@ export default function CascadePage() {
     const m = nouraMark(step);
     if (m) marks[NOURA] = { label: t(m.label), tone: m.tone };
   }
-  const who: StringKey = step >= 5 && step <= 8 ? "cx.who.noura" : step === 11 ? "cx.who.programme" : "cx.who.mariam";
+  const sees: StringKey = step >= 5 && step <= 8 ? "cx.sees.noura" : step === 11 ? "cx.sees.programme" : "cx.sees.mariam";
   const prevAudit = new Set((snaps[view - 1]?.audit || []).map((e) => e.seq));
   const k = (s: string) => `cx.s${step}.${s}` as StringKey;
 
@@ -220,7 +308,7 @@ export default function CascadePage() {
               {playing ? t("cx.pause") : t("cx.play")}
             </Button>
             <Button size="sm" onClick={() => setView((v) => Math.max(0, v - 1))} disabled={view === 0}>{t("cx.prev")}</Button>
-            <Button size="sm" onClick={() => void advance()} disabled={busy || (view === STEPS - 1)}>{t("cx.next")}</Button>
+            <Button size="sm" onClick={() => void advance()} disabled={busy || stale || (view === STEPS - 1)}>{t("cx.next")}</Button>
             <Button size="sm" variant="quiet" onClick={restart}>{t("cx.restart")}</Button>
           </div>
           <span className="text-sm text-muted" aria-live="polite">{t("cx.step", { n: view + 1, total: STEPS })}</span>
@@ -246,8 +334,8 @@ export default function CascadePage() {
             <p className="mt-2 max-w-4xl text-sm font-medium text-ink-2">{t(k("n"))}</p>
           </div>
         )}
-        {busy && <p className="mt-3 text-sm text-muted" role="status">{!w ? t("cx.starting") : "…"}</p>}
-        {error ? <div className="mt-3"><ErrorBox error={error} onRetry={() => void advance()} /></div> : null}
+        {busy && <p className="mt-3 text-sm text-muted" role="status">{!w ? t("cx.starting") : stale ? t("cx.relang") : "…"}</p>}
+        {error ? <div className="mt-3"><ErrorBox error={error} onRetry={retry} /></div> : null}
       </Card>
 
       {!w ? (
@@ -261,7 +349,7 @@ export default function CascadePage() {
           )}
           <div className="grid content-start gap-6 [&>*]:min-w-0">
             <Card>
-              <p className="text-xs font-semibold uppercase tracking-wide text-brass">{t("cx.sees", { who: t(who) })}</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-brass">{t(sees)}</p>
               <div className="mt-3 grid gap-3">
                 {step === 0 && fam && (
                   <>
@@ -358,13 +446,13 @@ export default function CascadePage() {
               <p className="text-xs font-semibold uppercase tracking-wide text-brass">{t("cx.recorded")}</p>
               <div className="mt-3 grid gap-3">
                 {step === 1 && fam && (
-                  <ul className="grid gap-1.5 text-sm" dir="ltr">
+                  <ul className="grid gap-1.5 text-sm">
                     {(fam.report.invites || []).slice(0, 3).map((s) => (
                       <li key={s.person_id} className="flex flex-wrap items-center gap-2">
                         <Prov kind="calculated" />
                         <bdi>{nm(s.person_id)}</bdi>
-                        <Num>carrier {(100 * s.p_carrier).toFixed(1)}%</Num>
-                        {s.p_child_affected != null && <Num>· child affected {(100 * s.p_child_affected).toFixed(2)}%</Num>}
+                        <span>{t("cx.pCarrier")} <Num>{(100 * s.p_carrier).toFixed(1)}%</Num></span>
+                        {s.p_child_affected != null && <span>· {t("cx.pChild")} <Num>{(100 * s.p_child_affected).toFixed(2)}%</Num></span>}
                       </li>
                     ))}
                   </ul>
