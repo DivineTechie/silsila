@@ -95,8 +95,30 @@ All evidence is on synthetic data and is reproducible (`docs/evidence/README.md`
 | Sensitivity to 27 labelled assumptions | Ranking advantage interval above 1 in 16 of 20 settings |
 | Crisis messages, blind 400-message test set in English, MSA, Gulf Arabic and Arabizi | Alert sensitivity 0.961 (95% CI 0.890-0.986); 76/76 replies show 998/999; 100% read by a person |
 | Unauthorised API requests (14 attack types) | 0 disclosures in 10,000 |
-| Arabic translations of quoted text, three independent systems compared | Numbers preserved 72/72; cross-system agreement median 0.966; 7 flagged for first clinical review |
+| Arabic translations of quoted text, three independent systems compared | Numbers preserved 76/76; 7 flagged for first clinical review |
 | Engine latency, 60-person family with cousin loops | median 173 ms |
+| Accessibility, axe-core on every screen (English light desktop, Arabic dark phone) | 0 violations ([record](docs/evidence/accessibility.md)) |
+
+### Silsila-Bench: where language models can be trusted inside Silsila
+
+Pre-registered ([`bench_llm/PREREGISTRATION.md`](bench_llm/PREREGISTRATION.md), changes in
+[`AMENDMENTS.md`](bench_llm/AMENDMENTS.md)); 150 synthetic families, gold answers from the exact engine; models
+in a fixed order, not a ranking; 95% intervals from a bootstrap over families. Jais 3 32B was run on a
+pre-declared 350-prompt sample (A10); K2-Think-V2 was not run (two-GPU cost).
+
+| Model | Free text: exact, of answers given | Free text: no number | With the engine as a tool: exact | Story to tree: links found |
+|---|---|---|---|---|
+| Jais 3 7B | 59.4% (54-65) | 43.4% | 70.8% (67-75) | 90.9% (88-94) |
+| Jais 3 32B (sample) | 95.8% (90-100) | 52.0% | 98.0% (95-100) | 92.5% (87-97) |
+| BiMediX2 8B | 5.0% (3-7) | 20.7% | 0.0% | 0.8% |
+| Llama3-Med42 8B | 8.4% (6-10) | 0.2% | 3.6% (2-5) | 51.8% (48-55) |
+| gpt-oss-120b (frontier reference) | 33.7% (30-38) | 0.0% | 34.4% (29-39) | 91.5% (89-94) |
+
+Every cited PubMed ID was checked: in every model's answers that cited PMIDs, at least one citation did not
+support the claim, and 95-100% of the cited IDs that exist belong to unrelated papers
+([review](bench_llm/T5_REVIEW.md)). What this decides: no model computes risk in Silsila; models may draft a
+family tree from a story, which a counsellor confirms before the exact engine runs. Full tables, splits by
+language and family type: [`docs/evidence/silsila_bench.md`](docs/evidence/silsila_bench.md).
 
 ## Try it
 
