@@ -151,17 +151,24 @@ def plan_elimination(factors: list[Factor], query: tuple[str, ...], card: int) -
     The order depends only on the factors' scopes (who is linked to whom), not on their values, so it is
     cached: recomputing a family after a new test result reuses the same order and gives identical numbers."""
     scopes = tuple(sorted({f.vars for f in factors}))
-    return list(_plan_cached(scopes, tuple(query), card))
+    order, width = _plan_cached(scopes, tuple(query))
+    # the size limit is checked on every call (not cached), so a changed limit always applies
+    if card ** width > MAX_FACTOR_ENTRIES:
+        raise PedigreeTooComplex(
+            "This family tree is too large or interlinked for an exact calculation in this version.")
+    return list(order)
 
 
 @functools.lru_cache(maxsize=4096)
-def _plan_cached(scopes: tuple[tuple[str, ...], ...], query: tuple[str, ...], card: int) -> tuple[str, ...]:
+def _plan_cached(scopes: tuple[tuple[str, ...], ...], query: tuple[str, ...]) -> tuple[tuple[str, ...], int]:
+    """Min-fill order and the largest neighbourhood met while eliminating (the widest table's rank)."""
     adj: dict[str, set[str]] = {}
     for vars_ in scopes:
         for v in vars_:
             adj.setdefault(v, set()).update(u for u in vars_ if u != v)
     remaining = set(adj) - set(query)
     order: list[str] = []
+    width = 0
     while remaining:
         best, best_key = None, None
         for v in sorted(remaining):
@@ -172,16 +179,14 @@ def _plan_cached(scopes: tuple[tuple[str, ...], ...], query: tuple[str, ...], ca
             if best_key is None or key < best_key:
                 best, best_key = v, key
         assert best is not None
-        if card ** len(adj[best]) > MAX_FACTOR_ENTRIES:
-            raise PedigreeTooComplex(
-                "This family tree is too large or interlinked for an exact calculation in this version.")
+        width = max(width, len(adj[best]))
         nb = adj.pop(best)
         for u in nb:
             adj[u].discard(best)
             adj[u].update(w for w in nb if w != u)
         order.append(best)
         remaining.discard(best)
-    return tuple(order)
+    return tuple(order), width
 
 
 def _product_sum_out(factors: list[Factor], var: str) -> Factor:
