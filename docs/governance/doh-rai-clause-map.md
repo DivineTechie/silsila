@@ -50,6 +50,14 @@ fulfil; the prototype shows how it would be met.
 | 3.4 | AI literacy | Counsellor-facing "show the working" view; training plan in the pilot protocol. | pilot protocol | Partly |
 | 5.1 | Periodic compliance reporting to DoH | Pilot reporting schedule defined. | pilot protocol | Deployment |
 
+## Additions on 15 Nov 2026
+
+| Clause | Requirement (short) | How Silsila addresses it | Evidence | Status |
+|---|---|---|---|---|
+| 3.1.1.2.1-2 | Human in the loop | Voice intake: a language model drafts structure only; the engine refuses the tree until a counsellor confirms every person and marriage; health status only from records. | `intake.py`, `tests/test_intake.py`, [model card](model-card-voice-intake.md) | Met |
+| 3.1.3.1.1-2 | Validate against benchmarks | Silsila-Bench: pre-registered evaluation of the co-creators' models and others against the exact engine, with per-prompt logs and stated amendments. | `bench_llm/PREREGISTRATION.md`, `AMENDMENTS.md` | Met |
+| 3.1.6.1.1-2 | Tell people when AI contributes | Every model-derived item is labelled (draft, RECORDED, model name and date); the contrast panel shows what free-text model answers would have said. | web app | Met |
+
 ## Generative AI note
 
 The Standard has no generative-AI clauses, but the Protocol names hallucination as a threat. Silsila removes

@@ -14,6 +14,26 @@ decides who is told and how. No name or condition is revealed without their choi
 
 Prototype with fictional families. Not for clinical use.
 
+## For judges: try it in two minutes
+
+**Live (Azure UAE North):** https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io. No
+password is needed: the home page has one-click roles.
+
+1. **Family Twin** (top menu): a fictional, simulated five-generation clan in 3D. Click anyone, record a
+   test result, and watch every relative's exact carrier chance update across six cousin marriages in about
+   0.3 seconds. Press "Where did it come from?" to see the most likely line of descent, or play the cascade
+   race.
+2. **Mariam** (family): newborn screening found classic CAH in her son. She gives permission and invites her
+   pregnant sister Noura anonymously.
+3. **Genetic counsellor**: the invitation tops the queue because of the pregnancy. Approve it. Then open
+   **Voice intake**: a family story in Emirati Arabic becomes a draft tree (Jais-ASR, then Jais 3), the
+   counsellor fixes what the checks flag, and only then does the engine calculate. Below it, the same
+   question put to five language models shows why Silsila never lets a model compute risk.
+4. **A relative receiving a link**: the anonymous invitation as a relative sees it, with sourced
+   information, a comprehension check and booking.
+5. **Evidence** (top menu): every number with its source, the benchmarks, and a scenario calculator for
+   programme scale. "Reset the demo data" in the counsellor's audit tab starts again.
+
 ## Why this matters
 
 - Testing the extended families of an affected child found 31% of relatives were carriers and 8% of married
