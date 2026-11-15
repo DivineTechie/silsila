@@ -5,6 +5,7 @@
 // writes an audit entry. The engine refuses a draft until everything is confirmed.
 
 import { useEffect, useMemo, useState } from "react";
+import { Contrast } from "./Contrast";
 import { PedigreeChart } from "./PedigreeChart";
 import { Button, Card, Chip, ErrorBox, H2, Loading, Notice, Num, Prov, cx, inputCls } from "./ui";
 import { API_URL, api, getSession } from "@/lib/api";
@@ -428,6 +429,8 @@ export function VoiceIntake() {
           </div>
         )}
       </Card>
+
+      {result && <Contrast />}
     </div>
   );
 }

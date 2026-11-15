@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Engine, API and evidence tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      # Test values for the synthetic demo data only.
+      SILSILA_DEMO: "1"
+      SILSILA_DEMO_FAMILY_PASSWORD: ci-family-test-value
+      SILSILA_DEMO_COUNSELLOR_PASSWORD: ci-counsellor-test-value
+      SILSILA_SECRET: ci-signing-secret-test-value
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - run: uv run pytest -q
+
+  bench:
+    name: Silsila-Bench harness tests (no model calls)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bench_llm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - run: uv run pytest -q
+
+  web:
+    name: Web app lint, types and build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run lint
+      - run: npm run build

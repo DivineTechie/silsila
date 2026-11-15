@@ -264,6 +264,18 @@ def intake_compute(body: IntakeCompute, user: dict[str, Any] = Depends(counsello
     return {"pedigree": ped, "report": service.compute_report(case, body.lang)}
 
 
+# --------------------------------------------------------------- contrast --
+CONTRAST_FILE = Path(__file__).resolve().parents[4] / "data" / "demo" / "contrast" / "cah_noura_khalfan.json"
+
+
+@app.get("/api/contrast")
+def contrast() -> dict[str, Any]:
+    """RECORDED answers from language models to the demo family's question, beside the engine's exact answer."""
+    if not CONTRAST_FILE.exists():
+        raise HTTPException(404, "No recorded contrast yet")
+    return json.loads(CONTRAST_FILE.read_text())
+
+
 # ------------------------------------------------------------------- twin --
 class TwinWhatIf(BaseModel):
     # "carrier" (variant B), "clear", or the variants found, e.g. "S" or "B,B"

@@ -4,6 +4,7 @@ import { AboutInfo } from "@/components/About";
 import { SectionTitle } from "@/components/case";
 import { EvidenceFile } from "@/components/evidence";
 import { CascadeChart, PrivacyEvidence, TriageEvidence, isCascadeChart, isPrivacy, isTriage } from "@/components/evidenceSpecific";
+import { Contrast } from "@/components/Contrast";
 import { ScenarioCalculator, isB4 } from "@/components/Scenario";
 import { Page } from "@/components/Shell";
 import { ErrorBox, Eyebrow, H1, H3, Loading, Notice, Prov } from "@/components/ui";
@@ -138,6 +139,7 @@ function Evidence() {
       <H1 className="mt-2">{t("ev.title")}</H1>
       <p className="mt-3 max-w-3xl text-ink-2">{t("ev.lead")}</p>
       <div className="mt-8 grid gap-6 [&>*]:min-w-0">
+        <Contrast />
         {data && isB4(data.b4_uae) && <ScenarioCalculator b4={data.b4_uae} />}
         {loading && !data && <Loading />}
         {error && !data ? <ErrorBox error={error} onRetry={reload} /> : null}
