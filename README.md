@@ -20,9 +20,11 @@ Prototype with fictional families. Not for clinical use.
 password is needed: the home page has one-click roles.
 
 0. **Watch a cascade** (first button on the home page): one newborn's result travelling through a fictional
-   family in 12 live steps: exact risk for every relative, Mariam's permission, an anonymous invitation,
-   counsellor approval, the relative's private link and comprehension check, booking, a pregnancy question
-   routed to a person, the test result closing the case, and the output gate blocking AI-written advice.
+   family in 13 live steps: exact risk for every relative, Mariam's permission, an anonymous invitation,
+   counsellor approval, the relative's private link and comprehension check, the options before or during a
+   pregnancy quoted word for word from MedlinePlus (described, never recommended), booking, a pregnancy
+   question routed to a person, the test result closing the case, and the output gate blocking AI-written
+   advice.
    Beside the family tree: what each person sees, and the hash-chained audit entries the step created.
    Each run uses its own fresh copy of the family.
 1. **Family Twin** (top menu): a fictional, simulated five-generation clan in 3D. Click anyone, record a

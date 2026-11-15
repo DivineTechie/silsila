@@ -9,8 +9,61 @@ import { Page } from "@/components/Shell";
 import { Button, Card, ErrorBox, H1, Loading, Notice, Prov, cx } from "@/components/ui";
 import { ApiError, api } from "@/lib/api";
 import { usePrefs } from "@/lib/prefs";
-import type { InvitationStatus, RelativeView, TeachbackResult } from "@/lib/types";
+import type { InvitationStatus, RelativeView, TeachbackResult, TopicAnswer } from "@/lib/types";
 import { useLoad } from "@/lib/useLoad";
+
+/** Common questions. Each opens to the approved "here is information" wording and quoted source text. */
+function Topics({ code, topics }: { code: string; topics: RelativeView["topics"] }) {
+  const { lang } = usePrefs();
+  const [open, setOpen] = useState<string | null>(null);
+  const [answers, setAnswers] = useState<Record<string, TopicAnswer>>({});
+  const [error, setError] = useState<unknown>(null);
+
+  async function toggle(id: string) {
+    if (open === id) {
+      setOpen(null);
+      return;
+    }
+    setOpen(id);
+    setError(null);
+    const key = `${id}:${lang}`;
+    if (answers[key]) return;
+    try {
+      const a = await api<TopicAnswer>(`/api/r/${encodeURIComponent(code)}/topics/${encodeURIComponent(id)}`, { query: { lang }, auth: false });
+      setAnswers((x) => ({ ...x, [key]: a }));
+    } catch (e) {
+      setError(e);
+    }
+  }
+
+  return (
+    <ul className="grid gap-2">
+      {topics.map((topic) => {
+        const isOpen = open === topic.id;
+        const a = answers[`${topic.id}:${lang}`];
+        return (
+          <li key={topic.id} className="rounded-xl border border-line bg-surface">
+            <h3>
+              <button
+                type="button"
+                aria-expanded={isOpen}
+                aria-controls={`topic-${topic.id}`}
+                onClick={() => void toggle(topic.id)}
+                className="flex min-h-11 w-full items-center justify-between gap-3 rounded-xl px-4 py-2 text-start font-medium hover:bg-surface-2"
+              >
+                <span>{lang === "ar" ? topic.title_ar : topic.title_en}</span>
+                <span aria-hidden="true" className="text-muted">{isOpen ? "−" : "+"}</span>
+              </button>
+            </h3>
+            <div id={`topic-${topic.id}`} hidden={!isOpen} className="px-4 pb-4">
+              {isOpen && (a ? <Parts parts={a.parts} compact /> : error ? <ErrorBox error={error} /> : <Loading />)}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
 
 function Relative() {
   const { code } = useParams<{ code: string }>();
@@ -161,6 +214,13 @@ function Relative() {
           </div>
         </form>
       </section>
+
+      {data.topics?.length > 0 && (
+        <section className="mt-10" aria-labelledby="topics-h">
+          <SectionTitle id="topics-h">{t("rel.topics")}</SectionTitle>
+          <Topics code={code} topics={data.topics} />
+        </section>
+      )}
 
       <section className="mt-10" aria-labelledby="next-h">
         <SectionTitle id="next-h">{t("rel.next")}</SectionTitle>

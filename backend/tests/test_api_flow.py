@@ -227,3 +227,37 @@ def test_story_run_is_isolated_and_hidden_from_case_lists(client):
     inv = client.post(f"/api/cases/{a['case_id']}/invitations", json={"person_id": "noura", "channel": "anonymous_invite"},
                       headers=fam).json()
     assert client.post(f"/api/invitations/{inv['id']}/approve", headers=cou).json()["status"] == "sent"
+
+
+def test_relative_can_read_reproductive_options_as_quoted_text_only(client):
+    """The options content is approved wording plus verbatim MedlinePlus text, in both languages, through
+    the gate; it is only served to the holder of a sent invitation and the read is recorded."""
+    cou = {"Authorization": f"Bearer {client.post('/api/demo/login', json={'persona': 'counsellor'}).json()['token']}"}
+    code = client.post("/api/demo/relative").json()["code"]
+    view = client.get(f"/api/r/{code}").json()
+    assert "faq.reproductive_options" in [t["id"] for t in view["topics"]]
+
+    en = client.get(f"/api/r/{code}/topics/faq.reproductive_options").json()
+    assert [p["type"] for p in en["parts"]] == ["template", "source", "source", "source", "source"]
+    assert en["parts"][0]["id"] == "reply.information"
+    assert [p["id"] for p in en["parts"][1:]] == ["mp:testing-uses:0:3", "mp:testing-uses:0:4", "mp:testing-uses:0:5",
+                                                  "mp:risks-limitations:0:0"]
+    from silsila.content import registry, sha256
+    reg = registry()
+    for p in en["parts"][1:]:  # word for word: the text is the imported paragraph, hash and all
+        assert p["text"] == reg.paragraphs[p["id"]].text and sha256(p["text"]) == p["sha256"]
+        assert p["attribution"] == "Source: MedlinePlus, National Library of Medicine"
+    text = " ".join(p["text"] for p in en["parts"]).lower()
+    assert "carrier testing" in text and "prenatal testing" in text and "preimplantation testing" in text
+    assert not any(w in text for w in ("you should", "we recommend", "we advise"))  # describes, never directs
+
+    ar = client.get(f"/api/r/{code}/topics/faq.reproductive_options?lang=ar").json()
+    for p in ar["parts"][1:]:  # Arabic is the stored machine translation, marked unreviewed, with the original kept
+        assert p["translation"]["reviewed_by_native_clinician"] is False and p["original_text"] == reg.paragraphs[p["id"]].text
+
+    events = client.get("/api/audit", headers=cou).json()["events"]
+    reads = [e for e in events if e["action"] == "information.read" and e["outcome"] == "success"]
+    assert len(reads) == 2 and reads[0]["detail"]["topic"] == "faq.reproductive_options"
+
+    assert client.get(f"/api/r/{code}/topics/faq.nothing").status_code == 422
+    assert client.get("/api/r/not-a-code/topics/faq.reproductive_options").status_code == 403

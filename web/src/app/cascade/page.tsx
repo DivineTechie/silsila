@@ -15,9 +15,13 @@ import { Button, Card, Chip, ErrorBox, Eyebrow, H1, H2, Loading, Num, Prov, cx }
 import { API_URL, ApiError } from "@/lib/api";
 import { useHydrated, usePrefs } from "@/lib/prefs";
 import type { StringKey } from "@/lib/strings";
-import type { CaseDetail, Invitation, Lang, Part, Report, RelativeView } from "@/lib/types";
+import type { CaseDetail, Invitation, Lang, Part, Report, RelativeView, TopicAnswer } from "@/lib/types";
 
-const STEPS = 12;
+// The story, in order. Steps are referred to by name so that adding one does not renumber the rest.
+const S = { result: 0, risk: 1, consent: 2, invite: 3, approve: 4, open: 5, check: 6, options: 7, book: 8,
+  question: 9, test: 10, gate: 11, programme: 12 } as const;
+const STEPS = 13;
+const OPTIONS_TOPIC = "faq.reproductive_options";
 const NOURA = "noura";
 const QUESTION_AR = "هل نوقف الحمل؟ وش الأفضل لنا؟";
 
@@ -38,6 +42,7 @@ interface World {
   queue?: QueueItem[];
   rel?: RelativeView;
   teach?: { score: number; total: number; passed: boolean };
+  options?: TopicAnswer;
   reply?: { reply: Part[]; escalated: boolean; labels: string[] };
   inject?: Inject;
   outcomes?: Outcomes;
@@ -78,45 +83,48 @@ async function perform(i: number, w: World | null, lang: Lang): Promise<World> {
     next.queue = q.filter((x) => x.case_id === w.caseId);
   };
   switch (i) {
-    case 1:
+    case S.risk:
       break; // the report is already on screen; this step explains it
-    case 2:
+    case S.consent:
       await call(`/api/cases/${w.caseId}/consents`, { token: w.famToken, body: { scope: "invite", granted: true } });
       await refreshFam();
       break;
-    case 3:
+    case S.invite:
       next.inv = await call<Invitation>(`/api/cases/${w.caseId}/invitations`, { token: w.famToken,
         body: { person_id: NOURA, channel: "anonymous_invite" } });
       await refreshQueue();
       break;
-    case 4:
+    case S.approve:
       next.inv = await call<Invitation>(`/api/invitations/${w.inv!.id}/approve`, { token: w.couToken, method: "POST" });
       next.code = next.inv.code;
       break;
-    case 5:
+    case S.open:
       next.rel = await call<RelativeView>(`/api/r/${w.code}`, { query: { lang } });
       break;
-    case 6: {
+    case S.check: {
       const answers = Object.fromEntries((w.rel?.teachback || []).map((q) => [q.id, "a"]));
       const r = await call<{ score: number; total: number; passed: boolean }>(`/api/r/${w.code}/teachback`, { body: { answers } });
       next.teach = { score: r.score, total: r.total, passed: r.passed };
       break;
     }
-    case 7:
+    case S.options:
+      next.options = await call<TopicAnswer>(`/api/r/${w.code}/topics/${OPTIONS_TOPIC}`, { query: { lang } });
+      break;
+    case S.book:
       await call(`/api/r/${w.code}/respond`, { method: "POST", query: { action: "book" } });
       break;
-    case 8:
+    case S.question:
       next.reply = await call(`/api/messages`, { body: { text: QUESTION_AR, lang: "ar", invite_code: w.code } });
       await refreshQueue();
       break;
-    case 9:
+    case S.test:
       next.inv = await call<Invitation>(`/api/invitations/${w.inv!.id}/result`, { token: w.couToken, body: { detected: [] } });
       await refreshFam();
       break;
-    case 10:
+    case S.gate:
       next.inject = await call<Inject>("/api/demo/inject", { token: w.couToken, method: "POST", query: { lang } });
       break;
-    case 11:
+    case S.programme:
       next.outcomes = await call<Outcomes>("/api/outcomes", { token: w.couToken });
       break;
   }
@@ -145,6 +153,9 @@ async function relocalise(snaps: World[], lang: Lang): Promise<World[]> {
   const person = new Map(latest.case.pedigree.people.map((p) => [p.id, p]));
   const reports = new Map<string, Report>([[evidenceKey(latest), latest.report]]);
   const rel = last.code && snaps.some((s) => s.rel) ? await call<RelativeView>(`/api/r/${last.code}`, { query: { lang } }) : undefined;
+  const options = last.code && snaps.some((s) => s.options)
+    ? await call<TopicAnswer>(`/api/r/${last.code}/topics/${OPTIONS_TOPIC}`, { query: { lang } })
+    : undefined;
   const inject = snaps.some((s) => s.inject)
     ? await call<Inject>("/api/demo/inject", { token: last.couToken, method: "POST", query: { lang } })
     : undefined;
@@ -167,6 +178,7 @@ async function relocalise(snaps: World[], lang: Lang): Promise<World[]> {
       w.fam = { ...fam, report };
     }
     if (s.rel && rel) w.rel = rel;
+    if (s.options && options) w.options = options;
     if (s.inject && inject) w.inject = inject;
     out.push(w);
   }
@@ -174,14 +186,15 @@ async function relocalise(snaps: World[], lang: Lang): Promise<World[]> {
 }
 
 function nouraMark(step: number): { label: StringKey; tone: "info" | "done" | "alert" } | null {
-  if (step >= 9) return { label: "cx.mark.tested", tone: "done" };
-  if (step >= 8) return { label: "cx.mark.asked", tone: "alert" };
-  if (step >= 7) return { label: "cx.mark.booked", tone: "done" };
-  if (step >= 6) return { label: "cx.mark.understood", tone: "done" };
-  if (step >= 5) return { label: "cx.mark.opened", tone: "info" };
-  if (step >= 4) return { label: "cx.mark.approved", tone: "info" };
-  if (step >= 3) return { label: "cx.mark.invited", tone: "info" };
-  if (step >= 1) return { label: "cx.mark.suggested", tone: "info" };
+  if (step >= S.test) return { label: "cx.mark.tested", tone: "done" };
+  if (step >= S.question) return { label: "cx.mark.asked", tone: "alert" };
+  if (step >= S.book) return { label: "cx.mark.booked", tone: "done" };
+  if (step >= S.options) return { label: "cx.mark.read", tone: "info" };
+  if (step >= S.check) return { label: "cx.mark.understood", tone: "done" };
+  if (step >= S.open) return { label: "cx.mark.opened", tone: "info" };
+  if (step >= S.approve) return { label: "cx.mark.approved", tone: "info" };
+  if (step >= S.invite) return { label: "cx.mark.invited", tone: "info" };
+  if (step >= S.risk) return { label: "cx.mark.suggested", tone: "info" };
   return null;
 }
 
@@ -291,7 +304,7 @@ export default function CascadePage() {
     const m = nouraMark(step);
     if (m) marks[NOURA] = { label: t(m.label), tone: m.tone };
   }
-  const sees: StringKey = step >= 5 && step <= 8 ? "cx.sees.noura" : step === 11 ? "cx.sees.programme" : "cx.sees.mariam";
+  const sees: StringKey = step >= S.open && step <= S.question ? "cx.sees.noura" : step === S.programme ? "cx.sees.programme" : "cx.sees.mariam";
   const prevAudit = new Set((snaps[view - 1]?.audit || []).map((e) => e.seq));
   const k = (s: string) => `cx.s${step}.${s}` as StringKey;
 
@@ -351,13 +364,13 @@ export default function CascadePage() {
             <Card>
               <p className="text-xs font-semibold uppercase tracking-wide text-brass">{t(sees)}</p>
               <div className="mt-3 grid gap-3">
-                {step === 0 && fam && (
+                {step === S.result && fam && (
                   <>
                     <p className="font-semibold">{fam.case.title}</p>
                     <Parts parts={fam.report.people?.[fam.case.index_person_id === "zayed" ? "mariam" : fam.case.index_person_id]?.sentence} />
                   </>
                 )}
-                {step === 1 && fam && (
+                {step === S.risk && fam && (
                   <>
                     <p className="font-semibold">{t("cx.topInvites")}</p>
                     <ol className="grid gap-2">
@@ -371,26 +384,26 @@ export default function CascadePage() {
                     <Parts parts={fam.report.people?.[NOURA]?.sentence} />
                   </>
                 )}
-                {step === 2 && fam && (
+                {step === S.consent && fam && (
                   <>
                     <Parts parts={fam.consent_text.invite} />
                     <p className="font-semibold text-accent">✓ {t("cx.permission")}</p>
                   </>
                 )}
-                {(step === 3 || step === 4) && w.inv && (
+                {(step === S.invite || step === S.approve) && w.inv && (
                   <div className="flex flex-wrap items-center gap-2">
                     <p className="font-semibold">{t("cx.invitationTo", { name: nm(NOURA) })}</p>
                     <StatusChip status={w.inv.status} />
                     <p className="w-full text-sm text-ink-2">{t("cx.anonymous")}</p>
                   </div>
                 )}
-                {step === 5 && w.rel && (
+                {step === S.open && w.rel && (
                   <>
                     <Parts parts={w.rel.message} />
                     <Parts parts={w.rel.information.slice(0, 1)} />
                   </>
                 )}
-                {step === 6 && w.rel && w.teach && (
+                {step === S.check && w.rel && w.teach && (
                   <>
                     <ul className="grid gap-2 text-sm">
                       {w.rel.teachback.map((q) => (
@@ -403,13 +416,20 @@ export default function CascadePage() {
                     <p className="font-semibold text-accent">{t("cx.teachPassed", { score: w.teach.score, total: w.teach.total })}</p>
                   </>
                 )}
-                {step === 7 && w.rel && (
+                {step === S.options && w.options && (
+                  <>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-muted">{t("cx.opened")}</p>
+                    <p className="font-semibold">{lang === "ar" ? w.options.title_ar : w.options.title_en}</p>
+                    <Parts parts={w.options.parts} compact />
+                  </>
+                )}
+                {step === S.book && w.rel && (
                   <>
                     <p className="font-semibold text-accent">✓ {t("cx.booked")}</p>
                     <Parts parts={w.rel.consent_note} />
                   </>
                 )}
-                {step === 8 && w.reply && (
+                {step === S.question && w.reply && (
                   <>
                     <p className="text-xs font-semibold uppercase tracking-wide text-muted">{t("cx.asked")}</p>
                     <p className="ms-auto max-w-[85%] rounded-2xl rounded-ee-sm bg-accent-soft px-4 py-2" dir="rtl" lang="ar">{QUESTION_AR}</p>
@@ -417,19 +437,19 @@ export default function CascadePage() {
                     <Parts parts={w.reply.reply} />
                   </>
                 )}
-                {step === 9 && fam && (
+                {step === S.test && fam && (
                   <>
                     <p className="flex items-center gap-2 font-semibold"><Prov kind="recorded" />{t("cx.testRecorded", { name: nm(NOURA) })}</p>
                     <Parts parts={fam.report.people?.[NOURA]?.residual_note} />
                   </>
                 )}
-                {step === 10 && w.inject && (
+                {step === S.gate && w.inject && (
                   <>
                     <p className="text-xs font-semibold uppercase tracking-wide text-muted">{t("cx.approvedInstead")}</p>
                     <p className="rounded-lg border border-line bg-surface p-3 text-sm">{w.inject.approved_original}</p>
                   </>
                 )}
-                {step === 11 && (
+                {step === S.programme && (
                   <>
                     <p className="font-semibold">{t("cx.more")}</p>
                     <ul className="grid gap-2">
@@ -445,7 +465,7 @@ export default function CascadePage() {
             <Card>
               <p className="text-xs font-semibold uppercase tracking-wide text-brass">{t("cx.recorded")}</p>
               <div className="mt-3 grid gap-3">
-                {step === 1 && fam && (
+                {step === S.risk && fam && (
                   <ul className="grid gap-1.5 text-sm">
                     {(fam.report.invites || []).slice(0, 3).map((s) => (
                       <li key={s.person_id} className="flex flex-wrap items-center gap-2">
@@ -457,24 +477,24 @@ export default function CascadePage() {
                     ))}
                   </ul>
                 )}
-                {(step === 3 || step === 8) && w.queue && w.queue[0] && (
+                {(step === S.invite || step === S.question) && w.queue && w.queue[0] && (
                   <div className="rounded-lg border border-accent bg-accent-soft p-3 text-sm">
-                    <p className="font-semibold">{t("cx.queueTop")}{step === 8 && w.reply?.escalated ? ` · ${t("cx.escalated")}` : ""}</p>
+                    <p className="font-semibold">{t("cx.queueTop")}{step === S.question && w.reply?.escalated ? ` · ${t("cx.escalated")}` : ""}</p>
                     <span className="mt-1 flex flex-wrap gap-1.5">{w.queue[0].reasons.map((r) => <ReasonChip key={r} code={r} />)}</span>
                   </div>
                 )}
-                {step === 4 && w.inv && (
+                {step === S.approve && w.inv && (
                   <p className="text-sm"><StatusChip status={w.inv.status} /> {t("cx.signedBy", { name: String(w.inv.history.find((h) => h.status === "approved")?.signed_by ?? "") })}</p>
                 )}
-                {step === 9 && w.inv && <p className="text-sm font-semibold text-accent">✓ {t("cx.closed")}</p>}
-                {step === 10 && w.inject && (
+                {step === S.test && w.inv && <p className="text-sm font-semibold text-accent">✓ {t("cx.closed")}</p>}
+                {step === S.gate && w.inject && (
                   <div className="rounded-lg border-2 border-dashed border-ink-2 bg-surface-2 p-3 text-sm">
                     <p className="text-xs font-semibold uppercase tracking-wide text-muted">{t("cx.attempted")}</p>
                     <p className="mt-1 line-through">{w.inject.attempted}</p>
                     <p className="mt-2 font-semibold">{w.inject.blocked ? t("cx.blocked") : "—"}</p>
                   </div>
                 )}
-                {step === 11 && w.outcomes && (
+                {step === S.programme && w.outcomes && (
                   <ul className="grid gap-1 text-sm">
                     <li>{t("oc.comprehension")}: <Num>{w.outcomes.comprehension.passed}/{w.outcomes.comprehension.submitted}</Num></li>
                     <li>{t("oc.uptake")}: <Num>{w.outcomes.uptake.booked_or_tested}/{w.outcomes.uptake.opened}</Num></li>

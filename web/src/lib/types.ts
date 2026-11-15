@@ -269,6 +269,15 @@ export interface RelativeView {
   information: Part[];
   teachback: TeachbackQuestion[];
   consent_note: Part[];
+  /** Common questions the relative can open; each answer is quoted source text. */
+  topics: { id: string; title_en: string; title_ar: string }[];
+}
+
+export interface TopicAnswer {
+  id: string;
+  title_en: string;
+  title_ar: string;
+  parts: Part[];
 }
 
 export interface TeachbackResult {

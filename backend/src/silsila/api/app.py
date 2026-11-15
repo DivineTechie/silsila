@@ -396,6 +396,12 @@ def relative(code: str, lang: Literal["en", "ar"] = "en") -> dict[str, Any]:
     return service.relative_view(store(), code, lang)
 
 
+@app.get("/api/r/{code}/topics/{topic_id}")
+def relative_topic(code: str, topic_id: str, lang: Literal["en", "ar"] = "en") -> dict[str, Any]:
+    """A common question and its answer in quoted source text, for the holder of an invitation link."""
+    return service.relative_topic(store(), code, topic_id, lang)
+
+
 @app.post("/api/r/{code}/teachback")
 def teachback(code: str, body: TeachbackIn) -> dict[str, Any]:
     inv = next((i for i in store().list("invitation") if i["code"] == code), None)

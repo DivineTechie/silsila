@@ -321,9 +321,33 @@ def relative_view(store: Store, code: str, lang: str) -> dict[str, Any]:
         transition(store, {"id": f"relative:{inv['id']}", "role": "relative"}, inv, "opened")
     return {"invitation_id": inv["id"], "status": inv["status"], "message": reg.gate(msg).parts,
             "information": reg.gate(info).parts,
+            # Common questions the relative can open; each answer is quoted text (see relative_topic).
+            "topics": [{k: t[k] for k in ("id", "title_en", "title_ar")} for t in reg.faq],
             "teachback": [{k: v for k, v in q.items() if k != "options"} | {
                 "options": [{"id": o["id"], "en": o["en"], "ar": o["ar"]} for o in q["options"]]} for q in reg.teachback],
             "consent_note": reg.gate(reg.template(Message(lang), "reply.booking")).parts}
+
+
+def relative_topic(store: Store, code: str, topic_id: str, lang: str) -> dict[str, Any]:
+    """A common question opened from an invitation link. The answer is the approved "here is information"
+    wording followed by verbatim MedlinePlus paragraphs, through the output gate. Nothing is recommended:
+    the reproductive-options topic describes carrier, prenatal and preimplantation testing in the source's
+    words and leaves the decision with the reader."""
+    reg = registry()
+    inv = next((i for i in store.list("invitation") if i["code"] == code), None)
+    if inv is None or inv["status"] in ("awaiting_counsellor", "approved", "withdrawn"):
+        store.audit("anonymous", "relative", "information.read", outcome="denied", detail={"reason": "unknown or unsent code"})
+        raise Forbidden("This link is not valid")
+    topic = next((t for t in reg.faq if t["id"] == topic_id), None)
+    if topic is None:
+        raise Invalid("Unknown topic")
+    msg = reg.template(Message(lang), "reply.information")
+    for pid in topic["paragraphs"]:
+        reg.quote(msg, pid)
+    reg.gate(msg)
+    store.audit(f"relative:{inv['id']}", "relative", "information.read", case_id=inv["case_id"], entity=inv["id"],
+                detail={"topic": topic_id, "lang": lang, "digest": msg.digest})
+    return {"id": topic["id"], "title_en": topic["title_en"], "title_ar": topic["title_ar"], "parts": msg.parts}
 
 
 def score_teachback(answers: dict[str, str]) -> dict[str, Any]:
