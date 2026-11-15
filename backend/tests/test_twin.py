@@ -36,6 +36,18 @@ def test_what_if_rejects_unknown_people_and_bad_values():
     assert client.post("/api/twin/what-if", json={"results": {"k1": "maybe"}}).status_code == 422
 
 
+def test_a_result_already_on_file_cannot_be_re_recorded():
+    t = twin.public()
+    assert twin.on_file() == {t["index"], *t["parents"]}
+    for pid in (t["index"], *t["parents"]):  # the affected newborn and the tested parents
+        for value in ("carrier", "clear"):
+            r = client.post("/api/twin/what-if", json={"results": {pid: value}})
+            assert r.status_code == 422 and "already on file" in r.json()["detail"]
+    # and neither strategy in the race ever tests them
+    for strat in ("ranked", "family_order"):
+        assert not {e["person"] for e in t["race"][strat]} & twin.on_file()
+
+
 def test_race_uses_the_same_hidden_results_for_both_strategies():
     t = twin.load()
     for strat in ("ranked", "family_order"):

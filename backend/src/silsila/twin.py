@@ -261,6 +261,12 @@ def public() -> dict[str, Any]:
     return {k: v for k, v in t.items() if k != "truth"}
 
 
+def on_file() -> set[str]:
+    """People whose result is already recorded in the clan: the affected newborn and anyone with a test.
+    The what-if cannot overwrite these."""
+    return {p["id"] for p in load()["people"] if p["status"] == "affected" or p["test"] is not None}
+
+
 def what_if(results: dict[str, str]) -> dict[str, Any]:
     """Exact carrier chances for everyone after recording extra results: {person_id: 'carrier' | 'clear'}.
     'carrier' records the beta-thalassaemia variant B; 'B' or 'S' a specific variant; 'clear' a negative test

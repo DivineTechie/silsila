@@ -216,7 +216,7 @@ export default function TwinPage() {
                   {t("tw.gen", { g: sel.generation + 1, n: nGen })}{sel.deceased ? ` · ${t("tw.deceased")}` : ""}
                 </p>
                 <div className="mt-3 flex items-center gap-2">
-                  <Prov kind="calculated" />
+                  <Prov kind={fixed ? "recorded" : "calculated"} />
                   <span className="text-sm text-ink-2">{t("tw.chance")}:</span>
                   <span className="text-2xl font-semibold tabular-nums">
                     {sel.status === "affected" ? t("tw.affected") : probs ? pct(probs[sel.id] ?? 0) : "…"}

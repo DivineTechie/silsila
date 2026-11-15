@@ -296,6 +296,10 @@ def twin_what_if(body: TwinWhatIf) -> dict[str, Any]:
     unknown = sorted(set(body.results) - ids)
     if unknown:
         raise service.Invalid(f"Not in the clan: {', '.join(unknown[:5])}")
+    # A result that is already on file (the affected newborn, the tested parents) cannot be re-recorded.
+    fixed = sorted(twin.on_file() & set(body.results))
+    if fixed:
+        raise service.Invalid(f"A result is already on file for: {', '.join(fixed[:5])}")
     return twin.what_if(body.results)
 
 
