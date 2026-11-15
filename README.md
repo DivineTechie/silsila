@@ -52,8 +52,32 @@ password is needed: the home page has one-click roles.
   random pregnant couples (Ahmed et al., *NEJM* 2002;347:1162-8, PMID 12374877).
 - Abu Dhabi's premarital genetic test (570 genes, 840+ recessive disorders, per the
   [DoH announcement](https://www.doh.gov.ae/en/news/doh-integrates-genetic-testing-as-an-integral-component-of-the-premarital-screening-programme))
-  became mandatory for Emiratis in 2024-2025, so couples married before then were never screened. It has flagged 565 incompatible couples among 11,748 tested (Gulf News,
-  Oct 2026).
+  became mandatory for Emiratis in 2024-2025, so couples married before then were never screened. It tested
+  11,748 couples from 2022 to July 2026 and found 565 genetically incompatible; the most common conditions
+  reported among them included congenital adrenal hyperplasia (the condition in Silsila's demonstration family)
+  and thalassaemia (the condition in the Family Twin), and results are exchanged through Malaffi
+  ([Gulf News, 3 Oct 2026](https://gulfnews.com/uae/health/abu-dhabi-genetic-screening-flags-565-incompatible-cases-among-couples-1.500697261)).
+  The programme is described in the peer-reviewed literature: Al Ameri M, et al. Large-Scale Premarital
+  Genetic Screening in the United Arab Emirates. *N Engl J Med* 2026;395(3):306-308,
+  [PMID 42456143](https://pubmed.ncbi.nlm.nih.gov/42456143/) (cited from its PubMed record; no figure here
+  is taken from it).
+- Newborn genomic screening in Abu Dhabi changed the lives of more than 100 babies in the past year,
+  according to the DoH chairman
+  ([Khaleej Times, 20 Oct 2026](https://www.khaleejtimes.com/uae/abu-dhabi-newborn-genomic-screening-changes-lives-babies)).
+  Silsila's demonstration starts from exactly that event: a newborn's result. As a projection, not an observed
+  outcome: if 100 index newborns a year each started a cascade for one recessive condition at benchmark B4's
+  simulated yields (5 tests per family), Silsila's order would find about 25 at-risk couples (95% interval
+  21-31) against 17 unranked for CAH, and 33 (28-37) against 21 for the haemoglobin disorders. The reported
+  babies span many conditions, not all recessive, so this shows scale only
+  ([`uae_context.json`](docs/evidence/uae_context.json), scenario calculator on the Evidence page).
+- The 2026-2031 National Genomics Masterplan (reported 10 Nov 2026) includes personalised genomic reports
+  for 900,000 participants through TAMM from December 2026, covering 214 inherited genomic conditions and
+  health traits, and nationwide newborn genetic screening (730+ genes, 815+ conditions); the Emirati Genome
+  Programme has passed one million participants
+  ([The National](https://www.thenationalnews.com/news/uae/2026/11/10/uae-approves-national-genomics-masterplan-to-bring-personalised-medicine-to-all-citizens/)).
+  If these reports include carrier findings (the article does not say), every one is a possible index
+  result with relatives outside the programme. No announcement of family cascade testing was found, and
+  Silsila does not claim DoH has asked for it: it is the step these programmes do not yet describe.
 - Half of UAE-national marriages were consanguineous in the only national survey (50.5%, al-Gazali 1997,
   PMID 9881148). Beta-thalassaemia carriers vary from 0% to 13.6% between tribes (Denic 2013, PMID 23600619).
 

@@ -6,6 +6,13 @@ Structured with the DECIDE-AI reporting items for early-stage clinical evaluatio
 **Setting.** One Abu Dhabi premarital/preconception screening centre and the genetics clinic it refers to,
 plus families identified through newborn genetic screening.
 
+**Index events the pilot would accept.** (1) A newborn genetic screening result (the programme reported more
+than 100 babies identified in the past year). (2) A premarital result of genetic incompatibility (565 couples
+among 11,748 tested, 2022 to July 2026). (3) Conditional: a carrier finding in a
+personalised genomic report delivered through TAMM from December 2026, if those reports include carrier
+findings, which the announcement does not say. Sources: [`evidence/uae_context.json`](evidence/uae_context.json).
+The pilot does not assume any of these programmes has asked for cascade testing.
+
 **Who uses it.** Index persons or their parents (family app), relatives they choose to inform (invitation
 links), genetic counsellors (console).
 

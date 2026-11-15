@@ -6,6 +6,7 @@ import { EvidenceFile } from "@/components/evidence";
 import { CascadeChart, PrivacyEvidence, TriageEvidence, isCascadeChart, isPrivacy, isTriage } from "@/components/evidenceSpecific";
 import { BenchEvidence, isBench } from "@/components/BenchEvidence";
 import { Contrast } from "@/components/Contrast";
+import { ProgrammeContext, isUaeContext } from "@/components/ProgrammeContext";
 import { ScenarioCalculator, isB4 } from "@/components/Scenario";
 import { Page } from "@/components/Shell";
 import { ErrorBox, Eyebrow, H1, H3, Loading, Notice, Prov } from "@/components/ui";
@@ -131,7 +132,8 @@ function Register() {
 function Evidence() {
   const { t } = usePrefs();
   const { data, error, loading, reload } = useLoad(() => api<Record<string, unknown>>("/api/evidence", { auth: false }), "ev");
-  const files = data ? Object.entries(data) : [];
+  const context = data && isUaeContext(data.uae_context) ? data.uae_context : null;
+  const files = data ? Object.entries(data).filter(([, v]) => !isUaeContext(v)) : [];
   const rank = (d: unknown) => (isBench(d) ? -1 : isCascadeChart(d) ? 0 : isTriage(d) ? 1 : isPrivacy(d) ? 2 : 3);
   files.sort((a, b) => rank(a[1]) - rank(b[1]) || a[0].localeCompare(b[0]));
   return (
@@ -141,7 +143,8 @@ function Evidence() {
       <p className="mt-3 max-w-3xl text-ink-2">{t("ev.lead")}</p>
       <div className="mt-8 grid gap-6 [&>*]:min-w-0">
         <Contrast />
-        {data && isB4(data.b4_uae) && <ScenarioCalculator b4={data.b4_uae} />}
+        {context && <ProgrammeContext doc={context} />}
+        {data && isB4(data.b4_uae) && <ScenarioCalculator b4={data.b4_uae} newborn={context?.newborn_projection} />}
         {loading && !data && <Loading />}
         {error && !data ? <ErrorBox error={error} onRetry={reload} /> : null}
         {data && files.length === 0 && <Notice>{t("ev.empty")}</Notice>}

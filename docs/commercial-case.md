@@ -11,10 +11,23 @@ Every number has a source or is labelled as an assumption. Prices are proposals 
 | Practising genetic counsellors in the UAE | 9 (plus 8 clinical geneticists) for nearly 11 million people | [Almarri et al., J Genet Couns 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12619030/) |
 | Direct cost of transfusion-dependent beta-thalassaemia | about USD 28,100 per patient-year (Saudi tertiary centre, 2018-2022; no UAE study found) | [Medicine 2025, PMC12237305](https://pmc.ncbi.nlm.nih.gov/articles/PMC12237305/) |
 | Couples flagged at risk by Abu Dhabi premarital screening | 565 among 11,748 tested (2022 to Jul 2026) | [Gulf News, Oct 2026](https://gulfnews.com/uae/health/abu-dhabi-genetic-screening-flags-565-incompatible-cases-among-couples-1.500697261) |
+| Conditions most often found among those couples | include congenital adrenal hyperplasia and thalassaemia (Silsila's two demonstration conditions); results exchanged through Malaffi | same Gulf News report |
+| Babies identified by newborn genomic screening in Abu Dhabi | more than 100 in the past year (DoH chairman, 20 Oct 2026) | [Khaleej Times](https://www.khaleejtimes.com/uae/abu-dhabi-newborn-genomic-screening-changes-lives-babies) |
+| Personalised genomic reports planned under the 2026-2031 National Genomics Masterplan | 900,000 participants, through TAMM from December 2026, 214 inherited conditions and health traits; newborn genetic screening to expand nationwide | [The National, 10 Nov 2026](https://www.thenationalnews.com/news/uae/2026/11/10/uae-approves-national-genomics-masterplan-to-bring-personalised-medicine-to-all-citizens/) |
 | Relatives of an affected child who are carriers | 31% (vs 0 of 397 in control families); 8% of married relative couples both carriers | Ahmed et al., NEJM 2002, PMID 12374877 |
 
 Every flagged couple and every affected newborn starts a family cascade that today depends on a handful of
 specialists drawing family trees by hand.
+
+**Volume the announced programmes imply (projection, not an observed outcome).** At about 100 index newborns a
+year, a cascade of 5 tests per family is 500 tests. At benchmark B4's simulated yields for one recessive
+condition, that finds about 25 at-risk couples in Silsila's order (95% interval 21-31) against 17 unranked for
+CAH, and 33 (28-37) against 21 for the haemoglobin disorders. The reported babies span many conditions, not all
+recessive, so the real number of cascades would be lower. If the TAMM genomic reports include carrier findings
+(the article does not say), the number of possible index results is far larger, and the limiting resource is
+counsellor time, which is what Silsila is priced against. No announcement of cascade testing was found;
+Silsila does not claim DoH has asked for it. Sources and arithmetic:
+[`docs/evidence/uae_context.json`](evidence/uae_context.json).
 
 ## What Silsila sells
 
