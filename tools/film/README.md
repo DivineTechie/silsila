@@ -1,18 +1,35 @@
-# The Silsila film
+# The Silsila demo film
 
-A film in English (3 min 23 s) and in Arabic (3 min 53 s; Arabic takes longer to say), made automatically: a scripted walk through the
-**live site** in a real browser, with a synthetic voiceover. Nothing is staged except the order of the
-clicks; what is on screen is the application itself with its fictional demo families.
+One film, in English, made automatically: animated graphics scenes cut together with the **live site**, driven
+in a real browser in time with a synthetic voiceover. It is built so that a judge who never opens the site can
+still see each of the six judging criteria answered: the scene's criterion is named on screen while it plays.
 
-On screen throughout: **"RECORDED · fictional families · synthetic voice (Azure)"**, and in the Arabic
-version a note that the Arabic narration is a machine translation pending native review.
+What is on screen in the product scenes is the application itself with its fictional demo families. Nothing is
+staged except the order of the clicks. The label **"RECORDED · fictional families · synthetic voice (Azure)"**
+stays on screen throughout, and the film ends with what is not yet shown.
 
 | File | What it is |
 |---|---|
-| `narration.json` | The narration, line by line, in English and Arabic, and the on-screen label. Every number spoken is in `README.md` or `docs/evidence/`. |
-| `make_voice.py` | Records each line with Azure AI Speech (`en-GB-RyanNeural`, `ar-AE-HamdanNeural`). Only the narration is sent; lines are cached by a hash of their text. |
-| `record.mjs` | Drives the site with Playwright and records the screen at 1920x1080: Watch a cascade (13 steps), the Family Twin, voice intake, the chatbot contrast, FHIR import, Outcomes and Evidence. Each line's caption is shown while it is spoken. Writes when each line started. |
-| `build.mjs` | Lays the voice clips onto the recording at those times with ffmpeg and writes the MP4. |
+| `narration.json` | The narration, line by line, the voice, the on-screen label and the criterion names. Every number spoken is in `README.md` or `docs/evidence/`. |
+| `make_voice.py` | Records each line with Azure AI Speech (`en-US-AvaMultilingualNeural`). Only the narration is sent; lines are cached by a hash of their text, voice and rate. |
+| `film.html` | The ten graphics scenes (the claim, the gap in numbers, the flow, the audit chain, the engine checks, the models measured, deployment, path to pilot, the six criteria with the limits, the close). Every number on them is in `README.md` or `docs/evidence/`. |
+| `overlay.mjs` | What is drawn on top of every page: the caption of the line being spoken, the criterion, the "RECORDED" label, a progress line, a pointer that shows each click, zooms, and a dip to dark between pages. |
+| `record.mjs` | Drives the graphics and the live site with Playwright at 1920x1080 under that overlay, in time with the voice. Writes when each line started. |
+| `preview.mjs` | Stills of each graphics scene under its longest caption (`out/preview/`), and a warning if anything reaches under the caption. Run it after changing `film.html` or the narration. |
+| `build.mjs` | Lays the voice onto the recording at those times with ffmpeg, adds a very quiet music bed generated from sine tones (`--no-music` leaves it out), and writes the MP4. |
+
+## Scene by scene
+
+| Scene | Criterion named on screen | Source |
+|---|---|---|
+| The claim; the gap in numbers; the step after the result | 1 Health impact and clinical relevance | graphics |
+| One result travelling through a family: 13 steps of Watch a cascade, with the relative's link shown in Arabic | 3 Working solution | live site |
+| The output gate blocks AI-written advice; what the programme measures; the audit chain and the privacy test | 4 Responsible AI, safety and data governance | live site, then graphics |
+| The Family Twin; the engine against an independent solver; cascade yield | 2 Technical depth | live site, then graphics |
+| The co-creators' models measured; voice intake; the guide that uses no AI | 2 and 4 | graphics, then live site |
+| FHIR import, with a preliminary record refused; where it runs; accessibility | 5 Scalability and deployment readiness | live site, then graphics |
+| The buyer, the projection for 100 index newborns, shadow then assisted mode | 6 Commercial viability and path to pilot | graphics |
+| Six criteria with something to open and a number to check; what is not yet shown; close | all | graphics |
 
 ## Make it again
 
@@ -21,23 +38,22 @@ cd tools/film
 npm install
 npx playwright install chromium-headless-shell ffmpeg
 AZURE_SPEECH_KEY=... AZURE_SPEECH_REGION=uaenorth uv run --with httpx python make_voice.py
-node record.mjs --lang en && node build.mjs --lang en
-node record.mjs --lang ar && node build.mjs --lang ar
+node record.mjs && node build.mjs
 ```
 
-`record.mjs` uses Playwright's headless Chromium and records the hosted site by default; pass
-`--web http://localhost:3000 --api http://localhost:8000` to record a local run. It prints any step that did
-not behave as scripted ("problems"); re-record if there are any.
-
-The videos are written to `tools/film/out/` (`silsila-film-en.mp4`, `silsila-film-ar.mp4`). That folder is
-not in the repository: the files are large and can be rebuilt.
+`record.mjs` records the hosted site by default; pass `--web http://localhost:3000 --api http://localhost:8000`
+to record a local run. It prints any step that did not behave as scripted ("problems"); re-record if there are
+any. The film is written to `tools/film/out/silsila-demo-film.mp4`. That folder is not in the repository: the
+file is large and can be rebuilt.
 
 ## Honesty notes
-- The films recorded on 16 Nov 2026 were checked frame by frame at sample points and for audio level; nobody has
-  yet watched them through with the sound on. Do that before sending the link.
-- The voice is synthetic. No clip has been checked by a native Arabic listener.
-- The Arabic narration is a machine translation, like the rest of the Arabic in the prototype.
+- The voice is synthetic and labelled so on screen. The music bed is generated, not a recording.
+- The Arabic shown in the product is machine translation, like the rest of the Arabic in the prototype; the film
+  says in its limits scene that it awaits a native clinical review.
 - The voice-intake scene shows the hosted site's recorded run (labelled RECORDED in the app), not live speech
   recognition.
-- The film shows one fictional family and one simulated clan. The claims about yield rest on the benchmarks
-  in `docs/evidence/`, and the narration says "across many simulated clans" where it quotes them.
+- The film shows one fictional family and one simulated clan. The claims about yield rest on the benchmarks in
+  `docs/evidence/`; the graphics label them as simulated and as a projection, and the narration says "across
+  many simulated clans".
+- The pedigree in the opening scene is an illustration; the chances on it are rounded from what the engine
+  gives for the demo family.

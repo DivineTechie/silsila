@@ -1,7 +1,7 @@
 {
   "note": "Narration for the Silsila demo film (one film, English). Every number spoken is in README.md or docs/evidence. 'say' is the text sent to the speech service when it differs from the caption, only to make a term pronounceable; the meaning is identical. The voice is synthetic and the film says so on screen.",
   "voice": ["en-US", "en-US-AvaMultilingualNeural"],
-  "rate": "+2%",
+  "rate": "+8%",
   "label": "RECORDED · fictional families · synthetic voice (Azure)",
   "criteria": {
     "1": "Health impact and clinical relevance",

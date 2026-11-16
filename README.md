@@ -56,8 +56,9 @@ the page links are in the menu.
    with thalassaemia?", "Does AI write what families read?", "Where does it run, and how fast is it?"). It
    says so when it has no answer, and it does not answer personal or medical questions.
 
-**Film (English 3 min 23 s, Arabic 3 min 53 s):** a scripted recording of the live site with a synthetic
-voiceover, labelled on screen as recorded, fictional and synthetic. The narration and the recording and build
+**Film (one film, English, about five minutes):** animated graphics scenes cut together with a scripted
+recording of the live site, with a synthetic voiceover; it names the judging criterion each scene speaks to,
+shows the relative's link in Arabic, and is labelled on screen as recorded, fictional and synthetic. The narration and the recording and build
 scripts are in [`tools/film/`](tools/film/README.md); the video files are built locally and are not in the
 repository. The submission deck is built from the organisers' template by
 [`tools/submission/build_deck.py`](tools/submission/build_deck.py), and the text for each submission field is
@@ -268,7 +269,7 @@ bash deploy/azure-deploy.sh      # prints the public web and API URLs
 | Source | Use | Licence |
 |---|---|---|
 | MedlinePlus Genetics (NLM) | Verbatim patient information | Public domain; credited "Source: MedlinePlus, National Library of Medicine" |
-| Azure AI Speech neural voices (`en-GB-SoniaNeural`, `ar-AE-FatimaNeural`; film: `en-GB-RyanNeural`, `ar-AE-HamdanNeural`) | Read-aloud clips, the voice-intake demo clip and the film narration; always labelled synthetic | Generated with the team's own Azure subscription |
+| Azure AI Speech neural voices (`en-GB-SoniaNeural`, `ar-AE-FatimaNeural`; film: `en-US-AvaMultilingualNeural`) | Read-aloud clips, the voice-intake demo clip and the film narration; always labelled synthetic | Generated with the team's own Azure subscription |
 | Published studies (PMIDs in `data/params/loci.yaml`, `data/calibration/`) | Population parameters | Facts cited from the literature |
 | Helsinki-NLP opus-mt-tc-big-en-ar | Translation cross-check only | CC-BY 4.0 |
 | sentence-transformers/LaBSE | Translation meaning check only | Apache-2.0 |

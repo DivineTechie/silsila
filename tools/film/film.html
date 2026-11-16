@@ -12,7 +12,7 @@
   --brass:#b98a3c; --gold:#f2c14e; --night:#071719; --night2:#0d2423; --pink:#ff3d7a; --orange:#f0a93a; }
 * { box-sizing: border-box; margin: 0; }
 html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--night); font-family: "IBM Plex Sans", system-ui, sans-serif; color: var(--ink); }
-.scene { position: absolute; inset: 0; padding: 150px 130px 190px; opacity: 0; visibility: hidden; transition: opacity .6s ease; }
+.scene { position: absolute; inset: 0; padding: 112px 130px 232px; opacity: 0; visibility: hidden; transition: opacity .6s ease; }
 .scene.on { opacity: 1; visibility: visible; }
 .dark { background: radial-gradient(1400px 900px at 78% 18%, #123936 0%, var(--night2) 45%, var(--night) 100%); color: #f3efe6; }
 .light { background: radial-gradient(1500px 900px at 15% 0%, #fffdf9 0%, var(--sand) 60%, #efe8dc 100%); }
@@ -31,9 +31,10 @@ h2 { font-size: 68px; line-height: 1.1; font-weight: 700; letter-spacing: -.015e
 
 /* ---------- hook ---------- */
 #s-hook { display: grid; grid-template-columns: 1.05fr .95fr; gap: 70px; align-items: center; }
+#s-hook h1 { font-size: 76px; }
 #s-hook h1 span { display: block; }
 #s-hook .l2 { color: var(--teal2); margin-top: 18px; }
-#s-hook p.lead { font-size: 36px; line-height: 1.38; color: #cfdcd8; margin-top: 44px; max-width: 880px; }
+#s-hook p.lead { font-size: 34px; line-height: 1.38; color: #cfdcd8; margin-top: 36px; max-width: 860px; }
 #ped line, #ped path { stroke: #7fa39d; stroke-width: 3.5; fill: none; stroke-dasharray: 900; stroke-dashoffset: 900; transition: stroke-dashoffset 1.6s ease; }
 #ped.draw line, #ped.draw path { stroke-dashoffset: 0; }
 #ped .dbl { stroke: var(--gold); }
@@ -56,25 +57,26 @@ h2 { font-size: 68px; line-height: 1.1; font-weight: 700; letter-spacing: -.015e
 #ped .tag.r { fill: var(--pink); transition-delay: .3s; }
 
 /* ---------- problem ---------- */
-.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 70px; }
-.tile { background: var(--card); border: 2px solid var(--line); border-radius: 30px; padding: 40px 36px 34px; min-height: 480px; box-shadow: 0 18px 50px rgba(18,48,47,.08); }
-.tile .n { font-size: 112px; font-weight: 700; color: var(--teal); letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 44px; }
+.tile { background: var(--card); border: 2px solid var(--line); border-radius: 30px; padding: 36px 36px 28px; min-height: 0; box-shadow: 0 18px 50px rgba(18,48,47,.08); }
+.tile .n { font-size: 100px; font-weight: 700; color: var(--teal); letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
 .tile .n small { font-size: 50px; font-weight: 600; }
-.tile p { font-size: 30px; line-height: 1.32; margin-top: 26px; color: var(--ink); }
-.tile .src { font-size: 20px; margin-top: 22px; }
-.tile .n2 { font-size: 58px; font-weight: 700; color: var(--brass); margin-top: 20px; font-variant-numeric: tabular-nums; }
+.tile p { font-size: 30px; line-height: 1.32; margin-top: 20px; color: var(--ink); }
+.tile .src { font-size: 20px; margin-top: 16px; }
+.tile .n2 { font-size: 58px; font-weight: 700; color: var(--brass); margin-top: 16px; font-variant-numeric: tabular-nums; line-height: 1; }
+.tile .n2 + p { margin-top: 8px; font-size: 27px; }
 
 /* ---------- flow ---------- */
-.flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-top: 120px; position: relative; }
-.flow::before { content: ""; position: absolute; left: 8%; right: 8%; top: 74px; height: 6px; border-radius: 3px; background: var(--line); }
-.flow .bar { position: absolute; left: 8%; top: 74px; height: 6px; border-radius: 3px; background: var(--teal); width: 0; transition: width 1.1s ease; }
+.flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-top: 130px; position: relative; }
+.flow::before { content: ""; position: absolute; left: 8%; right: 8%; top: 92px; height: 6px; border-radius: 3px; background: var(--line); }
+.flow .bar { position: absolute; left: 8%; top: 92px; height: 6px; border-radius: 3px; background: var(--teal); width: 0; transition: width 1.1s ease; }
 .node { text-align: center; padding: 0 14px; position: relative; opacity: .28; transition: opacity .6s ease; }
 .node.lit { opacity: 1; }
-.node .dot { width: 150px; height: 150px; border-radius: 50%; margin: 0 auto; background: var(--card); border: 6px solid var(--line); display: grid; place-items: center; transition: border-color .5s, background .5s, transform .5s; }
+.node .dot { width: 190px; height: 190px; border-radius: 50%; margin: 0 auto; background: var(--card); border: 6px solid var(--line); display: grid; place-items: center; transition: border-color .5s, background .5s, transform .5s; }
 .node.lit .dot { border-color: var(--teal); background: #e1efec; transform: scale(1.06); }
-.node svg { width: 72px; height: 72px; stroke: var(--teal); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.node h3 { font-size: 34px; margin-top: 30px; font-weight: 700; }
-.node p { font-size: 25px; line-height: 1.3; color: var(--ink2); margin-top: 12px; }
+.node svg { width: 92px; height: 92px; stroke: var(--teal); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.node h3 { font-size: 40px; margin-top: 34px; font-weight: 700; }
+.node p { font-size: 29px; line-height: 1.3; color: var(--ink2); margin-top: 12px; }
 
 /* ---------- audit / gate ---------- */
 #s-audit { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -98,26 +100,26 @@ h2 { font-size: 68px; line-height: 1.1; font-weight: 700; letter-spacing: -.015e
 .badge { display: inline-block; background: var(--gold); color: #1b1503; border-radius: 999px; padding: 12px 30px; font-size: 44px; font-weight: 700; margin-top: 38px; }
 
 /* ---------- models ---------- */
-.mrow { display: grid; grid-template-columns: 330px 1fr; gap: 26px; align-items: center; margin-top: 22px; }
+.mrow { display: grid; grid-template-columns: 330px 1fr; gap: 26px; align-items: center; margin-top: 16px; }
 .mrow .name { font-size: 31px; font-weight: 600; } .mrow .name small { display: block; font-size: 20px; color: #6b7672; font-weight: 400; }
 .pair { display: grid; gap: 8px; }
 .mb { display: grid; grid-template-columns: 1fr 120px; gap: 16px; align-items: center; }
 .mb .track { background: #e7dfd0; height: 30px; border-radius: 9px; }
 .mb .fill.f { background: var(--brass); } .mb .fill.t { background: var(--teal); }
 .mb .v { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.legend { display: flex; gap: 40px; font-size: 25px; margin-top: 34px; color: var(--ink2); }
+.legend { display: flex; gap: 40px; font-size: 25px; margin-top: 26px; color: var(--ink2); }
 .legend i { display: inline-block; width: 28px; height: 18px; border-radius: 5px; margin-right: 10px; vertical-align: -2px; }
-.verdict { margin-top: 34px; font-size: 40px; font-weight: 700; color: var(--teal); }
+.verdict { margin-top: 26px; font-size: 40px; font-weight: 700; color: var(--teal); }
 
 /* ---------- scale ---------- */
 .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 80px; }
 .pane { background: rgba(255,255,255,.06); border: 2px solid #2b4a47; border-radius: 30px; padding: 44px 40px; min-height: 470px; }
-.pane .k { font-size: 84px; font-weight: 700; color: var(--mint); letter-spacing: -.02em; line-height: 1; }
-.pane h3 { font-size: 40px; margin-top: 22px; }
-.pane p { font-size: 29px; line-height: 1.36; color: #cfdcd8; margin-top: 16px; }
+.pane .k { font-size: 92px; font-weight: 700; color: var(--mint); letter-spacing: -.02em; line-height: 1; }
+.pane h3 { font-size: 44px; margin-top: 24px; }
+.pane p { font-size: 32px; line-height: 1.36; color: #cfdcd8; margin-top: 18px; }
 
 /* ---------- pilot ---------- */
-#s-pilot .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; margin-top: 70px; }
+#s-pilot .wrap { display: grid; grid-template-columns: .9fr 1.1fr; align-items: start; gap: 60px; margin-top: 70px; }
 .tl { display: grid; gap: 22px; }
 .ph { display: grid; grid-template-columns: 96px 1fr; gap: 26px; align-items: center; background: var(--card); border: 2px solid var(--line); border-radius: 26px; padding: 30px 34px; }
 .ph .no { width: 96px; height: 96px; border-radius: 50%; background: var(--teal); color: #fff; font-size: 44px; font-weight: 700; display: grid; place-items: center; }
@@ -190,8 +192,8 @@ h2 { font-size: 68px; line-height: 1.1; font-weight: 700; letter-spacing: -.015e
   <h2 data-step="0" style="--i:1;margin-top:18px">The programmes find the first person. Nobody reaches the family.</h2>
   <div class="tiles">
     <div class="tile" data-step="1"><div class="n"><span data-count="50.5" data-dec="1">0</span><small>%</small></div><p>of UAE-national marriages were between relatives</p><p class="src">al-Gazali 1997 · PMID 9881148</p></div>
-    <div class="tile" data-step="2"><div class="n"><span data-count="31">0</span><small>%</small></div><p>of an affected child's relatives were carriers</p><div class="n2"><span data-count="8">0</span>% <span style="font-size:28px;color:#12302f;font-weight:500">of married couples: both</span></div><p class="src">Ahmed et al., NEJM 2002 · PMID 12374877</p></div>
-    <div class="tile" data-step="3"><div class="n"><span data-count="565">0</span></div><p>couples found incompatible among 11,748 tested</p><div class="n2">100+ <span style="font-size:28px;color:#12302f;font-weight:500">babies, newborn screening</span></div><p class="src">Reported: Gulf News 3 Oct 2026 · Khaleej Times 20 Oct 2026</p></div>
+    <div class="tile" data-step="2"><div class="n"><span data-count="31">0</span><small>%</small></div><p>of an affected child's relatives were carriers</p><div class="n2"><span data-count="8">0</span>%</div><p>of married couples: both carriers</p><p class="src">Ahmed et al., NEJM 2002 · PMID 12374877</p></div>
+    <div class="tile" data-step="3"><div class="n"><span data-count="565">0</span></div><p>couples found incompatible among 11,748 tested</p><div class="n2">100+</div><p>babies through newborn screening, past year</p><p class="src">Reported: Gulf News 3 Oct 2026 · Khaleej Times 20 Oct 2026</p></div>
     <div class="tile" data-step="3" style="--i:2"><div class="n"><span data-count="9">0</span></div><p>practising genetic counsellors in the UAE</p><p class="src">Almarri et al., J Genet Couns 2025</p></div>
   </div>
 </section>
@@ -286,16 +288,16 @@ h2 { font-size: 68px; line-height: 1.1; font-weight: 700; letter-spacing: -.015e
   <p class="eyebrow" data-step="0">Path to pilot</p>
   <h2 data-step="0" style="--i:1;margin-top:18px">The buyer already produces the index results</h2>
   <div class="wrap">
-    <div class="tl">
-      <div class="ph" data-step="2"><div class="no">1</div><div><h3>Shadow mode</h3><p>Counsellors work as usual. Silsila computes alongside. Nothing is sent.</p></div></div>
-      <div class="ph" data-step="2" style="--i:2"><div class="no">2</div><div><h3>Assisted mode</h3><p>Invitations go out, each one approved by a counsellor.</p></div></div>
-      <div class="ph" data-step="2" style="--i:4"><div class="no">3</div><div><h3>Reported to DoH</h3><p>Comprehension, uptake, time to counselling, privacy. Never marriages.</p></div></div>
-    </div>
     <div class="proj" data-step="1">
       <span class="tagp">PROJECTION · NOT AN OBSERVED OUTCOME</span>
       <p class="eq">100 index newborns a year × 5 tests per family</p>
       <div class="res"><span data-count="25">0</span> <small>at-risk couples found</small></div>
       <p class="eq" style="margin-top:14px">against 17 without ranking · congenital adrenal hyperplasia · 95% interval 21 to 31</p>
+    </div>
+    <div class="tl">
+      <div class="ph" data-step="2"><div class="no">1</div><div><h3>Shadow mode</h3><p>Counsellors work as usual. Silsila computes alongside. Nothing is sent.</p></div></div>
+      <div class="ph" data-step="2" style="--i:2"><div class="no">2</div><div><h3>Assisted mode</h3><p>Invitations go out, each one approved by a counsellor.</p></div></div>
+      <div class="ph" data-step="2" style="--i:4"><div class="no">3</div><div><h3>Reported to DoH</h3><p>Comprehension, uptake, time to counselling, privacy. Never marriages.</p></div></div>
     </div>
   </div>
 </section>

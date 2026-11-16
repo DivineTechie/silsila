@@ -386,7 +386,7 @@ def main(src: str, dst: str) -> None:
         ("Read aloud of the exact approved text, Arabic and English, tied to the text by hash", {"bullet": True, "size": 9}),
         ("Reproductive options quoted word for word, described and never recommended", {"bullet": True, "size": 9}),
         ("A guide that answers questions about the tool with fixed answers and live lookups, no AI", {"bullet": True, "size": 9}),
-        ("A three-minute film in English and Arabic, recorded from the live site", {"bullet": True, "size": 9})], fill=SAND, size=9)
+        ("A five-minute film, recorded from the live site, that walks through all six criteria", {"bullet": True, "size": 9})], fill=SAND, size=9)
     card(s, 5.1, 3.15, 4.5, 2.15, "Not yet shown, said plainly", [
         ("No patient has used it. All evidence is on synthetic families and messages.", {"bullet": True, "size": 9}),
         ("Three genes with published UAE data; other conditions are refused.", {"bullet": True, "size": 9}),

@@ -12,7 +12,7 @@ decision or a fact only the entrant can give.
 | Upload your solution deck | `submission/Silsila_solution_deck.pdf` (the organisers' template, 16 pages, under 5 MB) |
 | Conflict of interest | "None. No member of our team has a conflict of interest to declare." (confirmed by the entrant, 16 Nov 2026) |
 | Software-based, hardware-based, or both | Software |
-| Demo video link | OWNER: upload `tools/film/out/silsila-film-en.mp4` (and the Arabic one if a second link is allowed) to a host you control, for example an unlisted video, and paste the link. The film labels itself as recorded, fictional and synthetic voice. |
+| Demo video link | OWNER: upload `submission/silsila-demo-film.mp4` (one film, English, about five minutes; rebuilt by `tools/film/`) to a host you control, for example an unlisted video, and paste the link. The film labels itself as recorded, fictional and synthetic voice. |
 
 ## Solution summary (1823 of 2,000 characters)
 
@@ -30,7 +30,7 @@ Evidence, all on synthetic families: 30,000 of 30,000 probabilities match an ind
 Live in Azure UAE North, no password. Not yet used with patients; Arabic wording awaits native clinical review.
 ```
 
-## What has been built during the challenge? (1397 of 1,500 characters)
+## What has been built during the challenge? (1406 of 1,500 characters)
 
 ```
 Everything was built during the challenge (first commit 6 Nov 2026):
@@ -42,7 +42,7 @@ Everything was built during the challenge (first commit 6 Nov 2026):
 - Watch a cascade (13 live steps), the Family Twin (61 simulated relatives recalculated live), and a guide that answers questions about the tool with fixed answers and live lookups, without AI.
 - Evidence: five benchmarks on simulated families, a pre-registered benchmark of five language models on 150 families, privacy and triage tests, an accessibility audit, measured readability.
 - Governance: hazard log (24 hazards), model cards, DoH Responsible AI clause map, pilot protocol, commercial case, limitations.
-- Deployed in Azure UAE North, Arabic and English; a three-minute film in both languages.
+- Deployed in Azure UAE North, Arabic and English; a five-minute film recorded from the live site.
 ```
 
 ## Before you submit
