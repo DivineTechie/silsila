@@ -13,3 +13,5 @@ node_modules/
 dist/
 coverage/
 docs/evidence/logs/bench/
+tools/film/out/
+/submission/

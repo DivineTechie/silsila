@@ -56,9 +56,12 @@ the page links are in the menu.
    with thalassaemia?", "Does AI write what families read?", "Where does it run, and how fast is it?"). It
    says so when it has no answer, and it does not answer personal or medical questions.
 
-**Film (about three minutes, English and Arabic):** a scripted recording of the live site with a synthetic
-voiceover, labelled as recorded. The script, narration and build steps are in [`tools/film/`](tools/film/README.md);
-the video files are built locally and are not in the repository.
+**Film (English 3 min 23 s, Arabic 3 min 53 s):** a scripted recording of the live site with a synthetic
+voiceover, labelled on screen as recorded, fictional and synthetic. The narration and the recording and build
+scripts are in [`tools/film/`](tools/film/README.md); the video files are built locally and are not in the
+repository. The submission deck is built from the organisers' template by
+[`tools/submission/build_deck.py`](tools/submission/build_deck.py), and the text for each submission field is
+in [`docs/submission-fields.md`](docs/submission-fields.md).
 
 ### The six judging criteria: where to look, what was measured, what is not yet shown
 

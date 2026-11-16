@@ -1,0 +1,201 @@
+{
+ "note": "Narration for the Silsila film. Every number spoken is in README.md or docs/evidence. 'say' is the text sent to the speech service when it differs from the caption (only to make a term pronounceable); the meaning is identical. Arabic is a machine translation pending native review, and the film says so on screen.",
+ "voices": {
+  "en": [
+   "en-GB",
+   "en-GB-RyanNeural"
+  ],
+  "ar": [
+   "ar-AE",
+   "ar-AE-HamdanNeural"
+  ]
+ },
+ "label": {
+  "en": "RECORDED · fictional families · synthetic voice (Azure)",
+  "ar": "مسجَّل · عائلات خيالية · صوت اصطناعي (Azure) · التعليق العربي ترجمة آلية بانتظار مراجعة لغوية"
+ },
+ "scenes": [
+  {
+   "id": "hook",
+   "lines": [
+    {
+     "en": "Premarital screening protects the next marriage.",
+     "ar": "فحص ما قبل الزواج يحمي الزواج القادم."
+    },
+    {
+     "en": "Silsila protects the marriages that already happened.",
+     "ar": "سلسلة تحمي الزيجات التي تمّت بالفعل."
+    },
+    {
+     "en": "When one person has a recessive condition, their relatives are likely to be carriers too.",
+     "ar": "حين يُصاب شخص بحالة وراثية متنحية، يُرجَّح أن يحمل أقاربه المتغيّر نفسه."
+    },
+    {
+     "en": "And where cousins marry, those relatives are often already married to each other.",
+     "ar": "وحيث يتزوج أبناء العمومة، يكون هؤلاء الأقارب غالباً متزوجين من بعضهم بالفعل."
+    }
+   ]
+  },
+  {
+   "id": "risk",
+   "lines": [
+    {
+     "en": "This family is fictional. Newborn screening finds congenital adrenal hyperplasia in baby Zayed.",
+     "ar": "هذه العائلة خيالية. يكشف فحص حديثي الولادة تضخم الغدة الكظرية الخلقي لدى الطفل زايد."
+    },
+    {
+     "en": "His parents are first cousins.",
+     "ar": "والداه أبناء عمومة."
+    },
+    {
+     "en": "Silsila calculates every relative's chance exactly, across both cousin marriages,",
+     "ar": "تحسب سلسلة احتمال كل قريب بدقة، عبر زواجَي الأقارب،"
+    },
+    {
+     "en": "and ranks whom to tell first: his aunt Noura, who is pregnant.",
+     "ar": "وترتّب من يُبلَّغ أولاً: خالته نورة، وهي حامل."
+    }
+   ]
+  },
+  {
+   "id": "consent",
+   "lines": [
+    {
+     "en": "Mariam, his mother, decides who is told.",
+     "ar": "مريم، والدته، هي من تقرر من يُبلَّغ."
+    },
+    {
+     "en": "She chooses an anonymous invitation: no name, no condition.",
+     "ar": "تختار دعوة مجهولة المصدر: بلا اسم ولا حالة."
+    },
+    {
+     "en": "Nothing is sent until a genetic counsellor approves it.",
+     "ar": "ولا يُرسل شيء حتى يعتمده مستشار وراثي."
+    }
+   ]
+  },
+  {
+   "id": "relative",
+   "lines": [
+    {
+     "en": "Noura opens a private link.",
+     "ar": "تفتح نورة رابطاً خاصاً."
+    },
+    {
+     "en": "Every sentence is approved wording or a word-for-word quotation, in Arabic or English, and can be read aloud.",
+     "ar": "كل جملة صياغة معتمدة أو اقتباس حرفي، بالعربية أو الإنجليزية، ويمكن الاستماع إليها."
+    },
+    {
+     "en": "She passes a comprehension check, reads her options in the source's words, and books counselling.",
+     "ar": "تجتاز اختبار الفهم، وتقرأ خياراتها بكلمات المصدر، وتحجز استشارة."
+    }
+   ]
+  },
+  {
+   "id": "safety",
+   "lines": [
+    {
+     "en": "Then she asks whether to end the pregnancy. Silsila does not answer. A counsellor is alerted.",
+     "ar": "ثم تسأل: هل ننهي الحمل؟ سلسلة لا تجيب. ويُنبَّه مستشار."
+    },
+    {
+     "en": "Her test result closes the case with evidence.",
+     "ar": "نتيجة فحصها تُغلق الحالة بدليل."
+    },
+    {
+     "en": "When a language model tries to write advice, the output gate blocks it.",
+     "ar": "وحين يحاول نموذج لغوي أن يكتب نصيحة، تحجبه بوابة المخرجات."
+    },
+    {
+     "en": "The programme sees comprehension, uptake and time to counselling, never marriages or reproductive choices.",
+     "ar": "ويرى البرنامج الفهم والإقبال والوقت حتى الاستشارة، ولا يَعُدّ الزيجات ولا الخيارات الإنجابية أبداً."
+    }
+   ]
+  },
+  {
+   "id": "twin",
+   "lines": [
+    {
+     "en": "This is the Family Twin: a simulated clan of 61 people, with six cousin marriages.",
+     "ar": "هذا هو التوأم العائلي: عشيرة محاكاة من 61 شخصاً، فيها ست زيجات بين أقارب."
+    },
+    {
+     "en": "Record one test result, and every relative's chance is recalculated exactly, live.",
+     "ar": "سجّل نتيجة فحص واحدة، فيُعاد حساب احتمال كل قريب بدقة وفوراً."
+    },
+    {
+     "en": "Across many simulated clans, Silsila's order found 1.58 times as many at-risk couples per test as an unranked cascade.",
+     "ar": "وعبر عشائر محاكاة كثيرة، وجد ترتيب سلسلة 1.58 مرة من الأزواج المعرّضين للخطر لكل فحص مقارنةً بتتبع بلا ترتيب."
+    }
+   ]
+  },
+  {
+   "id": "voice",
+   "lines": [
+    {
+     "en": "At intake, a family tells its story in Emirati Arabic, and Jais drafts the family tree. This is a recorded run with a synthetic voice.",
+     "ar": "عند الاستقبال، تروي العائلة قصتها باللهجة الإماراتية، ويصوغ Jais مسودة شجرة العائلة. هذا تشغيل مسجَّل بصوت اصطناعي."
+    },
+    {
+     "en": "The counsellor confirms every person before the engine calculates.",
+     "ar": "ويؤكد المستشار كل شخص قبل أن يحسب المحرك."
+    }
+   ]
+  },
+  {
+   "id": "contrast",
+   "lines": [
+    {
+     "en": "Why not just ask a chatbot? We measured the co-creators' own models on 150 families.",
+     "ar": "ولماذا لا نسأل روبوت محادثة؟ قسنا نماذج شركاء التحدي أنفسهم على 150 عائلة."
+    },
+    {
+     "en": "Of the numbers Jais 3 7B gave in free text, 59.4% were exact.",
+     "en_say": "Of the numbers Jais 3, seven B, gave in free text, 59.4 percent were exact.",
+     "ar": "من الأرقام التي أعطاها Jais 3 7B في نص حر، كانت 59.4% دقيقة.",
+     "ar_say": "من الأرقام التي أعطاها Jais 3 في نص حر، كانت 59.4 بالمئة دقيقة."
+    },
+    {
+     "en": "So in Silsila, no model computes risk, and no model writes to a family.",
+     "ar": "لذلك في سلسلة، لا نموذج يحسب الخطر، ولا نموذج يكتب للعائلة."
+    }
+   ]
+  },
+  {
+   "id": "import",
+   "lines": [
+    {
+     "en": "The first result arrives as a FHIR record, and the challenge's measures are computed live.",
+     "en_say": "The first result arrives as a fire record, and the challenge's measures are computed live.",
+     "ar": "تصل النتيجة الأولى على هيئة سجل FHIR، وتُحسب مقاييس التحدي مباشرة.",
+     "ar_say": "تصل النتيجة الأولى على هيئة سجل فاير، وتُحسب مقاييس التحدي مباشرة."
+    }
+   ]
+  },
+  {
+   "id": "close",
+   "lines": [
+    {
+     "en": "Every number has its source. 30,000 of 30,000 probabilities match an independent solver.",
+     "ar": "لكل رقم مصدره. 30,000 احتمال من 30,000 تطابق حلّالاً مستقلاً."
+    },
+    {
+     "en": "Zero disclosures in 10,000 unauthorised requests. Hosted in Azure, in the UAE.",
+     "ar": "صفر إفصاحات في 10,000 طلب غير مصرّح به. والاستضافة في Azure داخل الإمارات."
+    },
+    {
+     "en": "All on fictional families. Nothing here has been used with patients.",
+     "ar": "كل ذلك على عائلات خيالية. لم يُستخدم شيء هنا مع مرضى."
+    },
+    {
+     "en": "Silsila: the step after the result.",
+     "ar": "سلسلة: الخطوة التي تلي النتيجة."
+    }
+   ]
+  }
+ ],
+ "rate": {
+  "en": "+6%",
+  "ar": "+12%"
+ }
+}
