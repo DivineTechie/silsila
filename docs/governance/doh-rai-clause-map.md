@@ -22,7 +22,7 @@ fulfil; the prototype shows how it would be met.
 | Clause | Requirement (short) | How Silsila addresses it | Evidence | Status |
 |---|---|---|---|---|
 | 3.1.1.1.1 | Co-design with clinicians and patients | Not yet done. Usability sessions with Arabic and English speakers and a genetic-counsellor review are planned before any pilot. | [pilot protocol](../pilot-protocol.md) | Partly |
-| 3.1.1.1.3 | Fit existing workflows | Counsellor queue, FHIR R4B export, family physician routing; designed to sit beside the premarital and newborn screening programmes. | `backend/src/silsila/api/fhir.py` | Partly |
+| 3.1.1.1.3 | Fit existing workflows | Counsellor queue, FHIR R4B import of the index result and export of the case, family physician routing; designed to sit beside the premarital and newborn screening programmes. | `backend/src/silsila/api/fhir.py` | Partly |
 | 3.1.1.2.1-2 | Human in or on the loop; escalation by risk | Nothing is sent to a relative without counsellor approval. Every free-text message is read by a person; triage only orders the queue. Inconsistent families show no numbers and go to review. | `service.transition`, `service.queue`, `tests/test_api_flow.py` | Met |
 | 3.1.2.1.1 | Reliable under failures and adversarial input | 200+ malformed and contradictory inputs; 10,000 unauthorised requests. | `docs/evidence/` (B2, privacy_api.json) | Met |
 | 3.1.2.1.2 | Graceful degradation and fallback | The app works with no language model at all. Missing detection rates disable residual-risk numbers and say so. Unsupported conditions show a referral message instead of numbers. | `result.residual_not_modelled`, `result.excluded_locus` | Met |

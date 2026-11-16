@@ -13,10 +13,23 @@ families and the provider's identity system (with MFA) for counsellors.
 and `AZURE_OPENAI_DEPLOYMENT` to a deployment in a UAE region. It receives message text with numbers and
 email addresses removed, returns labels only, and cannot remove labels set by the rules or n-gram model.
 
-**Interoperability.** Cases export as FHIR R4B Bundles (Patient, FamilyMemberHistory, Observation with LOINC
-69548-6 and HGNC gene codes, RiskAssessment, Consent, Task, AuditEvent). Malaffi exchanges HL7 v2 feeds
-today; a pilot would map the Observation and Task content to those feeds through the provider's integration
-engine rather than connect directly.
+**Interoperability.** An index result is read at counsellor intake from a FHIR R4B Bundle (Patient, a
+genomics Observation with LOINC 69548-6, gene, allelic state and clinical significance, and an optional
+confirmed Condition): checked first, refused with the reason if it cannot be read safely, and stored without
+the name, identifier or date of birth (`backend/src/silsila/api/fhir_import.py`). Cases export as FHIR R4B
+Bundles (Patient, Condition, FamilyMemberHistory, Observation with LOINC 69548-6 and HGNC gene codes,
+RiskAssessment, Consent, Task, AuditEvent). Malaffi exchanges HL7 v2 feeds today; a pilot would map the
+Observation and Task content to those feeds through the provider's integration engine rather than connect
+directly. The sample record in `data/demo/fhir` is fictional and follows no Malaffi specification.
+
+**The guide.** "Ask about Silsila" (`/api/guide`) is public and needs no sign-in. It calls no outside service
+and stores no question text. Its lookups read the evidence files shipped in the image and run the engine on
+the server; the outcome counts it shows are aggregate.
 
 **Configuration.** See `backend/.env.example`. `SILSILA_DEMO=0` disables the demonstration endpoints
-(audit tampering and output-gate injection).
+(password-free personas, the guided story, reset, audit tampering and output-gate injection).
+
+**Measured on the hosted prototype (16 Nov 2026).** One exact recalculation of the 61-person Family Twin
+clan: 0.7 s with no extra results, a median of 0.9 s (0.7 to 1.2 s) once results are recorded, on 2 vCPU
+(`docs/evidence/twin_hosted_timing.json`). A Watch a cascade step took 0.5 to 0.9 s from a browser outside
+the UAE.
