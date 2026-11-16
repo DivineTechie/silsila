@@ -10,7 +10,8 @@
 // What is on screen in the product scenes is the real application with its fictional demo families; nothing is
 // staged except the order of clicks. On top of every page this script draws: the caption of the line being
 // spoken, the judging criterion the scene speaks to, the label "RECORDED · fictional families · synthetic
-// voice (Azure)", a pointer that shows where it clicks, zooms, and a dip to dark between pages.
+// voice (Azure)" over the opening (the closing card says the same in words), a pointer that shows where it
+// clicks, zooms, and a dip to dark between pages.
 
 import { chromium } from "playwright";
 import fs from "node:fs";
@@ -50,6 +51,8 @@ await context.addInitScript(overlay, { label: narration.label });
 const page = await context.newPage();
 const t0 = Date.now();
 const timeline = [];
+const events = []; // moments that get a sound in the mix: taps, scene changes, a new criterion
+const mark = (type) => events.push({ type, at: +((Date.now() - t0) / 1000).toFixed(2) });
 const problems = [];
 page.on("pageerror", (e) => problems.push(`page error: ${e.message.slice(0, 200)}`));
 page.on("console", (m) => m.type() === "error" && !/422|Failed to load resource/.test(m.text()) && problems.push(`console: ${m.text().slice(0, 200)}`));
@@ -67,10 +70,16 @@ function say(id) {
   return sleep(line.seconds * 1000 + GAP);
 }
 const quiet = () => fx({ caption: "" });
-const criterion = (n) => fx(n ? { crit: String(n), critName: narration.criteria[String(n)] } : { crit: "" });
+let critNow = 0;
+const criterion = (n) => {
+  if (n && n !== critNow) mark("chime");
+  critNow = n;
+  return fx(n ? { crit: String(n), critName: narration.criteria[String(n)] } : { crit: "" });
+};
 
 /** Dip to dark, load a page, and come back up once it has settled. */
 async function cut(url, ready) {
+  mark("whoosh");
   await fx({ curtain: 1, caption: "" });
   await sleep(480);
   await page.evaluate(() => window.fx && window.fx.cursor(-60, -60, false)).catch(() => {});
@@ -88,12 +97,13 @@ async function gfx(scene) {
     await cut(`${GFX}?scene=${scene}`, () => page.waitForFunction(() => document.body.dataset.ready === "1", null, { timeout: 20000 }));
     onGfx = true;
   } else {
+    mark("swish");
     await page.evaluate((s) => window.film.show(s), scene);
     await sleep(500);
   }
 }
 const live = async (p, ready) => { onGfx = false; await cut(WEB + p, ready); };
-const step = (n) => page.evaluate((k) => window.film.step(k), n);
+const step = (n) => { mark("pop"); return page.evaluate((k) => window.film.step(k), n); };
 
 const scrollTo = (y) => page.evaluate((top) => window.scrollTo({ top, behavior: "smooth" }), y);
 const reveal = (locator, offset = 96) => locator.first().evaluate((el, off) => {
@@ -108,6 +118,7 @@ async function press(locator) {
     await page.evaluate(([x, y]) => window.fx.cursor(x, y), [box.x + box.width / 2, box.y + box.height / 2]).catch(() => {});
     await sleep(720);
     await page.evaluate(() => window.fx.tap()).catch(() => {});
+    mark("tap");
     await sleep(140);
   }
   await el.click({ timeout: 15000 }).catch(note("click"));
@@ -157,6 +168,7 @@ await step(2);
 await p;
 p = say("hook3");
 await sleep(900);
+await fx({ nolabel: 1 }); // the "RECORDED" label has been up for the opening; the closing card says it again
 await step(3);
 await p;
 await quiet();
@@ -281,6 +293,7 @@ try {
   await page.evaluate(([x, y]) => window.fx.cursor(x, y), [box.x, box.y]);
   await sleep(760);
   await page.evaluate(() => window.fx.tap());
+  mark("tap");
   await page.mouse.click(box.x, box.y);
   await sleep(900);
   await press(page.locator("main button").filter({ hasText: /^Record: carrier$/ }));
@@ -396,6 +409,7 @@ await step(2);
 await p;
 await gfx("close");
 await quiet();
+mark("close");
 await step(1);
 await sleep(700);
 p = say("close1");
@@ -411,6 +425,6 @@ await context.close();
 await browser.close();
 const raw = path.join(HERE, "out", "raw.webm");
 fs.renameSync(await video.path(), raw);
-fs.writeFileSync(path.join(HERE, "out", "timeline.json"), JSON.stringify({ web: WEB, recorded: new Date().toISOString(), seconds: total, lines: timeline, problems }, null, 1) + "\n");
+fs.writeFileSync(path.join(HERE, "out", "timeline.json"), JSON.stringify({ web: WEB, recorded: new Date().toISOString(), seconds: total, lines: timeline, events, problems }, null, 1) + "\n");
 console.log(`recorded ${total.toFixed(1)} s to ${raw}`);
 if (problems.length) console.log(`problems (${problems.length}):\n  ` + problems.join("\n  "));

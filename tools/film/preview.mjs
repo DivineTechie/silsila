@@ -27,7 +27,7 @@ for (const [scene, last, ids, crit] of SCENES) {
   await page.evaluate(([n, c, k, name, sc]) => {
     window.film.step(n);
     if (sc === "flow") window.film.flow(6);
-    window.fx.set({ caption: c, crit: k ? String(k) : "", critName: name, progress: 50, curtain: 0 });
+    window.fx.set({ caption: c, crit: k ? String(k) : "", critName: name, progress: 50, curtain: 0, nolabel: sc === "hook" ? 0 : 1 });
   }, [last, caption, crit, narration.criteria[String(crit)] || "", scene]);
   await page.waitForTimeout(3200);
   const clash = await page.evaluate(() => {
