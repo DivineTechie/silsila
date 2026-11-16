@@ -148,7 +148,7 @@ html[lang="ar"] body {
 .tw-label .tw-tag { order: 3; margin-top: 1px; padding: 1px 6px; border-radius: 999px; background: rgba(242, 193, 78, 0.92); color: #1b1503;
   font-size: 10px; font-weight: 700; text-shadow: none; }
 .tw-label .tw-tag:empty { display: none; }
-.tw-label[data-kind="affected"] .tw-tag { background: #ff3d7a; color: #fff; }
+.tw-label[data-kind="affected"] .tw-tag { background: #b0124f; color: #fff; }
 /* How much text fits depends on how close people stand on screen. */
 .tw-labels[data-detail="0"] .tw-label[data-key="0"] { display: none; }
 .tw-labels[data-detail="1"] .tw-label[data-key="0"] .tw-name { display: none; }

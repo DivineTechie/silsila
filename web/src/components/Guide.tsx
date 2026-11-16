@@ -126,7 +126,7 @@ export function GuideLauncher() {
                       <p className="leading-relaxed text-ink">{turn.out.answer}</p>
                       {turn.out.facts && turn.out.facts.length > 0 && (
                         <div className="mt-3 rounded-lg border border-line bg-surface-2/60 p-2.5">
-                          <p className="text-[0.68rem] font-semibold uppercase tracking-wide text-brass">
+                          <p className="text-[0.68rem] font-semibold uppercase tracking-wide text-ink-2">
                             {t("guide.lookup")}{turn.out.tool ? <> · <span dir="ltr" lang="en">{turn.out.tool.description}</span> <Num>({Math.round(turn.out.tool.ms)} ms)</Num></> : null}
                           </p>
                           {lang === "ar" && <p className="mt-1 text-[0.68rem] text-muted">{t("guide.lookupNote")}</p>}

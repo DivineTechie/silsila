@@ -1,29 +1,36 @@
 # Accessibility audit (axe-core)
 
-**Date:** 15 Nov 2026. **Tool:** axe-core 4.10.2, rule sets `wcag2a`, `wcag2aa`, `wcag21aa` and `best-practice`
-(the home page and the cascade replay were also checked with `wcag22aa`),
-run in the browser against the local build with demo data.
+**Date:** 16 Nov 2026 (the whole audit was repeated after the changes of 15 and 16 Nov). **Tool:** axe-core
+4.10.2, rule sets `wcag2a`, `wcag2aa`, `wcag21aa`, `wcag22aa` and `best-practice`, run in the browser against
+the local build with demo data.
 
 **Coverage.** Every screen a judge or user can reach, with every tab opened and every collapsed section
 expanded, in two configurations:
 
-1. English, light theme, desktop width (1440 px or the pane width).
+1. English, light theme, desktop width (1440 px, or the pane width where the pane was narrower).
 2. Arabic (right to left), dark theme, phone width (375 × 812).
 
 | Screen | States checked |
 |---|---|
-| Home with judge mode | default |
-| Watch a cascade | all 12 steps run live, English desktop and Arabic dark phone |
-| Family Twin (3D) | table view open, a person selected, line of descent shown, cascade race playing |
-| Evidence | scenario calculator, all benchmark files, all tables and raw data expanded |
-| Family case (Mariam, CAH; Reem, beta-thalassaemia; Reem's case list) | all 8 tabs |
-| Relative's invitation link | information expanded |
-| Counsellor console | all 5 tabs, voice intake after the engine calculation |
-| Counsellor case view | all 8 tabs, FHIR export shown |
+| Home | default; with the "Ask about Silsila" guide open showing an answer with a live lookup, a declined personal question and a "no answer" |
+| Watch a cascade | all 13 steps run live, checked at every step |
+| Family Twin (3D) | default; table view open, a person selected, a result recorded, line of descent shown; cascade race playing |
+| Evidence | every section and table expanded, the newborn scenario preset chosen, the guide open |
+| Relative's invitation link | read-aloud buttons present, every common question opened, comprehension check answered |
+| Counsellor console | all 6 tabs; FHIR import with the sample record read, and with a refused record |
+| Counsellor case view | all 6 tabs (family tree, report, working, invitations, audit, FHIR export) |
+| Family case (Mariam in English, Reem in Arabic) | all 6 tabs |
 
 **Result: 0 violations on every screen in both configurations**, after the fixes below.
 
-**Issues found and fixed in this audit**
+**Issues found and fixed in the 16 Nov audit**
+
+| Rule | Impact | Where | Fix |
+|---|---|---|---|
+| `color-contrast` | serious | the "Live lookup" label in the guide, light theme (brass text on a tinted panel) | uses the secondary ink colour |
+| `color-contrast` | serious | the newborn's tag in the Family Twin scene (white on bright pink) | darker pink background |
+
+**Issues found and fixed in the first audit (15 Nov)**
 
 | Rule | Impact | Where | Fix |
 |---|---|---|---|
@@ -36,5 +43,6 @@ expanded, in two configurations:
 
 **Not covered by automated checks.** Screen-reader walkthroughs (VoiceOver, NVDA, TalkBack), keyboard-only task
 completion timing, and testing with disabled users. These belong in the pilot's usability sessions
-(see `docs/pilot-protocol.md`). The 3D scene is decorative for assistive technology; the same information is
-available as a sortable table and in the side panels.
+(see `docs/pilot-protocol.md`). In the Family Twin the 3D canvas and the labels drawn over it are hidden from
+assistive technology; the same information is available as a sortable table and in the cards beside it.
+Read-aloud clips are a synthetic voice and have not been checked by a native listener.
