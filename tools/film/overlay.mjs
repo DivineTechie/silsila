@@ -26,7 +26,6 @@ export const overlay = ({ label }) => {
     #fx-crit b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#f2c14e;color:#1b1503;font-weight:700}
     #fx-crit small{font-size:14px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;font-weight:600}
     #fx-crit[data-off="1"]{opacity:0;transform:translate(-50%,-14px)}
-    html[data-fx-live="1"] #fx-crit{left:43%}
     #fx-label{position:fixed;left:26px;bottom:18px;z-index:2147483100;font:600 15px/1 "IBM Plex Sans",var(--font-sans,system-ui),system-ui,sans-serif;letter-spacing:.04em;
       color:#fff;background:rgba(7,23,25,.78);padding:7px 13px;border-radius:999px;pointer-events:none;transition:opacity 1.2s ease}
     #fx-label[data-off="1"]{opacity:0}
@@ -75,7 +74,6 @@ export const overlay = ({ label }) => {
       (document.head || d).appendChild(st);
     }
     d.setAttribute("data-fx-curtain", read().curtain ? "1" : "0");
-    d.setAttribute("data-fx-live", location.protocol === "file:" ? "0" : "1"); // on the site the criterion sits clear of the header's links
     if (document.body && !document.getElementById("fx-cap")) {
       for (const [id, text] of [["fx-cap", ""], ["fx-crit", ""], ["fx-label", label], ["fx-bar", ""], ["fx-cur", ""]]) {
         const el = document.createElement("div");

@@ -9,7 +9,7 @@
 //
 // What is on screen in the product scenes is the real application with its fictional demo families; nothing is
 // staged except the order of clicks. On top of every page this script draws: the caption of the line being
-// spoken, the judging criterion the scene speaks to, the label "RECORDED · fictional families · synthetic
+// spoken, the judging criterion the scene speaks to (for a few seconds as the scene begins), the label "RECORDED · fictional families · synthetic
 // voice (Azure)" over the opening (the closing card says the same in words), a pointer that shows where it
 // clicks, zooms, and a dip to dark between pages.
 
@@ -70,11 +70,17 @@ function say(id) {
   return sleep(line.seconds * 1000 + GAP);
 }
 const quiet = () => fx({ caption: "" });
-let critNow = 0;
+// The criterion a scene speaks to is named for a few seconds as the scene begins, like a chapter title, and
+// then leaves the screen to the product.
+const CRIT_SHOWN = 5000;
+let critNow = 0, critUntil = 0;
 const criterion = (n) => {
-  if (n && n !== critNow) mark("chime");
+  if (!n || n === critNow) { critNow = n; return n ? Promise.resolve() : fx({ crit: "" }); }
+  mark("chime");
   critNow = n;
-  return fx(n ? { crit: String(n), critName: narration.criteria[String(n)] } : { crit: "" });
+  critUntil = Date.now() + CRIT_SHOWN;
+  setTimeout(() => { if (Date.now() >= critUntil) void fx({ crit: "" }); }, CRIT_SHOWN + 20);
+  return fx({ crit: String(n), critName: narration.criteria[String(n)] });
 };
 
 /** Dip to dark, load a page, and come back up once it has settled. */
@@ -87,6 +93,7 @@ async function cut(url, ready) {
   if (ready) await ready().catch(note(`ready ${url.slice(-30)}`));
   else await page.waitForLoadState("networkidle").catch(() => {});
   await sleep(350);
+  if (Date.now() >= critUntil) await fx({ crit: "" }); // in case the page changed just as the criterion was due to leave
   await fx({ curtain: 0 });
   await sleep(420);
   await progress();

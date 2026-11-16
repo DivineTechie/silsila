@@ -2,7 +2,8 @@
 
 One film, in English, made automatically: animated graphics scenes cut together with the **live site**, driven
 in a real browser in time with a synthetic voiceover. It is built so that a judge who never opens the site can
-still see each of the six judging criteria answered: the scene's criterion is named on screen while it plays.
+still see each of the six judging criteria answered: the criterion is named on screen for a few seconds as each
+scene begins, and the film ends on a scorecard of all six.
 
 What is on screen in the product scenes is the application itself with its fictional demo families. Nothing is
 staged except the order of the clicks. The label **"RECORDED · fictional families · synthetic voice (Azure)"**
@@ -23,7 +24,7 @@ not yet shown.
 
 ## Scene by scene
 
-| Scene | Criterion named on screen | Source |
+| Scene | Criterion named as it begins | Source |
 |---|---|---|
 | The claim; the gap in numbers; the step after the result | 1 Health impact and clinical relevance | graphics |
 | One result travelling through a family: 13 steps of Watch a cascade, with the relative's link shown in Arabic | 3 Working solution | live site |
