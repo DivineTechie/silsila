@@ -3,6 +3,11 @@
 // The Family Twin 3D scene (three.js). Women are spheres and men are cubes (pedigree convention); colour shows
 // the engine's exact carrier chance; cousin marriages glow gold. When chances change, the new colours ripple
 // outward from the person whose result was recorded, in order of family distance.
+//
+// The picture explains itself: every person carries their chance as a number, the newborn and anyone with a
+// recorded result carry a name and a tag, generations are labelled down the side, and a key sits in the
+// corner. Labels are HTML placed over the canvas each frame; they thin out when people are too close together
+// on screen (a phone, or zoomed out) and fill in as the viewer zooms in.
 
 // The scene graph is imperative (three.js objects live in a ref and are mutated by the render loop), so the
 // compiler's immutability rule does not apply to it.
@@ -25,6 +30,11 @@ interface Props {
   label: string;
   names: Record<string, string>; // display names in the current language
   affectedLabel: string;
+  /** Short tags shown with a name: the newborn, people tested before, results recorded here. */
+  tags: Record<string, string>;
+  /** Words for the key and the generation labels, in the current language. */
+  words: { key: string; low: string; high: string; woman: string; man: string; cousin: string; newborn: string; carrier: string;
+    clear: string; deceased: string; hint: string; generation: (g: number) => string };
 }
 
 const STOPS: [number, THREE.Color][] = [
@@ -59,9 +69,13 @@ interface Node {
   ring?: THREE.Mesh;
 }
 
+interface LabelEl { root: HTMLDivElement; tag: HTMLSpanElement; name: HTMLSpanElement; pct: HTMLSpanElement }
+
 export function TwinScene(props: Props) {
   const wrap = useRef<HTMLDivElement>(null);
   const tip = useRef<HTMLDivElement>(null);
+  const labelLayer = useRef<HTMLDivElement>(null);
+  const labels = useRef<Map<string, LabelEl>>(new Map());
   const api = useRef<{
     nodes: Map<string, Node>;
     pos: Map<string, THREE.Vector3>;
@@ -89,8 +103,8 @@ export function TwinScene(props: Props) {
     renderer.domElement.setAttribute("aria-hidden", "true");
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog("#071719", 30, 70);
-    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 200);
+    scene.fog = new THREE.Fog("#071719", 60, 160);
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 400);
     scene.add(new THREE.AmbientLight("#ffffff", 0.55));
     const key = new THREE.DirectionalLight("#fff3dc", 1.1);
     key.position.set(8, 14, 12);
@@ -104,13 +118,16 @@ export function TwinScene(props: Props) {
       people: clan.people.map((p) => ({ id: p.id, sex: p.sex, mother: p.mother, father: p.father })),
       unions: clan.unions.map((u) => ({ a: u.a, b: u.b })),
     });
+    // A shallow arc: enough depth to read as a family standing together, never so much that the ends of a
+    // wide generation curl out of sight.
     const W = Math.max(layout.width, 1);
-    const ARC = 1.5;
-    const R = (W * 1.05) / ARC;
+    const ARC = 0.55;
+    const R = (W * 1.4) / ARC;
+    const ROW = 3.5;
     const pos = new Map<string, THREE.Vector3>();
     for (const p of clan.people) {
       const a = ((layout.x[p.id] ?? 0) - W / 2) / W * ARC;
-      const y = (layout.depth / 2 - (layout.gen[p.id] ?? 0)) * 2.6;
+      const y = (layout.depth / 2 - (layout.gen[p.id] ?? 0)) * ROW;
       pos.set(p.id, new THREE.Vector3(R * Math.sin(a), y, -R * (1 - Math.cos(a))));
     }
 
@@ -191,20 +208,66 @@ export function TwinScene(props: Props) {
     selRing.visible = false;
     group.add(selRing);
 
-    // camera and controls
+    // camera and controls: frame the whole clan, whatever the shape of the window
     const box = new THREE.Box3().setFromObject(group);
     const centre = box.getCenter(new THREE.Vector3());
     const size = box.getSize(new THREE.Vector3());
     group.position.sub(centre);
-    camera.position.set(0, size.y * 0.1, Math.max(size.x * 0.78, size.y * 1.45) + 4);
+    const LOOK_Y = -0.8; // look a little below the middle: the bottom row's labels hang under it
+    let fitDist = 30;
+    let touched = false; // the viewer has taken the camera; stop framing and swaying for them
+    const frame = () => {
+      const half = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+      const byHeight = (size.y / 2 + 2.9) / half;
+      const byWidth = (size.x / 2 + 2.2) / (half * camera.aspect);
+      fitDist = Math.max(byHeight, byWidth) + size.z / 2;
+      if (!touched) camera.position.set(0, LOOK_Y + size.y * 0.04, fitDist);
+    };
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
     controls.minDistance = 6;
-    controls.maxDistance = 70;
-    controls.autoRotate = !latest.current.reducedMotion;
-    controls.autoRotateSpeed = 0.35;
-    controls.addEventListener("start", () => (controls.autoRotate = false));
+    controls.maxDistance = 220;
+    controls.target.set(0, LOOK_Y, 0);
+    controls.addEventListener("start", () => (touched = true));
+
+    // labels: one per person, placed over the canvas each frame
+    const layer = labelLayer.current!;
+    layer.replaceChildren();
+    labels.current.clear();
+    for (const p of clan.people) {
+      const root = document.createElement("div");
+      root.className = "tw-label";
+      const tag = document.createElement("span");
+      tag.className = "tw-tag";
+      const name = document.createElement("span");
+      name.className = "tw-name";
+      const pc = document.createElement("span");
+      pc.className = "tw-pct";
+      root.append(tag, name, pc);
+      layer.appendChild(root);
+      labels.current.set(p.id, { root, tag, name, pct: pc });
+    }
+    const nGen = new Set(clan.people.map((p) => layout.gen[p.id] ?? 0)).size;
+    const genEls: HTMLDivElement[] = [];
+    for (let g = 0; g < nGen; g++) {
+      const d = document.createElement("div");
+      d.className = "tw-gen";
+      d.textContent = latest.current.words.generation(g + 1);
+      layer.appendChild(d);
+      genEls.push(d);
+    }
+    const order = clan.people.map((p) => p.id).sort((a, b) => (layout.gen[a] ?? 0) - (layout.gen[b] ?? 0) || (layout.x[a] ?? 0) - (layout.x[b] ?? 0));
+    // the two people who stand closest together decide how much text fits
+    const xs = clan.people.map((p) => ({ id: p.id, g: layout.gen[p.id] ?? 0, x: layout.x[p.id] ?? 0 })).sort((a, b) => a.g - b.g || a.x - b.x);
+    let tight: [string, string] | null = null;
+    let best = Infinity;
+    for (let i = 1; i < xs.length; i++) {
+      if (xs[i].g === xs[i - 1].g && xs[i].x - xs[i - 1].x < best) {
+        best = xs[i].x - xs[i - 1].x;
+        tight = [xs[i - 1].id, xs[i].id];
+      }
+    }
 
     api.current = { nodes, pos, group, originGroup, ringGroup, selRing, controls, camera };
 
@@ -253,6 +316,7 @@ export function TwinScene(props: Props) {
       renderer.setSize(w, h);
       camera.aspect = w / Math.max(h, 1);
       camera.updateProjectionMatrix();
+      frame();
     };
     const ro = new ResizeObserver(resize);
     ro.observe(el);
@@ -280,8 +344,60 @@ export function TwinScene(props: Props) {
         if (o.userData.spin) o.rotation.y = t * 0.8;
       });
       selRing.rotation.y = t * 1.5;
+      if (!touched && !latest.current.reducedMotion) {
+        // a slow sway, so the depth reads without the family ever turning edge-on
+        const a = 0.2 * Math.sin(t * 0.28);
+        camera.position.set(fitDist * Math.sin(a), LOOK_Y + size.y * 0.04, fitDist * Math.cos(a));
+      }
       controls.update();
       renderer.render(scene, camera);
+
+      // place the labels
+      const w = el.clientWidth;
+      const h = el.clientHeight;
+      const v = new THREE.Vector3();
+      const toScreen = (at: THREE.Vector3, dy: number) => {
+        v.copy(at).add(group.position);
+        v.y += dy;
+        v.project(camera);
+        return { x: (v.x * 0.5 + 0.5) * w, y: (-v.y * 0.5 + 0.5) * h };
+      };
+      let gap = 999;
+      if (tight) {
+        const a = toScreen(pos.get(tight[0])!, 0);
+        const b = toScreen(pos.get(tight[1])!, 0);
+        gap = Math.abs(b.x - a.x);
+      }
+      // 0: only the people the story is about; 1: plus everyone's number; 2: plus everyone's name
+      layer.dataset.detail = gap > 62 ? "2" : gap > 27 ? "1" : "0";
+      const detail = layer.dataset.detail;
+      const lastKeyX = new Map<number, number>(); // per generation: where the last named label was placed
+      for (const id of order) {
+        const l = labels.current.get(id)!;
+        const named = l.root.dataset.key === "1" || detail === "2";
+        const g = layout.gen[id] ?? 0;
+        const below = toScreen(pos.get(id)!, -0.72);
+        // two named neighbours (a tested couple): the second label goes above its person, so they do not collide
+        const crowded = named && lastKeyX.has(g) && Math.abs(below.x - lastKeyX.get(g)!) < 96;
+        if (named) lastKeyX.set(g, crowded ? -9999 : below.x);
+        if (crowded) {
+          const above = toScreen(pos.get(id)!, 0.72);
+          l.root.style.transform = `translate(${above.x.toFixed(1)}px, ${above.y.toFixed(1)}px) translate(-50%, -100%)`;
+        } else {
+          l.root.style.transform = `translate(${below.x.toFixed(1)}px, ${below.y.toFixed(1)}px) translate(-50%, 0)`;
+        }
+      }
+      const leftmost = new Map<number, THREE.Vector3>();
+      for (const p of clan.people) {
+        const g = layout.gen[p.id] ?? 0;
+        const at = pos.get(p.id)!;
+        if (!leftmost.has(g) || at.x < leftmost.get(g)!.x) leftmost.set(g, at);
+      }
+      genEls.forEach((d, g) => {
+        const at = leftmost.get(g);
+        if (!at) return;
+        d.style.transform = `translate(10px, ${(toScreen(at, 0).y - 9).toFixed(1)}px)`;
+      });
       raf = requestAnimationFrame(tick);
     };
     tick();
@@ -302,6 +418,7 @@ export function TwinScene(props: Props) {
       });
       renderer.dispose();
       el.removeChild(renderer.domElement);
+      layer.replaceChildren();
       api.current = null;
     };
   }, [props.clan]);
@@ -323,6 +440,23 @@ export function TwinScene(props: Props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.probs, props.rippleFrom]);
+
+  // what each label says: the chance as a number, and a name and tag for the people the story is about
+  useEffect(() => {
+    const { probs, clan, names, tags, selected, affectedLabel } = props;
+    for (const p of clan.people) {
+      const l = labels.current.get(p.id);
+      if (!l) continue;
+      const affected = p.status === "affected";
+      l.name.textContent = `${names[p.id] ?? p.name}${p.deceased ? " †" : ""}`;
+      l.pct.textContent = affected ? "" : probs ? pct(probs[p.id] ?? 0) : "…";
+      l.tag.textContent = tags[p.id] ?? "";
+      l.root.dataset.key = tags[p.id] || selected === p.id ? "1" : "0";
+      l.root.dataset.kind = affected ? "affected" : tags[p.id] ? "tagged" : "plain";
+      l.root.title = affected ? affectedLabel : "";
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.probs, props.names, props.tags, props.selected, props.clan]);
 
   // rings on tested people, and the selection ring
   useEffect(() => {
@@ -376,14 +510,36 @@ export function TwinScene(props: Props) {
     a.originGroup.add(halo);
   }, [props.origin]);
 
+  const w = props.words;
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-2xl" role="img" aria-label={props.label}>
-      <div ref={wrap} className="absolute inset-0" />
-      <div
-        ref={tip}
-        className="pointer-events-none absolute left-0 top-0 rounded-md bg-black/75 px-2 py-1 text-xs text-white opacity-0 transition-opacity"
-        style={{ willChange: "transform" }}
-      />
+    <div className="tw-scene flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#071719]" role="img" aria-label={props.label}>
+      <div className="relative min-h-0 flex-1">
+        <div ref={wrap} className="absolute inset-0" />
+        <div ref={labelLayer} className="tw-labels pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true" data-detail="0" />
+        <p className="pointer-events-none absolute end-3 top-3 rounded-md bg-black/45 px-2 py-1 text-[0.7rem] text-white/80 max-sm:hidden" aria-hidden="true">{w.hint}</p>
+        <div
+          ref={tip}
+          className="pointer-events-none absolute left-0 top-0 z-10 rounded-md bg-black/85 px-2 py-1 text-xs text-white opacity-0 transition-opacity"
+          style={{ willChange: "transform" }}
+        />
+      </div>
+      {/* The key sits under the picture, never over the family. */}
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-white/10 px-4 py-2.5 text-[0.72rem] leading-tight text-white/90" aria-hidden="true">
+        <span className="flex items-center gap-2">
+          <span className="text-white/70">{w.low}</span>
+          <span dir="ltr">0%</span>
+          <span className="h-2.5 w-24 rounded-full" style={{ background: "linear-gradient(90deg,#1d3836,#25625c,#3fa293,#b7c25e,#f0a93a,#ff8547,#fff1d6)" }} />
+          <span dir="ltr">100%</span>
+          <span className="text-white/70">{w.high}</span>
+        </span>
+        <span className="flex items-center gap-1.5"><span className="inline-block h-2.5 w-2.5 rounded-full bg-[#f0a93a]" />{w.woman}</span>
+        <span className="flex items-center gap-1.5"><span className="inline-block h-2.5 w-2.5 bg-[#f0a93a]" />{w.man}</span>
+        <span className="flex items-center gap-1.5"><span className="inline-block h-1 w-4 rounded bg-[#f2c14e]" />{w.cousin}</span>
+        <span className="flex items-center gap-1.5"><span className="inline-block h-2.5 w-2.5 rounded-sm bg-[#ff3d7a] ring-2 ring-[#ff3d7a]/50" />{w.newborn}</span>
+        <span className="flex items-center gap-1.5"><span className="inline-block h-2.5 w-2.5 rounded-full border-2 border-[#f2c14e]" />{w.carrier}</span>
+        <span className="flex items-center gap-1.5"><span className="inline-block h-2.5 w-2.5 rounded-full border-2 border-[#bfe9e3]" />{w.clear}</span>
+        <span className="flex items-center gap-1.5"><span className="inline-block h-2.5 w-2.5 rounded-full bg-white/35" />{w.deceased}</span>
+      </div>
     </div>
   );
 }

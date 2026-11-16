@@ -74,6 +74,21 @@ export default function TwinPage() {
     [clan, lang],
   );
   const names = useMemo(() => Object.fromEntries([...byId.values()].map((p) => [p.id, p.name])), [byId]);
+  // Who gets a name and a tag in the scene: the newborn, the people tested before, and results recorded here.
+  const tags = useMemo(() => {
+    const out: Record<string, string> = {};
+    for (const p of clan?.people || []) {
+      if (p.status === "affected") out[p.id] = t("tw.tagNewborn");
+      else if (p.test) out[p.id] = p.test.detected.length ? t("tw.keyCarrier") : t("tw.keyClear");
+    }
+    for (const [id, r] of Object.entries(results)) out[id] = r === "clear" ? t("tw.keyClear") : t("tw.keyCarrier");
+    return out;
+  }, [clan, results, t]);
+  const words = useMemo(() => ({
+    key: t("tree.legend"), low: t("tw.legendLow"), high: t("tw.legendHigh"), woman: t("tw.keyWoman"), man: t("tw.keyMan"),
+    cousin: t("tw.legendGold"), newborn: t("tw.keyNewborn"), carrier: t("tw.keyCarrier"), clear: t("tw.keyClear"),
+    deceased: t("tw.keyDeceased"), hint: t("tw.hint"), generation: (g: number) => t("tw.genShort", { g }),
+  }), [t]);
   const nGen = useMemo(() => new Set((clan?.people || []).map((p) => p.generation)).size, [clan]);
   const probs = calc?.status === "ok" ? calc.p_carrier! : null;
   const origin = useMemo(() => (clan && probs && showOrigin ? originPath(clan, probs) : null), [clan, probs, showOrigin]);
@@ -150,9 +165,11 @@ export default function TwinPage() {
         )}
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
-        <div className="grid gap-3">
-          <div className="h-[58vh] min-h-[360px] lg:h-[72vh]">
+      <div className="mt-6 grid gap-4 [&>*]:min-w-0">
+        {/* The scene takes the full width: a generation of 25 people needs the room. The person you pick
+            opens in a card over the corner of the scene (below it on a phone). */}
+        <div className="relative">
+          <div className="h-[46vh] min-h-[300px] sm:aspect-[16/9] sm:h-auto sm:min-h-0 sm:max-h-[82vh] sm:w-full">
             <TwinScene
               clan={clan}
               probs={probs}
@@ -165,57 +182,21 @@ export default function TwinPage() {
               label={t("tw.sceneLabel")}
               names={names}
               affectedLabel={t("tw.affected")}
+              tags={tags}
+              words={words}
             />
           </div>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-ink-2">
-            <span className="flex items-center gap-2">
-              <span className="h-2.5 w-24 rounded-full" style={{ background: "linear-gradient(90deg,#1d3836,#25625c,#3fa293,#b7c25e,#f0a93a,#ff8547,#fff1d6)" }} aria-hidden="true" />
-              {t("tw.legendLow")} → {t("tw.legendHigh")}
-            </span>
-            <span className="flex items-center gap-2"><span className="h-1 w-6 rounded bg-[#f2c14e]" aria-hidden="true" />{t("tw.legendGold")}</span>
-            <span>● ♀ · ■ ♂</span>
-            <Button size="sm" variant="quiet" onClick={() => setTable((x) => !x)}>{table ? t("tw.tableHide") : t("tw.table")}</Button>
-          </div>
-          {calc?.status === "inconsistent" && <Notice role="alert">{t("tw.inconsistent")}</Notice>}
-          {error ? <ErrorBox error={error} /> : null}
-          {table && probs && (
-            <div className="max-h-96 overflow-auto rounded-xl border border-line" tabIndex={0} role="region" aria-label={t("tw.table")}>
-              <table className="w-full text-sm">
-                <thead className="sticky top-0 bg-surface-2 text-xs uppercase tracking-wide text-muted">
-                  <tr><th className="px-3 py-2 text-start">{t("tw.colPerson")}</th><th className="px-3 py-2 text-start">{t("tw.colGen")}</th><th className="px-3 py-2 text-start">{t("tw.colChance")}</th></tr>
-                </thead>
-                <tbody>
-                  {[...byId.values()].sort((a, b) => (probs[b.id] ?? 0) - (probs[a.id] ?? 0)).map((p) => (
-                    <tr key={p.id} className={cx("border-t border-line", selected === p.id && "bg-accent-soft")}>
-                      <td className="px-3 py-1.5">
-                        <button type="button" className="text-start underline-offset-4 hover:underline" onClick={() => setSelected(p.id)}>
-                          {p.name}{p.deceased ? ` (${t("tw.deceased").toLowerCase()})` : ""}
-                        </button>
-                      </td>
-                      <td className="px-3 py-1.5"><Num>{p.generation + 1}</Num></td>
-                      <td className="px-3 py-1.5"><Num>{p.status === "affected" ? t("tw.affected") : pct(probs[p.id] ?? 0)}</Num>{results[p.id] ? ` · ${results[p.id] === "clear" ? t("tw.clearFound") : t("tw.carrierFound", { v: results[p.id] })}` : ""}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
-
-        <div className="grid content-start gap-4">
-          <Card>
-            {!sel ? (
-              <p className="text-sm text-ink-2">{t("tw.pick")}</p>
-            ) : (
-              <div>
+          <div className="mt-3 sm:absolute sm:start-3 sm:top-3 sm:mt-0 sm:w-80 sm:max-w-[calc(100%-1.5rem)]" aria-live="polite">
+            {sel ? (
+              <div className="rounded-xl border border-line bg-surface p-4 shadow-lg">
                 <div className="flex items-start justify-between gap-2">
                   <H2>{sel.name}</H2>
-                  <Button size="sm" variant="quiet" onClick={() => setSelected(null)} aria-label="Close">×</Button>
+                  <Button size="sm" variant="quiet" onClick={() => setSelected(null)} aria-label={t("tw.close")}>×</Button>
                 </div>
                 <p className="mt-1 text-sm text-muted">
                   {t("tw.gen", { g: sel.generation + 1, n: nGen })}{sel.deceased ? ` · ${t("tw.deceased")}` : ""}
                 </p>
-                <div className="mt-3 flex items-center gap-2">
+                <div className="mt-3 flex flex-wrap items-center gap-2">
                   <Prov kind={fixed ? "recorded" : "calculated"} />
                   <span className="text-sm text-ink-2">{t("tw.chance")}:</span>
                   <span className="text-2xl font-semibold tabular-nums">
@@ -232,10 +213,41 @@ export default function TwinPage() {
                   </div>
                 )}
               </div>
+            ) : (
+              <p className="rounded-xl bg-black/55 px-3 py-2 text-sm text-white backdrop-blur-sm max-sm:bg-surface max-sm:text-ink-2 max-sm:backdrop-blur-none">{t("tw.pick")}</p>
             )}
-            {nextNames.length > 0 && <p className="mt-4 border-t border-line pt-3 text-xs text-muted">{t("tw.next", { names: nextNames.join(lang === "ar" ? "، " : ", ") })}</p>}
-          </Card>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2 text-xs text-ink-2">
+          <span>{t("tw.readIt")}</span>
+          <Button size="sm" variant="quiet" onClick={() => setTable((x) => !x)}>{table ? t("tw.tableHide") : t("tw.table")}</Button>
+        </div>
+        {calc?.status === "inconsistent" && <Notice role="alert">{t("tw.inconsistent")}</Notice>}
+        {error ? <ErrorBox error={error} /> : null}
+        {table && probs && (
+          <div className="max-h-96 overflow-auto rounded-xl border border-line" tabIndex={0} role="region" aria-label={t("tw.table")}>
+            <table className="w-full text-sm">
+              <thead className="sticky top-0 bg-surface-2 text-xs uppercase tracking-wide text-muted">
+                <tr><th className="px-3 py-2 text-start">{t("tw.colPerson")}</th><th className="px-3 py-2 text-start">{t("tw.colGen")}</th><th className="px-3 py-2 text-start">{t("tw.colChance")}</th></tr>
+              </thead>
+              <tbody>
+                {[...byId.values()].sort((a, b) => (probs[b.id] ?? 0) - (probs[a.id] ?? 0)).map((p) => (
+                  <tr key={p.id} className={cx("border-t border-line", selected === p.id && "bg-accent-soft")}>
+                    <td className="px-3 py-1.5">
+                      <button type="button" className="text-start underline-offset-4 hover:underline" onClick={() => setSelected(p.id)}>
+                        {p.name}{p.deceased ? ` (${t("tw.deceased").toLowerCase()})` : ""}
+                      </button>
+                    </td>
+                    <td className="px-3 py-1.5"><Num>{p.generation + 1}</Num></td>
+                    <td className="px-3 py-1.5"><Num>{p.status === "affected" ? t("tw.affected") : pct(probs[p.id] ?? 0)}</Num>{results[p.id] ? ` · ${results[p.id] === "clear" ? t("tw.clearFound") : t("tw.carrierFound", { v: results[p.id] })}` : ""}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
 
+        <div className="grid items-start gap-4 lg:grid-cols-3 [&>*]:min-w-0">
           <Card>
             <div className="flex items-center justify-between gap-2">
               <h2 className="text-base font-semibold">{t("tw.results")}</h2>
@@ -256,6 +268,7 @@ export default function TwinPage() {
                 ))}
               </ul>
             )}
+            {nextNames.length > 0 && <p className="mt-4 border-t border-line pt-3 text-xs text-muted">{t("tw.next", { names: nextNames.join(lang === "ar" ? "، " : ", ") })}</p>}
           </Card>
 
           <Card>
@@ -307,8 +320,8 @@ export default function TwinPage() {
             <p className="mt-4 border-t border-line pt-3 text-xs text-muted">{t("tw.raceNote")}</p>
           </Card>
 
-          <p className="text-xs text-muted">{t("tw.honesty")}</p>
         </div>
+        <p className="text-xs text-muted">{t("tw.honesty")}</p>
       </div>
     </Page>
   );

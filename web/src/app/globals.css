@@ -139,3 +139,21 @@ html[lang="ar"] body {
 .cascade-ring { transform-box: fill-box; transform-origin: center; animation: cascade-pop 700ms ease-out both; }
 @keyframes cascade-pop { from { opacity: 0; transform: scale(1.6); } to { opacity: 1; transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) { .cascade-ring { animation: none; } }
+
+/* Family Twin: labels placed over the 3D scene (see components/twin/TwinScene.tsx). */
+.tw-label { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; align-items: center; gap: 1px;
+  white-space: nowrap; font-size: 11px; line-height: 1.15; color: #fff; text-shadow: 0 1px 2px #000, 0 0 6px #071719; will-change: transform; }
+.tw-label .tw-pct { font-variant-numeric: tabular-nums; font-weight: 600; direction: ltr; }
+.tw-label .tw-name { font-weight: 600; }
+.tw-label .tw-tag { order: 3; margin-top: 1px; padding: 1px 6px; border-radius: 999px; background: rgba(242, 193, 78, 0.92); color: #1b1503;
+  font-size: 10px; font-weight: 700; text-shadow: none; }
+.tw-label .tw-tag:empty { display: none; }
+.tw-label[data-kind="affected"] .tw-tag { background: #ff3d7a; color: #fff; }
+/* How much text fits depends on how close people stand on screen. */
+.tw-labels[data-detail="0"] .tw-label[data-key="0"] { display: none; }
+.tw-labels[data-detail="1"] .tw-label[data-key="0"] .tw-name { display: none; }
+.tw-labels[data-detail="0"] .tw-label[data-key="1"] { z-index: 2; }
+.tw-gen { position: absolute; left: 0; top: 0; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55); white-space: nowrap; }
+[dir="rtl"] .tw-gen { letter-spacing: 0; }
+@media (max-width: 640px) { .tw-gen { display: none; } }
