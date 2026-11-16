@@ -1,0 +1,57 @@
+{
+ "title": "Family Twin: recalculation time on the hosted server",
+ "measured": "2026-11-16",
+ "method": "POST /api/twin/what-if on the hosted API (Azure Container Apps, UAE North, 2 vCPU / 4 GiB, one replica), straight after a redeploy. 'server_ms' is the engine time the API reports and the page shows; 'round_trip_ms' also includes the network from the measuring laptop (outside the UAE), so it is specific to that connection. 61 people, six cousin marriages, exact inference.",
+ "first_call_after_redeploy": {
+  "server_ms": 1038.7,
+  "round_trip_ms": 1281
+ },
+ "warm_no_extra_results": {
+  "runs": 20,
+  "server_ms": {
+   "median": 719,
+   "min": 678,
+   "max": 756
+  },
+  "round_trip_ms": {
+   "median": 905,
+   "min": 867,
+   "max": 931
+  }
+ },
+ "warm_one_recorded_result": {
+  "runs": 20,
+  "server_ms": {
+   "median": 877,
+   "min": 701,
+   "max": 1120
+  },
+  "round_trip_ms": {
+   "median": 1102,
+   "min": 876,
+   "max": 1329
+  }
+ },
+ "warm_cascade_race_1_to_15_results": {
+  "runs": 15,
+  "server_ms": {
+   "median": 1117,
+   "min": 713,
+   "max": 1171
+  },
+  "round_trip_ms": {
+   "median": 1296,
+   "min": 942,
+   "max": 1368
+  }
+ },
+ "laptop_in_process": {
+  "note": "Same calculation run in process on the development laptop (Apple silicon), no network.",
+  "first_ms": 240,
+  "then_median_ms": 121,
+  "min_ms": 120,
+  "max_ms": 130,
+  "runs": 20
+ },
+ "reading": "On the hosted server a recalculation takes about 0.7 s with no extra results and about 0.9 s (0.7 to 1.2 s) once results are recorded; the first call after a restart took 1.0 s. An earlier README said 'under a second, about 0.7 s hosted'; that was true only for the no-extra-results case."
+}

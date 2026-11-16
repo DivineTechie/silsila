@@ -17,33 +17,59 @@ Prototype with fictional families. Not for clinical use.
 ## For judges: try it in two minutes
 
 **Live (Azure UAE North):** https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io. No
-password is needed: the home page has one-click roles.
+password is needed: the home page has one-click roles. English and Arabic (button in the header); on a phone
+the page links are in the menu.
 
-0. **Watch a cascade** (first button on the home page): one newborn's result travelling through a fictional
+1. **Watch a cascade** (first button on the home page): one newborn's result travelling through a fictional
    family in 13 live steps: exact risk for every relative, Mariam's permission, an anonymous invitation,
    counsellor approval, the relative's private link and comprehension check, the options before or during a
    pregnancy quoted word for word from MedlinePlus (described, never recommended), booking, a pregnancy
-   question routed to a person, the test result closing the case, and the output gate blocking AI-written
-   advice.
-   Beside the family tree: what each person sees, and the hash-chained audit entries the step created.
-   Each run uses its own fresh copy of the family.
-1. **Family Twin** (top menu): a fictional, simulated five-generation clan in 3D. Click anyone, record a
-   test result, and watch every relative's exact carrier chance update across six cousin marriages in under a second
-   (about 0.15 s on a laptop, 0.7 s on the hosted server). Press "Where did it come from?" to see the most likely line of descent, or play the cascade
-   race.
-2. **Mariam** (family): newborn screening found classic CAH in her son. She gives permission and invites her
+   question routed to a person, the test result closing the case, the output gate blocking AI-written
+   advice, and the measures for that run. Beside the family tree: what each person sees, and the
+   hash-chained audit entries the step created. Each run uses its own fresh copy of the family, and every
+   step follows the language you choose, including a switch mid-run.
+2. **Family Twin** (top menu): a fictional, simulated five-generation clan of 61 people in 3D. Click anyone,
+   record a test result, and watch every relative's exact carrier chance update across six cousin marriages.
+   Measured on the hosted server on 16 Nov: 0.7 s with no extra results, a median of 0.9 s (0.7 to 1.2 s)
+   once results are recorded, 1.0 s on the first call after a restart; about 0.12 s on a laptop
+   ([record](docs/evidence/twin_hosted_timing.json)). Press "Where did it come from?" to see the most likely
+   line of descent, or play the cascade race.
+3. **A relative receiving a link** (home page role): the anonymous invitation as a relative sees it. Every
+   text has a **Listen** button (a synthetic voice, labelled, reading exactly the approved or quoted text, in
+   Arabic or English), then common questions answered in quoted source text, a comprehension check and
+   booking.
+4. **Mariam** (family): newborn screening found classic CAH in her son. She gives permission and invites her
    pregnant sister Noura anonymously.
-3. **Genetic counsellor**: the invitation tops the queue because of the pregnancy. Approve it. Then open
-   **Voice intake**: a family story in Emirati Arabic becomes a draft tree (Jais-ASR, then Jais 3), the
-   counsellor fixes what the checks flag, and only then does the engine calculate. Below it, the same
-   question put to five language models shows why Silsila never lets a model compute risk.
-4. **A relative receiving a link**: the anonymous invitation as a relative sees it, with sourced
-   information, a comprehension check and booking.
-5. **Evidence** (top menu): every number with its source, the benchmarks, and a scenario calculator for
-   programme scale. "Reset the demo data" in the counsellor's audit tab starts again.
-6. **Outcomes** (counsellor console): the challenge's measures (comprehension, uptake, time to counselling,
-   privacy, equity by language) computed live from what you just did. Marriages and reproductive choices are
-   never measured as success.
+5. **Genetic counsellor**: the invitation tops the queue because of the pregnancy. Approve it. In **Cases**,
+   import an index result from a FHIR R4B record (load the fictional sample, check it, create the case; then
+   change `"final"` to `"preliminary"` and see it refused with the reason). In **Voice intake**, a family
+   story in Emirati Arabic becomes a draft tree (Jais-ASR, then Jais 3; a recorded run), the counsellor fixes
+   what the checks flag, and only then does the engine calculate. **Outcomes** shows the challenge's
+   measures (comprehension, uptake, time to counselling, privacy, equity by language) computed live from
+   what you just did. Marriages and reproductive choices are never measured as success. "Reset the demo
+   data" is in the audit tab.
+6. **Evidence** (top menu): every number with its source, the benchmarks, the announced UAE programmes
+   Silsila connects to, and a scenario calculator for programme scale.
+7. **Ask about Silsila** (button in the bottom corner of every public page): a guide that answers questions
+   about the tool. It is not a language model: it matches your question to one of 24 fixed answers and, for
+   most, runs a real lookup and shows the values with their sources (try "What is the chance for a cousin
+   with thalassaemia?", "Does AI write what families read?", "Where does it run, and how fast is it?"). It
+   says so when it has no answer, and it does not answer personal or medical questions.
+
+**Film (about three minutes, English and Arabic):** a scripted recording of the live site with a synthetic
+voiceover, labelled as recorded. The script, narration and build steps are in [`tools/film/`](tools/film/README.md);
+the video files are built locally and are not in the repository.
+
+### The six judging criteria: where to look, what was measured, what is not yet shown
+
+| Criterion | Open | Measured | Not yet shown |
+|---|---|---|---|
+| Health impact and clinical relevance | Watch a cascade: a newborn's result reaches a pregnant sister | In simulation, Silsila's order found 51 at-risk couples per 1,000 tests against 33 unranked for CAH (ratio 1.53, 95% CI 1.29-1.85); all four published yields of the NEJM 2002 family-screening study fall inside the simulated range | No patients. Yields are projections from simulated families; uptake and comprehension need a pilot |
+| Technical depth | Family Twin; Evidence | 30,000 of 30,000 probabilities match an independent exact solver; 0 silent failures in 237 malformed inputs; a pre-registered benchmark of five language models on 150 families | Three genes with published UAE data; other conditions are refused, not estimated |
+| Working solution and demo quality | Each role on the home page | Every step runs the real service, from consent to closure with evidence; FHIR import and export; 0 accessibility violations on every screen in English and Arabic (axe-core); 197 backend tests | Voice intake on the hosted site replays one recorded run |
+| Responsible AI, safety and data governance | Watch a cascade, steps 10 and 12; [hazard log](docs/governance/hazard-log.md); [DoH RAI clause map](docs/governance/doh-rai-clause-map.md) | 0 disclosures in 10,000 unauthorised requests; crisis-message alert sensitivity 0.961 (95% CI 0.890-0.986) with every message read by a person; read-aloud tied to the exact approved text by hash | Arabic is machine translation, not yet reviewed by a native-speaking clinician; no genetic counsellor has reviewed the templates; no clip has been checked by a native listener |
+| Scalability and deployment readiness | Evidence: engine latency; [deployment notes](docs/deployment.md) | Running in Azure UAE North on CPU with no language model at run time; median 173 ms for a 60-person family in the benchmark; index results arrive and leave as FHIR R4B | Demo storage is SQLite with one replica; UAE PASS and a managed database come with a pilot |
+| Commercial viability and path to pilot | Evidence: announced programmes, scenario calculator; [commercial case](docs/commercial-case.md); [pilot protocol](docs/pilot-protocol.md) | The buyer already produces the index events (565 incompatible couples among 11,748 tested; more than 100 babies identified by newborn screening in the past year; reported figures); 9 practising genetic counsellors in the UAE | No price is validated and no programme has asked for cascade testing; the pilot protocol is a proposal |
 
 ## Why this matters
 
@@ -124,6 +150,11 @@ All evidence is on synthetic data and is reproducible (`docs/evidence/README.md`
 | Arabic translations of quoted text, three independent systems compared | Numbers preserved 76/76; 7 flagged for first clinical review |
 | Engine latency, 60-person family with cousin loops | median 173 ms |
 | Accessibility, axe-core on every screen (English light desktop, Arabic dark phone) | 0 violations ([record](docs/evidence/accessibility.md)) |
+| FHIR import of an index result: 22 kinds of malformed or unsafe record, and each of the sample's 116 fields deleted in turn | 0 crashes and 0 silent failures: each is read, or refused with the reason and audited |
+| Readability of the English text a relative can be shown (Flesch-Kincaid grade) | Silsila's own wording 6.9; the quoted MedlinePlus text 13.4, a college reading level, which is why it can be read aloud ([details](docs/evidence/README.md)) |
+| Read-aloud clips (synthetic voice, Azure AI Speech), English and Arabic | 74 clips, 33.3 minutes, each attached only to the exact text it reads (SHA-256); none yet checked by a native listener |
+| "Ask about Silsila" guide: every listed question in English and Arabic, 28 rewordings, 8 off-topic and 8 personal or urgent questions | Each reaches its answer, an honest "no answer", or a refusal with the counsellor and 998/999 wording; 0 calls to any model or outside service |
+| Family Twin recalculation on the hosted server (61 people, six cousin marriages) | 0.7 s with no extra results; median 0.9 s (0.7-1.2 s) with recorded results ([record](docs/evidence/twin_hosted_timing.json)) |
 
 ### Silsila-Bench: where language models can be trusted inside Silsila
 
@@ -170,8 +201,8 @@ Open http://localhost:3000. Demo users: `mariam` (family, newborn with CAH), `re
 Suggested walkthrough: sign in as `mariam`, open the family tree, give permission to inform relatives, invite
 Noura anonymously; sign in as `counsellor`, see the pregnancy at the top of the queue, approve; open the
 invitation link as the relative (switch to Arabic), complete the comprehension check and book; back in the
-console, record the result, try the two demonstration tools (blocked unapproved text, audit tampering) and
-export FHIR.
+console, record the result, try the two demonstration tools (blocked unapproved text, audit tampering),
+export FHIR, and import the fictional index result in the Cases tab.
 
 Tests and benchmarks:
 
@@ -181,6 +212,10 @@ cd backend && uv run pytest -q
 
 ```bash
 cd backend && uv run python -m bench.run_all
+```
+
+```bash
+cd web && npx next typegen && npx tsc --noEmit && npm run lint && npm run build
 ```
 
 ## Run with Docker or deploy
@@ -204,11 +239,14 @@ bash deploy/azure-deploy.sh      # prints the public web and API URLs
 | `backend/src/silsila/params.py`, `data/params/` | Sourced parameter register and conversions |
 | `backend/src/silsila/content.py`, `data/content/` | Approved content, MedlinePlus imports, Arabic translations, output gate |
 | `backend/src/silsila/triage.py`, `data/models/` | Message triage (rules + character n-gram model; optional Azure OpenAI labels) |
+| `backend/src/silsila/guide.py`, `data/guide/` | "Ask about Silsila": fixed answers and live lookups about the tool; no language model |
 | `backend/src/silsila/api/` | FastAPI service: consent, invitations, queue, audit chain, FHIR R4B import and export |
 | `backend/src/silsila/sim/`, `backend/bench/` | Family simulator and benchmarks |
 | `web/` | Next.js app: family, relative and counsellor views (Arabic and English, installable) |
 | `data/eval/`, `data/dev/` | Held-out triage test set and separate development set |
 | `tools/translation_qc/` | Three-system Arabic translation check |
+| `tools/film/` | Narration, recording script and build steps for the demo film |
+| `backend/scripts/` | MedlinePlus import, read-aloud clip generator, readability scoring |
 | `docs/` | Evidence, governance, pilot protocol, deployment notes, limitations |
 
 ## Governance
@@ -227,6 +265,7 @@ bash deploy/azure-deploy.sh      # prints the public web and API URLs
 | Source | Use | Licence |
 |---|---|---|
 | MedlinePlus Genetics (NLM) | Verbatim patient information | Public domain; credited "Source: MedlinePlus, National Library of Medicine" |
+| Azure AI Speech neural voices (`en-GB-SoniaNeural`, `ar-AE-FatimaNeural`; film: `en-GB-RyanNeural`, `ar-AE-HamdanNeural`) | Read-aloud clips, the voice-intake demo clip and the film narration; always labelled synthetic | Generated with the team's own Azure subscription |
 | Published studies (PMIDs in `data/params/loci.yaml`, `data/calibration/`) | Population parameters | Facts cited from the literature |
 | Helsinki-NLP opus-mt-tc-big-en-ar | Translation cross-check only | CC-BY 4.0 |
 | sentence-transformers/LaBSE | Translation meaning check only | Apache-2.0 |
@@ -237,4 +276,5 @@ No real patient data is used. All people in the demo are fictional.
 ## Status
 
 Prototype submitted to the Future Health Digital Innovation Challenge (November 2026). Not a medical device;
-not validated with patients. Arabic text awaits native clinical review. See [limitations](docs/limitations.md).
+not validated with patients. Arabic text awaits native clinical review, and the read-aloud clips a native
+listener. See [limitations](docs/limitations.md).

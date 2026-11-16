@@ -53,6 +53,15 @@ Silsila is a prototype tested only on synthetic data. Nothing here has been used
   one modelled allele. A pilot needs the laboratory's own classification.
 - Only the three calculated genes are accepted. Anything else is refused and referred to a counsellor.
 
+## The guide ("Ask about Silsila")
+- The guide is not a language model. It matches the words of a question to one of 24 fixed answers and, for 17
+  of them, runs one of 16 lookups and shows the values with their sources. It can only answer what is on its list; a
+  question in unusual words may get "I do not have an answer" although an answer exists, and a question that
+  shares words with the wrong entry can get that entry's answer (shown with its question, so the mismatch is
+  visible). It explains the tool and does not give medical advice.
+- Its answers are the development team's wording, in English, with machine-translated Arabic. Lookup labels
+  are English only.
+
 ## Message triage
 - Trained and tested on synthetic messages written by an AI model; not validated on real messages.
   Specificity is deliberately low. Safety does not rely on it: every message is read by a person and every
