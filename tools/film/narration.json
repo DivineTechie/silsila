@@ -1,201 +1,54 @@
 {
- "note": "Narration for the Silsila film. Every number spoken is in README.md or docs/evidence. 'say' is the text sent to the speech service when it differs from the caption (only to make a term pronounceable); the meaning is identical. Arabic is a machine translation pending native review, and the film says so on screen.",
- "voices": {
-  "en": [
-   "en-GB",
-   "en-GB-RyanNeural"
-  ],
-  "ar": [
-   "ar-AE",
-   "ar-AE-HamdanNeural"
+  "note": "Narration for the Silsila demo film (one film, English). Every number spoken is in README.md or docs/evidence. 'say' is the text sent to the speech service when it differs from the caption, only to make a term pronounceable; the meaning is identical. The voice is synthetic and the film says so on screen.",
+  "voice": ["en-US", "en-US-AvaMultilingualNeural"],
+  "rate": "+2%",
+  "label": "RECORDED · fictional families · synthetic voice (Azure)",
+  "criteria": {
+    "1": "Health impact and clinical relevance",
+    "2": "Technical depth",
+    "3": "Working solution",
+    "4": "Responsible AI, safety and data governance",
+    "5": "Scalability and deployment readiness",
+    "6": "Commercial viability and path to pilot"
+  },
+  "lines": [
+    {"id": "hook1", "text": "Premarital screening protects the next marriage."},
+    {"id": "hook2", "text": "Silsila protects the marriages that already happened."},
+    {"id": "hook3", "text": "When a newborn screen finds a recessive condition, the baby's relatives are far more likely to be carriers. Where cousins marry, many of them are already married to each other. And no one tells them."},
+
+    {"id": "prob1", "text": "In the only national survey, half of Emirati marriages were between relatives."},
+    {"id": "prob2", "text": "When the extended families of affected children were tested, 31% of relatives were carriers, and in 8% of married couples, both were.", "say": "When the extended families of affected children were tested, 31 percent of relatives were carriers, and in 8 percent of married couples, both were."},
+    {"id": "prob3", "text": "Abu Dhabi's programmes already find the first person: 565 incompatible couples in premarital testing, and more than 100 babies through newborn screening in the past year. The country has nine practising genetic counsellors."},
+
+    {"id": "flow1", "text": "Silsila is the step after the result. An exact engine works out every relative's chance. The family decides who is told. A genetic counsellor approves every invitation. And each case closes only with evidence."},
+
+    {"id": "live1", "text": "This is the live product, running in the UAE, with a fictional family. Baby Zayed's newborn screen finds congenital adrenal hyperplasia. His parents are first cousins."},
+    {"id": "live2", "text": "Silsila calculates every relative's chance exactly, across both cousin marriages, and ranks whom to tell first: his aunt Noura, who is pregnant."},
+    {"id": "live3", "text": "His mother, Mariam, gives permission and chooses an anonymous invitation: no name, no condition. Nothing is sent until a counsellor approves it."},
+    {"id": "live4", "text": "Noura opens a private link, in Arabic or English. Every sentence is approved wording, or a word-for-word quotation from MedlinePlus, and it can be read aloud."},
+    {"id": "live5", "text": "She passes a comprehension check, reads her options in the source's own words, described and never recommended, and books counselling."},
+    {"id": "live6", "text": "When she asks whether to end the pregnancy, Silsila does not answer. A counsellor is alerted. Her test result then closes the case, with evidence."},
+
+    {"id": "rai1", "text": "No language model writes anything a family reads. When a model tries, the output gate blocks it."},
+    {"id": "rai2", "text": "Every action is written to an audit log, each entry chained to the last by its hash. In 10,000 unauthorised requests, there were zero disclosures.", "say": "Every action is written to an audit log, each entry chained to the last by its hash. In ten thousand unauthorised requests, there were zero disclosures."},
+    {"id": "rai3", "text": "And the programme sees comprehension, uptake and time to counselling. It never counts marriages or reproductive choices."},
+
+    {"id": "tech1", "text": "This is the Family Twin: a simulated clan of 61 people, with six cousin marriages. Record one result, and every relative's chance is recalculated exactly, in about a second."},
+    {"id": "tech2", "text": "The engine agrees with an independent solver on 30,000 of 30,000 probabilities.", "say": "The engine agrees with an independent solver on thirty thousand of thirty thousand probabilities."},
+    {"id": "tech3", "text": "And across many simulated clans, inviting relatives in Silsila's order found 1.58 times as many at-risk couples per test as an unranked cascade."},
+
+    {"id": "llm1", "text": "Why not let a language model do it? We measured the co-creators' own models, pre-registered, on 150 families. In free text, Jais 3 7B gave an exact number in 59.4% of its answers.", "say": "Why not let a language model do it? We measured the co-creators' own models, pre-registered, on 150 families. In free text, Jais 3, seven B, gave an exact number in 59.4 percent of its answers."},
+    {"id": "llm2", "text": "So models do one job here. A family tells its story in Emirati Arabic, Jais drafts the family tree, and a counsellor confirms every person before the engine runs."},
+    {"id": "llm3", "text": "Even the guide that answers questions about Silsila uses no AI: fixed answers, and live lookups you can check."},
+
+    {"id": "scale1", "text": "The first result arrives as a FHIR record, and is refused if it is preliminary or uncertain.", "say": "The first result arrives as a fire record, and is refused if it is preliminary or uncertain."},
+    {"id": "scale2", "text": "It is deployed today in the UAE, on ordinary processors, with no model at run time. It works in Arabic and English, with zero accessibility violations on every screen."},
+
+    {"id": "pilot1", "text": "The buyer already produces the index results, and counsellor time is the scarce resource. As a projection: 100 index newborns a year means about 25 at-risk couples found for this condition, against 17 without ranking."},
+    {"id": "pilot2", "text": "The proposal is a pilot at one screening centre: first in shadow mode beside counsellors, then with counsellor-approved invitations, and every measure reported to the Department of Health."},
+
+    {"id": "score1", "text": "Six criteria, and for each one, something you can open and a number you can check."},
+    {"id": "score2", "text": "What is not yet shown, said plainly: no patient has used it. The evidence is on simulated families. Three genes. And the Arabic awaits a native clinical review."},
+    {"id": "close1", "text": "Silsila. The step after the result."}
   ]
- },
- "label": {
-  "en": "RECORDED · fictional families · synthetic voice (Azure)",
-  "ar": "مسجَّل · عائلات خيالية · صوت اصطناعي (Azure) · التعليق العربي ترجمة آلية بانتظار مراجعة لغوية"
- },
- "scenes": [
-  {
-   "id": "hook",
-   "lines": [
-    {
-     "en": "Premarital screening protects the next marriage.",
-     "ar": "فحص ما قبل الزواج يحمي الزواج القادم."
-    },
-    {
-     "en": "Silsila protects the marriages that already happened.",
-     "ar": "سلسلة تحمي الزيجات التي تمّت بالفعل."
-    },
-    {
-     "en": "When one person has a recessive condition, their relatives are likely to be carriers too.",
-     "ar": "حين يُصاب شخص بحالة وراثية متنحية، يُرجَّح أن يحمل أقاربه المتغيّر نفسه."
-    },
-    {
-     "en": "And where cousins marry, those relatives are often already married to each other.",
-     "ar": "وحيث يتزوج أبناء العمومة، يكون هؤلاء الأقارب غالباً متزوجين من بعضهم بالفعل."
-    }
-   ]
-  },
-  {
-   "id": "risk",
-   "lines": [
-    {
-     "en": "This family is fictional. Newborn screening finds congenital adrenal hyperplasia in baby Zayed.",
-     "ar": "هذه العائلة خيالية. يكشف فحص حديثي الولادة تضخم الغدة الكظرية الخلقي لدى الطفل زايد."
-    },
-    {
-     "en": "His parents are first cousins.",
-     "ar": "والداه أبناء عمومة."
-    },
-    {
-     "en": "Silsila calculates every relative's chance exactly, across both cousin marriages,",
-     "ar": "تحسب سلسلة احتمال كل قريب بدقة، عبر زواجَي الأقارب،"
-    },
-    {
-     "en": "and ranks whom to tell first: his aunt Noura, who is pregnant.",
-     "ar": "وترتّب من يُبلَّغ أولاً: خالته نورة، وهي حامل."
-    }
-   ]
-  },
-  {
-   "id": "consent",
-   "lines": [
-    {
-     "en": "Mariam, his mother, decides who is told.",
-     "ar": "مريم، والدته، هي من تقرر من يُبلَّغ."
-    },
-    {
-     "en": "She chooses an anonymous invitation: no name, no condition.",
-     "ar": "تختار دعوة مجهولة المصدر: بلا اسم ولا حالة."
-    },
-    {
-     "en": "Nothing is sent until a genetic counsellor approves it.",
-     "ar": "ولا يُرسل شيء حتى يعتمده مستشار وراثي."
-    }
-   ]
-  },
-  {
-   "id": "relative",
-   "lines": [
-    {
-     "en": "Noura opens a private link.",
-     "ar": "تفتح نورة رابطاً خاصاً."
-    },
-    {
-     "en": "Every sentence is approved wording or a word-for-word quotation, in Arabic or English, and can be read aloud.",
-     "ar": "كل جملة صياغة معتمدة أو اقتباس حرفي، بالعربية أو الإنجليزية، ويمكن الاستماع إليها."
-    },
-    {
-     "en": "She passes a comprehension check, reads her options in the source's words, and books counselling.",
-     "ar": "تجتاز اختبار الفهم، وتقرأ خياراتها بكلمات المصدر، وتحجز استشارة."
-    }
-   ]
-  },
-  {
-   "id": "safety",
-   "lines": [
-    {
-     "en": "Then she asks whether to end the pregnancy. Silsila does not answer. A counsellor is alerted.",
-     "ar": "ثم تسأل: هل ننهي الحمل؟ سلسلة لا تجيب. ويُنبَّه مستشار."
-    },
-    {
-     "en": "Her test result closes the case with evidence.",
-     "ar": "نتيجة فحصها تُغلق الحالة بدليل."
-    },
-    {
-     "en": "When a language model tries to write advice, the output gate blocks it.",
-     "ar": "وحين يحاول نموذج لغوي أن يكتب نصيحة، تحجبه بوابة المخرجات."
-    },
-    {
-     "en": "The programme sees comprehension, uptake and time to counselling, never marriages or reproductive choices.",
-     "ar": "ويرى البرنامج الفهم والإقبال والوقت حتى الاستشارة، ولا يَعُدّ الزيجات ولا الخيارات الإنجابية أبداً."
-    }
-   ]
-  },
-  {
-   "id": "twin",
-   "lines": [
-    {
-     "en": "This is the Family Twin: a simulated clan of 61 people, with six cousin marriages.",
-     "ar": "هذا هو التوأم العائلي: عشيرة محاكاة من 61 شخصاً، فيها ست زيجات بين أقارب."
-    },
-    {
-     "en": "Record one test result, and every relative's chance is recalculated exactly, live.",
-     "ar": "سجّل نتيجة فحص واحدة، فيُعاد حساب احتمال كل قريب بدقة وفوراً."
-    },
-    {
-     "en": "Across many simulated clans, Silsila's order found 1.58 times as many at-risk couples per test as an unranked cascade.",
-     "ar": "وعبر عشائر محاكاة كثيرة، وجد ترتيب سلسلة 1.58 مرة من الأزواج المعرّضين للخطر لكل فحص مقارنةً بتتبع بلا ترتيب."
-    }
-   ]
-  },
-  {
-   "id": "voice",
-   "lines": [
-    {
-     "en": "At intake, a family tells its story in Emirati Arabic, and Jais drafts the family tree. This is a recorded run with a synthetic voice.",
-     "ar": "عند الاستقبال، تروي العائلة قصتها باللهجة الإماراتية، ويصوغ Jais مسودة شجرة العائلة. هذا تشغيل مسجَّل بصوت اصطناعي."
-    },
-    {
-     "en": "The counsellor confirms every person before the engine calculates.",
-     "ar": "ويؤكد المستشار كل شخص قبل أن يحسب المحرك."
-    }
-   ]
-  },
-  {
-   "id": "contrast",
-   "lines": [
-    {
-     "en": "Why not just ask a chatbot? We measured the co-creators' own models on 150 families.",
-     "ar": "ولماذا لا نسأل روبوت محادثة؟ قسنا نماذج شركاء التحدي أنفسهم على 150 عائلة."
-    },
-    {
-     "en": "Of the numbers Jais 3 7B gave in free text, 59.4% were exact.",
-     "en_say": "Of the numbers Jais 3, seven B, gave in free text, 59.4 percent were exact.",
-     "ar": "من الأرقام التي أعطاها Jais 3 7B في نص حر، كانت 59.4% دقيقة.",
-     "ar_say": "من الأرقام التي أعطاها Jais 3 في نص حر، كانت 59.4 بالمئة دقيقة."
-    },
-    {
-     "en": "So in Silsila, no model computes risk, and no model writes to a family.",
-     "ar": "لذلك في سلسلة، لا نموذج يحسب الخطر، ولا نموذج يكتب للعائلة."
-    }
-   ]
-  },
-  {
-   "id": "import",
-   "lines": [
-    {
-     "en": "The first result arrives as a FHIR record, and the challenge's measures are computed live.",
-     "en_say": "The first result arrives as a fire record, and the challenge's measures are computed live.",
-     "ar": "تصل النتيجة الأولى على هيئة سجل FHIR، وتُحسب مقاييس التحدي مباشرة.",
-     "ar_say": "تصل النتيجة الأولى على هيئة سجل فاير، وتُحسب مقاييس التحدي مباشرة."
-    }
-   ]
-  },
-  {
-   "id": "close",
-   "lines": [
-    {
-     "en": "Every number has its source. 30,000 of 30,000 probabilities match an independent solver.",
-     "ar": "لكل رقم مصدره. 30,000 احتمال من 30,000 تطابق حلّالاً مستقلاً."
-    },
-    {
-     "en": "Zero disclosures in 10,000 unauthorised requests. Hosted in Azure, in the UAE.",
-     "ar": "صفر إفصاحات في 10,000 طلب غير مصرّح به. والاستضافة في Azure داخل الإمارات."
-    },
-    {
-     "en": "All on fictional families. Nothing here has been used with patients.",
-     "ar": "كل ذلك على عائلات خيالية. لم يُستخدم شيء هنا مع مرضى."
-    },
-    {
-     "en": "Silsila: the step after the result.",
-     "ar": "سلسلة: الخطوة التي تلي النتيجة."
-    }
-   ]
-  }
- ],
- "rate": {
-  "en": "+6%",
-  "ar": "+12%"
- }
 }

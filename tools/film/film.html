@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Silsila film: graphics scenes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* The motion-graphics scenes of the Silsila film. One 1920x1080 stage; record.mjs shows a scene and steps
+   through it in time with the narration. Every number here is in README.md or docs/evidence. */
+:root { --ink:#12302f; --ink2:#3c5250; --teal:#0e5a57; --teal2:#5fb3ab; --mint:#bfe9e3; --sand:#f7f3ec; --card:#fffdf9; --line:#ddd2bf;
+  --brass:#b98a3c; --gold:#f2c14e; --night:#071719; --night2:#0d2423; --pink:#ff3d7a; --orange:#f0a93a; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--night); font-family: "IBM Plex Sans", system-ui, sans-serif; color: var(--ink); }
+.scene { position: absolute; inset: 0; padding: 150px 130px 190px; opacity: 0; visibility: hidden; transition: opacity .6s ease; }
+.scene.on { opacity: 1; visibility: visible; }
+.dark { background: radial-gradient(1400px 900px at 78% 18%, #123936 0%, var(--night2) 45%, var(--night) 100%); color: #f3efe6; }
+.light { background: radial-gradient(1500px 900px at 15% 0%, #fffdf9 0%, var(--sand) 60%, #efe8dc 100%); }
+.eyebrow { font-size: 26px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--brass); }
+.dark .eyebrow { color: var(--gold); }
+h1 { font-size: 92px; line-height: 1.06; font-weight: 700; letter-spacing: -.02em; }
+h2 { font-size: 68px; line-height: 1.1; font-weight: 700; letter-spacing: -.015em; }
+.src { font-size: 21px; color: #6b7672; margin-top: 10px; }
+.dark .src { color: #9fb5b0; }
+
+/* staged entrances: an element with data-step="n" comes in when the scene reaches step n */
+[data-step] { opacity: 0; transform: translateY(34px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i, 0) * 110ms); }
+[data-step].in { opacity: 1; transform: none; }
+[data-step].pop { transform: scale(.82); }
+[data-step].pop.in { transform: none; }
+
+/* ---------- hook ---------- */
+#s-hook { display: grid; grid-template-columns: 1.05fr .95fr; gap: 70px; align-items: center; }
+#s-hook h1 span { display: block; }
+#s-hook .l2 { color: var(--teal2); margin-top: 18px; }
+#s-hook p.lead { font-size: 36px; line-height: 1.38; color: #cfdcd8; margin-top: 44px; max-width: 880px; }
+#ped line, #ped path { stroke: #7fa39d; stroke-width: 3.5; fill: none; stroke-dasharray: 900; stroke-dashoffset: 900; transition: stroke-dashoffset 1.6s ease; }
+#ped.draw line, #ped.draw path { stroke-dashoffset: 0; }
+#ped .dbl { stroke: var(--gold); }
+#ped .p { fill: #0f2b2a; stroke: #e9f2ef; stroke-width: 3.5; opacity: 0; transition: opacity .6s ease .5s, fill .8s ease; }
+#ped.draw .p { opacity: 1; }
+#ped .idx { transition: opacity .6s ease .5s, fill .6s ease; }
+#ped.result .idx { fill: var(--pink); stroke: var(--pink); }
+#ped .ring { fill: none; stroke: var(--pink); stroke-width: 4; opacity: 0; transform-box: fill-box; transform-origin: center; }
+#ped.result .ring { animation: ring 2.2s ease-out infinite; }
+@keyframes ring { 0% { opacity: .9; transform: scale(.6); } 100% { opacity: 0; transform: scale(2.6); } }
+#ped .chip { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; transition-delay: calc(var(--d) * 1ms); }
+#ped.ripple .chip { opacity: 1; transform: none; }
+#ped.ripple .p.c100 { fill: #fff1d6; } #ped.ripple .p.c67 { fill: #ff8547; } #ped.ripple .p.c50 { fill: var(--orange); } #ped.ripple .p.c25 { fill: #b7c25e; }
+#ped .chip rect { fill: rgba(7,23,25,.85); stroke: #46605d; }
+#ped .chip text { fill: #fff; font: 600 21px "IBM Plex Sans"; }
+#ped .first { stroke: var(--gold); stroke-width: 4; stroke-dasharray: 9 8; fill: none; opacity: 0; transition: opacity .5s ease 1.2s; }
+#ped.ripple .first { opacity: 1; }
+#ped .tag { font: 700 22px "IBM Plex Sans"; fill: var(--gold); opacity: 0; transition: opacity .5s ease 1.4s; }
+#ped.ripple .tag, #ped.result .tag.r { opacity: 1; }
+#ped .tag.r { fill: var(--pink); transition-delay: .3s; }
+
+/* ---------- problem ---------- */
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 70px; }
+.tile { background: var(--card); border: 2px solid var(--line); border-radius: 30px; padding: 40px 36px 34px; min-height: 480px; box-shadow: 0 18px 50px rgba(18,48,47,.08); }
+.tile .n { font-size: 112px; font-weight: 700; color: var(--teal); letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.tile .n small { font-size: 50px; font-weight: 600; }
+.tile p { font-size: 30px; line-height: 1.32; margin-top: 26px; color: var(--ink); }
+.tile .src { font-size: 20px; margin-top: 22px; }
+.tile .n2 { font-size: 58px; font-weight: 700; color: var(--brass); margin-top: 20px; font-variant-numeric: tabular-nums; }
+
+/* ---------- flow ---------- */
+.flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-top: 120px; position: relative; }
+.flow::before { content: ""; position: absolute; left: 8%; right: 8%; top: 74px; height: 6px; border-radius: 3px; background: var(--line); }
+.flow .bar { position: absolute; left: 8%; top: 74px; height: 6px; border-radius: 3px; background: var(--teal); width: 0; transition: width 1.1s ease; }
+.node { text-align: center; padding: 0 14px; position: relative; opacity: .28; transition: opacity .6s ease; }
+.node.lit { opacity: 1; }
+.node .dot { width: 150px; height: 150px; border-radius: 50%; margin: 0 auto; background: var(--card); border: 6px solid var(--line); display: grid; place-items: center; transition: border-color .5s, background .5s, transform .5s; }
+.node.lit .dot { border-color: var(--teal); background: #e1efec; transform: scale(1.06); }
+.node svg { width: 72px; height: 72px; stroke: var(--teal); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.node h3 { font-size: 34px; margin-top: 30px; font-weight: 700; }
+.node p { font-size: 25px; line-height: 1.3; color: var(--ink2); margin-top: 12px; }
+
+/* ---------- audit / gate ---------- */
+#s-audit { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.chain { display: grid; gap: 18px; }
+.blk { display: grid; grid-template-columns: 90px 1fr auto; gap: 22px; align-items: center; background: rgba(255,255,255,.06); border: 2px solid #2b4a47; border-radius: 20px; padding: 20px 26px; font: 500 27px "IBM Plex Mono", monospace; }
+.blk b { color: var(--gold); font-weight: 500; } .blk i { color: #9fb5b0; font-style: normal; font-size: 22px; }
+.blk .lk { color: var(--teal2); font-size: 22px; }
+.big { font-size: 190px; font-weight: 700; letter-spacing: -.04em; line-height: .95; font-variant-numeric: tabular-nums; }
+.big small { font-size: 76px; color: #9fb5b0; font-weight: 600; }
+.cap { font-size: 36px; line-height: 1.35; margin-top: 26px; color: #dbe7e3; max-width: 760px; }
+
+/* ---------- engine ---------- */
+#s-engine { display: grid; grid-template-columns: .95fr 1.05fr; gap: 90px; align-items: center; }
+.bars { display: grid; gap: 34px; }
+.grp h4 { font-size: 30px; font-weight: 600; margin-bottom: 14px; color: #dbe7e3; }
+.row { display: grid; grid-template-columns: 250px 1fr 110px; gap: 18px; align-items: center; margin-top: 12px; font-size: 27px; }
+.track { height: 44px; border-radius: 12px; background: rgba(255,255,255,.07); overflow: hidden; }
+.fill { height: 100%; width: 0; border-radius: 12px; transition: width 1.5s cubic-bezier(.2,.7,.2,1); }
+.fill.a { background: linear-gradient(90deg, var(--teal2), var(--mint)); } .fill.b { background: #55706c; }
+.row .v { font-weight: 700; font-size: 34px; font-variant-numeric: tabular-nums; }
+.badge { display: inline-block; background: var(--gold); color: #1b1503; border-radius: 999px; padding: 12px 30px; font-size: 44px; font-weight: 700; margin-top: 38px; }
+
+/* ---------- models ---------- */
+.mrow { display: grid; grid-template-columns: 330px 1fr; gap: 26px; align-items: center; margin-top: 22px; }
+.mrow .name { font-size: 31px; font-weight: 600; } .mrow .name small { display: block; font-size: 20px; color: #6b7672; font-weight: 400; }
+.pair { display: grid; gap: 8px; }
+.mb { display: grid; grid-template-columns: 1fr 120px; gap: 16px; align-items: center; }
+.mb .track { background: #e7dfd0; height: 30px; border-radius: 9px; }
+.mb .fill.f { background: var(--brass); } .mb .fill.t { background: var(--teal); }
+.mb .v { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.legend { display: flex; gap: 40px; font-size: 25px; margin-top: 34px; color: var(--ink2); }
+.legend i { display: inline-block; width: 28px; height: 18px; border-radius: 5px; margin-right: 10px; vertical-align: -2px; }
+.verdict { margin-top: 34px; font-size: 40px; font-weight: 700; color: var(--teal); }
+
+/* ---------- scale ---------- */
+.cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 80px; }
+.pane { background: rgba(255,255,255,.06); border: 2px solid #2b4a47; border-radius: 30px; padding: 44px 40px; min-height: 470px; }
+.pane .k { font-size: 84px; font-weight: 700; color: var(--mint); letter-spacing: -.02em; line-height: 1; }
+.pane h3 { font-size: 40px; margin-top: 22px; }
+.pane p { font-size: 29px; line-height: 1.36; color: #cfdcd8; margin-top: 16px; }
+
+/* ---------- pilot ---------- */
+#s-pilot .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; margin-top: 70px; }
+.tl { display: grid; gap: 22px; }
+.ph { display: grid; grid-template-columns: 96px 1fr; gap: 26px; align-items: center; background: var(--card); border: 2px solid var(--line); border-radius: 26px; padding: 30px 34px; }
+.ph .no { width: 96px; height: 96px; border-radius: 50%; background: var(--teal); color: #fff; font-size: 44px; font-weight: 700; display: grid; place-items: center; }
+.ph h3 { font-size: 38px; } .ph p { font-size: 27px; color: var(--ink2); margin-top: 6px; line-height: 1.3; }
+.proj { background: var(--teal); color: #fff; border-radius: 30px; padding: 44px 44px 40px; }
+.proj .tagp { display: inline-block; background: var(--gold); color: #1b1503; font-weight: 700; font-size: 22px; letter-spacing: .1em; padding: 8px 18px; border-radius: 999px; }
+.proj .eq { font-size: 34px; margin-top: 26px; line-height: 1.4; color: #dff1ed; }
+.proj .res { font-size: 120px; font-weight: 700; line-height: 1; margin-top: 18px; letter-spacing: -.03em; }
+.proj .res small { font-size: 40px; font-weight: 500; color: #cfe7e1; letter-spacing: 0; }
+
+/* ---------- scorecard ---------- */
+#s-score .grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 50px; margin-top: 46px; }
+.crit { display: grid; grid-template-columns: 70px 1fr; gap: 22px; align-items: start; padding: 17px 0; border-bottom: 1px solid #244341; }
+.crit .no { width: 62px; height: 62px; border-radius: 50%; background: var(--teal2); color: #062220; font-size: 32px; font-weight: 700; display: grid; place-items: center; }
+.crit h3 { font-size: 31px; font-weight: 700; } .crit p { font-size: 24.5px; color: #cfdcd8; margin-top: 5px; line-height: 1.3; }
+.crit p b { color: var(--mint); font-weight: 600; }
+.not { background: rgba(242,193,78,.1); border: 2px solid rgba(242,193,78,.5); border-radius: 28px; padding: 36px 38px; align-self: start; }
+.not h3 { font-size: 34px; color: var(--gold); } .not li { font-size: 28px; line-height: 1.34; margin-top: 18px; color: #f3efe6; list-style: none; padding-left: 34px; position: relative; }
+.not li::before { content: ""; position: absolute; left: 0; top: 14px; width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--gold); }
+
+/* ---------- close ---------- */
+#s-close { display: grid; place-items: center; text-align: center; }
+#s-close .mark { width: 300px; margin: 0 auto 36px; stroke: var(--teal2); }
+#s-close h1 { font-size: 150px; } #s-close h1 span { font-family: "IBM Plex Sans Arabic"; color: var(--teal2); margin-left: 36px; font-weight: 700; }
+#s-close .tag2 { font-size: 54px; color: #dbe7e3; margin-top: 22px; }
+#s-close .url { font: 500 30px "IBM Plex Mono", monospace; color: var(--gold); margin-top: 60px; }
+#s-close .fine { font-size: 24px; color: #9fb5b0; margin-top: 26px; }
+</style>
+</head>
+<body>
+
+<!-- 1. the claim -->
+<section class="scene dark" id="s-hook">
+  <div>
+    <p class="eyebrow" data-step="1">Future Health Challenge · Fertility 03</p>
+    <h1 style="margin-top:34px">
+      <span data-step="1" style="--i:1">Premarital screening protects the next marriage.</span>
+      <span class="l2" data-step="2">Silsila protects the marriages that already happened.</span>
+    </h1>
+    <p class="lead" data-step="3">One newborn's result. A whole family of likely carriers. Many already married to each other.</p>
+  </div>
+  <svg id="ped" viewBox="0 0 720 620" width="820">
+    <path d="M300 70h120M360 70v70M180 140h360M180 140v50M540 140v50"/>
+    <path d="M92 215h60M568 215h60M124 215v85M596 215v85M68 300h184M68 300v44M252 300v44M500 300h96M500 300v44"/>
+    <path class="dbl" d="M276 362h200M276 374h200"/>
+    <path d="M376 374v80"/>
+    <rect class="p c50" x="252" y="46" width="48" height="48" rx="4"/><circle class="p c50" cx="444" cy="70" r="24"/>
+    <circle class="p" cx="68" cy="215" r="24"/><rect class="p c100" x="152" y="191" width="48" height="48" rx="4"/>
+    <rect class="p c100" x="520" y="191" width="48" height="48" rx="4"/><circle class="p" cx="652" cy="215" r="24"/>
+    <circle class="p c50" cx="68" cy="368" r="24"/><circle class="first" cx="68" cy="368" r="40"/>
+    <circle class="p c100" cx="252" cy="368" r="24"/><rect class="p c100" x="476" y="344" width="48" height="48" rx="4"/>
+    <circle class="ring" cx="376" cy="478" r="34"/><rect class="p idx" x="352" y="454" width="48" height="48" rx="4"/>
+    <text class="tag r" x="376" y="550" text-anchor="middle">newborn's result</text>
+    <text class="tag" x="68" y="446" text-anchor="middle">tell first</text>
+    <text class="tag" x="376" y="340" text-anchor="middle">cousins, married</text>
+    <g class="chip" style="--d:200"><rect x="206" y="406" width="92" height="38" rx="19"/><text x="252" y="432" text-anchor="middle">100%</text></g>
+    <g class="chip" style="--d:300"><rect x="454" y="406" width="92" height="38" rx="19"/><text x="500" y="432" text-anchor="middle">100%</text></g>
+    <g class="chip" style="--d:500"><rect x="130" y="250" width="92" height="38" rx="19"/><text x="176" y="276" text-anchor="middle">&gt;90%</text></g>
+    <g class="chip" style="--d:600"><rect x="498" y="250" width="92" height="38" rx="19"/><text x="544" y="276" text-anchor="middle">&gt;90%</text></g>
+    <g class="chip" style="--d:800"><rect x="18" y="478" width="100" height="38" rx="19"/><text x="68" y="504" text-anchor="middle">50%</text></g>
+    <g class="chip" style="--d:950"><rect x="230" y="2" width="92" height="38" rx="19"/><text x="276" y="28" text-anchor="middle">50%</text></g>
+    <g class="chip" style="--d:1050"><rect x="398" y="2" width="92" height="38" rx="19"/><text x="444" y="28" text-anchor="middle">50%</text></g>
+    <text class="tag" x="360" y="606" text-anchor="middle" style="fill:#9fb5b0;font-weight:500;font-size:19px">illustration · rounded chances, as the engine gives them for the demo family</text>
+  </svg>
+</section>
+
+<!-- 2. the problem, in numbers -->
+<section class="scene light" id="s-problem">
+  <p class="eyebrow" data-step="0">The gap</p>
+  <h2 data-step="0" style="--i:1;margin-top:18px">The programmes find the first person. Nobody reaches the family.</h2>
+  <div class="tiles">
+    <div class="tile" data-step="1"><div class="n"><span data-count="50.5" data-dec="1">0</span><small>%</small></div><p>of UAE-national marriages were between relatives</p><p class="src">al-Gazali 1997 · PMID 9881148</p></div>
+    <div class="tile" data-step="2"><div class="n"><span data-count="31">0</span><small>%</small></div><p>of an affected child's relatives were carriers</p><div class="n2"><span data-count="8">0</span>% <span style="font-size:28px;color:#12302f;font-weight:500">of married couples: both</span></div><p class="src">Ahmed et al., NEJM 2002 · PMID 12374877</p></div>
+    <div class="tile" data-step="3"><div class="n"><span data-count="565">0</span></div><p>couples found incompatible among 11,748 tested</p><div class="n2">100+ <span style="font-size:28px;color:#12302f;font-weight:500">babies, newborn screening</span></div><p class="src">Reported: Gulf News 3 Oct 2026 · Khaleej Times 20 Oct 2026</p></div>
+    <div class="tile" data-step="3" style="--i:2"><div class="n"><span data-count="9">0</span></div><p>practising genetic counsellors in the UAE</p><p class="src">Almarri et al., J Genet Couns 2025</p></div>
+  </div>
+</section>
+
+<!-- 3. what Silsila is -->
+<section class="scene light" id="s-flow">
+  <p class="eyebrow" data-step="0">Silsila · سلسلة</p>
+  <h2 data-step="0" style="--i:1;margin-top:18px">The step after the result</h2>
+  <div class="flow" data-step="0" style="--i:2">
+    <div class="bar"></div>
+    <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM9 12h7M9 16h7M9 8h3"/></svg></div><h3>Result</h3><p>arrives as a FHIR record</p></div>
+    <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l3 8M16 7.5l-3 8M8.5 6h7"/></svg></div><h3>Exact engine</h3><p>every relative's chance</p></div>
+    <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/><path d="M4 20h16"/></svg></div><h3>Family decides</h3><p>who is told, and how</p></div>
+    <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/></svg></div><h3>Counsellor</h3><p>approves every invitation</p></div>
+    <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M9.5 8h5M9.5 12h5M11 18h2"/></svg></div><h3>Private link</h3><p>Arabic or English</p></div>
+    <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>Closed</h3><p>only with evidence</p></div>
+  </div>
+</section>
+
+<!-- 4. audit chain and privacy -->
+<section class="scene dark" id="s-audit">
+  <div>
+    <p class="eyebrow" data-step="0">Tamper-evident by design</p>
+    <div class="chain" style="margin-top:36px">
+      <div class="blk" data-step="1" style="--i:0"><b>#172</b><span>consent.grant <i>family</i></span><span class="lk">5cbb5f49…</span></div>
+      <div class="blk" data-step="1" style="--i:2"><b>#173</b><span>invitation.create <i>family</i></span><span class="lk">6c03ad89…</span></div>
+      <div class="blk" data-step="1" style="--i:4"><b>#174</b><span>invitation.approved <i>counsellor</i></span><span class="lk">557bf8b2…</span></div>
+      <div class="blk" data-step="1" style="--i:6"><b>#176</b><span>invitation.opened <i>relative</i></span><span class="lk">ce86176e…</span></div>
+      <div class="blk" data-step="1" style="--i:8"><b>#185</b><span>output_gate.block <i>blocked</i></span><span class="lk">8f34999f…</span></div>
+    </div>
+    <p class="src" data-step="1" style="--i:10;font-size:23px;margin-top:22px">Each entry carries the SHA-256 of the one before. Change one, and every later hash breaks.</p>
+  </div>
+  <div>
+    <div class="big" data-step="2"><span data-count="0">0</span> <small>/ 10,000</small></div>
+    <p class="cap" data-step="2" style="--i:1">disclosures in unauthorised requests, across 14 kinds of attack</p>
+    <p class="src" data-step="2" style="--i:2">docs/evidence/privacy_api.json · synthetic test</p>
+  </div>
+</section>
+
+<!-- 5. the engine and the cascade -->
+<section class="scene dark" id="s-engine">
+  <div>
+    <p class="eyebrow" data-step="1">Exact, and checked</p>
+    <div class="big" data-step="1" style="--i:1;margin-top:26px;font-size:150px"><span data-count="30000" data-sep="1">0</span></div>
+    <div data-step="1" style="--i:2;font-size:56px;font-weight:600;color:#9fb5b0">of 30,000</div>
+    <p class="cap" data-step="1" style="--i:3">probabilities agree with an independent exact solver, on 10,000 random families with cousin loops</p>
+    <p class="src" data-step="1" style="--i:4">Benchmark B1 · largest difference 5.6 × 10⁻¹⁶</p>
+  </div>
+  <div data-step="2">
+    <p class="eyebrow">At-risk couples found per 1,000 tests</p>
+    <div class="bars" style="margin-top:30px">
+      <div class="grp"><h4>Haemoglobin disorders</h4>
+        <div class="row"><span>Silsila's order</span><div class="track"><div class="fill a" data-w="100"></div></div><span class="v">65</span></div>
+        <div class="row"><span>Unranked</span><div class="track"><div class="fill b" data-w="63"></div></div><span class="v">41</span></div></div>
+      <div class="grp"><h4>Congenital adrenal hyperplasia</h4>
+        <div class="row"><span>Silsila's order</span><div class="track"><div class="fill a" data-w="78"></div></div><span class="v">51</span></div>
+        <div class="row"><span>Unranked</span><div class="track"><div class="fill b" data-w="51"></div></div><span class="v">33</span></div></div>
+    </div>
+    <div class="badge">1.58× <span style="font-size:26px;font-weight:600">95% interval 1.43 to 1.77</span></div>
+    <p class="src" style="margin-top:20px">Benchmark B4 · simulated UAE clans, 5 tests per family · a projection, not an observed outcome</p>
+  </div>
+</section>
+
+<!-- 6. the co-creators' models, measured -->
+<section class="scene light" id="s-models">
+  <p class="eyebrow" data-step="0">Silsila-Bench · pre-registered · 150 synthetic families</p>
+  <h2 data-step="0" style="--i:1;margin-top:16px;font-size:60px">How often each model's risk number was exact</h2>
+  <div data-step="1" style="margin-top:22px">
+    <div class="mrow"><div class="name">Jais 3 7B</div><div class="pair"><div class="mb"><div class="track"><div class="fill f" data-w="59.4"></div></div><span class="v">59.4%</span></div><div class="mb"><div class="track"><div class="fill t" data-w="70.8"></div></div><span class="v">70.8%</span></div></div></div>
+    <div class="mrow"><div class="name">Jais 3 32B<small>pre-declared sample</small></div><div class="pair"><div class="mb"><div class="track"><div class="fill f" data-w="95.8"></div></div><span class="v">95.8%</span></div><div class="mb"><div class="track"><div class="fill t" data-w="98"></div></div><span class="v">98.0%</span></div></div></div>
+    <div class="mrow"><div class="name">BiMediX2 8B</div><div class="pair"><div class="mb"><div class="track"><div class="fill f" data-w="5"></div></div><span class="v">5.0%</span></div><div class="mb"><div class="track"><div class="fill t" data-w="0"></div></div><span class="v">0.0%</span></div></div></div>
+    <div class="mrow"><div class="name">Llama3-Med42 8B</div><div class="pair"><div class="mb"><div class="track"><div class="fill f" data-w="8.4"></div></div><span class="v">8.4%</span></div><div class="mb"><div class="track"><div class="fill t" data-w="3.6"></div></div><span class="v">3.6%</span></div></div></div>
+    <div class="mrow"><div class="name">gpt-oss-120b<small>frontier reference</small></div><div class="pair"><div class="mb"><div class="track"><div class="fill f" data-w="33.7"></div></div><span class="v">33.7%</span></div><div class="mb"><div class="track"><div class="fill t" data-w="34.4"></div></div><span class="v">34.4%</span></div></div></div>
+  </div>
+  <div class="legend" data-step="1" style="--i:3"><span><i style="background:#b98a3c"></i>free text, of answers given</span><span><i style="background:#0e5a57"></i>with the Silsila engine as a tool</span><span>Fixed order, not a ranking. In free text, Jais 3 gave no number in 43% (7B) and 52% (32B) of answers.</span></div>
+  <p class="verdict" data-step="2">So here, no model computes risk, and no model writes to a family.</p>
+</section>
+
+<!-- 7. deployment -->
+<section class="scene dark" id="s-scale">
+  <p class="eyebrow" data-step="0">Deployed today</p>
+  <h2 data-step="0" style="--i:1;margin-top:18px">Runs in the UAE, on ordinary processors</h2>
+  <div class="cols3">
+    <div class="pane" data-step="1"><div class="k">UAE North</div><h3>Azure, CPU only</h3><p>No language model at run time. 61 relatives recalculated exactly in 0.7 to 1.2 seconds on the hosted server.</p></div>
+    <div class="pane" data-step="1" style="--i:2"><div class="k">FHIR R4B</div><h3>In and out</h3><p>An index result is checked before anything is stored. 22 kinds of unsafe record refused, with the reason.</p></div>
+    <div class="pane" data-step="2"><div class="k"><span data-count="0">0</span></div><h3>accessibility violations</h3><p>Every screen, checked in English on desktop and Arabic on a phone. Read aloud for those who cannot read the text.</p></div>
+  </div>
+</section>
+
+<!-- 8. path to pilot -->
+<section class="scene light" id="s-pilot">
+  <p class="eyebrow" data-step="0">Path to pilot</p>
+  <h2 data-step="0" style="--i:1;margin-top:18px">The buyer already produces the index results</h2>
+  <div class="wrap">
+    <div class="tl">
+      <div class="ph" data-step="2"><div class="no">1</div><div><h3>Shadow mode</h3><p>Counsellors work as usual. Silsila computes alongside. Nothing is sent.</p></div></div>
+      <div class="ph" data-step="2" style="--i:2"><div class="no">2</div><div><h3>Assisted mode</h3><p>Invitations go out, each one approved by a counsellor.</p></div></div>
+      <div class="ph" data-step="2" style="--i:4"><div class="no">3</div><div><h3>Reported to DoH</h3><p>Comprehension, uptake, time to counselling, privacy. Never marriages.</p></div></div>
+    </div>
+    <div class="proj" data-step="1">
+      <span class="tagp">PROJECTION · NOT AN OBSERVED OUTCOME</span>
+      <p class="eq">100 index newborns a year × 5 tests per family</p>
+      <div class="res"><span data-count="25">0</span> <small>at-risk couples found</small></div>
+      <p class="eq" style="margin-top:14px">against 17 without ranking · congenital adrenal hyperplasia · 95% interval 21 to 31</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. six criteria, and the limits -->
+<section class="scene dark" id="s-score">
+  <p class="eyebrow" data-step="0">Six criteria · something to open · a number to check</p>
+  <div class="grid">
+    <div>
+      <div class="crit" data-step="1" style="--i:0"><div class="no">1</div><div><h3>Health impact and clinical relevance</h3><p>Watch a cascade · <b>51 vs 33 at-risk couples per 1,000 tests</b> (simulated)</p></div></div>
+      <div class="crit" data-step="1" style="--i:1"><div class="no">2</div><div><h3>Technical depth</h3><p>Family Twin · <b>30,000 of 30,000</b> match an independent solver</p></div></div>
+      <div class="crit" data-step="1" style="--i:2"><div class="no">3</div><div><h3>Working solution</h3><p>Every role, live, no password · <b>197 tests</b> · consent to closure</p></div></div>
+      <div class="crit" data-step="1" style="--i:3"><div class="no">4</div><div><h3>Responsible AI, safety, governance</h3><p>Output gate, audit chain · <b>0 of 10,000</b> disclosures · 24 hazards logged</p></div></div>
+      <div class="crit" data-step="1" style="--i:4"><div class="no">5</div><div><h3>Scalability and deployment</h3><p>Azure UAE North, CPU only · <b>FHIR in and out</b> · Arabic and English</p></div></div>
+      <div class="crit" data-step="1" style="--i:5"><div class="no">6</div><div><h3>Commercial viability and path to pilot</h3><p>Shadow, then assisted · <b>9 counsellors</b>: their time is what it saves</p></div></div>
+    </div>
+    <div class="not" data-step="2">
+      <h3>Not yet shown</h3>
+      <ul>
+        <li>No patient has used it</li>
+        <li>Evidence is on simulated families</li>
+        <li>Three genes with published UAE data</li>
+        <li>Arabic is machine translation, awaiting a native clinical review</li>
+        <li>No programme has asked for cascade testing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10. close -->
+<section class="scene dark" id="s-close">
+  <div>
+    <svg class="mark" viewBox="0 0 48 20" fill="none" stroke-width="1.6" data-step="1"><rect x="2" y="4" width="12" height="12" rx="1.5"/><circle cx="24" cy="10" r="6.5"/><rect x="34" y="4" width="12" height="12" rx="1.5"/><path d="M14 10h3.5M30.5 10H34"/><circle cx="24" cy="10" r="2" fill="#5fb3ab" stroke="none"/></svg>
+    <h1 data-step="1" style="--i:1">Silsila<span>سلسلة</span></h1>
+    <p class="tag2" data-step="1" style="--i:3">The step after the result.</p>
+    <p class="url" data-step="2">silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io</p>
+    <p class="fine" data-step="2" style="--i:1">Prototype with fictional families. Not for clinical use. Recorded from the live site. Synthetic voice (Azure).</p>
+  </div>
+</section>
+
+<script>
+// Small director for the scenes: show(id) and step(n). record.mjs calls these in time with the narration.
+const film = {
+  cur: null,
+  show(id) {
+    document.querySelectorAll(".scene").forEach((s) => s.classList.toggle("on", s.id === "s-" + id));
+    this.cur = document.getElementById("s-" + id);
+    this.step(0);
+  },
+  step(n) {
+    const s = this.cur;
+    if (!s) return;
+    s.querySelectorAll("[data-step]").forEach((el) => {
+      if (Number(el.dataset.step) <= n && !el.classList.contains("in")) {
+        el.classList.add("in");
+        const base = (Number(getComputedStyle(el).getPropertyValue("--i")) || 0) * 110;
+        el.querySelectorAll("[data-count]").forEach((c) => setTimeout(() => count(c), base + 250));
+        el.querySelectorAll("[data-w]").forEach((b, i) => setTimeout(() => (b.style.width = b.dataset.w + "%"), base + 350 + i * 160));
+        if (el.matches("[data-count]")) setTimeout(() => count(el), base + 250);
+      }
+    });
+    if (s.id === "s-hook") {
+      const p = document.getElementById("ped");
+      if (n >= 1) p.classList.add("draw");
+      if (n >= 2) p.classList.add("result");
+      if (n >= 3) p.classList.add("ripple");
+    }
+  },
+  flow(k) { // light the first k nodes of the flow and run the bar to them
+    const nodes = [...document.querySelectorAll("#s-flow .node")];
+    nodes.forEach((nd, i) => nd.classList.toggle("lit", i < k));
+    document.querySelector("#s-flow .bar").style.width = k <= 1 ? "0" : `${((k - 1) / 5) * 84}%`;
+  },
+};
+function count(el) {
+  const to = Number(el.dataset.count), dec = Number(el.dataset.dec || 0), sep = el.dataset.sep === "1";
+  const t0 = performance.now(), dur = to === 0 ? 1 : 1300;
+  const fmt = (v) => (sep ? Math.round(v).toLocaleString("en-US") : v.toFixed(dec));
+  const tick = (now) => {
+    const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = fmt(to * e);
+    if (k < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+window.film = film;
+const first = new URLSearchParams(location.search).get("scene");
+document.fonts.ready.then(() => { document.body.dataset.ready = "1"; if (first) film.show(first); });
+</script>
+</body>
+</html>
