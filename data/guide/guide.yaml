@@ -1,0 +1,258 @@
+# The Silsila guide: questions people ask about the tool, each with a fixed answer.
+#
+# This is NOT a language model. A question is matched to one of the entries below by its words
+# (backend/src/silsila/guide.py), and the entry's text is returned as written. Where an entry names a `tool`,
+# the guide also runs that lookup live (the exact engine, the evidence files, the audit chain, the parameter
+# register) and shows the values it read, each with its source. If nothing matches, the guide says so and
+# offers the questions it can answer. It never answers a personal or medical question.
+#
+# The guide explains the tool to visitors, judges and staff. It is not shown on a relative's invitation page
+# or in a family's case, where every sentence is approved wording or a verbatim quotation.
+#
+# English written by the development team. Arabic is a machine translation pending native review.
+
+meta:
+  ar_status: machine-translated, pending native review
+  not_ai:
+    en: "Not AI. A fixed answer chosen by matching the words of your question, plus live lookups."
+    ar: "ليس ذكاءً اصطناعياً. جواب ثابت يُختار بمطابقة كلمات سؤالك، مع قراءات مباشرة."
+  no_match:
+    en: "I do not have an answer for that, and I will not guess. These are the questions I can answer."
+    ar: "ليس لديّ جواب عن ذلك، ولن أخمّن. هذه الأسئلة التي أستطيع الإجابة عنها."
+  handoff:
+    en: "This guide only explains how Silsila works. It cannot answer a question about your own health, results or family. Please speak to a genetic counsellor. If you or someone else is in danger now, call 998 for an ambulance or 999 for the police."
+    ar: "هذا الدليل يشرح طريقة عمل سلسلة فقط. لا يستطيع الإجابة عن سؤال يخص صحتك أو نتائجك أو عائلتك. يُرجى التحدث إلى مستشار وراثي. إذا كنت أنت أو أي شخص آخر في خطر الآن، اتصل بالرقم 998 للإسعاف أو 999 للشرطة."
+
+entries:
+  - id: what
+    q_en: What does Silsila do?
+    q_ar: ماذا تفعل سلسلة؟
+    keywords_en: [what is silsila, what does silsila do, silsila do, purpose, overview, summary, what is this, what is it, in one sentence, elevator pitch, cascade testing]
+    keywords_ar: [ما هي سلسلة, ماذا تفعل, الهدف, نبذة, اشرح, تتبع, ما هذا]
+    a_en: "When one person is found to have, or carry, a recessive condition, Silsila works out every relative's chance of carrying it, ranks whom to tell first, and lets the family decide who is told and how. A genetic counsellor approves every invitation. The relative gets a private link with approved wording and quoted source text, a comprehension check and booking, and the case closes only with evidence such as a test result."
+    a_ar: "حين يُكتشف أن شخصاً مصاب بحالة متنحية أو حامل لها، تحسب سلسلة احتمال حمل كل قريب للمتغيّر، وترتّب من يُبلَّغ أولاً، وتترك للعائلة قرار من يُبلَّغ وكيف. يعتمد مستشار وراثي كل دعوة. يحصل القريب على رابط خاص فيه صياغة معتمدة ونص مقتبس من المصدر، واختبار فهم وحجز، ولا تُغلق الحالة إلا بدليل مثل نتيجة فحص."
+    sources: [{label: README, path: README.md}]
+
+  - id: who_decides
+    q_en: Who decides which relatives are told?
+    q_ar: من يقرر أي الأقارب يُبلَّغ؟
+    keywords_en: [who decides, consent, permission, choose, family decides, tell relatives, withdraw, decline, anonymous, refuse]
+    keywords_ar: [من يقرر, موافقة, إذن, تختار, العائلة تقرر, إبلاغ الأقارب, سحب, رفض, مجهولة]
+    a_en: "The person who received the result decides. Permission to calculate and permission to inform relatives are separate, and either can be withdrawn. For each relative they choose a letter they hand over themselves, contact by the clinic, or an invitation that names no person and no condition. Declining ends the process and is recorded. Nothing is sent until a genetic counsellor approves it."
+    a_ar: "صاحب النتيجة هو من يقرر. إذن الحساب وإذن إبلاغ الأقارب منفصلان، ويمكن سحب أي منهما. لكل قريب يختار رسالة يسلّمها بنفسه، أو تواصلاً من العيادة، أو دعوة لا تذكر شخصاً ولا حالة. الرفض يُنهي الإجراء ويُسجَّل. ولا يُرسل شيء حتى يعتمده مستشار وراثي."
+    sources: [{label: Approved consent wording, path: data/content/templates.yaml}]
+
+  - id: no_ai_text
+    q_en: Does AI write what families read?
+    q_ar: هل يكتب الذكاء الاصطناعي ما تقرؤه العائلات؟
+    keywords_en: [ai write, ai written, language model write, generated text, llm, output gate, gate, approved wording, hallucination, who writes]
+    keywords_ar: [يكتب الذكاء الاصطناعي, نموذج لغوي, نص مولّد, بوابة المخرجات, صياغة معتمدة, هلوسة, من يكتب]
+    a_en: "No. Every sentence a family member or relative reads is either an approved template or a word-for-word quotation from MedlinePlus Genetics. An output gate re-derives each message from the approved content and blocks anything else. The check below was run just now: the gate was given an approved reply altered the way an unconstrained model might alter it."
+    a_ar: "لا. كل جملة يقرؤها فرد من العائلة أو قريب هي إما قالب معتمد أو اقتباس حرفي من MedlinePlus Genetics. تعيد بوابة المخرجات اشتقاق كل رسالة من المحتوى المعتمد وتحجب أي شيء آخر. أُجري الفحص أدناه للتو: أُعطيت البوابة رداً معتمداً بعد تغييره كما قد يغيّره نموذج غير مقيّد."
+    tool: gate_check
+    sources: [{label: Output gate, path: backend/src/silsila/content.py}]
+
+  - id: is_this_ai
+    q_en: Is this guide an AI chatbot?
+    q_ar: هل هذا الدليل روبوت محادثة بالذكاء الاصطناعي؟
+    keywords_en: [are you ai, are you an ai, are you a chatbot, are you a bot, are you a robot, are you real, is this ai, is this an ai, is this a chatbot, ai chatbot, this chatbot, this assistant, this guide, how do you work, who are you, are you a person, are you human]
+    keywords_ar: [هل أنت ذكاء اصطناعي, هل أنت روبوت, كيف تعمل, من أنت, هل هذا ذكاء اصطناعي]
+    a_en: "No. This guide has a fixed set of answers. It picks one by matching the words in your question, and for some answers it runs a real lookup: the exact engine, the evidence files, the audit chain or the parameter register. It shows where each value came from. If nothing matches, it says so. It does not answer personal or medical questions."
+    a_ar: "لا. لهذا الدليل مجموعة ثابتة من الأجوبة. يختار واحداً بمطابقة كلمات سؤالك، وفي بعض الأجوبة يُجري قراءة حقيقية: المحرك الدقيق، أو ملفات الأدلة، أو سلسلة التدقيق، أو سجل المعاملات. ويبيّن مصدر كل قيمة. وإن لم يطابق شيء قال ذلك. ولا يجيب عن الأسئلة الشخصية أو الطبية."
+    tool: guide_facts
+    sources: [{label: Guide entries, path: data/guide/guide.yaml}, {label: Matching and lookups, path: backend/src/silsila/guide.py}]
+
+  - id: engine
+    q_en: How is each relative's chance calculated?
+    q_ar: كيف يُحسب احتمال كل قريب؟
+    keywords_en: [how calculated, calculation, engine, bayesian, exact, probability, inference, algorithm, cousin loop, consanguineous loop, maths, math, compute]
+    keywords_ar: [كيف يحسب, الحساب, المحرك, بايزي, دقيق, احتمال, خوارزمية, حلقات القرابة, رياضيات]
+    a_en: "By exact Bayesian inference over the whole family tree. Each person's two gene copies are unknowns; the tree, the recorded diagnoses and test results, and UAE carrier rates are the evidence. The engine eliminates the unknowns one by one (variable elimination), which stays exact when cousins marry and the tree has loops, where simple couple arithmetic is wrong. Nothing is estimated by a language model."
+    a_ar: "بالاستدلال البايزي الدقيق على شجرة العائلة كلها. نسختا الجين لدى كل شخص مجهولتان؛ والأدلة هي الشجرة والتشخيصات ونتائج الفحوص المسجلة ومعدلات الحمل في الإمارات. يحذف المحرك المجاهيل واحداً واحداً، فيبقى الحساب دقيقاً حين يتزوج أبناء العمومة وتتكوّن حلقات في الشجرة، حيث يخطئ حساب الأزواج البسيط. ولا يقدّر نموذج لغوي شيئاً."
+    tool: engine_evidence
+    sources: [{label: Engine, path: backend/src/silsila/engine/inference.py}, {label: Benchmark B1, path: docs/evidence/b1_engine.json}]
+
+  - id: accuracy
+    q_en: How do you know the engine is right?
+    q_ar: كيف نعرف أن المحرك صحيح؟
+    keywords_en: [accurate, accuracy, correct, validated, verified, tested, right, error, wrong, bug, independent solver, pgmpy, robust, malformed, crash, trust]
+    keywords_ar: [دقيق, الدقة, صحيح, تحقق, اختبار, خطأ, حلّال مستقل, متانة, مدخلات معيبة, الثقة]
+    a_en: "It is checked three ways: against textbook values, against an independent exact solver on thousands of random families with cousin loops, and against simulation. Malformed or impossible family trees must give a clear error or a counsellor referral, never a silent wrong answer. The numbers below are read from the benchmark files now. All of it is on synthetic families."
+    a_ar: "يُتحقق منه بثلاث طرق: مقابل قيم الكتب المرجعية، ومقابل حلّال دقيق مستقل على آلاف العائلات العشوائية التي فيها حلقات قرابة، ومقابل المحاكاة. وأشجار العائلة المعيبة أو المستحيلة يجب أن تعطي خطأ واضحاً أو إحالة إلى مستشار، لا جواباً خاطئاً صامتاً. الأرقام أدناه مقروءة الآن من ملفات المقاييس. وكل ذلك على عائلات اصطناعية."
+    tool: engine_evidence
+    sources: [{label: Benchmark B1, path: docs/evidence/b1_engine.json}, {label: Benchmark B2, path: docs/evidence/b2_robustness.json}]
+
+  - id: relationship
+    q_en: What is the chance for a sibling, an aunt or a cousin of an affected child?
+    q_ar: ما احتمال الأخ أو العمة أو ابن العم لطفل مصاب؟
+    keywords_en: [sibling, brother, sister, aunt, uncle, cousin, grandparent, parent, relative chance, chance for a relative, carrier chance, how likely]
+    keywords_ar: [أخ, أخت, عم, عمة, خال, خالة, ابن عم, جد, جدة, والد, احتمال القريب, ما احتمال]
+    a_en: "The engine just calculated this for a simple family: one affected child, unrelated parents, and relatives on the father's side. In a real family the answer changes with every recorded result and every cousin marriage, which is why Silsila calculates each family's own tree. Name a condition (thalassaemia, CAH, SMA) to change the gene."
+    a_ar: "حسب المحرك ذلك للتو لعائلة بسيطة: طفل مصاب واحد، ووالدان لا قرابة بينهما، وأقارب من جهة الأب. في عائلة حقيقية يتغيّر الجواب مع كل نتيجة مسجلة وكل زواج أقارب، ولذلك تحسب سلسلة شجرة كل عائلة بعينها. اذكر حالة (الثلاسيميا، تضخم الغدة الكظرية الخلقي، ضمور العضلات الشوكي) لتغيير الجين."
+    tool: relationship_chances
+    sources: [{label: Engine, path: backend/src/silsila/engine/risk.py}, {label: Parameter register, path: data/params/loci.yaml}]
+
+  - id: conditions
+    q_en: Which conditions does it cover, and where do the carrier rates come from?
+    q_ar: ما الحالات التي يغطيها، ومن أين تأتي معدلات الحمل؟
+    keywords_en: [which conditions, conditions, diseases, genes, loci, thalassaemia, thalassemia, sickle, cah, adrenal, sma, spinal muscular, carrier rate, carrier frequency, how common, prevalence, uae data, pmid, parameters, not calculated, alpha]
+    keywords_ar: [أي الحالات, الحالات, الأمراض, الجينات, الثلاسيميا, المنجلي, الكظرية, ضمور العضلات, معدل الحمل, نسبة الحاملين, شيوع, بيانات الإمارات, معاملات, لا تحسب]
+    a_en: "Three genes with published UAE data: HBB (beta-thalassaemia and sickle cell), CYP21A2 (classic congenital adrenal hyperplasia) and SMN1 (spinal muscular atrophy). Conditions without the published UAE numbers the calculation needs are refused, not estimated. The register below is read now, with each source."
+    a_ar: "ثلاثة جينات لها بيانات إماراتية منشورة: HBB (الثلاسيميا بيتا وفقر الدم المنجلي)، وCYP21A2 (تضخم الغدة الكظرية الخلقي التقليدي)، وSMN1 (ضمور العضلات الشوكي). الحالات التي لا تتوافر لها الأرقام الإماراتية المنشورة اللازمة للحساب تُرفض ولا تُقدَّر. السجل أدناه مقروء الآن مع مصدر كل قيمة."
+    tool: register
+    sources: [{label: Parameter register, path: data/params/loci.yaml}]
+
+  - id: yield
+    q_en: Does ranking whom to tell first actually find more couples?
+    q_ar: هل يجد ترتيب من يُبلَّغ أولاً أزواجاً أكثر فعلاً?
+    keywords_en: [ranking, rank, order, yield, at-risk couples, couples found, per test, benefit, impact, effective, more couples, cascade yield, unranked, health impact, outcome]
+    keywords_ar: [ترتيب, مردود, أزواج معرضون, لكل فحص, فائدة, أثر, فعالية, أزواج أكثر, بلا ترتيب, الأثر الصحي]
+    a_en: "In simulation, yes. On simulated UAE clans, inviting relatives in Silsila's order found more at-risk couples per 1,000 tests than an unranked family cascade, with the same people accepting and the same hidden results. The figures below are read from benchmark B4. They are projections from simulated families, not observed outcomes; uptake and benefit need a pilot to measure."
+    a_ar: "في المحاكاة، نعم. في عشائر إماراتية محاكاة، وجدت دعوة الأقارب بترتيب سلسلة أزواجاً معرّضين للخطر أكثر لكل 1,000 فحص من تتبع عائلي بلا ترتيب، مع الأشخاص أنفسهم الذين يقبلون والنتائج الخفية نفسها. الأرقام أدناه مقروءة من المقياس B4. وهي إسقاطات من عائلات محاكاة لا نتائج مرصودة؛ والإقبال والفائدة يحتاجان إلى تجربة ميدانية لقياسهما."
+    tool: yield_evidence
+    sources: [{label: Benchmark B4, path: docs/evidence/b4_uae.json}]
+
+  - id: scenario
+    q_en: What would 100 index families a year mean for a programme?
+    q_ar: ماذا تعني 100 عائلة دليل في السنة لبرنامج؟
+    keywords_en: [scenario, how many couples, programme scale, 100 newborns, index families, projection, per year, workload, counsellor hours, scale up, how many tests, forecast]
+    keywords_ar: [سيناريو, كم زوجاً, حجم البرنامج, 100 مولود, عائلات دليل, إسقاط, في السنة, عبء العمل, ساعات المستشار, كم فحصاً]
+    a_en: "This is a projection, not an observed outcome. It scales benchmark B4's simulated yields, at 5 tests offered per family, to the number of index families in your question (100 if you gave none). It assumes every family starts a cascade for one recessive condition."
+    a_ar: "هذا إسقاط وليس نتيجة مرصودة. يضرب مردود المقياس B4 المحاكى، عند 5 فحوص معروضة لكل عائلة، في عدد العائلات الدليل الوارد في سؤالك (100 إن لم تذكر عدداً). ويفترض أن كل عائلة تبدأ تتبعاً لحالة متنحية واحدة."
+    tool: scenario
+    sources: [{label: Benchmark B4, path: docs/evidence/b4_uae.json}, {label: Announced programmes, path: docs/evidence/uae_context.json}]
+
+  - id: why_not_llm
+    q_en: Why not just let a language model answer?
+    q_ar: لماذا لا نترك نموذجاً لغوياً يجيب؟
+    keywords_en: [ask a chatbot, use a chatbot, why not ai, why not use, why not just, chatgpt, llm, language model, jais, k2, gpt, benchmark models, silsila-bench, models wrong, model accuracy, co-creators models, medical model]
+    keywords_ar: [روبوت محادثة, لماذا لا, نموذج لغوي, جيس, مقياس النماذج, أخطاء النماذج, دقة النماذج, نماذج الشركاء]
+    a_en: "Because we measured it. The same family question was put to several language models, and the recorded answers are below beside the engine's exact answer. In the pre-registered benchmark on 150 families, Jais 3 7B gave an exact number in 59.4% of the free-text answers where it gave one. So in Silsila a model may draft a family tree from a spoken story, which a counsellor then confirms; no model computes risk or writes to a family."
+    a_ar: "لأننا قسنا ذلك. طُرح السؤال العائلي نفسه على عدة نماذج لغوية، والأجوبة المسجلة أدناه بجانب جواب المحرك الدقيق. في المقياس المسجَّل مسبقاً على 150 عائلة، أعطى Jais 3 7B رقماً دقيقاً في 59.4% من أجوبته النصية الحرة التي أعطى فيها رقماً. لذلك في سلسلة قد يصوغ نموذج مسودة شجرة عائلة من قصة منطوقة يؤكدها مستشار بعد ذلك؛ ولا يحسب أي نموذج الخطر ولا يكتب للعائلة."
+    tool: model_contrast
+    sources: [{label: Silsila-Bench results, path: docs/evidence/silsila_bench.md}, {label: Recorded contrast, path: data/demo/contrast/cah_noura_khalfan.json}]
+
+  - id: privacy
+    q_en: What data is kept, and who can see it?
+    q_ar: ما البيانات المحفوظة، ومن يستطيع رؤيتها؟
+    keywords_en: [privacy, data, stored, store, keep, who can see, access, confidential, disclosure, leak, security, personal data, attack, unauthorised, unauthorized]
+    keywords_ar: [الخصوصية, البيانات, تخزين, حفظ, من يرى, الوصول, سرية, إفصاح, تسريب, الأمان, بيانات شخصية, هجوم, غير مصرح]
+    a_en: "The prototype holds fictional families only. A family sees its own case; a counsellor sees the cases of the service; a relative sees only what the index person chose to disclose, through an unguessable link. An imported result keeps the person's sex and the finding, not the name, identifier or date of birth. The figures below come from a run of unauthorised requests against the API."
+    a_ar: "النموذج الأولي يضم عائلات خيالية فقط. ترى العائلة حالتها؛ ويرى المستشار حالات الخدمة؛ ويرى القريب فقط ما اختار صاحب النتيجة الإفصاح عنه، عبر رابط لا يمكن تخمينه. والنتيجة المستوردة تحتفظ بجنس الشخص والنتيجة، لا بالاسم ولا المعرّف ولا تاريخ الميلاد. الأرقام أدناه من تشغيل طلبات غير مصرّح بها على الواجهة البرمجية."
+    tool: privacy_evidence
+    sources: [{label: Privacy run, path: docs/evidence/privacy_api.json}, {label: Limitations, path: docs/limitations.md}]
+
+  - id: audit
+    q_en: How would anyone know if a record was changed?
+    q_ar: كيف يُعرف أن سجلاً قد غُيّر؟
+    keywords_en: [audit, audit log, tamper, changed, altered, hash, chain, integrity, sha-256, trace, traceable, log]
+    keywords_ar: [تدقيق, سجل التدقيق, عبث, تغيير, بصمة, سلسلة, سلامة, تتبع]
+    a_en: "Every action is written to an audit log in which each entry carries the SHA-256 hash of the one before it. Changing or removing an entry breaks every hash after it. The chain was verified just now; the result is below. The counsellor console has a demonstration that alters one entry and shows where the chain breaks."
+    a_ar: "يُكتب كل إجراء في سجل تدقيق يحمل فيه كل قيد بصمة SHA-256 للقيد الذي قبله. تغيير قيد أو حذفه يكسر كل بصمة بعده. تم التحقق من السلسلة للتو؛ والنتيجة أدناه. وفي لوحة المستشار عرض يغيّر قيداً واحداً ويبيّن أين تنكسر السلسلة."
+    tool: audit_chain
+    sources: [{label: Audit store, path: backend/src/silsila/api/store.py}]
+
+  - id: hosting
+    q_en: Where does it run, and how fast is it?
+    q_ar: أين يعمل، وما سرعته؟
+    keywords_en: [where hosted, hosting, host, azure, uae north, region, server, cloud, how fast, speed, latency, performance, slow, scalable, scalability, deployment, deploy, gpu]
+    keywords_ar: [أين يعمل, الاستضافة, شمال الإمارات, المنطقة, الخادم, السحابة, السرعة, الأداء, بطيء, قابلية التوسع, النشر]
+    a_en: "The prototype runs in Azure Container Apps in the UAE North region, on ordinary processors, with no language model needed at run time. The timing below was measured just now on this server: one exact recalculation of the Family Twin's 61-person clan."
+    a_ar: "يعمل النموذج الأولي على Azure Container Apps في منطقة شمال الإمارات، على معالجات عادية، ولا يحتاج نموذجاً لغوياً وقت التشغيل. قيس الزمن أدناه للتو على هذا الخادم: إعادة حساب دقيقة واحدة لعشيرة التوأم العائلي المؤلفة من 61 شخصاً."
+    tool: system
+    sources: [{label: Deployment notes, path: docs/deployment.md}, {label: Hosted timing, path: docs/evidence/twin_hosted_timing.json}]
+
+  - id: language
+    q_en: Which languages does it speak, and can it read aloud?
+    q_ar: ما اللغات التي يدعمها، وهل يقرأ بصوت مسموع؟
+    keywords_en: [language, languages, arabic, english, urdu, read aloud, listen, voice, audio, literacy, reading level, readability, accessible, accessibility, blind, screen reader]
+    keywords_ar: [اللغة, اللغات, العربية, الإنجليزية, الأردية, استمع, صوت, القراءة, مستوى القراءة, إمكانية الوصول, قارئ الشاشة]
+    a_en: "Arabic and English throughout, right to left in Arabic. A relative can press Listen on any fixed text: a synthetic voice (labelled as such) reads exactly the approved or quoted text. The Arabic wording and voice are machine translation and have not yet been reviewed by a native-speaking clinician. The figures below are read from the clip manifest and the readability record."
+    a_ar: "العربية والإنجليزية في كل الشاشات، ومن اليمين إلى اليسار بالعربية. يستطيع القريب الضغط على «استمع» في أي نص ثابت: صوت اصطناعي (موسوم بذلك) يقرأ النص المعتمد أو المقتبس كما هو. الصياغة العربية وصوتها ترجمة آلية لم يراجعها بعد طبيب من متحدثي العربية. الأرقام أدناه مقروءة من سجل المقاطع وسجل مقروئية النص."
+    tool: access_evidence
+    sources: [{label: Read-aloud clips, path: data/content/audio/manifest.json}, {label: Readability, path: docs/evidence/readability.json}, {label: Accessibility record, path: docs/evidence/accessibility.md}]
+
+  - id: hard_questions
+    q_en: What happens when someone sends a distressing or difficult message?
+    q_ar: ماذا يحدث حين يرسل أحدهم رسالة مقلقة أو صعبة؟
+    keywords_en: [distress, crisis, suicide, difficult question, pregnancy decision, termination, abortion, religious, emergency, triage, message, escalate, safety, harm]
+    keywords_ar: [ضيق, أزمة, سؤال صعب, قرار الحمل, إنهاء الحمل, إجهاض, ديني, طوارئ, فرز, رسالة, تصعيد, السلامة, ضرر]
+    a_en: "Every message is read by a person. Silsila never answers a question about a marriage, a pregnancy or a religious ruling: it replies with approved wording and alerts a counsellor. Every reply carries the 998 and 999 emergency numbers. A classifier only orders the counsellor's queue; its measured alert sensitivity on a blind synthetic test set is below."
+    a_ar: "يقرأ إنسان كل رسالة. لا تجيب سلسلة أبداً عن سؤال يخص زواجاً أو حملاً أو حكماً دينياً: ترد بصياغة معتمدة وتنبّه مستشاراً. ويحمل كل رد رقمي الطوارئ 998 و999. والمصنّف يرتّب قائمة عمل المستشار فقط؛ وحساسية التنبيه المقيسة له على مجموعة اختبار اصطناعية معمّاة أدناه."
+    tool: triage_evidence
+    sources: [{label: Triage evaluation, path: docs/evidence/triage_rules_ngram.json}, {label: Hazard log, path: docs/governance/hazard-log.md}]
+
+  - id: fhir
+    q_en: How does a result get into Silsila, and how does it connect to Malaffi?
+    q_ar: كيف تدخل النتيجة إلى سلسلة، وكيف ترتبط بـ«ملفي»؟
+    keywords_en: [fhir, malaffi, import, export, integration, interoperability, hl7, record, feed, health information exchange, tamm, emr, connect, standard]
+    keywords_ar: [ملفي, استيراد, تصدير, تكامل, ترابط, سجل, منصة تبادل المعلومات الصحية, تم, ربط, معيار]
+    a_en: "As a FHIR R4B record, read at counsellor intake. The record is checked first and refused with the reason if it is preliminary, about another person, a variant of uncertain significance or in a gene Silsila does not calculate. Names and identifiers in it are not stored. The reading below was done just now on the fictional sample record. The sample follows no Malaffi specification; a pilot would map to the exchange's real profile."
+    a_ar: "على هيئة سجل FHIR R4B يُقرأ عند استقبال المستشار. يُفحص السجل أولاً ويُرفض مع ذكر السبب إن كان أولياً، أو يخص شخصاً آخر، أو متغيّراً غير مؤكد الأهمية، أو في جين لا تحسبه سلسلة. ولا تُخزَّن الأسماء والمعرّفات الواردة فيه. أُجريت القراءة أدناه للتو على السجل النموذجي الخيالي. والنموذج لا يتبع أي مواصفة لـ«ملفي»؛ وفي تجربة ميدانية يُطابَق مع المواصفة الفعلية للمنصة."
+    tool: fhir_sample
+    sources: [{label: FHIR import, path: backend/src/silsila/api/fhir_import.py}, {label: Sample record, path: data/demo/fhir/newborn_cah_index_result.json}]
+
+  - id: programmes
+    q_en: How does it fit the genomics programmes announced in the UAE?
+    q_ar: كيف يتوافق مع برامج الجينوم المعلنة في الإمارات؟
+    keywords_en: [uae programme, announced, masterplan, genomics masterplan, emirati genome, newborn screening, premarital, premarital screening, doh, department of health, abu dhabi, national, alignment, policy]
+    keywords_ar: [برامج الإمارات, معلنة, الخطة الرئيسية, الجينوم الإماراتي, فحص حديثي الولادة, فحص ما قبل الزواج, دائرة الصحة, أبوظبي, وطني, توافق]
+    a_en: "Those programmes produce the results that start a cascade; Silsila is the step after the result, for relatives the programmes do not reach. The reported figures below are read from the context file, each with its source. No announcement of family cascade testing was found, and Silsila does not claim the Department of Health has asked for it."
+    a_ar: "تُنتج تلك البرامج النتائج التي تبدأ التتبع؛ وسلسلة هي الخطوة التي تلي النتيجة، للأقارب الذين لا تصل إليهم البرامج. الأرقام المنشورة أدناه مقروءة من ملف السياق، كل منها مع مصدره. لم يُعثر على أي إعلان عن فحص تتبعي للعائلات، ولا تدّعي سلسلة أن دائرة الصحة طلبته."
+    tool: uae_context
+    sources: [{label: Announced programmes, path: docs/evidence/uae_context.json}]
+
+  - id: measures
+    q_en: What counts as success?
+    q_ar: ما الذي يُعدّ نجاحاً؟
+    keywords_en: [success, measure, measures, outcomes, kpi, comprehension, uptake, time to counselling, equity, evaluation, metrics, what is measured, marriages]
+    keywords_ar: [نجاح, مقياس, مقاييس, نتائج, الفهم, الإقبال, الوقت حتى الاستشارة, الإنصاف, تقييم, ما الذي يقاس, الزيجات]
+    a_en: "The measures the challenge statement names: comprehension, counselling uptake, time to counselling, privacy and equity across languages. They are computed from what the system records; the counts below are this server's demo activity right now. Marriages, cancelled engagements and reproductive choices are never measured as success."
+    a_ar: "المقاييس التي يسمّيها نص التحدي: الفهم، والإقبال على الاستشارة، والوقت حتى الاستشارة، والخصوصية، والإنصاف بين اللغات. تُحسب مما يسجّله النظام؛ والأعداد أدناه هي نشاط العرض على هذا الخادم الآن. ولا يُقاس الزواج ولا فسخ الخطوبة ولا الخيارات الإنجابية كنجاح أبداً."
+    tool: outcomes
+    sources: [{label: Pilot protocol, path: docs/pilot-protocol.md}]
+
+  - id: options
+    q_en: Does Silsila tell couples what to do about a pregnancy or a marriage?
+    q_ar: هل تخبر سلسلة الأزواج بما يفعلونه بشأن حمل أو زواج؟
+    keywords_en: [advice, advise, recommend, directive, non-directive, options, reproductive options, prenatal, ivf, pgd, embryo, marry, marriage, tell couples, what to do, values]
+    keywords_ar: [نصيحة, توصي, توجيه, غير توجيهي, خيارات, خيارات إنجابية, قبل الولادة, أطفال الأنابيب, أجنة, زواج, ماذا يفعلون, القيم]
+    a_en: "No. Silsila describes and never directs. A relative can open the question about options before or during a pregnancy and read MedlinePlus text on carrier, prenatal and preimplantation testing, quoted word for word. Questions about what to decide go to a genetic counsellor. There is no compatibility matching and no registry."
+    a_ar: "لا. سلسلة تصف ولا توجّه أبداً. يستطيع القريب فتح سؤال الخيارات قبل الحمل أو أثناءه وقراءة نص MedlinePlus عن فحص الحاملين والفحص قبل الولادة والفحص قبل الانغراس، منقولاً حرفياً. وأسئلة «ماذا نقرر» تذهب إلى مستشار وراثي. لا مطابقة توافق ولا سجل."
+    sources: [{label: Approved templates, path: data/content/templates.yaml}, {label: Common questions, path: data/content/faq.yaml}]
+
+  - id: why_cousins
+    q_en: Why does cousin marriage matter here?
+    q_ar: لماذا يهم زواج الأقارب هنا؟
+    keywords_en: [cousin marriage, consanguinity, consanguineous, related parents, why cousins, recessive, why relatives, already married, extended family]
+    keywords_ar: [زواج الأقارب, القرابة, أبناء العمومة, والدان قريبان, متنحية, لماذا الأقارب, متزوجون بالفعل, العائلة الممتدة]
+    a_en: "A recessive condition appears when a child inherits the same variant from both parents. Relatives of an affected child are much more likely to carry it, and where cousins marry, two carriers are more likely to be a couple. In the only national survey, 50.5% of UAE-national marriages were between relatives (al-Gazali 1997, PMID 9881148). Testing the extended families of affected children found 31% of relatives were carriers and 8% of married couples were both carriers (Ahmed 2002, PMID 12374877). Premarital screening reaches couples before marriage; these couples are already married."
+    a_ar: "تظهر الحالة المتنحية حين يرث الطفل المتغيّر نفسه من كلا الوالدين. أقارب الطفل المصاب أكثر عرضة بكثير لحمله، وحيث يتزوج أبناء العمومة يزداد احتمال أن يكون الحاملان زوجين. في المسح الوطني الوحيد، كانت 50.5% من زيجات مواطني الإمارات بين أقارب (الغزالي 1997، PMID 9881148). وفحص العائلات الممتدة لأطفال مصابين وجد أن 31% من الأقارب حاملون وأن 8% من الأزواج كلاهما حامل (أحمد 2002، PMID 12374877). فحص ما قبل الزواج يصل إلى الأزواج قبل الزواج؛ أما هؤلاء فمتزوجون بالفعل."
+    sources: [{label: "al-Gazali 1997", url: "https://pubmed.ncbi.nlm.nih.gov/9881148/"}, {label: "Ahmed et al., NEJM 2002", url: "https://pubmed.ncbi.nlm.nih.gov/12374877/"}]
+
+  - id: limits
+    q_en: What are its limits? What has not been shown yet?
+    q_ar: ما حدوده؟ وما الذي لم يُثبَت بعد؟
+    keywords_en: [limits, limitations, limitation, not shown, not proven, weakness, risks, what is missing, caveats, honest, patients, real patients, clinical use, medical device, validated, approved, regulator]
+    keywords_ar: [حدود, قيود, لم يثبت, نقاط ضعف, مخاطر, ما الناقص, تحفظات, مرضى, استخدام سريري, جهاز طبي, معتمد, الجهة التنظيمية]
+    a_en: "It is a prototype tested only on synthetic families and messages; it has not been used with patients and is not a medical device. It calculates three genes. Cascade yields are projections from simulation. The Arabic is machine translation awaiting a native-speaking clinician, no genetic counsellor has reviewed the templates, and no read-aloud clip has been checked by a native listener. Storage is a demo database. No programme has asked for cascade testing."
+    a_ar: "هو نموذج أولي اختُبر على عائلات ورسائل اصطناعية فقط؛ لم يُستخدم مع مرضى وليس جهازاً طبياً. يحسب ثلاثة جينات. ومردود التتبع إسقاطات من المحاكاة. والعربية ترجمة آلية بانتظار طبيب من متحدثيها، ولم يراجع مستشار وراثي القوالب، ولم يتحقق مستمع من أهل اللغة من أي مقطع صوتي. والتخزين قاعدة بيانات تجريبية. ولم يطلب أي برنامج الفحص التتبعي."
+    sources: [{label: Limitations, path: docs/limitations.md}, {label: Hazard log, path: docs/governance/hazard-log.md}]
+
+  - id: pilot
+    q_en: How would a pilot work, and who would pay?
+    q_ar: كيف تجري تجربة ميدانية، ومن يدفع؟
+    keywords_en: [pilot, cost, price, pricing, pay, buyer, business, commercial, revenue, customer, path to pilot, who buys, counsellors, workforce, shadow mode]
+    keywords_ar: [تجربة ميدانية, تكلفة, سعر, تسعير, يدفع, المشتري, تجاري, إيراد, عميل, من يشتري, المستشارون, القوى العاملة]
+    a_en: "The buyer is the programme that already finds index cases; the operator is the genetics service it refers to. The proposal is a shadow phase first, with counsellors running their usual process while Silsila computes alongside and nothing is sent, then an assisted phase with counsellor approval of every message. Pricing proposed per index family started, to be tested in the pilot; nothing is validated yet. The UAE has 9 practising genetic counsellors (Almarri 2025), so counsellor time is the scarce resource."
+    a_ar: "المشتري هو البرنامج الذي يجد الحالات الدليل بالفعل؛ والمشغّل هو خدمة الوراثة التي يُحيل إليها. المقترح مرحلة ظلّ أولاً، يواصل فيها المستشارون إجراءهم المعتاد بينما تحسب سلسلة بالتوازي ولا يُرسل شيء، ثم مرحلة مساعدة مع اعتماد المستشار لكل رسالة. التسعير المقترح لكل عائلة دليل تبدأ التتبع، ويُختبر في التجربة؛ ولا شيء مُتحقَّق منه بعد. في الإمارات 9 مستشارين وراثيين ممارسين (المرّي 2025)، فوقت المستشار هو المورد النادر."
+    sources: [{label: Commercial case, path: docs/commercial-case.md}, {label: Pilot protocol, path: docs/pilot-protocol.md}, {label: "Almarri et al. 2025", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12619030/"}]
+
+  - id: voice
+    q_en: How does voice intake work?
+    q_ar: كيف يعمل الإدخال الصوتي؟
+    keywords_en: [voice intake, speech, spoken, story, emirati, dialect, jais asr, asr, family tree from speech, transcribe, draft tree, recorded]
+    keywords_ar: [الإدخال الصوتي, كلام, منطوقة, قصة, إماراتية, لهجة, التعرف على الكلام, شجرة من الكلام, مسودة الشجرة, مسجل]
+    a_en: "A family tells its story in Emirati Arabic. Jais-ASR transcribes it and Jais 3 drafts a family tree: people, sex, parents and marriages only. The checks list every problem, the counsellor confirms every person and every marriage, and only then does the exact engine calculate. Health status heard in speech is never used. The hosted site replays one recorded run with a synthetic voice, labelled as recorded."
+    a_ar: "تروي العائلة قصتها باللهجة الإماراتية. يحوّلها Jais-ASR إلى نص ويصوغ Jais 3 مسودة شجرة العائلة: الأشخاص والجنس والوالدان والزيجات فقط. تسرد الفحوص كل مشكلة، ويؤكد المستشار كل شخص وكل زواج، وبعدها فقط يحسب المحرك الدقيق. والحالة الصحية المسموعة في الكلام لا تُستخدم أبداً. والموقع المستضاف يعيد تشغيل تسجيل واحد بصوت اصطناعي موسوم بأنه مسجَّل."
+    sources: [{label: Voice-intake model card, path: docs/governance/model-card-voice-intake.md}]

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { usePrefs } from "@/lib/prefs";
 import { useState, type ReactNode } from "react";
+import { GuideLauncher } from "./Guide";
 import { cx } from "./ui";
 
 export function Logo({ className }: { className?: string }) {
@@ -168,6 +169,7 @@ export function Page({ children, wide = false }: { children: ReactNode; wide?: b
         {children}
       </main>
       <Footer wide={wide} />
+      <GuideLauncher />
     </>
   );
 }

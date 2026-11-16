@@ -14,6 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 
+from .. import guide as guide_mod
 from .. import intake, params, twin
 from ..content import AUDIO, GateError, Message, registry
 from ..engine import Pedigree
@@ -200,6 +201,32 @@ def read_aloud(lang: Literal["en", "ar"], name: str) -> FileResponse:
 @app.get("/api/content/faq")
 def faq() -> list[dict[str, Any]]:
     return [{k: t[k] for k in ("id", "title_en", "title_ar", "paragraphs")} for t in registry().faq]
+
+
+# ------------------------------------------------------------------ guide --
+class GuideAsk(BaseModel):
+    text: str | None = Field(default=None, max_length=400)
+    id: str | None = Field(default=None, max_length=40)
+    lang: Literal["en", "ar"] = "en"
+
+
+@app.get("/api/guide")
+def guide_topics() -> dict[str, Any]:
+    """The questions the guide can answer. The guide is not a language model: fixed answers and live lookups."""
+    g = guide_mod.guide()
+    return {"not_ai": g.meta["not_ai"], "topics": g.topics(), "lookups": sorted(guide_mod.TOOLS)}
+
+
+@app.post("/api/guide/ask")
+def guide_ask(body: GuideAsk) -> dict[str, Any]:
+    """Answer a question about the tool with a fixed answer and, where the answer has one, a live lookup.
+    The question text is not stored: the audit entry records only which answer was matched."""
+    if not (body.text or "").strip() and not body.id:
+        raise service.Invalid("Ask a question or choose one from the list")
+    out = guide_mod.guide().ask(store(), body.text, body.id, body.lang)
+    store().audit("visitor", "guide", "guide.ask", detail={"kind": out["kind"], "matched": out.get("id"), "lang": body.lang,
+                                                           "lookup": (out.get("tool") or {}).get("name")})
+    return out
 
 
 # ----------------------------------------------------------------- engine --
