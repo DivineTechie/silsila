@@ -80,6 +80,10 @@ export default function Landing() {
               <a href="#try" className="inline-flex min-h-12 items-center rounded-xl border-2 border-accent bg-surface px-4 font-semibold text-accent hover:bg-surface-2">
                 {t("home.try")} ↓
               </a>
+              <a href="#signin" onClick={() => document.getElementById("signin")?.setAttribute("open", "")}
+                className="inline-flex min-h-12 items-center rounded-xl border border-line-strong bg-surface px-4 font-medium text-ink hover:bg-surface-2">
+                {t("signin.title")} ↓
+              </a>
             </div>
           </div>
           <HeroPedigree />
@@ -110,7 +114,7 @@ export default function Landing() {
           </ol>
         </section>
 
-        <details className="group rounded-2xl border border-line bg-surface p-4 sm:px-6" open={!!session}>
+        <details id="signin" className="group scroll-mt-24 rounded-2xl border border-line bg-surface p-4 sm:px-6" open={!!session}>
           <summary className="flex min-h-9 cursor-pointer list-none items-center justify-between gap-3 font-semibold text-ink">
             <span>{session ? t("signin.title") : t("home.signin")}</span>
             <span aria-hidden="true" className="text-muted transition-transform group-open:rotate-180">⌄</span>
@@ -161,9 +165,15 @@ export default function Landing() {
                 />
               </Field>
               {error ? <ErrorBox error={error} /> : null}
-              <Button type="submit" variant="primary" disabled={busy || !username || !password}>
-                {busy ? t("signin.busy") : t("signin.submit")}
-              </Button>
+              <div className="flex flex-wrap items-center gap-3">
+                <Button type="submit" variant="primary" disabled={busy || !username || !password}>
+                  {busy ? t("signin.busy") : t("signin.submit")}
+                </Button>
+                {/* the guest route sits beside the login button: one-click roles, no password */}
+                <a href="#try" className="inline-flex min-h-11 items-center rounded-xl border-2 border-accent bg-surface px-4 font-semibold text-accent hover:bg-surface-2">
+                  {t("home.try")}
+                </a>
+              </div>
               <p className="text-xs text-muted">{t("landing.credentials")}</p>
             </form>
             </>
