@@ -13,7 +13,7 @@ decision or a fact only the entrant can give.
 | Conflict of interest | "None. No member of our team has a conflict of interest to declare." (confirmed by the entrant, 16 Nov 2026) |
 | Software-based, hardware-based, or both | Software |
 | Demo video link | https://youtu.be/fCHWTlGyeSY (unlisted YouTube upload of `submission/silsila-demo-film.mp4`; 5 min 9 s, English; the film labels itself as recorded, fictional and synthetic voice) |
-| Source code | https://github.com/TusharTechs/silsila (Apache-2.0; the submission pack is the latest release) |
+| Source code | https://github.com/DivineTechie/silsila (Apache-2.0; the submission pack is the latest release) |
 
 ## Solution summary (1823 of 2,000 characters)
 

@@ -6,7 +6,7 @@
 
 <p align="center">
 <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/License-Apache--2.0-blue"></a>
-<a href="https://github.com/TusharTechs/silsila/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/TusharTechs/silsila/actions/workflows/ci.yml/badge.svg"></a>
+<a href="https://github.com/DivineTechie/silsila/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/DivineTechie/silsila/actions/workflows/ci.yml/badge.svg"></a>
 <img alt="Hosted in Azure UAE North" src="https://img.shields.io/badge/Hosted%20in-Azure%20UAE%20North-0078D4">
 <img alt="Data: fictional only" src="https://img.shields.io/badge/Data-fictional%20only-lightgrey">
 </p>
@@ -48,8 +48,8 @@ simulated families; the Arabic is machine translation awaiting native clinical r
 | Live app | https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io | No password; one-click roles. English and Arabic |
 | API health | https://silsila-api.lemonisland-568f9acd.uaenorth.azurecontainerapps.io/api/health | Returns status of the hosted API |
 | Demo film (5 min) | https://youtu.be/fCHWTlGyeSY | English; recorded from the live site; synthetic voiceover |
-| Source code | https://github.com/TusharTechs/silsila | This repository |
-| Submission pack | https://github.com/TusharTechs/silsila/releases/latest | Judge guide, deck PDF, evidence |
+| Source code | https://github.com/DivineTechie/silsila | This repository |
+| Submission pack | https://github.com/DivineTechie/silsila/releases/latest | Judge guide, deck PDF, evidence |
 | Solution deck | In the submission pack (release asset) | Built from the organisers' template |
 | Judges' guide | [`docs/JUDGES.md`](docs/JUDGES.md) | Organised by the six judging criteria |
 | Evidence | [`docs/evidence/README.md`](docs/evidence/README.md) | Every number, with the script that produced it |

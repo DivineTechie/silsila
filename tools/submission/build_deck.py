@@ -23,7 +23,7 @@ SOFT, SAND, LINE, WHITE = RGBColor(0xE4, 0xEF, 0xEC), RGBColor(0xF4, 0xEF, 0xE6)
 FONT = "Arial"
 LIVE = "https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io"
 FILM = "https://youtu.be/fCHWTlGyeSY"
-REPO = "https://github.com/TusharTechs/silsila"
+REPO = "https://github.com/DivineTechie/silsila"
 TEAM = {"name": "Tushar Agarwal", "country": "India", "role": "Founder; design, engineering, evidence", "org": "Independent",
         "age": "18 or over: confirmed"}
 

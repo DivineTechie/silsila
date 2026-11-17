@@ -23,8 +23,8 @@ LINKS = [
     ("Live app (no password; one-click roles)", "https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io"),
     ("API health", "https://silsila-api.lemonisland-568f9acd.uaenorth.azurecontainerapps.io/api/health"),
     ("Demo film (5 min 9 s)", "https://youtu.be/fCHWTlGyeSY"),
-    ("Source code (Apache-2.0)", "https://github.com/TusharTechs/silsila"),
-    ("This pack (latest release)", "https://github.com/TusharTechs/silsila/releases/latest"),
+    ("Source code (Apache-2.0)", "https://github.com/DivineTechie/silsila"),
+    ("This pack (latest release)", "https://github.com/DivineTechie/silsila/releases/latest"),
 ]
 
 # (path in the repository, path in the zip)
