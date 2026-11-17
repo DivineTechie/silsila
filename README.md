@@ -45,7 +45,7 @@ simulated families; the Arabic is machine translation awaiting native clinical r
 
 | Resource | Link | Notes |
 |---|---|---|
-| Live app | https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io | No password; one-click roles. English and Arabic |
+| Live app | https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io | Press **Continue as guest** (one-click roles), or sign in as `mariam`, `reem` or `counsellor` with password `Silsila-Judge-2026` (fictional demo accounts). English and Arabic |
 | API health | https://silsila-api.lemonisland-568f9acd.uaenorth.azurecontainerapps.io/api/health | Returns status of the hosted API |
 | Demo film (5 min) | https://youtu.be/fCHWTlGyeSY | English; recorded from the live site; synthetic voiceover |
 | Source code | https://github.com/DivineTechie/silsila | This repository |
@@ -292,8 +292,9 @@ language and family type: [`docs/evidence/silsila_bench.md`](docs/evidence/silsi
 
 ## Run it locally
 
-Works on macOS, Linux and Windows. The demo accounts' passwords are not published. Locally they are whatever
-you set in `backend/.env` (the example file has placeholders). On the hosted site use the one-click roles.
+Works on macOS, Linux and Windows. Locally the demo accounts' passwords are whatever you set in `backend/.env`
+(the example file has placeholders). On the hosted site, continue as guest or use the demo credentials in
+[Links](#links).
 
 ### Option A: Docker
 

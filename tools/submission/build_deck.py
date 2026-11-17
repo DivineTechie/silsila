@@ -315,10 +315,10 @@ def main(src: str, dst: str) -> None:
 
     # 11. Login
     s = S[10]
-    card(s, 0.4, 1.7, 9.2, 0.95, "No login is needed", [
+    card(s, 0.4, 1.7, 9.2, 0.95, "Continue as Guest: no login is needed", [
         (LIVE, {"size": 11, "bold": True, "color": INK, "space": 4}),
         (f"Film (5 min): {FILM}   ·   Code and submission pack: {REPO}", {"size": 9.5, "color": INK, "space": 4}),
-        ("The home page has one-click roles (the equivalent of Continue as Guest), each with every feature. All families are fictional.", {"size": 10})], fill=SOFT)
+        ("Press \"Continue as guest\" on the home page: one-click roles with every feature. All families are fictional.", {"size": 10})], fill=SOFT)
     for i, (a, b) in enumerate([("Watch a cascade", "One newborn's result travelling through a family in 13 live steps. Start here."),
                                 ("Family Twin", "A simulated clan of 61 people; record a result and watch every chance recalculated."),
                                 ("Mariam (family)", "Give permission, choose whom to tell, send an anonymous invitation."),
@@ -326,8 +326,8 @@ def main(src: str, dst: str) -> None:
                                 ("A relative's link", "The invitation as a relative sees it: Listen, common questions, check, booking."),
                                 ("Ask about Silsila", "Bottom corner of every public page: answers about the tool, without AI.")]):
         card(s, 0.4 + (i % 3) * 3.1, 2.8 + (i // 3) * 1.12, 3.0, 1.02, a, [(b, {"size": 9})], fill=WHITE, size=9, title_size=10)
-    text(s, 0.4, 5.05, 9.2, 0.35, [("Arabic or English from the header. \"Reset the demo data\" is in the counsellor's audit tab. Username and password sign-in also exists "
-                                    "for local runs, with passwords set in backend/.env.", {"size": 8.5, "color": MUTED, "italic": True})])
+    text(s, 0.4, 5.05, 9.2, 0.35, [("Arabic or English from the header. \"Reset the demo data\" is in the counsellor's audit tab. Credentials, if preferred: username mariam, reem or "
+                                    "counsellor; password Silsila-Judge-2026 (same for all three).", {"size": 9, "color": INK, "bold": True})])
 
     # 12. Path to pilot and scale
     s = S[11]
