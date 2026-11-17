@@ -149,4 +149,8 @@ Recorded before the run started.
   sample, so the comparison is like for like.
 * Prompts, decoding (temperature 0, default reasoning effort, `max_tokens` 32,768; A5) and scoring are
   unchanged. Results are reported whatever they are, including any items left unrun at the cap.
+* Harness fix made after the endpoint was up and before any item was answered: the runner's readiness
+  check now sends the key, because a Hugging Face endpoint answers 401 to an unauthenticated `/health`.
+  The first start of the endpoint also failed on a start-command clash and was recreated as a plain vLLM
+  container with the same flags. Prompts, decoding and scoring are unchanged.
 

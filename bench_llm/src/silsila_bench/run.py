@@ -25,7 +25,7 @@ from .runner import run_track, select_items
 TRACKS = ("T1", "T2", "T3", "T5")
 
 
-async def wait_until_ready(base_url: str, timeout_s: float, every_s: float = 15.0) -> None:
+async def wait_until_ready(base_url: str, timeout_s: float, every_s: float = 15.0, api_key: str | None = None) -> None:
     """Poll the vLLM server's /health (no key needed) so a server that cannot start fails the run
     quickly with a clear message, instead of every request retrying against it."""
     import time
@@ -37,7 +37,9 @@ async def wait_until_ready(base_url: str, timeout_s: float, every_s: float = 15.
     last = ""
     # Modal holds a request while the container boots and then answers 303 to the same URL; following
     # those redirects can block for a long time, so each check is one short request without redirects.
-    async with httpx.AsyncClient(timeout=60.0, follow_redirects=False) as http:
+    # A Hugging Face endpoint puts its own gate in front of /health and answers 401 without the key.
+    headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
+    async with httpx.AsyncClient(timeout=60.0, follow_redirects=False, headers=headers) as http:
         while True:
             waited = time.monotonic() - t0
             try:
@@ -113,7 +115,7 @@ def main(argv: list[str] | None = None) -> int:
         client = ChatClient(spec, base_url=a.base_url)
         try:
             if spec.provider == "vllm":
-                await wait_until_ready(a.base_url or spec.resolved_base_url(), a.ready_timeout)
+                await wait_until_ready(a.base_url or spec.resolved_base_url(), a.ready_timeout, api_key=spec.api_key())
             for t in tracks:
                 items = select_items(t, limit=a.limit, registers=a.register, family_types=a.family_type,
                                      families=a.family, subset=a.subset)
