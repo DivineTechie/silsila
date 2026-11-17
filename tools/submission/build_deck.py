@@ -187,11 +187,11 @@ def main(src: str, dst: str) -> None:
            "What the work shows: an exact Bayesian pedigree engine checked against an independent solver (30,000 of 30,000 probabilities agree); "
            "a pre-registered benchmark of five language models, including the co-creators' Jais 3; a bilingual, accessible web application "
            "running in Azure UAE North; FHIR R4B import and export; a hazard log of 24 hazards, model cards and a clause map to the DoH "
-           "Responsible AI Standard; 247 backend tests. What the team does not have, stated plainly: a clinical genetics qualification and a "
+           "Responsible AI Standard; 250 backend tests. What the team does not have, stated plainly: a clinical genetics qualification and a "
            "native Arabic clinical reviewer. Both are the first additions for a pilot. No patient has used the system.")
     assert len(cap) <= 1000, len(cap)
     card(S[2], 0.4, 1.6, 9.2, 1.75, None, [(cap, {"size": 11, "space": 0})], fill=SAND)
-    for i, (n, lab) in enumerate([("11 days", "from first commit to this submission"), ("247 + 145", "automated tests: application, benchmark harness"),
+    for i, (n, lab) in enumerate([("11 days", "from first commit to this submission"), ("250 + 145", "automated tests: application, benchmark harness"),
                                   ("0", "accessibility violations, every screen, English and Arabic (axe-core)"), ("UAE North", "where the live prototype runs today")]):
         card(S[2], 0.4 + i * 2.33, 3.55, 2.2, 1.05, None, [(n, {"bold": True, "size": 17, "color": TEAL, "space": 3}), (lab, {"size": 9, "color": INK})], fill=WHITE)
 

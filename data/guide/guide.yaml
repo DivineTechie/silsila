@@ -155,12 +155,12 @@ entries:
   - id: hosting
     q_en: Where does it run, and how fast is it?
     q_ar: أين يعمل، وما سرعته؟
-    keywords_en: [where hosted, hosting, host, azure, uae north, region, server, cloud, how fast, speed, latency, performance, slow, scalable, scalability, deployment, deploy, gpu]
-    keywords_ar: [أين يعمل, الاستضافة, شمال الإمارات, المنطقة, الخادم, السحابة, السرعة, الأداء, بطيء, قابلية التوسع, النشر]
-    a_en: "The prototype runs in Azure Container Apps in the UAE North region, on ordinary processors, with no language model needed at run time. The timing below was measured just now on this server: one exact recalculation of the Family Twin's 61-person clan."
-    a_ar: "يعمل النموذج الأولي على Azure Container Apps في منطقة شمال الإمارات، على معالجات عادية، ولا يحتاج نموذجاً لغوياً وقت التشغيل. قيس الزمن أدناه للتو على هذا الخادم: إعادة حساب دقيقة واحدة لعشيرة التوأم العائلي المؤلفة من 61 شخصاً."
+    keywords_en: [where hosted, hosting, host, azure, uae north, region, server, cloud, how fast, speed, latency, performance, slow, scalable, scalability, deployment, deploy, gpu, load, load test, capacity, concurrent, concurrency, how many users, many users, traffic, requests per second, stress test, bottleneck]
+    keywords_ar: [أين يعمل, الاستضافة, شمال الإمارات, المنطقة, الخادم, السحابة, السرعة, الأداء, بطيء, قابلية التوسع, النشر, اختبار الحمل, الحمل, السعة, عدد المستخدمين, المستخدمين في وقت واحد]
+    a_en: "The prototype runs in Azure Container Apps in the UAE North region, on ordinary processors, with no language model needed at run time. The timing below was measured just now on this server: one exact recalculation of the Family Twin's 61-person clan. In a load test of this server with 25 clients at once there were 0 errors, and relatives opened their links 382 times a second. The limit is the full 61-person recalculation: about 1.5 a second, so extra requests wait in line."
+    a_ar: "يعمل النموذج الأولي على Azure Container Apps في منطقة شمال الإمارات، على معالجات عادية، ولا يحتاج نموذجاً لغوياً وقت التشغيل. قيس الزمن أدناه للتو على هذا الخادم: إعادة حساب دقيقة واحدة لعشيرة التوأم العائلي المؤلفة من 61 شخصاً. في اختبار حِمل لهذا الخادم مع 25 عميلا في آن واحد، لم يكن هناك أي خطأ، وفتح الأقارب روابطهم 382 مرة في الثانية. الحد الأقصى هو إعادة الحساب الكاملة لـ 61 شخصا: حوالي 1.5 في الثانية، لذا تنتظر الطلبات الإضافية في الطابور."
     tool: system
-    sources: [{label: Deployment notes, path: docs/deployment.md}, {label: Hosted timing, path: docs/evidence/twin_hosted_timing.json}]
+    sources: [{label: Deployment notes, path: docs/deployment.md}, {label: Hosted timing, path: docs/evidence/twin_hosted_timing.json}, {label: Hosted load test, path: docs/evidence/load_hosted.json}]
 
   - id: language
     q_en: Which languages does it speak, and can it read aloud?
@@ -406,7 +406,7 @@ entries:
     q_en: "Where is the data kept, and which rules does it follow?"
     q_ar: "أين تحفظ البيانات، وما هي القواعد التي تتبعها؟"
     keywords_en: ["data residency", "residency", "kept in the uae", "law", "legal", "regulation", "regulations", "compliance", "comply", "compliant", "pdpl", "data protection law", "gdpr", "hipaa", "adhics", "responsible ai standard", "doh standard", "rules", "governance"]
-    keywords_ar: ["إقامة البيانات", "إقامة", "محفوظ في الإمارات", "القانون", "قانوني", "التنظيم", "اللوائح", "الامتثال", "مطيع", "PDPL", "قانون حماية البيانات", "لائحة حماية البيانات العامة", "HIPAA", "أدكس", "معيار الذكاء الاصطناعي المسؤول", "معيار الوزارة", "القواعد", "الحوكمة"]
+    keywords_ar: ["إقامة البيانات", "إقامة", "محفوظ في الإمارات", "القانون", "القوانين", "قوانين", "قانوني", "التنظيم", "اللوائح", "الامتثال", "مطيع", "PDPL", "قانون حماية البيانات", "لائحة حماية البيانات العامة", "HIPAA", "أدكس", "معيار الذكاء الاصطناعي المسؤول", "معيار الوزارة", "القواعد", "الحوكمة"]
     a_en: "The prototype runs in Azure's UAE North region and holds only fictional people. Its controls are mapped clause by clause to the Abu Dhabi Department of Health's Responsible AI Standard, and a hazard log lists each hazard with its controls. It has not been assessed against UAE health-data law or the ADHICS standard: that review, UAE PASS sign-in and a managed database belong to a pilot."
     a_ar: "يعمل النموذج الأولي في منطقة شمال الإمارات التابعة لأزور ولا يحتوي إلا أشخاصا خياليين. يتم ربط ضوابط هذا الاختبار فقرا بندا بمعيار الذكاء الاصطناعي المسؤول التابع لإدارة الصحة في أبوظبي، ويسرد سجل المخاطر كل خطر مع ضوابطه. لم يتم تقييمه وفقا لقانون بيانات الصحة الإماراتية أو معيار ADHICS: تلك المراجعة، وتسجيل دخول المرور الإماراتي، وقاعدة بيانات مدارة تنتمي إلى نموذج تجريبي."
     tool: hazard_log
