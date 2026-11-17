@@ -15,3 +15,5 @@ coverage/
 docs/evidence/logs/bench/
 tools/film/out/
 /submission/
+*.db-shm
+*.db-wal
