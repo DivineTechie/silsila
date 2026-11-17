@@ -135,6 +135,23 @@ in [`docs/submission-fields.md`](docs/submission-fields.md).
 4. **Privacy by design.** Granular, revocable consent; relatives see only chosen disclosures; tamper-evident
    audit log; pseudonymous FHIR export; designed for UAE-only hosting.
 
+### What happens when it is wrong
+
+| What could be wrong | What catches it | What was measured |
+|---|---|---|
+| A relative's carrier or couple chance is wrong (hazard H1) | An exact engine, checked against an independent solver and textbook values | 30,000 of 30,000 probabilities match to within 1e-9; textbook values 67 / 67 |
+| A family tree that cannot be right, or results that cannot all be true (H3) | The engine refuses to give numbers and the case goes to the counsellor queue | 0 silent failures in 237 malformed or impossible inputs |
+| A tree drafted wrongly from a spoken story (H14, H15) | The counsellor confirms every person and marriage before the engine runs; all problems are listed at once | Silsila-Bench: links found range from 0.8% to 92.5% across the models, which is why a model only drafts |
+| A message in distress is missed (H5) | Every message is read by a person, and every reply carries 998/999 | Alert sensitivity 0.961 (95% CI 0.890-0.986); 76/76 replies show 998/999; 100% read by a person |
+| A model's text reaches a relative (H4, H17) | No text is generated at run time; an output gate re-derives each message from approved content | Blocked in the live cascade (step 12); the guide made 0 calls to any model; no rate measured for the gate |
+| An invitation reaches the wrong person (H6) | Unguessable links, role checks, and relatives see only what was chosen | 0 disclosures in 10,000 unauthorised requests |
+| An imported result is preliminary, unsafe or contradictory (H23) | The import reads a record completely or refuses it with the reason, and the refusal is audited | 22 kinds of malformed record and 116 single-field deletions: 0 crashes and 0 silent failures |
+| A record is changed afterwards (H10) | A hash-chained audit log that shows the first broken entry | Shown in the demonstration; no rate measured |
+
+Software does not catch everything. People must review the wording of the templates and the Arabic (no
+genetic counsellor or native-speaking clinician has yet done so), and relationships that nobody discloses,
+such as unrecorded parentage, are invisible to the engine. See the full [hazard log](docs/governance/hazard-log.md).
+
 ## Evidence
 
 All evidence is on synthetic data and is reproducible (`docs/evidence/README.md`, per-case logs in
@@ -262,6 +279,8 @@ bash deploy/azure-deploy.sh      # prints the public web and API URLs
   law, the data protection law and ADHICS set against what the prototype does and does not do. The team's
   reading of public sources, not a legal assessment.
 - [Commercial case and path to pilot](docs/commercial-case.md): buyer, value, pricing model, costs, risks.
+- [What exists today, and what Silsila adds](docs/alternatives.md): the family letter, direct contact, digital tools,
+  pedigree software and carrier screening, compared on published evidence, with where Silsila is weaker.
 - [Accessibility audit](docs/evidence/accessibility.md): axe-core, every screen, English and Arabic, 0 violations.
 - [Hazard log](docs/governance/hazard-log.md), [triage model card](docs/governance/model-card-triage.md),
   [voice-intake model card](docs/governance/model-card-voice-intake.md),
