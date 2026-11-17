@@ -10,6 +10,8 @@ COPY backend/src ./src
 RUN uv sync --frozen --no-dev
 COPY data /app/data
 COPY docs/evidence/*.json /app/docs/evidence/
+# the guide reads the hazard log for one of its lookups
+COPY docs/governance/hazard-log.md /app/docs/governance/
 # Demo mode: the database is recreated with the fictional families on every start.
 ENV SILSILA_DEMO=1
 EXPOSE 8000

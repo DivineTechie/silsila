@@ -195,3 +195,11 @@ def test_every_answer_shows_the_steps_that_produced_it(client):
     assert [s["kind"] for s in stop["steps"]] == ["read", "safety"] and "does not answer" in stop["steps"][-1]["detail"]
     listed = ask(client, id="twin")
     assert listed["steps"][0]["detail"].startswith("A question from the list")
+
+
+def test_the_server_image_carries_every_file_a_lookup_reads():
+    # the hosted guide reported "Lookup failed" for the hazard log because the image did not include the file
+    from pathlib import Path
+    dockerfile = (Path(__file__).resolve().parents[1] / "Dockerfile").read_text()
+    assert "docs/evidence/*.json" in dockerfile and "docs/governance/hazard-log.md" in dockerfile
+
