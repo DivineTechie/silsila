@@ -183,7 +183,10 @@ All evidence is on synthetic data and is reproducible (`docs/evidence/README.md`
 Pre-registered ([`bench_llm/PREREGISTRATION.md`](bench_llm/PREREGISTRATION.md), changes in
 [`AMENDMENTS.md`](bench_llm/AMENDMENTS.md)); 150 synthetic families, gold answers from the exact engine; models
 in a fixed order, not a ranking; 95% intervals from a bootstrap over families. Jais 3 32B was run on a
-pre-declared 350-prompt sample (A10); K2-Think-V2 was not run (two-GPU cost).
+pre-declared 350-prompt sample (A10). K2-Think-V2 was started on the same sample (A12) but did not finish
+within its budget: in 5.5 hours it answered 45 of the 100 free-text prompts; 33 of the 45 gave no number
+(reasoning used the whole 32,768-token limit). Of the 12 that gave a number, 6 were exact. That is too few to
+score, so it has no row below.
 
 | Model | Free text: exact, of answers given | Free text: no number | With the engine as a tool: exact | Story to tree: links found |
 |---|---|---|---|---|

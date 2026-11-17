@@ -154,3 +154,18 @@ Recorded before the run started.
   The first start of the endpoint also failed on a start-command clash and was recreated as a plain vLLM
   container with the same flags. Prompts, decoding and scoring are unchanged.
 
+
+### A12 outcome, recorded after the run, 2026-11-17
+
+* The endpoint ran from 11:19 to 16:49 IST (about 5.5 hours at about $10 an hour, so about $55 of the
+  $60 cap) and was then deleted by the guard timer. The runner was stopped by hand afterwards.
+* Only T1 was reached. K2-Think-V2 took a median of 82 minutes per answer at this concurrency. 97 T1
+  prompts were sent: 45 came back, 18 timed out, and 34 failed with 404 because the endpoint had already
+  been deleted.
+* Of the 45 answers, 33 gave no number: each reached the 32,768-token limit while still reasoning
+  (`finish_reason` = length). Of the 12 that gave a number, 6 were exact, 5 were within 25% and 1 was off by
+  more than twofold (English 7 numbers from 23 answers; Gulf Arabic 5 from 22).
+* No K2-Think-V2 result is reported in the tables: 45 of 350 prompts is too few and not the declared
+  sample. The partial logs stay in `runs/k2-think-v2/` (not published). The finding that can be stated is
+  narrow: under the pre-registered settings (A5), this model usually did not finish its reasoning in time to
+  give an answer.
