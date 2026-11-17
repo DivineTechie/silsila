@@ -4,6 +4,7 @@
 //   node build.mjs               # out/silsila-demo-film.mp4
 //   node build.mjs --no-music    # voice and effects only
 //   node build.mjs --no-sfx      # voice and music only
+//   node build.mjs --raw=FILE    # use a patched copy of the recording instead of out/raw.webm
 //
 // Needs ffmpeg on the PATH. The voice is synthetic (Azure AI Speech) and the film says so on screen. The music
 // and the effects are computed from sine tones and noise by make_sound.py; nothing is taken from a recording.
@@ -18,7 +19,8 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const music = !process.argv.includes("--no-music") && fs.existsSync(path.join(HERE, "out", "music.wav"));
 const sfx = !process.argv.includes("--no-sfx") && fs.existsSync(path.join(HERE, "out", "sfx.wav"));
 const tl = JSON.parse(fs.readFileSync(path.join(HERE, "out", "timeline.json"), "utf8"));
-const raw = path.join(HERE, "out", "raw.webm");
+const rawArg = process.argv.find((a) => a.startsWith("--raw="));
+const raw = rawArg ? path.resolve(rawArg.slice(6)) : path.join(HERE, "out", "raw.webm");
 const out = path.join(HERE, "out", "silsila-demo-film.mp4");
 const T = Math.ceil(tl.seconds);
 
