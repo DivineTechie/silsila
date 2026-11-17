@@ -76,6 +76,10 @@ export default function Landing() {
               <Link href="/evidence" className="inline-flex min-h-12 items-center rounded-xl border border-line-strong bg-surface px-4 font-medium text-ink hover:bg-surface-2">
                 {t("home.evidence")}
               </Link>
+              {/* jumps to the one-click roles further down, so judges find them from the first screen */}
+              <a href="#try" className="inline-flex min-h-12 items-center rounded-xl border-2 border-accent bg-surface px-4 font-semibold text-accent hover:bg-surface-2">
+                {t("home.try")} ↓
+              </a>
             </div>
           </div>
           <HeroPedigree />
@@ -83,7 +87,9 @@ export default function Landing() {
 
         <OnlySilsila />
 
-        <JudgeMode />
+        <div id="try" className="scroll-mt-24">
+          <JudgeMode />
+        </div>
 
         <CriteriaGuide />
 
