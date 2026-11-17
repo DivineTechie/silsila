@@ -1,0 +1,34 @@
+# Try production mode locally (Postgres, no demo accounts, no seed):
+#   put the variables below in a .env file next to this one
+#   docker compose -f docker-compose.prod.yml --env-file .env up --build
+# Required in .env: SILSILA_SECRET (32+ random chars), POSTGRES_PASSWORD.
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: silsila
+      POSTGRES_DB: silsila
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U silsila"]
+      interval: 5s
+      retries: 10
+  api:
+    build: {context: ., dockerfile: backend/Dockerfile}
+    environment:
+      SILSILA_DEMO: "0"
+      SILSILA_SECRET: ${SILSILA_SECRET:?set SILSILA_SECRET in .env (32+ chars)}
+      SILSILA_CORS: ${SILSILA_CORS:-http://localhost:3100}
+      SILSILA_DATABASE_URL: postgresql://silsila:${POSTGRES_PASSWORD}@db:5432/silsila
+    ports: ["8100:8000"]
+    depends_on:
+      db: {condition: service_healthy}
+  web:
+    build:
+      context: web
+      args: {NEXT_PUBLIC_API_URL: "http://localhost:8100"}
+    ports: ["3100:3000"]
+    depends_on: [api]
+volumes:
+  pgdata:
