@@ -48,9 +48,9 @@ export function JudgeMode() {
   }
 
   return (
-    <Card aria-labelledby="judge-h" className="border-accent">
+    <Card aria-labelledby="judge-h" className="border-2! border-accent! bg-accent-soft!">
       <H2 id="judge-h">{t("judge.title")}</H2>
-      <p className="mt-2 text-sm text-ink-2">{t("judge.lead")}</p>
+      <p className="mt-2 text-ink-2">{t("judge.lead")}</p>
       <ul className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {PERSONAS.map((p) => (
           <li key={p.key}>
@@ -58,10 +58,16 @@ export function JudgeMode() {
               type="button"
               onClick={() => enter(p.key)}
               disabled={busy !== null}
-              className="flex h-full w-full flex-col items-start gap-1 rounded-xl border border-line-strong bg-surface p-4 text-start hover:border-accent hover:bg-accent-soft disabled:opacity-60"
+              className="group flex h-full w-full flex-col items-start gap-1 rounded-xl border-2 border-line-strong bg-surface p-4 text-start shadow-sm transition hover:-translate-y-0.5 hover:border-accent hover:shadow-md focus-visible:border-accent disabled:opacity-60"
             >
+              {p.key === "mariam" ? (
+                <span className="mb-1 rounded-full bg-accent px-2 py-0.5 text-xs font-semibold text-accent-ink">{t("judge.start")}</span>
+              ) : null}
               <span className="font-semibold text-ink">{busy === p.key ? t("judge.busy") : t(p.title)}</span>
               <span className="text-sm text-ink-2">{t(p.desc)}</span>
+              <span className="mt-auto inline-flex items-center gap-1 pt-3 font-semibold text-accent">
+                {t("judge.open")} <span aria-hidden="true" className="transition group-hover:translate-x-0.5 rtl:-scale-x-100">→</span>
+              </span>
             </button>
           </li>
         ))}

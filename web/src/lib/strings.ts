@@ -114,7 +114,9 @@ export const en = {
   "signin.oidc.home": "Back to the home page",
   "landing.relativeHint": "Received a private link? Open it directly; no account is needed.",
 
-  "judge.title": "Try it now, no password",
+  "judge.title": "Continue as guest: choose a role",
+  "judge.open": "Open",
+  "judge.start": "Start here",
   "judge.lead": "Every family and person here is fictional. Pick a role; you can switch at any time and reset the demo afterwards.",
   "judge.mariam": "Mariam, mother of a newborn",
   "judge.mariamD": "Newborn screening found classic CAH in her son. Decide which relatives to tell, and how.",
@@ -900,7 +902,9 @@ export const ar: Record<StringKey, string> = {
   "signin.oidc.home": "العودة إلى الصفحة الرئيسية",
   "landing.relativeHint": "هل وصلك رابط خاص؟ افتحه مباشرة؛ لا حاجة إلى حساب.",
 
-  "judge.title": "جرّبه الآن، بلا كلمة مرور",
+  "judge.title": "المتابعة كضيف: اختر دوراً",
+  "judge.open": "افتح",
+  "judge.start": "ابدأ من هنا",
   "judge.lead": "كل العائلات والأشخاص هنا خياليون. اختر دوراً؛ يمكنك التبديل في أي وقت وإعادة ضبط العرض بعد ذلك.",
   "judge.mariam": "مريم، أم لمولود جديد",
   "judge.mariamD": "كشف فحص حديثي الولادة تضخم الغدة الكظرية الخلقي لدى ابنها. قرّري أي الأقارب تُبلغين وكيف.",
