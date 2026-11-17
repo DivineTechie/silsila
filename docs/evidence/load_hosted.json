@@ -1,0 +1,242 @@
+{
+  "run_at_utc": "2026-11-17T05:53:31Z",
+  "targets": {
+    "api": "https://silsila-api.lemonisland-568f9acd.uaenorth.azurecontainerapps.io",
+    "web": "https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io"
+  },
+  "client_location": "client outside the UAE; latency includes the internet round trip",
+  "deployment": "API 2 vCPU / 4 GiB, one replica, SQLite; fictional demo data",
+  "method": {
+    "seconds_per_level": 30.0,
+    "abort_if_error_rate_over": 0.2,
+    "latency_measured": "client-side, per request, in milliseconds"
+  },
+  "notes": [
+    "health check: HTTP 200"
+  ],
+  "scenario_descriptions": {
+    "light_reads": "guide topics, guide ask, web home page, rotated",
+    "relative_opens_link": "GET /api/r/{code}",
+    "exact_recalculation": "POST /api/twin/what-if with empty results"
+  },
+  "scenarios": {
+    "light_reads": [
+      {
+        "concurrency": 1,
+        "duration_s": 30.0,
+        "requests": 477,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 15.89,
+        "latency_ms": {
+          "median": 60.1,
+          "p95": 65.9,
+          "p99": 162.6,
+          "max": 261.6
+        },
+        "stopped_early_error_rate_over_20pct": false
+      },
+      {
+        "concurrency": 5,
+        "duration_s": 30.1,
+        "requests": 1930,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 64.13,
+        "latency_ms": {
+          "median": 63.4,
+          "p95": 188.0,
+          "p99": 210.0,
+          "max": 244.7
+        },
+        "stopped_early_error_rate_over_20pct": false
+      },
+      {
+        "concurrency": 10,
+        "duration_s": 30.2,
+        "requests": 3346,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 110.83,
+        "latency_ms": {
+          "median": 66.6,
+          "p95": 204.3,
+          "p99": 249.5,
+          "max": 324.5
+        },
+        "stopped_early_error_rate_over_20pct": false
+      },
+      {
+        "concurrency": 25,
+        "duration_s": 30.2,
+        "requests": 7411,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 245.43,
+        "latency_ms": {
+          "median": 72.3,
+          "p95": 230.5,
+          "p99": 297.3,
+          "max": 439.4
+        },
+        "stopped_early_error_rate_over_20pct": false
+      }
+    ],
+    "relative_opens_link": [
+      {
+        "concurrency": 1,
+        "duration_s": 30.0,
+        "requests": 480,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 15.99,
+        "latency_ms": {
+          "median": 60.7,
+          "p95": 64.0,
+          "p99": 102.2,
+          "max": 433.2
+        },
+        "stopped_early_error_rate_over_20pct": false
+      },
+      {
+        "concurrency": 5,
+        "duration_s": 30.1,
+        "requests": 2471,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 82.05,
+        "latency_ms": {
+          "median": 60.0,
+          "p95": 65.0,
+          "p99": 73.8,
+          "max": 198.2
+        },
+        "stopped_early_error_rate_over_20pct": false
+      },
+      {
+        "concurrency": 10,
+        "duration_s": 30.0,
+        "requests": 4872,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 162.15,
+        "latency_ms": {
+          "median": 60.3,
+          "p95": 68.5,
+          "p99": 83.9,
+          "max": 200.6
+        },
+        "stopped_early_error_rate_over_20pct": false
+      },
+      {
+        "concurrency": 25,
+        "duration_s": 30.1,
+        "requests": 11498,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 382.42,
+        "latency_ms": {
+          "median": 61.3,
+          "p95": 78.4,
+          "p99": 116.7,
+          "max": 580.9
+        },
+        "stopped_early_error_rate_over_20pct": false
+      }
+    ],
+    "exact_recalculation": [
+      {
+        "concurrency": 1,
+        "duration_s": 30.1,
+        "requests": 48,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 1.59,
+        "latency_ms": {
+          "median": 614.1,
+          "p95": 709.3,
+          "p99": 788.7,
+          "max": 788.7
+        },
+        "stopped_early_error_rate_over_20pct": false
+      },
+      {
+        "concurrency": 2,
+        "duration_s": 30.6,
+        "requests": 49,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 1.6,
+        "latency_ms": {
+          "median": 1254.9,
+          "p95": 1408.9,
+          "p99": 1476.5,
+          "max": 1476.5
+        },
+        "stopped_early_error_rate_over_20pct": false
+      },
+      {
+        "concurrency": 4,
+        "duration_s": 31.5,
+        "requests": 47,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 1.49,
+        "latency_ms": {
+          "median": 2658.9,
+          "p95": 2939.4,
+          "p99": 3089.5,
+          "max": 3089.5
+        },
+        "stopped_early_error_rate_over_20pct": false
+      },
+      {
+        "concurrency": 8,
+        "duration_s": 33.1,
+        "requests": 40,
+        "errors": 0,
+        "error_rate": 0.0,
+        "error_status_counts": {},
+        "requests_per_s": 1.21,
+        "latency_ms": {
+          "median": 6288.4,
+          "p95": 8467.8,
+          "p99": 8496.5,
+          "max": 8496.5
+        },
+        "stopped_early_error_rate_over_20pct": false
+      }
+    ]
+  },
+  "reading": [
+    "light_reads, 1 client(s): 477 requests, 15.89/s, median 60.1 ms, p95 65.9 ms, p99 162.6 ms, 0 errors.",
+    "light_reads, 5 client(s): 1930 requests, 64.13/s, median 63.4 ms, p95 188.0 ms, p99 210.0 ms, 0 errors.",
+    "light_reads, 10 client(s): 3346 requests, 110.83/s, median 66.6 ms, p95 204.3 ms, p99 249.5 ms, 0 errors.",
+    "light_reads, 25 client(s): 7411 requests, 245.43/s, median 72.3 ms, p95 230.5 ms, p99 297.3 ms, 0 errors.",
+    "light_reads: no errors, and median stayed within twice the 1-client median at every level tested.",
+    "light_reads: highest throughput measured was 245.43/s at 25 clients.",
+    "relative_opens_link, 1 client(s): 480 requests, 15.99/s, median 60.7 ms, p95 64.0 ms, p99 102.2 ms, 0 errors.",
+    "relative_opens_link, 5 client(s): 2471 requests, 82.05/s, median 60.0 ms, p95 65.0 ms, p99 73.8 ms, 0 errors.",
+    "relative_opens_link, 10 client(s): 4872 requests, 162.15/s, median 60.3 ms, p95 68.5 ms, p99 83.9 ms, 0 errors.",
+    "relative_opens_link, 25 client(s): 11498 requests, 382.42/s, median 61.3 ms, p95 78.4 ms, p99 116.7 ms, 0 errors.",
+    "relative_opens_link: no errors, and median stayed within twice the 1-client median at every level tested.",
+    "relative_opens_link: highest throughput measured was 382.42/s at 25 clients.",
+    "exact_recalculation, 1 client(s): 48 requests, 1.59/s, median 614.1 ms, p95 709.3 ms, p99 788.7 ms, 0 errors.",
+    "exact_recalculation, 2 client(s): 49 requests, 1.6/s, median 1254.9 ms, p95 1408.9 ms, p99 1476.5 ms, 0 errors.",
+    "exact_recalculation, 4 client(s): 47 requests, 1.49/s, median 2658.9 ms, p95 2939.4 ms, p99 3089.5 ms, 0 errors.",
+    "exact_recalculation, 8 client(s): 40 requests, 1.21/s, median 6288.4 ms, p95 8467.8 ms, p99 8496.5 ms, 0 errors.",
+    "exact_recalculation: first level where errors appear or median is over twice the 1-client median: 2 clients (median 1254.9 ms against 614.1 ms; 0 errors).",
+    "exact_recalculation: highest throughput measured was 1.6/s at 2 clients."
+  ]
+}

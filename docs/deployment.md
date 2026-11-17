@@ -33,3 +33,23 @@ the server; the outcome counts it shows are aggregate.
 clan: 0.7 s with no extra results, a median of 0.9 s (0.7 to 1.2 s) once results are recorded, on 2 vCPU
 (`docs/evidence/twin_hosted_timing.json`). A Watch a cascade step took 0.5 to 0.9 s from a browser outside
 the UAE.
+
+## Measured capacity of the hosted prototype (17 Nov 2026)
+
+`backend/scripts/load_test.py` ran against the hosted API and web app (API 2 vCPU / 4 GiB, one replica, SQLite)
+from a client outside the UAE, 30 seconds at each level; the full record is
+[`docs/evidence/load_hosted.json`](evidence/load_hosted.json).
+
+| What | Clients at once | Requests a second | Median | 95th percentile | Errors |
+|---|---|---|---|---|---|
+| A relative opens their link | 25 | 382 | 61 ms | 78 ms | 0 |
+| Guide questions and the home page | 25 | 245 | 72 ms | 231 ms | 0 |
+| Exact recalculation of the 61-person clan | 1 | 1.6 | 614 ms | 709 ms | 0 |
+| Exact recalculation of the 61-person clan | 8 | 1.2 | 6,288 ms | 8,468 ms | 0 |
+
+What this shows: reading pages is not the limit on this size. The exact recalculation is: one replica does about
+1.5 a second whatever the number of clients, so extra requests wait in line. In a programme a recalculation
+happens when a result is recorded, not on every page view, and most families are far smaller than 61 people
+(median 3 ms for 10 people, 31 ms for 30). More replicas would need the managed database first, because SQLite
+is a single file. That is not built.
+

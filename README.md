@@ -72,7 +72,7 @@ in [`docs/submission-fields.md`](docs/submission-fields.md).
 | Technical depth | Family Twin; Evidence | 30,000 of 30,000 probabilities match an independent exact solver; 0 silent failures in 237 malformed inputs; a pre-registered benchmark of five language models on 150 families | Three genes with published UAE data; other conditions are refused, not estimated |
 | Working solution and demo quality | Each role on the home page | Every step runs the real service, from consent to closure with evidence; FHIR import and export; 0 accessibility violations on every screen in English and Arabic (axe-core); 246 backend tests | Voice intake on the hosted site replays one recorded run |
 | Responsible AI, safety and data governance | Watch a cascade, steps 10 and 12; [hazard log](docs/governance/hazard-log.md); [DoH RAI clause map](docs/governance/doh-rai-clause-map.md) | 0 disclosures in 10,000 unauthorised requests; crisis-message alert sensitivity 0.961 (95% CI 0.890-0.986) with every message read by a person; read-aloud tied to the exact approved text by hash | Arabic is machine translation, not yet reviewed by a native-speaking clinician; no genetic counsellor has reviewed the templates; no clip has been checked by a native listener |
-| Scalability and deployment readiness | Evidence: engine latency; [deployment notes](docs/deployment.md) | Running in Azure UAE North on CPU with no language model at run time; median 173 ms for a 60-person family in the benchmark; index results arrive and leave as FHIR R4B | Demo storage is SQLite with one replica; UAE PASS and a managed database come with a pilot |
+| Scalability and deployment readiness | Evidence: engine latency; [deployment notes](docs/deployment.md) | Running in Azure UAE North on CPU with no language model at run time; median 173 ms for a 60-person family in the benchmark; 0 errors at 25 concurrent clients on the hosted prototype (382 link opens a second); index results arrive and leave as FHIR R4B | Demo storage is SQLite with one replica; one replica does about 1.5 full 61-person recalculations a second, so heavy recalculation queues; UAE PASS and a managed database come with a pilot |
 | Commercial viability and path to pilot | Evidence: announced programmes, scenario calculator; [commercial case](docs/commercial-case.md); [pilot protocol](docs/pilot-protocol.md) | The buyer already produces the index events (565 incompatible couples among 11,748 tested; more than 100 babies identified by newborn screening in the past year; reported figures); 9 practising genetic counsellors in the UAE | No price is validated and no programme has asked for cascade testing; the pilot protocol is a proposal |
 
 ## Why this matters
@@ -153,6 +153,7 @@ All evidence is on synthetic data and is reproducible (`docs/evidence/README.md`
 | Unauthorised API requests (14 attack types) | 0 disclosures in 10,000 |
 | Arabic translations of quoted text, three independent systems compared | Numbers preserved 76/76; 7 flagged for first clinical review |
 | Engine latency, 60-person family with cousin loops | median 173 ms |
+| Load on the hosted prototype (one replica, 2 vCPU; client outside the UAE; 30 s per level) | 25 clients at once: relatives opening their links 382 requests/s (median 61 ms, p95 78 ms); guide and home page 245 requests/s (p95 231 ms); 0 errors in about 40,000 requests. The exact 61-person recalculation is the limit: about 1.5 a second on this size, so 8 at once wait a median 6.3 s ([record](docs/evidence/load_hosted.json)) |
 | Accessibility, axe-core on every screen (English light desktop, Arabic dark phone) | 0 violations ([record](docs/evidence/accessibility.md)) |
 | FHIR import of an index result: 22 kinds of malformed or unsafe record, and each of the sample's 116 fields deleted in turn | 0 crashes and 0 silent failures: each is read, or refused with the reason and audited |
 | Readability of the English text a relative can be shown (Flesch-Kincaid grade) | Silsila's own wording 6.9; the quoted MedlinePlus text 13.4, a college reading level, which is why it can be read aloud ([details](docs/evidence/README.md)) |
@@ -257,6 +258,9 @@ bash deploy/azure-deploy.sh      # prints the public web and API URLs
 
 - [DoH Responsible AI Standard clause map](docs/governance/doh-rai-clause-map.md): risk class High (3) under
   the DoH AI Risk Management Protocol.
+- [UAE data rules map](docs/governance/uae-data-rules-map.md): the 2023 human genome law, the 2019 health-data
+  law, the data protection law and ADHICS set against what the prototype does and does not do. The team's
+  reading of public sources, not a legal assessment.
 - [Commercial case and path to pilot](docs/commercial-case.md): buyer, value, pricing model, costs, risks.
 - [Accessibility audit](docs/evidence/accessibility.md): axe-core, every screen, English and Arabic, 0 violations.
 - [Hazard log](docs/governance/hazard-log.md), [triage model card](docs/governance/model-card-triage.md),

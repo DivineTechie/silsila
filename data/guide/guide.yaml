@@ -410,7 +410,7 @@ entries:
     a_en: "The prototype runs in Azure's UAE North region and holds only fictional people. Its controls are mapped clause by clause to the Abu Dhabi Department of Health's Responsible AI Standard, and a hazard log lists each hazard with its controls. It has not been assessed against UAE health-data law or the ADHICS standard: that review, UAE PASS sign-in and a managed database belong to a pilot."
     a_ar: "يعمل النموذج الأولي في منطقة شمال الإمارات التابعة لأزور ولا يحتوي إلا أشخاصا خياليين. يتم ربط ضوابط هذا الاختبار فقرا بندا بمعيار الذكاء الاصطناعي المسؤول التابع لإدارة الصحة في أبوظبي، ويسرد سجل المخاطر كل خطر مع ضوابطه. لم يتم تقييمه وفقا لقانون بيانات الصحة الإماراتية أو معيار ADHICS: تلك المراجعة، وتسجيل دخول المرور الإماراتي، وقاعدة بيانات مدارة تنتمي إلى نموذج تجريبي."
     tool: hazard_log
-    sources: [{label: "DoH Responsible AI clause map", path: docs/governance/doh-rai-clause-map.md}, {label: "Deployment notes", path: docs/deployment.md}]
+    sources: [{label: "DoH Responsible AI clause map", path: docs/governance/doh-rai-clause-map.md}, {label: "UAE data rules map", path: docs/governance/uae-data-rules-map.md}, {label: "Deployment notes", path: docs/deployment.md}]
 
   - id: models_used
     q_en: "Which AI models does Silsila use, and for what?"
