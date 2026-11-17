@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Silsila thumbnail</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@700&display=swap" rel="stylesheet">
+<style>
+/* YouTube thumbnail, 1280x720. Same look and the same illustrative family tree as the film's first scene. */
+:root { --gold:#f2c14e; --pink:#ff3d7a; --orange:#f0a93a; --night:#071719; --night2:#0d2423; --mint:#bfe9e3; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1280px; height: 720px; overflow: hidden; font-family: "IBM Plex Sans", system-ui, sans-serif; color: #f3efe6;
+  background: radial-gradient(1000px 700px at 80% 30%, #154440 0%, var(--night2) 48%, var(--night) 100%); }
+.left { position: absolute; left: 64px; top: 58px; width: 700px; }
+.eyebrow { font-size: 22px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.brand { display: flex; align-items: baseline; gap: 22px; margin-top: 26px; }
+.brand b { font-size: 112px; line-height: 1; font-weight: 700; letter-spacing: -.03em; }
+.brand span { font: 700 64px "IBM Plex Sans Arabic"; color: var(--mint); }
+h1 { margin-top: 30px; font-size: 58px; line-height: 1.05; font-weight: 700; letter-spacing: -.02em; }
+h1 em { font-style: normal; color: var(--gold); }
+.chips { position: absolute; left: 64px; bottom: 56px; display: flex; gap: 14px; }
+.chips div { font-size: 24px; font-weight: 600; padding: 10px 20px; border-radius: 999px; background: rgba(191,233,227,.12); border: 2px solid rgba(191,233,227,.35); }
+.chips div.live { background: var(--pink); border-color: var(--pink); color: #fff; }
+#ped { position: absolute; right: 22px; top: 120px; }
+#ped path { stroke: #7fa39d; stroke-width: 4.5; fill: none; }
+#ped .dbl { stroke: var(--gold); }
+#ped .p { fill: #0f2b2a; stroke: #e9f2ef; stroke-width: 4; }
+#ped .c100 { fill: #fff1d6; } #ped .c50 { fill: var(--orange); }
+#ped .idx { fill: var(--pink); stroke: var(--pink); }
+#ped .ring { fill: none; stroke: var(--pink); stroke-width: 5; opacity: .7; }
+#ped .first { stroke: var(--gold); stroke-width: 5; stroke-dasharray: 10 9; fill: none; }
+#ped .chip rect { fill: rgba(7,23,25,.9); stroke: #46605d; stroke-width: 2; }
+#ped .chip text { fill: #fff; font: 700 25px "IBM Plex Sans"; }
+#ped .tag { font: 700 26px "IBM Plex Sans"; fill: var(--gold); }
+#ped .tag.r { fill: var(--pink); }
+</style>
+</head>
+<body>
+<div class="left">
+  <p class="eyebrow">Future Health Challenge · Fertility 03</p>
+  <div class="brand"><b>Silsila</b><span lang="ar" dir="rtl">سلسلة</span></div>
+  <h1>One newborn's result.<br><em>Every relative's chance.</em></h1>
+</div>
+<div class="chips"><div class="live">Live demo</div><div>Arabic + English</div><div>No AI writes to families</div></div>
+<svg id="ped" viewBox="0 0 720 580" width="500">
+  <path d="M300 70h120M360 70v70M180 140h360M180 140v50M540 140v50"/>
+  <path d="M92 215h60M568 215h60M124 215v85M596 215v85M68 300h184M68 300v44M252 300v44M500 300h96M500 300v44"/>
+  <path class="dbl" d="M276 362h200M276 374h200"/>
+  <path d="M376 374v80"/>
+  <rect class="p c50" x="252" y="46" width="48" height="48" rx="4"/><circle class="p c50" cx="444" cy="70" r="24"/>
+  <circle class="p" cx="68" cy="215" r="24"/><rect class="p c100" x="152" y="191" width="48" height="48" rx="4"/>
+  <rect class="p c100" x="520" y="191" width="48" height="48" rx="4"/><circle class="p" cx="652" cy="215" r="24"/>
+  <circle class="p c50" cx="68" cy="368" r="24"/><circle class="first" cx="68" cy="368" r="40"/>
+  <circle class="p c100" cx="252" cy="368" r="24"/><rect class="p c100" x="476" y="344" width="48" height="48" rx="4"/>
+  <circle class="ring" cx="376" cy="478" r="38"/><rect class="p idx" x="352" y="454" width="48" height="48" rx="4"/>
+  <text class="tag r" x="376" y="556" text-anchor="middle">newborn's result</text>
+  <text class="tag" x="68" y="448" text-anchor="middle">tell first</text>
+  <g class="chip"><rect x="200" y="404" width="104" height="42" rx="21"/><text x="252" y="433" text-anchor="middle">100%</text></g>
+  <g class="chip"><rect x="448" y="404" width="104" height="42" rx="21"/><text x="500" y="433" text-anchor="middle">100%</text></g>
+  <g class="chip"><rect x="124" y="250" width="104" height="42" rx="21"/><text x="176" y="279" text-anchor="middle">&gt;90%</text></g>
+  <g class="chip"><rect x="492" y="250" width="104" height="42" rx="21"/><text x="544" y="279" text-anchor="middle">&gt;90%</text></g>
+  <g class="chip"><rect x="224" y="0" width="104" height="42" rx="21"/><text x="276" y="29" text-anchor="middle">50%</text></g>
+  <g class="chip"><rect x="392" y="0" width="104" height="42" rx="21"/><text x="444" y="29" text-anchor="middle">50%</text></g>
+</svg>
+</body>
+</html>
