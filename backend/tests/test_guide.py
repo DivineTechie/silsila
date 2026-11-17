@@ -42,6 +42,7 @@ def test_every_listed_question_finds_its_own_answer_in_both_languages(client):
 
 
 PARAPHRASES = [
+    ("is it ready for production", "production"), ("can this go live", "production"), ("هل سلسلة جاهزة للإنتاج", "production"),
     ("how much load can it handle", "hosting"), ("how many users at once", "hosting"), ("ما هي القوانين في الإمارات", "law"),
     ("what is silsila", "what"), ("is this an AI chatbot?", "is_this_ai"), ("are you a robot", "is_this_ai"),
     ("how accurate is the engine", "accuracy"), ("what is the chance for a first cousin with thalassaemia", "relationship"),

@@ -162,6 +162,15 @@ entries:
     tool: system
     sources: [{label: Deployment notes, path: docs/deployment.md}, {label: Hosted timing, path: docs/evidence/twin_hosted_timing.json}, {label: Hosted load test, path: docs/evidence/load_hosted.json}]
 
+  - id: production
+    q_en: "Is Silsila ready for production?"
+    q_ar: "هل سلسلة جاهزة للإنتاج؟"
+    keywords_en: ["production", "production ready", "ready for production", "production-ready", "go live", "going live", "live use", "real use", "ready to use", "launch", "roll out", "rollout", "enterprise", "mature", "maturity"]
+    keywords_ar: ["الإنتاج", "جاهز للإنتاج", "جاهزة للإنتاج", "الإطلاق", "التشغيل الفعلي", "الاستخدام الفعلي", "جاهزة للاستخدام", "النضج"]
+    a_en: "The software is built for production after a pilot: in production mode it runs on PostgreSQL across several replicas, signs people in through UAE PASS and the provider's staff directory, refuses to start if misconfigured, and logs nothing personal. Each part is tested, but the UAE PASS sign-in only against a test provider. What remains needs a partner: clinical and native Arabic review, UAE PASS onboarding, a security review, Department of Health approval, and the pilot itself. No patient has used it yet."
+    a_ar: "بُني البرنامج للإنتاج بعد التجربة الميدانية: في وضع الإنتاج يعمل على PostgreSQL عبر عدة نسخ متماثلة، ويُدخل الأشخاص عبر UAE PASS ودليل موظفي مقدم الخدمة، ويرفض البدء إذا كان الإعداد خاطئاً، ولا يسجل أي شيء شخصي. كل جزء مختبَر، لكن تسجيل الدخول عبر UAE PASS اختُبر مع مزود تجريبي فقط. ما تبقى يحتاج إلى شريك: مراجعة سريرية ومراجعة للعربية من متحدث أصلي، والتسجيل لدى UAE PASS، ومراجعة أمنية، وموافقة دائرة الصحة، والتجربة الميدانية نفسها. لم يستخدمه أي مريض حتى الآن."
+    sources: [{label: "Production readiness", path: docs/production.md}, {label: "Identity (OIDC)", path: docs/identity-oidc.md}]
+
   - id: language
     q_en: Which languages does it speak, and can it read aloud?
     q_ar: ما اللغات التي يدعمها، وهل يقرأ بصوت مسموع؟
@@ -359,8 +368,8 @@ entries:
     q_ar: "مم تم بناؤه؟"
     keywords_en: ["tech stack", "stack", "built with", "technology", "technologies", "programming language", "python", "fastapi", "next.js", "nextjs", "react", "database", "sqlite", "framework", "architecture", "three.js", "libraries", "backend", "frontend"]
     keywords_ar: ["مكدس التقنية", "كومة", "مبني ب", "التكنولوجيا", "التقنيات", "لغة برمجة", "بايثون", "fastapi", "next.js", "nextjs", "يتفاعل", "قاعدة بيانات", "sqlite", "إطار", "العمارة", "three.js", "المكتبات", "خلفية", "واجهة أمامية"]
-    a_en: "The service is Python 3.12 with FastAPI. The risk engine is its own exact Bayesian inference over the family tree (variable elimination), cross-checked against the pgmpy library. The web app is Next.js and React, with three.js for the Family Twin. Results arrive and leave as FHIR R4B. The prototype stores data in SQLite and runs in two containers on Azure Container Apps in UAE North, on CPU only."
-    a_ar: "الخدمة هي بايثون 3.12 مع FastAPI. محرك المخاطر هو استنتاج بايزي خاص به على شجرة العائلة (إزالة المتغيرات)، مقابلة مع مكتبة pgmpy. تطبيق الويب هو Next.js وReact، مع three.js لعائلة توأم. تصل النتائج وتغادر ك FHIR R4B. يخزن النموذج الأولي البيانات في SQLite ويعمل في حاويتين على تطبيقات حاوية Azure في شمال الإمارات، على وحدة المعالجة المركزية فقط."
+    a_en: "The service is Python 3.12 with FastAPI. The risk engine is its own exact Bayesian inference over the family tree (variable elimination), cross-checked against the pgmpy library. The web app is Next.js and React, with three.js for the Family Twin. Results arrive and leave as FHIR R4B. The hosted prototype stores data in SQLite and runs in two containers on Azure Container Apps in UAE North, on CPU only. In production mode the same code runs on PostgreSQL across several replicas."
+    a_ar: "الخدمة هي بايثون 3.12 مع FastAPI. محرك المخاطر هو استنتاج بايزي خاص به على شجرة العائلة (إزالة المتغيرات)، مقابلة مع مكتبة pgmpy. تطبيق الويب هو Next.js وReact، مع three.js لعائلة توأم. تصل النتائج وتغادر ك FHIR R4B. يخزن النموذج الأولي البيانات في SQLite ويعمل في حاويتين على تطبيقات حاوية Azure في شمال الإمارات، على وحدة المعالجة المركزية فقط. في وضع الإنتاج تعمل الشيفرة نفسها على PostgreSQL عبر عدة نسخ متماثلة."
     tool: system
     sources: [{label: "README", path: README.md}, {label: "Deployment notes", path: docs/deployment.md}]
 
