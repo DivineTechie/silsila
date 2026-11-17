@@ -51,8 +51,8 @@ the page links are in the menu.
 6. **Evidence** (top menu): every number with its source, the benchmarks, the announced UAE programmes
    Silsila connects to, and a scenario calculator for programme scale.
 7. **Ask about Silsila** (button in the bottom corner of every public page): a guide that answers questions
-   about the tool. It is not a language model: it matches your question to one of 24 fixed answers and, for
-   most, runs a real lookup and shows the values with their sources (try "What is the chance for a cousin
+   about the tool. It is not a language model: it matches the words of whatever you type to one of 50 fixed answers (a misspelt word is read as the
+   closest one it knows) and, for most, runs a real lookup and shows the values with their sources (try "What is the chance for a cousin
    with thalassaemia?", "Does AI write what families read?", "Where does it run, and how fast is it?"). It
    says so when it has no answer, and it does not answer personal or medical questions.
 
@@ -70,7 +70,7 @@ in [`docs/submission-fields.md`](docs/submission-fields.md).
 |---|---|---|---|
 | Health impact and clinical relevance | Watch a cascade: a newborn's result reaches a pregnant sister | In simulation, Silsila's order found 51 at-risk couples per 1,000 tests against 33 unranked for CAH (ratio 1.53, 95% CI 1.29-1.85); all four published yields of the NEJM 2002 family-screening study fall inside the simulated range | No patients. Yields are projections from simulated families; uptake and comprehension need a pilot |
 | Technical depth | Family Twin; Evidence | 30,000 of 30,000 probabilities match an independent exact solver; 0 silent failures in 237 malformed inputs; a pre-registered benchmark of five language models on 150 families | Three genes with published UAE data; other conditions are refused, not estimated |
-| Working solution and demo quality | Each role on the home page | Every step runs the real service, from consent to closure with evidence; FHIR import and export; 0 accessibility violations on every screen in English and Arabic (axe-core); 197 backend tests | Voice intake on the hosted site replays one recorded run |
+| Working solution and demo quality | Each role on the home page | Every step runs the real service, from consent to closure with evidence; FHIR import and export; 0 accessibility violations on every screen in English and Arabic (axe-core); 246 backend tests | Voice intake on the hosted site replays one recorded run |
 | Responsible AI, safety and data governance | Watch a cascade, steps 10 and 12; [hazard log](docs/governance/hazard-log.md); [DoH RAI clause map](docs/governance/doh-rai-clause-map.md) | 0 disclosures in 10,000 unauthorised requests; crisis-message alert sensitivity 0.961 (95% CI 0.890-0.986) with every message read by a person; read-aloud tied to the exact approved text by hash | Arabic is machine translation, not yet reviewed by a native-speaking clinician; no genetic counsellor has reviewed the templates; no clip has been checked by a native listener |
 | Scalability and deployment readiness | Evidence: engine latency; [deployment notes](docs/deployment.md) | Running in Azure UAE North on CPU with no language model at run time; median 173 ms for a 60-person family in the benchmark; index results arrive and leave as FHIR R4B | Demo storage is SQLite with one replica; UAE PASS and a managed database come with a pilot |
 | Commercial viability and path to pilot | Evidence: announced programmes, scenario calculator; [commercial case](docs/commercial-case.md); [pilot protocol](docs/pilot-protocol.md) | The buyer already produces the index events (565 incompatible couples among 11,748 tested; more than 100 babies identified by newborn screening in the past year; reported figures); 9 practising genetic counsellors in the UAE | No price is validated and no programme has asked for cascade testing; the pilot protocol is a proposal |
@@ -157,7 +157,7 @@ All evidence is on synthetic data and is reproducible (`docs/evidence/README.md`
 | FHIR import of an index result: 22 kinds of malformed or unsafe record, and each of the sample's 116 fields deleted in turn | 0 crashes and 0 silent failures: each is read, or refused with the reason and audited |
 | Readability of the English text a relative can be shown (Flesch-Kincaid grade) | Silsila's own wording 6.9; the quoted MedlinePlus text 13.4, a college reading level, which is why it can be read aloud ([details](docs/evidence/README.md)) |
 | Read-aloud clips (synthetic voice, Azure AI Speech), English and Arabic | 74 clips, 33.3 minutes, each attached only to the exact text it reads (SHA-256); none yet checked by a native listener |
-| "Ask about Silsila" guide: every listed question in English and Arabic, 28 rewordings, 8 off-topic and 8 personal or urgent questions | Each reaches its answer, an honest "no answer", or a refusal with the counsellor and 998/999 wording; 0 calls to any model or outside service |
+| "Ask about Silsila" guide (50 fixed answers, 19 live lookups): every listed question in English and Arabic, 73 questions typed in other words, 3 with misspellings, 8 off-topic and 8 personal or urgent questions | Each reply shows the steps that produced it. Each question reaches its answer, an honest "no answer", or a refusal with the counsellor and 998/999 wording; 0 calls to any model or outside service |
 | Family Twin recalculation on the hosted server (61 people, six cousin marriages) | 0.7 s with no extra results; median 0.9 s (0.7-1.2 s) with recorded results ([record](docs/evidence/twin_hosted_timing.json)) |
 
 ### Silsila-Bench: where language models can be trusted inside Silsila

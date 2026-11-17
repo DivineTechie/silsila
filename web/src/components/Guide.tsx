@@ -5,6 +5,10 @@
 // evidence files, the audit chain, the parameter register) and returns the values with their sources. When
 // nothing matches it says so. It does not answer personal or medical questions.
 //
+// Every reply carries the steps the server took (read, safety rules, comparison, lookup, answer) with their
+// timings. They are shown one after another while the answer is prepared, and stay under the answer afterwards,
+// so anyone can see that the answer was found and not generated.
+//
 // It is shown to visitors, judges and staff. It is deliberately absent from a relative's invitation page and
 // from a family's case, where every sentence is approved wording or a verbatim quotation.
 
@@ -18,6 +22,7 @@ import { Button, Num, cx, inputCls } from "./ui";
 interface Fact { label: string; value: string; source: string }
 interface Source { label: string; path?: string; url?: string }
 interface Suggestion { id: string; question: string }
+interface Step { kind: "read" | "safety" | "match" | "lookup" | "answer"; detail: string; ms: number }
 interface Answer {
   kind: "answer" | "no_match" | "handoff";
   id?: string;
@@ -28,10 +33,15 @@ interface Answer {
   sources?: Source[];
   method?: string;
   suggestions: Suggestion[];
+  steps?: Step[];
   not_ai: string;
 }
 interface Topics { not_ai: Record<Lang, string>; topics: { id: string; q_en: string; q_ar: string }[] }
-interface Turn { asked: string; out: Answer | null; error?: boolean }
+// shown: how many of the reply's steps are on screen so far; the answer appears when all of them are.
+interface Turn { asked: string; out: Answer | null; error?: boolean; shown: number }
+
+const STEP_MS = 420; // how long each step stays the newest one on screen
+const pause = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const STARTERS = ["what", "no_ai_text", "relationship", "accuracy", "hosting", "limits"];
 
@@ -63,12 +73,18 @@ export function GuideLauncher() {
     if (!asked || busy) return;
     setBusy(true);
     setText("");
-    setTurns((x) => [...x, { asked, out: null }]);
+    setTurns((x) => [...x, { asked, out: null, shown: 0 }]);
     try {
       const out = await api<Answer>("/api/guide/ask", { body: id ? { id, lang } : { text: asked.slice(0, 400), lang }, auth: false });
-      setTurns((x) => [...x.slice(0, -1), { asked, out }]);
+      const n = out.steps?.length || 0;
+      const still = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      for (let k = still ? n : 1; k <= n; k++) {
+        setTurns((x) => [...x.slice(0, -1), { asked, out, shown: k }]);
+        if (!still) await pause(STEP_MS);
+      }
+      setTurns((x) => [...x.slice(0, -1), { asked, out, shown: n + 1 }]);
     } catch {
-      setTurns((x) => [...x.slice(0, -1), { asked, out: null, error: true }]);
+      setTurns((x) => [...x.slice(0, -1), { asked, out: null, error: true, shown: 0 }]);
     } finally {
       setBusy(false);
     }
@@ -119,8 +135,14 @@ export function GuideLauncher() {
                   <p className="ms-auto max-w-[88%] rounded-2xl rounded-ee-sm bg-accent-soft px-3 py-2 text-sm text-ink" dir="auto">{turn.asked}</p>
                   {turn.error ? (
                     <p className="text-sm text-ink-2">{t("common.network")}</p>
-                  ) : !turn.out ? (
-                    <p className="text-sm text-muted">…</p>
+                  ) : !turn.out || turn.shown <= (turn.out.steps?.length || 0) ? (
+                    <div className="rounded-xl border border-line bg-surface-2/60 p-3 text-sm">
+                      <p className="flex items-center gap-2 font-medium text-ink">
+                        <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-accent border-t-transparent motion-reduce:animate-none" aria-hidden="true" />
+                        {t("guide.working")}
+                      </p>
+                      <StepList steps={(turn.out?.steps || []).slice(0, turn.shown)} live t={t} />
+                    </div>
                   ) : (
                     <div className={cx("rounded-xl border p-3 text-sm", turn.out.kind === "answer" ? "border-line bg-surface" : "border-notice-line bg-notice")}>
                       <p className="leading-relaxed text-ink">{turn.out.answer}</p>
@@ -156,6 +178,18 @@ export function GuideLauncher() {
                         </p>
                       )}
                       {turn.out.method && <p className="mt-1.5 text-[0.68rem] text-muted" dir="ltr" lang="en">{turn.out.method}</p>}
+                      {turn.out.steps && turn.out.steps.length > 0 && (
+                        <details className="mt-2 rounded-lg border border-line bg-surface-2/60 px-2.5 py-1.5">
+                          <summary className="cursor-pointer text-xs font-medium text-ink-2">
+                            {t("guide.steps")} · <Num>{turn.out.steps.length}</Num>
+                          </summary>
+                          <StepList steps={turn.out.steps} t={t} />
+                          <p className="mt-1.5 text-[0.68rem] text-muted">
+                            {t("guide.stepsNote", { n: turn.out.steps.length, ms: Math.max(1, Math.round(turn.out.steps[turn.out.steps.length - 1].ms)) })}
+                            {lang === "ar" ? ` ${t("guide.stepsLang")}` : ""}
+                          </p>
+                        </details>
+                      )}
                       {i === turns.length - 1 && turn.out.suggestions.length > 0 && (
                         <ul className="mt-3 flex flex-wrap gap-1.5">
                           {turn.out.suggestions.slice(0, 4).map((s) => (
@@ -202,5 +236,29 @@ export function GuideLauncher() {
         {t("guide.open")}
       </button>
     </div>
+  );
+}
+
+/** The steps the server reported, in order. While an answer is being prepared the newest step is marked. */
+function StepList({ steps, live, t }: { steps: Step[]; live?: boolean; t: ReturnType<typeof usePrefs>["t"] }) {
+  if (steps.length === 0) return null;
+  return (
+    <ol className="mt-2 grid gap-1.5">
+      {steps.map((s, k) => (
+        <li key={k} className="flex gap-2 text-xs">
+          <span
+            className={cx("mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full text-[0.6rem] font-semibold",
+              live && k === steps.length - 1 ? "bg-accent text-accent-ink" : "bg-accent-soft text-ink")}
+            aria-hidden="true"
+          >
+            {k + 1}
+          </span>
+          <span>
+            <span className="font-medium text-ink">{t(`guide.step.${s.kind}`)}</span>
+            <span className="block text-ink-2 [overflow-wrap:anywhere]" dir="ltr" lang="en">{s.detail}</span>
+          </span>
+        </li>
+      ))}
+    </ol>
   );
 }

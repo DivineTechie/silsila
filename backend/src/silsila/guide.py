@@ -9,6 +9,10 @@ How it works:
   4. If nothing matches well enough, the guide says so and offers what it can answer. It never guesses.
   5. A question about the asker's own health, results or family is not answered: the guide says it only
      explains the tool and points to a genetic counsellor and the emergency numbers.
+  6. A misspelt word is matched to the closest word the guide knows ("acurate" -> "accurate") and the answer
+     says which words were read that way.
+  7. Every answer carries the steps that produced it (what was read, what was checked, what was compared,
+     which lookup ran and how long it took), so a reader can see that nothing was generated.
 
 The guide explains the tool to visitors, judges and staff. It is not part of what a relative or a family is
 shown: there, every sentence is approved wording or a verbatim quotation through the output gate.
@@ -17,6 +21,7 @@ The question text is not stored; the audit log records only which entry was matc
 
 from __future__ import annotations
 
+import difflib
 import json
 import math
 import re
@@ -28,7 +33,7 @@ from typing import Any, Callable
 import yaml
 
 from . import params, twin
-from .content import GateError, Message, registry
+from .content import RELATIVE_INFO, GateError, Message, registry
 from .engine import Pedigree, Person, Phenotype, Sex, family_report, one_in
 from .params import DATA
 from .triage import normalise, rule_labels
@@ -98,12 +103,31 @@ class Guide:
                 df[t] = df.get(t, 0) + 1
         n = len(self.entries)
         self.idf = {t: math.log(1 + n / c) for t, c in df.items()}
+        self.vocab = sorted(t for t in self.idf if len(t) >= 4)
         for e in self.entries:
             if e.get("tool") and e["tool"] not in TOOLS:
                 raise ValueError(f"Guide entry {e['id']} names an unknown tool {e['tool']}")
 
-    def scores(self, text: str) -> list[tuple[float, str]]:
-        qset, whole = set(tokens(text)), plain(text)
+    def respell(self, text: str) -> tuple[set[str], dict[str, str]]:
+        """The question's words, with a misspelt word replaced by the closest word the guide knows.
+        Returns the words and the replacements made ({"acurate": "accurate"}). A lone replacement in a question
+        with no other known word must be a near-certain one, so that "world" is not read as "word"."""
+        toks = tokens(text)
+        known = [t for t in toks if t in self.idf]
+        found: dict[str, tuple[str, float]] = {}
+        for t in toks:
+            if t in self.idf or len(t) < 5 or not re.fullmatch(r"[a-z]+", t):
+                continue
+            close = difflib.get_close_matches(t, self.vocab, n=1, cutoff=0.82)
+            if close:
+                found[t] = (close[0], difflib.SequenceMatcher(None, t, close[0]).ratio())
+        if not known and len(found) == 1 and next(iter(found.values()))[1] < 0.9:
+            found = {}
+        fixed = {t: w for t, (w, _) in found.items()}
+        return {fixed.get(t, t) for t in toks}, fixed
+
+    def scores(self, text: str, words: set[str] | None = None) -> list[tuple[float, str]]:
+        qset, whole = (words if words is not None else set(tokens(text))), plain(text)
         out = []
         for eid, ix in self.index.items():
             s = sum(self.idf.get(t, 0) * 1.6 for t in qset & ix["strong"]) + sum(self.idf.get(t, 0) for t in qset & ix["weak"])
@@ -120,25 +144,44 @@ class Guide:
     def ask(self, store: Any, text: str | None, entry_id: str | None, lang: str) -> dict[str, Any]:
         q = "q_ar" if lang == "ar" else "q_en"
         base = {"not_ai": self.meta["not_ai"][lang], "lang": lang}
+        t_start = time.perf_counter()
+        steps: list[dict[str, Any]] = []
+
+        def step(kind: str, detail: str) -> None:
+            steps.append({"kind": kind, "detail": detail, "ms": round(1000 * (time.perf_counter() - t_start), 1)})
+
         if entry_id:
             entry, score = self.by_id.get(entry_id), None
             if entry is None:
-                return {**base, "kind": "no_match", "answer": self.meta["no_match"][lang], "suggestions": self._suggest([], q)}
+                return {**base, "kind": "no_match", "answer": self.meta["no_match"][lang], "suggestions": self._suggest([], q), "steps": steps}
+            step("read", "A question from the list: no matching needed.")
         else:
             text = (text or "").strip()
-            ranked = self.scores(text)
+            words, fixed = self.respell(text)
+            known = sorted(w for w in words if w in self.idf)
+            step("read", f"Read {len(text.split())} words; {len(known)} are words the guide knows"
+                         + (f": {', '.join(known[:8])}" if known else "") + "."
+                         + ("".join(f" Read '{a}' as '{b}'." for a, b in fixed.items()) if fixed else ""))
+            ranked = self.scores(text, words)
             personal = bool(PERSONAL.search(normalise(text)) or PERSONAL.search(text))
             crisis = "crisis" in rule_labels(text)
             # "What happens to a suicidal message?" is a question about the tool; "I want to die" is not.
             about_tool = bool(ranked) and ranked[0][1] == "hard_questions" and not FIRST_PERSON.search(normalise(text))
             if personal or (crisis and not about_tool):
+                step("safety", "Fixed rules recognised a personal or urgent question. The guide does not answer those.")
                 return {**base, "kind": "handoff", "answer": self.meta["handoff"][lang], "suggestions": self._suggest([], q),
-                        "method": "Recognised as a personal or urgent question by fixed rules. Not answered."}
+                        "method": "Recognised as a personal or urgent question by fixed rules. Not answered.", "steps": steps}
+            step("safety", "Checked the fixed safety rules: not a personal or urgent question.")
             if not ranked or ranked[0][0] < MIN_SCORE:
+                step("match", f"Compared with {len(self.entries)} fixed answers: none matched well enough"
+                              + (f" (closest: '{self.by_id[ranked[0][1]]['q_en']}', score {ranked[0][0]}, needs {MIN_SCORE})." if ranked else "."))
+                step("answer", "No answer given. The guide does not guess.")
                 return {**base, "kind": "no_match", "answer": self.meta["no_match"][lang],
                         "suggestions": self._suggest([i for _, i in ranked[:3]], q),
-                        "method": "No fixed answer matched the words of the question well enough."}
+                        "method": "No fixed answer matched the words of the question well enough.", "steps": steps}
             score, entry = ranked[0][0], self.by_id[ranked[0][1]]
+            step("match", f"Compared with {len(self.entries)} fixed answers: best match '{entry['q_en']}' (score {score})"
+                          + (f"; next '{self.by_id[ranked[1][1]]['q_en']}' ({ranked[1][0]})." if len(ranked) > 1 else "."))
         facts: list[dict[str, Any]] = []
         tool = None
         if entry.get("tool"):
@@ -149,12 +192,14 @@ class Guide:
             except Exception as e:  # a lookup that fails is reported, never hidden and never made up
                 facts = [{"label": "Lookup failed", "value": type(e).__name__, "source": entry["tool"]}]
             tool = {"name": entry["tool"], "description": describe, "ms": round(1000 * (time.perf_counter() - t0), 1)}
+            step("lookup", f"{describe} {len(facts)} values read in {tool['ms']:.0f} ms.")
+        step("answer", "Returned the fixed text as written. Nothing was generated.")
         others = [i for _, i in self.scores(entry["q_en"])[1:4]]
         return {**base, "kind": "answer", "id": entry["id"], "question": entry[q], "answer": entry["a_ar" if lang == "ar" else "a_en"],
                 "facts": facts, "tool": tool, "sources": entry.get("sources", []),
                 "method": ("Chosen from the list." if score is None else f"Matched by the words of the question (score {score}).")
                           + " Fixed text, not generated.",
-                "suggestions": self._suggest([i for i in others if i != entry["id"]], q)}
+                "suggestions": self._suggest([i for i in others if i != entry["id"]], q), "steps": steps}
 
     def _suggest(self, ids: list[str], q: str) -> list[dict[str, str]]:
         ids = [i for i in ids if i in self.by_id] or ["what", "no_ai_text", "accuracy", "relationship", "limits"]
@@ -404,7 +449,42 @@ def t_outcomes(store: Any, text: str, lang: str) -> list[dict[str, Any]]:
             _fact("Never measured", o["not_measured"], "service.outcomes")]
 
 
+def t_twin_facts(store: Any, text: str, lang: str) -> list[dict[str, Any]]:
+    clan = twin.public()
+    r = twin.what_if({})
+    src = "data/demo/twin/clan.json (fictional, simulated)"
+    return [_fact("People in the Family Twin's clan", len(clan["people"]), src),
+            _fact("Generations", 1 + max(p["generation"] for p in clan["people"]), src),
+            _fact("Marriages between relatives", len(clan["consanguineous"]), src),
+            _fact("One exact recalculation of the whole clan, measured on this server just now", f"{r['ms']:.0f} ms", "twin.what_if, run now"),
+            _fact("Real people or patients anywhere in Silsila", 0, "README.md: data and licences")]
+
+
+def t_source_quote(store: Any, text: str, lang: str) -> list[dict[str, Any]]:
+    reg = registry()
+    out = []
+    for pid in RELATIVE_INFO:
+        p = reg.paragraphs[pid]
+        tr = reg.translations.get(pid) if lang == "ar" else None
+        out.append(_fact(f"{p.source_title} ({p.attribution})" + (" · Arabic: machine translation, pending review" if tr else ""),
+                         tr["ar"] if tr else p.text, p.url))
+    return out
+
+
+def t_hazard_log(store: Any, text: str, lang: str) -> list[dict[str, Any]]:
+    rows = [ln.split("|") for ln in (EVIDENCE.parent / "governance" / "hazard-log.md").read_text().splitlines() if re.match(r"\| H\d+ \|", ln)]
+    src = "docs/governance/hazard-log.md, read now"
+    out = [_fact("Hazards in the log", len(rows), src)]
+    for r in rows[:4]:
+        out.append(_fact(f"{r[1].strip()}: {r[2].strip()}", f"Control: {r[4].strip()}", src))
+    out.append(_fact("Clauses of the DoH Responsible AI Standard mapped", "see the clause map", "docs/governance/doh-rai-clause-map.md"))
+    return out
+
+
 TOOLS: dict[str, tuple[Callable[[Any, str, str], list[dict[str, Any]]], str]] = {
+    "twin_facts": (t_twin_facts, "Counted the Family Twin's clan and timed the engine on it."),
+    "source_quote": (t_source_quote, "Read the quoted source paragraphs from the content register."),
+    "hazard_log": (t_hazard_log, "Read the hazard log."),
     "gate_check": (t_gate_check, "Ran the output gate on an altered message."),
     "guide_facts": (t_guide_facts, "Counted this guide's own entries and lookups."),
     "engine_evidence": (t_engine_evidence, "Read the engine benchmark files."),

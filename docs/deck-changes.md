@@ -30,8 +30,8 @@ rest below are recommendations for the owner to accept or not. Every number is i
    conditional: personalised genomic reports for 900,000 participants through TAMM from December 2026,
    covering 214 inherited conditions and health traits (The National, 10 Nov 2026). "If those reports include
    carrier findings, each is a possible index result." Do not say DoH has asked for cascade testing.
-6. **A new slide, "Ask it anything, without AI".** The guide answers questions about the tool from 24 fixed
-   answers and 16 live lookups (the engine, the gate, the audit chain, the evidence files), says so when it has
+6. **A new slide, "Ask it anything, without AI".** The guide answers questions about the tool from 50 fixed
+   answers and 19 live lookups (the engine, the gate, the audit chain, the evidence files), says so when it has
    no answer, and declines personal questions. It makes the "no language model writes to a family" rule
    visible in the product itself.
 7. **Close slide.** Add to the limits: read-aloud clips have not been checked by a native listener; the quoted

@@ -42,8 +42,10 @@ def main() -> None:
         ep = api.create_inference_endpoint(
             cfg["name"], repository=cfg["repo"], framework="pytorch", task="text-generation", accelerator="gpu",
             vendor=cfg["vendor"], region=cfg["region"], instance_type=cfg["instance_type"], instance_size=cfg["instance_size"],
-            type="protected", min_replica=1, max_replica=1,
-            custom_image={"vLLM": {"url": VLLM_IMAGE, "port": 8000, "healthRoute": "/health"}},
+            type="authenticated", min_replica=1, max_replica=1,
+            # a plain custom container: with the managed "vLLM" image type the platform adds its own --model flag,
+            # which clashes with the command below
+            custom_image={"url": VLLM_IMAGE, "port": 8000, "healthRoute": "/health"},
             container_command=["vllm", "serve", "/repository", "--served-model-name", cfg["repo"], "--host", "0.0.0.0",
                                "--port", "8000", "--generation-config", "vllm", *cfg["args"]],
             env={"VLLM_USE_FLASHINFER_SAMPLER": "0"},

@@ -54,8 +54,9 @@ Silsila is a prototype tested only on synthetic data. Nothing here has been used
 - Only the three calculated genes are accepted. Anything else is refused and referred to a counsellor.
 
 ## The guide ("Ask about Silsila")
-- The guide is not a language model. It matches the words of a question to one of 24 fixed answers and, for 17
-  of them, runs one of 16 lookups and shows the values with their sources. It can only answer what is on its list; a
+- The guide is not a language model. It matches the words of a question to one of 50 fixed answers and, for 33
+  of them, runs one of 19 lookups and shows the values with their sources. Each reply lists the steps that
+  produced it. A misspelt word is read as the closest word the guide knows, and the reply says which. It can only answer what is on its list; a
   question in unusual words may get "I do not have an answer" although an answer exists, and a question that
   shares words with the wrong entry can get that entry's answer (shown with its question, so the mismatch is
   visible). It explains the tool and does not give medical advice.
