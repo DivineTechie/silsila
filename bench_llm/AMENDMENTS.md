@@ -132,3 +132,21 @@ Recorded before the reduced runs started.
 * Fixed in `clients.py` (arguments as a string; `reasoning_content` passed back on tool-call turns for
   reasoning models served by vLLM). Prompts, decoding and scoring are unchanged. The errored T2 items are
   rerun; T1, T3 and T5 are unaffected (no second request).
+
+## A12. K2-Think-V2 on the T5 sample, served on a Hugging Face Inference Endpoint, 2026-11-17
+
+Recorded before the run started.
+
+* K2-Think-V2 is in the pre-registered list but had not been run: two 80 GB GPUs on Modal were over the
+  benchmark's compute budget (A7). Separate Hugging Face credits now pay for it.
+* Serving: vLLM 0.33.0 on a private Hugging Face Inference Endpoint (`scripts/hf_endpoint.py`), with the
+  flags already fixed for this model in `modal_vllm.py` (FP8 quantisation on load, tensor parallel 2,
+  `deepseek_r1` reasoning parser, `hermes` tool parser, 49,152-token context). The only difference from A7
+  is the hardware: 2 × H200 141 GB instead of 2 × H100 80 GB.
+* Item set: the **T5 sample** of A10 (`--subset t5-sample`): T1 100 prompts, T2 100, T3 100 and T5 50, in
+  English and Gulf Arabic. Reason: budget; the run is capped at about $60 of GPU time, and it is stopped at
+  the cap whatever has finished. T4 is not computed. Every other model is already reported on the same
+  sample, so the comparison is like for like.
+* Prompts, decoding (temperature 0, default reasoning effort, `max_tokens` 32,768; A5) and scoring are
+  unchanged. Results are reported whatever they are, including any items left unrun at the cap.
+
