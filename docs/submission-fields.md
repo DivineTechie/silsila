@@ -31,19 +31,20 @@ Evidence, all on synthetic families: 30,000 of 30,000 probabilities match an ind
 Live in Azure UAE North, no password. Not yet used with patients; Arabic wording awaits native clinical review.
 ```
 
-## What has been built during the challenge? (1406 of 1,500 characters)
+## What has been built during the challenge? (1474 of 1,500 characters)
 
 ```
-Everything was built during the challenge (first commit 6 Nov 2026):
+Everything was built during the challenge (first commit 6 Nov 2026; code at github.com/DivineTechie/silsila):
 - An exact pedigree engine (variable elimination) with a sourced UAE parameter register for three genes, checked against an independent solver.
 - The full cascade as a working service: consent, anonymous invitations, counsellor approval and queue, the relative's private link, comprehension check, booking, results, closure with evidence, a hash-chained audit log, live outcome measures.
-- An output gate: only approved templates and verbatim MedlinePlus text can reach a person. Read-aloud clips tied to the exact text by hash.
-- FHIR R4B import of an index result (refused with a reason if unsafe) and export of a case.
+- An output gate: only approved templates and verbatim MedlinePlus text reach a person. Read-aloud tied to the exact text by hash.
+- FHIR R4B import of an index result (refused with a reason if unsafe) and case export.
 - Voice intake: an Emirati family story to a draft tree (Jais-ASR, Jais 3), confirmed by a counsellor.
-- Watch a cascade (13 live steps), the Family Twin (61 simulated relatives recalculated live), and a guide that answers questions about the tool with fixed answers and live lookups, without AI.
-- Evidence: five benchmarks on simulated families, a pre-registered benchmark of five language models on 150 families, privacy and triage tests, an accessibility audit, measured readability.
-- Governance: hazard log (24 hazards), model cards, DoH Responsible AI clause map, pilot protocol, commercial case, limitations.
-- Deployed in Azure UAE North, Arabic and English; a five-minute film recorded from the live site.
+- Watch a cascade (13 live steps), the Family Twin (61 simulated relatives recalculated live), and a guide answering questions with fixed answers and live lookups, without AI.
+- Evidence: five benchmarks on simulated families, a pre-registered benchmark of five language models, privacy and triage tests, an accessibility audit.
+- Governance: hazard log, model cards, DoH Responsible AI clause map, pilot protocol, commercial case.
+- Production mode, tested: PostgreSQL for several replicas, OpenID Connect sign-in for UAE PASS (mock-tested), start-up checks, logs without personal data.
+- Live in Azure UAE North, Arabic and English; a five-minute film.
 ```
 
 ## Before you submit
