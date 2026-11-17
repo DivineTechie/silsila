@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AboutInfo } from "@/components/About";
 import { CriteriaGuide, HeroPedigree, OnlySilsila } from "@/components/HomeParts";
 import { JudgeMode } from "@/components/JudgeMode";
 import { Page } from "@/components/Shell";
 import { Button, ErrorBox, Eyebrow, Field, H1, H2, Notice, inputCls } from "@/components/ui";
-import { api, setSession } from "@/lib/api";
+import { API_URL, api, setSession } from "@/lib/api";
 import { usePrefs } from "@/lib/prefs";
 import type { User } from "@/lib/types";
 
@@ -19,6 +19,13 @@ export default function Landing() {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<unknown>(null);
+  // Identity providers (UAE PASS, the organisation's staff directory) appear only when the API has them configured.
+  const [providers, setProviders] = useState<{ id: string; role: string; start: string }[]>([]);
+  useEffect(() => {
+    api<{ id: string; role: string; start: string }[]>("/api/auth/oidc/providers", { auth: false })
+      .then(setProviders)
+      .catch(() => setProviders([]));
+  }, []);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -110,6 +117,17 @@ export default function Landing() {
               </Button>
             </div>
           ) : (
+            <>
+            {providers.length > 0 ? (
+              <div className="mt-4 flex flex-wrap gap-3">
+                {providers.map((p) => (
+                  <a key={p.id} href={`${API_URL}${p.start}`}
+                    className="inline-flex min-h-11 items-center rounded-xl border border-line bg-surface px-4 font-semibold text-ink hover:bg-surface-2">
+                    {t(p.role === "counsellor" ? "signin.oidc.staff" : "signin.oidc.family")}
+                  </a>
+                ))}
+              </div>
+            ) : null}
             <form onSubmit={submit} className="mt-4 grid gap-4 sm:max-w-sm" noValidate>
               <Field label={t("signin.username")} htmlFor="username">
                 <input
@@ -142,6 +160,7 @@ export default function Landing() {
               </Button>
               <p className="text-xs text-muted">{t("landing.credentials")}</p>
             </form>
+            </>
           )}
           <p className="mt-4 text-sm text-muted">{t("landing.relativeHint")}</p>
         </details>

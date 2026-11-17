@@ -19,16 +19,23 @@ from .. import intake, params, twin
 from ..content import AUDIO, GateError, Message, registry
 from ..engine import Pedigree
 from ..triage import classify, reply_for
-from . import auth, fhir, fhir_import, service
+from . import auth, fhir, fhir_import, oidc, service, settings
+from .middleware import SilsilaMiddleware
 from .store import Store, new_id, now
 
-DEMO = os.environ.get("SILSILA_DEMO", "1") == "1"
+CFG = settings.load()
+settings.check_production(CFG)  # production refuses to start misconfigured; demo only warns
+auth._secret()
+DEMO = CFG.demo
 EVIDENCE_DIR = Path(__file__).resolve().parents[4] / "docs" / "evidence"
 
+# No interactive API docs in production.
+_docs = {} if DEMO else {"docs_url": None, "redoc_url": None, "openapi_url": None}
 app = FastAPI(title="Silsila API", version="0.1.0",
-              description="Consent-led family cascade for inherited disease risk. No AI-written advice.")
-app.add_middleware(CORSMiddleware, allow_origins=os.environ.get("SILSILA_CORS", "*").split(","),
-                   allow_methods=["*"], allow_headers=["*"])
+              description="Consent-led family cascade for inherited disease risk. No AI-written advice.", **_docs)
+app.add_middleware(CORSMiddleware, allow_origins=CFG.cors_origins if CFG.cors else ["*"],
+                   allow_methods=["*"], allow_headers=["*"], expose_headers=["X-Request-ID"])
+app.add_middleware(SilsilaMiddleware, cfg=CFG)  # added last = outermost: covers CORS preflights and errors
 _store: Store | None = None
 _store_lock = threading.Lock()
 
@@ -40,6 +47,11 @@ def store() -> Store:
             if _store is None:
                 _store = Store()
     return _store
+
+
+# Sign-in through an OpenID Connect provider (UAE PASS for families, the provider's staff directory for
+# counsellors). Inert until configured: see docs/identity-oidc.md.
+app.include_router(oidc.router)
 
 
 @app.exception_handler(service.Forbidden)
@@ -144,6 +156,27 @@ def health() -> dict[str, Any]:
     reg = registry()
     return {"ok": True, "demo_mode": DEMO, "paragraphs": len(reg.paragraphs), "templates": len(reg.templates),
             "loci": list(params.load()), "audit": store().verify_chain()}
+
+
+@app.get("/api/live")
+def live() -> dict[str, bool]:
+    """Liveness: the process is up. No dependencies."""
+    return {"ok": True}
+
+
+@app.get("/api/ready")
+def ready() -> JSONResponse:
+    """Readiness: the database answers."""
+    try:
+        s = store()
+        ping = getattr(s, "ping", None)
+        if ping is not None:
+            ping()
+        else:
+            s.get("user", "_ready_probe")
+    except Exception:
+        return JSONResponse({"ok": False, "detail": "database not reachable"}, status_code=503)
+    return JSONResponse({"ok": True})
 
 
 @app.post("/api/auth/login")
