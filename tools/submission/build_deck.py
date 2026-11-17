@@ -186,15 +186,15 @@ def main(src: str, dst: str) -> None:
             text(S[1], x + 3.38, 3.58, 1.25, 1.7, [(cap, {"size": 8, "color": MUTED})])
 
     # 3. Team capability (max 1,000 characters)
-    cap = ("Silsila is entered by one person, Tushar Agarwal. Everything in this submission was produced between 6 and 16 November 2026. "
+    cap = ("Silsila is entered by one person, Tushar Agarwal. Everything in this submission was produced between 6 and 17 November 2026. "
            "What the work shows: an exact Bayesian pedigree engine checked against an independent solver (30,000 of 30,000 probabilities agree); "
            "a pre-registered benchmark of five language models, including the co-creators' Jais 3; a bilingual, accessible web application "
            "running in Azure UAE North; FHIR R4B import and export; a hazard log of 24 hazards, model cards and a clause map to the DoH "
-           "Responsible AI Standard; 250 backend tests. What the team does not have, stated plainly: a clinical genetics qualification and a "
+           "Responsible AI Standard; 299 backend tests (305 on PostgreSQL). What the team does not have, stated plainly: a clinical genetics qualification and a "
            "native Arabic clinical reviewer. Both are the first additions for a pilot. No patient has used the system.")
     assert len(cap) <= 1000, len(cap)
     card(S[2], 0.4, 1.6, 9.2, 1.75, None, [(cap, {"size": 11, "space": 0})], fill=SAND)
-    for i, (n, lab) in enumerate([("11 days", "from first commit to this submission"), ("250 + 145", "automated tests: application, benchmark harness"),
+    for i, (n, lab) in enumerate([("12 days", "from first commit to this submission"), ("299 + 145", "automated tests: application, benchmark harness"),
                                   ("0", "accessibility violations, every screen, English and Arabic (axe-core)"), ("UAE North", "where the live prototype runs today")]):
         card(S[2], 0.4 + i * 2.33, 3.55, 2.2, 1.05, None, [(n, {"bold": True, "size": 17, "color": TEAL, "space": 3}), (lab, {"size": 9, "color": INK})], fill=WHITE)
 
@@ -222,7 +222,7 @@ def main(src: str, dst: str) -> None:
          fill=WHITE, size=8.5, title_size=9.5)
     card(s, 5.1, 4.06, 4.5, 1.2, "No model at run time", [
         ("Risk is never computed by a language model and no model writes to a family. The \"Ask about Silsila\" guide is fixed answers plus live lookups. "
-         "Stack: Python (FastAPI), exact variable elimination, SQLite in the demo; Next.js web app in Arabic and English; Azure Container Apps, UAE North, CPU only.", {"size": 8.5})],
+         "Stack: Python (FastAPI), exact variable elimination, SQLite in the demo and PostgreSQL in production mode; Next.js web app in Arabic and English; Azure Container Apps, UAE North, CPU only.", {"size": 8.5})],
          fill=WHITE, size=8.5, title_size=9.5)
 
     # 5. Target users and intended outcome
@@ -295,7 +295,7 @@ def main(src: str, dst: str) -> None:
     # 9. Risks and safeguards
     s = S[8]
     risks = [("Privacy", "Relatives see only what the index person chose to disclose, through an unguessable link; anonymous invitations name no person and no condition. 0 disclosures in 10,000 unauthorised requests."),
-             ("Security", "Role checks on every request; hash-chained audit log; demo shortcuts answer 404 outside demo mode. Still needed for a pilot: managed database, UAE PASS, penetration test."),
+             ("Security", "Role checks on every request; hash-chained audit log; production mode refuses unsafe settings, logs no personal data, signs in through OpenID Connect (UAE PASS, mock-tested). Still needed: UAE PASS onboarding, penetration test."),
              ("Bias and equity", "Population inputs are UAE-national studies with sample sizes shown; tribe structure tested in a sensitivity analysis; Arabic and English throughout; read aloud for low literacy."),
              ("Explainability", "Every value is labelled recorded, calculated, quoted or approved wording. The counsellor sees the engine's working and every source with its PMID."),
              ("Misuse", "No compatibility matching, no registry; success never counts marriages. Questions about marriage, pregnancy or religion are not answered and go to a counsellor."),
@@ -333,8 +333,8 @@ def main(src: str, dst: str) -> None:
     s = S[11]
     cols = [("Stakeholders", "Buyer: the DoH screening programmes that already produce index results. Operator: the genetics service they refer to. Payer for confirmatory "
                              "tests: the existing benefit. Counsellor time is the scarce resource Silsila is priced against."),
-            ("Integration", "Index results in as FHIR R4B, cases out the same way; a pilot maps to the exchange's real profile (none seen yet). Entry points and UAE PASS sign-in "
-                            "come with the pilot. Hosting stays in the UAE."),
+            ("Integration", "Index results in as FHIR R4B, cases out the same way; a pilot maps to the exchange's real profile (none seen yet). UAE PASS sign-in is built (mock-tested); "
+                            "onboarding comes with the pilot. Hosting stays in the UAE."),
             ("Regulatory", "Decision support with a counsellor approving every message. DoH conformity assessment before patient use (high-risk class); medical-device "
                            "classification to be confirmed with DoH. Clause map and hazard log are in the repository."),
             ("Timeline (assumption)", "Months 1-2: shadow mode, counsellors work as usual while Silsila computes alongside; nothing is sent. Months 3-6: assisted mode, "
