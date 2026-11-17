@@ -1,0 +1,4 @@
+# Old demo test passwords for the fictional demo accounts (example file). They were rotated on 17 Nov 2026
+# and are no longer valid anywhere; the example file now has placeholders.
+7b1213a34d0045aa4d47dacd0216632aff620b03:backend/.env.example:generic-api-key:4
+7b1213a34d0045aa4d47dacd0216632aff620b03:backend/.env.example:generic-api-key:5

@@ -28,6 +28,48 @@ jobs:
       - run: uv sync --frozen
       - run: uv run pytest -q
 
+  postgres:
+    name: Store and API tests on PostgreSQL
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: ci-test-value
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      SILSILA_DEMO: "1"
+      SILSILA_DEMO_FAMILY_PASSWORD: ci-family-test-value
+      SILSILA_DEMO_COUNSELLOR_PASSWORD: ci-counsellor-test-value
+      SILSILA_SECRET: ci-signing-secret-test-value-of-32-chars
+      # the store contract and replica-concurrency tests use one database, the API tests another
+      SILSILA_TEST_DATABASE_URL: postgresql://postgres:ci-test-value@localhost:5432/postgres
+      SILSILA_DATABASE_URL: postgresql://postgres:ci-test-value@localhost:5432/apidb
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: PGPASSWORD=ci-test-value psql -h localhost -U postgres -c "create database apidb"
+      - run: uv sync --frozen
+      - run: uv run pytest -q
+
+  secrets:
+    name: Secret scan (full history)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   bench:
     name: Silsila-Bench harness tests (no model calls)
     runs-on: ubuntu-latest
