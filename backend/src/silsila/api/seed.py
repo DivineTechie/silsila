@@ -111,7 +111,7 @@ def load_env_file() -> None:
 
 
 def seed(store: Store) -> None:
-    store.conn.executescript("DELETE FROM docs; DELETE FROM audit;")
+    store.reset()
     for u in users():
         store.put("user", u)
     for case in (cah_family(), hbb_family(), alpha_family()):

@@ -7,10 +7,13 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "cryptography>=46",
     "fastapi>=0.162.0",
     "fhir-resources>=8.3.0",
     "joblib>=1.6.0",
     "numpy>=2.5.4",
+    "psycopg-pool>=3.3.3",
+    "psycopg[binary]>=3.3.9",
     "pydantic>=2.14.3",
     "pyjwt>=2.15.1",
     "pyyaml>=6.0.3",
