@@ -54,7 +54,7 @@ Silsila is a prototype tested only on synthetic data. Nothing here has been used
 - Only the three calculated genes are accepted. Anything else is refused and referred to a counsellor.
 
 ## The guide ("Ask about Silsila")
-- The guide is not a language model. It matches the words of a question to one of 50 fixed answers and, for 33
+- The guide is not a language model. It matches the words of a question to one of 51 fixed answers and, for 33
   of them, runs one of 19 lookups and shows the values with their sources. Each reply lists the steps that
   produced it. A misspelt word is read as the closest word the guide knows, and the reply says which. It can only answer what is on its list; a
   question in unusual words may get "I do not have an answer" although an answer exists, and a question that
@@ -75,7 +75,10 @@ Silsila is a prototype tested only on synthetic data. Nothing here has been used
   pilot to measure.
 
 ## Engineering
-- SQLite storage and demo passwords are for the prototype only. A pilot needs a managed database in a UAE
-  region with encryption at rest, UAE PASS identity, MFA for staff, and ADHICS-aligned security review.
+- The hosted demo uses SQLite and demo passwords. Production mode runs on PostgreSQL with sign-in through
+  OpenID Connect (UAE PASS for families, the provider's directory with MFA for staff); both are tested in code,
+  but the OIDC code only against a mock provider, not UAE PASS itself, and several replicas have not been
+  load-tested. A pilot still needs the managed database in the provider's UAE subscription, UAE PASS onboarding,
+  and an ADHICS-aligned security review (`docs/production.md`).
 - The service targets used to flag overdue steps (for example 2 days for counsellor approval) are pilot
   assumptions, not published standards.

@@ -3,11 +3,14 @@
 **Hosting.** Two containers (API, web) on Azure Container Apps in UAE North, so compute and storage stay in
 the UAE (DoH Responsible AI Standard 3.1.4.5.1). `deploy/azure-deploy.sh` creates the resource group,
 registry, environment and both apps, stores demo passwords and the token secret as Container Apps secrets,
-and restricts the API's allowed origin to the web app. SQLite is used for the prototype;
-a pilot would use a managed database in the same region with encryption at rest.
+and restricts the API's allowed origin to the web app. The hosted demo uses SQLite with one replica. The same
+image runs in production mode on PostgreSQL across several replicas; the target set-up for a pilot (managed
+PostgreSQL with encryption at rest, Key Vault, Front Door with WAF) is in [`production.md`](production.md).
 
-**Identity.** Demo accounts with scrypt-hashed passwords and signed tokens. A pilot would use UAE PASS for
-families and the provider's identity system (with MFA) for counsellors.
+**Identity.** The demo uses one-click roles and demo accounts with scrypt-hashed passwords and signed tokens.
+Production mode has no passwords: families sign in with UAE PASS and counsellors with the provider's staff
+directory (MFA by Conditional Access), both through OpenID Connect ([`identity-oidc.md`](identity-oidc.md)).
+The OIDC code is tested against a standards-compliant mock provider, not yet against UAE PASS.
 
 **Optional language model.** Off by default. If enabled, set `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`
 and `AZURE_OPENAI_DEPLOYMENT` to a deployment in a UAE region. It receives message text with numbers and
@@ -50,6 +53,7 @@ from a client outside the UAE, 30 seconds at each level; the full record is
 What this shows: reading pages is not the limit on this size. The exact recalculation is: one replica does about
 1.5 a second whatever the number of clients, so extra requests wait in line. In a programme a recalculation
 happens when a result is recorded, not on every page view, and most families are far smaller than 61 people
-(median 3 ms for 10 people, 31 ms for 30). More replicas would need the managed database first, because SQLite
-is a single file. That is not built.
+(median 3 ms for 10 people, 31 ms for 30). More replicas need PostgreSQL, because SQLite
+is a single file. The PostgreSQL store is built and tested (several stores writing one audit chain at once), but
+not yet load-tested with several replicas.
 

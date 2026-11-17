@@ -1,9 +1,19 @@
-# Silsila (سلسلة)
+<p align="center"><img src="web/public/icons/icon.svg" width="96" alt="Silsila logo"></p>
+
+<h1 align="center">Silsila (سلسلة)</h1>
+
+<p align="center"><strong>Premarital screening protects the next marriage. Silsila protects the marriages that already happened.</strong></p>
+
+<p align="center">
+<a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/License-Apache--2.0-blue"></a>
+<a href="https://github.com/TusharTechs/silsila/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/TusharTechs/silsila/actions/workflows/ci.yml/badge.svg"></a>
+<img alt="Hosted in Azure UAE North" src="https://img.shields.io/badge/Hosted%20in-Azure%20UAE%20North-0078D4">
+<img alt="Data: fictional only" src="https://img.shields.io/badge/Data-fictional%20only-lightgrey">
+</p>
 
 **A consent-led family cascade for inherited disease risk.**
-Future Health Digital Innovation Challenge, Fertility, Challenge 03: *Understanding and Reducing Inherited Disease Risk*.
-
-> Premarital screening protects the next marriage. Silsila protects the marriages that already happened.
+Future Health Digital Innovation Challenge 2026 (Abu Dhabi), Fertility, statement 03: *Understanding and
+reducing inherited disease risk*.
 
 When one person is found to carry, or to have, a recessive condition (a newborn's genetic screen, an
 at-risk premarital result, a diagnosed child), their relatives are much more likely to be carriers too, and
@@ -12,13 +22,59 @@ private, consent-controlled invitations for the right relatives to be tested, ex
 checked by a genetic counsellor, and tracked until each case is closed. The person who received the result
 decides who is told and how. No name or condition is revealed without their choice.
 
-Prototype with fictional families. Not for clinical use.
+Prototype with fictional families. Not for clinical use. No patient has used it; the evidence is on
+simulated families; the Arabic is machine translation awaiting native clinical review.
 
-## For judges: try it in two minutes
+## Contents
 
-**Live (Azure UAE North):** https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io. No
-password is needed: the home page has one-click roles. English and Arabic (button in the header); on a phone
-the page links are in the menu.
+1. [Links](#links)
+2. [For judges: 5 minutes, 15 minutes, 1 hour](#for-judges-5-minutes-15-minutes-1-hour)
+3. [Why this matters](#why-this-matters)
+4. [How it works](#how-it-works) and [design principles](#design-principles)
+5. [Architecture](#architecture)
+6. [Evidence](#evidence) and [Silsila-Bench](#silsila-bench-where-language-models-can-be-trusted-inside-silsila)
+7. [Run it locally](#run-it-locally)
+8. [Project structure](#project-structure)
+9. [Technologies used](#technologies-used)
+10. [AI tools disclosure](#ai-tools-disclosure)
+11. [Production readiness](#production-readiness)
+12. [Governance and limitations](#governance)
+13. [Licence and third-party content](#licence)
+
+## Links
+
+| Resource | Link | Notes |
+|---|---|---|
+| Live app | https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io | No password; one-click roles. English and Arabic |
+| API health | https://silsila-api.lemonisland-568f9acd.uaenorth.azurecontainerapps.io/api/health | Returns status of the hosted API |
+| Demo film (5 min) | https://youtu.be/fCHWTlGyeSY | English; recorded from the live site; synthetic voiceover |
+| Source code | https://github.com/TusharTechs/silsila | This repository |
+| Submission pack | https://github.com/TusharTechs/silsila/releases/latest | Judge guide, deck PDF, evidence |
+| Solution deck | In the submission pack (release asset) | Built from the organisers' template |
+| Judges' guide | [`docs/JUDGES.md`](docs/JUDGES.md) | Organised by the six judging criteria |
+| Evidence | [`docs/evidence/README.md`](docs/evidence/README.md) | Every number, with the script that produced it |
+| Silsila-Bench pre-registration | [`bench_llm/PREREGISTRATION.md`](bench_llm/PREREGISTRATION.md) | Written before the runs; amendments in `AMENDMENTS.md` |
+| Hazard log | [`docs/governance/hazard-log.md`](docs/governance/hazard-log.md) | 24 hazards, with controls |
+| DoH Responsible AI clause map | [`docs/governance/doh-rai-clause-map.md`](docs/governance/doh-rai-clause-map.md) | Risk class High (3) |
+| UAE data rules map | [`docs/governance/uae-data-rules-map.md`](docs/governance/uae-data-rules-map.md) | The team's reading, not legal advice |
+| Limitations | [`docs/limitations.md`](docs/limitations.md) | Assumptions and what is not shown |
+| Production readiness | [`docs/production.md`](docs/production.md) | What is built for a pilot and what only a pilot can provide |
+| Identity (UAE PASS / Entra ID) | [`docs/identity-oidc.md`](docs/identity-oidc.md) | OIDC sign-in, tested against a mock provider |
+| Architecture | [`docs/architecture.md`](docs/architecture.md) | Fuller diagrams, including one cascade end to end |
+| AI disclosure | [`docs/ai-disclosure.md`](docs/ai-disclosure.md) | Every AI tool used, and what it may not do |
+
+## For judges: 5 minutes, 15 minutes, 1 hour
+
+The full guide by judging criterion is [`docs/JUDGES.md`](docs/JUDGES.md).
+
+| Time | Do this |
+|---|---|
+| 5 minutes | Open the live app. Press **Watch a cascade** (13 live steps). Open **Family Twin**. Press **Listen** on a relative's link. Ask the guide "Does AI write what families read?" |
+| 15 minutes | Add: sign in as Mariam, the counsellor, and the relative (one-click roles); import the FHIR sample (then change `"final"` to `"preliminary"` and see the refusal); read the **Evidence** page; read "What happens when it is wrong" below |
+| 1 hour | Add: read the [hazard log](docs/governance/hazard-log.md), the [limitations](docs/limitations.md) and the [Silsila-Bench pre-registration](bench_llm/PREREGISTRATION.md); run the backend tests and benchmarks locally ([Run it locally](#run-it-locally)); open the [evidence records](docs/evidence/README.md) behind any number you doubt |
+
+Detail of what is on the live site (English and Arabic, button in the header; on a phone the page links are in
+the menu):
 
 1. **Watch a cascade** (first button on the home page): one newborn's result travelling through a fictional
    family in 13 live steps: exact risk for every relative, Mariam's permission, an anonymous invitation,
@@ -51,7 +107,7 @@ the page links are in the menu.
 6. **Evidence** (top menu): every number with its source, the benchmarks, the announced UAE programmes
    Silsila connects to, and a scenario calculator for programme scale.
 7. **Ask about Silsila** (button in the bottom corner of every public page): a guide that answers questions
-   about the tool. It is not a language model: it matches the words of whatever you type to one of 50 fixed answers (a misspelt word is read as the
+   about the tool. It is not a language model: it matches the words of whatever you type to one of 51 fixed answers (a misspelt word is read as the
    closest one it knows) and, for most, runs a real lookup and shows the values with their sources (try "What is the chance for a cousin
    with thalassaemia?", "Does AI write what families read?", "Where does it run, and how fast is it?"). It
    says so when it has no answer, and it does not answer personal or medical questions.
@@ -70,10 +126,42 @@ in [`docs/submission-fields.md`](docs/submission-fields.md).
 |---|---|---|---|
 | Health impact and clinical relevance | Watch a cascade: a newborn's result reaches a pregnant sister | In simulation, Silsila's order found 51 at-risk couples per 1,000 tests against 33 unranked for CAH (ratio 1.53, 95% CI 1.29-1.85); all four published yields of the NEJM 2002 family-screening study fall inside the simulated range | No patients. Yields are projections from simulated families; uptake and comprehension need a pilot |
 | Technical depth | Family Twin; Evidence | 30,000 of 30,000 probabilities match an independent exact solver; 0 silent failures in 237 malformed inputs; a pre-registered benchmark of five language models on 150 families | Three genes with published UAE data; other conditions are refused, not estimated |
-| Working solution and demo quality | Each role on the home page | Every step runs the real service, from consent to closure with evidence; FHIR import and export; 0 accessibility violations on every screen in English and Arabic (axe-core); 250 backend tests | Voice intake on the hosted site replays one recorded run |
+| Working solution and demo quality | Each role on the home page | Every step runs the real service, from consent to closure with evidence; FHIR import and export; 0 accessibility violations on every screen in English and Arabic (axe-core); 299 backend tests (305 on PostgreSQL) | Voice intake on the hosted site replays one recorded run |
 | Responsible AI, safety and data governance | Watch a cascade, steps 10 and 12; [hazard log](docs/governance/hazard-log.md); [DoH RAI clause map](docs/governance/doh-rai-clause-map.md) | 0 disclosures in 10,000 unauthorised requests; crisis-message alert sensitivity 0.961 (95% CI 0.890-0.986) with every message read by a person; read-aloud tied to the exact approved text by hash | Arabic is machine translation, not yet reviewed by a native-speaking clinician; no genetic counsellor has reviewed the templates; no clip has been checked by a native listener |
-| Scalability and deployment readiness | Evidence: engine latency; [deployment notes](docs/deployment.md) | Running in Azure UAE North on CPU with no language model at run time; median 173 ms for a 60-person family in the benchmark; 0 errors at 25 concurrent clients on the hosted prototype (382 link opens a second); index results arrive and leave as FHIR R4B | Demo storage is SQLite with one replica; one replica does about 1.5 full 61-person recalculations a second, so heavy recalculation queues; UAE PASS and a managed database come with a pilot |
+| Scalability and deployment readiness | Evidence: engine latency; [deployment notes](docs/deployment.md) | Running in Azure UAE North on CPU with no language model at run time; median 173 ms for a 60-person family in the benchmark; 0 errors at 25 concurrent clients on the hosted prototype (382 link opens a second); index results arrive and leave as FHIR R4B | The hosted demo is one replica on SQLite; one replica does about 1.5 full 61-person recalculations a second, so heavy recalculation queues. PostgreSQL storage for several replicas and OIDC sign-in are built and tested ([production readiness](docs/production.md)) but not deployed; UAE PASS itself has not been tested, only a standards-compliant mock |
 | Commercial viability and path to pilot | Evidence: announced programmes, scenario calculator; [commercial case](docs/commercial-case.md); [pilot protocol](docs/pilot-protocol.md) | The buyer already produces the index events (565 incompatible couples among 11,748 tested; more than 100 babies identified by newborn screening in the past year; reported figures); 9 practising genetic counsellors in the UAE | No price is validated and no programme has asked for cascade testing; the pilot protocol is a proposal |
+
+## Architecture
+
+Boxes marked **AI** contain a machine-learning model. **AI never decides and never writes to a family**:
+risk comes from the exact engine, who is told is the family's choice, and a counsellor approves every
+invitation. A fuller version with a sequence diagram of one cascade is in
+[`docs/architecture.md`](docs/architecture.md).
+
+```mermaid
+flowchart LR
+  subgraph Clients
+    W["Web app<br/>Next.js, Arabic and English"]
+  end
+  ID["Identity (OIDC)<br/>UAE PASS for families<br/>Entra ID + MFA for staff<br/>tested on a mock provider only"]
+  W <--> API["API<br/>FastAPI"]
+  W -.sign-in.-> ID
+  API -.token check.-> ID
+  API --> ENG["Exact Bayesian engine<br/>no AI; every risk number"]
+  API --> GATE["Output gate<br/>approved templates and<br/>verbatim MedlinePlus only"]
+  API --> AUD["Hash-chained audit log"]
+  API --> DB[("Store<br/>SQLite in the demo<br/>PostgreSQL in production<br/>SILSILA_DATABASE_URL")]
+  API <--> FHIR["FHIR R4B<br/>import and export"]
+  API --> GUIDE["Guide<br/>keyword matcher, no AI"]
+  GATE --> CLIPS["Read-aloud clips<br/>pre-generated, keyed by text hash"]
+  CLIPS -.made with.-> SPEECH["AI: Azure AI Speech<br/>offline, approved text only"]
+  API --> TRI["AI: triage classifier<br/>character n-gram model<br/>labels only; a person reads every message"]
+  API -.optional, off by default.-> AOAI["AI: Azure OpenAI<br/>labels only"]
+  API --> VOICE["Voice intake<br/>AI: Jais-ASR + Jais 3 draft a tree<br/>counsellor confirms each person<br/>hosted site replays one recorded run"]
+  VOICE --> ENG
+  classDef ai fill:#fff4d6,stroke:#b07d00,color:#000;
+  class SPEECH,TRI,AOAI,VOICE ai;
+```
 
 ## Why this matters
 
@@ -175,7 +263,7 @@ All evidence is on synthetic data and is reproducible (`docs/evidence/README.md`
 | FHIR import of an index result: 22 kinds of malformed or unsafe record, and each of the sample's 116 fields deleted in turn | 0 crashes and 0 silent failures: each is read, or refused with the reason and audited |
 | Readability of the English text a relative can be shown (Flesch-Kincaid grade) | Silsila's own wording 6.9; the quoted MedlinePlus text 13.4, a college reading level, which is why it can be read aloud ([details](docs/evidence/README.md)) |
 | Read-aloud clips (synthetic voice, Azure AI Speech), English and Arabic | 74 clips, 33.3 minutes, each attached only to the exact text it reads (SHA-256); none yet checked by a native listener |
-| "Ask about Silsila" guide (50 fixed answers, 19 live lookups): every listed question in English and Arabic, 73 questions typed in other words, 3 with misspellings, 8 off-topic and 8 personal or urgent questions | Each reply shows the steps that produced it. Each question reaches its answer, an honest "no answer", or a refusal with the counsellor and 998/999 wording; 0 calls to any model or outside service |
+| "Ask about Silsila" guide (51 fixed answers, 19 live lookups): every listed question in English and Arabic, 79 questions typed in other words, 3 with misspellings, 8 off-topic and 8 personal or urgent questions | Each reply shows the steps that produced it. Each question reaches its answer, an honest "no answer", or a refusal with the counsellor and 998/999 wording; 0 calls to any model or outside service |
 | Family Twin recalculation on the hosted server (61 people, six cousin marriages) | 0.7 s with no extra results; median 0.9 s (0.7-1.2 s) with recorded results ([record](docs/evidence/twin_hosted_timing.json)) |
 
 ### Silsila-Bench: where language models can be trusted inside Silsila
@@ -202,26 +290,65 @@ support the claim, and 95-100% of the cited IDs that exist belong to unrelated p
 family tree from a story, which a counsellor confirms before the exact engine runs. Full tables, splits by
 language and family type: [`docs/evidence/silsila_bench.md`](docs/evidence/silsila_bench.md).
 
-## Try it
+## Run it locally
 
-Requirements: Python 3.12 with [uv](https://docs.astral.sh/uv/), Node.js 20+.
+Works on macOS, Linux and Windows. The demo accounts' passwords are not published. Locally they are whatever
+you set in `backend/.env` (the example file has placeholders). On the hosted site use the one-click roles.
+
+### Option A: Docker
+
+Requires Docker with Compose.
+
+```bash
+# macOS / Linux
+cp backend/.env.example backend/.env
+```
+
+```powershell
+# Windows PowerShell
+Copy-Item backend/.env.example backend/.env
+```
+
+Edit `backend/.env` and set the two demo passwords and `SILSILA_SECRET`, then:
+
+```bash
+docker compose up --build
+```
+
+Web: http://localhost:3100. API: http://localhost:8100 (health at `/api/health`).
+
+### Option B: without Docker
+
+Prerequisites: Python 3.12 with [uv](https://docs.astral.sh/uv/), Node.js 22.
+
+Backend (create `backend/.env` first as above):
 
 ```bash
 cd backend
-cp .env.example .env            # demo test passwords for the fictional families are in this file
 uv sync
 uv run python -m silsila.api.seed
 uv run uvicorn silsila.api.app:app --port 8000
 ```
 
+Web, in a second terminal. The web app reads the API address from `NEXT_PUBLIC_API_URL` at build and start-up
+(default `http://localhost:8000`).
+
 ```bash
+# macOS / Linux
 cd web
-npm install
+npm ci
 NEXT_PUBLIC_API_URL=http://localhost:8000 npm run dev
 ```
 
+```powershell
+# Windows PowerShell
+cd web
+npm ci
+$env:NEXT_PUBLIC_API_URL="http://localhost:8000"; npm run dev
+```
+
 Open http://localhost:3000. Demo users: `mariam` (family, newborn with CAH), `reem` (family, Arabic) and
-`counsellor`. Passwords are in `backend/.env.example`.
+`counsellor`, with the passwords you set in `backend/.env`.
 
 Suggested walkthrough: sign in as `mariam`, open the family tree, give permission to inform relatives, invite
 Noura anonymously; sign in as `counsellor`, see the pregnancy at the top of the queue, approve; open the
@@ -229,50 +356,119 @@ invitation link as the relative (switch to Arabic), complete the comprehension c
 console, record the result, try the two demonstration tools (blocked unapproved text, audit tampering),
 export FHIR, and import the fictional index result in the Cases tab.
 
-Tests and benchmarks:
+### Tests and benchmarks
 
 ```bash
-cd backend && uv run pytest -q
+cd backend && uv run pytest -q                      # engine, API, evidence tests
+cd backend && uv run python -m bench.run_all        # all benchmarks (several minutes)
+cd bench_llm && uv sync && uv run pytest -q         # Silsila-Bench harness; mocks, no model calls
+cd web && npm ci && npx next typegen && npx tsc --noEmit && npm run lint && npm run build
 ```
+
+The PostgreSQL store tests (`backend/tests/test_store_postgres.py`) need a reachable PostgreSQL server; see the
+file for how they are enabled.
+
+### Production-mode start
+
+Production mode (`SILSILA_DEMO=0`) refuses to start unless the signing secret, the web origin and a PostgreSQL
+`SILSILA_DATABASE_URL` are set, and no demo password is. To try it locally with PostgreSQL 17, put
+`SILSILA_SECRET` (32+ random characters) and `POSTGRES_PASSWORD` in a `.env` file at the repository root, then:
 
 ```bash
-cd backend && uv run python -m bench.run_all
+docker compose -f docker-compose.prod.yml --env-file .env up --build
 ```
 
-```bash
-cd web && npx next typegen && npx tsc --noEmit && npm run lint && npm run build
-```
+There are no accounts in production mode: people sign in through an identity provider
+([`docs/identity-oidc.md`](docs/identity-oidc.md)). Details: [`docs/production.md`](docs/production.md).
 
-## Run with Docker or deploy
-
-```bash
-docker compose up --build        # web on http://localhost:3100, API on http://localhost:8100
-```
-
-Azure (UAE North, Azure Container Apps; images are built in Azure Container Registry):
+### Deploy to Azure
 
 ```bash
 az login
-bash deploy/azure-deploy.sh      # prints the public web and API URLs
+bash deploy/azure-deploy.sh      # UAE North, Azure Container Apps; prints the public web and API URLs
 ```
 
-## Repository
+## Project structure
 
-| Path | Contents |
+```
+backend/
+  src/silsila/
+    engine/        Exact pedigree engine: variable elimination, min-fill ordering, Monte Carlo cross-check
+    api/           FastAPI service: consent, invitations, queue, audit chain, FHIR R4B import and export,
+                   settings and start-up checks, middleware, OIDC sign-in, SQLite/PostgreSQL store, seed data
+    sim/           Family simulator (genedrop, kindred, scenarios) and its labelled assumptions
+    guide.py       "Ask about Silsila": fixed answers and live lookups; no language model
+    triage.py      Message triage: rules, character n-gram model, optional Azure OpenAI labels
+    twin.py        Family Twin: the 61-person simulated clan
+    content.py     Approved content, MedlinePlus imports, Arabic translations, output gate
+    intake.py      Voice intake: draft tree checks before the engine runs
+    params.py      Sourced parameter register and conversions
+  tests/           pytest suite (engine, sim, API flow, content, FHIR, guide, intake, Twin, store)
+  bench/           Five benchmarks on simulated families (B1 to B5) and engine timing
+  evals/           Triage training and evaluation, privacy attack evaluation
+  scripts/         MedlinePlus import, read-aloud clip generator, readability, load test, audit verification
+bench_llm/         Silsila-Bench: pre-registered language-model benchmark (harness, runs, T5 review)
+data/
+  params/          Sourced population parameters (loci.yaml)
+  content/         Approved templates, MedlinePlus text, Arabic translations, read-aloud clips
+  demo/            Fictional FHIR sample, Family Twin clan, voice-intake demo, contrast examples
+  guide/           The guide's fixed answers
+  models/, eval/, dev/, calibration/   Triage model, blind test set, development set, simulator calibration
+web/src/           Next.js app: app/ (routes), components/, lib/ (API client, strings, layout)
+docs/
+  evidence/        Every benchmark record and log
+  governance/      Hazard log, model cards, DoH and UAE rules maps
+tools/
+  film/            Narration, recording and build scripts for the demo film
+  submission/      Deck builder from the organisers' template
+  translation_qc/  Three-system Arabic translation check
+deploy/            Azure deployment script
+```
+
+## Technologies used
+
+Versions are from `backend/uv.lock`, `web/package.json` and `web/package-lock.json`.
+
+| Layer | Technology |
 |---|---|
-| `backend/src/silsila/engine/` | Exact pedigree engine (variable elimination, min-fill ordering, Monte Carlo cross-check) |
-| `backend/src/silsila/params.py`, `data/params/` | Sourced parameter register and conversions |
-| `backend/src/silsila/content.py`, `data/content/` | Approved content, MedlinePlus imports, Arabic translations, output gate |
-| `backend/src/silsila/triage.py`, `data/models/` | Message triage (rules + character n-gram model; optional Azure OpenAI labels) |
-| `backend/src/silsila/guide.py`, `data/guide/` | "Ask about Silsila": fixed answers and live lookups about the tool; no language model |
-| `backend/src/silsila/api/` | FastAPI service: consent, invitations, queue, audit chain, FHIR R4B import and export |
-| `backend/src/silsila/sim/`, `backend/bench/` | Family simulator and benchmarks |
-| `web/` | Next.js app: family, relative and counsellor views (Arabic and English, installable) |
-| `data/eval/`, `data/dev/` | Held-out triage test set and separate development set |
-| `tools/translation_qc/` | Three-system Arabic translation check |
-| `tools/film/` | Narration, recording script and build steps for the demo film |
-| `backend/scripts/` | MedlinePlus import, read-aloud clip generator, readability scoring |
-| `docs/` | Evidence, governance, pilot protocol, deployment notes, limitations |
+| Engine and API | Python 3.12, FastAPI 0.162.0, uvicorn 0.54.0, pydantic 2.14.3, numpy 2.5.4, PyJWT 2.15.1 with cryptography (OIDC token signatures) |
+| Interoperability | fhir.resources 8.3.0 (FHIR R4B) |
+| Machine learning | scikit-learn 1.9.1 and joblib 1.6.0 (triage n-gram classifier) |
+| Storage | SQLite (demo); PostgreSQL through psycopg 3.3.9 with a connection pool (production) |
+| Web | Next.js 16.4.5, React 19.3.0, TypeScript 5, Tailwind CSS 4, three.js 0.187.0 (Family Twin), IBM Plex fonts |
+| Containers | Docker, Docker Compose; non-root images with health checks |
+| Hosting | Azure Container Apps (UAE North), Azure Container Registry |
+| Speech | Azure AI Speech neural voices (pre-generated clips and film narration) |
+| CI | GitHub Actions: backend tests on SQLite and on PostgreSQL 17, Silsila-Bench harness tests, web lint, types and build, gitleaks secret scan |
+| Testing and checks | pytest 9.2.0, hypothesis 6.170.14, pgmpy 1.1.2 (independent exact solver for the cross-check), scipy 1.18.1, axe-core 4.10.2 (accessibility), Playwright 1.61.0 (film recording) |
+
+## AI tools disclosure
+
+**AI does not make any decision in Silsila. Risk is computed by an exact, deterministic Bayesian engine; who is
+told is decided by the family; every invitation is approved by a genetic counsellor; no AI-written text reaches
+a family member.**
+
+| Tool | Where | What it does | What it is not allowed to do |
+|---|---|---|---|
+| Azure AI Speech neural voices | Read-aloud clips (`data/content/audio`); demo film narration; voice-intake demo clip | Turns approved or quoted text into audio, ahead of time | Read anything that is not the exact approved text (each clip is tied to its text by SHA-256); run at request time |
+| Jais-ASR and Jais 3 7B | Voice intake | Recognises a spoken Emirati Arabic story and drafts a family tree | Calculate risk; reach a family; skip counsellor confirmation of each person. The hosted site replays one recorded run |
+| Triage classifier (scikit-learn, character n-grams) | `backend/src/silsila/triage.py` | Labels incoming messages (for example crisis, decision, religious) to order the queue | Write replies; replace a person reading every message. Trained on 800 synthetic messages written by an AI model (Claude) |
+| Azure OpenAI (optional, off by default) | `triage.py` | Adds labels to redacted message text | Write text; remove labels set by the rules or the n-gram model |
+| Machine translation for Arabic | `data/content`, guide | Arabic versions of approved and quoted text, written at build time by an AI model (Claude), cross-checked with opus-mt-tc-big-en-ar and Azure AI Translator, with LaBSE as a meaning check. The guide's Arabic answers and a few interface labels were machine-translated with Azure AI Translator and corrected by hand for product names | Reach a family unreviewed in a pilot: it awaits native clinical review |
+| Language models in Silsila-Bench | `bench_llm/` | Evaluated only: Jais 3 7B and 32B, K2-Think-V2, BiMediX2 8B, Llama3-Med42 8B, gpt-oss-120b | Anything at run time; none is used in the product to compute risk |
+| Claude Code (Anthropic) | Development | Coding and writing assistant: code, tests, documentation, film and deck tooling | Set clinical rules or claims: every design decision, clinical rule and claim was reviewed by the author; all evidence figures come from scripts in this repository |
+
+The guide ("Ask about Silsila") is **not** an AI: it is a keyword matcher over 51 fixed answers. Full detail:
+[`docs/ai-disclosure.md`](docs/ai-disclosure.md).
+
+## Production readiness
+
+Built for production after a pilot: PostgreSQL storage for several replicas, production-mode start-up checks,
+OIDC sign-in ready for UAE PASS and Entra ID, security headers, rate limits, structured logs without personal
+data, non-root containers with health checks. What only a pilot can provide: real users and outcomes, a
+managed UAE database with encryption at rest, UAE PASS and Entra ID registration (the OIDC code has been tested
+against a mock provider, not against UAE PASS), native clinical review of the Arabic, genetic counsellor review
+of the templates, and an ADHICS-aligned security review. See [`docs/production.md`](docs/production.md).
 
 ## Governance
 
@@ -290,7 +486,16 @@ bash deploy/azure-deploy.sh      # prints the public web and API URLs
   [pilot protocol (DECIDE-AI)](docs/pilot-protocol.md), [deployment notes](docs/deployment.md),
   [assumptions and limitations](docs/limitations.md).
 
-## Data and licences
+## Licence
+
+Apache-2.0: see [`LICENSE`](LICENSE).
+
+### Third-party content
+
+- MedlinePlus Genetics text: US National Library of Medicine, public domain; quoted verbatim and credited.
+- IBM Plex fonts: SIL Open Font Licence.
+- Read-aloud clips and film narration: synthetic voices generated with Azure AI Speech.
+- All families, messages and people are fictional. No real patient data is used.
 
 | Source | Use | Licence |
 |---|---|---|
@@ -300,8 +505,6 @@ bash deploy/azure-deploy.sh      # prints the public web and API URLs
 | Helsinki-NLP opus-mt-tc-big-en-ar | Translation cross-check only | CC-BY 4.0 |
 | sentence-transformers/LaBSE | Translation meaning check only | Apache-2.0 |
 | Synthetic families, messages and test sets | Demo and evaluation | Generated for this project |
-
-No real patient data is used. All people in the demo are fictional.
 
 ## Status
 
