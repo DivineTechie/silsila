@@ -22,6 +22,8 @@ INK, TEAL, BRASS, MUTED = RGBColor(0x12, 0x30, 0x2F), RGBColor(0x0E, 0x5A, 0x57)
 SOFT, SAND, LINE, WHITE = RGBColor(0xE4, 0xEF, 0xEC), RGBColor(0xF4, 0xEF, 0xE6), RGBColor(0xC9, 0xBD, 0xA8), RGBColor(0xFF, 0xFF, 0xFF)
 FONT = "Arial"
 LIVE = "https://silsila-web.lemonisland-568f9acd.uaenorth.azurecontainerapps.io"
+FILM = "https://youtu.be/fCHWTlGyeSY"
+REPO = "https://github.com/TusharTechs/silsila"
 TEAM = {"name": "Tushar Agarwal", "country": "India", "role": "Founder; design, engineering, evidence", "org": "Independent",
         "age": "18 or over: confirmed"}
 
@@ -148,6 +150,7 @@ def main(src: str, dst: str) -> None:
     text(S[0], 0.48, 4.55, 9.0, 0.9, [
         ("Premarital screening protects the next marriage. Silsila protects the marriages that already happened.", {"italic": True, "size": 12, "color": TEAL, "space": 4}),
         (f"Live, no password: {LIVE}", {"size": 9.5, "color": MUTED}),
+        (f"Film: {FILM}   ·   Code: {REPO}", {"size": 9.5, "color": MUTED}),
     ])
 
     # 2. Team members: one row
@@ -314,6 +317,7 @@ def main(src: str, dst: str) -> None:
     s = S[10]
     card(s, 0.4, 1.7, 9.2, 0.95, "No login is needed", [
         (LIVE, {"size": 11, "bold": True, "color": INK, "space": 4}),
+        (f"Film (5 min): {FILM}   ·   Code and submission pack: {REPO}", {"size": 9.5, "color": INK, "space": 4}),
         ("The home page has one-click roles (the equivalent of Continue as Guest), each with every feature. All families are fictional.", {"size": 10})], fill=SOFT)
     for i, (a, b) in enumerate([("Watch a cascade", "One newborn's result travelling through a family in 13 live steps. Start here."),
                                 ("Family Twin", "A simulated clan of 61 people; record a result and watch every chance recalculated."),
@@ -322,8 +326,8 @@ def main(src: str, dst: str) -> None:
                                 ("A relative's link", "The invitation as a relative sees it: Listen, common questions, check, booking."),
                                 ("Ask about Silsila", "Bottom corner of every public page: answers about the tool, without AI.")]):
         card(s, 0.4 + (i % 3) * 3.1, 2.8 + (i // 3) * 1.12, 3.0, 1.02, a, [(b, {"size": 9})], fill=WHITE, size=9, title_size=10)
-    text(s, 0.4, 5.05, 9.2, 0.35, [("Arabic or English from the header. \"Reset the demo data\" is in the counsellor's audit tab. Username and password sign-in also exists; "
-                                    "the demo accounts are in the repository's README.", {"size": 8.5, "color": MUTED, "italic": True})])
+    text(s, 0.4, 5.05, 9.2, 0.35, [("Arabic or English from the header. \"Reset the demo data\" is in the counsellor's audit tab. Username and password sign-in also exists "
+                                    "for local runs, with passwords set in backend/.env.", {"size": 8.5, "color": MUTED, "italic": True})])
 
     # 12. Path to pilot and scale
     s = S[11]
@@ -351,7 +355,7 @@ def main(src: str, dst: str) -> None:
          "documents. Written for this challenge: the repository's history starts on 6 November 2026. No pre-existing product or prior codebase was brought in.", {"size": 9})], fill=SAND, size=9)
     card(s, 5.1, 1.6, 4.5, 1.55, "Restrictions", [
         ("None on Silsila's own work. Arabic text is machine translation and must be reviewed before use with patients. The organisers' template and logos are "
-         "theirs and are used only for this submission. No licence file has been chosen for the repository yet.", {"size": 9})], fill=WHITE, size=9)
+         "theirs and are used only for this submission. The code is released under the Apache-2.0 licence.", {"size": 9})], fill=WHITE, size=9)
     table(s, 0.4, 3.3, 9.2, [2.6, 3.4, 3.2], [
         ["Third-party material", "Use", "Licence or terms"],
         ["MedlinePlus Genetics (US National Library of Medicine)", "Verbatim patient information", "Public domain; credit line shown"],

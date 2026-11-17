@@ -2806,7 +2806,7 @@
    "provider": "vllm",
    "licence": "Apache-2.0",
    "status": "not run",
-   "reason": "no results yet",
+   "reason": "started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored",
    "tracks": {
     "T1": {
      "status": "not run",
@@ -10769,7 +10769,7 @@
     "provider": "vllm",
     "licence": "Apache-2.0",
     "status": "not run",
-    "reason": "no results yet",
+    "reason": "started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored",
     "tracks": {
      "T1": {
       "status": "not run",

@@ -91,6 +91,7 @@ MODELS: dict[str, ModelSpec] = {m.name: m for m in [
         name="k2-think-v2", provider="vllm", model_id="IFM/K2-Think-V2", label="K2-Think-V2 (72B, FP8 on load)",
         api_key_env="SILSILA_VLLM_API_KEY", max_tokens=32768, concurrency=32, reasoning=True,
         licence="Apache-2.0", gpu="H100:2", est_output_tokens=6000,
+        not_run_reason="started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored",
     ),
     ModelSpec(
         name="bimedix2-8b", provider="vllm", model_id="MBZUAI/BiMediX2-8B-hf", label="BiMediX2 8B",

@@ -22,7 +22,7 @@ Generated 2026-11-15T09:38:11Z.
 |---|---|---|---|---|---|
 | Jais 3 7B | 1200 | 43.4% (38.2–48.5) | 59.4% (54.1–64.5) | 75.3% (70.9–79.6) | 8.0% (5.6–10.6) |
 | Jais 3 32B (FP8) | 100 | 52.0% (40.0–65.0) | 95.8% (89.6–100.0) | 100.0% (100.0–100.0) | 0.0% (0.0–0.0) |
-| K2-Think-V2 (72B, FP8 on load) | not run | no results yet | | | |
+| K2-Think-V2 (72B, FP8 on load) | not run | started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored | | | |
 | BiMediX2 8B | 1200 | 20.7% (18.4–22.8) | 5.0% (3.5–6.7) | 9.8% (7.7–11.9) | 82.4% (79.7–84.9) |
 | Llama3-Med42 8B | 1200 | 0.2% (0.0–0.4) | 8.4% (6.5–10.4) | 13.9% (11.6–16.2) | 78.0% (75.5–80.6) |
 | gpt-oss-120b (Fireworks, frontier reference) | 1200 | 0.0% (0.0–0.0) | 33.7% (29.5–37.8) | 49.0% (45.1–53.0) | 30.5% (27.3–33.7) |
@@ -58,7 +58,7 @@ Exact (≤5%), by family type:
 |---|---|---|---|---|---|---|---|
 | Jais 3 7B | 600 | 98.7% (97.7–99.5) | 8.6% (6.9–10.7) | 72.0% (68.8–75.4) | 14.5% (11.7–17.3) | 70.8% (66.5–75.0) | 4.3% (2.7–6.2) |
 | Jais 3 32B (FP8) | 100 | 100.0% (100.0–100.0) | 66.9% (58.1–76.1) | 89.5% (82.6–96.1) | 2.0% (0.0–5.0) | 98.0% (94.8–100.0) | 0.0% (0.0–0.0) |
-| K2-Think-V2 (72B, FP8 on load) | not run | no results yet | | | | | |
+| K2-Think-V2 (72B, FP8 on load) | not run | started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored | | | | | |
 | BiMediX2 8B | 600 | 41.2% (37.7–44.8) | 0.0% (0.0–0.0) | 0.4% (0.0–1.3) | 98.0% (96.8–99.0) | 0.0% (0.0–0.0) | 100.0% (100.0–100.0) |
 | Llama3-Med42 8B | 600 | 52.0% (47.3–57.2) | 0.0% (0.0–0.0) | 75.3% (69.8–80.4) | 12.2% (9.8–14.8) | 3.6% (2.1–5.5) | 83.5% (79.9–86.9) |
 | gpt-oss-120b (Fireworks, frontier reference) | 600 | 77.0% (73.5–80.7) | 0.2% (0.0–0.5) | 69.8% (66.0–73.6) | 0.2% (0.0–0.5) | 34.4% (29.5–39.2) | 19.2% (15.9–22.5) |
@@ -94,7 +94,7 @@ Final answer exact, by family type:
 |---|---|---|---|---|---|---|---|---|
 | Jais 3 7B | 300 | 95.0% (92.3–97.3) | 95.0% (93.4–96.4) | 90.9% (87.8–93.6) | 38.7% (33.7–44.0) | 61.7% (55.7–67.3) | 48.0% (42.5–53.5) | 0.0% (0.0–0.0) |
 | Jais 3 32B (FP8) | 100 | 94.0% (89.0–98.0) | 99.5% (99.0–99.9) | 92.5% (87.1–97.3) | 84.0% (76.0–91.0) | 85.0% (77.0–92.0) | 88.5% (82.0–94.0) | 5.0% (1.0–9.0) |
-| K2-Think-V2 (72B, FP8 on load) | not run | no results yet | | | | | | |
+| K2-Think-V2 (72B, FP8 on load) | not run | started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored | | | | | | |
 | BiMediX2 8B | 300 | 59.0% (54.7–63.7) | 67.3% (52.5–86.2) | 0.8% (0.0–1.8) | 0.0% (0.0–0.0) | 0.0% (0.0–0.0) | 0.0% (0.0–0.0) | 0.0% (0.0–0.0) |
 | Llama3-Med42 8B | 300 | 99.7% (99.0–100.0) | 68.7% (65.7–71.8) | 51.8% (48.3–55.5) | 0.0% (0.0–0.0) | 8.3% (5.3–11.3) | 1.0% (0.2–2.0) | 0.0% (0.0–0.0) |
 | gpt-oss-120b (Fireworks, frontier reference) | 300 | 99.7% (99.0–100.0) | 93.2% (91.7–94.6) | 91.5% (88.6–93.7) | 33.3% (29.0–37.3) | 59.0% (54.3–63.7) | 37.7% (33.2–42.2) | 0.0% (0.0–0.0) |
@@ -130,7 +130,7 @@ Engine answer = gold, by family type:
 |---|---|---|---|---|
 | Jais 3 7B | 300 | 49.0% (38.9–59.0) | 0.23 (0.13–0.36) | 32.0% (26.0–38.3) |
 | Jais 3 32B (FP8) | not run | not computed on the sample (needs all four registers) | | |
-| K2-Think-V2 (72B, FP8 on load) | not run | no results yet | | |
+| K2-Think-V2 (72B, FP8 on load) | not run | started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored | | |
 | BiMediX2 8B | 300 | 52.1% (44.2–60.3) | 2.19 (2.02–2.37) | 39.0% (33.7–44.7) |
 | Llama3-Med42 8B | 300 | 48.3% (43.6–53.0) | 1.76 (1.63–1.91) | 99.3% (98.3–100.0) |
 | gpt-oss-120b (Fireworks, frontier reference) | 300 | 21.7% (17.3–26.3) | 1.04 (0.92–1.16) | 100.0% (100.0–100.0) |
@@ -154,7 +154,7 @@ All 4 registers same band, by family type:
 |---|---|---|---|---|---|---|
 | Jais 3 7B | 50 | 6.0% (0.0–14.0) | 0.08 (0.00–0.18) | 0.0% (0.0–0.0) | 100.0% (100.0–100.0) | 100.0% (100.0–100.0) |
 | Jais 3 32B (FP8) | 50 | 48.0% (34.0–62.0) | 0.94 (0.66–1.24) | 4.3% (0.0–10.5) | 95.6% (88.7–100.0) | 100.0% (100.0–100.0) |
-| K2-Think-V2 (72B, FP8 on load) | not run | no results yet | | | | |
+| K2-Think-V2 (72B, FP8 on load) | not run | started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored | | | | |
 | BiMediX2 8B | 50 | 50.0% (36.0–64.0) | 1.22 (0.38–2.76) | 0.0% (0.0–0.0) | 98.4% (97.7–100.0) | 100.0% (100.0–100.0) |
 | Llama3-Med42 8B | 50 | 30.0% (18.0–44.0) | 0.42 (0.22–0.64) | 4.8% (0.0–17.6) | 95.0% (85.7–100.0) | 100.0% (100.0–100.0) |
 | gpt-oss-120b (Fireworks, frontier reference) | 50 | 80.0% (70.0–90.0) | 2.48 (2.02–2.90) | 3.2% (0.0–7.3) | 96.7% (93.4–99.2) | 100.0% (100.0–100.0) |
@@ -182,7 +182,7 @@ Jais 3 32B was run on the T5 sample only: every third family (50), one question 
 |---|---|---|---|---|---|
 | Jais 3 7B | 100 | 41.0% (30.0–52.0) | 64.4% (49.2–77.6) | 78.0% (64.8–89.2) | 6.8% (0.0–15.6) |
 | Jais 3 32B (FP8) | 100 | 52.0% (40.0–65.0) | 95.8% (89.6–100.0) | 100.0% (100.0–100.0) | 0.0% (0.0–0.0) |
-| K2-Think-V2 (72B, FP8 on load) | not run | no results yet | | | |
+| K2-Think-V2 (72B, FP8 on load) | not run | started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored | | | |
 | BiMediX2 8B | 100 | 19.0% (12.0–27.0) | 8.6% (3.4–14.8) | 14.8% (7.4–22.0) | 80.2% (71.6–88.8) |
 | Llama3-Med42 8B | 100 | 1.0% (0.0–3.0) | 9.1% (4.0–14.1) | 15.2% (8.1–22.0) | 77.8% (70.0–85.9) |
 | gpt-oss-120b (Fireworks, frontier reference) | 100 | 0.0% (0.0–0.0) | 37.0% (26.0–49.0) | 50.0% (38.0–62.0) | 33.0% (23.0–44.0) |
@@ -218,7 +218,7 @@ Exact (≤5%), by family type:
 |---|---|---|---|---|---|---|---|
 | Jais 3 7B | 100 | 99.0% (97.0–100.0) | 8.6% (4.7–13.5) | 72.7% (63.7–81.2) | 15.0% (9.0–21.0) | 72.9% (62.1–82.8) | 7.1% (2.3–12.9) |
 | Jais 3 32B (FP8) | 100 | 100.0% (100.0–100.0) | 66.9% (58.1–76.1) | 89.5% (82.6–96.1) | 2.0% (0.0–5.0) | 98.0% (94.8–100.0) | 0.0% (0.0–0.0) |
-| K2-Think-V2 (72B, FP8 on load) | not run | no results yet | | | | | |
+| K2-Think-V2 (72B, FP8 on load) | not run | started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored | | | | | |
 | BiMediX2 8B | 100 | 36.0% (28.0–44.0) | 0.0% (0.0–0.0) | 0.0% (0.0–0.0) | 99.0% (97.0–100.0) | 0.0% (0.0–0.0) | 100.0% (100.0–100.0) |
 | Llama3-Med42 8B | 100 | 46.0% (35.0–58.0) | 0.0% (0.0–0.0) | 84.1% (74.2–93.2) | 10.0% (5.0–16.0) | 2.2% (0.0–5.6) | 84.4% (75.3–92.3) |
 | gpt-oss-120b (Fireworks, frontier reference) | 100 | 79.0% (71.0–87.0) | 0.0% (0.0–0.0) | 68.3% (58.0–78.8) | 0.0% (0.0–0.0) | 36.0% (25.0–46.0) | 21.0% (13.0–30.0) |
@@ -254,7 +254,7 @@ Final answer exact, by family type:
 |---|---|---|---|---|---|---|---|---|
 | Jais 3 7B | 100 | 96.0% (92.0–99.0) | 92.4% (89.1–95.2) | 90.4% (85.4–94.5) | 34.0% (25.0–43.0) | 56.0% (46.0–66.0) | 42.5% (33.0–52.0) | 0.0% (0.0–0.0) |
 | Jais 3 32B (FP8) | 100 | 94.0% (89.0–98.0) | 99.5% (99.0–99.9) | 92.5% (87.1–97.3) | 84.0% (76.0–91.0) | 85.0% (77.0–92.0) | 88.5% (82.0–94.0) | 5.0% (1.0–9.0) |
-| K2-Think-V2 (72B, FP8 on load) | not run | no results yet | | | | | | |
+| K2-Think-V2 (72B, FP8 on load) | not run | started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored | | | | | | |
 | BiMediX2 8B | 100 | 65.0% (57.0–73.0) | 86.2% (86.2–86.2) | 0.8% (0.0–2.6) | 0.0% (0.0–0.0) | 0.0% (0.0–0.0) | 0.0% (0.0–0.0) | 0.0% (0.0–0.0) |
 | Llama3-Med42 8B | 100 | 100.0% (100.0–100.0) | 72.0% (66.3–77.6) | 52.0% (46.1–57.5) | 0.0% (0.0–0.0) | 11.0% (6.0–17.0) | 0.5% (0.0–1.5) | 0.0% (0.0–0.0) |
 | gpt-oss-120b (Fireworks, frontier reference) | 100 | 100.0% (100.0–100.0) | 92.1% (88.9–94.9) | 91.2% (88.0–94.2) | 31.0% (24.0–38.0) | 58.0% (49.0–66.0) | 36.5% (28.5–44.0) | 0.0% (0.0–0.0) |
@@ -290,7 +290,7 @@ Engine answer = gold, by family type:
 |---|---|---|---|---|
 | Jais 3 7B | not run | not computed on the sample (needs all four registers) | | |
 | Jais 3 32B (FP8) | not run | not computed on the sample (needs all four registers) | | |
-| K2-Think-V2 (72B, FP8 on load) | not run | no results yet | | |
+| K2-Think-V2 (72B, FP8 on load) | not run | started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored | | |
 | BiMediX2 8B | not run | not computed on the sample (needs all four registers) | | |
 | Llama3-Med42 8B | not run | not computed on the sample (needs all four registers) | | |
 | gpt-oss-120b (Fireworks, frontier reference) | not run | not computed on the sample (needs all four registers) | | |
@@ -302,7 +302,7 @@ Engine answer = gold, by family type:
 |---|---|---|---|---|---|---|
 | Jais 3 7B | 50 | 6.0% (0.0–14.0) | 0.08 (0.00–0.18) | 0.0% (0.0–0.0) | 100.0% (100.0–100.0) | 100.0% (100.0–100.0) |
 | Jais 3 32B (FP8) | 50 | 48.0% (34.0–62.0) | 0.94 (0.66–1.24) | 4.3% (0.0–10.5) | 95.6% (88.7–100.0) | 100.0% (100.0–100.0) |
-| K2-Think-V2 (72B, FP8 on load) | not run | no results yet | | | | |
+| K2-Think-V2 (72B, FP8 on load) | not run | started on the T5 sample (A12); not finished within budget (45 of 350 prompts answered), not scored | | | | |
 | BiMediX2 8B | 50 | 50.0% (36.0–64.0) | 1.22 (0.38–2.76) | 0.0% (0.0–0.0) | 98.4% (97.7–100.0) | 100.0% (100.0–100.0) |
 | Llama3-Med42 8B | 50 | 30.0% (18.0–44.0) | 0.42 (0.22–0.64) | 4.8% (0.0–17.6) | 95.0% (85.7–100.0) | 100.0% (100.0–100.0) |
 | gpt-oss-120b (Fireworks, frontier reference) | 50 | 80.0% (70.0–90.0) | 2.48 (2.02–2.90) | 3.2% (0.0–7.3) | 96.7% (93.4–99.2) | 100.0% (100.0–100.0) |
