@@ -56,24 +56,39 @@ not replace counsellors; it gives each counsellor:
 
 ## Pricing model (proposal, to be validated in the pilot)
 
-- **Pilot:** fixed fee for six months, one screening centre and its genetics clinic, up to 200 index
-  families, including hosting in Azure UAE North, integration work and monthly DoH reports.
-- **At scale:** an annual programme licence priced per index family started (all relatives in that family
-  included), with a floor for platform operation. Per-family pricing keeps cost proportional to the
-  programme's own volume and needs no per-relative billing.
+- **Pilot:** USD 45,000 fixed for 12 weeks, one screening centre and its genetics clinic, up to 200 index
+  families, including hosting in Azure UAE North, FHIR mapping and monthly DoH reports.
+- **At scale:** USD 150 per index family started (all relatives in that family included), with a minimum of
+  USD 30,000 a year for platform operation. At about 220 index families a year in Abu Dhabi the minimum
+  applies. Per-family pricing keeps cost proportional to the programme's own volume and needs no
+  per-relative billing. These figures are our proposal for the pilot to test; no buyer has seen them.
 - **Hosting cost (assumption, list prices):** the current deployment (API 2 vCPU / 4 GiB, web 0.5 vCPU /
   1 GiB on Azure Container Apps, UAE North, always on) comes to about USD 200 a month at list consumption
   prices (our estimate from per-second vCPU and memory rates; free monthly grants not counted); the exact
   engine runs on CPU, so cost grows with families, not with model tokens. No language model is needed at
   run time; voice intake is an optional module that runs on a clinic workstation.
 
+## Counsellor capacity
+
+| Input | Value | Source |
+|---|---|---|
+| Practising genetic counsellors in the UAE | 9, plus 8 clinical geneticists | Almarri et al. 2025 (above) |
+| Index families a year in Abu Dhabi | about 220: more than 100 newborns, about 125 incompatible couples (565 from 2022 to July 2026, about 4.6 years) | reported figures above; the newborns span many conditions, so this overstates recessive cascades |
+| Counsellor steps per family in Silsila | confirm the drafted tree, approve each invitation, close the case with evidence | the product |
+| Invitation approvals at 5 tests per family | about 1,000 a year (220 × 4.7 tests used), about 20 a week for the emirate | B4 mean tests used |
+| Invitations per at-risk couple found | HBB 15 in Silsila's order vs 24 unranked; CYP21A2 20 vs 30 (1,000 ÷ yield per 1,000 tests) | B4, simulated |
+
+**Not measured yet: counsellor minutes per family.** No counsellor has timed a family in Silsila. Weeks 1-4 of
+the pilot (shadow mode) time the usual process and the same families in Silsila; that is the pilot's primary
+90-day measure. Silsila is worth its price only if minutes per family fall.
+
 ## Path to pilot
 
 Detailed in [pilot-protocol.md](pilot-protocol.md). In short:
 
-1. **Shadow mode (months 1-2).** Counsellors run their usual process; Silsila computes alongside. Measure
+1. **Shadow mode (weeks 1-4).** Counsellors run their usual process; Silsila computes alongside. Measure
    agreement on whom to contact first and the time saved per family. Nothing is sent to relatives.
-2. **Assisted mode (months 3-6).** Invitations go out through Silsila with counsellor approval.
+2. **Assisted mode (weeks 5-12).** Invitations go out through Silsila with counsellor approval.
 3. **Measures** (from the challenge statement): comprehension (teach-back), counselling uptake, time from
    index result to counselling, at-risk couples identified per test, privacy incidents, equity across
    Arabic, English and literacy levels. **Never** cancelled marriages or any particular reproductive choice.

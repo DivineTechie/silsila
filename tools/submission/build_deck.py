@@ -9,6 +9,7 @@ is in README.md or docs/evidence. Then export OUT.pptx to PDF (LibreOffice: soff
 
 from __future__ import annotations
 
+import copy
 import sys
 from pathlib import Path
 
@@ -125,9 +126,30 @@ def restyle(shape):
             run.font.name = FONT
 
 
+def clone_after(prs, src):
+    """Copies a template slide (pictures included) and places the copy right after it."""
+    new = prs.slides.add_slide(src.slide_layout)
+    for sh in list(new.shapes):
+        sh._element.getparent().remove(sh._element)
+    rid_map = {r.rId: new.part.relate_to(r._target, r.reltype) for r in src.part.rels.values() if "image" in r.reltype}
+    for sh in src.shapes:
+        el = copy.deepcopy(sh._element)
+        for node in el.iter():
+            for k, v in list(node.attrib.items()):
+                if k.endswith("}embed") and v in rid_map:
+                    node.set(k, rid_map[v])
+        new.shapes._spTree.append(el)
+    ids = prs.slides._sldIdLst
+    moved = ids[-1]
+    ids.remove(moved)
+    ids.insert(list(prs.slides).index(src) + 1, moved)
+    return new
+
+
 def main(src: str, dst: str) -> None:
     prs = Presentation(src)
     S = list(prs.slides)
+    capacity_slide = clone_after(prs, S[14])
     for s in S:
         for sh in s.shapes:
             if sh.has_text_frame:
@@ -337,10 +359,10 @@ def main(src: str, dst: str) -> None:
                             "onboarding comes with the pilot. Hosting stays in the UAE."),
             ("Regulatory", "Decision support with a counsellor approving every message. DoH conformity assessment before patient use (high-risk class); medical-device "
                            "classification to be confirmed with DoH. Clause map and hazard log are in the repository."),
-            ("Timeline (assumption)", "Months 1-2: shadow mode, counsellors work as usual while Silsila computes alongside; nothing is sent. Months 3-6: assisted mode, "
+            ("Timeline (assumption)", "A 12-week pilot. Weeks 1-4: shadow mode, counsellors work as usual while Silsila computes alongside; nothing is sent. Weeks 5-12: "
                                       "invitations go out with counsellor approval. Monthly report to DoH."),
-            ("Sustainability", "Proposed licence per index family started, all relatives included; a fixed-fee pilot first. Hosting about USD 200 a month at list prices; cost grows "
-                               "with families, not with model tokens. No price is validated yet.")]
+            ("Sustainability", "Proposed: USD 45,000 fixed for the pilot, then USD 150 per index family started, all relatives included (capacity and price slide). "
+                               "Hosting about USD 200 a month; cost grows with families, not model tokens.")]
     for i, (a, b) in enumerate(cols):
         card(s, 0.4 + i * 1.86, 1.55, 1.76, 2.75, a, [(b, {"size": 8.8})], fill=SAND if i % 2 == 0 else WHITE, size=8.8, title_size=9.6)
     card(s, 0.4, 4.42, 9.2, 0.9, "Scale, as a projection and not an observed outcome", [
@@ -397,6 +419,32 @@ def main(src: str, dst: str) -> None:
         ("Arabic is machine translation; no native clinical review, no listening check of the audio.", {"bullet": True, "size": 9}),
         ("Quoted source text reads at a college level (grade 13.4); Silsila's own wording at grade 6.9.", {"bullet": True, "size": 9}),
         ("No programme has asked for cascade testing; no price is validated.", {"bullet": True, "size": 9})], fill=WHITE, size=9)
+
+    # 16. Additional slide: counsellor capacity, price and the 90-day metric
+    s = capacity_slide
+    extra = next(sh for sh in s.shapes if sh.has_text_frame)
+    extra.top = Inches(0.94)
+    extra.text_frame.paragraphs[0].runs[0].text = "Additional Slide: counsellor capacity, price and the 90-day pilot metric"
+    table(s, 0.4, 1.5, 5.6, [3.0, 2.6], [
+        ["Counsellor workload (reported and simulated figures)", "Value"],
+        ["Practising genetic counsellors in the UAE (Almarri 2025)", "9, plus 8 clinical geneticists"],
+        ["Index families a year in Abu Dhabi (reported)", "about 220: 100+ newborns, about 125 incompatible couples (565 in 2022 to Jul 2026)"],
+        ["Counsellor steps per family in Silsila", "confirm the tree, approve each invitation, close with evidence"],
+        ["Approvals at 5 tests per family", "about 1,000 a year, about 20 a week for the emirate"],
+        ["Invitations per at-risk couple found, HBB (B4, simulated)", "15 in Silsila's order vs 24 unranked"],
+        ["Same, CYP21A2 (CAH)", "20 vs 30"],
+    ], size=7.8, row_h=0.36)
+    card(s, 6.2, 1.5, 3.4, 2.55, "Minutes per family: not measured yet", [
+        ("No counsellor has timed a family in Silsila. That number is the first thing the pilot produces: in weeks 1-4 counsellors time their usual process "
+         "and the same families in Silsila, with nothing sent.", {"size": 8.8, "space": 4}),
+        ("Silsila is worth its price only if counsellor minutes per family fall, and if a third fewer invitations per couple found holds in real families.",
+         {"size": 8.8, "bold": True})], fill=SAND, size=8.8)
+    card(s, 0.4, 4.2, 4.5, 1.12, "Price (proposal to test, not a quote)", [
+        ("Pilot: USD 45,000 fixed, 12 weeks, one screening centre and its genetics clinic, up to 200 index families; UAE North hosting, FHIR mapping and monthly DoH "
+         "reports included. Then USD 150 per index family started, all relatives included, minimum USD 30,000 a year.", {"size": 8.6})], fill=WHITE, size=8.6, title_size=9.5)
+    card(s, 5.1, 4.2, 4.5, 1.12, "The 90-day metric", [
+        ("Primary: counsellor minutes per family below the shadow-phase baseline. Must also hold: 0 unauthorised disclosures; comprehension in Arabic no worse "
+         "than in English; at-risk couples found per invitation no lower than unranked.", {"size": 8.6})], fill=SOFT, size=8.6, title_size=9.5)
 
     prs.save(dst)
     print("saved", dst)
